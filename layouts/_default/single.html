@@ -298,22 +298,21 @@ body{
   function show(n){
     n=Math.max(1,Math.min(total,n));
     cur=n;
-    stage.querySelectorAll('.slide-page').forEach(s=>{
-      const num=parseInt(s.dataset.slide);
-      s.dataset.active=(num===cur)?'true':'false';
-      s.style.display=(num===cur)?'flex':'none';
+    stage.querySelectorAll('.slide-page').forEach((s,idx)=>{
+      s.dataset.active=((idx+1)===cur)?'true':'false';
+      s.style.display=((idx+1)===cur)?'flex':'none';
     });
-    document.querySelectorAll('.thumb-item').forEach(t=>{
-      const num=parseInt(t.dataset.page);
-      t.classList.toggle('active', num===cur);
-      if(num===cur) t.scrollIntoView({inline:'center',behavior:'smooth'});
+    document.querySelectorAll('.thumb-item').forEach((t,idx)=>{
+      const active=(idx+1)===cur;
+      t.classList.toggle('active', active);
+      if(active) t.scrollIntoView({inline:'center',behavior:'smooth'});
     });
     indicator.textContent=cur+' / '+total;
     localStorage.setItem('slide-{{ .Params.lecture_number }}',cur);
   }
 
-  document.querySelectorAll('.thumb-item').forEach(t=>{
-    t.addEventListener('click',()=>show(parseInt(t.dataset.page)));
+  document.querySelectorAll('.thumb-item').forEach((t,idx)=>{
+    t.addEventListener('click',()=>show(idx+1));
   });
   document.getElementById('btn-prev').addEventListener('click',()=>show(cur-1));
   document.getElementById('btn-next').addEventListener('click',()=>show(cur+1));
@@ -346,11 +345,16 @@ body{
     const q=e.target.value.toLowerCase().trim();
     const pages=stage.querySelectorAll('.slide-page');
     let visible=0;
-    pages.forEach(p=>{
+    pages.forEach((p,idx)=>{
       const text=p.textContent.toLowerCase();
-      const show=!q||text.includes(q);
-      p.style.display=show?'flex':'none';
-      if(show) visible++;
+      if(!q){
+        p.style.display=((idx+1)===cur)?'flex':'none';
+        visible++;
+      } else {
+        const show=text.includes(q);
+        p.style.display=show?'flex':'none';
+        if(show) visible++;
+      }
     });
     indicator.textContent=visible+' / '+total;
   });

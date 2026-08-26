@@ -96,6 +96,33 @@ body{
   background:rgba(212,168,83,0.08);
   border:1px solid var(--copper);
 }
+
+.open-sponsor{padding:4rem clamp(2rem,5vw,6rem);border-top:1px solid var(--copper);border-bottom:1px solid var(--copper);margin-bottom:0}
+.open-body{display:grid;grid-template-columns:1fr 1.5fr;gap:3rem;align-items:start}
+@media(max-width:900px){.open-body{grid-template-columns:1fr}}
+.open-left .lead{font-size:1.2rem;font-weight:600;color:var(--cream);line-height:1.6;margin-bottom:1rem}
+.open-left p{font-size:0.95rem;color:var(--muted);line-height:1.8}
+.open-right{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+@media(max-width:600px){.open-right{grid-template-columns:1fr}}
+.open-option{
+  padding:1.5rem 1.2rem;
+  background:rgba(27,59,107,0.4);
+  border:1px solid var(--copper);
+  border-left:3px solid var(--amber);
+  display:flex;gap:1rem;align-items:flex-start;
+}
+.opt-icon{
+  font-size:1.6rem;color:var(--amber);
+  font-weight:300;line-height:1;flex-shrink:0;
+}
+.opt-content h4{
+  font-size:0.95rem;color:var(--cream);
+  font-weight:600;margin-bottom:0.4rem;
+}
+.opt-content p{
+  font-size:0.8rem;color:var(--muted);
+  line-height:1.6;
+}
 </style>
 </head>
 <body>
@@ -136,49 +163,45 @@ body{
   </div>
 </section>
 
-<section class="tiers">
+<section class="open-sponsor">
   <div class="tiers-header">
-    <h2>赞助层级</h2>
-    <span class="note">赞助为自愿行为，所有层级均不购买话语权</span>
+    <h2>全定制化赞助</h2>
+    <span class="note">不设定金额和类型 · 个人与企业按需定制 · 金额以识别能力为主要参考</span>
   </div>
-  <div class="tier-grid">
-    <div class="tier">
-      <p class="tier-name">Friend</p>
-      <h3 class="tier-title">友好支持</h3>
-      <p class="tier-price">¥200<span class="unit">/年</span></p>
-      <ul class="tier-features">
-        <li>致谢页永久署名</li>
-        <li>参与年度线下 meetup</li>
-        <li>提前获知讲座信息</li>
-        <li>参与线上读书会</li>
-      </ul>
-      <a href="mailto:support@opensourceway.blog?subject=赞助咨询" class="tier-cta">咨询 →</a>
+  <div class="open-body">
+    <div class="open-left">
+      <p class="lead">「开源之道」·开源的经济学是一项长期知识工程。赞助是开放的，不受预设层级和金额的限制。</p>
+      <p>你可以根据自己的需求，和适兕直接沟通，定制属于你的赞助方案。</p>
     </div>
-    <div class="tier featured">
-      <p class="tier-name">Supporter</p>
-      <h3 class="tier-title">正式赞助</h3>
-      <p class="tier-price">¥1,000<span class="unit">/年</span></p>
-      <ul class="tier-features">
-        <li>含友好支持全部权益</li>
-        <li>讲座 Q&amp;A 优先提问</li>
-        <li>讲师延伸阅读清单</li>
-        <li>年度总结报告</li>
-        <li>README 致谢</li>
-      </ul>
-      <a href="mailto:support@opensourceway.blog?subject=赞助咨询" class="tier-cta">咨询 →</a>
-    </div>
-    <div class="tier">
-      <p class="tier-name">Patron</p>
-      <h3 class="tier-title">伙伴赞助</h3>
-      <p class="tier-price">¥5,000<span class="unit">/年</span></p>
-      <ul class="tier-features">
-        <li>含正式赞助全部权益</li>
-        <li>与适兕一对一交流</li>
-        <li>年度深度研究报告</li>
-        <li>项目方向优先建议权</li>
-        <li>联合署名研究产出</li>
-      </ul>
-      <a href="mailto:support@opensourceway.blog?subject=赞助咨询" class="tier-cta">咨询 →</a>
+    <div class="open-right">
+      <div class="open-option">
+        <div class="opt-icon">◐</div>
+        <div class="opt-content">
+          <h4>讲座参与</h4>
+          <p>线下 meetup、线上读书会、讲座 Q&amp;A、录播观看——按需选择，不限次数。</p>
+        </div>
+      </div>
+      <div class="open-option">
+        <div class="opt-icon">◑</div>
+        <div class="opt-content">
+          <h4>思想交流</h4>
+          <p>与适兕一对一交流、参与年度深度对谈、加入私享读书会——形式由你定。</p>
+        </div>
+      </div>
+      <div class="open-option">
+        <div class="opt-icon">◒</div>
+        <div class="opt-content">
+          <h4>长期合作</h4>
+          <p>定制专题讲座、联合署名研究、企业内训——适合有长期需求的机构和个人。</p>
+        </div>
+      </div>
+      <div class="open-option">
+        <div class="opt-icon">◓</div>
+        <div class="opt-content">
+          <h4>致谢铭刻</h4>
+          <p>你的名字或机构名出现在项目致谢页、README、年度报告中——永久署名，与开源经济学同行。</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>

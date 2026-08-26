@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta name="generator" content="Hugo 0.164.0"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>开源的经济学 · 12 讲</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,600;8..60,700&family=Noto+Serif+SC:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --prussian:#1B3B6B;
+  --cream:#F5F0E8;
+  --ink:#1A1A1A;
+  --copper:#8B7355;
+  --muted:#555555;
+  --paper:#EDE7DA;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Source Serif 4','Noto Serif SC',Georgia,serif;
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.7;
+  font-weight:400;
+}
+
+ 
+.hero{
+  position:relative;
+  min-height:80vh;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  padding:0 clamp(2rem,5vw,6rem);
+  background:var(--cream);
+  overflow:hidden;
+  border-bottom:5px solid var(--prussian);
+}
+.hero-left{
+  padding:4rem 2rem 4rem 0;
+  z-index:2;
+}
+.eyebrow{
+  display:inline-block;
+  font-size:0.75rem;
+  font-weight:600;
+  letter-spacing:0.3em;
+  text-transform:uppercase;
+  color:var(--prussian);
+  padding:6px 12px;
+  background:var(--paper);
+  border:1px solid var(--prussian);
+  margin-bottom:2rem;
+}
+.hero h1{
+  font-size:clamp(2.5rem,6vw,4.8rem);
+  font-weight:700;
+  color:var(--prussian);
+  line-height:1.1;
+  letter-spacing:-0.02em;
+  margin-bottom:1.5rem;
+}
+.hero h1 .accent{
+  display:block;
+  font-family:'Source Serif 4',serif;
+  font-style:italic;
+  font-weight:300;
+  font-size:0.4em;
+  color:var(--copper);
+  letter-spacing:0.05em;
+  margin-top:1rem;
+}
+.hero-desc{
+  font-size:1.05rem;
+  color:var(--muted);
+  max-width:480px;
+  margin-bottom:2rem;
+  font-weight:300;
+}
+.hero-meta{
+  display:flex;
+  gap:2rem;
+  font-size:0.85rem;
+  color:var(--muted);
+  border-top:1px solid var(--prussian);
+  padding-top:1.2rem;
+  max-width:440px;
+}
+.hero-meta strong{
+  display:block;
+  font-size:1.4rem;
+  color:var(--prussian);
+  font-weight:600;
+  font-family:'Source Serif 4',serif;
+}
+ 
+.hero-right{
+  position:relative;
+  height:600px;
+  min-height:400px;
+  background:var(--prussian);
+  overflow:hidden;
+}
+.geo-ring{
+  position:absolute;
+  border-radius:50%;
+  border:2px solid var(--cream);
+  opacity:0.15;
+}
+.geo-ring.r1{width:520px;height:520px;top:-120px;right:-120px}
+.geo-ring.r2{width:340px;height:340px;top:140px;right:60px;opacity:0.1}
+.geo-ring.r3{width:180px;height:180px;top:260px;right:180px;opacity:0.08}
+.geo-square{
+  position:absolute;
+  width:120px;height:120px;
+  background:var(--copper);
+  transform:rotate(45deg);
+  bottom:60px;left:80px;
+  opacity:0.7;
+}
+.geo-line{
+  position:absolute;
+  width:200px;height:2px;
+  background:var(--cream);
+  opacity:0.3;
+}
+.geo-line.l1{top:80px;left:40px;width:180px}
+.geo-line.l2{top:80px;left:40px;transform:rotate(90deg);height:200px;width:2px}
+.geo-dot{
+  position:absolute;
+  width:10px;height:10px;
+  border-radius:50%;
+  background:var(--copper);
+  opacity:0.6;
+}
+.geo-dot.d1{top:150px;left:60px}
+.geo-dot.d2{top:200px;left:140px;width:6px;height:6px}
+.geo-dot.d3{top:180px;left:220px;width:8px;height:8px;opacity:0.4}
+.geo-quote{
+  position:absolute;
+  bottom:30px;right:40px;
+  max-width:280px;
+  color:var(--cream);
+  font-style:italic;
+  font-weight:300;
+  font-size:0.85rem;
+  opacity:0.7;
+  line-height:1.5;
+}
+.geo-quote::before{
+  content:'"';
+  font-size:3rem;
+  color:var(--copper);
+  line-height:0;
+  display:block;
+  margin-bottom:0.5rem;
+}
+
+ 
+.lectures-section{
+  padding:clamp(3rem,8vh,7rem) clamp(2rem,5vw,6rem);
+  background:var(--cream);
+}
+.section-header{
+  display:flex;
+  align-items:baseline;
+  gap:1.5rem;
+  margin-bottom:3rem;
+  border-bottom:1px solid var(--prussian);
+  padding-bottom:1rem;
+}
+.section-header h2{
+  font-size:1.8rem;
+  color:var(--prussian);
+  font-weight:600;
+}
+.section-header .count{
+  font-size:0.85rem;
+  color:var(--muted);
+  font-style:italic;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;
+}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.grid{grid-template-columns:1fr}}
+
+.card{
+  position:relative;
+  padding:1.8rem 1.5rem 1.5rem;
+  background:var(--paper);
+  border:1px solid var(--prussian);
+  border-top:4px solid var(--prussian);
+  display:flex;
+  flex-direction:column;
+  min-height:220px;
+  transition:transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 8px 24px rgba(27,59,107,0.15);
+}
+.card-number{
+  position:absolute;
+  top:-4px;right:12px;
+  font-family:'Source Serif 4',serif;
+  font-size:0.75rem;
+  font-weight:600;
+  letter-spacing:0.2em;
+  color:var(--prussian);
+  background:var(--cream);
+  padding:0 8px;
+}
+.card h3{
+  font-size:1.15rem;
+  color:var(--prussian);
+  font-weight:600;
+  line-height:1.4;
+  margin-bottom:0.8rem;
+  padding-right:2rem;
+}
+.card-topics{
+  font-size:0.8rem;
+  color:var(--muted);
+  line-height:1.6;
+  flex:1;
+}
+.card-meta{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:1.2rem;
+  padding-top:0.8rem;
+  border-top:1px solid var(--prussian);
+  font-size:0.75rem;
+  color:var(--copper);
+}
+.card-meta .arrow{
+  font-family:'Source Serif 4',serif;
+  font-size:1.2rem;
+  color:var(--prussian);
+}
+
+ 
+.manifesto{
+  padding:clamp(3rem,6vh,5rem) clamp(2rem,5vw,6rem);
+  background:var(--prussian);
+  color:var(--cream);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:3rem;
+  align-items:start;
+}
+@media(max-width:700px){.manifesto{grid-template-columns:1fr}}
+.manifesto-quote{
+  font-size:1.3rem;
+  font-style:italic;
+  font-weight:300;
+  line-height:1.6;
+  border-left:3px solid var(--copper);
+  padding-left:1.5rem;
+}
+.manifesto-quote cite{
+  display:block;
+  margin-top:1rem;
+  font-style:normal;
+  font-size:0.85rem;
+  color:var(--copper);
+}
+.manifesto-text{
+  font-size:0.9rem;
+  line-height:1.8;
+  opacity:0.85;
+  font-weight:300;
+}
+
+ 
+.footer{
+  padding:2rem clamp(2rem,5vw,6rem);
+  background:var(--prussian);
+  color:var(--cream);
+  border-top:1px solid var(--copper);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:1rem;
+  font-size:0.8rem;
+}
+.footer a{color:var(--copper);text-decoration:none}
+.footer a:hover{color:var(--cream)}
+
+ 
+.topbar{
+  position:fixed;
+  top:0;left:0;right:0;
+  z-index:100;
+  background:var(--prussian);
+  padding:0.6rem clamp(1rem,4vw,4rem);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  font-size:0.75rem;
+  color:var(--cream);
+  letter-spacing:0.15em;
+  text-transform:uppercase;
+  box-shadow:0 2px 8px rgba(0,0,0,0.2);
+}
+.topbar .brand{font-weight:600;opacity:0.9}
+.topbar .nav{display:flex;gap:1.5rem}
+.topbar .nav a{color:var(--cream);text-decoration:none;opacity:0.8;transition:opacity 0.2s}
+.topbar .nav a:hover{opacity:1}
+
+ 
+.hero{padding-top:60px}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <span class="brand">开源之道 · 开源经济学</span>
+  <nav class="nav">
+    <a href="#lectures">课程</a>
+    <a href="https://opensourceway.blog/posts/open-source-economic/12-lectures-of-open-source/">大纲</a>
+    <a href="https://github.com/OCselected/markdown-to-slides">源码</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-left">
+    <span class="eyebrow">Institutional Economics × Open Source</span>
+    <h1>
+      开源的经济学
+      <span class="accent">The Economics of Open Source</span>
+    </h1>
+    <p class="hero-desc">
+      从新制度经济学的视角，系统梳理开源软件的生产、许可、商业模式、劳动力市场、
+      交易成本、组织治理、文化与政治经济学。
+    </p>
+    <div class="hero-meta">
+      <span><strong>12</strong>讲</span>
+      <span><strong>368</strong>张 Slide</span>
+      <span><strong>开源之道</strong>·适兕</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="geo-ring r1"></div>
+    <div class="geo-ring r2"></div>
+    <div class="geo-ring r3"></div>
+    <div class="geo-line l1"></div>
+    <div class="geo-line l2"></div>
+    <div class="geo-dot d1"></div>
+    <div class="geo-dot d2"></div>
+    <div class="geo-dot d3"></div>
+    <div class="geo-square"></div>
+    <blockquote class="geo-quote">
+      在没有雇佣关系、没有层级命令、没有价格信号的世界里，协作如何可能？
+    </blockquote>
+  </div>
+</section>
+
+<section class="lectures-section" id="lectures">
+  <div class="section-header">
+    <h2>十二讲 · 制度经济学的开源</h2>
+    <span class="count">12 lectures / 368 slides</span>
+  </div>
+  <div class="grid">
+    
+    <a href="/lectures/00/" class="card">
+      <span class="card-number">L 00</span>
+      <h3>第 00 期 · 开源与经济学</h3>
+      <p class="card-topics">开源在数字社会中的概况 / 开源的历史发展 / 开源的经济效果</p>
+      <div class="card-meta">
+        <span>52 slides</span>
+        <span class="arrow">→</span>
+      </div>
+    </a>
+    
+    <a href="/lectures/01/" class="card">
+      <span class="card-number">L 01</span>
+      <h3>第 01 期 · 软件的生产、分销和消费</h3>
+      <p class="card-topics">软件市场演变 / 闭源与开源 / 大教堂与集市 / 交付方式 / 订阅</p>
+      <div class="card-meta">
+        <span>30 slides</span>
+        <span class="arrow">→</span>
+      </div>
+    </a>
+    
+    <a href="/lectures/02/" class="card">
+      <span class="card-number">L 02</span>
+      <h3>第 02 期 · 数字时代的知识财产法与开源许可</h3>
+      <p class="card-topics">许可与软件市场 / 知识财产权扩张 / 开源许可面临的挑战</p>
+      <div class="card-meta">
+        <span>24 slides</span>
+        <span class="arrow">→</span>
+      </div>
+    </a>
+    
+    <a href="/lectures/03/" class="card">
+      <span class="card-number">L 03</span>
+      <h3>第 03 期 · 商业模式：规则下的具体操作</h3>
+      <p class="card-topics">软件商品化 / RedHat / WordPress / Android / Kubernetes</p>
+      <div class="card-meta">
+        <span>30 slides</span>
+        <span class="arrow">→</span>
+      </div>
+    </a>
+    
+    <a href="/lectures/04/" class="card">
+      <span class="card-number">L 04</span>
+      <h3>第 04 期 · 软件开发劳动力市场</h3>
+      <p class="card-topics">代码不是商品 / 供需关系 / 开发者动机 / 兴趣与实践</p>
+      <div class="card-meta">
+        <span>26 slides</span>
+        <span class="arrow">→</span>
+      </div>
+    </a>
+    
+    <a href="/lectures/05/" class="card">
+      <span class="card-number">L 05</span>
+      <h3>第 05 期 · 交易成本与路径依赖</h3>
+      <p class="card-topics">毋需法律的秩序 / 科斯贡献 / 路径依赖 / 开源吞噬软件</p>
+      <div class="card-meta">
+        <span>27 slides</span>
+        <span class="arrow">→</span>
+      </div>
+    </a>
+    
+    <a href="/lectures/06/" class="card">
+      <span class="card-number">L 06</span>
+      <h3>第 06 期 · 组织结构与治理</h3>
+      <p class="card-topics">组织结构与治理 / 社区协作 / 决策机制 / 贡献者生态</p>
+      <div class="card-meta">
+        <span>38 slides</span>
+        <span class="arrow">→</span>
+      </div>
+    </a>
+    
+    <a href="/lectures/07/" class="card">
+      <span class="card-number">L 07</span>
+      <h3>第 07 期 · 商业价值与社会价值：开源的政治经济学</h3>
+      <p class="card-topics">商业价值 / 社会价值 / Commons-based Peer Production / Platform Cooperativism</p>
+      <div class="card-meta">
+        <span>26 slides</span>
+        <span class="arrow">→</span>
+      </div>
+    </a>
+    
+    <a href="/lectures/08/" class="card">
+      <span class="card-number">L 08</span>
+      <h3>第 08 期 · 信息规则与网络经济</h3>
+      <p class="card-topics">信息规则 / 网络经济 / 边际成本与规模 / 平台化</p>
+      <div class="card-meta">
+        <span>30 slides</span>
+        <span class="arrow">→</span>
+      </div>
+    </a>
+    
+    <a href="/lectures/09/" class="card">
+      <span class="card-number">L 09</span>
+      <h3>第 09 期 · 排他权与容他权、比例原则与 copyleft</h3>
+      <p class="card-topics">排他权 / 容他权 / 比例原则 / copyleft</p>
+      <div class="card-meta">
+        <span>28 slides</span>
+        <span class="arrow">→</span>
+      </div>
+    </a>
+    
+    <a href="/lectures/10/" class="card">
+      <span class="card-number">L 10</span>
+      <h3>第 10 期 · 劳动报酬与财产分配</h3>
+      <p class="card-topics">劳动报酬 / 财产分配 / 知识资本 / 激励与贡献</p>
+      <div class="card-meta">
+        <span>29 slides</span>
+        <span class="arrow">→</span>
+      </div>
+    </a>
+    
+    <a href="/lectures/11/" class="card">
+      <span class="card-number">L 11</span>
+      <h3>第 11 期 · 文化的重要作用</h3>
+      <p class="card-topics">开源精神 / 协作伦理 / 文化的经济价值 / 知识社会</p>
+      <div class="card-meta">
+        <span>28 slides</span>
+        <span class="arrow">→</span>
+      </div>
+    </a>
+    
+  </div>
+</section>
+
+<section class="manifesto">
+  <blockquote class="manifesto-quote">
+    开源经济学不属于「又来一个 XX 经济学」的标签，而是关于协作的延伸——
+    在没有雇佣关系、没有层级命令、没有价格信号的世界里，协作如何可能？
+    <cite>—— 「开源之道」·适兕</cite>
+  </blockquote>
+  <div class="manifesto-text">
+    <p><strong>关于本讲</strong></p>
+    <p>本讲座系列由「开源之道」·适兕主创，从新制度经济学的视角系统梳理开源软件
+    的经济本质。内容涵盖 12 个主题，每讲包含 20-40 张 Slide，共 368 张。</p>
+    <p style="margin-top:1rem"><strong>数据源</strong>：
+      <a href="https://github.com/OCselected/markdown-to-slides" style="color:var(--copper)">markdown-to-slides</a> ·
+      <a href="https://opensourceway.blog/posts/open-source-economic/12-lectures-of-open-source/" style="color:var(--copper)">课程大纲</a>
+    </p>
+  </div>
+</section>
+
+<footer class="footer">
+  <span>© 2026 开源之道 · 开源经济学</span>
+  <span>
+    <a href="https://opensourceway.blog">opensourceway.blog</a> ·
+    <a href="https://github.com/OCselected/os-economic-slides">GitHub</a>
+  </span>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{ .Title }} · 开源的经济学</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,600;8..60,700&family=Noto+Serif+SC:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --prussian:#1B3B6B;
+  --cream:#F5F0E8;
+  --ink:#1A1A1A;
+  --copper:#8B7355;
+  --muted:#555555;
+  --paper:#EDE7DA;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Source Serif 4','Noto Serif SC',Georgia,serif;
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.7;
+}
+
+/* ── Topbar ── */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:var(--prussian);
+  padding:0.6rem clamp(1rem,4vw,4rem);
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:0.75rem;color:var(--cream);
+  letter-spacing:0.15em;text-transform:uppercase;
+  box-shadow:0 2px 8px rgba(0,0,0,0.2);
+}
+.topbar .brand{font-weight:600;opacity:0.9}
+.topbar .nav a{color:var(--cream);text-decoration:none;margin-left:1.5rem;opacity:0.8}
+.topbar .nav a:hover{opacity:1}
+
+/* ── Header ── */
+.lecture-head{
+  padding:100px clamp(2rem,5vw,6rem) 3rem;
+  background:var(--cream);
+  border-bottom:5px solid var(--prussian);
+  position:relative;
+}
+.lecture-head::after{
+  content:'';
+  position:absolute;
+  bottom:-5px;right:0;width:120px;height:5px;
+  background:var(--copper);
+}
+.breadcrumb{
+  font-size:0.75rem;letter-spacing:0.2em;
+  text-transform:uppercase;color:var(--copper);
+  margin-bottom:1.2rem;
+}
+.breadcrumb a{color:var(--copper);text-decoration:none}
+.breadcrumb a:hover{color:var(--prussian)}
+.lecture-head h1{
+  font-size:clamp(2rem,5vw,3.2rem);
+  font-weight:700;color:var(--prussian);
+  line-height:1.15;letter-spacing:-0.01em;
+  margin-bottom:1rem;
+}
+.lecture-head .subtitle{
+  font-size:1rem;color:var(--muted);
+  font-style:italic;font-weight:300;
+  max-width:600px;
+}
+.head-meta{
+  display:flex;gap:2rem;margin-top:1.5rem;
+  font-size:0.85rem;color:var(--muted);
+  border-top:1px solid var(--prussian);
+  padding-top:1rem;max-width:500px;
+}
+.head-meta strong{color:var(--prussian);font-weight:600;font-size:1.2rem;display:block;font-family:'Source Serif 4',serif}
+.topics-bar{
+  margin-top:1.2rem;
+  font-size:0.85rem;color:var(--copper);
+  font-style:italic;max-width:700px;
+}
+
+/* ── Slide Controls ── */
+.slide-controls{
+  padding:1.5rem clamp(2rem,5vw,6rem);
+  background:var(--paper);
+  border-bottom:1px solid var(--prussian);
+  display:flex;align-items:center;gap:1rem;flex-wrap:wrap;
+  font-size:0.85rem;color:var(--muted);
+}
+.slide-controls .search-box{
+  padding:0.5rem 0.8rem;border:1px solid var(--prussian);
+  background:var(--cream);font-family:inherit;font-size:0.85rem;
+  width:240px;color:var(--ink);
+}
+.slide-controls .search-box:focus{outline:none;border-color:var(--copper)}
+.slide-controls .stats{margin-left:auto;color:var(--copper);font-style:italic}
+
+/* ── Slide List ── */
+.slide-list{
+  padding:2rem clamp(2rem,5vw,6rem) 4rem;
+  max-width:1200px;
+  margin:0 auto;
+}
+.slide-card{
+  border-left:3px solid var(--prussian);
+  margin-bottom:1rem;
+  background:var(--paper);
+  transition:border-color 0.2s ease;
+}
+.slide-card:hover{border-left-color:var(--copper)}
+.slide-card.open{border-left-width:5px;border-left-color:var(--copper)}
+.slide-card.hidden{display:none}
+.slide-summary{
+  cursor:pointer;
+  padding:1rem 1.5rem;
+  display:flex;align-items:baseline;gap:1rem;
+  list-style:none;
+}
+.slide-summary::-webkit-details-marker{display:none}
+.slide-summary::marker{content:''}
+.slide-num{
+  font-family:'Source Serif 4',serif;
+  font-size:0.8rem;font-weight:600;
+  color:var(--prussian);letter-spacing:0.1em;
+  min-width:60px;
+}
+.slide-hint{
+  font-size:0.8rem;color:var(--copper);
+  font-style:italic;font-weight:300;
+  flex:1;
+}
+.slide-caret{
+  color:var(--prussian);font-size:1.2rem;
+  transition:transform 0.2s ease;
+}
+.slide-card.open .slide-caret{transform:rotate(90deg)}
+.slide-content{
+  padding:0 1.5rem 1.2rem;
+  border-top:1px solid var(--prussian);
+}
+.slide-content ul{list-style:none;padding:0}
+.slide-content li{
+  padding:0.5rem 0 0.5rem 1.5rem;
+  position:relative;
+  font-size:0.95rem;line-height:1.6;
+}
+.slide-content li::before{
+  content:'▪';
+  position:absolute;left:0;top:0.5rem;
+  color:var(--copper);font-size:0.7rem;
+}
+.slide-content li code{
+  background:var(--cream);
+  padding:0.1em 0.4em;
+  border:1px solid var(--prussian);
+  font-size:0.85em;
+  color:var(--prussian);
+}
+
+/* ── Footer ── */
+.footer{
+  padding:2rem clamp(2rem,5vw,6rem);
+  background:var(--prussian);color:var(--cream);
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;
+  font-size:0.8rem;
+}
+.footer a{color:var(--copper);text-decoration:none}
+.footer a:hover{color:var(--cream)}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <span class="brand">开源之道 · 开源经济学</span>
+  <nav class="nav">
+    <a href="/.html">首页</a>
+    <a href="https://opensourceway.blog/posts/open-source-economic/12-lectures-of-open-source/">课程大纲</a>
+  </nav>
+</header>
+
+<section class="lecture-head">
+  <p class="breadcrumb"><a href="/.html">开源的经济学</a> &rsaquo; 第 {{ printf "%02d" .Params.lecture_number }} 期</p>
+  <h1>{{ .Title }}</h1>
+  <p class="subtitle">{{ .Params.topics }}</p>
+  <div class="head-meta">
+    <span><strong>{{ .Params.slide_count }}</strong>张 Slide</span>
+    <span><strong>{{ printf "%02d" .Params.lecture_number }}</strong> / 12</span>
+  </div>
+  <p class="topics-bar">提纲：{{ .Params.topics }}</p>
+</section>
+
+<div class="slide-controls">
+  <span>过滤：</span>
+  <input type="text" class="search-box" id="slide-search" placeholder="搜索 slide 内容…">
+  <span class="stats" id="slide-stats">{{ .Params.slide_count }} slides</span>
+</div>
+
+<section class="slide-list">
+  {{ .Content }}
+</section>
+
+<footer class="footer">
+  <span>© 2026 开源之道 · 开源经济学</span>
+  <span>
+    <a href="https://opensourceway.blog">opensourceway.blog</a> ·
+    <a href="https://github.com/OCselected/os-economic-slides">GitHub</a>
+  </span>
+</footer>
+
+<script>
+// Search/filter slides
+document.getElementById('slide-search').addEventListener('input', function(e){
+  const q = e.target.value.toLowerCase().trim();
+  const cards = document.querySelectorAll('.slide-card');
+  let visible = 0;
+  cards.forEach(card => {
+    const text = card.textContent.toLowerCase();
+    const show = !q || text.includes(q);
+    card.classList.toggle('hidden', !show);
+    if(show) visible++;
+  });
+  document.getElementById('slide-stats').textContent = visible + '/' + cards.length + ' slides';
+});
+</script>
+</body>
+</html>

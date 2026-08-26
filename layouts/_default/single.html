@@ -38,7 +38,7 @@ body{
   border-bottom:1px solid rgba(212,168,83,0.2);
 }
 .topbar .logo{display:flex;align-items:center;gap:0.6rem}
-.topbar .logo img{height:16px;width:auto}
+.topbar .logo img{height:32px;width:auto}
 .topbar .brand{font-weight:600;color:var(--amber);letter-spacing:0.2em}
 .topbar .nav a{color:var(--cream);text-decoration:none;margin-left:1.5rem;opacity:0.7}
 .topbar .nav a:hover{opacity:1;color:var(--amber)}
@@ -252,21 +252,21 @@ body{
   <div id="slide-stage">
     {{ $total := .Params.slide_count }}
 {{ range $i, $slide := .Params.slides }}
-    {{ if $slide.designed }}
-      {{ $slide.designed | safeHTML }}
-    {{ else }}
-    <div class="slide-page" data-slide="{{ $slide.num }}" data-active="{{ if eq $i 0 }}true{{ else }}false{{ end }}">
-      <span class="slide-counter">{{ $slide.num }} / {{ $total }}</span>
-      {{ if $slide.visual }}<p class="slide-visual">{{ $slide.visual }}</p>{{ end }}
-      <div class="slide-content">
-        <ul>
-          {{ range $slide.bullets }}
-          <li>{{ . }}</li>
-          {{ end }}
-        </ul>
-      </div>
+    <div class="slide-page{{ if $slide.designed }} designed{{ end }}" data-slide="{{ $slide.num }}" data-active="{{ if eq $i 0 }}true{{ else }}false{{ end }}">
+      {{ if $slide.designed }}
+        {{ $slide.designed | safeHTML }}
+      {{ else }}
+        <span class="slide-counter">{{ $slide.num }} / {{ $total }}</span>
+        {{ if $slide.visual }}<p class="slide-visual">{{ $slide.visual }}</p>{{ end }}
+        <div class="slide-content">
+          <ul>
+            {{ range $slide.bullets }}
+            <li>{{ . }}</li>
+            {{ end }}
+          </ul>
+        </div>
+      {{ end }}
     </div>
-    {{ end }}
     {{ end }}
   </div>
 
@@ -299,11 +299,12 @@ body{
     n=Math.max(1,Math.min(total,n));
     cur=n;
     stage.querySelectorAll('.slide-page').forEach((s,idx)=>{
-      s.dataset.active=((idx+1)===cur)?'true':'false';
-      s.style.display=((idx+1)===cur)?'flex':'none';
+      const active=(idx+1)===cur;
+      s.dataset.active=active?'true':'false';
     });
     document.querySelectorAll('.thumb-item').forEach((t,idx)=>{
       const active=(idx+1)===cur;
+      t.dataset.active=active?'true':'false';
       t.classList.toggle('active', active);
       if(active) t.scrollIntoView({inline:'center',behavior:'smooth'});
     });
@@ -348,11 +349,11 @@ body{
     pages.forEach((p,idx)=>{
       const text=p.textContent.toLowerCase();
       if(!q){
-        p.style.display=((idx+1)===cur)?'flex':'none';
+        p.dataset.active=((idx+1)===cur)?'true':'false';
         visible++;
       } else {
         const show=text.includes(q);
-        p.style.display=show?'flex':'none';
+        p.dataset.active=show?'true':'false';
         if(show) visible++;
       }
     });

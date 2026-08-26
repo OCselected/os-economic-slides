@@ -311,7 +311,7 @@ body{
   box-shadow:0 2px 8px rgba(0,0,0,0.2);
 }
 .topbar .logo{display:flex;align-items:center;gap:0.6rem}
-.topbar .logo img{height:24px;width:auto}
+.topbar .logo img{height:16px;width:auto}
 .topbar .brand{font-weight:600;opacity:0.9}
 .topbar .nav{display:flex;gap:1.5rem}
 .topbar .nav a{color:var(--cream);text-decoration:none;opacity:0.8;transition:opacity 0.2s}
@@ -329,7 +329,6 @@ body{
     <a href="#lectures">课程</a>
     <a href="/sponsor/">赞助</a>
     <a href="https://opensourceway.blog/posts/open-source-economic/12-lectures-of-open-source/">大纲</a>
-    <a href="https://github.com/OCselected/os-economic-slides">GitHub</a>
   </nav>
 </header>
 
@@ -373,6 +372,7 @@ body{
   </div>
   <div class="grid">
     {{ range sort .Site.RegularPages "Params.lecture_number" }}
+    {{ if .Params.slide_count }}
     <a href="{{ .RelPermalink }}" class="card">
       <span class="card-number">L {{ printf "%02d" .Params.lecture_number }}</span>
       <h3>{{ .Title }}</h3>
@@ -382,6 +382,7 @@ body{
         <span class="arrow">→</span>
       </div>
     </a>
+    {{ end }}
     {{ end }}
   </div>
 </section>

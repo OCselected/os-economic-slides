@@ -26,7 +26,7 @@ body{
   border-bottom:1px solid rgba(212,168,83,0.2);
 }
 .topbar .logo{display:flex;align-items:center;gap:0.6rem}
-.topbar .logo img{height:28px;width:auto}
+.topbar .logo img{height:16px;width:auto}
 .topbar .nav a{color:var(--cream);text-decoration:none;margin-left:1.5rem;opacity:0.7;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase}
 .topbar .nav a:hover{opacity:1;color:var(--amber)}
 
@@ -123,6 +123,16 @@ body{
   font-size:0.8rem;color:var(--muted);
   line-height:1.6;
 }
+
+.footer{
+  padding:1.5rem clamp(2rem,5vw,6rem);
+  background:rgba(15,27,45,0.8);
+  color:var(--copper);
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;
+  font-size:0.75rem;
+}
+.footer a{color:var(--copper);text-decoration:none;}
+.footer a:hover{color:var(--amber)}
 </style>
 </head>
 <body>
@@ -209,11 +219,6 @@ body{
 <section class="contact">
   <h2>联系我们</h2>
   <p>如需了解企业赞助方案、长期合作或定制讲座，请联系「开源之道」·适兕。</p>
-  <div class="contact-links">
-    <a href="mailto:support@opensourceway.blog">support@opensourceway.blog</a>
-    <a href="https://github.com/OCselected/os-economic-slides">GitHub</a>
-    <a href="https://opensourceway.blog">opensourceway.blog</a>
-  </div>
 </section>
 
 <footer class="footer">

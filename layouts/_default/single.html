@@ -312,12 +312,21 @@ body{
       const active=(idx+1)===cur;
       s.dataset.active=active?'true':'false';
     });
-    document.querySelectorAll('.thumb-item').forEach((t,idx)=>{
-      const active=(idx+1)===cur;
-      t.dataset.active=active?'true':'false';
-      t.classList.toggle('active', active);
-      if(active) t.scrollIntoView({inline:'center',behavior:'smooth'});
-    });
+    const thumbs=document.querySelectorAll('.thumb-item');
+    const activeThumb=thumbs[cur-1];
+    if(activeThumb){
+      activeThumb.dataset.active='true';
+      activeThumb.classList.add('active');
+      // Scroll thumb into view without moving deck-nav scrollLeft
+      const strip=document.getElementById('thumb-strip');
+      const stripRect=strip.getBoundingClientRect();
+      const thumbRect=activeThumb.getBoundingClientRect();
+      const thumbCenter=thumbRect.left + thumbRect.width/2 - stripRect.left;
+      const stripCenter=stripRect.width/2;
+      strip.scrollLeft += thumbCenter - stripCenter;
+    } else {
+      thumbs.forEach((t,idx)=>{t.dataset.active=(idx+1)===cur?'true':'false';t.classList.toggle('active',idx===cur-1);});
+    }
     indicator.textContent=cur+' / '+total;
     localStorage.setItem('slide-{{ .Params.lecture_number }}',cur);
   }

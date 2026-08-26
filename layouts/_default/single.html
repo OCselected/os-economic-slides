@@ -105,55 +105,59 @@ body{
   max-width:1200px;
   margin:0 auto;
 }
-.slide-card{
+.slide-list h2{
+  font-family:'Source Serif 4',serif;
+  font-size:1rem;
+  font-weight:600;
+  color:var(--prussian);
+  letter-spacing:0.05em;
+  padding:0.8rem 1rem 0.2rem;
+  margin-bottom:0;
   border-left:3px solid var(--prussian);
-  margin-bottom:1rem;
-  background:var(--paper);
+  transition:border-color 0.2s ease;
+  display:flex;align-items:baseline;gap:1rem;
+}
+.slide-list h2 + ul{
+  border-left:3px solid var(--prussian);
+  margin-bottom:0.8rem;
   transition:border-color 0.2s ease;
 }
-.slide-card:hover{border-left-color:var(--copper)}
-.slide-card.open{border-left-width:5px;border-left-color:var(--copper)}
-.slide-card.hidden{display:none}
-.slide-summary{
-  cursor:pointer;
-  padding:1rem 1.5rem;
-  display:flex;align-items:baseline;gap:1rem;
-  list-style:none;
-}
-.slide-summary::-webkit-details-marker{display:none}
-.slide-summary::marker{content:''}
-.slide-num{
-  font-family:'Source Serif 4',serif;
-  font-size:0.8rem;font-weight:600;
-  color:var(--prussian);letter-spacing:0.1em;
-  min-width:60px;
-}
-.slide-hint{
+.slide-list h2:hover{border-left-color:var(--copper)}
+.slide-list h2:hover + ul{border-left-color:var(--copper)}
+.slide-list h2 .visual-hint{
   font-size:0.8rem;color:var(--copper);
   font-style:italic;font-weight:300;
   flex:1;
 }
-.slide-caret{
-  color:var(--prussian);font-size:1.2rem;
-  transition:transform 0.2s ease;
+.slide-list h2 .slide-tag{
+  font-family:'Source Serif 4',serif;
+  font-size:0.75rem;color:var(--copper);
+  font-style:italic;font-weight:300;
 }
-.slide-card.open .slide-caret{transform:rotate(90deg)}
-.slide-content{
-  padding:0 1.5rem 1.2rem;
-  border-top:1px solid var(--prussian);
+.slide-list p{
+  font-size:0.95rem;line-height:1.7;
+  padding:0 0.5rem 0.8rem 1.8rem;
+  color:var(--ink);
 }
-.slide-content ul{list-style:none;padding:0}
-.slide-content li{
-  padding:0.5rem 0 0.5rem 1.5rem;
+.slide-list p .visual-line{
+  color:var(--copper);
+  font-style:italic;font-weight:300;
+}
+.slide-list ul{
+  list-style:none;
+  padding:0;
+}
+.slide-list ul li{
+  padding:0.3rem 0 0.3rem 1.2rem;
   position:relative;
   font-size:0.95rem;line-height:1.6;
 }
-.slide-content li::before{
+.slide-list ul li::before{
   content:'▪';
-  position:absolute;left:0;top:0.5rem;
+  position:absolute;left:0;top:0.3rem;
   color:var(--copper);font-size:0.7rem;
 }
-.slide-content li code{
+.slide-list ul li code{
   background:var(--cream);
   padding:0.1em 0.4em;
   border:1px solid var(--prussian);
@@ -212,18 +216,20 @@ body{
 </footer>
 
 <script>
-// Search/filter slides
+// Search/filter slides — targets <h2 id="slide-N"> and its following <ul>
 document.getElementById('slide-search').addEventListener('input', function(e){
   const q = e.target.value.toLowerCase().trim();
-  const cards = document.querySelectorAll('.slide-card');
+  const headers = document.querySelectorAll('.slide-list h2');
   let visible = 0;
-  cards.forEach(card => {
-    const text = card.textContent.toLowerCase();
+  headers.forEach(h => {
+    const ul = h.nextElementSibling;
+    const text = (h.textContent + ' ' + (ul ? ul.textContent : '')).toLowerCase();
     const show = !q || text.includes(q);
-    card.classList.toggle('hidden', !show);
+    h.style.display = show ? '' : 'none';
+    if(ul) ul.style.display = show ? '' : 'none';
     if(show) visible++;
   });
-  document.getElementById('slide-stats').textContent = visible + '/' + cards.length + ' slides';
+  document.getElementById('slide-stats').textContent = visible + '/' + headers.length + ' slides';
 });
 </script>
 </body>

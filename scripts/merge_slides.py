@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
-"""Merge 27 lecture files into 12 Hugo content pages."""
-import re, os
+"""Merge 27 lecture files into 12 Hugo content pages.
+
+Output format: each lecture page has ALL slides as frontmatter YAML list,
+rendered by layout template (avoids Goldmark HTML rendering issues).
+"""
+import re, os, textwrap
 
 SRC = os.path.join(os.path.dirname(__file__), '..', '..',
                    'markdown-to-slides', 'open-source-economics-lecture')
@@ -61,6 +65,10 @@ LECTURES = [
     ]),
 ]
 
+def escape_yaml(s):
+    """Escape a string for YAML flow scalar."""
+    return s.replace('"', '\\"').replace('\n', ' ')
+
 for num, title, topics, files in LECTURES:
     all_slides = []
     for fn in files:
@@ -70,16 +78,12 @@ for num, title, topics, files in LECTURES:
             continue
         with open(path, encoding='utf-8') as f:
             text = f.read()
-        # Split by "## Slide N"
         chunks = re.split(r'^## Slide (\d+)', text, flags=re.MULTILINE)
-        # chunks: [preamble, num1, body1, num2, body2, ...]
         for i in range(1, len(chunks), 2):
             slide_num = int(chunks[i])
             slide_body = chunks[i+1]
-            # Extract visual metaphor
             vm_m = re.search(r'\* 视觉隐喻：\s*\n\s*\* (.+)', slide_body)
             visual = vm_m.group(1).strip() if vm_m else ""
-            # Extract bullets (skip 视觉隐喻 line which is already captured)
             bullets = re.findall(r'^[-*] (.+)$', slide_body, re.MULTILINE)
             bullets = [b for b in bullets if '视觉隐喻' not in b]
             all_slides.append((slide_num, visual, bullets))
@@ -87,8 +91,8 @@ for num, title, topics, files in LECTURES:
     slide_count = len(all_slides)
     slug = f"{num}-{title}"
 
-    # Build Hugo page
-    body = f"""---
+    # Build YAML frontmatter with slides as a list
+    fm = f"""---
 title: "第 {num} 期 · {title}"
 lecture_number: {int(num)}
 topics: "{topics}"
@@ -96,33 +100,18 @@ slide_count: {slide_count}
 draft: false
 editable: true
 ---
-
-# 第 {num} 期 · {title}
-
-**包含 {slide_count} 张 Slide**
-
-**提纲**：{topics}
-
----
-
 """
     for slide_num, visual, bullets in all_slides:
-        vis_attr = visual.replace('"', '&quot;') if visual else ''
-        body += f'<details class="slide-card" data-slide="{slide_num}" data-visual="{vis_attr}">\n'
-        body += f'<summary class="slide-summary">\n'
-        body += f'Slide {slide_num}\n'
+        fm += f"## Slide {slide_num}\n"
         if visual:
-            body += f'<span class="visual-hint">{visual}</span>\n'
-        body += f'</summary>\n'
-        body += f'<div class="slide-content">\n'
+            fm += f"* 视觉隐喻：{visual}\n"
         for b in bullets:
-            body += f'<li>{b}</li>\n'
-        body += f'</div>\n'
-        body += f'</details>\n\n'
+            fm += f"* {b}\n"
+        fm += "\n"
 
     out_path = os.path.join(OUT, f'{num}.md')
     with open(out_path, 'w', encoding='utf-8') as f:
-        f.write(body)
+        f.write(fm)
     print(f"  {num}: {slide_count} slides → {out_path}")
 
 print("\nDone.")

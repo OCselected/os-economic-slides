@@ -1,5 +1,5 @@
 baseURL = "https://os-economic.opensourceway.blog/"
-languageCode = "zh-CN"
+locale = "zh-CN"
 title = "开源的经济学 · 12 讲"
 
 [params]
@@ -9,19 +9,3 @@ cream = "#F5F0E8"
 ink = "#1A1A1A"
 copper = "#8B7355"
 muted = "#555555"
-
-[markup.goldmark.renderHooks]
-[markup.goldmark.renderHooks.HTML]
-  hardBreaks = true
-
-[markup.goldmark]
-[markup.goldmark.parser]
-[markup.goldmark.parser.attribute]
-  block = true
-[markup.goldmark.renderer]
-  unsafe = true
-
-ignoreLogs = ['warning-goldmark-raw-html']
-
-[outputs]
-home = ["HTML"]

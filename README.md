@@ -54,4 +54,4 @@ hugo server --baseURL http://localhost:1313/
 
 ## License
 
-CC BY-NC-ND 4.0 · 开源之道
+CC BY-NC-ND 4.0 · 开源之道# temp trigger

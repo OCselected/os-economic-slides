@@ -311,7 +311,10 @@ body{
   box-shadow:0 2px 8px rgba(0,0,0,0.2);
 }
 .topbar .logo{display:flex;align-items:center;gap:0.6rem}
-.topbar .logo img{height:32px;width:auto}
+.topbar .logo img{height:48px;width:auto}
+.topbar .site-domain{margin-left:0.8rem;font-size:12px;color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.topbar .site-domain a{color:var(--muted);text-decoration:none}
+.topbar .site-domain a:hover{color:var(--amber)}
 .topbar .brand{font-weight:600;opacity:0.9}
 .topbar .nav{display:flex;gap:1.5rem}
 .topbar .nav a{color:var(--cream);text-decoration:none;opacity:0.8;transition:opacity 0.2s}
@@ -324,7 +327,7 @@ body{
 <body>
 
 <header class="topbar">
-  <div class="logo"><img src="/logo.svg" alt="开源的经济学"></div>
+  <div class="logo"><img src="/logo.svg" alt="开源的经济学"></div><span class="site-domain"><a href="https://os-economic.opensourceway.blog/">os-economic.opensourceway.blog</a></span>
   <nav class="nav">
     <a href="#lectures">课程</a>
     <a href="/sponsor/">赞助</a>

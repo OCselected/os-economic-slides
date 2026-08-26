@@ -100,7 +100,11 @@ body{
   overflow-y:auto;
   opacity:1;
 }
-.slide-page[data-active="false"]{display:none;opacity:0}
+.slide-page[data-active="false"]{display:none!important;opacity:0}
+.slide-page[data-active="true"]{display:flex!important;opacity:1}
+.slide-page.designed{flex-direction:row;align-items:center;justify-content:center;overflow:hidden}
+.slide-page.designed > .slide-inner{width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;overflow:hidden}
+.slide-page.designed .slide-counter,.slide-page.designed .slide-visual{display:none}
 
 .slide-num{
   font-family:'Source Serif 4',serif;

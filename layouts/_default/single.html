@@ -37,6 +37,8 @@ body{
   letter-spacing:0.15em;text-transform:uppercase;
   border-bottom:1px solid rgba(212,168,83,0.2);
 }
+.topbar .logo{display:flex;align-items:center;gap:0.6rem}
+.topbar .logo img{height:26px;width:auto}
 .topbar .brand{font-weight:600;color:var(--amber);letter-spacing:0.2em}
 .topbar .nav a{color:var(--cream);text-decoration:none;margin-left:1.5rem;opacity:0.7}
 .topbar .nav a:hover{opacity:1;color:var(--amber)}
@@ -201,9 +203,11 @@ body{
 <body>
 
 <header class="topbar">
-  <span class="brand">开源之道 · 开源经济学</span>
+  <div class="logo"><img src="/logo.svg" alt="开源的经济学"></div>
   <nav class="nav">
     <a href="/">首页</a>
+    <a href="/lectures/">讲座</a>
+    <a href="/sponsor/">赞助</a>
     <a href="https://opensourceway.blog/posts/open-source-economic/12-lectures-of-open-source/">课程大纲</a>
   </nav>
 </header>
@@ -222,9 +226,10 @@ body{
 <section id="deck-section">
 
   <div id="slide-stage">
-    {{ range $i, $slide := .Params.slides }}
+    {{ $total := .Params.slide_count }}
+{{ range $i, $slide := .Params.slides }}
     <div class="slide-page" data-slide="{{ $slide.num }}" data-active="{{ if eq $i 0 }}true{{ else }}false{{ end }}">
-      <span class="slide-counter">{{ $slide.num }} / {{ .Params.slide_count }}</span>
+      <span class="slide-counter">{{ $slide.num }} / {{ $total }}</span>
       {{ if $slide.visual }}<p class="slide-visual">{{ $slide.visual }}</p>{{ end }}
       <div class="slide-content">
         <ul>

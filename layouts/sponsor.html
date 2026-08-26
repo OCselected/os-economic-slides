@@ -1,0 +1,201 @@
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --prussian:#1B3B6B;
+  --cream:#F5F0E8;
+  --ink:#1A1A1A;
+  --copper:#8B7355;
+  --muted:#555555;
+  --amber:#D4A853;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Source Serif 4','Noto Serif SC',Georgia,serif;
+  background:#0F1B2D;
+  color:var(--cream);
+  line-height:1.8;
+}
+
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(15,27,45,0.95);backdrop-filter:blur(8px);
+  padding:0.6rem clamp(1rem,4vw,4rem);
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:0.75rem;color:var(--cream);
+  letter-spacing:0.15em;text-transform:uppercase;
+  border-bottom:1px solid rgba(212,168,83,0.2);
+}
+.topbar .logo{display:flex;align-items:center;gap:0.6rem}
+.topbar .logo img{height:28px;width:auto}
+.topbar .nav a{color:var(--cream);text-decoration:none;margin-left:1.5rem;opacity:0.7;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase}
+.topbar .nav a:hover{opacity:1;color:var(--amber)}
+
+.hero{
+  padding:100px clamp(2rem,5vw,6rem) 3rem;
+  text-align:center;
+  border-bottom:1px solid rgba(212,168,83,0.15);
+}
+.eyebrow{
+  display:inline-block;font-size:0.7rem;
+  font-weight:600;letter-spacing:0.3em;text-transform:uppercase;
+  color:var(--amber);padding:6px 14px;
+  background:rgba(212,168,83,0.08);
+  border:1px solid var(--copper);
+  margin-bottom:1.5rem;
+}
+.hero h1{
+  font-size:clamp(2rem,5vw,3.5rem);font-weight:700;
+  color:var(--cream);line-height:1.2;margin-bottom:1rem;
+}
+.hero h1 .accent{
+  display:block;font-style:italic;font-weight:300;
+  font-size:0.4em;color:var(--amber);
+  letter-spacing:0.05em;margin-top:1rem;
+}
+.hero-desc{
+  font-size:1rem;color:var(--muted);
+  max-width:600px;margin:0 auto;
+  font-weight:300;font-style:italic;
+}
+
+.benefits{
+  padding:4rem clamp(2rem,5vw,6rem);
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:2rem;
+}
+@media(max-width:900px){.benefits{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.benefits{grid-template-columns:1fr}}
+
+.benefit{
+  padding:2rem 1.5rem;
+  background:rgba(27,59,107,0.3);
+  border:1px solid var(--copper);
+  border-top:4px solid var(--amber);
+  transition:transform 0.2s, box-shadow 0.2s;
+}
+.benefit:hover{
+  transform:translateY(-4px);
+  box-shadow:0 8px 24px rgba(0,0,0,0.3);
+}
+.benefit-num{
+  font-family:'Source Serif 4',serif;
+  font-size:2.5rem;font-weight:300;
+  color:var(--amber);font-style:italic;
+  line-height:1;margin-bottom:1rem;
+}
+.benefit h3{font-size:1.1rem;font-weight:600;color:var(--cream);margin-bottom:0.8rem;}
+.benefit p{font-size:0.85rem;color:var(--muted);line-height:1.7;}
+.benefit-tags{
+  margin-top:1rem;padding-top:0.8rem;
+  border-top:1px solid rgba(212,168,83,0.2);
+  display:flex;flex-wrap:wrap;gap:0.4rem;
+}
+.benefit-tags span{
+  font-size:0.7rem;color:var(--amber);
+  padding:0.2rem 0.6rem;
+  background:rgba(212,168,83,0.08);
+  border:1px solid var(--copper);
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="logo"><img src="/logo.svg" alt="开源的经济学"></div>
+  <nav class="nav">
+    <a href="/">首页</a>
+    <a href="/lectures/">讲座</a>
+    <a href="https://opensourceway.blog/posts/open-source-economic/12-lectures-of-open-source/">课程大纲</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <span class="eyebrow">Support Open Source Economics</span>
+  <h1>赞助「开源之道」·开源的经济学<span class="accent">Sponsor the Economics of Open Source</span></h1>
+  <p class="hero-desc">「开源之道」·开源的经济学是一项长期知识工程——12 讲、368 张 Slide、持续更新。赞助支持者将获得讲座参与和交流权益。</p>
+</section>
+
+<section class="benefits">
+  <div class="benefit">
+    <div class="benefit-num">01</div>
+    <h3>思想交流</h3>
+    <p>加入线下沙龙和线上读书会，与适兕和社区思想者面对面交流。</p>
+    <div class="benefit-tags"><span>线下 meetup</span><span>线上读书会</span></div>
+  </div>
+  <div class="benefit">
+    <div class="benefit-num">02</div>
+    <h3>讲座参与</h3>
+    <p>优先获得讲座席位、提前观看录播、参与课后 Q&amp;A。</p>
+    <div class="benefit-tags"><span>优先席位</span><span>录播 access</span><span>Q&amp;A</span></div>
+  </div>
+  <div class="benefit">
+    <div class="benefit-num">03</div>
+    <h3>知识贡献</h3>
+    <p>你的名字出现在致谢页和贡献者名单中，永久铭刻。</p>
+    <div class="benefit-tags"><span>致谢铭刻</span><span>永久署名</span></div>
+  </div>
+</section>
+
+<section class="tiers">
+  <div class="tiers-header">
+    <h2>赞助层级</h2>
+    <span class="note">赞助为自愿行为，所有层级均不购买话语权</span>
+  </div>
+  <div class="tier-grid">
+    <div class="tier">
+      <p class="tier-name">Friend</p>
+      <h3 class="tier-title">友好支持</h3>
+      <p class="tier-price">¥200<span class="unit">/年</span></p>
+      <ul class="tier-features">
+        <li>致谢页永久署名</li>
+        <li>参与年度线下 meetup</li>
+        <li>提前获知讲座信息</li>
+        <li>参与线上读书会</li>
+      </ul>
+      <a href="mailto:support@opensourceway.blog?subject=赞助咨询" class="tier-cta">咨询 →</a>
+    </div>
+    <div class="tier featured">
+      <p class="tier-name">Supporter</p>
+      <h3 class="tier-title">正式赞助</h3>
+      <p class="tier-price">¥1,000<span class="unit">/年</span></p>
+      <ul class="tier-features">
+        <li>含友好支持全部权益</li>
+        <li>讲座 Q&amp;A 优先提问</li>
+        <li>讲师延伸阅读清单</li>
+        <li>年度总结报告</li>
+        <li>README 致谢</li>
+      </ul>
+      <a href="mailto:support@opensourceway.blog?subject=赞助咨询" class="tier-cta">咨询 →</a>
+    </div>
+    <div class="tier">
+      <p class="tier-name">Patron</p>
+      <h3 class="tier-title">伙伴赞助</h3>
+      <p class="tier-price">¥5,000<span class="unit">/年</span></p>
+      <ul class="tier-features">
+        <li>含正式赞助全部权益</li>
+        <li>与适兕一对一交流</li>
+        <li>年度深度研究报告</li>
+        <li>项目方向优先建议权</li>
+        <li>联合署名研究产出</li>
+      </ul>
+      <a href="mailto:support@opensourceway.blog?subject=赞助咨询" class="tier-cta">咨询 →</a>
+    </div>
+  </div>
+</section>
+
+<section class="contact">
+  <h2>联系我们</h2>
+  <p>如需了解企业赞助方案、长期合作或定制讲座，请联系「开源之道」·适兕。</p>
+  <div class="contact-links">
+    <a href="mailto:support@opensourceway.blog">support@opensourceway.blog</a>
+    <a href="https://github.com/OCselected/os-economic-slides">GitHub</a>
+    <a href="https://opensourceway.blog">opensourceway.blog</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <span>© 2026 开源之道 · 开源的经济学</span>
+  <span><a href="https://opensourceway.blog">opensourceway.blog</a></span>
+</footer>
+</body>
+</html>

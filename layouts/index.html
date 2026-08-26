@@ -310,6 +310,8 @@ body{
   text-transform:uppercase;
   box-shadow:0 2px 8px rgba(0,0,0,0.2);
 }
+.topbar .logo{display:flex;align-items:center;gap:0.6rem}
+.topbar .logo img{height:24px;width:auto}
 .topbar .brand{font-weight:600;opacity:0.9}
 .topbar .nav{display:flex;gap:1.5rem}
 .topbar .nav a{color:var(--cream);text-decoration:none;opacity:0.8;transition:opacity 0.2s}
@@ -322,11 +324,12 @@ body{
 <body>
 
 <header class="topbar">
-  <span class="brand">开源之道 · 开源经济学</span>
+  <div class="logo"><img src="/logo.svg" alt="开源的经济学"></div>
   <nav class="nav">
     <a href="#lectures">课程</a>
+    <a href="/sponsor/">赞助</a>
     <a href="https://opensourceway.blog/posts/open-source-economic/12-lectures-of-open-source/">大纲</a>
-    <a href="https://github.com/OCselected/markdown-to-slides">源码</a>
+    <a href="https://github.com/OCselected/os-economic-slides">GitHub</a>
   </nav>
 </header>
 

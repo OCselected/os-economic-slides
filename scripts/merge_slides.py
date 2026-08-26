@@ -79,14 +79,16 @@ for num, title, topics, files in LECTURES:
         with open(path, encoding='utf-8') as f:
             text = f.read()
         chunks = re.split(r'^## Slide (\d+)', text, flags=re.MULTILINE)
+        seq = 0
         for i in range(1, len(chunks), 2):
-            slide_num = int(chunks[i])
+            seq += 1
+            raw_num = int(chunks[i])
             slide_body = chunks[i+1]
             vm_m = re.search(r'\* 视觉隐喻：\s*\n\s*\* (.+)', slide_body)
             visual = vm_m.group(1).strip() if vm_m else ""
             bullets = re.findall(r'^[-*] (.+)$', slide_body, re.MULTILINE)
             bullets = [b for b in bullets if '视觉隐喻' not in b]
-            all_slides.append((slide_num, visual, bullets))
+            all_slides.append((seq, visual, bullets))
 
     slide_count = len(all_slides)
     slug = f"{num}-{title}"

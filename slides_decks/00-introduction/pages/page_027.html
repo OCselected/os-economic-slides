@@ -1,0 +1,189 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>所有权的终结：数字化的许可历史</title><style>
+html,body{width:1600px;height:900px;overflow:hidden;margin:0;font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-serif;color:#1B3B6B;}
+body{background:#F5F0E8;position:relative;}
+.parchment-texture{position:absolute;top:0;left:0;width:1600px;height:900px;background:radial-gradient(ellipse at 30% 20%,rgba(255,255,255,0.3),transparent 60%),radial-gradient(ellipse at 80% 80%,rgba(139,115,85,0.06),transparent 50%);pointer-events:none;}
+
+.top-bar{position:absolute;top:48px;left:80px;width:1440px;height:1px;background:#1B3B6B;}
+.bottom-bar{position:absolute;bottom:48px;left:80px;width:1440px;height:1px;background:#1B3B6B;}
+
+.page-num{position:absolute;top:60px;left:80px;font-family:'Noto Serif SC',serif;font-size:13px;letter-spacing:3px;color:#555;}
+.page-num-r{position:absolute;top:60px;right:80px;font-family:'Noto Serif SC',serif;font-size:13px;letter-spacing:3px;color:#555;}
+
+.section-tag{position:absolute;top:90px;left:80px;font-family:'Noto Serif SC',serif;font-size:12px;letter-spacing:6px;color:#8B7355;}
+
+.main-title{position:absolute;top:120px;left:80px;font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:46px;font-weight:700;color:#1B3B6B;line-height:1.2;letter-spacing:2px;}
+.main-subtitle{position:absolute;top:200px;left:80px;font-family:'Noto Serif SC',serif;font-size:17px;color:#8B7355;letter-spacing:4px;font-style:italic;}
+
+.title-underline{position:absolute;top:238px;left:80px;width:120px;height:2px;background:#8B7355;}
+
+/* Sphere aggregation visual */
+.sphere-zone{position:absolute;top:280px;left:60px;width:680px;height:540px;}
+.sphere-cluster-title{position:absolute;top:4px;left:30px;font-family:'Noto Serif SC',serif;font-size:11px;letter-spacing:4px;color:#555;}
+.sphere-cluster-desc{position:absolute;bottom:10px;left:30px;font-family:'Noto Serif SC',serif;font-size:11px;letter-spacing:2px;color:#555;font-style:italic;}
+
+.sphere{position:absolute;border-radius:50%;border:1.5px solid #1B3B6B;}
+.sphere-fill{position:absolute;border-radius:50%;background:#1B3B6B;}
+.sphere-copper{border-color:#8B7355;}
+.sphere-copper-fill{background:#8B7355;border-color:#8B7355;}
+.sphere-outline-thin{border:1px solid #1B3B6B;}
+.sphere-gray{border-color:#555;}
+
+/* Vertical line connecting spheres */
+.connect-line{position:absolute;background:#1B3B6B;}
+
+/* Stage labels */
+.stage-label{position:absolute;font-family:'Noto Serif SC',serif;font-size:11px;letter-spacing:2px;color:#1B3B6B;}
+.stage-num{font-family:'Noto Serif SC',serif;font-size:10px;color:#8B7355;letter-spacing:1px;}
+
+/* Right content area */
+.content-zone{position:absolute;top:280px;left:800px;width:720px;height:540px;}
+.content-inner{position:absolute;top:20px;left:0;width:720px;}
+
+.ordered-item{position:relative;display:flex;align-items:flex-start;margin-bottom:22px;padding-left:40px;}
+.ordered-item .num{position:absolute;left:0;top:2px;font-family:'Noto Serif SC',serif;font-size:20px;color:#8B7355;width:32px;height:32px;border:1px solid #8B7355;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;letter-spacing:0;}
+.ordered-item .text{font-family:'Noto Serif SC',serif;font-size:17px;color:#1B3B6B;line-height:1.5;letter-spacing:1px;padding-top:7px;}
+.ordered-item .en{display:block;font-family:'Noto Sans SC',sans-serif;font-size:11px;color:#555;letter-spacing:1px;margin-top:3px;font-style:italic;}
+.ordered-item.highlight .num{background:#1B3B6B;color:#F5F0E8;border-color:#1B3B6B;}
+.ordered-item.highlight .text{color:#1B3B6B;font-weight:600;}
+.ordered-item.endpoint .num{background:#8B7355;color:#F5F0E8;border-color:#8B7355;}
+.ordered-item.endpoint .text{color:#8B7355;font-weight:600;font-size:16px;}
+
+.item-divider{position:absolute;left:40px;right:0;height:1px;background:rgba(27,59,107,0.12);}
+
+/* Decorative geometry */
+.deco-square{position:absolute;top:88px;right:80px;width:8px;height:8px;background:#1B3B6B;}
+.deco-line-v{position:absolute;top:90px;left:1500px;width:1px;height:60px;background:#8B7355;}
+.deco-circle-deco{position:absolute;top:108px;left:1490px;width:20px;height:20px;border:1px solid #8B7355;border-radius:50%;}
+
+/* Vertical dividing line between visual and content */
+.divider-line{position:absolute;top:280px;left:780px;width:1px;height:480px;background:rgba(27,59,107,0.25);}
+
+/* Footer */
+.footer-left{position:absolute;bottom:60px;left:80px;font-family:'Noto Serif SC',serif;font-size:11px;letter-spacing:3px;color:#555;}
+.footer-right{position:absolute;bottom:60px;right:80px;font-family:'Noto Serif SC',serif;font-size:11px;letter-spacing:3px;color:#555;}
+
+/* Axis labels for sphere diagram */
+.axis-label-x{position:absolute;font-family:'Noto Serif SC',serif;font-size:10px;color:#8B7355;letter-spacing:2px;}
+.axis-label-y{position:absolute;font-family:'Noto Serif SC',serif;font-size:10px;color:#8B7355;letter-spacing:2px;writing-mode:vertical-rl;}
+
+.x-axis{position:absolute;top:490px;left:80px;width:520px;height:1px;background:rgba(27,59,107,0.4);}
+.y-axis{position:absolute;top:310px;left:80px;width:1px;height:200px;background:rgba(27,59,107,0.4);}
+</style></head><body>
+<div class="parchment-texture"></div>
+<div class="top-bar"></div>
+<div class="bottom-bar"></div>
+
+<div class="page-num">XIII / XXVIII</div>
+<div class="page-num-r">NHE × OSS</div>
+<div class="section-tag">§ 04 &nbsp; LICENSING HISTORY</div>
+
+<div class="main-title">所有权的终结</div>
+<div class="main-subtitle">从物权到许可 —— 数字化时代的产权演化</div>
+<div class="title-underline"></div>
+
+<div class="deco-square"></div>
+<div class="deco-line-v"></div>
+<div class="deco-circle-deco"></div>
+
+<!-- Sphere Aggregation Visual -->
+<div class="sphere-zone">
+  <div class="sphere-cluster-title">◐ &nbsp; PROPERTY → LICENSING &nbsp;◑</div>
+
+  <!-- X and Y axes -->
+  <div class="x-axis"></div>
+  <div class="y-axis"></div>
+  <div class="axis-label-x" style="left:400px;top:478px;">时间 →</div>
+  <div class="axis-label-y" style="left:62px;top:310px;">← 所有权强度</div>
+
+  <!-- Connecting flow line -->
+  <svg style="position:absolute;top:300px;left:70px;width:540px;height:220px;" viewBox="0 0 540 220">
+    <path d="M 30 40 Q 120 80 180 110 T 330 140 T 490 170" fill="none" stroke="#8B7355" stroke-width="1" stroke-dasharray="4 4"/>
+  </svg>
+
+  <!-- Stage 1: 物权 sphere (large, filled, left top) -->
+  <div class="sphere-fill" style="left:90px;top:290px;width:72px;height:72px;opacity:0.9;"></div>
+  <div class="sphere" style="left:90px;top:290px;width:72px;height:72px;border-width:1.5px;"></div>
+  <div class="stage-num" style="left:102px;top:278px;">Ⅰ</div>
+  <div class="stage-label" style="left:82px;top:372px;text-align:center;width:88px;">物&nbsp;权</div>
+  <div class="stage-label" style="left:82px;top:388px;text-align:center;width:88px;color:#8B7355;">Property</div>
+
+  <!-- Stage 2: 著作权 sphere (medium) -->
+  <div class="sphere-fill" style="left:200px;top:315px;width:56px;height:56px;opacity:0.8;"></div>
+  <div class="sphere" style="left:200px;top:315px;width:56px;height:56px;"></div>
+  <div class="stage-num" style="left:214px;top:305px;">Ⅱ</div>
+  <div class="stage-label" style="left:195px;top:378px;text-align:center;width:68px;">著作权</div>
+  <div class="stage-label" style="left:195px;top:394px;text-align:center;width:68px;color:#8B7355;">Copyright</div>
+
+  <!-- Stage 3: 专利 sphere -->
+  <div class="sphere" style="left:290px;top:345px;width:52px;height:52px;border-width:1.5px;"></div>
+  <div class="sphere-fill sphere-copper-fill" style="left:298px;top:353px;width:36px;height:36px;"></div>
+  <div class="stage-num" style="left:304px;top:335px;">Ⅲ</div>
+  <div class="stage-label" style="left:285px;top:405px;text-align:center;width:62px;">专&nbsp;利</div>
+  <div class="stage-label" style="left:285px;top:421px;text-align:center;width:62px;color:#8B7355;">Patent</div>
+
+  <!-- Stage 4: DMCA sphere -->
+  <div class="sphere sphere-copper" style="left:375px;top:375px;width:46px;height:46px;"></div>
+  <div class="sphere" style="left:381px;top:381px;width:34px;height:34px;border-width:1px;"></div>
+  <div class="stage-num" style="left:389px;top:365px;">Ⅳ</div>
+  <div class="stage-label" style="left:365px;top:428px;text-align:center;width:66px;">数字版权法</div>
+  <div class="stage-label" style="left:365px;top:444px;text-align:center;width:66px;color:#8B7355;">DMCA</div>
+
+  <!-- Stage 5: 许可 sphere (small, right bottom) -->
+  <div class="sphere sphere-copper" style="left:455px;top:405px;width:42px;height:42px;border-width:2px;"></div>
+  <div class="sphere-gray" style="left:461px;top:411px;width:30px;height:30px;border-width:1px;"></div>
+  <div class="stage-num" style="left:469px;top:395px;color:#8B7355;">Ⅴ</div>
+  <div class="stage-label" style="left:445px;top:455px;text-align:center;width:62px;color:#8B7355;font-weight:600;">许&nbsp;可</div>
+  <div class="stage-label" style="left:445px;top:471px;text-align:center;width:62px;color:#8B7355;">License</div>
+
+  <div class="sphere-cluster-desc">▲ 球体聚合：从实体物权的独占，到数字许可的非排他流转</div>
+</div>
+
+<div class="divider-line"></div>
+
+<!-- Right Content -->
+<div class="content-zone">
+  <div class="content-inner">
+
+    <div class="ordered-item">
+      <div class="num">01</div>
+      <div class="text">软件的商品化难题<span class="en">The Commodification Problem of Software</span></div>
+    </div>
+
+    <div class="ordered-item">
+      <div class="num">02</div>
+      <div class="text">世界上第一份软件许可的诞生<span class="en">Birth of the First Software License</span></div>
+    </div>
+
+    <div class="ordered-item">
+      <div class="num">03</div>
+      <div class="text">软件源代码受到著作权的保护<span class class="en">Source Code Under Copyright Protection</span></div>
+    </div>
+
+    <div class="ordered-item">
+      <div class="num">04</div>
+      <div class="text">软件二进制收到著作权的保护<span class="en">Binary Code Under Copyright Protection</span></div>
+    </div>
+
+    <div class="ordered-item">
+      <div class="num">05</div>
+      <div class="text">软件得到专利法的保护<span class="en">Software Under Patent Law</span></div>
+    </div>
+
+    <div class="ordered-item highlight">
+      <div class="num">06</div>
+      <div class="text">《数字版权千年法》&nbsp;DMCA (1998)<span class="en">Digital Millennium Copyright Act</span></div>
+    </div>
+
+    <div class="ordered-item endpoint">
+      <div class="num">07</div>
+      <div class="text">所有权的终结：数字化的许可历史<span class="en">The End of Ownership — A History of Digital Licensing</span></div>
+    </div>
+
+  </div>
+</div>
+
+<div class="footer-left">新制度经济学 × 开源软件</div>
+<div class="footer-right">开源之道 · 思想交流</div>
+</body></html>

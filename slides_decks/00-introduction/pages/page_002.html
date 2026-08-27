@@ -1,0 +1,356 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>议程 — 新制度经济学视角下的开源</title><style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1600px; height: 900px; overflow: hidden; margin: 0; }
+body {
+  font-family: 'Noto Sans SC', 'Source Han Sans SC', sans-serif;
+  background: #F5F0E8;
+  color: #1B3B6B;
+  position: relative;
+}
+
+/* Subtle parchment texture */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 1600px; height: 900px;
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(139,115,85,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 70%, rgba(27,59,107,0.03) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* Top left geometric block */
+.geo-square-1 {
+  position: absolute;
+  top: 60px; left: 80px;
+  width: 70px; height: 70px;
+  background: #1B3B6B;
+}
+.geo-circle-1 {
+  position: absolute;
+  top: 75px; left: 170px;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: #8B7355;
+}
+.geo-line-1 {
+  position: absolute;
+  top: 128px; left: 80px;
+  width: 130px; height: 3px;
+  background: #1B3B6B;
+}
+
+/* Title area */
+.title-section {
+  position: absolute;
+  top: 60px; left: 320px;
+  width: 900px;
+}
+.title-eyebrow {
+  font-size: 14px;
+  letter-spacing: 8px;
+  color: #8B7355;
+  font-weight: 400;
+  margin-bottom: 14px;
+}
+.title-main {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 62px;
+  font-weight: 700;
+  color: #1B3B6B;
+  letter-spacing: 4px;
+  line-height: 1.1;
+}
+.title-sub {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 18px;
+  color: #555;
+  margin-top: 14px;
+  letter-spacing: 2px;
+  font-style: italic;
+}
+
+/* Right side decorative circle composition */
+.geo-circle-large {
+  position: absolute;
+  top: 50px; right: 80px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  border: 3px solid #1B3B6B;
+}
+.geo-circle-inner {
+  position: absolute;
+  top: 95px; right: 125px;
+  width: 110px; height: 110px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.geo-circle-inner-text {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  color: #F5F0E8;
+  letter-spacing: 2px;
+  text-align: center;
+  line-height: 1.6;
+}
+.geo-circle-inner-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 32px;
+  color: #F5F0E8;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+/* Departure board frame */
+.board-frame {
+  position: absolute;
+  top: 270px; left: 80px;
+  width: 1440px; height: 520px;
+  background: #1B3B6B;
+  padding: 4px;
+}
+.board-inner {
+  width: 100%;
+  height: 100%;
+  background: #0F2A4E;
+  padding: 28px 40px 20px 40px;
+  position: relative;
+}
+
+/* Board header */
+.board-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 8px 14px 8px;
+  border-bottom: 1px solid rgba(245,240,232,0.15);
+  margin-bottom: 6px;
+}
+.board-header-left {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  letter-spacing: 6px;
+  color: rgba(245,240,232,0.5);
+  font-weight: 400;
+}
+.board-header-right {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14px;
+  letter-spacing: 3px;
+  color: #8B7355;
+}
+
+/* Column headers */
+.board-cols {
+  display: flex;
+  padding: 4px 8px 8px 8px;
+  border-bottom: 1px solid rgba(245,240,232,0.12);
+  margin-bottom: 8px;
+}
+.col-num { width: 60px; font-size: 11px; letter-spacing: 3px; color: rgba(245,240,232,0.4); font-weight: 400; }
+.col-no { width: 100px; font-size: 11px; letter-spacing: 3px; color: rgba(245,240,232,0.4); }
+.col-dest { flex: 1; font-size: 11px; letter-spacing: 3px; color: rgba(245,240,232,0.4); }
+.col-time { width: 200px; font-size: 11px; letter-spacing: 3px; color: rgba(245,240,232,0.4); text-align: right; }
+.col-status { width: 140px; font-size: 11px; letter-spacing: 3px; color: rgba(245,240,232,0.4); text-align: right; }
+
+/* Row style */
+.board-row {
+  display: flex;
+  align-items: center;
+  padding: 13px 8px;
+  border-bottom: 1px solid rgba(245,240,232,0.06);
+}
+.board-row:last-child { border-bottom: none; }
+
+.row-num {
+  width: 60px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 20px;
+  color: #8B7355;
+  font-weight: 700;
+}
+.row-no {
+  width: 100px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 14px;
+  color: rgba(245,240,232,0.55);
+  letter-spacing: 1px;
+}
+.row-dest {
+  flex: 1;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 21px;
+  color: #F5F0E8;
+  letter-spacing: 2px;
+  font-weight: 400;
+}
+.row-time {
+  width: 200px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  color: rgba(245,240,232,0.7);
+  text-align: right;
+  letter-spacing: 2px;
+}
+.row-status {
+  width: 140px;
+  text-align: right;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  letter-spacing: 3px;
+  font-weight: 700;
+}
+.status-boarding { color: #E8C56B; }
+.status-scheduled { color: #A8C4A0; }
+.status-pending { color: rgba(245,240,232,0.5); }
+
+/* Bottom bar */
+.bottom-bar {
+  position: absolute;
+  bottom: 35px;
+  left: 80px;
+  width: 1440px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.bottom-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.geo-line-bottom {
+  width: 40px; height: 2px;
+  background: #1B3B6B;
+}
+.bottom-text {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  color: #555;
+  letter-spacing: 3px;
+}
+.bottom-right {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  color: #8B7355;
+  letter-spacing: 4px;
+}
+
+/* Footer decorative elements */
+.geo-square-2 {
+  position: absolute;
+  bottom: 70px; right: 80px;
+  width: 14px; height: 14px;
+  background: #8B7355;
+}
+.geo-square-3 {
+  position: absolute;
+  bottom: 56px; right: 100px;
+  width: 14px; height: 14px;
+  background: #1B3B6B;
+  opacity: 0.3;
+}
+
+/* Vertical line accent */
+.vline {
+  position: absolute;
+  top: 270px;
+  left: 76px;
+  width: 2px;
+  height: 520px;
+  background: #1B3B6B;
+  opacity: 0.15;
+}
+</style></head><body>
+
+<div class="geo-square-1"></div>
+<div class="geo-circle-1"></div>
+<div class="geo-line-1"></div>
+
+<div class="title-section">
+  <div class="title-eyebrow">AGENDA · 议程</div>
+  <div class="title-main">目 录</div>
+  <div class="title-sub">— 十二讲，一段思想的远行 —</div>
+</div>
+
+<div class="geo-circle-large"></div>
+<div class="geo-circle-inner">
+  <div class="geo-circle-inner-num">12</div>
+  <div class="geo-circle-inner-text">Lectures<br>十二讲</div>
+</div>
+
+<div class="vline"></div>
+
+<div class="board-frame">
+  <div class="board-inner">
+    <div class="board-header">
+      <div class="board-header-left">DEPARTURE BOARD · 航班信息</div>
+      <div class="board-header-right">新制度经济学 · 视角下的开源</div>
+    </div>
+
+    <div class="board-cols">
+      <div class="col-num">NO.</div>
+      <div class="col-no">FLIGHT</div>
+      <div class="col-dest">DESTINATION · 目的地</div>
+      <div class="col-time">TIME</div>
+      <div class="col-status">STATUS</div>
+    </div>
+
+    <div class="board-row">
+      <div class="row-num">01</div>
+      <div class="row-no">OS-001</div>
+      <div class="row-dest">为什么要做这件事？</div>
+      <div class="row-time">Lecture · 01</div>
+      <div class="row-status status-boarding">START</div>
+    </div>
+    <div class="board-row">
+      <div class="row-num">02</div>
+      <div class="row-no">OS-002</div>
+      <div class="row-dest">开源在数字社会中的概况</div>
+      <div class="row-time">Lectures · 02–03</div>
+      <div class="row-status status-scheduled">MAP</div>
+    </div>
+    <div class="board-row">
+      <div class="row-num">03</div>
+      <div class="row-no">OS-003</div>
+      <div class="row-dest">开源的历史（嵌入视角）</div>
+      <div class="row-time">Lectures · 04–07</div>
+      <div class="row-status status-scheduled">ROUTE</div>
+    </div>
+    <div class="board-row">
+      <div class="row-num">04</div>
+      <div class="row-no">OS-004</div>
+      <div class="row-dest">产业视角下的开源</div>
+      <div class="row-time">Lectures · 08–11</div>
+      <div class="row-status status-pending">STANDBY</div>
+    </div>
+    <div class="board-row">
+      <div class="row-num">05</div>
+      <div class="row-no">OS-005</div>
+      <div class="row-dest">十二讲 · 思考路径与目标</div>
+      <div class="row-time">Lecture · 12</div>
+      <div class="row-status status-pending">ARRIVE</div>
+    </div>
+  </div>
+</div>
+
+<div class="bottom-bar">
+  <div class="bottom-left">
+    <div class="geo-line-bottom"></div>
+    <div class="bottom-text">旅客请查看航班信息，确认行程与舱位</div>
+  </div>
+  <div class="bottom-right">
+    OPEN SOURCE · A NEW INSTITUTIONAL ECONOMICS PERSPECTIVE
+  </div>
+</div>
+
+<div class="geo-square-2"></div>
+<div class="geo-square-3"></div>
+
+</body></html>

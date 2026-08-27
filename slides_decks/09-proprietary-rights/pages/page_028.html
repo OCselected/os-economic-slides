@@ -1,0 +1,650 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>第10期·排他权与容他权、比例原则与 Copyleft · 推荐阅读</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
+}
+.slide {
+  width: 1600px;
+  height: 900px;
+  background: #1B3B6B;
+  position: relative;
+  font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  color: #F5F0E8;
+  overflow: hidden;
+}
+.slide::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse at 25% 15%, rgba(255,255,255,0.035) 0%, transparent 45%),
+    radial-gradient(ellipse at 75% 85%, rgba(0,0,0,0.06) 0%, transparent 50%);
+  pointer-events: none;
+}
+.header {
+  position: absolute;
+  top: 55px;
+  left: 70px;
+  right: 70px;
+}
+.period-num {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 13px;
+  letter-spacing: 7px;
+  color: #8B7355;
+  margin-bottom: 16px;
+}
+.main-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 40px;
+  font-weight: 700;
+  color: #F5F0E8;
+  letter-spacing: 4px;
+  line-height: 1.3;
+}
+.subtitle {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 17px;
+  color: #B8C4D6;
+  margin-top: 10px;
+  letter-spacing: 2px;
+}
+.title-underline {
+  position: absolute;
+  top: 195px;
+  left: 70px;
+  width: 80px;
+  height: 3px;
+  background: #8B7355;
+}
+.title-underline-thin {
+  position: absolute;
+  top: 198px;
+  left: 160px;
+  width: 200px;
+  height: 1px;
+  background: rgba(139,115,85,0.4);
+}
+.v-line-left {
+  position: absolute;
+  top: 215px;
+  left: 70px;
+  width: 1px;
+  height: 60px;
+  background: rgba(139,115,85,0.5);
+}
+
+/* Geometric decorations top-right */
+.geo-circle-tr {
+  position: absolute;
+  top: 62px;
+  right: 155px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #F5F0E8;
+}
+.geo-line-tr {
+  position: absolute;
+  top: 75px;
+  right: 200px;
+  width: 40px;
+  height: 1px;
+  background: #8B7355;
+}
+.geo-square-tr {
+  position: absolute;
+  top: 50px;
+  right: 70px;
+  width: 52px;
+  height: 52px;
+  border: 2px solid #8B7355;
+}
+.geo-square-tr-inner {
+  position: absolute;
+  top: 60px;
+  right: 80px;
+  width: 32px;
+  height: 32px;
+  background: #8B7355;
+}
+.geo-dot-tr {
+  position: absolute;
+  top: 76px;
+  right: 115px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #F5F0E8;
+}
+
+/* Left visual area */
+.visual-area {
+  position: absolute;
+  top: 235px;
+  left: 70px;
+  width: 620px;
+  height: 550px;
+}
+.deco-circle-a {
+  position: absolute;
+  top: 10px;
+  left: 40px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #8B7355;
+}
+.deco-circle-b {
+  position: absolute;
+  top: 385px;
+  left: 30px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #8B7355;
+}
+.deco-circle-c {
+  position: absolute;
+  top: 400px;
+  left: 240px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid #F5F0E8;
+}
+.deco-square-d {
+  position: absolute;
+  top: 30px;
+  left: 540px;
+  width: 30px;
+  height: 30px;
+  border: 2px solid #8B7355;
+}
+
+.scale-container {
+  position: absolute;
+  top: 10px;
+  left: 110px;
+  width: 350px;
+  height: 440px;
+}
+.scale-column {
+  position: absolute;
+  top: 60px;
+  left: 165px;
+  width: 4px;
+  height: 260px;
+  background: #F5F0E8;
+}
+.scale-arm {
+  position: absolute;
+  top: 110px;
+  left: 40px;
+  width: 270px;
+  height: 3px;
+  background: #F5F0E8;
+}
+.scale-arm-dot-l {
+  position: absolute;
+  top: 106px;
+  left: 35px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  border: 2px solid #F5F0E8;
+}
+.scale-arm-dot-r {
+  position: absolute;
+  top: 106px;
+  left: 293px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  border: 2px solid #F5F0E8;
+}
+.scale-fulcrum {
+  position: absolute;
+  top: 100px;
+  left: 155px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #8B7355;
+  background: #1B3B6B;
+}
+.pan-l-rope1 {
+  position: absolute;
+  top: 113px;
+  left: 44px;
+  width: 1px;
+  height: 50px;
+  background: rgba(245,240,232,0.7);
+}
+.pan-l-rope2 {
+  position: absolute;
+  top: 113px;
+  left: 72px;
+  width: 1px;
+  height: 50px;
+  background: rgba(245,240,232,0.7);
+}
+.pan-l-tray {
+  position: absolute;
+  top: 163px;
+  left: 34px;
+  width: 48px;
+  height: 8px;
+  border-radius: 4px;
+  background: #8B7355;
+}
+.pan-l-label {
+  position: absolute;
+  top: 180px;
+  left: 30px;
+  width: 56px;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #B8C4D6;
+}
+.pan-r-rope1 {
+  position: absolute;
+  top: 113px;
+  left: 268px;
+  width: 1px;
+  height: 50px;
+  background: rgba(245,240,232,0.7);
+}
+.pan-r-rope2 {
+  position: absolute;
+  top: 113px;
+  left: 296px;
+  width: 1px;
+  height: 50px;
+  background: rgba(245,240,232,0.7);
+}
+.pan-r-tray {
+  position: absolute;
+  top: 163px;
+  left: 258px;
+  width: 48px;
+  height: 8px;
+  border-radius: 4px;
+  background: #8B7355;
+}
+.pan-r-label {
+  position: absolute;
+  top: 180px;
+  left: 254px;
+  width: 56px;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #B8C4D6;
+}
+.scale-base {
+  position: absolute;
+  top: 320px;
+  left: 105px;
+  width: 160px;
+  height: 6px;
+  background: #F5F0E8;
+}
+.scale-base-2 {
+  position: absolute;
+  top: 326px;
+  left: 125px;
+  width: 120px;
+  height: 4px;
+  background: #8B7355;
+}
+.scale-stem {
+  position: absolute;
+  top: 280px;
+  left: 167px;
+  width: 2px;
+  height: 40px;
+  background: #F5F0E8;
+}
+.scale-pyramid {
+  position: absolute;
+  top: 265px;
+  left: 148px;
+  width: 0;
+  height: 0;
+  border-left: 19px solid transparent;
+  border-right: 19px solid transparent;
+  border-bottom: 15px solid #F5F0E8;
+}
+
+/* Spectrum bars bottom of visual area */
+.spectrum-section {
+  position: absolute;
+  bottom: 30px;
+  left: 20px;
+  width: 580px;
+}
+.spectrum-label {
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: #8B7355;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+.spectrum-label-en {
+  font-family: 'Noto Serif SC', serif;
+  color: #B8C4D6;
+  letter-spacing: 3px;
+}
+.spectrum-bars {
+  width: 580px;
+  height: 22px;
+  display: flex;
+}
+.sb {
+  height: 22px;
+  flex: 1;
+}
+.spectrum-dividers {
+  width: 580px;
+  margin-top: 4px;
+  display: flex;
+  font-size: 9px;
+  color: #8B7355;
+  letter-spacing: 1px;
+}
+.spectrum-dividers span {
+  flex: 1;
+  text-align: center;
+}
+.spectrum-axes {
+  position: relative;
+  margin-top: 10px;
+  width: 580px;
+  height: 30px;
+}
+.spectrum-axis {
+  position: absolute;
+  top: 12px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(245,240,232,0.3);
+}
+.spectrum-axis-tick {
+  position: absolute;
+  top: 8px;
+  width: 1px;
+  height: 9px;
+  background: rgba(245,240,232,0.5);
+}
+.spectrum-axis-label-l {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #B8C4D6;
+}
+.spectrum-axis-label-r {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #B8C4D6;
+}
+
+/* Right content area */
+.content-area {
+  position: absolute;
+  top: 235px;
+  left: 750px;
+  width: 780px;
+  height: 560px;
+}
+.section-label {
+  font-size: 11px;
+  letter-spacing: 5px;
+  color: #8B7355;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(139,115,85,0.4);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.section-label-en {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 11px;
+  color: #B8C4D6;
+  letter-spacing: 3px;
+  font-style: italic;
+}
+.reading-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.reading-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(139,115,85,0.2);
+}
+.reading-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 20px;
+  color: #8B7355;
+  width: 44px;
+  flex-shrink: 0;
+  font-weight: 400;
+  line-height: 1.5;
+}
+.reading-text {
+  flex: 1;
+}
+.reading-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 16px;
+  color: #F5F0E8;
+  font-weight: 600;
+  letter-spacing: 1px;
+  line-height: 1.5;
+  margin-bottom: 6px;
+}
+.reading-meta {
+  font-size: 12px;
+  color: #B8C4D6;
+  letter-spacing: 1px;
+  line-height: 1.7;
+}
+.reading-author {
+  color: #8B7355;
+}
+
+/* Visual metaphor caption */
+.metaphor-caption {
+  position: absolute;
+  bottom: 70px;
+  left: 750px;
+  width: 780px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12px;
+  color: #B8C4D6;
+  letter-spacing: 2px;
+  font-style: italic;
+  border-left: 3px solid #8B7355;
+  padding-left: 14px;
+  line-height: 1.7;
+}
+
+/* Footer */
+.footer {
+  position: absolute;
+  bottom: 28px;
+  left: 70px;
+  right: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #5A6E85;
+}
+.footer-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(139,115,85,0.3);
+  margin: 0 20px;
+}
+</style>
+</head>
+<body>
+<div class="slide">
+
+  <div class="geo-circle-tr"></div>
+  <div class="geo-line-tr"></div>
+  <div class="geo-square-tr"></div>
+  <div class="geo-square-tr-inner"></div>
+  <div class="geo-dot-tr"></div>
+
+  <div class="header">
+    <div class="period-num">第 拾 期  ·  OPEN SOURCE ECONOMICS</div>
+    <div class="main-title">排他权与容他权</div>
+    <div class="subtitle">比例原则与 Copyleft &nbsp;·&nbsp; 推荐阅读</div>
+  </div>
+  <div class="title-underline"></div>
+  <div class="title-underline-thin"></div>
+  <div class="v-line-left"></div>
+
+  <div class="visual-area">
+    <div class="deco-circle-a"></div>
+    <div class="deco-circle-b"></div>
+    <div class="deco-circle-c"></div>
+    <div class="deco-square-d"></div>
+
+    <div class="scale-container">
+      <div class="scale-pyramid"></div>
+      <div class="scale-column"></div>
+      <div class="scale-stem"></div>
+      <div class="scale-fulcrum"></div>
+      <div class="scale-arm"></div>
+      <div class="scale-arm-dot-l"></div>
+      <div class="scale-arm-dot-r"></div>
+      <div class="pan-l-rope1"></div>
+      <div class="pan-l-rope2"></div>
+      <div class="pan-l-tray"></div>
+      <div class="pan-l-label">排 他 权</div>
+      <div class="pan-r-rope1"></div>
+      <div class="pan-r-rope2"></div>
+      <div class="pan-r-tray"></div>
+      <div class="pan-r-label">容 他 权</div>
+      <div class="scale-base"></div>
+      <div class="scale-base-2"></div>
+    </div>
+
+    <div class="spectrum-section">
+      <div class="spectrum-label">
+        <span>光 谱 · SPECTRUM</span>
+        <span class="spectrum-label-en">FROM PROPRIETARY TO LIBRE</span>
+      </div>
+      <div class="spectrum-bars">
+        <div class="sb" style="background:#C0392B;"></div>
+        <div class="sb" style="background:#D35400;"></div>
+        <div class="sb" style="background:#E67E22;"></div>
+        <div class="sb" style="background:#F1C40F;"></div>
+        <div class="sb" style="background:#B7950B;"></div>
+        <div class="sb" style="background:#1E8449;"></div>
+        <div class="sb" style="background:#27AE60;"></div>
+        <div class="sb" style="background:#1ABC9C;"></div>
+        <div class="sb" style="background:#2980B9;"></div>
+        <div class="sb" style="background:#1B4F72;"></div>
+        <div class="sb" style="background:#154360;"></div>
+        <div class="sb" style="background:#8E44AD;"></div>
+      </div>
+      <div class="spectrum-axes">
+        <div class="spectrum-axis"></div>
+        <div class="spectrum-axis-tick" style="left: 0px;"></div>
+        <div class="spectrum-axis-tick" style="left: 145px;"></div>
+        <div class="spectrum-axis-tick" style="left: 290px;"></div>
+        <div class="spectrum-axis-tick" style="left: 435px;"></div>
+        <div class="spectrum-axis-tick" style="left: 579px;"></div>
+        <div class="spectrum-axis-label-l">独占</div>
+        <div class="spectrum-axis-label-r">共享</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-area">
+    <div class="section-label">
+      <span>推 荐 阅 读</span>
+      <span class="section-label-en">FURTHER READING</span>
+    </div>
+
+    <ul class="reading-list">
+      <li class="reading-item">
+        <span class="reading-num">Ⅰ</span>
+        <div class="reading-text">
+          <div class="reading-title">《开源的成功之路》</div>
+          <div class="reading-meta">
+            <span class="reading-author">Steven Weber</span> &nbsp;|&nbsp; 外语教学与研究出版社 &nbsp;|&nbsp; 2007.06
+          </div>
+        </div>
+      </li>
+      <li class="reading-item">
+        <span class="reading-num">Ⅱ</span>
+        <div class="reading-text">
+          <div class="reading-title">《知识产权正当性解释》</div>
+          <div class="reading-meta">
+            <span class="reading-author">Robert P. Merges</span> &nbsp;|&nbsp; 商务印书馆 &nbsp;|&nbsp; 2023.05
+          </div>
+        </div>
+      </li>
+      <li class="reading-item">
+        <span class="reading-num">Ⅲ</span>
+        <div class="reading-text">
+          <div class="reading-title">Legal Implications of Open-Source Software</div>
+          <div class="reading-meta">
+            <span class="reading-author">David McGowan</span> &nbsp;|&nbsp; 2001 U. Ill. L. Rev. 241
+          </div>
+        </div>
+      </li>
+      <li class="reading-item">
+        <span class="reading-num">Ⅳ</span>
+        <div class="reading-text">
+          <div class="reading-title">Open Source Licensing: Software Freedom and Intellectual Property Law</div>
+          <div class="reading-meta">
+            <span class="reading-author">Lawrence Rosen</span> &nbsp;|&nbsp; Prentice Hall &nbsp;|&nbsp; 2004.07
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <div class="metaphor-caption">
+      深普鲁士蓝天平与光谱色条交织，象征排他权与容他权之间的比例原则。
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>开 源 之 道  ·  新 制 度 经 济 学</span>
+    <div class="footer-line"></div>
+    <span>NO. 10 &nbsp;/&nbsp; CO-PLyleft &amp; PROPORTIONALITY</span>
+  </div>
+
+</div>
+</body>
+</html>

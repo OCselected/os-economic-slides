@@ -1,0 +1,381 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>第 08 期 · 信息规则与网络经济 — 空王座</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0}
+body{
+  background:#F5F0E8;
+  font-family:'Noto Sans SC','Source Han Sans SC','PingFang SC',sans-serif;
+  color:#1B3B6B;
+  position:relative;
+  overflow:hidden;
+}
+.parchment-texture{
+  position:absolute;width:1600px;height:900px;top:0;left:0;
+  background:
+    radial-gradient(ellipse at 20% 10%, rgba(139,115,85,0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 90%, rgba(27,59,107,0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 40%, rgba(139,115,85,0.02) 0%, transparent 60%);
+  pointer-events:none;
+}
+
+/* top header bar */
+.top-bar{
+  position:absolute;top:48px;left:80px;right:80px;
+  display:flex;justify-content:space-between;align-items:center;
+  border-bottom:1px solid rgba(27,59,107,0.25);
+  padding-bottom:16px;
+}
+.top-bar .lecture-tag{
+  font-family:'Noto Serif SC','Source Han Serif SC',serif;
+  font-size:13px;letter-spacing:6px;color:#555;
+}
+.top-bar .lecture-tag .num{color:#1B3B6B;font-weight:700}
+.top-bar .deck-title{
+  font-family:'Noto Serif SC','Source Han Serif SC',serif;
+  font-size:13px;letter-spacing:4px;color:#8B7355;
+}
+.top-bar .page-num{
+  font-family:'Noto Serif SC',serif;font-size:13px;color:#555;letter-spacing:3px;
+}
+
+/* main layout */
+.main-area{
+  position:absolute;top:140px;left:80px;right:80px;bottom:80px;
+  display:flex;gap:60px;
+}
+
+/* LEFT — throne illustration */
+.throne-area{
+  position:relative;width:520px;height:680px;
+  display:flex;align-items:center;justify-content:center;
+}
+
+/* decorative corner marks */
+.corner{
+  position:absolute;width:24px;height:24px;
+}
+.corner-tl{top:0;left:0;border-top:1px solid #1B3B6B;border-left:1px solid #1B3B6B}
+.corner-tr{top:0;right:0;border-top:1px solid #1B3B6B;border-right:1px solid #1B3B6B}
+.corner-bl{bottom:0;left:0;border-bottom:1px solid #1B3B6B;border-left:1px solid #1B3B6B}
+.corner-br{bottom:0;right:0;border-bottom:1px solid #1B3B6B;border-right:1px solid #1B3B6B}
+
+/* throne base platform */
+.throne-base{
+  position:absolute;bottom:20px;left:40px;right:40px;height:56px;
+  background:#1B3B6B;
+}
+.throne-base-inner{
+  position:absolute;bottom:32px;left:60px;right:60px;height:32px;
+  background:#F5F0E8;
+  border-left:1px solid #1B3B6B;
+  border-right:1px solid #1B3B6B;
+}
+
+/* throne platform steps */
+.step-1{
+  position:absolute;bottom:20px;left:30px;right:30px;height:8px;
+  background:#1B3B6B;
+}
+.step-2{
+  position:absolute;bottom:20px;left:10px;right:10px;height:8px;
+  background:#1B3B6B;
+}
+
+/* throne legs */
+.leg{
+  position:absolute;bottom:76px;width:20px;height:110px;background:#1B3B6B;
+}
+.leg-l{left:120px}
+.leg-r{right:120px}
+
+/* throne back — left column */
+.throne-back-left{
+  position:absolute;top:80px;left:100px;width:60px;height:380px;background:#1B3B6B;
+}
+.throne-back-right{
+  position:absolute;top:80px;right:100px;width:60px;height:380px;background:#1B3B6B;
+}
+
+/* back inner — the empty void */
+.throne-back-inner{
+  position:absolute;top:100px;left:180px;right:180px;height:340px;
+  border:1px solid rgba(27,59,107,0.15);
+  display:flex;align-items:center;justify-content:center;
+}
+.throne-back-inner::before{
+  content:"";
+  position:absolute;width:60px;height:60px;border-radius:50%;
+  border:1px dashed rgba(27,59,107,0.35);
+}
+.throne-back-inner::after{
+  content:"";
+  position:absolute;width:120px;height:120px;
+  border:1px solid rgba(27,59,107,0.1);
+}
+
+/* seat — the empty cushion */
+.throne-seat{
+  position:absolute;bottom:186px;left:140px;right:140px;height:40px;
+  background:#1B3B6B;
+  display:flex;align-items:center;justify-content:center;
+}
+.throne-seat-mark{
+  width:60px;height:24px;border:1px dashed rgba(245,240,232,0.4);
+}
+
+/* armrests */
+.armrest{
+  position:absolute;bottom:186px;width:40px;height:180px;background:#1B3B6B;
+}
+.armrest-l{left:100px}
+.armrest-r{right:100px}
+.armrest-cap{
+  position:absolute;bottom:360px;width:50px;height:20px;background:#1B3B6B;
+}
+.armrest-cap-l{left:95px}
+.armrest-cap-r{right:95px}
+
+/* crown top — empty circle */
+.crown-circle{
+  position:absolute;top:30px;left:210px;width:100px;height:100px;
+  border:2px solid #1B3B6B;
+  border-radius:50%;
+  background:transparent;
+}
+.crown-cross-h{
+  position:absolute;top:79px;left:180px;width:160px;height:2px;background:#1B3B6B;
+}
+.crown-cross-v{
+  position:absolute;top:30px;left:249px;width:2px;height:160px;background:#1B3B6B;
+}
+
+/* geometric accent dots */
+.accent-dot{
+  position:absolute;width:10px;height:10px;background:#8B7355;border-radius:50%;
+}
+.accent-dot-1{top:60px;left:50px}
+.accent-dot-2{top:60px;right:50px}
+.accent-dot-3{bottom:100px;left:60px}
+.accent-dot-4{bottom:100px;right:60px}
+
+.accent-square{
+  position:absolute;width:14px;height:14px;background:#8B7355;
+}
+.accent-square-1{top:20px;left:20px}
+.accent-square-2{top:20px;right:20px}
+
+/* vertical decorative lines */
+.deco-line-v{
+  position:absolute;top:80px;bottom:80px;width:1px;background:rgba(27,59,107,0.12);
+}
+.deco-line-v-1{left:20px}
+.deco-line-v-2{right:20px}
+
+/* caption under throne */
+.throne-caption{
+  position:absolute;bottom:-8px;left:0;right:0;text-align:center;
+  font-family:'Noto Serif SC',serif;font-size:12px;letter-spacing:4px;color:#8B7355;
+}
+
+/* RIGHT — questions */
+.questions-area{
+  flex:1;
+  display:flex;flex-direction:column;justify-content:flex-start;
+  padding-top:20px;
+}
+
+.section-label{
+  font-family:'Noto Serif SC',serif;
+  font-size:14px;letter-spacing:8px;color:#8B7355;
+  margin-bottom:8px;
+}
+.section-label-en{
+  font-family:'Noto Serif SC',serif;
+  font-size:11px;letter-spacing:5px;color:#8B7355;opacity:0.6;
+  margin-bottom:24px;
+  text-transform:uppercase;
+}
+
+.main-title{
+  font-family:'Noto Serif SC','Source Han Serif SC',serif;
+  font-size:44px;font-weight:700;color:#1B3B6B;
+  line-height:1.2;letter-spacing:2px;
+  margin-bottom:8px;
+}
+.main-title-en{
+  font-family:'Noto Serif SC',serif;
+  font-size:14px;color:#555;letter-spacing:3px;
+  margin-bottom:28px;
+}
+
+.title-rule{
+  width:80px;height:3px;background:#1B3B6B;margin-bottom:32px;
+}
+
+.question-list{
+  list-style:none;
+  display:flex;flex-direction:column;gap:22px;
+}
+.question-item{
+  display:flex;align-items:flex-start;gap:20px;
+}
+.question-num{
+  font-family:'Noto Serif SC',serif;
+  font-size:18px;font-weight:700;color:#8B7355;
+  min-width:36px;
+  padding-top:2px;
+}
+.question-text{
+  font-family:'Noto Serif SC','Source Han Serif SC',serif;
+  font-size:19px;line-height:1.55;color:#1B3B6B;
+  letter-spacing:1px;
+  flex:1;
+}
+.question-text .highlight{
+  color:#1B3B6B;font-weight:700;
+  border-bottom:1px solid #8B7355;
+  padding-bottom:1px;
+}
+.question-text .gray{
+  color:#555;
+}
+
+/* right-side decorative geometric elements */
+.right-deco-circle{
+  position:absolute;top:0;right:0;width:70px;height:70px;
+  border:1px solid #1B3B6B;border-radius:50%;
+}
+.right-deco-square{
+  position:absolute;top:80px;right:0;width:20px;height:20px;
+  background:#1B3B6B;
+}
+
+/* bottom footer */
+.bottom-bar{
+  position:absolute;bottom:36px;left:80px;right:80px;
+  display:flex;justify-content:space-between;align-items:center;
+  border-top:1px solid rgba(27,59,107,0.2);
+  padding-top:14px;
+  font-family:'Noto Serif SC',serif;
+  font-size:11px;letter-spacing:3px;color:#8B7355;
+}
+
+/* Bauhaus corner triangle decoration */
+.bauhaus-triangle{
+  position:absolute;
+  width:0;height:0;
+}
+.bauhaus-tri-tl{
+  top:0;left:0;
+  border-top:120px solid #1B3B6B;
+  border-right:120px solid transparent;
+  opacity:0.06;
+}
+.bauhaus-tri-br{
+  bottom:0;right:0;
+  border-bottom:140px solid #8B7355;
+  border-left:140px solid transparent;
+  opacity:0.05;
+}
+</style></head>
+<body>
+<div class="parchment-texture"></div>
+<div class="bauhaus-triangle bauhaus-tri-tl"></div>
+<div class="bauhaus-triangle bauhaus-tri-br"></div>
+
+<div class="top-bar">
+  <div class="lecture-tag">第<span class="num"> 08 </span>期 · 信息规则与网络经济</div>
+  <div class="deck-title">OPEN-SOURCE · INSTITUTIONAL ECONOMICS</div>
+  <div class="page-num">— 24 / 30 —</div>
+</div>
+
+<div class="main-area">
+
+  <!-- LEFT: Throne illustration -->
+  <div class="throne-area">
+    <div class="corner corner-tl"></div>
+    <div class="corner corner-tr"></div>
+    <div class="corner corner-bl"></div>
+    <div class="corner corner-br"></div>
+
+    <div class="deco-line-v deco-line-v-1"></div>
+    <div class="deco-line-v deco-line-v-2"></div>
+
+    <div class="accent-square accent-square-1"></div>
+    <div class="accent-square accent-square-2"></div>
+    <div class="accent-dot accent-dot-1"></div>
+    <div class="accent-dot accent-dot-2"></div>
+    <div class="accent-dot accent-dot-3"></div>
+    <div class="accent-dot accent-dot-4"></div>
+
+    <!-- crown -->
+    <div class="crown-circle"></div>
+    <div class="crown-cross-h"></div>
+    <div class="crown-cross-v"></div>
+
+    <!-- throne back -->
+    <div class="throne-back-left"></div>
+    <div class="throne-back-right"></div>
+    <div class="throne-back-inner"></div>
+
+    <!-- armrests -->
+    <div class="armrest armrest-l"></div>
+    <div class="armrest armrest-r"></div>
+    <div class="armrest-cap armrest-cap-l"></div>
+    <div class="armrest-cap armrest-cap-r"></div>
+
+    <!-- seat -->
+    <div class="throne-seat">
+      <div class="throne-seat-mark"></div>
+    </div>
+
+    <!-- legs -->
+    <div class="leg leg-l"></div>
+    <div class="leg leg-r"></div>
+
+    <!-- base -->
+    <div class="throne-base"></div>
+    <div class="throne-base-inner"></div>
+    <div class="step-1"></div>
+    <div class="step-2"></div>
+
+    <div class="throne-caption">空  王  座 &nbsp;·&nbsp; EMPTY THRONE</div>
+  </div>
+
+  <!-- RIGHT: Questions -->
+  <div class="questions-area">
+    <div class="right-deco-circle"></div>
+    <div class="right-deco-square"></div>
+
+    <div class="section-label">留 白 问 题</div>
+    <div class="section-label-en">Open Questions · A Contemplative Space</div>
+
+    <div class="main-title">谁来坐上这把椅子？</div>
+    <div class="main-title-en">WHO SHALL TAKE THE SEAT ?</div>
+    <div class="title-rule"></div>
+
+    <ul class="question-list">
+      <li class="question-item">
+        <span class="question-num">Ⅰ.</span>
+        <span class="question-text">如果开源软件的<span class="highlight">边际成本为零</span>，为什么企业愿意为订阅付费？</span>
+      </li>
+      <li class="question-item">
+        <span class="question-num">Ⅱ.</span>
+        <span class="question-text">这种付费，究竟是<span class="highlight">买软件</span>，还是<span class="highlight">买信任</span>？</span>
+      </li>
+      <li class="question-item">
+        <span class="question-num">Ⅲ.</span>
+        <span class="question-text">当<span class="highlight">云厂商</span>成为代码的主要使用者，<span class="gray">谁来决定开源项目的未来？</span></span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="bottom-bar">
+  <span>包豪斯几何构成 — BAUHAUS GEOMETRIC COMPOSITION</span>
+  <span>第 08 期 · 信息规则与网络经济</span>
+  <span>24 / 30</span>
+</div>
+
+</body></html>

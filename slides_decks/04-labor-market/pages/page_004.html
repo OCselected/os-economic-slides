@@ -1,0 +1,166 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>议程</title><style>html,body{width:1600px;height:900px;overflow:hidden;margin:0;font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-serif;color:#1B3B6B;}body{background:#F5F0E8;position:relative;}
+.serif{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;}
+.page-num{position:absolute;top:48px;left:80px;font-family:'Noto Serif SC',serif;font-size:14px;letter-spacing:3px;color:#8B7355;}
+.section-label{position:absolute;top:48px;right:80px;font-size:13px;letter-spacing:4px;color:#555;}
+.title-en{position:absolute;top:120px;left:80px;font-family:'Noto Serif SC',serif;font-size:18px;letter-spacing:8px;color:#8B7355;font-style:italic;}
+.title-zh{position:absolute;top:158px;left:80px;font-family:'Noto Serif SC',serif;font-size:56px;font-weight:700;letter-spacing:12px;color:#1B3B6B;}
+.title-underline{position:absolute;top:240px;left:80px;width:120px;height:3px;background:#1B3B6B;}
+.title-sub{position:absolute;top:256px;left:80px;font-family:'Noto Serif SC',serif;font-size:16px;letter-spacing:3px;color:#555;}
+.hand-wrap{position:absolute;top:90px;right:80px;width:500px;height:720px;}
+.hand-circle{position:absolute;top:30px;left:170px;width:180px;height:180px;border-radius:50%;border:2.5px solid #1B3B6B;}
+.hand-circle-inner{position:absolute;top:90px;left:220px;width:160px;height:160px;border-radius:50%;background:#1B3B6B;}
+.arm-line-1{position:absolute;top:180px;left:310px;width:3px;height:280px;background:#1B3B6B;}
+.arm-line-2{position:absolute;top:180px;left:330px;width:3px;height:280px;background:#1B3B6B;}
+.arm-extend{position:absolute;top:280px;left:270px;width:90px;height:3px;background:#1B3B6B;}
+.arm-thick{position:absolute;top:280px;left:340px;width:160px;height:8px;background:#8B7355;}
+.arm-thick-2{position:absolute;top:288px;left:340px;width:160px;height:3px;background:#1B3B6B;}
+.hand-square{position:absolute;top:300px;left:430px;width:70px;height:70px;background:#1B3B6B;}
+.thumb-bar{position:absolute;top:290px;left:380px;width:60px;height:6px;background:#8B7355;}
+.thumb-bar-2{position:absolute;top:296px;left:380px;width:60px;height:2px;background:#1B3B6B;}
+.finger-1{position:absolute;top:355px;left:445px;width:4px;height:70px;background:#1B3B6B;}
+.finger-2{position:absolute;top:355px;left:458px;width:4px;height:90px;background:#1B3B6B;}
+.finger-3{position:absolute;top:355px;left:471px;width:4px;height:80px;background:#1B3B6B;}
+.finger-4{position:absolute;top:355px;left:484px;width:4px;height:65px;background:#1B3B6B;}
+.finger-cap{position:absolute;top:352px;left:442px;width:10px;height:10px;border-radius:50%;background:#1B3B6B;}
+.finger-cap-2{position:absolute;top:342px;left:455px;width:10px;height:10px;border-radius:50%;background:#1B3B6B;}
+.finger-cap-3{position:absolute;top:347px;left:468px;width:10px;height:10px;border-radius:50%;background:#1B3B6B;}
+.finger-cap-4{position:absolute;top:352px;left:481px;width:10px;height:10px;border-radius:50%;background:#1B3B6B;}
+.palm-base{position:absolute;top:350px;left:440px;width:55px;height:95px;border-radius:10px 10px 25px 25px;background:#1B3B6B;border:2px solid #1B3B6B;}
+.hand-diagonal{position:absolute;top:470px;left:370px;width:3px;height:160px;background:#8B7355;}
+.hand-diagonal-2{position:absolute;top:475px;left:395px;width:3px;height:150px;background:#8B7355;}
+.hand-diagonal-3{position:absolute;top:480px;left:420px;width:3px;height:135px;background:#8B7355;}
+.slab-line{position:absolute;top:720px;left:200px;width:280px;height:2px;background:#8B7355;}
+.slab-tick-1{position:absolute;top:720px;left:280px;width:2px;height:14px;background:#8B7355;}
+.slab-tick-2{position:absolute;top:720px;left:360px;width:2px;height:14px;background:#8B7355;}
+.slab-tick-3{position:absolute;top:720px;left:440px;width:2px;height:14px;background:#8B7355;}
+.hand-label{position:absolute;top:750px;left:200px;width:280px;text-align:center;font-family:'Noto Serif SC',serif;font-size:12px;letter-spacing:5px;color:#8B7355;}
+.hand-en-label{position:absolute;top:768px;left:200px;width:280px;text-align:center;font-size:10px;letter-spacing:3px;color:#555;}
+.agenda-label{position:absolute;top:120px;left:80px;font-size:13px;letter-spacing:6px;color:#8B7355;}
+.agenda-title{position:absolute;top:148px;left:80px;font-family:'Noto Serif SC',serif;font-size:36px;font-weight:700;color:#1B3B6B;letter-spacing:6px;}
+.agenda-title-en{position:absolute;top:200px;left:80px;font-family:'Noto Serif SC',serif;font-size:14px;font-style:italic;letter-spacing:4px;color:#555;}
+.agenda-divider{position:absolute;top:228px;left:80px;width:1600px;height:1px;background:#8B7355;opacity:0.4;}
+.agenda-item{position:absolute;left:80px;display:flex;align-items:center;}
+.agenda-num{font-family:'Noto Serif SC',serif;font-size:28px;font-weight:300;color:#8B7355;width:70px;letter-spacing:2px;}
+.agenda-num-bar{width:2px;height:24px;background:#1B3B6B;margin-left:12px;}
+.agenda-text{font-family:'Noto Serif SC',serif;font-size:22px;font-weight:400;color:#1B3B6B;margin-left:20px;letter-spacing:3px;}
+.agenda-dash{width:30px;height:1px;background:#8B7355;margin:0 15px;opacity:0.6;}
+.item-1{top:260px;}
+.item-2{top:320px;}
+.item-3{top:380px;}
+.item-4{top:440px;}
+.item-5{top:500px;}
+.item-6{top:560px;}
+.bottom-bar{position:absolute;bottom:0;left:0;width:1600px;height:4px;background:#1B3B6B;}
+.bottom-bar-2{position:absolute;bottom:4px;left:0;width:1600px;height:2px;background:#8B7355;}
+.footer-left{position:absolute;bottom:24px;left:80px;font-family:'Noto Serif SC',serif;font-size:12px;letter-spacing:4px;color:#555;}
+.footer-right{position:absolute;bottom:24px;right:80px;font-size:11px;letter-spacing:3px;color:#555;}
+.meta-1{position:absolute;top:640px;left:80px;font-size:11px;letter-spacing:3px;color:#8B7355;}
+.meta-2{position:absolute;top:668px;left:80px;font-size:11px;letter-spacing:3px;color:#555;}
+.meta-3{position:absolute;top:696px;left:80px;font-size:11px;letter-spacing:3px;color:#555;}
+.meta-num{display:inline-block;width:30px;color:#8B7355;font-family:'Noto Serif SC',serif;}
+.corner-tl{position:absolute;top:30px;left:50px;width:20px;height:20px;border-top:2px solid #1B3B6B;border-left:2px solid #1B3B6B;}
+.corner-tr{position:absolute;top:30px;right:50px;width:20px;height:20px;border-top:2px solid #1B3B6B;border-right:2px solid #1B3B6B;}
+.corner-bl{position:absolute;bottom:14px;left:50px;width:20px;height:20px;border-bottom:2px solid #1B3B6B;border-left:2px solid #1B3B6B;}
+.corner-br{position:absolute;bottom:14px;right:50px;width:20px;height:20px;border-bottom:2px solid #1B3B6B;border-right:2px solid #1B3B6B;}
+.dot-deco{position:absolute;top:50px;left:50%;width:8px;height:8px;border-radius:50%;background:#8B7355;}
+</style></head><body>
+<div class="corner-tl"></div>
+<div class="corner-tr"></div>
+<div class="corner-bl"></div>
+<div class="corner-br"></div>
+<div class="dot-deco"></div>
+
+<div class="page-num">01 / 06</div>
+<div class="section-label">AGENDA · 开源经济学</div>
+
+<div class="title-en">OPEN SOURCE &amp; NEW INSTITUTIONAL ECONOMICS</div>
+<div class="title-zh">议 程</div>
+<div class="title-underline"></div>
+<div class="title-sub">Six Topics · 六个议题</div>
+
+<div class="hand-wrap">
+<div class="hand-circle"></div>
+<div class="hand-circle-inner"></div>
+<div class="arm-line-1"></div>
+<div class="arm-line-2"></div>
+<div class="arm-extend"></div>
+<div class="arm-thick"></div>
+<div class="arm-thick-2"></div>
+<div class="hand-square"></div>
+<div class="thumb-bar"></div>
+<div class="thumb-bar-2"></div>
+<div class="finger-1"></div>
+<div class="finger-2"></div>
+<div class="finger-3"></div>
+<div class="finger-4"></div>
+<div class="finger-cap"></div>
+<div class="finger-cap-2"></div>
+<div class="finger-cap-3"></div>
+<div class="finger-cap-4"></div>
+<div class="palm-base"></div>
+<div class="hand-diagonal"></div>
+<div class="hand-diagonal-2"></div>
+<div class="hand-diagonal-3"></div>
+<div class="slab-line"></div>
+<div class="slab-tick-1"></div>
+<div class="slab-tick-2"></div>
+<div class="slab-tick-3"></div>
+<div class="hand-label">举 手 · 求 知 · 参 与</div>
+<div class="hand-en-label">RAISED HAND — THE GAZE OF KNOWLEDGE</div>
+</div>
+
+<div class="agenda-item item-1">
+  <span class="agenda-num">01</span>
+  <span class="agenda-num-bar"></span>
+  <span class="agenda-text">议 程</span>
+  <span class="agenda-dash"></span>
+  <span style="font-size:12px;color:#555;letter-spacing:2px;margin-left:15px;">INTRODUCTION</span>
+</div>
+<div class="agenda-item item-2">
+  <span class="agenda-num">02</span>
+  <span class="agenda-num-bar"></span>
+  <span class="agenda-text">代码不是商品</span>
+  <span class="agenda-dash"></span>
+  <span style="font-size:12px;color:#555;letter-spacing:2px;margin-left:15px;">CODE IS NOT A COMMODITY</span>
+</div>
+<div class="agenda-item item-3">
+  <span class="agenda-num">03</span>
+  <span class="agenda-num-bar"></span>
+  <span class="agenda-text">供需关系的是人才</span>
+  <span class="agenda-dash"></span>
+  <span style="font-size:12px;color:#555;letter-spacing:2px;margin-left:15px;">TALENT IS THE REAL DEMAND</span>
+</div>
+<div class="agenda-item item-4">
+  <span class="agenda-num">04</span>
+  <span class="agenda-num-bar"></span>
+  <span class="agenda-text">软件人才工资与计算机工程项目之关系</span>
+  <span class="agenda-dash"></span>
+  <span style="font-size:12px;color:#555;letter-spacing:2px;margin-left:15px;">WAGE &amp; PROJECT ENGINEERING</span>
+</div>
+<div class="agenda-item item-5">
+  <span class="agenda-num">05</span>
+  <span class="agenda-num-bar"></span>
+  <span class="agenda-text">软件开发者工程师的人才培养</span>
+  <span class="agenda-dash"></span>
+  <span style="font-size:12px;color:#555;letter-spacing:2px;margin-left:15px;">TALENT CULTIVATION</span>
+</div>
+<div class="agenda-item item-6">
+  <span class="agenda-num">06</span>
+  <span class="agenda-num-bar"></span>
+  <span class="agenda-text">兴趣与实践培养</span>
+  <span class="agenda-dash"></span>
+  <span style="font-size:12px;color:#555;letter-spacing:2px;margin-left:15px;">INTEREST &amp; PRACTICE</span>
+</div>
+
+<div class="meta-1"><span class="meta-num">讲者</span> 独立开源研究者 · 协作机制设计师</div>
+<div class="meta-2"><span class="meta-num">视角</span> 新制度经济学 · 协作激励 · 治理机制</div>
+<div class="meta-3"><span class="meta-num">基调</span> 智识讨论 · 开放交流 · 思维碰撞</div>
+
+<div class="footer-left">OPEN SOURCE · DOSSIER №01</div>
+<div class="footer-right">2025 / DARK ACADEMIC SERIES</div>
+
+<div class="bottom-bar"></div>
+<div class="bottom-bar-2"></div>
+</body></html>

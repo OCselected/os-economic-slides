@@ -1,0 +1,160 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>理解争议与对立</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;color:#1B3B6B}
+body{background:#F5F0E8;position:relative;overflow:hidden}
+
+.page{position:absolute;top:0;left:0;width:1600px;height:900px;padding:50px 70px;display:flex;flex-direction:column}
+
+/* header */
+.header{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid #1B3B6B;padding-bottom:14px;margin-bottom:20px}
+.header .num{font-family:'Noto Serif SC','Songti SC',serif;font-size:42px;color:#8B7355;line-height:1;letter-spacing:2px}
+.header .topic{font-family:'Noto Serif SC','Songti SC',serif;font-size:15px;color:#555;letter-spacing:6px;text-align:right}
+.header .topic-en{font-family:'Noto Serif SC',serif;font-size:12px;color:#8B7355;letter-spacing:4px;margin-top:4px;text-transform:uppercase}
+
+/* main title */
+.title-row{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:8px}
+.main-title{font-family:'Noto Serif SC','Songti SC',serif;font-size:56px;color:#1B3B6B;font-weight:600;letter-spacing:4px;line-height:1.1}
+.subtitle{font-family:'Noto Serif SC',serif;font-size:17px;color:#555;letter-spacing:3px;margin-bottom:10px;margin-top:6px}
+.accent-block{width:70px;height:70px;background:#1B3B6B;margin-bottom:4px}
+
+/* city slice visual */
+.city-slice{display:flex;align-items:flex-end;justify-content:center;height:210px;margin:12px 0 14px 0;position:relative;border-left:1px solid #1B3B6B;border-right:1px solid #1B3B6B;padding:0 20px}
+
+.bldg{width:60px;margin:0 4px;background:#1B3B6B;position:relative}
+.bldg .window{width:8px;height:8px;background:#F5F0E8;position:absolute}
+.bldg .top-bar{height:6px;background:#8B7355;position:absolute;top:0;left:0;width:100%}
+
+.b1{height:130px;background:#1B3B6B}
+.b2{height:180px;background:#8B7355}
+.b3{height:100px;background:#1B3B6B}
+.b4{height:200px;background:#5C4A2E}
+.b5{height:150px;background:#1B3B6B}
+.b6{height:90px;background:#8B7355}
+.b7{height:170px;background:#1B3B6B}
+.b8{height:120px;background:#8B7355}
+.b9{height:200px;background:#1B3B6B}
+.b10{height:140px;background:#5C4A2E}
+.b11{height:160px;background:#1B3B6B}
+.b12{height:110px;background:#8B7355}
+
+/* base line */
+.city-base{position:absolute;bottom:0;left:0;right:0;height:4px;background:#1B3B6B}
+.city-label{position:absolute;bottom:8px;left:30px;font-size:11px;color:#8B7355;letter-spacing:3px;font-family:'Noto Serif SC',serif}
+
+/* metaphor text */
+.metaphor{font-family:'Noto Serif SC',serif;font-size:13px;color:#555;letter-spacing:2px;text-align:center;margin-bottom:18px;font-style:italic}
+
+/* body grid */
+.body-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:50px;row-gap:14px;flex:1;align-content:start}
+
+.item{display:flex;align-items:flex-start;gap:14px;padding:8px 0;border-bottom:1px dotted #8B7355}
+.item .marker{flex-shrink:0;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif SC',serif;font-size:13px;color:#F5F0E8;background:#1B3B6B}
+.item .marker.copper{background:#8B7355}
+.item .marker.line{background:transparent;border:1.5px solid #1B3B6B;color:#1B3B6B;width:28px;height:28px;border-radius:50%}
+.item .marker.line2{background:transparent;border:1.5px solid #8B7355;color:#8B7355;width:28px;height:28px;border-radius:0}
+
+.item .text{font-size:16px;line-height:1.5;color:#1B3B6B;font-weight:500;flex:1}
+.item .text .sub{display:block;font-size:12px;color:#8B7355;margin-top:3px;letter-spacing:1px;font-weight:400}
+
+/* footer */
+.footer{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #1B3B6B;padding-top:12px;margin-top:16px;font-size:11px;color:#555;letter-spacing:2px}
+.footer .left{font-family:'Noto Serif SC',serif}
+.footer .right{font-family:'Noto Serif SC',serif;color:#8B7355}
+
+/* corner deco */
+.corner-tl{position:absolute;top:0;left:0;width:40px;height:40px;border-top:3px solid #1B3B6B;border-left:3px solid #1B3B6B}
+.corner-br{position:absolute;bottom:0;right:0;width:40px;height:40px;border-bottom:3px solid #1B3B6B;border-right:3px solid #1B3B6B}
+</style></head><body>
+<div class="page">
+<div class="corner-tl"></div>
+<div class="corner-br"></div>
+
+<div class="header">
+  <div class="num">叁</div>
+  <div>
+    <div class="topic">理解争议与对立</div>
+    <div class="topic-en">Controversy &amp; Opposition</div>
+  </div>
+</div>
+
+<div class="title-row">
+  <div>
+    <div class="main-title">秩序的<span style="color:#8B7355">裂痕</span></div>
+    <div class="subtitle">城市切片中的制度张力与价值博弈</div>
+  </div>
+  <div class="accent-block"></div>
+</div>
+
+<div class="city-slice">
+  <div class="bldg b1"></div>
+  <div class="bldg b2"></div>
+  <div class="bldg b3"></div>
+  <div class="bldg b4"></div>
+  <div class="bldg b5"></div>
+  <div class="bldg b6"></div>
+  <div class="bldg b7"></div>
+  <div class="bldg b8"></div>
+  <div class="bldg b9"></div>
+  <div class="bldg b10"></div>
+  <div class="bldg b11"></div>
+  <div class="bldg b12"></div>
+  <div class="city-base"></div>
+  <div class="city-label">URBAN CROSS-SECTION · 城市切片</div>
+</div>
+
+<div class="metaphor">并排砖楼如城市切片 —— 历史肌理与现代生活的秩序共生，暗含制度间的持续博弈</div>
+
+<div class="body-grid">
+
+  <div class="item">
+    <div class="marker">壹</div>
+    <div class="text">理解争议与对立
+      <span class="sub">CONTROVERSY &amp; OPPOSITION</span>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="marker copper">贰</div>
+    <div class="text">排他权与形成垄断
+      <span class="sub">EXCLUSIVITY &amp; MONOPOLY</span>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="marker line">叁</div>
+    <div class="text">反垄断与拆分
+      <span class="sub">ANTI-TRUST &amp; BREAKUP</span>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="marker line2">肆</div>
+    <div class="text">作者希望读者付费阅读，读者希望作者免费创作
+      <span class="sub">AUTHORS WANT PAID READERS · READERS WANT FREE AUTHORS</span>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="marker">伍</div>
+    <div class="text">Bill Gates 抱怨不公，开发者们互惠分享
+      <span class="sub">GATES COMPLAINS · DEVELOPERS SHARE</span>
+    </div>
+  </div>
+
+  <div class="item">
+    <div class="marker copper">陆</div>
+    <div class="text">一方面谴责巨头，另一方面又拥抱巨头
+      <span class="sub">DENOUNCE THE GIANTS · EMBRACE THE GIANTS</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="left">新制度经济学视角下的开源</div>
+  <div class="right">OPEN SOURCE · INSTITUTIONAL PERSPECTIVE</div>
+</div>
+</div>
+</body></html>

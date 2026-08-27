@@ -1,0 +1,303 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>软件成分分析：SBOM</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0}
+body{font-family:'Noto Sans SC','Source Han Sans SC','PingFang SC',sans-serif;background:#F5F0E8;color:#1B3B6B;position:relative}
+.bg-texture{position:absolute;top:0;left:0;width:1600px;height:900px;background-image:radial-gradient(ellipse at 20% 50%, rgba(139,115,85,0.04) 0%, transparent 50%),radial-gradient(ellipse at 80% 20%, rgba(27,59,107,0.03) 0%, transparent 40%);pointer-events:none}
+
+/* Top header bar */
+.top-bar{position:absolute;top:50px;left:80px;right:80px;height:2px;background:#1B3B6B}
+.top-bar-accent{position:absolute;top:50px;left:80px;width:120px;height:2px;background:#8B7355}
+
+.section-label{position:absolute;top:60px;left:80px;font-size:13px;letter-spacing:6px;color:#8B7355;font-weight:600}
+.section-number{position:absolute;top:55px;right:80px;font-size:12px;letter-spacing:3px;color:#8B7355;font-family:'Noto Serif SC',serif}
+
+/* Title area */
+.title-block{position:absolute;top:100px;left:80px;width:440px}
+.main-title{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:56px;font-weight:700;color:#1B3B6B;line-height:1.15;letter-spacing:2px}
+.main-title-en{font-family:'Noto Serif SC',serif;font-size:15px;color:#8B7355;letter-spacing:4px;margin-top:12px;font-style:italic}
+
+.title-divider{position:absolute;top:270px;left:80px;width:200px;height:1px;background:#1B3B6B}
+
+.subtitle-block{position:absolute;top:290px;left:80px;width:440px}
+.subtitle-line1{font-family:'Noto Serif SC',serif;font-size:20px;color:#1B3B6B;line-height:1.8;font-weight:500}
+.subtitle-line2{font-family:'Noto Sans SC',sans-serif;font-size:14px;color:#555;line-height:1.8;letter-spacing:1px;margin-top:4px}
+.subtitle-line3{font-family:'Noto Sans SC',sans-serif;font-size:13px;color:#8B7355;line-height:1.8;letter-spacing:1px;margin-top:2px}
+
+/* Decorative geometric elements near title */
+.deco-circle{position:absolute;top:130px;left:480px;width:70px;height:70px;border:2px solid #1B3B6B;border-radius:50%}
+.deco-circle-inner{position:absolute;top:150px;left:500px;width:30px;height:30px;background:#1B3B6B;border-radius:50%}
+.deco-square{position:absolute;top:160px;left:530px;width:40px;height:40px;border:1.5px solid #8B7355}
+.deco-line-v{position:absolute;top:100px;left:575px;width:1px;height:200px;background:#8B7355;opacity:0.4}
+.deco-square-small{position:absolute;top:230px;left:540px;width:20px;height:20px;background:#8B7355}
+
+/* Bottom insight bar */
+.insight-bar{position:absolute;bottom:50px;left:80px;right:80px;display:flex;align-items:center;gap:20px}
+.insight-line{flex:1;height:1px;background:#1B3B6B;opacity:0.5}
+.insight-text{font-family:'Noto Serif SC',serif;font-size:14px;color:#555;letter-spacing:2px;white-space:nowrap}
+.insight-dot{width:8px;height:8px;background:#1B3B6B;border-radius:50%;flex-shrink:0}
+
+/* Screen puzzle grid */
+.screen-grid{position:absolute;top:110px;right:80px;width:940px;height:640px;display:grid;grid-template-columns:repeat(3,300px);grid-template-rows:repeat(2,310px);gap:20px;justify-content:end}
+
+.screen-card{position:relative;background:#EFE8DA;border:1.5px solid #1B3B6B;padding:14px 16px;display:flex;flex-direction:column}
+.screen-card.highlight{border-color:#8B7355;border-width:2px;background:#F0E8D8}
+
+.screen-header{display:flex;align-items:center;justify-content:space-between;padding-bottom:8px;border-bottom:1px solid #1B3B6B;opacity:0.6}
+.screen-dots{display:flex;gap:4px}
+.screen-dot{width:7px;height:7px;border-radius:50%;background:#555}
+.screen-dot:nth-child(2){background:#8B7355}
+.screen-dot:nth-child(3){background:#1B3B6B}
+.screen-title-text{font-size:10px;letter-spacing:2px;color:#555;font-family:'Noto Serif SC',serif}
+
+.screen-content{flex:1;display:flex;flex-direction:column;padding-top:10px}
+
+/* UI mock elements */
+.ui-bar{height:8px;background:#D4CBB8;border-radius:1px;margin-bottom:6px}
+.ui-bar.long{width:100%}
+.ui-bar.mid{width:70%}
+.ui-bar.short{width:45%}
+.ui-text-line{height:1px;background:#B5A98E;margin-bottom:5px}
+.ui-text-line.long{width:100%}
+.ui-text-line.mid{width:80%}
+.ui-text-line.short{width:55%}
+
+.ui-block{width:40px;height:40px;background:#1B3B6B;opacity:0.15;border-radius:1px;margin-bottom:6px}
+.ui-block.circle{border-radius:50%;width:36px;height:36px}
+
+.ui-list-item{display:flex;align-items:center;gap:6px;height:16px;margin-bottom:4px}
+.ui-list-dot{width:4px;height:4px;background:#8B7355;border-radius:50%;flex-shrink:0}
+.ui-list-bar{height:3px;background:#B5A98E;flex:1}
+.ui-list-bar.short{width:60%;flex:0 0 auto}
+
+/* About badge */
+.about-badge{position:absolute;bottom:12px;right:12px;background:#1B3B6B;color:#F5F0E8;font-size:11px;font-family:'Noto Serif SC',serif;padding:5px 10px;letter-spacing:3px;font-weight:600}
+.about-badge-copper{background:#8B7355}
+
+/* Screen label */
+.screen-label{position:absolute;top:-9px;left:14px;background:#F5F0E8;padding:0 10px;font-size:11px;letter-spacing:3px;color:#1B3B6B;font-weight:600;font-family:'Noto Sans SC',sans-serif}
+.screen-label-en{position:absolute;top:-9px;right:14px;background:#F5F0E8;padding:0 8px;font-size:9px;letter-spacing:2px;color:#8B7355;font-style:italic;font-family:'Noto Serif SC',serif}
+
+.screen-idx{position:absolute;bottom:-10px;right:14px;background:#F5F0E8;padding:0 8px;font-size:9px;letter-spacing:2px;color:#8B7355;font-family:'Noto Serif SC',serif}
+
+/* SBOM list elements for last card */
+.sbom-item{display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px dotted #C4BAA0;font-size:9px;color:#1B3B6B;font-family:'Noto Serif SC',serif}
+.sbom-item:last-child{border-bottom:none}
+.sbom-version{color:#8B7355;font-size:8px}
+
+/* Arrow between title and screens */
+.arrow-flow{position:absolute;top:180px;left:590px;width:80px;height:60px;display:flex;align-items:center}
+.arrow-line{width:60px;height:1px;background:#1B3B6B}
+.arrow-head{width:0;height:0;border-left:8px solid #1B3B6B;border-top:4px solid transparent;border-bottom:4px solid transparent}
+.arrow-label{position:absolute;top:16px;left:0;width:80px;font-size:10px;color:#8B7355;letter-spacing:2px;text-align:center;font-family:'Noto Serif SC',serif}
+
+/* Bottom right quote */
+.bottom-quote{position:absolute;bottom:50px;right:80px;text-align:right}
+.bottom-quote-text{font-family:'Noto Serif SC',serif;font-size:13px;color:#555;letter-spacing:1px;font-style:italic}
+</style></head><body>
+<div class="bg-texture"></div>
+
+<div class="top-bar"></div>
+<div class="top-bar-accent"></div>
+<div class="section-label">第 〇 四 章 · 制 度 透 视</div>
+<div class="section-number">04 / 12</div>
+
+<div class="title-block">
+<div class="main-title">软件成分分析</div>
+<div class="main-title-en">SOFTWARE BILL OF MATERIALS</div>
+</div>
+
+<div class="deco-circle"></div>
+<div class="deco-circle-inner"></div>
+<div class="deco-square"></div>
+<div class="deco-line-v"></div>
+<div class="deco-square-small"></div>
+
+<div class="title-divider"></div>
+
+<div class="subtitle-block">
+<div class="subtitle-line1">请打开你的手机</div>
+<div class="subtitle-line2">请打开你的 App &nbsp;·&nbsp; 请打开你的浏览器</div>
+<div class="subtitle-line2">请打开你的操作系统 &nbsp;·&nbsp; 请打开你的云服务</div>
+<div class="subtitle-line3">— 点击「关于」，你看到的都是开源</div>
+</div>
+
+<div class="arrow-flow">
+<div class="arrow-line"></div>
+<div class="arrow-head"></div>
+<div class="arrow-label">开 启</div>
+</div>
+
+<div class="screen-grid">
+<!-- Card 1: Phone -->
+<div class="screen-card">
+<div class="screen-label">手机</div>
+<div class="screen-label-en">Phone</div>
+<div class="screen-header">
+<div class="screen-dots"><span class="screen-dot"></span><span class="screen-dot"></span><span class="screen-dot"></span></div>
+<div class="screen-title-text">ANDROID / iOS</div>
+</div>
+<div class="screen-content">
+<div class="ui-block circle"></div>
+<div class="ui-bar long"></div>
+<div class="ui-bar short"></div>
+<div style="height:8px"></div>
+<div class="ui-list-item"><span class="ui-list-dot"></span><span class="ui-list-bar"></span></div>
+<div class="ui-list-item"><span class="ui-list-dot"></span><span class="ui-list-bar"></span></div>
+<div class="ui-list-item"><span class="ui-list-dot"></span><span class="ui-list-bar short"></span></div>
+<div class="ui-list-item"><span class="ui-list-dot"></span><span class="ui-list-bar"></span></div>
+<div class="ui-list-item"><span class="ui-list-dot"></span><span class="ui-list-bar short"></span></div>
+<div class="ui-list-item"><span class="ui-list-dot"></span><span class="ui-list-bar"></span></div>
+<div class="ui-list-item"><span class="ui-list-dot"></span><span class="ui-list-bar short"></span></div>
+</div>
+<div class="about-badge">关 于</div>
+<div class="screen-idx">— 一 —</div>
+</div>
+
+<!-- Card 2: App -->
+<div class="screen-card">
+<div class="screen-label">App</div>
+<div class="screen-label-en">Application</div>
+<div class="screen-header">
+<div class="screen-dots"><span class="screen-dot"></span><span class="screen-dot"></span><span class="screen-dot"></span></div>
+<div class="screen-title-text">APPLICATION</div>
+</div>
+<div class="screen-content">
+<div style="display:flex;gap:6px;margin-bottom:8px">
+<div class="ui-block" style="flex:1;height:32px"></div>
+<div class="ui-block" style="flex:1;height:32px;background:#8B7355;opacity:0.15"></div>
+</div>
+<div class="ui-bar long"></div>
+<div class="ui-bar mid"></div>
+<div style="height:8px"></div>
+<div class="ui-list-item"><span class="ui-list-dot"></span><span class="ui-list-bar"></span></div>
+<div class="ui-list-item"><span class="ui-list-dot"></span><span class="ui-list-bar short"></span></div>
+<div class="ui-list-item"><span class="ui-list-dot"></span><span class="ui-list-bar"></span></div>
+<div class="ui-list-item"><span class="ui-list-dot"></span><span class="ui-list-bar short"></span></div>
+<div class="ui-list-item"><span class="ui-list-dot"></span><span class="ui-list-bar"></span></div>
+<div class="ui-list-item"><span class="ui-list-dot"></span><span class="ui-list-bar short"></span></div>
+</div>
+<div class="about-badge">关 于</div>
+<div class="screen-idx">— 二 —</div>
+</div>
+
+<!-- Card 3: Browser -->
+<div class="screen-card">
+<div class="screen-label">浏览器</div>
+<div class="screen-label-en">Browser</div>
+<div class="screen-header">
+<div class="screen-dots"><span class="screen-dot"></span><span class="screen-dot"></span><span class="screen-dot"></span></div>
+<div class="screen-title-text">chrome://</div>
+</div>
+<div class="screen-content">
+<div class="ui-bar long" style="height:6px;background:#B5A98E"></div>
+<div style="display:flex;gap:4px;margin:6px 0 8px">
+<div class="ui-block" style="width:24px;height:24px;flex-shrink:0"></div>
+<div class="ui-block" style="width:24px;height:24px;flex-shrink:0;background:#8B7355;opacity:0.15"></div>
+<div class="ui-block" style="width:24px;height:24px;flex-shrink:0"></div>
+</div>
+<div class="ui-bar long"></div>
+<div class="ui-bar short"></div>
+<div class="ui-text-line long"></div>
+<div class="ui-text-line mid"></div>
+<div style="height:6px"></div>
+<div class="ui-list-item"><span class="ui-list-dot"></span><span class="ui-list-bar"></span></div>
+<div class="ui-list-item"><span class="ui-list-dot"></span><span class="ui-list-bar short"></span></div>
+<div class="ui-list-item"><span class="ui-list-dot"></span><span class="ui-list-bar"></span></div>
+<div class="ui-list-item"><span class="ui-list-dot"></span><span class="ui-list-bar short"></span></div>
+</div>
+<div class="about-badge">关 于</div>
+<div class="screen-idx">— 三 —</div>
+</div>
+
+<!-- Card 4: OS -->
+<div class="screen-card">
+<div class="screen-label">操作系统</div>
+<div class="screen-label-en">Operating System</div>
+<div class="screen-header">
+<div class="screen-dots"><span class="screen-dot"></span><span class="screen-dot"></span><span class="screen-dot"></span></div>
+<div class="screen-title-text">KERNEL</div>
+</div>
+<div class="screen-content">
+<div class="ui-block" style="width:50px;height:30px"></div>
+<div style="display:flex;gap:5px;margin:6px 0">
+<div class="ui-block circle" style="width:20px;height:20px"></div>
+<div class="ui-block circle" style="width:20px;height:20px;background:#8B7355;opacity:0.15"></div>
+<div class="ui-block circle" style="width:20px;height:20px"></div>
+</div>
+<div class="ui-text-line long"></div>
+<div class="ui-text-line short"></div>
+<div class="ui-text-line long"></div>
+<div class="ui-text-line mid"></div>
+<div style="height:6px"></div>
+<div class="ui-list-item"><span class="ui-list-dot"></span><span class="ui-list-bar"></span></div>
+<div class="ui-list-item"><span class="ui-list-dot"></span><span class="ui-list-bar short"></span></div>
+<div class="ui-list-item"><span class="ui-list-dot"></span><span class="ui-list-bar"></span></div>
+<div class="ui-list-item"><span class="ui-list-dot"></span><span class="ui-list-bar short"></span></div>
+</div>
+<div class="about-badge">关 于</div>
+<div class="screen-idx">— 四 —</div>
+</div>
+
+<!-- Card 5: Cloud -->
+<div class="screen-card">
+<div class="screen-label">云服务</div>
+<div class="screen-label-en">Cloud</div>
+<div class="screen-header">
+<div class="screen-dots"><span class="screen-dot"></span><span class="screen-dot"></span><span class="screen-dot"></span></div>
+<div class="screen-title-text">CLOUD PLATFORM</div>
+</div>
+<div class="screen-content">
+<div style="display:flex;gap:5px;margin-bottom:8px">
+<div class="ui-block" style="flex:1;height:28px"></div>
+<div class="ui-block" style="flex:1;height:28px;background:#8B7355;opacity:0.12"></div>
+<div class="ui-block" style="flex:1;height:28px"></div>
+</div>
+<div class="ui-bar mid"></div>
+<div class="ui-bar long"></div>
+<div style="height:8px"></div>
+<div class="ui-list-item"><span class="ui-list-dot"></span><span class="ui-list-bar"></span></div>
+<div class="ui-list-item"><span class="ui-list-dot"></span><span class="ui-list-bar short"></span></div>
+<div class="ui-list-item"><span class="ui-list-dot"></span><span class="ui-list-bar"></span></div>
+<div class="ui-list-item"><span class="ui-list-dot"></span><span class="ui-list-bar short"></span></div>
+<div class="ui-list-item"><span class="ui-list-dot"></span><span class="ui-list-bar"></span></div>
+</div>
+<div class="about-badge">关 于</div>
+<div class="screen-idx">— 五 —</div>
+</div>
+
+<!-- Card 6: SBOM -->
+<div class="screen-card highlight">
+<div class="screen-label" style="color:#8B7355">SBOM 成分列表</div>
+<div class="screen-label-en">Bill of Materials</div>
+<div class="screen-header" style="border-color:#8B7355">
+<div class="screen-dots"><span class="screen-dot" style="background:#8B7355"></span><span class="screen-dot"></span><span class="screen-dot"></span></div>
+<div class="screen-title-text" style="color:#8B7355">SBOM.CY</div>
+</div>
+<div class="screen-content" style="padding-top:8px">
+<div class="sbom-item"><span>linux / kernel</span><span class="sbom-version">v6.6 LTS</span></div>
+<div class="sbom-item"><span>busybox</span><span class="sbom-version">1.36</span></div>
+<div class="sbom-item"><span>openssl</span><span class="sbom-version">3.2</span></div>
+<div class="sbom-item"><span>webkit</span><span class="sbom-version">616.1</span></div>
+<div class="sbom-item"><span>nginx</span><span class="sbom-version">1.26</span></div>
+<div class="sbom-item"><span>busybox-ns</span><span class="sbom-version">1.36</span></div>
+<div class="sbom-item"><span>linux-headers</span><span class="sbom-version">6.6</span></div>
+<div class="sbom-item"><span>curl</span><span class="sbom-version">8.7</span></div>
+<div class="sbom-item"><span>glibc</span><span class="sbom-version">2.38</span></div>
+</div>
+<div class="about-badge about-badge-copper">SBOM</div>
+<div class="screen-idx" style="color:#1B3B6B">— 六 —</div>
+</div>
+</div>
+
+<div class="insight-bar">
+<span class="insight-dot"></span>
+<span class="insight-text">— 你每天使用的所有软件，底层都是开源组件的层层堆叠 —</span>
+<span class="insight-line"></span>
+</div>
+
+<div class="bottom-quote">
+<div class="bottom-quote-text">「关于」页之后，是一座开源的城池</div>
+</div>
+</body></html>

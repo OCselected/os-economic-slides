@@ -1,0 +1,270 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>开源许可的演化</title><style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:1600px;height:900px;overflow:hidden;}
+body{background:#F5F0E8;font-family:'Noto Sans SC','Source Han Sans SC','PingFang SC',sans-serif;color:#1B3B6B;position:relative;}
+
+/* parchment texture */
+body::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(139,115,85,0.018) 3px,rgba(139,115,85,0.018) 4px),repeating-linear-gradient(90deg,transparent,transparent 5px,rgba(27,59,107,0.012) 5px,rgba(27,59,107,0.012) 6px);pointer-events:none;}
+
+/* header bar */
+.header{position:absolute;top:0;left:0;width:1600px;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 60px;border-bottom:2px solid #1B3B6B;}
+.header-left{display:flex;align-items:center;gap:16px;}
+.header-num{font-family:'Noto Serif SC',serif;font-size:24px;font-weight:700;color:#1B3B6B;letter-spacing:2px;}
+.header-rule{width:80px;height:2px;background:#1B3B6B;}
+.header-meta{font-size:12px;color:#8B7355;letter-spacing:4px;text-transform:uppercase;}
+
+/* footer bar */
+.footer{position:absolute;bottom:0;left:0;width:1600px;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 60px;border-top:1px solid #1B3B6B;}
+.footer-left{font-size:11px;color:#8B7355;letter-spacing:3px;}
+.footer-right{font-size:11px;color:#8B7355;letter-spacing:3px;}
+
+/* left panel - geometric network */
+.net-panel{position:absolute;top:72px;left:0;width:620px;height:772px;}
+
+.net-title{position:absolute;top:48px;left:60px;width:520px;}
+.net-kicker{font-size:11px;color:#8B7355;letter-spacing:5px;margin-bottom:18px;font-weight:600;}
+.net-h1{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:38px;font-weight:700;line-height:1.25;color:#1B3B6B;margin-bottom:16px;}
+.net-sub{font-family:'Noto Serif SC',serif;font-size:14px;color:#555;line-height:1.7;border-left:2px solid #8B7355;padding-left:14px;}
+
+/* network canvas area */
+.net-canvas{position:absolute;top:230px;left:40px;width:540px;height:440px;}
+
+/* large circle bg */
+.net-circle-big{position:absolute;top:20px;left:150px;width:280px;height:280px;border:2px solid #1B3B6B;border-radius:50%;opacity:0.7;}
+.net-circle-fill{position:absolute;top:80px;left:210px;width:160px;height:160px;background:#1B3B6B;border-radius:50%;opacity:0.08;}
+
+/* geometric squares */
+.net-square-1{position:absolute;top:0px;left:0px;width:64px;height:64px;border:2px solid #1B3B6B;}
+.net-square-2{position:absolute;top:340px;left:420px;width:48px;height:48px;background:#1B3B6B;opacity:0.12;}
+.net-square-3{position:absolute;top:60px;left:440px;width:28px;height:28px;background:#8B7355;opacity:0.6;}
+
+/* horizontal and vertical rules */
+.net-rule-h1{position:absolute;top:196px;left:0;width:540px;height:1px;background:#1B3B6B;opacity:0.3;}
+.net-rule-v1{position:absolute;top:0;left:300px;width:1px;height:440px;background:#1B3B6B;opacity:0.2;}
+
+/* pins (gold dots) */
+.pin{position:absolute;width:10px;height:10px;border-radius:50%;background:#8B7355;border:1.5px solid #1B3B6B;}
+.pin-lg{position:absolute;width:14px;height:14px;border-radius:50%;background:#1B3B6B;border:2px solid #8B7355;}
+.pin-sm{position:absolute;width:6px;height:6px;border-radius:50%;background:#1B3B6B;}
+
+/* connector lines via SVG */
+.net-lines{position:absolute;top:0;left:0;width:540px;height:440px;pointer-events:none;}
+
+/* timeline at bottom of left panel */
+.net-timeline{position:absolute;top:700px;left:60px;width:520px;height:48px;display:flex;align-items:center;justify-content:space-between;}
+.tl-item{display:flex;flex-direction:column;align-items:center;gap:4px;}
+.tl-dot{width:8px;height:8px;background:#1B3B6B;border-radius:50%;}
+.tl-year{font-family:'Noto Serif SC',serif;font-size:10px;color:#8B7355;letter-spacing:1px;}
+.tl-line{position:absolute;top:724px;left:80px;width:480px;height:1px;background:#1B3B6B;opacity:0.4;}
+
+/* right panel - content */
+.content-panel{position:absolute;top:72px;left:620px;width:980px;height:772px;padding:48px 60px 40px 60px;display:flex;flex-direction:column;}
+
+.content-kicker{font-size:11px;color:#8B7355;letter-spacing:5px;font-weight:600;margin-bottom:14px;}
+.content-h2{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:24px;font-weight:700;color:#1B3B6B;margin-bottom:8px;letter-spacing:1px;}
+.content-h2-en{font-family:'Noto Serif SC',serif;font-size:13px;color:#555;letter-spacing:2px;margin-bottom:24px;font-style:italic;}
+
+.content-divider{width:100%;height:1px;background:#1B3B6B;opacity:0.3;margin-bottom:22px;}
+
+.points{display:flex;flex-direction:column;gap:18px;}
+
+.point{display:flex;align-items:flex-start;gap:20px;padding:14px 18px 14px 0;border-left:3px solid transparent;transition:none;}
+.point:hover{border-left-color:#1B3B6B;}
+
+.point-idx{flex-shrink:0;width:44px;height:44px;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif SC',serif;font-size:18px;font-weight:700;color:#1B3B6B;border:1.5px solid #1B3B6B;position:relative;}
+.point-idx::after{content:"";position:absolute;top:-4px;right:-4px;width:8px;height:8px;background:#8B7355;border-radius:50%;}
+
+.point-body{flex:1;padding-top:4px;}
+.point-title{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:17px;font-weight:700;color:#1B3B6B;margin-bottom:4px;line-height:1.3;}
+.point-desc{font-size:12.5px;color:#555;line-height:1.55;letter-spacing:0.3px;}
+.point-tag{font-size:10px;color:#8B7355;letter-spacing:2px;margin-top:4px;font-weight:600;}
+
+/* decorative corner elements */
+.corner-tr{position:absolute;top:96px;right:60px;width:36px;height:36px;border-top:2px solid #1B3B6B;border-right:2px solid #1B3B6B;}
+.corner-br{position:absolute;bottom:80px;right:60px;width:36px;height:36px;border-bottom:2px solid #1B3B6B;border-left:2px solid #1B3B6B;}
+
+/* small tag chips on right */
+.tag-row{display:flex;gap:8px;margin-top:20px;padding-top:16px;border-top:1px solid rgba(27,59,107,0.15);}
+.tag-chip{font-size:10px;color:#1B3B6B;border:1px solid #1B3B6B;padding:4px 10px;letter-spacing:1.5px;}
+.tag-chip-fill{font-size:10px;color:#F5F0E8;background:#1B3B6B;padding:4px 10px;letter-spacing:1.5px;}
+</style></head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <span class="header-num">04</span>
+    <span class="header-rule"></span>
+    <span style="font-family:'Noto Serif SC',serif;font-size:16px;font-weight:600;letter-spacing:2px;">开源许可 · Open Source Licenses</span>
+  </div>
+  <div class="header-meta">新制度经济学视角 · Lecture IV</div>
+</div>
+
+<!-- LEFT PANEL: network visualization -->
+<div class="net-panel">
+
+  <div class="net-title">
+    <div class="net-kicker">VISUAL METAPHOR</div>
+    <div class="net-h1">许可的<br>网络化连接</div>
+    <div class="net-sub">金色图钉与透明线交织的立体几何——<br>开源许可之间相互引用、继承与冲突的<br>拓扑关系，呈现制度演化的路径依赖。</div>
+  </div>
+
+  <div class="net-canvas">
+    <!-- background shapes -->
+    <div class="net-circle-big"></div>
+    <div class="net-circle-fill"></div>
+    <div class="net-square-1"></div>
+    <div class="net-square-2"></div>
+    <div class="net-square-3"></div>
+    <div class="net-rule-h1"></div>
+    <div class="net-rule-v1"></div>
+
+    <!-- connector lines -->
+    <svg class="net-lines" viewBox="0 0 540 440" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="#1B3B6B" stroke-width="0.8" fill="none" opacity="0.55">
+        <line x1="32" y1="32" x2="210" y2="210"/>
+        <line x1="454" y1="74" x2="290" y2="190"/>
+        <line x1="444" y1="364" x2="270" y2="240"/>
+        <line x1="32" y1="32" x2="100" y2="380"/>
+        <line x1="100" y1="380" x2="320" y2="300"/>
+        <line x1="210" y1="210" x2="444" y2="364"/>
+        <line x1="290" y1="190" x2="320" y2="300"/>
+        <line x1="454" y1="74" x2="210" y2="210"/>
+        <line x1="150" y1="120" x2="350" y2="280"/>
+        <line x1="380" y1="100" x2="180" y2="350"/>
+        <line x1="60" y1="200" x2="400" y2="400"/>
+        <line x1="480" y1="150" x2="140" y2="330"/>
+        <line x1="210" y1="210" x2="100" y2="380"/>
+        <line x1="320" y1="300" x2="454" y2="74"/>
+        <line x1="400" y1="400" x2="60" y2="200"/>
+      </g>
+      <g stroke="#8B7355" stroke-width="0.5" fill="none" opacity="0.4">
+        <line x1="32" y1="32" x2="454" y2="74"/>
+        <line x1="100" y1="380" x2="444" y2="364"/>
+        <line x1="150" y1="120" x2="380" y2="100"/>
+        <line x1="210" y1="210" x2="320" y2="300"/>
+      </g>
+    </svg>
+
+    <!-- pins -->
+    <div class="pin-lg" style="top:24px;left:24px;"></div>
+    <div class="pin-lg" style="top:66px;left:446px;"></div>
+    <div class="pin-lg" style="top:202px;left:202px;"></div>
+    <div class="pin-lg" style="top:292px;left:312px;"></div>
+    <div class="pin-lg" style="top:356px;left:436px;"></div>
+    <div class="pin-lg" style="top:372px;left:92px;"></div>
+
+    <div class="pin" style="top:112px;left:142px;"></div>
+    <div class="pin" style="top:92px;left:372px;"></div>
+    <div class="pin" style="top:188px;left:52px;"></div>
+    <div class="pin" style="top:344px;left:172px;"></div>
+    <div class="pin" style="top:392px;left:392px;"></div>
+    <div class="pin" style="top:142px;left:472px;"></div>
+    <div class="pin" style="top:240px;left:340px;"></div>
+    <div class="pin" style="top:270px;left:80px;"></div>
+
+    <div class="pin-sm" style="top:40px;left:80px;"></div>
+    <div class="pin-sm" style="top:130px;left:240px;"></div>
+    <div class="pin-sm" style="top:220px;left:380px;"></div>
+    <div class="pin-sm" style="top:310px;left:220px;"></div>
+    <div class="pin-sm" style="top:200px;left:130px;"></div>
+    <div class="pin-sm" style="top:340px;left:280px;"></div>
+    <div class="pin-sm" style="top:40px;left:350px;"></div>
+    <div class="pin-sm" style="top:420px;left:180px;"></div>
+  </div>
+
+  <div class="tl-line"></div>
+  <div class="net-timeline">
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1989</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1997</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2002</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2016</div></div>
+    <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2024</div></div>
+  </div>
+</div>
+
+<div class="corner-tr"></div>
+<div class="corner-br"></div>
+
+<!-- RIGHT PANEL: content -->
+<div class="content-panel">
+  <div class="content-kicker">THE EVOLUTION OF OPEN SOURCE LICENSING</div>
+  <div class="content-h2">开源许可的演化谱系</div>
+  <div class="content-h2-en">From Academic Free Software to Commercial Enforcement & AI Frontier</div>
+
+  <div class="content-divider"></div>
+
+  <div class="points">
+
+    <div class="point">
+      <div class="point-idx">I</div>
+      <div class="point-body">
+        <div class="point-title">学术型开源许可的诞生与演变</div>
+        <div class="point-desc">从伯克利 BSD 许可到 MIT License：源自大学实验室的宽容型许可，以最小限制释放代码，成为学术代码共享的早期范式。</div>
+        <div class="point-tag">BSD · MIT · IPL</div>
+      </div>
+    </div>
+
+    <div class="point">
+      <div class="point-idx">II</div>
+      <div class="point-body">
+        <div class="point-title">互惠型许可的诞生与演变</div>
+        <div class="point-desc">GPL 家族以 Copyleft 机制回应学术型许可的"弱约束"，确立"衍生作品必须开源"的互惠原则，重塑了协作生产的制度基础。</div>
+        <div class="point-tag">GPL · LGPL · MPL · AGPL</div>
+      </div>
+    </div>
+
+    <div class="point">
+      <div class="point-idx">III</div>
+      <div class="point-body">
+        <div class="point-title">版权、专利与商标的制度张力</div>
+        <div class="point-desc">开源运动以版权法为工具达成自由共享，却与专利壁垒、商标治理形成持续张力——三种产权制度在数字时代交织博弈。</div>
+        <div class="point-tag">COPYRIGHT × PATENT × TRADEMARK</div>
+      </div>
+    </div>
+
+    <div class="point">
+      <div class="point-idx">IV</div>
+      <div class="point-body">
+        <div class="point-title">商业公司的法务介入</div>
+        <div class="point-desc">Red Hat、Google、Microsoft 等企业以法务团队深度参与许可设计与合规审查，开源从"爱好者运动"演变为"制度基础设施"。</div>
+        <div class="point-tag">RED HAT · GOOGLE · MICROSOFT · LINUX FOUNDATION</div>
+      </div>
+    </div>
+
+    <div class="point">
+      <div class="point-idx">V</div>
+      <div class="point-body">
+        <div class="point-title">Delayed Open Source Publication 猖獗</div>
+        <div class="point-desc">企业先商用后开源的"延迟公开"策略（如 Google 的 TensorFlow、Meta 的 Llama）模糊了开源与闭源的边界，交易成本显著上升。</div>
+        <div class="point-tag">DELAYED PUBLICATION · SOURCE AVAILABILITY</div>
+      </div>
+    </div>
+
+    <div class="point">
+      <div class="point-idx">VI</div>
+      <div class="point-body">
+        <div class="point-title">生成式 AI 引来新的挑战</div>
+        <div class="point-desc">训练数据中的版权代码、开源模型的许可兼容性、RLHF 衍生作品的归属——生成式 AI 正在系统性挑战既有许可框架的边界。</div>
+        <div class="point-tag">LLM · TRAINING DATA · DERIVATIVE WORKS</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="tag-row">
+    <span class="tag-chip-fill">新制度经济学</span>
+    <span class="tag-chip">交易成本</span>
+    <span class="tag-chip">路径依赖</span>
+    <span class="tag-chip">制度演化</span>
+    <span class="tag-chip">产权博弈</span>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-left">OPEN SOURCE · NEW INSTITUTIONAL ECONOMICS</div>
+  <div class="footer-right">SLIDE 04 / LICENSE EVOLUTION</div>
+</div>
+
+</body></html>

@@ -1,0 +1,210 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>基于代码共享的虚拟共同体</title><style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;}
+.slide{width:1600px;height:900px;background:#F5F0E8;position:relative;overflow:hidden;}
+/* parchment texture */
+.slide::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;background:repeating-linear-gradient(0deg,transparent 0px,transparent 3px,rgba(139,115,85,0.015) 3px,rgba(139,115,85,0.015) 4px),repeating-linear-gradient(90deg,transparent 0px,transparent 5px,rgba(27,59,107,0.01) 5px,rgba(27,59,107,0.01) 6px);pointer-events:none;z-index:0;}
+/* header band */
+.header{position:absolute;top:0;left:0;width:1600px;height:64px;background:#1B3B6B;z-index:5;display:flex;align-items:center;padding:0 48px;}
+.header-line{flex:1;height:2px;background:#8B7355;margin-left:24px;opacity:0.6;}
+.header-text{color:#F5F0E8;font-family:'Noto Serif SC','Songti SC',serif;font-size:14px;letter-spacing:4px;}
+.header-num{color:#8B7355;font-size:13px;margin-left:24px;letter-spacing:2px;}
+/* Bauhaus decorative elements */
+.deco-square{position:absolute;width:40px;height:40px;background:#1B3B6B;top:80px;left:48px;z-index:3;}
+.deco-circle-big{position:absolute;width:90px;height:90px;border:2px solid #1B3B6B;border-radius:50%;top:60px;right:48px;z-index:3;}
+.deco-circle-small{position:absolute;width:30px;height:30px;background:#8B7355;border-radius:50%;top:88px;right:76px;z-index:4;}
+.deco-triangle{position:absolute;top:88px;right:148px;width:0;height:0;border-left:14px solid transparent;border-right:14px solid transparent;border-bottom:24px solid #1B3B6B;z-index:3;}
+.deco-line-v{position:absolute;top:74px;left:534px;width:1px;height:750px;background:#1B3B6B;opacity:0.15;z-index:2;}
+/* title area */
+.title-zone{position:absolute;top:110px;left:80px;width:740px;z-index:5;}
+.title-num{font-family:'Noto Serif SC',serif;font-size:15px;color:#8B7355;letter-spacing:3px;margin-bottom:10px;}
+.title-main{font-family:'Noto Serif SC','Songti SC',serif;font-size:42px;color:#1B3B6B;font-weight:700;line-height:1.3;letter-spacing:1px;}
+.title-sub{font-family:'Noto Serif SC',serif;font-size:16px;color:#555;margin-top:18px;line-height:1.8;letter-spacing:1px;}
+.title-rule{width:80px;height:3px;background:#8B7355;margin-top:22px;}
+/* Globe area */
+.globe-zone{position:absolute;top:180px;left:600px;width:540px;height:540px;z-index:4;}
+.globe-svg{width:100%;height:100%;}
+/* right content */
+.right-zone{position:absolute;top:160px;right:48px;width:560px;z-index:5;}
+.right-lead{font-family:'Noto Serif SC',serif;font-size:15px;color:#8B7355;letter-spacing:2px;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid rgba(139,115,85,0.3);}
+.bullet{display:flex;align-items:flex-start;margin-bottom:14px;}
+.bullet-marker{width:10px;height:10px;background:#1B3B6B;margin-top:9px;margin-right:14px;flex-shrink:0;}
+.bullet-marker.circle{border-radius:50%;}
+.bullet-marker.diamond{transform:rotate(45deg);margin-top:7px;}
+.bullet-text{font-family:'Noto Serif SC',serif;font-size:16px;color:#1B3B6B;line-height:1.6;letter-spacing:0.5px;}
+.bullet-text .en{color:#8B7355;font-style:italic;font-size:14px;}
+.bullet-text .em{color:#555;font-size:14px;}
+.bullet-sub{font-family:'Noto Sans SC',sans-serif;font-size:12px;color:#555;margin-top:2px;letter-spacing:0.5px;}
+/* bottom quote */
+.quote-zone{position:absolute;bottom:48px;left:80px;width:1376px;height:88px;background:#1B3B6B;z-index:5;display:flex;align-items:center;padding:0 48px;}
+.quote-text{color:#F5F0E8;font-family:'Noto Serif SC',serif;font-size:18px;letter-spacing:2px;line-height:1.5;}
+.quote-text .gold{color:#C4A574;}
+.quote-accent{width:6px;height:36px;background:#8B7355;margin-right:28px;flex-shrink:0;}
+.quote-tag{margin-left:auto;color:#8B7355;font-family:'Noto Serif SC',serif;font-size:14px;letter-spacing:3px;text-align:right;line-height:1.5;}
+.quote-tag .big{font-size:22px;color:#F5F0E8;display:block;letter-spacing:2px;}
+/* bottom edge */
+.footer-line{position:absolute;bottom:0;left:0;width:1600px;height:6px;background:#1B3B6B;z-index:6;}
+.footer-line-copper{position:absolute;bottom:6px;left:0;width:534px;height:3px;background:#8B7355;z-index:7;}
+/* glow effect behind globe */
+.globe-glow{position:absolute;top:150px;left:570px;width:600px;height:600px;z-index:2;background:radial-gradient(ellipse at center,rgba(139,115,85,0.12) 0%,rgba(139,115,85,0.04) 40%,transparent 70%);pointer-events:none;}
+</style></head><body>
+<div class="slide">
+  <div class="header">
+    <span class="header-text">OPEN SOURCE · A NEW INSTITUTIONAL ECONOMICS PERSPECTIVE</span>
+    <span class="header-line"></span>
+    <span class="header-num">04 / 12</span>
+  </div>
+
+  <div class="deco-square"></div>
+  <div class="deco-circle-big"></div>
+  <div class="deco-circle-small"></div>
+  <div class="deco-triangle"></div>
+  <div class="deco-line-v"></div>
+
+  <div class="title-zone">
+    <div class="title-num">CHAPTER FOUR  ·  第四章</div>
+    <div class="title-main">基于代码共享的<br/>虚拟共同体</div>
+    <div class="title-sub">A Virtual Community<br/>Based on Code Sharing</div>
+    <div class="title-rule"></div>
+    <div class="title-sub" style="margin-top:20px;font-size:14px;line-height:1.7;color:#555;">
+      从 GNU 到 Linux，从邮件列表到基金会治理——<br/>
+      开源项目如何跨越地理边界，构建以协作为核心的<br/>
+      新型数字社会形态。
+    </div>
+  </div>
+
+  <div class="globe-glow"></div>
+  <div class="globe-zone">
+    <svg class="globe-svg" viewBox="0 0 540 540" xmlns="http://www.w3.org/2000/svg">
+      <!-- outer ring -->
+      <circle cx="270" cy="270" r="230" fill="none" stroke="#1B3B6B" stroke-width="1" opacity="0.3"/>
+      <circle cx="270" cy="270" r="200" fill="none" stroke="#1B3B6B" stroke-width="1.5" opacity="0.5"/>
+      <circle cx="270" cy="270" r="170" fill="none" stroke="#8B7355" stroke-width="1" opacity="0.4"/>
+
+      <!-- globe sphere -->
+      <circle cx="270" cy="270" r="150" fill="#F5F0E8" stroke="#1B3B6B" stroke-width="2"/>
+
+      <!-- latitudes -->
+      <ellipse cx="270" cy="270" rx="150" ry="30" fill="none" stroke="#1B3B6B" stroke-width="0.8" opacity="0.4"/>
+      <ellipse cx="270" cy="270" rx="150" ry="60" fill="none" stroke="#1B3B6B" stroke-width="0.8" opacity="0.35"/>
+      <ellipse cx="270" cy="270" rx="150" ry="90" fill="none" stroke="#1B3B6B" stroke-width="0.8" opacity="0.3"/>
+      <ellipse cx="270" cy="270" rx="150" ry="120" fill="none" stroke="#1B3B6B" stroke-width="0.8" opacity="0.25"/>
+      <ellipse cx="270" cy="270" rx="150" ry="150" fill="none" stroke="#1B3B6B" stroke-width="0.8" opacity="0.2"/>
+
+      <!-- longitudes -->
+      <ellipse cx="270" cy="270" rx="30" ry="150" fill="none" stroke="#1B3B6B" stroke-width="0.8" opacity="0.4"/>
+      <ellipse cx="270" cy="270" rx="60" ry="150" fill="none" stroke="#1B3B6B" stroke-width="0.8" opacity="0.35"/>
+      <ellipse cx="270" cy="270" rx="90" ry="150" fill="none" stroke="#1B3B6B" stroke-width="0.8" opacity="0.3"/>
+      <ellipse cx="270" cy="270" rx="120" ry="150" fill="none" stroke="#1B3B6B" stroke-width="0.8" opacity="0.25"/>
+
+      <!-- center meridian -->
+      <line x1="270" y1="120" x2="270" y2="420" stroke="#1B3B6B" stroke-width="1" opacity="0.5"/>
+      <line x1="120" y1="270" x2="420" y2="270" stroke="#1B3B6B" stroke-width="1" opacity="0.5"/>
+
+      <!-- network nodes -->
+      <circle cx="200" cy="200" r="5" fill="#1B3B6B"/>
+      <circle cx="340" cy="180" r="4" fill="#8B7355"/>
+      <circle cx="250" cy="330" r="5" fill="#1B3B6B"/>
+      <circle cx="360" cy="290" r="4" fill="#8B7355"/>
+      <circle cx="180" cy="310" r="4" fill="#8B7355"/>
+      <circle cx="310" cy="220" r="4" fill="#1B3B6B"/>
+      <circle cx="230" cy="250" r="3" fill="#8B7355"/>
+      <circle cx="380" cy="350" r="3" fill="#1B3B6B"/>
+      <circle cx="150" cy="250" r="3" fill="#8B7355"/>
+      <circle cx="290" cy="370" r="4" fill="#1B3B6B"/>
+
+      <!-- network connections -->
+      <line x1="200" y1="200" x2="310" y2="220" stroke="#1B3B6B" stroke-width="0.8" opacity="0.5"/>
+      <line x1="310" y1="220" x2="340" y2="180" stroke="#8B7355" stroke-width="0.8" opacity="0.5"/>
+      <line x1="200" y1="200" x2="250" y2="330" stroke="#1B3B6B" stroke-width="0.6" opacity="0.4"/>
+      <line x1="250" y1="330" x2="360" y2="290" stroke="#8B7355" stroke-width="0.6" opacity="0.4"/>
+      <line x1="360" y1="290" x2="340" y2="180" stroke="#1B3B6B" stroke-width="0.5" opacity="0.3"/>
+      <line x1="250" y1="330" x2="180" y2="310" stroke="#8B7355" stroke-width="0.6" opacity="0.4"/>
+      <line x1="230" y1="250" x2="200" y2="200" stroke="#1B3B6B" stroke-width="0.5" opacity="0.3"/>
+      <line x1="230" y1="250" x2="310" y2="220" stroke="#8B7355" stroke-width="0.5" opacity="0.3"/>
+      <line x1="180" y1="310" x2="150" y2="250" stroke="#1B3B6B" stroke-width="0.5" opacity="0.3"/>
+      <line x1="250" y1="330" x2="290" y2="370" stroke="#8B7355" stroke-width="0.5" opacity="0.3"/>
+      <line x1="360" y1="290" x2="380" y2="350" stroke="#1B3B6B" stroke-width="0.5" opacity="0.3"/>
+      <line x1="290" y1="370" x2="380" y2="350" stroke="#8B7355" stroke-width="0.4" opacity="0.3"/>
+
+      <!-- label points with lines -->
+      <line x1="200" y1="200" x2="120" y2="130" stroke="#1B3B6B" stroke-width="0.5" opacity="0.4"/>
+      <text x="60" y="122" font-family="Noto Serif SC, serif" font-size="11" fill="#1B3B6B" opacity="0.7">GNU</text>
+      <line x1="340" y1="180" x2="440" y2="120" stroke="#1B3B6B" stroke-width="0.5" opacity="0.4"/>
+      <text x="430" y="112" font-family="Noto Serif SC, serif" font-size="11" fill="#1B3B6B" opacity="0.7">Linux</text>
+      <line x1="360" y1="290" x2="450" y2="290" stroke="#8B7355" stroke-width="0.5" opacity="0.4"/>
+      <text x="448" y="286" font-family="Noto Serif SC, serif" font-size="11" fill="#8B7355" opacity="0.8">Debian</text>
+      <line x1="290" y1="370" x2="270" y2="460" stroke="#1B3B6B" stroke-width="0.5" opacity="0.4"/>
+      <text x="235" y="472" font-family="Noto Serif SC, serif" font-size="11" fill="#1B3B6B" opacity="0.7">Apache</text>
+      <line x1="150" y1="250" x2="70" y2="240" stroke="#8B7355" stroke-width="0.5" opacity="0.4"/>
+      <text x="10" y="236" font-family="Noto Serif SC, serif" font-size="11" fill="#8B7355" opacity="0.8">Python</text>
+
+      <!-- corner bauhaus marks -->
+      <rect x="10" y="500" width="16" height="16" fill="#1B3B6B"/>
+      <circle cx="514" cy="510" r="8" fill="none" stroke="#1B3B6B" stroke-width="1.5"/>
+      <rect x="262" y="512" width="16" height="16" fill="none" stroke="#8B7355" stroke-width="1"/>
+    </svg>
+  </div>
+
+  <div class="right-zone">
+    <div class="right-lead">▎ 关键项目与制度演化</div>
+
+    <div class="bullet">
+      <div class="bullet-marker"></div>
+      <div>
+        <div class="bullet-text">GNU 项目 <span class="en">— the free software movement</span></div>
+        <div class="bullet-sub">1983 · Richard Stallman · GPL 许可与自由软件理念</div>
+      </div>
+    </div>
+
+    <div class="bullet">
+      <div class="bullet-marker circle"></div>
+      <div>
+        <div class="bullet-text">Linux 邮件列表及其各类活动</div>
+        <div class="bullet-sub">1991 · Linus Torvalds · 分布式协作原型</div>
+      </div>
+    </div>
+
+    <div class="bullet">
+      <div class="bullet-marker diamond"></div>
+      <div>
+        <div class="bullet-text">Debian <span class="en">— Social Contract & Governance</span></div>
+        <div class="bullet-sub">1993 · 集成自由软件项目 · 社会契约与治理制度</div>
+      </div>
+    </div>
+
+    <div class="bullet">
+      <div class="bullet-marker"></div>
+      <div>
+        <div class="bullet-text">Httpd 项目与 <span class="en">The Apache Way</span></div>
+        <div class="bullet-sub">1995 · 共识决策机制 · 松散耦合的治理实践</div>
+      </div>
+    </div>
+
+    <div class="bullet">
+      <div class="bullet-marker circle"></div>
+      <div>
+        <div class="bullet-text">Sendmail · Python · Perl · ……</div>
+        <div class="bullet-sub">江河湖海，各有其道 —— 多元协作模式的汇聚</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="quote-zone">
+    <div class="quote-accent"></div>
+    <div class="quote-text">
+      「江河湖海，发明开源一语覆盖：想象的新事物。」<br/>
+      <span class="gold" style="font-size:14px;">A new term — Open Source — coined to imagine a new kind of collective creation.</span>
+    </div>
+    <div class="quote-tag">
+      <span class="big">1998</span>
+      Netscape / OSI / <br/>"Open Source" coined
+    </div>
+  </div>
+
+  <div class="footer-line"></div>
+  <div class="footer-line-copper"></div>
+</div>
+</body></html>

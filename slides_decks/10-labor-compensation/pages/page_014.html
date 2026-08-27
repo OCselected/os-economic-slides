@@ -1,0 +1,172 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>第 10 期 · 发布权与财产分配</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0;background:#F5F0E8;font-family:'Noto Sans SC','Source Han Sans SC','PingFang SC',sans-serif;color:#1B3B6B}
+.slide{position:relative;width:1600px;height:900px;background:#F5F0E8;overflow:hidden}
+/* subtle parchment texture */
+.slide::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;background:radial-gradient(ellipse at 30% 20%,rgba(139,115,85,0.04) 0%,transparent 60%),radial-gradient(ellipse at 70% 80%,rgba(27,59,107,0.03) 0%,transparent 50%);pointer-events:none}
+
+/* top rule */
+.top-rule{position:absolute;top:60px;left:80px;width:1440px;height:1px;background:#1B3B6B;opacity:0.6}
+.top-rule-thin{position:absolute;top:66px;left:80px;width:1440px;height:1px;background:#8B7355;opacity:0.4}
+
+/* slide number badge */
+.slide-num{position:absolute;top:38px;left:80px;width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:#1B3B6B;color:#F5F0E8;font-family:'Noto Serif SC',serif;font-size:20px;font-weight:600}
+
+/* header label */
+.header-label{position:absolute;top:38px;left:148px;font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;letter-spacing:4px}
+.header-right{position:absolute;top:42px;right:80px;font-size:12px;color:#555;letter-spacing:2px}
+
+/* left content area */
+.content-area{position:absolute;top:140px;left:80px;width:720px;height:680px}
+
+.eyebrow{font-size:13px;color:#8B7355;letter-spacing:6px;margin-bottom:20px;font-family:'Noto Serif SC',serif}
+
+.main-title{font-family:'Noto Serif SC',serif;font-size:52px;font-weight:700;line-height:1.25;color:#1B3B6B;margin-bottom:12px}
+.main-title-en{font-family:'Noto Serif SC',serif;font-size:16px;color:#8B7355;letter-spacing:3px;margin-bottom:36px;font-style:italic}
+
+/* thin divider */
+.title-divider{width:80px;height:3px;background:#1B3B6B;margin-bottom:30px}
+
+/* bullet list */
+.bullet-list{list-style:none}
+.bullet-item{display:flex;align-items:flex-start;margin-bottom:22px;gap:18px}
+.bullet-marker{flex-shrink:0;width:14px;height:14px;margin-top:6px;background:#1B3B6B}
+.bullet-marker.circle{background:transparent;border:2px solid #1B3B6B;border-radius:50%}
+.bullet-marker.copper{background:#8B7355}
+.bullet-marker.copper-circle{background:transparent;border:2px solid #8B7355;border-radius:50%}
+.bullet-text{flex:1;font-size:17px;line-height:1.75;color:#1B3B6B;font-weight:400}
+.bullet-text .em{font-weight:700;color:#1B3B6B}
+.bullet-text .copper{color:#8B7355;font-weight:600}
+.bullet-text .question{font-family:'Noto Serif SC',serif;font-size:20px;color:#1B3B6B;font-weight:700}
+
+/* right visual composition */
+.visual-area{position:absolute;top:140px;right:80px;width:600px;height:680px}
+
+/* Bauhaus geometric composition: key + compass */
+/* large circle - compass body */
+.compass-outer{position:absolute;top:60px;left:90px;width:420px;height:420px;border:3px solid #1B3B6B;border-radius:50%}
+.compass-inner{position:absolute;top:130px;left:160px;width:280px;height:280px;border:1.5px solid #1B3B6B;border-radius:50%;opacity:0.5}
+.compass-dot{position:absolute;top:265px;left:295px;width:12px;height:12px;background:#1B3B6B;border-radius:50%}
+
+/* compass needle (arrow pointing to upper-right — the unknown) */
+.compass-needle{position:absolute;top:265px;left:295px;width:3px;height:130px;background:#8B7355;transform-origin:50% 100%;transform:rotate(-35deg)}
+.compass-needle-tail{position:absolute;top:265px;left:295px;width:3px;height:60px;background:#1B3B6B;transform-origin:50% 100%;transform:rotate(145deg)}
+.compass-needle-tip{position:absolute;top:265px;left:295px;width:0;height:0;border-left:10px solid transparent;border-right:10px solid transparent;border-bottom:18px solid #8B7355;transform-origin:50% 100%;transform:rotate(-35deg);margin-top:-30px;margin-left:-7px}
+
+/* compass tick marks */
+.compass-tick{position:absolute;top:60px;left:90px;width:420px;height:420px;border-radius:50%}
+.compass-tick-t{position:absolute;top:-6px;left:50%;width:1.5px;height:12px;background:#1B3B6B;margin-left:-0.75px}
+.compass-tick-b{position:absolute;bottom:-6px;left:50%;width:1.5px;height:12px;background:#1B3B6B;margin-left:-0.75px}
+.compass-tick-l{position:absolute;left:-6px;top:50%;width:12px;height:1.5px;background:#1B3B6B;margin-top:-0.75px}
+.compass-tick-r{position:absolute;right:-6px;top:50%;width:12px;height:1.5px;background:#1B3B6B;margin-top:-0.75px}
+
+/* key shape below compass */
+.key-body{position:absolute;top:530px;left:120px;width:130px;height:30px;background:#1B3B6B}
+.key-ring{position:absolute;top:520px;left:60px;width:50px;height:50px;border:4px solid #1B3B6B;border-radius:50%;background:transparent}
+.key-shaft{position:absolute;top:540px;left:245px;width:140px;height:10px;background:#1B3B6B}
+.key-tooth1{position:absolute;top:550px;left:320px;width:8px;height:16px;background:#1B3B6B}
+.key-tooth2{position:absolute;top:550px;left:340px;width:8px;height:12px;background:#1B3B6B}
+.key-tooth3{position:absolute;top:550px;left:360px;width:8px;height:18px;background:#1B3B6B}
+
+/* copper accent square */
+.accent-square{position:absolute;top:20px;left:20px;width:36px;height:36px;background:#8B7355}
+.accent-square-2{position:absolute;top:20px;right:20px;width:20px;height:20px;background:#1B3B6B}
+
+/* vertical line decoration */
+.v-deco{position:absolute;top:0;left:40px;width:1px;height:680px;background:#1B3B6B;opacity:0.15}
+
+/* caption below visual */
+.visual-caption{position:absolute;bottom:60px;left:140px;width:460px;text-align:center;font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;letter-spacing:2px;line-height:1.8}
+.visual-caption-en{font-size:10px;color:#555;letter-spacing:3px;margin-top:6px;font-style:italic}
+
+/* bottom bar */
+.bottom-rule{position:absolute;bottom:42px;left:80px;width:1440px;height:1px;background:#1B3B6B;opacity:0.4}
+.bottom-left{position:absolute;bottom:16px;left:80px;font-size:11px;color:#555;letter-spacing:2px}
+.bottom-right{position:absolute;bottom:16px;right:80px;font-size:11px;color:#555;letter-spacing:2px}
+
+/* small geometric deco near title */
+.deco-circle{position:absolute;top:130px;left:750px;width:24px;height:24px;border:2px solid #8B7355;border-radius:50%}
+.deco-square{position:absolute;top:130px;left:790px;width:16px;height:16px;background:#1B3B6B}
+</style></head><body>
+<div class="slide">
+  <div class="top-rule"></div>
+  <div class="top-rule-thin"></div>
+  <div class="slide-num">10</div>
+  <div class="header-label">LABOR · PROPERTY · DISTRIBUTION</div>
+  <div class="header-right">第 10 期 · 劳动报酬与财产分配</div>
+
+  <div class="deco-circle"></div>
+  <div class="deco-square"></div>
+
+  <div class="content-area">
+    <div class="eyebrow">CHAPTER · 发 布 权 与 财 产 分 配</div>
+    <div class="main-title">代码走向的<br>罗盘指向未定远方</div>
+    <div class="main-title-en">The Compass of Code Points to an Undetermined Horizon</div>
+    <div class="title-divider"></div>
+
+    <ul class="bullet-list">
+      <li class="bullet-item">
+        <span class="bullet-marker"></span>
+        <span class="bullet-text">版权钥匙的<span class="em">移交仪式</span>——不是放弃，而是<span class="copper">重新分配</span>权力</span>
+      </li>
+      <li class="bullet-item">
+        <span class="bullet-marker circle"></span>
+        <span class="bullet-text">开源代码的「所有权」<span class="em">没有被放弃</span></span>
+      </li>
+      <li class="bullet-item">
+        <span class="bullet-marker copper"></span>
+        <span class="bullet-text">而是被<span class="copper">重新分配</span>：版权保留，发布权授予</span>
+      </li>
+      <li class="bullet-item">
+        <span class="bullet-marker"></span>
+        <span class="bullet-text">这个制度设计解决了<span class="em">搭便车问题</span></span>
+      </li>
+      <li class="bullet-item">
+        <span class="bullet-marker copper-circle"></span>
+        <span class="bullet-text"><span class="em">但也创造了新的分配问题</span>——<br>
+          <span class="question">谁来决定代码的走向？</span>
+        </span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="visual-area">
+    <div class="v-deco"></div>
+
+    <div class="accent-square"></div>
+    <div class="accent-square-2"></div>
+
+    <div class="compass-outer">
+      <div class="compass-tick">
+        <span class="compass-tick-t"></span>
+        <span class="compass-tick-b"></span>
+        <span class="compass-tick-l"></span>
+        <span class="compass-tick-r"></span>
+      </div>
+    </div>
+    <div class="compass-inner"></div>
+    <div class="compass-dot"></div>
+    <div class="compass-needle"></div>
+    <div class="compass-needle-tail"></div>
+    <div class="compass-needle-tip"></div>
+
+    <div class="key-ring"></div>
+    <div class="key-body"></div>
+    <div class="key-shaft"></div>
+    <div class="key-tooth1"></div>
+    <div class="key-tooth2"></div>
+    <div class="key-tooth3"></div>
+
+    <div class="visual-caption">
+      版权钥匙 · 走向罗盘
+      <div class="visual-caption-en">THE KEY OF COPYRIGHT · THE COMPASS OF DIRECTION</div>
+    </div>
+  </div>
+
+  <div class="bottom-rule"></div>
+  <div class="bottom-left">OPEN SOURCE · NEW INSTITUTIONAL ECONOMICS</div>
+  <div class="bottom-right">10 / 29</div>
+</div>
+</body></html>

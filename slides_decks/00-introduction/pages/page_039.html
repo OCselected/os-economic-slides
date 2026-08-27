@@ -1,0 +1,566 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>第0期 · 前因后果</title><style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1600px; height: 900px; overflow: hidden; margin: 0; }
+body {
+  font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+  background: #F5F0E8;
+  color: #1B3B6B;
+  position: relative;
+}
+
+/* Subtle parchment texture */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse at 20% 10%, rgba(139,115,85,0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 90%, rgba(27,59,107,0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Top rule line */
+.top-rule {
+  position: absolute;
+  top: 60px;
+  left: 80px;
+  right: 80px;
+  height: 1px;
+  background: #1B3B6B;
+  opacity: 0.6;
+}
+
+.top-rule-thin {
+  position: absolute;
+  top: 66px;
+  left: 80px;
+  right: 80px;
+  height: 1px;
+  background: #8B7355;
+  opacity: 0.4;
+}
+
+/* Top corner text */
+.top-left-text {
+  position: absolute;
+  top: 28px;
+  left: 80px;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 14px;
+  letter-spacing: 6px;
+  color: #555;
+}
+
+.top-right-text {
+  position: absolute;
+  top: 28px;
+  right: 80px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14px;
+  letter-spacing: 4px;
+  color: #555;
+}
+
+/* Bottom rule */
+.bottom-rule {
+  position: absolute;
+  bottom: 60px;
+  left: 80px;
+  right: 80px;
+  height: 1px;
+  background: #1B3B6B;
+  opacity: 0.6;
+}
+
+.bottom-rule-thin {
+  position: absolute;
+  bottom: 66px;
+  left: 80px;
+  right: 80px;
+  height: 1px;
+  background: #8B7355;
+  opacity: 0.4;
+}
+
+/* Footer */
+.footer-left {
+  position: absolute;
+  bottom: 28px;
+  left: 80px;
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: #555;
+}
+
+.footer-right {
+  position: absolute;
+  bottom: 28px;
+  right: 80px;
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: #555;
+}
+
+/* Left content area */
+.left-block {
+  position: absolute;
+  top: 140px;
+  left: 80px;
+  width: 720px;
+}
+
+.issue-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 16px;
+  letter-spacing: 8px;
+  color: #8B7355;
+  margin-bottom: 20px;
+}
+
+.issue-num .num-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: #8B7355;
+  margin: 0 12px 2px 0;
+  vertical-align: middle;
+}
+
+.main-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 72px;
+  font-weight: 700;
+  color: #1B3B6B;
+  letter-spacing: 12px;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.title-underline {
+  width: 120px;
+  height: 4px;
+  background: #1B3B6B;
+  margin-bottom: 40px;
+}
+
+.subtitle {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 24px;
+  color: #1B3B6B;
+  letter-spacing: 4px;
+  line-height: 1.6;
+  margin-bottom: 36px;
+}
+
+.subtitle-en {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  color: #8B7355;
+  letter-spacing: 3px;
+  font-style: italic;
+  margin-bottom: 36px;
+}
+
+.divider {
+  width: 60px;
+  height: 1px;
+  background: #1B3B6B;
+  opacity: 0.4;
+  margin-bottom: 28px;
+}
+
+.toc-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14px;
+  letter-spacing: 6px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.toc-list {
+  list-style: none;
+  padding: 0;
+}
+
+.toc-list li {
+  display: flex;
+  align-items: baseline;
+  padding: 8px 0;
+  border-bottom: 1px dotted rgba(27,59,107,0.15);
+}
+
+.toc-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  color: #8B7355;
+  width: 40px;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.toc-text {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 18px;
+  color: #1B3B6B;
+  letter-spacing: 3px;
+  flex: 1;
+}
+
+.toc-dot {
+  flex: 0 0 auto;
+  width: 4px;
+  height: 4px;
+  background: #8B7355;
+  margin: 0 12px;
+  opacity: 0.5;
+}
+
+/* Right geometric composition - Autumn leaves in blue sky */
+.geo-area {
+  position: absolute;
+  top: 110px;
+  right: 60px;
+  width: 700px;
+  height: 680px;
+}
+
+/* Sky circle - large Prussian blue circle representing the sky */
+.sky-circle {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  opacity: 0.92;
+}
+
+/* Sun circle - copper accent */
+.sun-circle {
+  position: absolute;
+  top: 180px;
+  right: 120px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: #8B7355;
+  opacity: 0.85;
+}
+
+/* Inner small circle */
+.sun-inner {
+  position: absolute;
+  top: 210px;
+  right: 150px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #F5F0E8;
+  opacity: 0.3;
+}
+
+/* Geometric leaves - angular shapes representing falling autumn leaves */
+.leaf-1 {
+  position: absolute;
+  top: 60px;
+  right: 300px;
+  width: 60px;
+  height: 60px;
+  background: #8B7355;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  opacity: 0.8;
+}
+
+.leaf-2 {
+  position: absolute;
+  top: 380px;
+  right: 40px;
+  width: 45px;
+  height: 45px;
+  background: #1B3B6B;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  opacity: 0.7;
+}
+
+.leaf-3 {
+  position: absolute;
+  top: 120px;
+  right: 430px;
+  width: 35px;
+  height: 35px;
+  background: #8B7355;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  opacity: 0.6;
+}
+
+.leaf-4 {
+  position: absolute;
+  top: 440px;
+  right: 260px;
+  width: 50px;
+  height: 50px;
+  background: #8B7355;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  opacity: 0.75;
+}
+
+.leaf-5 {
+  position: absolute;
+  top: 220px;
+  right: 20px;
+  width: 28px;
+  height: 28px;
+  background: #1B3B6B;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  opacity: 0.6;
+}
+
+.leaf-6 {
+  position: absolute;
+  top: 520px;
+  right: 380px;
+  width: 38px;
+  height: 38px;
+  background: #8B7355;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  opacity: 0.65;
+}
+
+/* Falling line elements */
+.fall-line-1 {
+  position: absolute;
+  top: 50px;
+  right: 350px;
+  width: 1px;
+  height: 80px;
+  background: #8B7355;
+  opacity: 0.3;
+}
+
+.fall-line-2 {
+  position: absolute;
+  top: 280px;
+  right: 100px;
+  width: 1px;
+  height: 60px;
+  background: #8B7355;
+  opacity: 0.25;
+}
+
+.fall-line-3 {
+  position: absolute;
+  top: 460px;
+  right: 300px;
+  width: 1px;
+  height: 50px;
+  background: #8B7355;
+  opacity: 0.2;
+}
+
+/* Square elements */
+.square-1 {
+  position: absolute;
+  top: 540px;
+  right: 450px;
+  width: 55px;
+  height: 55px;
+  background: #1B3B6B;
+  opacity: 0.15;
+}
+
+.square-2 {
+  position: absolute;
+  top: 560px;
+  right: 530px;
+  width: 35px;
+  height: 35px;
+  background: #8B7355;
+  opacity: 0.25;
+}
+
+.square-3 {
+  position: absolute;
+  top: 480px;
+  right: 520px;
+  width: 20px;
+  height: 20px;
+  background: #1B3B6B;
+  opacity: 0.3;
+}
+
+/* Diagonal line */
+.diag-line {
+  position: absolute;
+  top: 620px;
+  right: 40px;
+  width: 500px;
+  height: 1px;
+  background: #1B3B6B;
+  opacity: 0.3;
+  transform-origin: right center;
+}
+
+/* Ground line elements */
+.ground-line-1 {
+  position: absolute;
+  bottom: 20px;
+  right: 0;
+  width: 600px;
+  height: 1px;
+  background: #1B3B6B;
+  opacity: 0.35;
+}
+
+.ground-square {
+  position: absolute;
+  bottom: 30px;
+  right: 60px;
+  width: 14px;
+  height: 14px;
+  background: #1B3B6B;
+  opacity: 0.5;
+}
+
+.ground-circle {
+  position: absolute;
+  bottom: 24px;
+  right: 140px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #8B7355;
+  opacity: 0.4;
+}
+
+/* Seasonal label */
+.season-label {
+  position: absolute;
+  bottom: 60px;
+  right: 40px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  letter-spacing: 6px;
+  color: #8B7355;
+  opacity: 0.7;
+}
+
+/* Vertical accent bar on far left */
+.accent-bar {
+  position: absolute;
+  top: 140px;
+  left: 48px;
+  width: 4px;
+  height: 8px;
+  background: #1B3B6B;
+}
+
+.accent-bar-2 {
+  position: absolute;
+  top: 152px;
+  left: 48px;
+  width: 4px;
+  height: 3px;
+  background: #8B7355;
+}
+
+/* Big chapter marker */
+.chapter-mark {
+  position: absolute;
+  top: 135px;
+  left: 720px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 120px;
+  font-weight: 700;
+  color: #1B3B6B;
+  opacity: 0.06;
+  letter-spacing: -4px;
+  line-height: 1;
+}
+</style></head><body>
+
+<div class="top-rule"></div>
+<div class="top-rule-thin"></div>
+<div class="bottom-rule"></div>
+<div class="bottom-rule-thin"></div>
+
+<div class="top-left-text">开 源 之 道 · 新 制 度 经 济 学 视 角</div>
+<div class="top-right-text">Lecture Series N°0</div>
+
+<div class="footer-left">FOLIA · CAELUM · AUREUM</div>
+<div class="footer-right">2025 / Autumn Term</div>
+
+<!-- Chapter watermark -->
+<div class="chapter-mark">0</div>
+
+<div class="accent-bar"></div>
+<div class="accent-bar-2"></div>
+
+<!-- Left content -->
+<div class="left-block">
+  <div class="issue-num"><span class="num-dot"></span>第 &nbsp;零 &nbsp; 期</div>
+  <div class="main-title">前因后果</div>
+  <div class="title-underline"></div>
+  <div class="subtitle">探索开源经济学的意义</div>
+  <div class="subtitle-en">Exploring the Significance of Open-Source Economics</div>
+
+  <div class="divider"></div>
+
+  <div class="toc-title">本 &nbsp; 期 &nbsp; 提 &nbsp; 纲</div>
+  <ul class="toc-list">
+    <li>
+      <span class="toc-num">壹</span>
+      <span class="toc-text">为何关注开源经济学</span>
+      <span class="toc-dot"></span>
+    </li>
+    <li>
+      <span class="toc-num">贰</span>
+      <span class="toc-text">开源历史概述</span>
+      <span class="toc-dot"></span>
+    </li>
+    <li>
+      <span class="toc-num">叁</span>
+      <span class="toc-text">产业视角与文明</span>
+      <span class="toc-dot"></span>
+    </li>
+    <li>
+      <span class="toc-num">肆</span>
+      <span class="toc-text">十二次讲座的安排与估计</span>
+      <span class="toc-dot"></span>
+    </li>
+  </ul>
+</div>
+
+<!-- Right geometric composition -->
+<div class="geo-area">
+  <div class="sky-circle"></div>
+  <div class="sun-circle"></div>
+  <div class="sun-inner"></div>
+
+  <div class="leaf-1"></div>
+  <div class="leaf-2"></div>
+  <div class="leaf-3"></div>
+  <div class="leaf-4"></div>
+  <div class="leaf-5"></div>
+  <div class="leaf-6"></div>
+
+  <div class="fall-line-1"></div>
+  <div class="fall-line-2"></div>
+  <div class="fall-line-3"></div>
+
+  <div class="square-1"></div>
+  <div class="square-2"></div>
+  <div class="square-3"></div>
+
+  <div class="diag-line"></div>
+
+  <div class="ground-line-1"></div>
+  <div class="ground-square"></div>
+  <div class="ground-circle"></div>
+
+  <div class="season-label">A U T U M N &nbsp; / &nbsp; 收 获</div>
+</div>
+
+</body></html>

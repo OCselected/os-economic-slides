@@ -1,0 +1,304 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>第 09 期 · 排他权与容他权 — 数字时代的圈地运动</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0}
+body{background:#F5F0E8;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;color:#1B3B6B;position:relative;width:1600px;height:900px}
+
+/* parchment subtle texture */
+body::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;background:repeating-linear-gradient(0deg,transparent 0,transparent 3px,rgba(139,115,85,0.015) 3px,rgba(139,115,85,0.015) 4px),repeating-linear-gradient(90deg,transparent 0,transparent 5px,rgba(27,59,107,0.008) 5px,rgba(27,59,107,0.008) 6px);pointer-events:none;z-index:0}
+
+/* top bar */
+.top-bar{position:absolute;top:0;left:0;width:1600px;height:6px;background:#1B3B6B;z-index:5}
+.top-bar-copper{position:absolute;top:6px;left:0;width:640px;height:3px;background:#8B7355;z-index:5}
+
+/* header */
+.header{position:absolute;top:30px;left:60px;width:1480px;height:110px;display:flex;align-items:flex-start;justify-content:space-between;z-index:4}
+.lecture-tag{display:flex;align-items:center;gap:14px}
+.lecture-num{width:54px;height:54px;background:#1B3B6B;color:#F5F0E8;font-family:'Noto Serif SC',serif;font-size:26px;font-weight:700;display:flex;align-items:center;justify-content:center;letter-spacing:1px}
+.lecture-meta{display:flex;flex-direction:column;gap:4px}
+.lecture-meta .lecture-sub{font-size:11px;color:#8B7355;letter-spacing:4px;font-weight:600}
+.lecture-meta .lecture-deck{font-size:13px;color:#555;letter-spacing:1px}
+
+.header-right{display:flex;align-items:center;gap:20px;text-align:right}
+.header-right .deck-id{font-size:11px;color:#8B7355;letter-spacing:3px;font-weight:600}
+.header-right .slide-count{font-size:12px;color:#555;letter-spacing:1px}
+.header-right .accent-line{width:60px;height:2px;background:#1B3B6B}
+
+/* title */
+.main-title{position:absolute;top:155px;left:60px;width:1480px;z-index:4}
+.title-line1{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:42px;font-weight:700;color:#1B3B6B;letter-spacing:2px;line-height:1.2}
+.title-line2{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:22px;color:#8B7355;letter-spacing:6px;margin-top:10px;font-weight:400}
+.title-underline{margin-top:16px;width:200px;height:3px;background:#1B3B6B}
+.title-underline2{margin-top:6px;width:80px;height:2px;background:#8B7355}
+
+/* main content area */
+.main-area{position:absolute;top:300px;left:60px;width:1480px;height:520px;display:flex;z-index:4}
+
+/* left: pixel field visual */
+.pixel-field{width:600px;height:520px;position:relative}
+.field-label{position:absolute;top:0;left:0;font-size:10px;color:#8B7355;letter-spacing:4px;font-weight:600}
+.field-sublabel{position:absolute;top:18px;left:0;font-size:10px;color:#555;letter-spacing:2px}
+.field-canvas{position:absolute;top:55px;left:0;width:600px;height:430px}
+.pixel-grid{position:absolute;top:0;left:0;width:600px;height:430px;display:grid;grid-template-columns:repeat(20,30px);grid-template-rows:repeat(14,30px);gap:2px}
+.pix{width:30px;height:30px;background:rgba(27,59,107,0.06);border:0.5px solid rgba(27,59,107,0.12)}
+.pix-fill{background:#1B3B6B;border-color:#1B3B6B}
+.pix-copper{background:#8B7355;border-color:#8B7355}
+.pix-half{background:rgba(27,59,107,0.3);border-color:rgba(27,59,107,0.4)}
+
+/* legal grid overlay lines */
+.legal-h1{position:absolute;top:85px;left:0;width:600px;height:1px;background:#8B7355;opacity:0.7;z-index:3}
+.legal-h2{position:absolute;top:200px;left:0;width:600px;height:1px;background:#8B7355;opacity:0.7;z-index:3}
+.legal-h3{position:absolute;top:335px;left:0;width:600px;height:1px;background:#8B7355;opacity:0.7;z-index:3}
+.legal-v1{position:absolute;top:55px;left:120px;width:1px;height:430px;background:#8B7355;opacity:0.7;z-index:3}
+.legal-v2{position:absolute;top:55px;left:300px;width:1px;height:430px;background:#8B7355;opacity:0.7;z-index:3}
+.legal-v3{position:absolute;top:55px;left:480px;width:1px;height:430px;background:#8B7355;opacity:0.7;z-index:3}
+
+/* legal tag labels */
+.legal-tag{position:absolute;font-size:9px;color:#8B7355;letter-spacing:2px;font-weight:600;background:#F5F0E8;padding:1px 4px;z-index:4}
+
+/* annotation callouts */
+.field-anno1{position:absolute;top:60px;left:30px;width:90px;font-size:10px;color:#1B3B6B;letter-spacing:1px;line-height:1.4}
+.field-anno1 .lbl{font-size:9px;color:#8B7355;letter-spacing:2px;font-weight:600;margin-bottom:3px}
+
+/* right: text content */
+.text-panel{width:820px;height:520px;padding-left:50px;position:relative}
+.section-head{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.section-dot{width:12px;height:12px;background:#1B3B6B;border-radius:50%}
+.section-title{font-family:'Noto Serif SC',serif;font-size:20px;color:#1B3B6B;font-weight:700;letter-spacing:2px}
+.section-bar{width:40px;height:2px;background:#8B7355}
+
+.bullets{display:flex;flex-direction:column;gap:18px}
+.bullet{display:flex;align-items:flex-start;gap:16px}
+.bullet-num{width:32px;height:32px;background:#1B3B6B;color:#F5F0E8;font-family:'Noto Serif SC',serif;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.bullet-text{font-size:15px;color:#1B3B6B;line-height:1.6;letter-spacing:0.5px;padding-top:4px}
+.bullet-text .em{color:#8B7355;font-weight:600}
+.bullet-text .key{background:rgba(139,115,85,0.12);padding:0 6px;color:#1B3B6B;font-weight:600}
+
+/* bottom decorative footer */
+.footer{position:absolute;bottom:0;left:0;width:1600px;height:5px;background:#1B3B6B;z-index:5}
+.footer-copper{position:absolute;bottom:5px;left:960px;width:640px;height:3px;background:#8B7355;z-index:5}
+
+.footer-info{position:absolute;bottom:18px;left:60px;right:60px;display:flex;justify-content:space-between;align-items:center;z-index:4}
+.footer-info .fi-left{font-size:11px;color:#8B7355;letter-spacing:3px;font-weight:600}
+.footer-info .fi-right{font-size:11px;color:#555;letter-spacing:2px}
+
+/* bauhaus decorative elements */
+.deco-circle-1{position:absolute;top:220px;right:60px;width:80px;height:80px;border-radius:50%;border:3px solid #1B3B6B;z-index:2}
+.deco-circle-2{position:absolute;top:245px;right:80px;width:40px;height:40px;border-radius:50%;background:#8B7355;z-index:2}
+.deco-square-1{position:absolute;top:740px;left:60px;width:20px;height:20px;background:#1B3B6B;z-index:4}
+.deco-square-2{position:absolute;top:768px;left:60px;width:14px;height:14px;background:#8B7355;z-index:4}
+.deco-line-h{position:absolute;top:285px;left:60px;width:1480px;height:1px;background:rgba(27,59,107,0.15);z-index:2}
+
+/* era comparison strip */
+.era-strip{position:absolute;top:810px;left:60px;width:600px;height:36px;z-index:4;display:flex;align-items:center;gap:0}
+.era-seg-print{flex:1;height:100%;background:rgba(27,59,107,0.15);border:1px solid rgba(27,59,107,0.3);border-right:none;display:flex;align-items:center;justify-content:center;font-size:9px;color:#1B3B6B;letter-spacing:2px;font-weight:600;position:relative}
+.era-seg-digital{flex:1;height:100%;background:#1B3B6B;display:flex;align-items:center;justify-content:center;font-size:9px;color:#F5F0E8;letter-spacing:2px;font-weight:600;position:relative}
+.era-arrow{position:absolute;top:50%;right:-2px;width:14px;height:14px;background:#8B7355;transform:translateY(-50%);clip-path:polygon(0 30%,70% 30%,70% 0,100% 50%,70% 100%,70% 70%,0 70%)}
+
+/* vertical label on right of pixel field */
+.field-vlabel{position:absolute;top:810px;left:690px;width:1180px;height:36px;z-index:4;display:flex;align-items:center;gap:12px}
+.vlabel-text{font-size:10px;color:#8B7355;letter-spacing:3px;font-weight:600}
+.vlabel-line{flex:1;height:1px;background:rgba(139,115,85,0.4)}
+.vlabel-pct{font-family:'Noto Serif SC',serif;font-size:18px;color:#1B3B6B;font-weight:700;letter-spacing:1px}
+</style></head><body>
+
+<div class="top-bar"></div>
+<div class="top-bar-copper"></div>
+
+<!-- Header -->
+<div class="header">
+  <div class="lecture-tag">
+    <div class="lecture-num">09</div>
+    <div class="lecture-meta">
+      <div class="lecture-sub">LECTURE · NINE</div>
+      <div class="lecture-deck">开源经济学讲座 / Open Source Economics</div>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="accent-line"></div>
+    <div>
+      <div class="deck-id">09 · PROPRIETARY RIGHTS</div>
+      <div class="slide-count">SLIDE 12 / 28</div>
+    </div>
+  </div>
+</div>
+
+<!-- Main Title -->
+<div class="main-title">
+  <div class="title-line1">数字时代的圈地运动</div>
+  <div class="title-line2">THE ENCLOSURE MOVEMENT IN THE DIGITAL AGE</div>
+  <div class="title-underline"></div>
+  <div class="title-underline2"></div>
+</div>
+
+<div class="deco-line-h"></div>
+<div class="deco-circle-1"></div>
+<div class="deco-circle-2"></div>
+
+<!-- Main Area -->
+<div class="main-area">
+
+  <!-- Left: Pixel Field Visual -->
+  <div class="pixel-field">
+    <div class="field-label">PIXEL FIELD / 像素田野</div>
+    <div class="field-sublabel">— 被法律网格分割的知识景观</div>
+
+    <div class="field-canvas">
+      <div class="pixel-grid" id="pixelGrid"></div>
+
+      <!-- Legal grid overlay lines -->
+      <div class="legal-h1"></div>
+      <div class="legal-h2"></div>
+      <div class="legal-h3"></div>
+      <div class="legal-v1"></div>
+      <div class="legal-v2"></div>
+      <div class="legal-v3"></div>
+
+      <!-- Legal zone tags -->
+      <div class="legal-tag" style="top:56px;left:6px">© PRIVATE</div>
+      <div class="legal-tag" style="top:56px;left:240px">© LICENSED</div>
+      <div class="legal-tag" style="top:56px;left:420px">OPEN</div>
+      <div class="legal-tag" style="top:170px;left:6px">© PATENT</div>
+      <div class="legal-tag" style="top:170px;left:306px">© TRADE</div>
+      <div class="legal-tag" style="top:305px;left:6px">DMCA</div>
+      <div class="legal-tag" style="top:305px;left:306px">DRM</div>
+      <div class="legal-tag" style="top:305px;left:420px">CC</div>
+    </div>
+
+    <div class="field-anno1">
+      <div class="lbl">LEGEND</div>
+      深蓝 · 已圈占<br>
+      铜色 · 受限共享<br>
+      浅格 · 自由田野
+    </div>
+  </div>
+
+  <!-- Right: Text Panel -->
+  <div class="text-panel">
+    <div class="section-head">
+      <div class="section-dot"></div>
+      <div class="section-title">从自由田野到法律网格</div>
+      <div class="section-bar"></div>
+    </div>
+
+    <div class="bullets">
+      <div class="bullet">
+        <div class="bullet-num">01</div>
+        <div class="bullet-text">印刷时代：书籍可以自由复印，<span class="em">知识的流通近乎无门槛</span></div>
+      </div>
+      <div class="bullet">
+        <div class="bullet-num">02</div>
+        <div class="bullet-text">数字时代：每一个字节都受到法律保护，<span class="em">复制即侵权</span></div>
+      </div>
+      <div class="bullet">
+        <div class="bullet-num">03</div>
+        <div class="bullet-text">知识财产从 <span class="key">「保护创新」</span> 变为 <span class="key">「控制知识」</span></div>
+      </div>
+      <div class="bullet">
+        <div class="bullet-num">04</div>
+        <div class="bullet-text">公有领域急剧萎缩，公共知识的空间被持续压缩</div>
+      </div>
+      <div class="bullet">
+        <div class="bullet-num">05</div>
+        <div class="bullet-text">copyleft 作为一种制度回应，试图<span class="em">在数字田地中保留公共牧场</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bottom era strip -->
+<div class="era-strip">
+  <div class="era-seg-print">
+    PRINT ERA · 印刷时代
+    <span class="era-arrow"></span>
+  </div>
+  <div class="era-seg-digital">DIGITAL ERA · 数字时代</div>
+</div>
+
+<!-- Vertical label right -->
+<div class="field-vlabel">
+  <span class="vlabel-text">SHRINKING COMMONS</span>
+  <span class="vlabel-line"></span>
+  <span class="vlabel-pct">公有领域 — 急剧萎缩</span>
+</div>
+
+<div class="deco-square-1"></div>
+<div class="deco-square-2"></div>
+
+<!-- Footer -->
+<div class="footer-info">
+  <div class="fi-left">OPEN SOURCE DOCTRINE · 开源之道</div>
+  <div class="fi-right">新制度经济学视角 / New Institutional Economics</div>
+</div>
+<div class="footer-copper"></div>
+<div class="footer"></div>
+
+<script>
+(function(){
+  var grid = document.getElementById('pixelGrid');
+  var total = 20*14;
+  var pattern = [];
+  for(var i=0;i<total;i++){
+    pattern.push({type:0});
+  }
+  // Create enclosure zones: left-top filled (private), center copper (licensed), right open
+  // Zone definitions based on grid columns (0-19) and rows (0-13)
+  var zones = [
+    {type:'fill', cols:[0,1,2,3,4,5], rows:[0,1,2]},       // private
+    {type:'fill', cols:[0,1,2,3], rows:[3,4]},               // private
+    {type:'half', cols:[4,5,6], rows:[2,3,4]},               // boundary
+    {type:'copper', cols:[7,8,9,10,11], rows:[0,1]},         // licensed
+    {type:'copper', cols:[7,8,9], rows:[1,2]},               // licensed
+    {type:'fill', cols:[0,1,2,3], rows:[5,6,7]},             // patent zone
+    {type:'fill', cols:[3,4], rows:[7,8]},                   // patent zone
+    {type:'half', cols:[5,6], rows:[6,7,8]},                 // boundary
+    {type:'copper', cols:[10,11,12,13], rows:[4,5,6]},       // trade
+    {type:'fill', cols:[0,1,2], rows:[9,10,11]},             // DMCA
+    {type:'fill', cols:[2,3,4], rows:[10,11]},               // DMCA
+    {type:'half', cols:[5,6,7], rows:[9,10,11]},             // boundary
+    {type:'fill', cols:[9,10,11], rows:[9,10]},              // DRM
+    {type:'copper', cols:[13,14], rows:[9,10]},              // DRM boundary
+    {type:'half', cols:[12], rows:[9,10,11]},                // boundary
+    {type:'copper', cols:[15,16,17,18], rows:[0,1,2]},       // open (CC-ish)
+    {type:'copper', cols:[16,17,18,19], rows:[3,4]},
+    {type:'copper', cols:[17,18,19], rows:[5,6]},
+    {type:'half', cols:[14,15], rows:[5,6]},
+    {type:'copper', cols:[15,16], rows:[7,8]},
+    {type:'half', cols:[13,14], rows:[7,8]},
+    {type:'copper', cols:[16,17,18], rows:[7,8]},
+    {type:'half', cols:[15], rows:[9,10]},
+    {type:'copper', cols:[17,18,19], rows:[11,12]},
+    {type:'half', cols:[16], rows:[11,12,13]},
+    {type:'copper', cols:[18,19], rows:[12,13]},
+    {type:'half', cols:[15,16], rows:[12,13]},
+    {type:'fill', cols:[0,1], rows:[12,13]},                 // remaining private
+    {type:'fill', cols:[2,3,4,5], rows:[12]},
+    {type:'half', cols:[6], rows:[12,13]},
+    {type:'half', cols:[7,8,9], rows:[12]},
+    {type:'half', cols:[10,11,12], rows:[12,13]},
+    {type:'half', cols:[13,14], rows:[12]},
+  ];
+  for(var z=0;z<zones.length;z++){
+    var zone = zones[z];
+    for(var r=0;r<zone.rows.length;r++){
+      for(var c=0;c<zone.cols.length;c++){
+        var idx = zone.rows[r]*20 + zone.cols[c];
+        if(idx>=0 && idx<total){
+          pattern[idx].type = zone.type==='fill'?1:zone.type==='copper'?2:3;
+        }
+      }
+    }
+  }
+  for(var i=0;i<total;i++){
+    var div = document.createElement('div');
+    div.className = 'pix';
+    if(pattern[i].type===1) div.className+=' pix-fill';
+    else if(pattern[i].type===2) div.className+=' pix-copper';
+    else if(pattern[i].type===3) div.className+=' pix-half';
+    grid.appendChild(div);
+  }
+})();
+</script>
+
+</body></html>

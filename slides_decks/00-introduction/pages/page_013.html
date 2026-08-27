@@ -1,0 +1,323 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>制度的约束——不完美世界的共存</title><style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0;}
+body{
+  background:#F5F0E8;
+  font-family:'Noto Sans SC','Source Han Sans SC','PingFang SC',sans-serif;
+  color:#1B3B6B;
+  position:relative;
+}
+/* subtle parchment texture via layered overlays */
+body::before{
+  content:"";
+  position:absolute;top:0;left:0;width:1600px;height:900px;
+  background:
+    radial-gradient(ellipse at 20% 10%, rgba(139,115,85,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 90%, rgba(27,59,107,0.05) 0%, transparent 50%),
+    repeating-linear-gradient(0deg, rgba(139,115,85,0.015) 0px, rgba(139,115,85,0.015) 1px, transparent 1px, transparent 4px);
+  pointer-events:none;z-index:0;
+}
+/* Top header bar */
+.header{
+  position:absolute;top:60px;left:80px;right:80px;
+  display:flex;align-items:center;gap:24px;z-index:5;
+}
+.header-square{
+  width:14px;height:14px;background:#1B3B6B;
+}
+.header-line{
+  flex:1;height:1px;background:#1B3B6B;opacity:0.4;
+}
+.header-text{
+  font-size:13px;letter-spacing:4px;color:#8B7355;font-weight:500;
+}
+.header-circle{
+  width:10px;height:10px;border-radius:50%;background:#8B7355;
+}
+
+/* Main title area */
+.title-block{
+  position:absolute;top:120px;left:80px;width:580px;z-index:5;
+}
+.kicker{
+  font-size:14px;letter-spacing:6px;color:#8B7355;margin-bottom:18px;
+  font-weight:500;
+}
+.main-title{
+  font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;
+  font-size:56px;font-weight:700;color:#1B3B6B;
+  line-height:1.25;margin-bottom:16px;
+}
+.title-underline{
+  width:120px;height:4px;background:#1B3B6B;margin-bottom:24px;
+}
+.subtitle{
+  font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;
+  font-size:22px;color:#555;line-height:1.7;font-weight:400;
+  font-style:italic;
+}
+.visual-metaphor{
+  margin-top:30px;padding:16px 20px;
+  border-left:3px solid #8B7355;
+  background:rgba(27,59,107,0.03);
+}
+.vm-label{
+  font-size:11px;letter-spacing:3px;color:#8B7355;margin-bottom:6px;
+}
+.vm-text{
+  font-family:'Noto Serif SC',serif;font-size:16px;color:#1B3B6B;line-height:1.6;
+}
+
+/* Bullet points */
+.bullets{
+  position:absolute;top:130px;right:80px;width:580px;z-index:5;
+}
+.bullets-title{
+  font-family:'Noto Serif SC',serif;font-size:16px;letter-spacing:3px;
+  color:#8B7355;margin-bottom:24px;padding-bottom:12px;
+  border-bottom:1px solid rgba(27,59,107,0.2);
+}
+.bullet{
+  display:flex;align-items:flex-start;gap:16px;margin-bottom:18px;
+}
+.bullet-marker{
+  flex-shrink:0;width:8px;height:8px;background:#1B3B6B;
+  margin-top:8px;
+}
+.bullet-marker.circle{border-radius:50%;background:#8B7355;}
+.bullet-marker.hollow{
+  background:transparent;border:2px solid #1B3B6B;width:10px;height:10px;
+}
+.bullet-marker.bar{
+  width:20px;height:2px;background:#1B3B6B;margin-top:12px;
+}
+.bullet-text{
+  font-family:'Noto Serif SC',serif;font-size:18px;color:#1B3B6B;
+  line-height:1.55;flex:1;
+}
+.bullet-text .em{color:#8B7355;font-weight:600;}
+
+/* Central visual: old open book on blue table */
+.visual-area{
+  position:absolute;bottom:0;left:0;width:1600px;height:420px;z-index:2;
+}
+.table{
+  position:absolute;bottom:0;left:0;width:1600px;height:320px;
+  background:#1B3B6B;
+}
+.table-edge{
+  position:absolute;top:0;left:0;width:1600px;height:6px;background:#8B7355;
+}
+.table-line-1{
+  position:absolute;top:40px;left:0;width:1600px;height:1px;background:rgba(245,240,232,0.1);
+}
+.table-line-2{
+  position:absolute;top:80px;left:0;width:1600px;height:1px;background:rgba(245,240,232,0.08);
+}
+
+/* The open book */
+.book{
+  position:absolute;bottom:120px;left:50%;
+  width:520px;height:130px;
+  margin-left:-260px;
+}
+.book-page-left{
+  position:absolute;bottom:0;left:0;width:230px;height:130px;
+  background:#F5F0E8;
+  border:2px solid #1B3B6B;
+  border-bottom:none;
+  clip-path:polygon(0 0, 100% 0, 92% 100%, 0 100%);
+  box-shadow:inset 0 0 30px rgba(139,115,85,0.15);
+}
+.book-page-right{
+  position:absolute;bottom:0;right:0;width:230px;height:130px;
+  background:#F5F0E8;
+  border:2px solid #1B3B6B;
+  border-bottom:none;
+  clip-path:polygon(0 0, 100% 0, 100% 100%, 8% 100%);
+  box-shadow:inset 0 0 30px rgba(139,115,85,0.15);
+}
+.book-spine{
+  position:absolute;bottom:0;left:50%;width:3px;height:130px;
+  background:#1B3B6B;margin-left:-1.5px;
+}
+/* Page lines on left page */
+.book-line{
+  position:absolute;height:1px;background:rgba(27,59,107,0.25);
+}
+.bl1{bottom:25px;left:20px;width:180px;}
+.bl2{bottom:38px;left:20px;width:170px;}
+.bl3{bottom:51px;left:20px;width:185px;}
+.bl4{bottom:64px;left:20px;width:160px;}
+.bl5{bottom:77px;left:20px;width:175px;}
+.bl6{bottom:90px;left:20px;width:150px;}
+/* Page lines on right page */
+.br1{bottom:25px;right:20px;width:180px;}
+.br2{bottom:38px;right:20px;width:165px;}
+.br3{bottom:51px;right:20px;width:185px;}
+.br4{bottom:64px;right:20px;width:170px;}
+.br5{bottom:77px;right:20px;width:160px;}
+.br6{bottom:90px;right:20px;width:155px;}
+/* Book bottom edge shadow */
+.book-shadow{
+  position:absolute;bottom:-4px;left:0;width:520px;height:6px;
+  background:rgba(0,0,0,0.2);
+}
+
+/* Geometric decorations near book */
+.geo-circle-lg{
+  position:absolute;bottom:160px;left:200px;
+  width:80px;height:80px;border-radius:50%;
+  border:2px solid #8B7355;
+}
+.geo-square{
+  position:absolute;bottom:180px;left:130px;
+  width:36px;height:36px;background:#8B7355;opacity:0.5;
+}
+.geo-line-v{
+  position:absolute;bottom:200px;left:280px;
+  width:1px;height:60px;background:#1B3B6B;opacity:0.4;
+}
+.geo-circle-sm{
+  position:absolute;bottom:160px;left:310px;
+  width:14px;height:14px;border-radius:50%;background:#1B3B6B;
+}
+
+.geo-circle-lg-r{
+  position:absolute;bottom:160px;right:200px;
+  width:80px;height:80px;border-radius:50%;
+  border:2px solid #8B7355;
+}
+.geo-square-r{
+  position:absolute;bottom:180px;right:130px;
+  width:36px;height:36px;background:#8B7355;opacity:0.5;
+}
+.geo-line-v-r{
+  position:absolute;bottom:200px;right:280px;
+  width:1px;height:60px;background:#1B3B6B;opacity:0.4;
+}
+.geo-circle-sm-r{
+  position:absolute;bottom:160px;right:310px;
+  width:14px;height:14px;border-radius:50%;background:#1B3B6B;
+}
+
+/* Footer */
+.footer{
+  position:absolute;bottom:24px;left:80px;right:80px;
+  display:flex;align-items:center;justify-content:space-between;
+  z-index:10;
+}
+.footer-left{
+  font-size:12px;letter-spacing:3px;color:rgba(245,240,232,0.6);
+}
+.footer-right{
+  font-size:12px;letter-spacing:3px;color:rgba(245,240,232,0.6);
+}
+.footer-line{
+  position:absolute;bottom:50px;left:80px;right:80px;
+  height:1px;background:rgba(245,240,232,0.15);z-index:10;
+}
+
+/* Decorative top-right geometric cluster */
+.top-deco{
+  position:absolute;top:100px;right:80px;z-index:3;
+}
+</style></head>
+<body>
+
+<div class="header">
+  <div class="header-square"></div>
+  <div class="header-text">CHAPTER · VII — INSTITUTIONS</div>
+  <div class="header-line"></div>
+  <div class="header-text" style="font-size:11px;">NEW INSTITUTIONAL ECONOMICS</div>
+  <div class="header-circle"></div>
+</div>
+
+<div class="title-block">
+  <div class="kicker">不 完 美 的 世 界</div>
+  <div class="main-title">制度<br>约束下的<br>共存</div>
+  <div class="title-underline"></div>
+  <div class="subtitle">「世界上没有完美的制度，<br>正如人本身受到各类力量的制约」</div>
+  <div class="visual-metaphor">
+    <div class="vm-label">VISUAL METAPHOR</div>
+    <div class="vm-text">蓝色木桌上放着一本打开的旧书——<br>制度约束的隐喻</div>
+  </div>
+</div>
+
+<div class="bullets">
+  <div class="bullets-title">显 示 要 点 &nbsp;·&nbsp; KEY PROPOSITIONS</div>
+
+  <div class="bullet">
+    <div class="bullet-marker"></div>
+    <div class="bullet-text">但 是，<span class="em">没 有 完 美 世 界</span>——一切制度设计都内嵌于约束之中。</div>
+  </div>
+
+  <div class="bullet">
+    <div class="bullet-marker circle"></div>
+    <div class="bullet-text">世界上有<span class="em">很多力量</span>，正如人本身的内心活动充满了张力与冲突。</div>
+  </div>
+
+  <div class="bullet">
+    <div class="bullet-marker hollow"></div>
+    <div class="bullet-text">个体的行为<span class="em">必然受到各类制约</span>，非纯理性假设可以穷尽。</div>
+  </div>
+
+  <div class="bullet">
+    <div class="bullet-marker bar"></div>
+    <div class="bullet-text"><span class="em">制 度</span>：法律、道德、文化、习俗的<span class="em">共同作用</span>，形成行为的边界条件。</div>
+  </div>
+
+  <div class="bullet">
+    <div class="bullet-marker"></div>
+    <div class="bullet-text">开源和其它范式<span class="em">共存</span>——没有普世的、唯一正确的生产组织方式。</div>
+  </div>
+</div>
+
+<div class="visual-area">
+  <div class="table">
+    <div class="table-edge"></div>
+    <div class="table-line-1"></div>
+    <div class="table-line-2"></div>
+  </div>
+
+  <div class="geo-circle-lg"></div>
+  <div class="geo-square"></div>
+  <div class="geo-line-v"></div>
+  <div class="geo-circle-sm"></div>
+
+  <div class="geo-circle-lg-r"></div>
+  <div class="geo-square-r"></div>
+  <div class="geo-line-v-r"></div>
+  <div class="geo-circle-sm-r"></div>
+
+  <div class="book">
+    <div class="book-page-left">
+      <div class="book-line bl1"></div>
+      <div class="book-line bl2"></div>
+      <div class="book-line bl3"></div>
+      <div class="book-line bl4"></div>
+      <div class="book-line bl5"></div>
+      <div class="book-line bl6"></div>
+    </div>
+    <div class="book-spine"></div>
+    <div class="book-page-right">
+      <div class="book-line br1"></div>
+      <div class="book-line br2"></div>
+      <div class="book-line br3"></div>
+      <div class="book-line br4"></div>
+      <div class="book-line br5"></div>
+      <div class="book-line br6"></div>
+    </div>
+    <div class="book-shadow"></div>
+  </div>
+</div>
+
+<div class="footer-line"></div>
+<div class="footer">
+  <div class="footer-left">OPEN SOURCE · AN INSTITUTIONAL PERSPECTIVE</div>
+  <div class="footer-right">07 / 12</div>
+</div>
+
+</body></html>

@@ -1,0 +1,257 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>经济学思维方式——从制度到协作</title><style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0;}
+body{background:#F5F0E8;font-family:'Noto Sans SC',sans-serif;color:#1B3B6B;position:relative;overflow:hidden;}
+
+.parchment-texture{position:absolute;top:0;left:0;width:1600px;height:900px;opacity:0.03;background:repeating-linear-gradient(45deg,transparent,transparent 2px,#1B3B6B 2px,#1B3B6B 3px);pointer-events:none;}
+
+/* top-left decorative marks */
+.deco-circle-1{position:absolute;top:55px;left:55px;width:28px;height:28px;border:2px solid #8B7355;border-radius:50%;}
+.deco-line-1{position:absolute;top:76px;left:95px;width:80px;height:2px;background:#1B3B6B;}
+.deco-square-1{position:absolute;top:52px;left:185px;width:26px;height:26px;background:#1B3B6B;}
+.deco-square-2{position:absolute;top:52px;left:215px;width:26px;height:26px;border:2px solid #1B3B6B;}
+
+/* bottom geometric strip */
+.deco-bar{position:absolute;bottom:0;left:0;width:1600px;height:6px;background:#1B3B6B;}
+.deco-bar-2{position:absolute;bottom:6px;left:0;width:1600px;height:2px;background:#8B7355;}
+
+/* large background circle on left */
+.bg-circle{position:absolute;top:180px;left:-160px;width:640px;height:640px;border-radius:50%;background:#1B3B6B;opacity:0.06;}
+.bg-square{position:absolute;top:60px;right:60px;width:50px;height:50px;background:#8B7355;opacity:0.3;}
+.bg-square-2{position:absolute;top:120px;right:60px;width:50px;height:50px;border:2px solid #1B3B6B;opacity:0.4;}
+
+/* HEADER */
+.header-area{position:absolute;top:110px;left:60px;width:1480px;}
+.deck-label{font-size:13px;letter-spacing:6px;color:#8B7355;font-weight:500;}
+.header-rule{width:120px;height:3px;background:#1B3B6B;margin-top:14px;}
+
+/* MAIN TITLE */
+.main-title{position:absolute;top:170px;left:560px;width:1000px;}
+.main-title h1{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:52px;font-weight:700;color:#1B3B6B;line-height:1.2;letter-spacing:2px;}
+.main-title .subtitle{font-size:16px;color:#8B7355;margin-top:18px;letter-spacing:4px;font-weight:400;}
+.main-title .title-rule{width:60px;height:3px;background:#8B7355;margin-top:16px;}
+
+/* GEOMETRIC WORKER ILLUSTRATION (left side) */
+.worker-scene{position:absolute;top:180px;left:120px;width:380px;height:440px;}
+
+/* Hard hat — semicircle */
+.hat{position:absolute;top:40px;left:100px;width:140px;height:70px;background:#8B7355;border-radius:140px 140px 0 0 0/100px 100px 0 0 0;}
+.hat-band{position:absolute;top:100px;left:95px;width:150px;height:14px;background:#1B3B6B;border-radius:2px;}
+.hat-ridge{position:absolute;top:44px;left:155px;width:30px;height:66px;background:#8B7355;border-radius:2px;}
+.hat-bullet{position:absolute;top:52px;left:145px;width:8px;height:8px;background:#F5F0E8;border-radius:50%;}
+
+/* Head */
+.head{position:absolute;top:108px;left:148px;width:44px;height:44px;background:#1B3B6B;border-radius:50%;}
+.head-eye{position:absolute;top:118px;left:156px;width:6px;height:6px;background:#F5F0E8;border-radius:50%;}
+.head-eye2{position:absolute;top:118px;left:174px;width:6px;height:6px;background:#F5F0E8;border-radius:50%;}
+
+/* Neck */
+.neck{position:absolute;top:148px;left:160px;width:20px;height:16px;background:#1B3B6B;}
+
+/* Torso (square with industrial feel) */
+.torso{position:absolute;top:160px;left:115px;width:130px;height:110px;background:#1B3B6B;}
+.torso-stripe{position:absolute;top:160px;left:115px;width:130px;height:6px;background:#8B7355;}
+.torso-line{position:absolute;top:200px;left:150px;width:60px;height:2px;background:#F5F0E8;opacity:0.4;}
+
+/* Arm reaching to laptop */
+.arm-left{position:absolute;top:165px;left:60px;width:60px;height:14px;background:#1B3B6B;transform-origin:left center;}
+.arm-forearm{position:absolute;top:170px;left:30px;width:50px;height:14px;background:#8B7355;}
+.arm-right{position:absolute;top:165px;left:245px;width:50px;height:14px;background:#1B3B6B;}
+
+/* Laptop */
+.laptop-base{position:absolute;top:270px;left:70px;width:220px;height:36px;background:#1B3B6B;border:2px solid #1B3B6B;}
+.laptop-base-key{position:absolute;top:274px;left:78px;width:104px;height:22px;background:#F5F0E8;opacity:0.3;}
+.laptop-screen{position:absolute;top:150px;left:70px;width:220px;height:128px;background:#1B3B6B;border:2px solid #1B3B6B;}
+.laptop-screen-inner{position:absolute;top:160px;left:80px;width:200px;height:108px;background:#F5F0E8;opacity:0.92;}
+/* Data lines on screen */
+.scr-line-1{position:absolute;top:170px;left:92px;width:80px;height:2px;background:#1B3B6B;opacity:0.5;}
+.scr-line-2{position:absolute;top:182px;left:92px;width:120px;height:2px;background:#8B7355;opacity:0.6;}
+.scr-line-3{position:absolute;top:194px;left:92px;width:60px;height:2px;background:#1B3B6B;opacity:0.4;}
+.scr-circle{position:absolute;top:208px;left:110px;width:34px;height:34px;border:2px solid #8B7355;border-radius:50%;}
+.scr-square{position:absolute;top:215px;left:160px;width:20px;height:20px;background:#1B3B6B;opacity:0.7;}
+.scr-square-2{position:absolute;top:215px;left:186px;width:20px;height:20px;background:#8B7355;opacity:0.7;}
+
+/* Ground line */
+.ground{position:absolute;top:310px;left:40px;width:300px;height:3px;background:#1B3B6B;}
+.ground-dot-1{position:absolute;top:304px;left:50px;width:12px;height:12px;background:#8B7355;border-radius:50%;}
+.ground-dot-2{position:absolute;top:304px;left:280px;width:12px;height:12px;background:#1B3B6B;border-radius:50%;}
+
+/* Steel/cogs floating */
+.cog-1{position:absolute;top:30px;left:20px;width:36px;height:36px;border:3px solid #8B7355;border-radius:50%;opacity:0.5;}
+.cog-1-inner{position:absolute;top:37px;left:27px;width:22px;height:22px;border:2px solid #8B7355;border-radius:50%;opacity:0.5;}
+.cog-2{position:absolute;top:370px;left:290px;width:24px;height:24px;background:#1B3B6B;opacity:0.15;border-radius:4px;}
+.cog-3{position:absolute;top:400px;left:270px;width:14px;height:14px;background:#8B7355;opacity:0.3;border-radius:50%;}
+
+/* floating geometric accents around scene */
+.float-tri{position:absolute;top:20px;left:340px;width:0;height:0;border-left:12px solid transparent;border-right:12px solid transparent;border-bottom:20px solid #1B3B6B;opacity:0.3;}
+.float-circle-r{position:absolute;top:400px;left:40px;width:18px;height:18px;border:2px solid #1B3B6B;border-radius:50%;opacity:0.5;}
+
+/* RIGHT SIDE — CONTENT AREA */
+.content-area{position:absolute;top:320px;left:560px;width:1000px;}
+.content-rule-top{width:100px;height:2px;background:#8B7355;margin-bottom:20px;}
+
+.bullets{display:flex;flex-direction:column;gap:14px;}
+.bullet-row{display:flex;align-items:center;gap:20px;padding:10px 0;border-bottom:1px solid rgba(27,59,107,0.1);}
+.bullet-num{flex-shrink:0;width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:#1B3B6B;color:#F5F0E8;font-family:'Noto Serif SC',serif;font-size:15px;font-weight:600;}
+.bullet-num.circle{border-radius:50%;background:transparent;color:#1B3B6B;border:2px solid #1B3B6B;}
+.bullet-num.copper{background:#8B7355;}
+.bullet-text{flex:1;display:flex;flex-direction:column;}
+.bullet-title{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:20px;color:#1B3B6B;font-weight:600;letter-spacing:1px;}
+.bullet-desc{font-size:12.5px;color:#555;margin-top:3px;letter-spacing:1px;}
+
+/* Visual metaphor caption */
+.metaphor-cap{position:absolute;bottom:55px;left:120px;width:380px;text-align:center;}
+.metaphor-cap .mc-en{font-size:10px;letter-spacing:4px;color:#8B7355;margin-bottom:4px;}
+.metaphor-cap .mc-cn{font-size:12px;color:#1B3B6B;letter-spacing:2px;font-weight:500;}
+.metaphor-cap .mc-line{width:40px;height:1px;background:#8B7355;margin:8px auto 6px;}
+
+/* RIGHT DECORATIVE BLOCKS */
+.right-deco-1{position:absolute;top:110px;right:120px;width:60px;height:60px;border:2px solid #1B3B6B;}
+.right-deco-2{position:absolute;top:130px;right:100px;width:60px;height:60px;background:#8B7355;opacity:0.5;}
+.right-deco-circle{position:absolute;top:95px;right:80px;width:30px;height:30px;background:#1B3B6B;border-radius:50%;}
+
+/* Footer info */
+.footer-area{position:absolute;bottom:24px;left:560px;display:flex;align-items:center;gap:16px;}
+.footer-area .ft-dot{width:6px;height:6px;background:#8B7355;border-radius:50%;}
+.footer-area .ft-text{font-size:11px;letter-spacing:4px;color:#8B7355;}
+.footer-area .ft-num{font-size:11px;letter-spacing:3px;color:#1B3B6B;font-family:'Noto Serif SC',serif;font-weight:600;}
+</style></head><body>
+
+<div class="parchment-texture"></div>
+
+<div class="bg-circle"></div>
+<div class="bg-square"></div>
+<div class="bg-square-2"></div>
+
+<div class="deco-circle-1"></div>
+<div class="deco-line-1"></div>
+<div class="deco-square-1"></div>
+<div class="deco-square-2"></div>
+
+<div class="header-area">
+  <div class="deck-label">开源之道 · 新制度经济学视角</div>
+  <div class="header-rule"></div>
+</div>
+
+<div class="right-deco-1"></div>
+<div class="right-deco-2"></div>
+<div class="right-deco-circle"></div>
+
+<div class="main-title">
+  <h1>经济学的思维方式</h1>
+  <div class="subtitle">THE ECONOMIC WAY OF THINKING</div>
+  <div class="title-rule"></div>
+</div>
+
+<!-- GEOMETRIC WORKER SCENE -->
+<div class="worker-scene">
+  <div class="cog-1"></div>
+  <div class="cog-1-inner"></div>
+  <div class="float-tri"></div>
+  <div class="float-circle-r"></div>
+
+  <div class="hat"></div>
+  <div class="hat-band"></div>
+  <div class="hat-ridge"></div>
+  <div class="hat-bullet"></div>
+
+  <div class="head"></div>
+  <div class="head-eye"></div>
+  <div class="head-eye2"></div>
+  <div class="neck"></div>
+
+  <div class="torso"></div>
+  <div class="torso-stripe"></div>
+  <div class="torso-line"></div>
+
+  <div class="arm-forearm"></div>
+  <div class="arm-left"></div>
+  <div class="arm-right"></div>
+
+  <div class="laptop-screen"></div>
+  <div class="laptop-screen-inner"></div>
+  <div class="scr-line-1"></div>
+  <div class="scr-line-2"></div>
+  <div class="scr-line-3"></div>
+  <div class="scr-circle"></div>
+  <div class="scr-square"></div>
+  <div class="scr-square-2"></div>
+  <div class="laptop-base"></div>
+  <div class="laptop-base-key"></div>
+
+  <div class="ground"></div>
+  <div class="ground-dot-1"></div>
+  <div class="ground-dot-2"></div>
+
+  <div class="cog-2"></div>
+  <div class="cog-3"></div>
+</div>
+
+<div class="metaphor-cap">
+  <div class="mc-line"></div>
+  <div class="mc-cn">数字大脑指挥钢铁——工业 4.0 的隐喻</div>
+  <div class="mc-en" style="margin-top:6px;">DIGITAL BRAIN · STEEL MIND</div>
+</div>
+
+<!-- CONTENT -->
+<div class="content-area">
+  <div class="content-rule-top"></div>
+  <div class="bullets">
+
+    <div class="bullet-row">
+      <div class="bullet-num">01</div>
+      <div class="bullet-text">
+        <div class="bullet-title">天下没有免费的午餐</div>
+        <div class="bullet-desc">There is no such thing as a free lunch — 成本与代价恒在</div>
+      </div>
+    </div>
+
+    <div class="bullet-row">
+      <div class="bullet-num circle">02</div>
+      <div class="bullet-text">
+        <div class="bullet-title">沉没成本是一种行为与互动</div>
+        <div class="bullet-desc">Sunk cost is behavioral, relational, not merely accounting</div>
+      </div>
+    </div>
+
+    <div class="bullet-row">
+      <div class="bullet-num copper">03</div>
+      <div class="bullet-text">
+        <div class="bullet-title">资本有许多种方式</div>
+        <div class="bullet-desc">Capital is multifaceted — 人力、社会、文化、数据皆可为本</div>
+      </div>
+    </div>
+
+    <div class="bullet-row">
+      <div class="bullet-num">04</div>
+      <div class="bullet-text">
+        <div class="bullet-title">时间是重要的一个因素</div>
+        <div class="bullet-desc">Time is the scarcest resource — 时间即机会成本的度量</div>
+      </div>
+    </div>
+
+    <div class="bullet-row" style="border-bottom:none;">
+      <div class="bullet-num circle">05</div>
+      <div class="bullet-text">
+        <div class="bullet-title">信息非常重要</div>
+        <div class="bullet-desc">Information is pivotal — 不对称与流动性重塑制度格局</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="footer-area">
+  <span class="ft-text">OPEN SOURCE ECONOMICS</span>
+  <span class="ft-dot"></span>
+  <span class="ft-text">新制度经济学视角</span>
+  <span class="ft-dot"></span>
+  <span class="ft-num">Slide 03 / 24</span>
+</div>
+
+<div class="deco-bar"></div>
+<div class="deco-bar-2"></div>
+
+</body></html>

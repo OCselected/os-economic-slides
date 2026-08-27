@@ -1,0 +1,130 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>第 06 期 · 组织结构与治理 - 如此再回看 OSPO</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif}
+body{background:#F5F0E8;position:relative;color:#1B3B6B}
+
+/* subtle parchment texture */
+body::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;background:
+  radial-gradient(ellipse at 20% 30%, rgba(139,115,85,0.04) 0%, transparent 50%),
+  radial-gradient(ellipse at 80% 70%, rgba(27,59,107,0.03) 0%, transparent 50%),
+  radial-gradient(ellipse at 50% 90%, rgba(139,115,85,0.03) 0%, transparent 40%);
+  pointer-events:none;z-index:0}
+
+/* header bar */
+.header{position:absolute;top:50px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:center;z-index:5}
+.header-left{display:flex;align-items:center;gap:18px}
+.lecture-num{font-family:'Noto Serif SC',serif;font-size:14px;letter-spacing:3px;color:#8B7355}
+.header-divider{width:40px;height:1px;background:#8B7355}
+.header-right{font-family:'Noto Serif SC',serif;font-size:14px;letter-spacing:2px;color:#555}
+
+/* footer bar */
+.footer{position:absolute;bottom:40px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:center;z-index:5}
+.footer-line{width:60px;height:1px;background:#1B3B6B}
+.footer-text{font-family:'Noto Serif SC',serif;font-size:12px;letter-spacing:3px;color:#8B7355}
+
+/* LEFT: Bauhaus geometric composition */
+.geo-canvas{position:absolute;top:140px;left:80px;width:560px;height:700px;z-index:2}
+
+/* large prussian blue circle - background */
+.geo-circle-lg{position:absolute;top:60px;left:120px;width:380px;height:380px;border-radius:50%;background:#1B3B6B}
+/* copper ring */
+.geo-ring{position:absolute;top:30px;left:200px;width:300px;height:300px;border-radius:50%;border:6px solid #8B7355;background:transparent}
+/* inner parchment circle - overlap creating depth */
+.geo-circle-inner{position:absolute;top:110px;left:250px;width:260px;height:260px;border-radius:50%;background:#F5F0E8}
+/* small prussian circle inside */
+.geo-dot{position:absolute;top:200px;left:330px;width:80px;height:80px;border-radius:50%;background:#1B3B6B}
+/* copper square */
+.geo-square{position:absolute;top:430px;left:80px;width:180px;height:180px;background:#8B7355}
+/* prussian thin square outline */
+.geo-square-outline{position:absolute;top:470px;left:120px;width:140px;height:140px;border:3px solid #1B3B6B;background:transparent}
+/* vertical line */
+.geo-vline{position:absolute;top:40px;left:50px;width:3px;height:560px;background:#1B3B6B}
+/* horizontal line */
+.geo-hline{position:absolute;top:130px;left:40px;width:460px;height:3px;background:#1B3B6B}
+/* diagonal small line */
+.geo-dline{position:absolute;top:560px;left:200px;width:260px;height:3px;background:#8B7355;transform:rotate(38deg);transform-origin:left center}
+/* tiny copper circle accent */
+.geo-dot-copper{position:absolute;top:570px;left:60px;width:20px;height:20px;border-radius:50%;background:#8B7355}
+/* geometric label */
+.geo-label{position:absolute;bottom:-10px;left:40px;font-family:'Noto Serif SC',serif;font-size:11px;letter-spacing:4px;color:#8B7355}
+
+/* RIGHT: Content area */
+.content{position:absolute;top:140px;left:680px;width:840px;height:720px;z-index:3}
+.eyebrow{font-family:'Noto Serif SC',serif;font-size:13px;letter-spacing:5px;color:#8B7355;margin-bottom:18px}
+.main-title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:64px;font-weight:700;color:#1B3B6B;line-height:1.2;letter-spacing:2px}
+.title-sub{font-family:'Noto Serif SC',serif;font-size:22px;color:#555;letter-spacing:2px;margin-top:12px}
+.title-bar{width:120px;height:4px;background:#1B3B6B;margin-top:28px;margin-bottom:14px}
+.title-bar-copper{width:60px;height:4px;background:#8B7355;margin-bottom:38px}
+
+.bullets{list-style:none;margin:0;padding:0}
+.bullets li{display:flex;align-items:flex-start;gap:18px;padding:13px 0;border-bottom:1px solid rgba(27,59,107,0.12);font-family:'Noto Sans SC',sans-serif;font-size:19px;color:#1B3B6B;letter-spacing:1px;line-height:1.5}
+.bullet-num{font-family:'Noto Serif SC',serif;font-size:15px;color:#8B7355;min-width:32px;letter-spacing:1px;padding-top:3px}
+.bullet-dot{width:8px;height:8px;background:#1B3B6B;border-radius:50%;flex-shrink:0;margin-top:11px}
+
+.closing-box{position:absolute;bottom:0;left:0;width:840px;border-left:4px solid #1B3B6B;padding:18px 24px;background:rgba(27,59,107,0.04)}
+.closing-text{font-family:'Noto Serif SC',serif;font-size:24px;color:#1B3B6B;letter-spacing:3px;line-height:1.5}
+.closing-text .accent{color:#8B7355}
+.closing-meta{font-family:'Noto Serif SC',serif;font-size:12px;color:#8B7355;letter-spacing:4px;margin-top:10px}
+
+/* geometric decorations on right */
+.right-deco-circle{position:absolute;top:0;right:-30px;width:100px;height:100px;border:2px solid #1B3B6B;border-radius:50%}
+.right-deco-square{position:absolute;top:100px;right:20px;width:30px;height:30px;background:#8B7355}
+</style></head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <span class="lecture-num">Lecture 06 / 38</span>
+    <span class="header-divider"></span>
+    <span class="lecture-num">组织结构与治理</span>
+  </div>
+  <div class="header-right">开源之道 · 新制度经济学视角</div>
+</div>
+
+<div class="geo-canvas">
+  <div class="geo-vline"></div>
+  <div class="geo-hline"></div>
+  <div class="geo-circle-lg"></div>
+  <div class="geo-ring"></div>
+  <div class="geo-circle-inner"></div>
+  <div class="geo-dot"></div>
+  <div class="geo-square"></div>
+  <div class="geo-square-outline"></div>
+  <div class="geo-dline"></div>
+  <div class="geo-dot-copper"></div>
+  <div class="geo-label">BAUHAUS COMPOSITION · N&deg;06</div>
+</div>
+
+<div class="content">
+  <div class="right-deco-circle"></div>
+  <div class="right-deco-square"></div>
+
+  <div class="eyebrow">REFLECTION · 再审视</div>
+  <h1 class="main-title">如此再回看 OSPO</h1>
+  <div class="title-sub">—— 开源经济学议题的无限游戏</div>
+  <div class="title-bar"></div>
+  <div class="title-bar-copper"></div>
+
+  <ul class="bullets">
+    <li><span class="bullet-num">Ⅰ</span><span class="bullet-dot"></span><span>如此再回看 OSPO</span></li>
+    <li><span class="bullet-num">Ⅱ</span><span class="bullet-dot"></span><span>开源无法被忽视</span></li>
+    <li><span class="bullet-num">Ⅲ</span><span class="bullet-dot"></span><span>开源中有无限的财富可以挖掘</span></li>
+    <li><span class="bullet-num">Ⅳ</span><span class="bullet-dot"></span><span>需要降低成本，需要创新，需要开源</span></li>
+    <li><span class="bullet-num">Ⅴ</span><span class="bullet-dot"></span><span>企业、虚拟共同体、政府、非营利共同发展</span></li>
+  </ul>
+
+  <div class="closing-box">
+    <div class="closing-text">如此定义的 OSPO，<span class="accent">无限的游戏 ～</span></div>
+    <div class="closing-meta">AN INFINITE GAME · 开源的组织想象</div>
+  </div>
+</div>
+
+<div class="footer">
+  <span class="footer-text">第 06 期 · 组织结构与治理</span>
+  <span class="footer-line"></span>
+  <span class="footer-text">OSPO · 无限的游戏</span>
+</div>
+
+</body></html>

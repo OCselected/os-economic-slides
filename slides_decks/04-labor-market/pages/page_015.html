@@ -1,0 +1,180 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>开发者的技能要求 — 空椅与秩序</title><style>html,body{width:1600px;height:900px;overflow:hidden;margin:0;}body{font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;background:#F5F0E8;color:#1B3B6B;position:relative;}
+.bg-texture{position:absolute;top:0;left:0;width:1600px;height:900px;pointer-events:none;opacity:0.04;
+  background:repeating-linear-gradient(0deg,transparent 0,transparent 49px,#1B3B6B 49px,#1B3B6B 50px),repeating-linear-gradient(90deg,transparent 0,transparent 49px,#1B3B6B 49px,#1B3B6B 50px);}
+.top-bar{position:absolute;top:0;left:0;width:1600px;height:6px;background:#1B3B6B;}
+.top-bar-accent{position:absolute;top:0;left:0;width:533px;height:6px;background:#8B7355;}
+
+.deco-circle{position:absolute;top:60px;right:80px;width:120px;height:120px;border-radius:50%;border:3px solid #1B3B6B;}
+.deco-circle-inner{position:absolute;top:78px;right:98px;width:84px;height:84px;border-radius:50%;background:#8B7355;opacity:0.15;}
+.deco-square{position:absolute;top:58px;left:80px;width:44px;height:44px;background:#1B3B6B;}
+.deco-line-h{position:absolute;top:100px;left:80px;width:200px;height:2px;background:#8B7355;}
+.deco-line-v{position:absolute;top:60px;left:140px;width:2px;height:44px;background:#8B7355;}
+
+.section-no{position:absolute;top:55px;left:100px;font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:3px;}
+.section-tag{position:absolute;top:55px;right:230px;font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:3px;}
+
+.main-title{position:absolute;top:180px;left:80px;font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:52px;font-weight:700;color:#1B3B6B;letter-spacing:2px;line-height:1.2;}
+.main-title-en{position:absolute;top:260px;left:82px;font-family:'Noto Serif SC',serif;font-size:18px;color:#8B7355;letter-spacing:4px;font-style:italic;}
+.title-underline{position:absolute;top:298px;left:80px;width:120px;height:4px;background:#1B3B6B;}
+.title-underline-2{position:absolute;top:298px;left:206px;width:40px;height:4px;background:#8B7355;}
+
+.bullet-section{position:absolute;top:340px;left:80px;width:620px;}
+.bullet-title{font-family:'Noto Serif SC',serif;font-size:15px;color:#555;letter-spacing:2px;margin-bottom:18px;padding-bottom:8px;border-bottom:1px solid #1B3B6B;width:200px;}
+.bullet-item{display:flex;align-items:flex-start;margin-bottom:16px;}
+.bullet-num{font-family:'Noto Serif SC',serif;font-size:22px;color:#8B7355;width:36px;flex-shrink:0;font-weight:600;line-height:1.4;}
+.bullet-text{font-size:17px;color:#1B3B6B;line-height:1.6;font-weight:400;}
+.bullet-text .sub{font-size:14px;color:#555;margin-top:2px;display:block;}
+.bullet-marker{display:inline-block;width:8px;height:8px;background:#1B3B6B;margin-right:10px;flex-shrink:0;margin-top:8px;}
+.bullet-marker-square{display:inline-block;width:8px;height:8px;background:#8B7355;margin-right:10px;flex-shrink:0;margin-top:8px;}
+
+.visual-section{position:absolute;top:330px;right:60px;width:780px;height:440px;}
+
+.chair-row{position:absolute;display:flex;gap:28px;}
+.chair{display:flex;flex-direction:column;align-items:center;}
+.chair-back{width:52px;height:56px;border:2px solid #1B3B6B;background:transparent;position:relative;}
+.chair-back::before{content:'';position:absolute;top:8px;left:8px;width:36px;height:40px;border:1px solid #1B3B6B;opacity:0.5;}
+.chair-seat{width:56px;height:8px;background:#1B3B6B;margin-top:2px;}
+.chair-legs{display:flex;justify-content:space-between;width:52px;margin-top:0;}
+.chair-leg{width:2px;height:40px;background:#1B3B6B;}
+
+.chair-faded .chair-back{border-color:#8B7355;opacity:0.5;}
+.chair-faded .chair-back::before{border-color:#8B7355;opacity:0.3;}
+.chair-faded .chair-seat{background:#8B7355;opacity:0.6;}
+.chair-faded .chair-leg{background:#8B7355;opacity:0.6;}
+
+.row-label{position:absolute;font-family:'Noto Serif SC',serif;font-size:13px;color:#555;letter-spacing:1px;width:80px;text-align:right;padding-right:12px;line-height:1.4;}
+
+.floor-line{position:absolute;left:60px;width:780px;height:2px;background:#1B3B6B;}
+.floor-line-thin{position:absolute;left:60px;width:780px;height:1px;background:#8B7355;opacity:0.6;}
+
+.label-row1{top:360px;}
+.label-row2{top:490px;}
+.label-row3{top:620px;}
+
+.visual-title{position:absolute;top:0;left:0;font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:3px;}
+.visual-subtitle{position:absolute;top:24px;left:0;font-family:'Noto Serif SC',serif;font-size:11px;color:#555;letter-spacing:1px;}
+.visual-rows{position:absolute;top:60px;left:140px;right:0;width:640px;height:380px;}
+
+.chair-row1{top:0;}
+.chair-row2{top:130px;}
+.chair-row3{top:260px;}
+
+.visual-caption{position:absolute;bottom:0;right:0;font-family:'Noto Serif SC',serif;font-size:12px;color:#8B7355;letter-spacing:2px;font-style:italic;width:250px;text-align:right;line-height:1.6;}
+
+.bottom-bar{position:absolute;bottom:0;left:0;width:1600px;height:6px;background:#1B3B6B;}
+.bottom-bar-accent{position:absolute;bottom:0;right:0;width:200px;height:6px;background:#8B7355;}
+
+.footer-left{position:absolute;bottom:20px;left:80px;font-family:'Noto Serif SC',serif;font-size:11px;color:#555;letter-spacing:2px;}
+.footer-right{position:absolute;bottom:20px;right:80px;font-family:'Noto Serif SC',serif;font-size:11px;color:#555;letter-spacing:2px;}
+
+.big-numeral{position:absolute;top:150px;right:60px;font-family:'Noto Serif SC',serif;font-size:180px;color:#1B3B6B;opacity:0.06;font-weight:700;line-height:1;}
+</style></head><body>
+<div class="bg-texture"></div>
+<div class="top-bar"></div>
+<div class="top-bar-accent"></div>
+
+<div class="deco-square"></div>
+<div class="deco-line-h"></div>
+<div class="deco-line-v"></div>
+<div class="deco-circle"></div>
+<div class="deco-circle-inner"></div>
+
+<div class="section-no">§ 04 / 07</div>
+<div class="section-tag">SKILL &amp; DISCIPLINE</div>
+
+<div class="big-numeral">04</div>
+
+<div class="main-title">开发者的技能要求</div>
+<div class="main-title-en">The Skill Requirements of Developers</div>
+<div class="title-underline"></div>
+<div class="title-underline-2"></div>
+
+<div class="bullet-section">
+  <div class="bullet-title">▎核心要点 / KEY POINTS</div>
+
+  <div class="bullet-item">
+    <span class="bullet-marker"></span>
+    <span class="bullet-text">需要大量的基础知识受训
+      <span class="sub">Extensive foundational training is required</span>
+    </span>
+  </div>
+
+  <div class="bullet-item">
+    <span class="bullet-marker-square"></span>
+    <span class="bullet-text">底层计算机、程序框架和应用开发
+      <span class="sub">Computer fundamentals, program frameworks &amp; application development</span>
+    </span>
+  </div>
+
+  <div class="bullet-item">
+    <span class="bullet-marker"></span>
+    <span class="bullet-text">算法、生态和扩展
+      <span class="sub">Algorithms, ecosystem &amp; extensibility</span>
+    </span>
+  </div>
+
+  <div class="bullet-item">
+    <span class="bullet-marker-square"></span>
+    <span class="bullet-text">了解某类特定的业务
+      <span class="sub">Understanding of specific business domains</span>
+    </span>
+  </div>
+
+  <div class="bullet-item" style="margin-top:24px;padding-top:16px;border-top:1px solid #8B7355;opacity:0.85;">
+    <span style="font-family:'Noto Serif SC',serif;font-size:15px;color:#8B7355;font-style:italic;letter-spacing:1px;">「技术的本质是不断的组合，</span>
+    <span style="font-family:'Noto Serif SC',serif;font-size:15px;color:#8B7355;font-style:italic;letter-spacing:1px;">越发的复杂与细化。」</span>
+  </div>
+</div>
+
+<div class="visual-section">
+  <div class="visual-title">空椅 · EMPTY CHAIRS</div>
+  <div class="visual-subtitle">A metaphor of order awaiting to be filled</div>
+
+  <div class="visual-rows">
+    <div class="chair-row chair-row1">
+      <div class="row-label label-row1">
+        第一层<br>FOUNDATIONS
+      </div>
+      <div class="chair"><div class="chair-back"></div><div class="chair-seat"></div><div class="chair-legs"><div class="chair-leg"></div><div class="chair-leg"></div></div></div>
+      <div class="chair"><div class="chair-back"></div><div class="chair-seat"></div><div class="chair-legs"><div class="chair-leg"></div><div class="chair-leg"></div></div></div>
+      <div class="chair"><div class="chair-back"></div><div class="chair-seat"></div><div class="chair-legs"><div class="chair-leg"></div><div class="chair-leg"></div></div></div>
+      <div class="chair"><div class="chair-back"></div><div class="chair-seat"></div><div class="chair-legs"><div class="chair-leg"></div><div class="chair-leg"></div></div></div>
+      <div class="chair"><div class="chair-back"></div><div class="chair-seat"></div><div class="chair-legs"><div class="chair-leg"></div><div class="chair-leg"></div></div></div>
+      <div class="chair"><div class="chair-back"></div><div class="chair-seat"></div><div class="chair-legs"><div class="chair-leg"></div><div class="chair-leg"></div></div></div>
+    </div>
+    <div class="chair-row chair-row2">
+      <div class="row-label label-row2">
+        第二层<br>FRAMEWORKS
+      </div>
+      <div class="chair chair-faded"><div class="chair-back"></div><div class="chair-seat"></div><div class="chair-legs"><div class="chair-leg"></div><div class="chair-leg"></div></div></div>
+      <div class="chair chair-faded"><div class="chair-back"></div><div class="chair-seat"></div><div class="chair-legs"><div class="chair-leg"></div><div class="chair-leg"></div></div></div>
+      <div class="chair chair-faded"><div class="chair-back"></div><div class="chair-seat"></div><div class="chair-legs"><div class="chair-leg"></div><div class="chair-leg"></div></div></div>
+      <div class="chair chair-faded"><div class="chair-back"></div><div class="chair-seat"></div><div class="chair-legs"><div class="chair-leg"></div><div class="chair-leg"></div></div></div>
+      <div class="chair chair-faded"><div class="chair-back"></div><div class="chair-seat"></div><div class="chair-legs"><div class="chair-leg"></div><div class="chair-leg"></div></div></div>
+    </div>
+    <div class="chair-row chair-row3">
+      <div class="row-label label-row3">
+        第三层<br>DOMAINS
+      </div>
+      <div class="chair chair-faded" style="opacity:0.7;"><div class="chair-back"></div><div class="chair-seat"></div><div class="chair-legs"><div class="chair-leg"></div><div class="chair-leg"></div></div></div>
+      <div class="chair chair-faded" style="opacity:0.7;"><div class="chair-back"></div><div class="chair-seat"></div><div class="chair-legs"><div class="chair-leg"></div><div class="chair-leg"></div></div></div>
+      <div class="chair chair-faded" style="opacity:0.7;"><div class="chair-back"></div><div class="chair-seat"></div><div class="chair-legs"><div class="chair-leg"></div><div class="chair-leg"></div></div></div>
+    </div>
+
+    <div class="floor-line" style="top:350px;"></div>
+    <div class="floor-line-thin" style="top:352px;"></div>
+  </div>
+
+  <div class="visual-caption">
+    整齐的空椅隐喻着<br>等待被填充的<br>秩序与规训。
+  </div>
+</div>
+
+<div class="footer-left">§ 新制度经济学视角下的开源 / DIGITAL AGE OPEN SOURCE</div>
+<div class="footer-right">SLIDE 04 — SKILL DISCIPLINE</div>
+
+<div class="bottom-bar"></div>
+<div class="bottom-bar-accent"></div>
+</body></html>

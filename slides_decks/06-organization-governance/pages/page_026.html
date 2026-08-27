@@ -1,0 +1,471 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>从 Kernel 到 Linux 基金会</title><style>
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background: #F5F0E8;
+  font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  color: #1B3B6B;
+}
+
+.slide {
+  position: relative;
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+}
+
+/* Subtle parchment texture */
+.slide::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(139,115,85,0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(27,59,107,0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Bauhaus geometric decorations */
+.deco-circle-large {
+  position: absolute;
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  border: 3px solid #1B3B6B;
+  top: 60px;
+  right: 80px;
+}
+
+.deco-circle-solid {
+  position: absolute;
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  top: 110px;
+  right: 200px;
+}
+
+.deco-square-copper {
+  position: absolute;
+  width: 40px; height: 40px;
+  background: #8B7355;
+  top: 80px;
+  left: 80px;
+}
+
+.deco-square-outline {
+  position: absolute;
+  width: 28px; height: 28px;
+  border: 2px solid #1B3B6B;
+  top: 120px;
+  left: 140px;
+}
+
+.deco-line-h {
+  position: absolute;
+  height: 2px;
+  background: #1B3B6B;
+}
+
+.deco-line-v {
+  position: absolute;
+  width: 2px;
+  background: #1B3B6B;
+}
+
+.deco-line-h-top {
+  top: 50px;
+  left: 200px;
+  width: 300px;
+}
+
+.deco-line-v-right {
+  top: 50px;
+  right: 20px;
+  height: 300px;
+}
+
+.deco-circle-small-copper {
+  position: absolute;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: #8B7355;
+  top: 60px;
+  right: 245px;
+}
+
+/* Header */
+.header-block {
+  position: absolute;
+  top: 80px;
+  left: 80px;
+  width: 500px;
+}
+
+.eyebrow {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  letter-spacing: 6px;
+  color: #8B7355;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 44px;
+  font-weight: 700;
+  color: #1B3B6B;
+  line-height: 1.2;
+  letter-spacing: 1px;
+}
+
+.title-sub {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 16px;
+  color: #555;
+  margin-top: 14px;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+/* Timeline area */
+.timeline-area {
+  position: absolute;
+  top: 300px;
+  left: 80px;
+  width: 1440px;
+  height: 400px;
+}
+
+.timeline-track {
+  position: absolute;
+  top: 120px;
+  left: 60px;
+  width: 1320px;
+  height: 3px;
+  background: #1B3B6B;
+}
+
+.timeline-node {
+  position: absolute;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 140px;
+}
+
+.node-marker {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #F5F0E8;
+  border: 3px solid #1B3B6B;
+  margin-bottom: 0;
+}
+
+.node-marker-solid {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #1B3B6B;
+}
+
+.node-marker-copper {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #8B7355;
+}
+
+.node-year {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1B3B6B;
+  margin-bottom: 8px;
+  margin-top: -2px;
+}
+
+.node-label-top {
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  text-align: center;
+  font-size: 14px;
+  color: #1B3B6B;
+  line-height: 1.5;
+  font-family: 'Noto Serif SC', serif;
+}
+
+.node-label-bottom {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  text-align: center;
+  font-size: 12px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.node-line-top {
+  position: absolute;
+  top: -30px;
+  width: 2px;
+  height: 30px;
+  background: #1B3B6B;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.node-line-bottom {
+  position: absolute;
+  top: 26px;
+  width: 2px;
+  height: 24px;
+  background: #8B7355;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.node-1 { left: 40px; }
+.node-2 { left: 220px; }
+.node-3 { left: 400px; }
+.node-4 { left: 580px; }
+.node-5 { left: 760px; }
+.node-6 { left: 940px; }
+.node-7 { left: 1120px; }
+
+/* Arrow decoration at end */
+.timeline-arrow {
+  position: absolute;
+  right: -10px;
+  top: 115px;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 14px solid #1B3B6B;
+}
+
+/* Bottom summary strip */
+.summary-area {
+  position: absolute;
+  bottom: 70px;
+  left: 80px;
+  width: 1440px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.summary-quote {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 17px;
+  color: #1B3B6B;
+  font-style: italic;
+  line-height: 1.5;
+  max-width: 700px;
+}
+
+.summary-meta {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: #8B7355;
+  text-align: right;
+}
+
+/* Vertical divider between header and timeline */
+.deco-line-v-left {
+  top: 200px;
+  left: 70px;
+  height: 80px;
+}
+
+.deco-square-tiny {
+  position: absolute;
+  width: 8px; height: 8px;
+  background: #8B7355;
+  top: 250px;
+  left: 66px;
+}
+
+/* Footer */
+.footer-line {
+  position: absolute;
+  bottom: 40px;
+  left: 80px;
+  width: 1440px;
+  height: 1px;
+  background: #1B3B6B;
+  opacity: 0.3;
+}
+
+.footer-text {
+  position: absolute;
+  bottom: 18px;
+  left: 80px;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #8B7355;
+}
+
+.footer-page {
+  position: absolute;
+  bottom: 18px;
+  right: 80px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12px;
+  color: #1B3B6B;
+}
+
+/* Corner decorations bottom-right */
+.deco-corner-square {
+  position: absolute;
+  width: 30px; height: 30px;
+  background: #1B3B6B;
+  bottom: 50px;
+  right: 60px;
+  opacity: 0.15;
+}
+
+.deco-corner-circle {
+  position: absolute;
+  width: 50px; height: 50px;
+  border-radius: 50%;
+  border: 2px solid #8B7355;
+  bottom: 40px;
+  right: 30px;
+  opacity: 0.3;
+}
+
+.deco-circle-bottom-left {
+  position: absolute;
+  width: 70px; height: 70px;
+  border-radius: 50%;
+  background: #8B7355;
+  opacity: 0.08;
+  bottom: 80px;
+  left: 30px;
+}
+</style></head><body>
+<div class="slide">
+
+  <!-- Bauhaus decorations -->
+  <div class="deco-square-copper"></div>
+  <div class="deco-square-outline"></div>
+  <div class="deco-line-h deco-line-h-top"></div>
+  <div class="deco-line-v deco-line-v-right"></div>
+  <div class="deco-circle-large"></div>
+  <div class="deco-circle-solid"></div>
+  <div class="deco-circle-small-copper"></div>
+  <div class="deco-line-v deco-line-v-left"></div>
+  <div class="deco-square-tiny"></div>
+
+  <!-- Header -->
+  <div class="header-block">
+    <div class="eyebrow">PART IV · INSTITUTIONAL EVOLUTION</div>
+    <div class="title">从 Kernel 到<br/>Linux 基金会</div>
+    <div class="title-sub">一个个人项目如何成长为全球数字基础设施的制度史</div>
+  </div>
+
+  <!-- Timeline -->
+  <div class="timeline-area">
+    <div class="timeline-track"></div>
+    <div class="timeline-arrow"></div>
+
+    <div class="timeline-node node-1">
+      <div class="node-label-top">1991<br/>Minix 新闻组</div>
+      <div class="node-line-top"></div>
+      <div class="node-marker"></div>
+      <div class="node-year">'91</div>
+      <div class="node-line-bottom"></div>
+      <div class="node-label-bottom">Linus 在 comp.os.minix 上发布首版内核公告</div>
+    </div>
+
+    <div class="timeline-node node-2">
+      <div class="node-label-top">独立邮件列表<br/>kernel list</div>
+      <div class="node-line-top"></div>
+      <div class="node-marker-solid"></div>
+      <div class="node-year">'92</div>
+      <div class="node-line-bottom"></div>
+      <div class="node-label-bottom">从新闻组转向独立的 Linux Kernel Mailing List</div>
+    </div>
+
+    <div class="timeline-node node-3">
+      <div class="node-label-top">Linus 成为<br/>全职开发者</div>
+      <div class="node-line-top"></div>
+      <div class="node-marker-copper"></div>
+      <div class="node-year">'97</div>
+      <div class="node-line-bottom"></div>
+      <div class="node-label-bottom">Intel 赞助，Linus 从大学生转为专职维护者</div>
+    </div>
+
+    <div class="timeline-node node-4">
+      <div class="node-label-top">OSDL 成立<br/>Open Source Dev. Lab</div>
+      <div class="node-line-top"></div>
+      <div class="node-marker"></div>
+      <div class="node-year">'00</div>
+      <div class="node-line-bottom"></div>
+      <div class="node-label-bottom">Linux 商业化诉求催生首个产业驱动的基金组织</div>
+    </div>
+
+    <div class="timeline-node node-5">
+      <div class="node-label-top">OSDL + FS<br/>Linux Foundation</div>
+      <div class="node-line-top"></div>
+      <div class="node-marker-solid"></div>
+      <div class="node-year">'07</div>
+      <div class="node-line-bottom"></div>
+      <div class="node-label-bottom">两大组织合并，Linux 基金会正式成立</div>
+    </div>
+
+    <div class="timeline-node node-6">
+      <div class="node-label-top">Linus 当选<br/>LF Fellow</div>
+      <div class="node-line-top"></div>
+      <div class="node-marker-copper"></div>
+      <div class="node-year">'09</div>
+      <div class="node-line-bottom"></div>
+      <div class="node-label-bottom">被官方授予 Fellow，角色从个人到制度性中立</div>
+    </div>
+
+    <div class="timeline-node node-7">
+      <div class="node-label-top">全球基础设施<br/>与产业信任</div>
+      <div class="node-line-top"></div>
+      <div class="node-marker"></div>
+      <div class="node-year">今</div>
+      <div class="node-line-bottom"></div>
+      <div class="node-label-bottom">从被质疑的业余项目到支撑全球数字文明的基石</div>
+    </div>
+  </div>
+
+  <!-- Bottom summary -->
+  <div class="summary-area">
+    <div class="summary-quote">
+      "被权威质疑的个人项目，到全球使用的基础设施项目——<br/>
+      从宿舍兄弟的关照，到全球大厂的信任。"
+    </div>
+    <div class="summary-meta">
+      A JOURNEY OF INSTITUTIONAL MATURATION<br/>
+      <span style="opacity:0.6;">1991 — PRESENT</span>
+    </div>
+  </div>
+
+  <div class="footer-line"></div>
+  <div class="footer-text">开源经济学 · 新制度经济学视角下的开源</div>
+  <div class="footer-page">04 / 12</div>
+
+  <div class="deco-corner-square"></div>
+  <div class="deco-corner-circle"></div>
+  <div class="deco-circle-bottom-left"></div>
+</div>
+</body></html>

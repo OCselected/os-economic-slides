@@ -1,0 +1,177 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>文化作为开源价值的释放机制</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0}
+body{background:#F5F0E8;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;color:#1B3B6B;position:relative;overflow:hidden}
+
+/* subtle parchment texture */
+body::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;background:radial-gradient(ellipse at 20% 30%, rgba(139,115,85,0.04) 0%, transparent 60%),radial-gradient(ellipse at 80% 70%, rgba(27,59,107,0.03) 0%, transparent 50%);pointer-events:none}
+
+/* page frame */
+.frame{position:absolute;top:50px;left:50px;width:1500px;height:800px;border:1px solid #1B3B6B}
+.frame-inner{position:absolute;top:12px;left:12px;width:1476px;height:776px;border:1px solid rgba(27,59,107,0.3)}
+
+/* corner marks */
+.corner{position:absolute;width:18px;height:18px;border:2px solid #1B3B6B}
+.corner-tl{top:-2px;left:-2px;border-right:none;border-bottom:none}
+.corner-tr{top:-2px;right:-2px;border-left:none;border-bottom:none}
+.corner-bl{bottom:-2px;left:-2px;border-right:none;border-top:none}
+.corner-br{bottom:-2px;right:-2px;border-left:none;border-top:none}
+
+/* header */
+.header{position:absolute;top:80px;left:120px;width:1360px;height:80px;display:flex;align-items:center;justify-content:space-between}
+.header-num{font-family:'Noto Serif SC',serif;font-size:22px;color:#8B7355;letter-spacing:4px}
+.header-line{flex:1;height:1px;background:#1B3B6B;margin:0 30px;opacity:0.6}
+.header-section{font-family:'Noto Serif SC',serif;font-size:18px;color:#8B7355;letter-spacing:6px}
+
+/* main layout */
+.main{position:absolute;top:200px;left:120px;width:1360px;height:580px;display:flex;gap:60px}
+
+/* left: emblem */
+.emblem-wrap{width:500px;height:580px;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.emblem-title-zh{font-family:'Noto Serif SC',serif;font-size:26px;color:#1B3B6B;letter-spacing:8px;margin-bottom:12px;font-weight:700}
+.emblem-sub{font-size:13px;color:#8B7355;letter-spacing:4px;margin-bottom:40px}
+.emblem-art{position:relative;width:380px;height:300px;display:flex;align-items:center;justify-content:center}
+.emblem-bigcircle{position:absolute;width:240px;height:240px;border:3px solid #1B3B6B;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.emblem-square{position:absolute;width:140px;height:140px;border:2px solid #8B7355;transform-origin:center}
+.emblem-square-h{position:absolute;width:160px;height:1px;background:#1B3B6B;top:150px;left:110px}
+.emblem-square-v{position:absolute;width:1px;height:160px;background:#1B3B6B;top:70px;left:200px}
+.emblem-dot{position:absolute;width:14px;height:14px;background:#1B3B6B;border-radius:50%;top:143px;left:193px}
+.emblem-arc{position:absolute;width:200px;height:100px;border:2px solid #8B7355;border-radius:200px 200px 0 0;top:150px;left:90px;border-bottom:none}
+.emblem-cross1{position:absolute;width:60px;height:1px;background:#8B7355;top:150px;left:160px;opacity:0.5}
+.emblem-cross2{position:absolute;width:60px;height:1px;background:#8B7355;top:150px;left:210px;opacity:0.5}
+.emblem-cross3{position:absolute;width:1px;height:60px;background:#8B7355;top:120px;left:200px;opacity:0.5}
+.emblem-cross4{position:absolute;width:1px;height:60px;background:#8B7355;top:150px;left:200px;opacity:0.5}
+.emblem-ospo{font-family:'Noto Serif SC',serif;font-size:38px;color:#F5F0E8;font-weight:700;letter-spacing:6px;position:absolute;top:100px;left:145px;z-index:2}
+.emblem-summit{font-family:'Noto Sans SC',sans-serif;font-size:12px;color:#1B3B6B;letter-spacing:8px;position:absolute;top:158px;left:158px;z-index:2}
+.emblem-year{font-family:'Noto Serif SC',serif;font-size:16px;color:#8B7355;letter-spacing:3px;margin-top:30px}
+.emblem-caption{font-family:'Noto Serif SC',serif;font-size:15px;color:#1B3B6B;margin-top:20px;text-align:center;line-height:1.8;letter-spacing:2px}
+.emblem-caption em{font-style:normal;color:#8B7355;font-size:12px;display:block;margin-top:6px;letter-spacing:3px}
+
+/* right: content */
+.content{flex:1;height:580px;display:flex;flex-direction:column;justify-content:flex-start;padding-top:10px}
+.section-title{font-family:'Noto Serif SC',serif;font-size:34px;color:#1B3B6B;font-weight:700;letter-spacing:3px;line-height:1.4;margin-bottom:8px}
+.section-title-en{font-size:13px;color:#8B7355;letter-spacing:5px;margin-bottom:35px;font-style:italic}
+.section-divider{width:80px;height:3px;background:#1B3B6B;margin-bottom:35px}
+
+.points{display:flex;flex-direction:column;gap:22px}
+.point{display:flex;align-items:flex-start;gap:20px}
+.point-num{flex-shrink:0;width:36px;height:36px;background:#1B3B6B;color:#F5F0E8;font-family:'Noto Serif SC',serif;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:4px}
+.point-num-alt{flex-shrink:0;width:36px;height:36px;border:2px solid #8B7355;color:#8B7355;font-family:'Noto Serif SC',serif;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:4px}
+.point-text{flex:1}
+.point-title{font-family:'Noto Serif SC',serif;font-size:18px;color:#1B3B6B;font-weight:700;margin-bottom:4px;letter-spacing:1px;line-height:1.4}
+.point-desc{font-size:13px;color:#555;line-height:1.7;letter-spacing:0.5px}
+.point-desc strong{color:#1B3B6B;font-weight:600}
+
+/* footer */
+.footer{position:absolute;bottom:60px;left:120px;width:1360px;display:flex;align-items:center;justify-content:space-between}
+.footer-left{font-size:12px;color:#8B7355;letter-spacing:3px}
+.footer-center{flex:1;height:1px;background:#1B3B6B;margin:0 40px;opacity:0.3}
+.footer-right{font-family:'Noto Serif SC',serif;font-size:13px;color:#1B3B6B;letter-spacing:4px}
+
+/* geometric decorations */
+.deco-circle{position:absolute;width:80px;height:80px;border:2px solid #1B3B6B;border-radius:50%;opacity:0.15;top:120px;right:80px}
+.deco-square{position:absolute;width:40px;height:40px;background:#8B7355;opacity:0.1;top:140px;right:110px}
+.deco-line-h{position:absolute;width:200px;height:1px;background:#1B3B6B;opacity:0.2;top:180px;right:60px}
+</style></head><body>
+
+<div class="frame">
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+</div>
+
+<div class="deco-circle"></div>
+<div class="deco-square"></div>
+<div class="deco-line-h"></div>
+
+<div class="header">
+  <span class="header-num">07 / 14</span>
+  <span class="header-line"></span>
+  <span class="header-section">制 度 · 文 化 · 演 化</span>
+</div>
+
+<div class="main">
+
+  <div class="emblem-wrap">
+    <div class="emblem-title-zh">OSPO SUMMIT</div>
+    <div class="emblem-sub">开 源 战 略 官 峰 会</div>
+    <div class="emblem-art">
+      <div class="emblem-bigcircle"></div>
+      <div class="emblem-ospo">OSPO</div>
+      <div class="emblem-summit">— S U M M I T —</div>
+      <div class="emblem-arc"></div>
+      <div class="emblem-square-h"></div>
+      <div class="emblem-square-v"></div>
+      <div class="emblem-dot"></div>
+      <div class="emblem-cross1"></div>
+      <div class="emblem-cross2"></div>
+      <div class="emblem-cross3"></div>
+      <div class="emblem-cross4"></div>
+    </div>
+    <div class="emblem-year">MMXXIV</div>
+    <div class="emblem-caption">
+      文化作为开源价值的释放机制
+      <em>CULTURE AS THE RELEASE MECHANISM OF OPEN-SOURCE VALUE</em>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="section-title">文化能否被改变？</div>
+    <div class="section-title-en">Can Culture Be Changed ?</div>
+    <div class="section-divider"></div>
+
+    <div class="points">
+      <div class="point">
+        <div class="point-num">一</div>
+        <div class="point-text">
+          <div class="point-title">作为 Software 的认知与理解</div>
+          <div class="point-desc">文化本身可被视为一种<strong>可编写、可部署、可迭代</strong>的软件系统，运行于社会这一底层硬件之上。</div>
+        </div>
+      </div>
+
+      <div class="point">
+        <div class="point-num-alt">二</div>
+        <div class="point-text">
+          <div class="point-title">东亚的崛起与儒家的适应性</div>
+          <div class="point-desc">儒家传统并非静态教条——东亚的崛起证明了<strong>文化体系具备版本升级的能力</strong>，可兼容新的协作范式。</div>
+        </div>
+      </div>
+
+      <div class="point">
+        <div class="point-num">三</div>
+        <div class="point-text">
+          <div class="point-title">承认开源是先进与高级的</div>
+          <div class="point-desc">开源不是技术层面的权宜之计，而是<strong>知识生产组织形式的进化</strong>，是对封闭协作模式的文明级超越。</div>
+        </div>
+      </div>
+
+      <div class="point">
+        <div class="point-num-alt">四</div>
+        <div class="point-text">
+          <div class="point-title">需要学习，也需要实践</div>
+          <div class="point-desc">文化的迁移不止于理念认同——<strong>认知与实践构成闭环</strong>，唯有在真实协作中才能完成文化的编译与部署。</div>
+        </div>
+      </div>
+
+      <div class="point">
+        <div class="point-num">五</div>
+        <div class="point-text">
+          <div class="point-title">动态的文化演化，适应时代的发展</div>
+          <div class="point-desc">文化从来不是定稿，而是<strong>持续 fork 与 merge</strong>的活系统——每一次开源协作都是文化基因的一次重组实验。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <span class="footer-left">NEW INSTITUTIONAL ECONOMICS × OPEN SOURCE</span>
+  <span class="footer-center"></span>
+  <span class="footer-right">开 源 之 道 &nbsp;·&nbsp; 讲 座</span>
+</div>
+
+</body></html>

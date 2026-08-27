@@ -1,0 +1,169 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>开源的发明</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0;font-family:'Noto Sans SC',sans-serif;color:#1B3B6B;background:#F5F0E8}
+.slide{position:relative;width:1600px;height:900px;background:#F5F0E8;overflow:hidden}
+/* parchment texture */
+.slide::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;background:radial-gradient(ellipse at 30% 20%,rgba(255,255,255,0.4) 0%,transparent 50%),radial-gradient(ellipse at 80% 80%,rgba(139,115,85,0.06) 0%,transparent 50%);pointer-events:none}
+
+/* top rule */
+.top-rule{position:absolute;top:48px;left:80px;width:1440px;height:1px;background:#1B3B6B}
+.top-rule-thin{position:absolute;top:56px;left:80px;width:1440px;height:1px;background:#8B7355;opacity:0.5}
+
+/* header */
+.header{position:absolute;top:72px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:center}
+.header-left{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:14px;letter-spacing:6px;color:#8B7355}
+.header-right{font-size:13px;letter-spacing:3px;color:#8B7355}
+
+/* main layout */
+.main{position:absolute;top:130px;left:80px;right:80px;bottom:110px;display:flex;gap:60px}
+.left{width:720px;height:660px;position:relative}
+.right{flex:1;height:660px;position:relative}
+
+/* LEFT: Bauhaus geometric composition representing tension and convergence */
+.geo-canvas{position:absolute;top:0;left:0;width:720px;height:660px}
+
+/* Central circle */
+.geo-circle{position:absolute;top:180px;left:240px;width:240px;height:240px;border-radius:50%;background:#1B3B6B;opacity:0.12}
+.geo-circle-2{position:absolute;top:240px;left:300px;width:120px;height:120px;border-radius:50%;background:#1B3B6B}
+.geo-circle-ring{position:absolute;top:155px;left:215px;width:290px;height:290px;border-radius:50%;border:1px solid #1B3B6B;opacity:0.4}
+
+/* Converging lines - representing factions coming together */
+.line-tl{position:absolute;top:40px;left:20px;width:520px;height:1px;background:#1B3B6B;opacity:0.7;transform-origin:left center}
+.line-tr{position:absolute;top:40px;right:20px;width:520px;height:1px;background:#8B7355;opacity:0.7}
+.line-bl{position:absolute;bottom:40px;left:20px;width:520px;height:1px;background:#1B3B6B;opacity:0.5}
+.line-br{position:absolute;bottom:40px;right:20px;width:520px;height:1px;background:#8B7355;opacity:0.5}
+
+/* diagonal tension lines */
+.diag-1{position:absolute;top:60px;left:0;width:1px;height:540px;background:#1B3B6B;opacity:0.35}
+.diag-2{position:absolute;top:60px;right:0;width:1px;height:540px;background:#1B3B6B;opacity:0.35}
+
+/* Square blocks representing factions */
+.faction-1{position:absolute;top:30px;left:40px;width:60px;height:60px;background:#1B3B6B;opacity:0.85}
+.faction-2{position:absolute;top:30px;right:40px;width:60px;height:60px;background:#8B7355;opacity:0.85}
+.faction-3{position:absolute;bottom:30px;left:40px;width:60px;height:60px;background:#1B3B6B;opacity:0.4}
+.faction-4{position:absolute;bottom:30px;right:40px;width:60px;height:60px;background:#8B7355;opacity:0.4}
+
+/* convergence lines to center */
+.conv-1{position:absolute;top:60px;left:100px;width:350px;height:1px;background:#1B3B6B}
+.conv-2{position:absolute;top:60px;right:100px;width:350px;height:1px;background:#8B7355}
+.conv-3{position:absolute;bottom:60px;left:100px;width:350px;height:1px;background:#1B3B6B;opacity:0.6}
+.conv-4{position:absolute;bottom:60px;right:100px;width:350px;height:1px;background:#8B7355;opacity:0.6}
+
+/* small dots at convergence */
+.dot{position:absolute;width:8px;height:8px;border-radius:50%;background:#1B3B6B}
+.dot-1{top:330px;left:460px}
+.dot-2{top:330px;left:220px}
+.dot-3{top:180px;left:360px}
+.dot-4{top:420px;left:360px}
+
+/* caption under geometric art */
+.geo-caption{position:absolute;bottom:0;left:0;width:100%;text-align:center;font-size:12px;letter-spacing:2px;color:#8B7355;font-style:italic}
+
+/* RIGHT: text content */
+.case-label{font-size:13px;letter-spacing:5px;color:#8B7355;margin-bottom:16px}
+.title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:56px;font-weight:700;color:#1B3B6B;line-height:1.15;margin-bottom:12px;letter-spacing:2px}
+.subtitle{font-family:'Noto Serif SC',serif;font-size:20px;color:#8B7355;letter-spacing:3px;margin-bottom:36px;padding-bottom:24px;border-bottom:1px solid rgba(27,59,107,0.2)}
+
+.points{display:flex;flex-direction:column;gap:20px}
+.point{display:flex;align-items:flex-start;gap:16px}
+.point-num{font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;min-width:28px;letter-spacing:2px;padding-top:4px}
+.point-text{font-size:16px;color:#1B3B6B;line-height:1.7;flex:1}
+.point-bar{width:3px;min-height:24px;background:#1B3B6B;opacity:0.7;flex-shrink:0}
+
+.highlight-year{font-family:'Noto Serif SC',serif;color:#8B7355;font-weight:700}
+
+/* footer */
+.footer{position:absolute;bottom:40px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:center;padding-top:16px;border-top:1px solid rgba(27,59,107,0.3)}
+.footer-left{font-size:12px;letter-spacing:3px;color:#8B7355}
+.footer-center{font-family:'Noto Serif SC',serif;font-size:12px;letter-spacing:4px;color:#555}
+.footer-right{font-size:12px;letter-spacing:3px;color:#8B7355}
+
+/* side accent */
+.side-mark{position:absolute;top:130px;left:50px;width:1px;height:660px;background:#1B3B6B;opacity:0.15}
+</style></head><body><div class="slide">
+<div class="top-rule"></div>
+<div class="top-rule-thin"></div>
+<div class="side-mark"></div>
+
+<div class="header">
+<div class="header-left">CASE · 00</div>
+<div class="header-right">新制度经济学视角下的开源</div>
+</div>
+
+<div class="main">
+<div class="left">
+<div class="geo-canvas">
+<div class="geo-circle"></div>
+<div class="geo-circle-ring"></div>
+<div class="geo-circle-2"></div>
+
+<div class="line-tl"></div>
+<div class="line-tr"></div>
+<div class="line-bl"></div>
+<div class="line-br"></div>
+
+<div class="diag-1"></div>
+<div class="diag-2"></div>
+
+<div class="conv-1"></div>
+<div class="conv-2"></div>
+<div class="conv-3"></div>
+<div class="conv-4"></div>
+
+<div class="faction-1"></div>
+<div class="faction-2"></div>
+<div class="faction-3"></div>
+<div class="faction-4"></div>
+
+<div class="dot dot-1"></div>
+<div class="dot dot-2"></div>
+<div class="dot dot-3"></div>
+<div class="dot dot-4"></div>
+
+<div class="geo-caption">— 几何构成：分歧与聚合的张力 —</div>
+</div>
+</div>
+
+<div class="right">
+<div class="case-label">案例 00 · CASE STUDY</div>
+<div class="title">开源的发明</div>
+<div class="subtitle">The Invention of Open Source</div>
+
+<div class="points">
+<div class="point">
+<div class="point-num">01</div>
+<div class="point-bar"></div>
+<div class="point-text">BSD / Unix War 如火如荼，技术路线之争白热化</div>
+</div>
+<div class="point">
+<div class="point-num">02</div>
+<div class="point-bar"></div>
+<div class="point-text">自由软件运动咄咄逼人，理想主义姿态鲜明</div>
+</div>
+<div class="point">
+<div class="point-num">03</div>
+<div class="point-bar"></div>
+<div class="point-text">学术圈与社区项目为实力担当，各自为战</div>
+</div>
+<div class="point">
+<div class="point-num">04</div>
+<div class="point-bar"></div>
+<div class="point-text">观念、思想、利益的差异，充满了张力与摩擦</div>
+</div>
+<div class="point">
+<div class="point-num">05</div>
+<div class="point-bar"></div>
+<div class="point-text"><span class="highlight-year">1998年春</span>，Tim O'Reilly 促成社区主要人物之间达成政治上的一致意见</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="footer">
+<div class="footer-left">BAUHAUS / OPEN SOURCE LECTURE</div>
+<div class="footer-center">图片由 DALL·E 生成 · 几何构成为独立设计</div>
+<div class="footer-right">P. 00 / 00</div>
+</div>
+</div></body></html>

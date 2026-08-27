@@ -1,0 +1,192 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>第 08 期 · 开源软件的定价悖论</title><style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0;}
+body{font-family:'Noto Sans SC',sans-serif;background:#F5F0E8;color:#1B3B6B;position:relative;width:1600px;height:900px;}
+
+.parchment{position:absolute;top:0;left:0;width:1600px;height:900px;background:#F5F0E8;}
+.parchment::before{content:'';position:absolute;top:0;left:0;width:1600px;height:900px;background:radial-gradient(ellipse at 30% 20%,rgba(139,115,85,0.04) 0%,transparent 60%),radial-gradient(ellipse at 70% 80%,rgba(27,59,107,0.03) 0%,transparent 50%);}
+
+/* Top bar */
+.top-bar{position:absolute;top:0;left:0;width:1600px;height:8px;background:#1B3B6B;}
+.top-bar-accent{position:absolute;top:8px;left:0;width:480px;height:3px;background:#8B7355;}
+
+/* Lecture header */
+.lecture-tag{position:absolute;top:38px;left:80px;display:flex;align-items:center;gap:18px;}
+.lecture-num{font-family:'Noto Serif SC',serif;font-size:14px;font-weight:600;color:#8B7355;letter-spacing:3px;}
+.lecture-divider{width:40px;height:1px;background:#8B7355;}
+.lecture-id{font-size:12px;color:#555;letter-spacing:2px;}
+
+/* Page indicator */
+.page-indicator{position:absolute;top:40px;right:80px;display:flex;align-items:center;gap:12px;font-size:12px;color:#555;letter-spacing:2px;}
+.page-dot{width:6px;height:6px;background:#8B7355;border-radius:0;}
+.page-line{width:60px;height:1px;background:#555;}
+
+/* Bottom bar */
+.bottom-bar{position:absolute;bottom:0;left:0;width:1600px;height:6px;background:#1B3B6B;}
+.bottom-bar-accent{position:absolute;bottom:6px;left:0;width:320px;height:2px;background:#8B7355;}
+
+/* Main title */
+.main-title{position:absolute;top:120px;left:80px;width:800px;}
+.title-num{font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;letter-spacing:4px;margin-bottom:14px;}
+.title-main{font-family:'Noto Serif SC',serif;font-size:58px;font-weight:900;color:#1B3B6B;line-height:1.1;letter-spacing:2px;}
+.title-accent{font-family:'Noto Serif SC',serif;font-size:58px;font-weight:900;color:#8B7355;}
+.title-sub{font-family:'Noto Serif SC',serif;font-size:20px;color:#555;font-weight:400;margin-top:18px;letter-spacing:1px;line-height:1.6;}
+
+.title-underline{position:absolute;top:375px;left:80px;width:200px;height:4px;background:#1B3B6B;}
+.title-underline2{position:absolute;top:383px;left:80px;width:60px;height:2px;background:#8B7355;}
+
+/* Geometric visual center-right */
+.geo-auction{position:absolute;top:130px;right:80px;width:560px;height:420px;}
+.geo-circle-big{position:absolute;top:20px;right:40px;width:280px;height:280px;border:3px solid #1B3B6B;border-radius:50%;}
+.geo-circle-inner{position:absolute;top:80px;right:100px;width:160px;height:160px;background:#1B3B6B;border-radius:50%;}
+.geo-square{position:absolute;top:60px;right:180px;width:60px;height:60px;background:#F5F0E8;border:2px solid #1B3B6B;}
+.geo-square-fill{position:absolute;top:100px;right:200px;width:20px;height:20px;background:#1B3B6B;}
+.geo-triangle{position:absolute;top:190px;right:40px;width:0;height:0;border-left:40px solid transparent;border-right:40px solid transparent;border-bottom:70px solid #8B7355;}
+.geo-line-v{position:absolute;top:0;right:180px;width:2px;height:420px;background:#8B7355;opacity:0.4;}
+.geo-line-h{position:absolute;top:210px;right:0;width:280px;height:2px;background:#1B3B6B;opacity:0.3;}
+.geo-small-circle{position:absolute;top:310px;right:380px;width:30px;height:30px;border:2px solid #8B7355;border-radius:50%;}
+.geo-tiny-square{position:absolute;top:340px;right:440px;width:14px;height:14px;background:#8B7355;}
+.geo-gavel-line{position:absolute;top:290px;right:180px;width:2px;height:90px;background:#1B3B6B;}
+.geo-gavel-head{position:absolute;top:280px;right:160px;width:40px;height:22px;background:#1B3B6B;}
+.geo-label{position:absolute;top:395px;right:40px;font-size:11px;color:#8B7355;letter-spacing:3px;font-weight:500;}
+.geo-label2{position:absolute;top:200px;right:440px;font-size:11px;color:#1B3B6B;letter-spacing:2px;}
+
+/* Content bullets */
+.content-area{position:absolute;top:420px;left:80px;width:820px;}
+.bullet-list{list-style:none;padding:0;margin:0;}
+.bullet-item{display:flex;align-items:flex-start;gap:16px;margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid rgba(139,115,85,0.2);}
+.bullet-item:last-child{border-bottom:none;}
+.bullet-marker{flex-shrink:0;width:24px;height:24px;position:relative;margin-top:4px;}
+.bullet-marker .sq{position:absolute;top:0;left:0;width:24px;height:24px;background:#1B3B6B;}
+.bullet-marker .sq-hollow{position:absolute;top:0;left:0;width:24px;height:24px;border:2px solid #1B3B6B;background:transparent;}
+.bullet-marker .circle{position:absolute;top:4px;left:4px;width:16px;height:16px;background:#8B7355;border-radius:50%;}
+.bullet-marker .circle-hollow{position:absolute;top:4px;left:4px;width:16px;height:16px;border:2px solid #1B3B6B;border-radius:50%;}
+.bullet-marker .dot{position:absolute;top:9px;left:9px;width:6px;height:6px;background:#1B3B6B;border-radius:50%;}
+.bullet-text{flex:1;font-size:17px;line-height:1.55;color:#1B3B6B;font-weight:400;}
+.bullet-text .em{font-weight:700;color:#1B3B6B;}
+.bullet-text .em-copper{font-weight:700;color:#8B7355;}
+.bullet-text .quote{font-family:'Noto Serif SC',serif;font-style:italic;font-weight:600;}
+
+/* Right column - quote panel */
+.quote-panel{position:absolute;top:580px;right:80px;width:560px;padding:24px 28px;border:2px solid #1B3B6B;background:rgba(245,240,232,0.8);}
+.quote-panel-inner{border:1px solid rgba(27,59,107,0.3);padding:18px 22px;display:flex;align-items:center;gap:20px;}
+.quote-symbol{font-family:'Noto Serif SC',serif;font-size:56px;font-weight:900;color:#8B7355;line-height:1;}
+.quote-text{font-family:'Noto Serif SC',serif;font-size:15px;color:#1B3B6B;line-height:1.6;font-weight:400;}
+.quote-text .strong{font-weight:700;}
+
+/* Decorative bottom geometry */
+.deco-bottom{position:absolute;bottom:40px;left:80px;display:flex;align-items:center;gap:10px;}
+.deco-sq1{width:12px;height:12px;background:#1B3B6B;}
+.deco-sq2{width:8px;height:8px;background:#8B7355;}
+.deco-sq3{width:12px;height:12px;border:1px solid #1B3B6B;}
+.deco-circle1{width:12px;height:12px;border:1px solid #8B7355;border-radius:50%;}
+.deco-line1{width:40px;height:1px;background:#1B3B6B;}
+
+.deco-bottom-text{position:absolute;bottom:42px;left:200px;font-size:11px;color:#555;letter-spacing:3px;}
+
+.deco-bottom-right{position:absolute;bottom:42px;right:80px;font-size:11px;color:#8B7355;letter-spacing:2px;display:flex;align-items:center;gap:10px;}
+.deco-bottom-right .line{width:30px;height:1px;background:#8B7355;}
+</style></head><body>
+<div class="parchment"></div>
+<div class="top-bar"></div>
+<div class="top-bar-accent"></div>
+<div class="bottom-bar"></div>
+<div class="bottom-bar-accent"></div>
+
+<div class="lecture-tag">
+  <span class="lecture-num">LECTURE · 08</span>
+  <span class="lecture-divider"></span>
+  <span class="lecture-id">信息规则与网络经济</span>
+</div>
+
+<div class="page-indicator">
+  <span>12</span>
+  <span class="page-line"></span>
+  <span class="page-dot"></span>
+  <span>30</span>
+</div>
+
+<!-- Main Title -->
+<div class="main-title">
+  <div class="title-num">PARADOX · 定价悖论</div>
+  <div class="title-main">开源软件的<span class="title-accent">定价</span>悖论</div>
+  <div class="title-sub">当价格归零，价值并未消亡 —— 信任契约替代了许可金</div>
+</div>
+<div class="title-underline"></div>
+<div class="title-underline2"></div>
+
+<!-- Geometric Visual -->
+<div class="geo-auction">
+  <div class="geo-circle-big"></div>
+  <div class="geo-circle-inner"></div>
+  <div class="geo-square"></div>
+  <div class="geo-square-fill"></div>
+  <div class="geo-triangle"></div>
+  <div class="geo-line-v"></div>
+  <div class="geo-line-h"></div>
+  <div class="geo-small-circle"></div>
+  <div class="geo-tiny-square"></div>
+  <div class="geo-gavel-line"></div>
+  <div class="geo-gavel-head"></div>
+  <div class="geo-label">TRUST CONTRACT</div>
+  <div class="geo-label2">VALUE ≠ PRICE</div>
+</div>
+
+<!-- Content Bullets -->
+<div class="content-area">
+  <ul class="bullet-list">
+    <li class="bullet-item">
+      <div class="bullet-marker"><div class="sq"></div></div>
+      <div class="bullet-text">放弃许可费用后，<span class="em">「价格」</span>消失了</div>
+    </li>
+    <li class="bullet-item">
+      <div class="bullet-marker"><div class="circle"></div></div>
+      <div class="bullet-text">但 <span class="quote">「价值」</span> 从未消失 —— 它被重新编码为信任、协作与规模</div>
+    </li>
+    <li class="bullet-item">
+      <div class="bullet-marker"><div class="sq-hollow"><div class="dot"></div></div></div>
+      <div class="bullet-text"><span class="em-copper">Red Hat 订阅</span>：卖的并非代码，而是<span class="em">信任与服务</span></div>
+    </li>
+    <li class="bullet-item">
+      <div class="bullet-marker"><div class="circle-hollow"></div></div>
+      <div class="bullet-text"><span class="em-copper">GitHub SaaS</span>：卖的并非仓库，而是<span class="em">平台与协作工具</span></div>
+    </li>
+    <li class="bullet-item">
+      <div class="bullet-marker"><div class="sq"></div></div>
+      <div class="bullet-text"><span class="em-copper">云厂商托管</span>：卖的并非软件，而是<span class="em">便利与规模</span></div>
+    </li>
+  </ul>
+</div>
+
+<!-- Quote Panel -->
+<div class="quote-panel">
+  <div class="quote-panel-inner">
+    <span class="quote-symbol">「</span>
+    <div class="quote-text">
+      拍卖师的木槌悬于半空 ——<br>
+      货物经<span class="strong">信任契约</span>流转，<br>
+      <span class="strong">价值显</span>，而<span class="strong">价格隐</span>。
+    </div>
+  </div>
+</div>
+
+<!-- Bottom deco -->
+<div class="deco-bottom">
+  <div class="deco-sq1"></div>
+  <div class="deco-sq2"></div>
+  <div class="deco-sq3"></div>
+  <div class="deco-circle1"></div>
+  <div class="deco-line1"></div>
+</div>
+<div class="deco-bottom-text">OPEN SOURCE · NEW INSTITUTIONAL ECONOMICS</div>
+<div class="deco-bottom-right">
+  <span class="line"></span>
+  <span>价值 &gt; 价格</span>
+  <span class="line"></span>
+</div>
+
+</body></html>

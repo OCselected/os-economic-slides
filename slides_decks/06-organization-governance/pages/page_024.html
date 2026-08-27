@@ -1,0 +1,171 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>开源企业化：Community 收缩为 Company</title><style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0;background:#F5F0E8;font-family:'Noto Sans SC','Source Han Serif SC',sans-serif;color:#1B3B6B;}
+.slide{position:relative;width:1600px;height:900px;background:#F5F0E8;overflow:hidden;}
+
+/* Parchment texture */
+.slide::before{content:'';position:absolute;top:0;left:0;width:1600px;height:900px;background:
+  radial-gradient(ellipse at 20% 30%, rgba(139,115,85,0.04) 0%, transparent 50%),
+  radial-gradient(ellipse at 80% 70%, rgba(27,59,107,0.03) 0%, transparent 50%);
+  pointer-events:none;z-index:0;}
+
+/* Header bar */
+.header{position:absolute;top:60px;left:100px;width:1400px;height:80px;display:flex;align-items:center;justify-content:space-between;z-index:5;}
+.header-left{display:flex;align-items:center;gap:20px;}
+.header-bar{width:60px;height:4px;background:#1B3B6B;}
+.header-num{font-family:'Noto Serif SC',serif;font-size:28px;color:#8B7355;letter-spacing:2px;font-weight:600;}
+.header-line{flex:1;height:1px;background:#1B3B6B;opacity:0.3;}
+.header-tag{font-size:13px;color:#555;letter-spacing:4px;font-weight:500;}
+
+/* Title area */
+.title-area{position:absolute;top:170px;left:100px;width:720px;z-index:5;}
+.title-main{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:56px;font-weight:700;color:#1B3B6B;line-height:1.2;letter-spacing:1px;}
+.title-sub{margin-top:24px;font-family:'Noto Serif SC',serif;font-size:24px;color:#8B7355;font-weight:400;letter-spacing:2px;font-style:italic;}
+.title-underline{margin-top:28px;width:200px;height:3px;background:#1B3B6B;}
+
+/* Central geometric visual - contraction */
+.visual{position:absolute;top:170px;right:100px;width:600px;height:520px;z-index:4;}
+.v-circle-outer{position:absolute;top:20px;left:100px;width:400px;height:400px;border:2px solid #1B3B6B;border-radius:50%;}
+.v-circle-mid{position:absolute;top:70px;left:160px;width:280px;height:280px;border:1.5px solid #1B3B6B;border-radius:50%;opacity:0.7;}
+.v-circle-inner{position:absolute;top:130px;left:220px;width:160px;height:160px;background:#1B3B6B;border-radius:50%;}
+.v-circle-core{position:absolute;top:180px;left:270px;width:60px;height:60px;background:#8B7355;border-radius:50%;}
+.v-label-outer{position:absolute;top:0px;left:60px;font-family:'Noto Serif SC',serif;font-size:18px;color:#1B3B6B;letter-spacing:3px;font-weight:600;}
+.v-label-mid{position:absolute;top:50px;left:120px;font-family:'Noto Serif SC',serif;font-size:14px;color:#1B3B6B;letter-spacing:2px;opacity:0.7;}
+.v-label-inner{position:absolute;top:200px;left:300px;width:100px;text-align:center;font-family:'Noto Serif SC',serif;font-size:16px;color:#F5F0E8;letter-spacing:2px;font-weight:600;}
+.v-square{position:absolute;top:120px;left:20px;width:60px;height:60px;border:2px solid #8B7355;}
+.v-square2{position:absolute;top:250px;left:20px;width:40px;height:40px;background:#8B7355;opacity:0.6;}
+.v-square3{position:absolute;top:360px;left:20px;width:25px;height:25px;background:#8B7355;}
+.v-line-v{position:absolute;top:100px;left:235px;width:2px;height:250px;background:#1B3B6B;opacity:0.2;}
+.v-line-h{position:absolute;top:270px;left:100px;width:400px;height:2px;background:#1B3B6B;opacity:0.2;}
+.v-arrow-down{position:absolute;top:80px;left:485px;width:30px;font-family:serif;font-size:24px;color:#8B7355;}
+.v-arrow-down2{position:absolute;top:140px;left:485px;width:30px;font-family:serif;font-size:24px;color:#8B7355;}
+.v-arrow-down3{position:absolute;top:200px;left:485px;width:30px;font-family:serif;font-size:24px;color:#8B7355;}
+.v-axis-label-top{position:absolute;top:0px;right:0px;font-family:'Noto Serif SC',serif;font-size:12px;color:#555;letter-spacing:2px;}
+.v-axis-label-bottom{position:absolute;bottom:10px;left:0px;font-family:'Noto Serif SC',serif;font-size:12px;color:#555;letter-spacing:2px;}
+
+/* Content bullets */
+.content{position:absolute;top:420px;left:100px;width:720px;z-index:5;}
+.bullet-list{list-style:none;padding:0;margin:0;}
+.bullet-item{display:flex;align-items:flex-start;gap:18px;padding:14px 0;border-bottom:1px solid rgba(27,59,107,0.15);}
+.bullet-item:last-child{border-bottom:none;}
+.bullet-marker{flex-shrink:0;width:12px;height:12px;background:#1B3B6B;margin-top:7px;}
+.bullet-marker.alt{background:#8B7355;border-radius:50%;}
+.bullet-marker.alt2{background:transparent;border:2px solid #1B3B6B;}
+.bullet-text{font-size:19px;color:#1B3B6B;line-height:1.5;font-weight:500;letter-spacing:0.5px;}
+.bullet-text .en{font-family:'Noto Serif SC',serif;font-style:italic;color:#8B7355;font-weight:400;}
+.bullet-text .note{font-size:14px;color:#555;margin-left:8px;font-weight:400;}
+
+/* Bottom insight box */
+.insight{position:absolute;bottom:60px;left:100px;width:1400px;height:70px;display:flex;align-items:center;gap:24px;z-index:5;background:rgba(27,59,107,0.04);border-left:4px solid #1B3B6B;padding:0 28px;}
+.insight-label{font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:4px;font-weight:600;flex-shrink:0;}
+.insight-text{font-family:'Noto Serif SC',serif;font-size:22px;color:#1B3B6B;font-weight:600;letter-spacing:2px;}
+.insight-text .em{color:#8B7355;}
+.insight-aside{margin-left:auto;font-family:'Noto Serif SC',serif;font-size:15px;color:#555;font-style:italic;letter-spacing:1px;}
+
+/* Decorative elements */
+.deco-tr{position:absolute;top:60px;right:100px;width:8px;height:8px;background:#1B3B6B;z-index:6;}
+.deco-tl{position:absolute;top:60px;left:100px;width:8px;height:8px;background:#1B3B6B;z-index:6;}
+.deco-br{position:absolute;bottom:145px;right:100px;width:8px;height:8px;background:#8B7355;border-radius:50%;z-index:6;}
+.deco-bl{position:absolute;bottom:145px;left:100px;width:8px;height:8px;background:#8B7355;border-radius:50%;z-index:6;}
+
+/* Section label */
+.section-label{position:absolute;top:100px;left:100px;font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:6px;font-weight:600;z-index:5;}
+.section-divider{position:absolute;top:130px;left:100px;width:1400px;height:1px;background:#1B3B6B;opacity:0.15;z-index:5;}
+.section-right-label{position:absolute;top:100px;right:100px;font-family:'Noto Serif SC',serif;font-size:14px;color:#555;letter-spacing:4px;font-weight:500;z-index:5;}
+</style></head><body>
+<div class="slide">
+
+  <div class="deco-tr"></div>
+  <div class="deco-tl"></div>
+  <div class="deco-br"></div>
+  <div class="deco-bl"></div>
+
+  <div class="section-label">CASE STUDY</div>
+  <div class="section-right-label">CHAPTER VII — 04</div>
+  <div class="section-divider"></div>
+
+  <div class="header">
+    <div class="header-left">
+      <div class="header-bar"></div>
+      <div class="header-num">07.04</div>
+    </div>
+    <div class="header-line"></div>
+    <div class="header-tag">ACQUISITION · IPO · CAPITAL</div>
+  </div>
+
+  <div class="title-area">
+    <div class="title-main">开源企业化<br>的收编之路</div>
+    <div class="title-sub">From Community to Company</div>
+    <div class="title-underline"></div>
+  </div>
+
+  <div class="visual">
+    <div class="v-circle-outer"></div>
+    <div class="v-circle-mid"></div>
+    <div class="v-circle-inner"></div>
+    <div class="v-circle-core"></div>
+
+    <div class="v-label-outer">COMMUNITY</div>
+    <div class="v-label-mid">Community</div>
+    <div class="v-label-inner">COMPANY</div>
+
+    <div class="v-square"></div>
+    <div class="v-square2"></div>
+    <div class="v-square3"></div>
+
+    <div class="v-line-v"></div>
+    <div class="v-line-h"></div>
+
+    <div class="v-arrow-down">↓</div>
+    <div class="v-arrow-down2">↓</div>
+    <div class="v-arrow-down3">↓</div>
+
+    <div class="v-axis-label-top">广域协作 →</div>
+    <div class="v-axis-label-bottom">→ 资本收束</div>
+  </div>
+
+  <div class="content">
+    <ul class="bullet-list">
+      <li class="bullet-item">
+        <div class="bullet-marker"></div>
+        <div class="bullet-text">收购与资本投入 · <span class="en">Acquisition & Capital</span>
+          <div class="note">— 开源项目被纳入商业版图的典型路径</div>
+        </div>
+      </li>
+      <li class="bullet-item">
+        <div class="bullet-marker alt"></div>
+        <div class="bullet-text"><span class="en">RedHat / JBoss</span> · <span class="en">MySQL / Java</span>
+          <div class="note">— 早期标杆：Oracle 与 IBM 的收编模式</div>
+        </div>
+      </li>
+      <li class="bullet-item">
+        <div class="bullet-marker alt2"></div>
+        <div class="bullet-text"><span class="en">Databricks</span>
+          <div class="note">— IPO 预期下的独角兽，Apache Spark 商业化的范本</div>
+        </div>
+      </li>
+      <li class="bullet-item">
+        <div class="bullet-marker alt"></div>
+        <div class="bullet-text"><span class="en">GitLab / MongoDB / HashiCorp</span>
+          <div class="note">— 双重许可与源代码可用化的制度博弈</div>
+        </div>
+      </li>
+      <li class="bullet-item">
+        <div class="bullet-marker"></div>
+        <div class="bullet-text"><span class="en">PingCAP</span>
+          <div class="note">— 中国开源资本化的本土叙事</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="insight">
+    <div class="insight-label">INSIGHT</div>
+    <div class="insight-text">Community <span class="em">→</span> Company，甚佳。</div>
+    <div class="insight-aside">协作的开放性与资本的收束性，构成开源经济的基本张力</div>
+  </div>
+
+</div>
+</body></html>

@@ -1,0 +1,156 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>软件著作权简史</title><style>
+html,body{width:1600px;height:900px;overflow:hidden;margin:0;padding:0}
+body{background:#F5F0E8;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;color:#1B3B6B;position:relative}
+.title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:64px;font-weight:700;letter-spacing:4px;color:#1B3B6B;position:absolute;top:60px;left:80px}
+.subtitle{font-family:'Noto Serif SC',serif;font-size:20px;color:#8B7355;letter-spacing:6px;position:absolute;top:148px;left:84px}
+.metaphor{font-family:'Noto Serif SC',serif;font-size:15px;color:#555;letter-spacing:2px;position:absolute;top:188px;left:84px;width:560px;line-height:1.6;font-style:italic}
+.divider{position:absolute;top:240px;left:80px;width:380px;height:2px;background:#1B3B6B}
+
+/* Bauhaus geometric decoration - left column */
+.circle-1{position:absolute;top:300px;left:120px;width:90px;height:90px;border-radius:50%;background:#1B3B6B}
+.square-1{position:absolute;top:410px;left:220px;width:60px;height:60px;background:#8B7355}
+.line-1{position:absolute;top:340px;left:240px;width:120px;height:2px;background:#1B3B6B}
+.triangle-1{position:absolute;top:480px;left:140px;width:0;height:0;border-left:25px solid transparent;border-right:25px solid transparent;border-bottom:42px solid #8B7355}
+.circle-2{position:absolute;top:540px;left:200px;width:40px;height:40px;border-radius:50%;border:2px solid #1B3B6B;background:transparent}
+.square-2{position:absolute;top:590px;left:160px;width:35px;height:35px;border:2px solid #1B3B6B;background:transparent}
+.line-2{position:absolute;top:500px;left:240px;width:80px;height:2px;background:#8B7355}
+
+/* Central visual metaphor: hands around a document */
+.document{position:absolute;top:300px;left:800px;width:260px;height:340px;background:#FAF6EE;border:2px solid #1B3B6B;box-shadow:6px 6px 0 #1B3B6B}
+.doc-line{position:absolute;height:1.5px;background:#1B3B6B;left:30px}
+.doc-line:nth-child(1){top:40px;width:160px}
+.doc-line:nth-child(2){top:62px;width:200px}
+.doc-line:nth-child(3){top:84px;width:180px}
+.doc-line:nth-child(4){top:110px;width:140px;color:#8B7355}
+.doc-line-5{position:absolute;height:1.5px;background:#8B7355;left:30px;top:140px;width:120px}
+.doc-line-6{position:absolute;height:1.5px;background:#1B3B6B;left:30px;top:165px;width:190px}
+.doc-line-7{position:absolute;height:1.5px;background:#1B3B6B;left:30px;top:187px;width:170px}
+.doc-line-8{position:absolute;height:1.5px;background:#8B7355;left:30px;top:210px;width:130px}
+.doc-line-9{position:absolute;height:1.5px;background:#1B3B6B;left:30px;top:240px;width:200px}
+.doc-line-10{position:absolute;height:1.5px;background:#1B3B6B;left:30px;top:262px;width:150px}
+.doc-circle{position:absolute;top:278px;left:35px;width:35px;height:35px;border-radius:50%;border:1.5px solid #8B7355}
+.doc-square{position:absolute;top:280px;left:80px;width:28px;height:28px;border:1.5px solid #1B3B6B}
+
+/* Hands - geometric abstraction */
+.hand-1{position:absolute;top:340px;left:660px;width:120px;height:40px;background:#1B3B6B;border-radius:20px 6px 6px 20px}
+.hand-1-finger{position:absolute;top:340px;left:660px;width:16px;height:60px;background:#1B3B6B}
+.hand-1-finger2{position:absolute;top:340px;left:680px;width:16px;height:60px;background:#1B3B6B}
+
+.hand-2{position:absolute;top:540px;left:1080px;width:120px;height:40px;background:#8B7355;border-radius:6px 20px 20px 6px}
+.hand-2-finger{position:absolute;top:560px;left:1180px;width:16px;height:50px;background:#8B7355}
+.hand-2-finger2{position:absolute;top:560px;left:1200px;width:16px;height:50px;background:#8B7355}
+
+.hand-3{position:absolute;top:230px;left:1030px;width:40px;height:80px;background:#1B3B6B;border-radius:20px 20px 6px 6px}
+.hand-3-thumb{position:absolute;top:250px;left:1070px;width:60px;height:16px;background:#1B3B6B}
+
+.hand-4{position:absolute;top:580px;left:730px;width:40px;height:70px;background:#8B7355;border-radius:6px 6px 20px 20px}
+
+/* Right side content - timeline */
+.content-area{position:absolute;top:60px;left:1180px;width:340px}
+.timeline-title{font-family:'Noto Serif SC',serif;font-size:22px;color:#1B3B6B;letter-spacing:2px;margin-bottom:6px;font-weight:700}
+.timeline-sub{font-size:12px;color:#8B7355;letter-spacing:1px;margin-bottom:24px}
+
+.event{position:relative;padding-left:28px;margin-bottom:20px}
+.event-dot{position:absolute;left:0;top:6px;width:12px;height:12px;border-radius:50%;background:#1B3B6B}
+.event-line{position:absolute;left:5px;top:18px;width:2px;height:40px;background:#1B3B6B}
+.event-year{font-family:'Noto Serif SC',serif;font-size:18px;font-weight:700;color:#1B3B6B;letter-spacing:1px}
+.event-text{font-size:13px;color:#555;line-height:1.6;margin-top:3px}
+
+/* Bottom bar */
+.bottom-bar{position:absolute;bottom:0;left:0;width:1600px;height:8px;background:#1B3B6B}
+.bottom-text{position:absolute;bottom:24px;left:80px;font-size:12px;color:#8B7355;letter-spacing:3px}
+.bottom-right{position:absolute;bottom:24px;right:80px;font-size:12px;color:#8B7355;letter-spacing:3px}
+
+/* Small geometric accents */
+.mini-circle{position:absolute;top:100px;left:800px;width:8px;height:8px;border-radius:50%;background:#8B7355}
+.mini-square{position:absolute;top:680px;left:1060px;width:14px;height:14px;background:#1B3B6B}
+.mini-line{position:absolute;top:240px;left:1180px;width:60px;height:2px;background:#1B3B6B}
+</style></head><body>
+
+<div class="title">软件著作权简史</div>
+<div class="subtitle">A BRIEF HISTORY OF SOFTWARE COPYRIGHT</div>
+<div class="metaphor">视觉隐喻：多手共审文件——协作中的审核、修改与决策</div>
+<div class="divider"></div>
+
+<!-- Bauhaus geometric decorations -->
+<div class="circle-1"></div>
+<div class="square-1"></div>
+<div class="line-1"></div>
+<div class="triangle-1"></div>
+<div class="circle-2"></div>
+<div class="square-2"></div>
+<div class="line-2"></div>
+
+<div class="mini-circle"></div>
+<div class="mini-square"></div>
+<div class="mini-line"></div>
+
+<!-- Central visual: hands around document -->
+<div class="document">
+<div class="doc-line"></div>
+<div class="doc-line"></div>
+<div class="doc-line"></div>
+<div class="doc-line"></div>
+<div class="doc-line-5"></div>
+<div class="doc-line-6"></div>
+<div class="doc-line-7"></div>
+<div class="doc-line-8"></div>
+<div class="doc-line-9"></div>
+<div class="doc-line-10"></div>
+<div class="doc-circle"></div>
+<div class="doc-square"></div>
+</div>
+
+<div class="hand-1"></div>
+<div class="hand-1-finger"></div>
+<div class="hand-1-finger2"></div>
+
+<div class="hand-2"></div>
+<div class="hand-2-finger"></div>
+<div class="hand-2-finger2"></div>
+
+<div class="hand-3"></div>
+<div class="hand-3-thumb"></div>
+
+<div class="hand-4"></div>
+
+<!-- Right timeline -->
+<div class="content-area">
+<div class="timeline-title">关键节点</div>
+<div class="timeline-sub">KEY MILESTONES</div>
+
+<div class="event">
+<div class="event-dot"></div>
+<div class="event-line"></div>
+<div class="event-year">起源</div>
+<div class="event-text">最早的"软件"：The Piano Roll</div>
+</div>
+
+<div class="event">
+<div class="event-dot"></div>
+<div class="event-line"></div>
+<div class="event-year">1963</div>
+<div class="event-text">版权局承认了计算机程序的版权所有</div>
+</div>
+
+<div class="event">
+<div class="event-dot"></div>
+<div class="event-line"></div>
+<div class="event-year">1976</div>
+<div class="event-text">版权法确立，国会有意将软件版权化</div>
+</div>
+
+<div class="event">
+<div class="event-dot"></div>
+<div class="event-year">1982</div>
+<div class="event-text">二进制纳入版权保护（Apple v. Franklin）</div>
+</div>
+</div>
+
+<div class="bottom-text">开源之道 · 新制度经济学视角</div>
+<div class="bottom-right">03 / HISTORY</div>
+<div class="bottom-bar"></div>
+
+</body></html>

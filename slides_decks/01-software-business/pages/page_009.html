@@ -1,0 +1,217 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>代码简史 — 软件工程史的奠基时刻</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0;font-family:'Noto Sans SC','Source Han Sans SC','PingFang SC',sans-serif;color:#1B3B6B}
+body{background:#F5F0E8;position:relative}
+
+/* subtle parchment texture */
+body::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;background:repeating-linear-gradient(0deg,transparent 0,transparent 3px,rgba(139,115,85,0.02) 3px,rgba(139,115,85,0.02) 4px);pointer-events:none;z-index:0}
+
+/* ===== Header ===== */
+.header{position:absolute;top:56px;left:80px;width:1440px;display:flex;align-items:flex-end;justify-content:space-between}
+.title-block{max-width:900px}
+.eyebrow{font-size:14px;letter-spacing:6px;color:#8B7355;font-weight:600;margin-bottom:14px}
+.main-title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:58px;font-weight:700;color:#1B3B6B;line-height:1.15;letter-spacing:2px}
+.sub-title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:19px;color:#555;margin-top:12px;font-weight:400;letter-spacing:1px;line-height:1.6}
+
+/* corner geometry */
+.corner-circle{position:absolute;top:62px;right:80px;width:72px;height:72px;border-radius:50%;border:3px solid #1B3B6B}
+.corner-square{position:absolute;top:80px;right:108px;width:36px;height:36px;background:#1B3B6B}
+.corner-line{position:absolute;top:98px;right:40px;width:60px;height:2px;background:#8B7355}
+
+/* ===== Timeline / Content ===== */
+.content{position:absolute;top:240px;left:80px;width:680px}
+
+.section-label{display:flex;align-items:center;gap:14px;margin-bottom:24px}
+.section-label .dot{width:12px;height:12px;background:#1B3B6B;border-radius:50%}
+.section-label .txt{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:15px;color:#8B7355;letter-spacing:4px;font-weight:600}
+.section-label .ln{flex:1;height:1px;background:#1B3B6B;opacity:0.3}
+
+.timeline{position:relative;padding-left:24px}
+.timeline::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:#1B3B6B;opacity:0.4}
+
+.tl-item{position:relative;margin-bottom:18px}
+.tl-item .marker{position:absolute;left:-24px;top:4px;width:14px;height:14px;border:2px solid #1B3B6B;background:#F5F0E8;border-radius:50%}
+.tl-item.square .marker{border-radius:0}
+.tl-item.filled .marker{background:#1B3B6B}
+
+.tl-year{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:22px;color:#1B3B6B;font-weight:700;letter-spacing:1px}
+.tl-text{font-size:14px;color:#555;line-height:1.55;margin-top:3px;max-width:600px}
+.tl-text .em{color:#1B3B6B;font-weight:600}
+
+/* ===== Right: Code Tower Visual ===== */
+.tower-area{position:absolute;top:230px;right:80px;width:520px;height:560px}
+
+.tower-label{position:absolute;top:0;left:0;font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;letter-spacing:3px;font-weight:600}
+.tower-label-sub{position:absolute;top:20px;left:0;font-size:11px;color:#8B7355;opacity:0.7;letter-spacing:1px}
+
+/* tower base line */
+.tower-base{position:absolute;bottom:60px;left:60px;width:380px;height:3px;background:#1B3B6B}
+
+/* tower blocks (stacked papers) */
+.tower-block{position:absolute;border:1.5px solid #1B3B6B;background:#F5F0E8;left:120px}
+.tower-block b{position:absolute;top:5px;left:6px;font-family:'Noto Serif SC',serif;font-size:9px;color:#1B3B6B;font-weight:600;letter-spacing:1px}
+
+.b1{bottom:63px;width:280px;height:22px}
+.b2{bottom:85px;width:260px;height:22px;left:130px}
+.b3{bottom:107px;width:290px;height:22px;left:115px}
+.b4{bottom:129px;width:250px;height:22px;left:145px}
+.b5{bottom:151px;width:270px;height:22px;left:135px}
+.b6{bottom:173px;width:240px;height:22px;left:150px}
+.b7{bottom:195px;width:275px;height:22px;left:132px}
+.b8{bottom:217px;width:255px;height:22px;left:142px}
+.b9{bottom:239px;width:265px;height:22px;left:138px}
+.b10{bottom:261px;width:245px;height:22px;left:148px}
+.b11{bottom:283px;width:260px;height:22px;left:140px}
+.b12{bottom:305px;width:235px;height:22px;left:155px}
+.b13{bottom:327px;width:250px;height:22px;left:145px}
+
+/* highlight block */
+.b11{background:#1B3B6B}
+.b11 b{color:#F5F0E8}
+
+/* annotation for highlighted block */
+.tower-anno{position:absolute;bottom:296px;left:-60px;width:120px;font-size:10px;color:#8B7355;line-height:1.4;text-align:right}
+.tower-anno .big{font-family:'Noto Serif SC',serif;font-size:12px;color:#1B3B6B;font-weight:700;display:block;margin-bottom:2px}
+.tower-anno-line{position:absolute;bottom:288px;left:60px;width:80px;height:1px;background:#8B7355}
+
+/* figure of Margaret Hamilton - geometric */
+.figure{position:absolute;bottom:60px;left:40px;width:60px;height:150px}
+.fig-head{position:absolute;top:0;left:18px;width:24px;height:24px;border-radius:50%;border:2px solid #1B3B6B;background:#F5F0E8}
+.fig-torso{position:absolute;top:26px;left:14px;width:32px;height:42px;border:2px solid #1B3B6B;background:#F5F0E8}
+.fig-arm-r{position:absolute;top:34px;left:44px;width:36px;height:3px;background:#1B3B6B}
+.fig-leg-l{position:absolute;top:68px;left:18px;width:8px;height:55px;border-left:2px solid #1B3B6B}
+.fig-leg-r{position:absolute;top:68px;left:34px;width:8px;height:55px;border-right:2px solid #1B3B6B}
+.fig-name{position:absolute;top:80px;left:-30px;font-family:'Noto Serif SC',serif;font-size:11px;color:#1B3B6B;font-weight:600;letter-spacing:1px}
+.fig-name-sub{position:absolute;top:96px;left:-30px;font-size:9px;color:#8B7355}
+
+/* footer */
+.footer{position:absolute;bottom:36px;left:80px;width:1440px;display:flex;justify-content:space-between;align-items:center;padding-top:18px;border-top:1px solid rgba(27,59,107,0.2)}
+.footer-left{font-size:12px;color:#8B7355;letter-spacing:2px}
+.footer-right{font-family:'Noto Serif SC',serif;font-size:12px;color:#1B3B6B;letter-spacing:3px;font-weight:600}
+.footer-bar{flex:1;height:1px;background:rgba(27,59,107,0.15);margin:0 24px}
+
+/* vertical accent lines */
+.v-accent-1{position:absolute;top:240px;left:760px;width:1px;height:560px;background:rgba(27,59,107,0.12)}
+.v-accent-2{position:absolute;top:56px;left:80px;width:2px;height:140px;background:#1B3B6B}
+
+/* citation note */
+.cite-note{position:absolute;top:800px;right:80px;font-size:10px;color:#8B7355;letter-spacing:1px;font-style:italic;max-width:300px;text-align:right;line-height:1.5}
+
+/* small square decorations */
+.deco-sq-1{position:absolute;top:820px;left:80px;width:10px;height:10px;background:#1B3B6B}
+.deco-sq-2{position:absolute;top:830px;left:96px;width:6px;height:6px;background:#8B7355}
+.deco-circle-1{position:absolute;top:818px;left:120px;width:8px;height:8px;border:1.5px solid #1B3B6B;border-radius:50%}
+</style></head><body>
+
+<div class="v-accent-2"></div>
+
+<div class="header">
+  <div class="title-block">
+    <div class="eyebrow">CHAPTER Ⅰ  ·  软件工程的起源</div>
+    <div class="main-title">代码简史</div>
+    <div class="sub-title">从解析器到软件工程——人类如何学会编写大规模程序</div>
+  </div>
+</div>
+
+<div class="corner-circle"></div>
+<div class="corner-square"></div>
+<div class="corner-line"></div>
+
+<div class="v-accent-1"></div>
+
+<!-- LEFT: Timeline -->
+<div class="content">
+  <div class="section-label">
+    <span class="dot"></span>
+    <span class="txt">关键节点</span>
+    <span class="ln"></span>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <span class="marker"></span>
+      <div class="tl-year">1843 — Ada Lovelace</div>
+      <div class="tl-text"><span class="em">首段算法程序</span>，为巴贝奇解析机撰写伯努利数计算步骤——程序设计的思想原点。</div>
+    </div>
+
+    <div class="tl-item square">
+      <span class="marker"></span>
+      <div class="tl-year">1947 — von Neumann 体系</div>
+      <div class="tl-text"><span class="em">存储程序计算机</span>确立"代码即数据"的基本范式，软件与硬件开始分离。</div>
+    </div>
+
+    <div class="tl-item filled">
+      <span class="marker"></span>
+      <div class="tl-year">1957 — FORTRAN</div>
+      <div class="tl-text">IBM 推出首个高级语言，编译器将人类可读语句翻译成机器指令，编程从此解放于机器码。</div>
+    </div>
+
+    <div class="tl-item square filled">
+      <span class="marker"></span>
+      <div class="tl-year">1969 — Apollo 11 引导计算机</div>
+      <div class="tl-text"><span class="em">Margaret Hamilton</span>领导的 MIT 团队完成 14.5 万行汇编代码，首次将"软件工程"作为独立学科提出。</div>
+    </div>
+
+    <div class="tl-item">
+      <span class="marker"></span>
+      <div class="tl-year">1969 → 1991 — UNIX / C / Linux</div>
+      <div class="tl-text">Bolt-Nashyan 体系确立模块化编程；Richard Stallman 发起 GNU；Linus Torvalds 发布 Linux——开源时代肇始。</div>
+    </div>
+  </div>
+</div>
+
+<!-- RIGHT: Tower of code -->
+<div class="tower-area">
+  <div class="tower-label">THE TOWER OF 145,000 LINES</div>
+  <div class="tower-label-sub">Apollo Guidance Computer · MIT Instrumentation Lab · 1969</div>
+
+  <div class="tower-base"></div>
+
+  <div class="tower-block b1"><b>HALT · ABORT</b></div>
+  <div class="tower-block b2"><b>SCHEDULE EXEC</b></div>
+  <div class="tower-block b3"><b>REAL-TIME LOOP</b></div>
+  <div class="tower-block b4"><b>ATTITUDE CONTROL</b></div>
+  <div class="tower-block b5"><b>GUIDANCE EQUATIONS</b></div>
+  <div class="tower-block b6"><b>NAVIGATION DATA</b></div>
+  <div class="tower-block b7"><b>DISPLAY DRIVER</b></div>
+  <div class="tower-block b8"><b>KEYBOARD I/O</b></div>
+  <div class="tower-block b9"><b>DOWNLINK / UPLINK</b></div>
+  <div class="tower-block b10"><b>ALARM &amp; CAUTION</b></div>
+  <div class="tower-block b11"><b>★ M. HAMILTON</b></div>
+  <div class="tower-block b12"><b>RE-ENTRY SEQUENCE</b></div>
+  <div class="tower-block b13"><b>LUNAR LANDING</b></div>
+
+  <div class="tower-anno">
+    <span class="big">软件工程</span>
+    1967年首次<br>正式提出的<br>术语
+  </div>
+  <div class="tower-anno-line"></div>
+
+  <div class="figure">
+    <div class="fig-head"></div>
+    <div class="fig-torso"></div>
+    <div class="fig-arm-r"></div>
+    <div class="fig-leg-l"></div>
+    <div class="fig-leg-r"></div>
+    <div class="fig-name">M. HAMILTON</div>
+    <div class="fig-name-sub">Software Eng. Director</div>
+  </div>
+</div>
+
+<div class="cite-note">
+  "No one was more surprised than I,<br>
+  when they actually called it a software engineer."
+</div>
+
+<div class="footer">
+  <span class="deco-sq-1"></span>
+  <span class="deco-sq-2"></span>
+  <span class="deco-circle-1"></span>
+  <span class="footer-left">SLIDE 03  /  OPEN-SOURCE ECONOMICS</span>
+  <span class="footer-bar"></span>
+  <span class="footer-right">新 制 度 经 济 学 视 角</span>
+</div>
+
+</body></html>

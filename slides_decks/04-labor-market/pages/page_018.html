@@ -1,0 +1,226 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>劳动力市场：以外包为例</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;color:#1B3B6B}
+.slide{position:relative;width:1600px;height:900px;background:#F5F0E8;overflow:hidden}
+
+/* parchment texture */
+.slide::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(139,115,85,0.02) 3px,rgba(139,115,85,0.02) 4px);pointer-events:none;z-index:0}
+
+/* page border frame */
+.frame{position:absolute;top:40px;left:40px;width:1520px;height:820px;border:1px solid #8B7355;z-index:1;pointer-events:none}
+.frame-inner{position:absolute;top:48px;left:48px;width:1504px;height:804px;border:1px solid rgba(139,115,85,0.3);z-index:1;pointer-events:none}
+
+/* top label bar */
+.top-bar{position:absolute;top:56px;left:80px;right:80px;height:36px;display:flex;align-items:center;z-index:5;font-size:13px;letter-spacing:3px;color:#8B7355;font-weight:400}
+.top-bar .line{flex:1;height:1px;background:#8B7355;margin:0 16px;opacity:0.5}
+
+/* section number */
+.section-num{position:absolute;top:120px;left:80px;font-size:11px;letter-spacing:4px;color:#8B7355;z-index:5}
+
+/* title area */
+.title-area{position:absolute;top:150px;left:80px;width:820px;z-index:5}
+.title-main{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:56px;font-weight:700;color:#1B3B6B;line-height:1.15;letter-spacing:2px}
+.title-sub{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:22px;color:#8B7355;margin-top:18px;letter-spacing:1px;font-weight:400}
+.title-underline{width:120px;height:3px;background:#1B3B6B;margin-top:22px}
+
+/* bullets */
+.bullets{position:absolute;top:380px;left:80px;width:820px;z-index:5}
+.bullet{display:flex;align-items:flex-start;margin-bottom:18px;font-size:17px;line-height:1.6;color:#1B3B6B}
+.bullet-marker{min-width:16px;height:16px;margin-right:16px;margin-top:6px;flex-shrink:0}
+.bullet-marker.square{background:#1B3B6B}
+.bullet-marker.circle{width:16px;border-radius:50%;background:#8B7355}
+.bullet-marker.line{width:14px;height:2px;background:#1B3B6B;margin-top:11px}
+.bullet-text{flex:1}
+.bullet-text .em{color:#555;font-size:14px;display:block;margin-top:3px;letter-spacing:0.5px}
+.bullet-highlight{color:#1B3B6B;font-weight:600}
+.bullet-quote{font-family:'Noto Serif SC',serif;font-style:italic;color:#555;font-size:15px;border-left:2px solid #8B7355;padding-left:14px;margin-top:20px;line-height:1.6}
+
+/* right side: geometric code grid visualization */
+.viz-area{position:absolute;top:120px;right:80px;width:580px;height:680px;z-index:3}
+
+/* grid backdrop */
+.grid-bg{position:absolute;top:0;left:0;width:580px;height:680px;background-image:linear-gradient(rgba(139,115,85,0.12) 1px,transparent 1px),linear-gradient(90deg,rgba(139,115,85,0.12) 1px,transparent 1px);background-size:28px 28px}
+
+/* large circle - bauhaus */
+.big-circle{position:absolute;top:60px;left:140px;width:300px;height:300px;border-radius:50%;background:#1B3B6B;opacity:0.92}
+
+/* ring */
+.ring{position:absolute;top:90px;left:170px;width:240px;height:240px;border-radius:50%;border:2px solid #F5F0E8}
+
+/* inner circle accent */
+.inner-circle{position:absolute;top:150px;left:230px;width:120px;height:120px;border-radius:50%;background:#F5F0E8}
+
+/* copper square */
+.copper-square{position:absolute;top:200px;left:60px;width:80px;height:80px;background:#8B7355;opacity:0.85}
+
+/* small circles */
+.sm-c1{position:absolute;top:100px;left:50px;width:18px;height:18px;border-radius:50%;background:#1B3B6B}
+.sm-c2{position:absolute;top:80px;left:490px;width:24px;height:24px;border-radius:50%;background:#8B7355}
+.sm-c3{position:absolute;top:340px;left:500px;width:14px;height:14px;border-radius:50%;background:#1B3B6B}
+.sm-c4{position:absolute;top:510px;left:30px;width:20px;height:20px;border-radius:50%;border:2px solid #1B3B6B}
+
+/* horizontal bar */
+.h-bar{position:absolute;top:410px;left:0;width:580px;height:6px;background:#1B3B6B}
+.h-bar-thin{position:absolute;top:430px;left:0;width:380px;height:2px;background:#8B7355}
+
+/* code-like blocks below */
+.code-blocks{position:absolute;top:460px;left:0;width:580px;display:flex;flex-direction:column;gap:8px}
+.code-row{display:flex;gap:6px;align-items:center}
+.code-seg{height:14px;background:#1B3B6B;opacity:0.85}
+.code-seg.copper{background:#8B7355}
+.code-seg.thin{height:4px;opacity:0.5}
+.code-seg.gap{background:transparent;border:1px solid rgba(27,59,107,0.3)}
+
+/* vertical accent lines */
+.v-line-1{position:absolute;top:20px;left:20px;width:2px;height:200px;background:#8B7355;opacity:0.5}
+.v-line-2{position:absolute;top:20px;left:560px;width:2px;height:200px;background:#8B7355;opacity:0.5}
+
+/* bottom annotation */
+.viz-caption{position:absolute;bottom:8px;left:0;width:580px;font-size:11px;letter-spacing:2px;color:#8B7355;text-align:center}
+
+/* bottom footer */
+.footer{position:absolute;bottom:56px;left:80px;right:80px;display:flex;align-items:center;z-index:5}
+.footer .line{flex:1;height:1px;background:rgba(139,115,85,0.4);margin:0 20px}
+.footer-text{font-size:11px;letter-spacing:3px;color:#8B7355}
+.footer-page{font-family:'Noto Serif SC',serif;font-size:14px;color:#1B3B6B}
+
+/* decorative corner marks */
+.corner-tl{position:absolute;top:48px;left:48px;width:20px;height:20px;border-top:2px solid #1B3B6B;border-left:2px solid #1B3B6B;z-index:6}
+.corner-tr{position:absolute;top:48px;right:48px;width:20px;height:20px;border-top:2px solid #1B3B6B;border-right:2px solid #1B3B6B;z-index:6}
+.corner-bl{position:absolute;bottom:48px;left:48px;width:20px;height:20px;border-bottom:2px solid #1B3B6B;border-left:2px solid #1B3B6B;z-index:6}
+.corner-br{position:absolute;bottom:48px;right:48px;width:20px;height:20px;border-bottom:2px solid #1B3B6B;border-right:2px solid #1B3B6B;z-index:6}
+</style></head><body>
+<div class="slide">
+  <div class="frame"></div>
+  <div class="frame-inner"></div>
+  <div class="corner-tl"></div>
+  <div class="corner-tr"></div>
+  <div class="corner-bl"></div>
+  <div class="corner-br"></div>
+
+  <div class="top-bar">
+    <span>OPEN SOURCE</span>
+    <div class="line"></div>
+    <span>NEW INSTITUTIONAL ECONOMICS</span>
+    <div class="line"></div>
+    <span>VOL. Ⅱ</span>
+  </div>
+
+  <div class="section-num">— § 06 / LABOR MARKET —</div>
+
+  <div class="title-area">
+    <div class="title-main">劳动力市场</div>
+    <div class="title-sub">以外包为例 &nbsp;·&nbsp; Outsourcing as Labor Market</div>
+    <div class="title-underline"></div>
+  </div>
+
+  <div class="bullets">
+    <div class="bullet">
+      <div class="bullet-marker square"></div>
+      <div class="bullet-text">
+        <span class="bullet-highlight">印度 · 班加罗尔 &nbsp;/&nbsp; 中国 · 大连</span>
+        <span class="em">全球软件外包的双极——英语时区与成本洼地的地理耦合</span>
+      </div>
+    </div>
+    <div class="bullet">
+      <div class="bullet-marker circle"></div>
+      <div class="bullet-text">
+        <span class="bullet-highlight">大厂的成本节省</span>
+        <span class="em">将固定人力资本转化为可变支出，外包成为平台经济的底层基础设施</span>
+      </div>
+    </div>
+    <div class="bullet">
+      <div class="bullet-marker line"></div>
+      <div class="bullet-text">
+        <span class="bullet-highlight">明确的项目需求 &amp; 技能匹配</span>
+        <span class="em">任务被拆解为可度量的原子单元，技能图谱与职位说明书精确对应</span>
+      </div>
+    </div>
+    <div class="bullet">
+      <div class="bullet-marker square"></div>
+      <div class="bullet-text">
+        <span class="bullet-highlight">并不知道最终的产品，只有细化的任务</span>
+        <span class="em">生产者的认知被剥离于意义整体——代码成为脱离目的的工具劳动</span>
+      </div>
+    </div>
+    <div class="bullet-quote">
+      「低廉的价格，未必好过开源项目的协作。」<br>
+      &nbsp;&nbsp;&nbsp;—— 当协作本身成为激励，市场定价的边界开始松动。
+    </div>
+  </div>
+
+  <div class="viz-area">
+    <div class="grid-bg"></div>
+    <div class="v-line-1"></div>
+    <div class="v-line-2"></div>
+
+    <div class="big-circle"></div>
+    <div class="ring"></div>
+    <div class="inner-circle"></div>
+    <div class="copper-square"></div>
+    <div class="sm-c1"></div>
+    <div class="sm-c2"></div>
+    <div class="sm-c3"></div>
+    <div class="sm-c4"></div>
+
+    <div class="h-bar"></div>
+    <div class="h-bar-thin"></div>
+
+    <div class="code-blocks">
+      <div class="code-row">
+        <div class="code-seg" style="width:60px"></div>
+        <div class="code-seg copper" style="width:40px"></div>
+        <div class="code-seg" style="width:80px"></div>
+        <div class="code-seg gap" style="width:30px"></div>
+        <div class="code-seg copper" style="width:50px"></div>
+        <div class="code-seg" style="width:35px"></div>
+      </div>
+      <div class="code-row">
+        <div class="code-seg copper" style="width:30px"></div>
+        <div class="code-seg" style="width:50px"></div>
+        <div class="code-seg" style="width:25px"></div>
+        <div class="code-seg" style="width:70px"></div>
+        <div class="code-seg copper" style="width:45px"></div>
+        <div class="code-seg" style="width:60px"></div>
+        <div class="code-seg" style="width:20px"></div>
+      </div>
+      <div class="code-row">
+        <div class="code-seg" style="width:40px"></div>
+        <div class="code-seg gap" style="width:20px"></div>
+        <div class="code-seg copper" style="width:65px"></div>
+        <div class="code-seg" style="width:30px"></div>
+        <div class="code-seg" style="width:55px"></div>
+        <div class="code-seg copper" style="width:35px"></div>
+      </div>
+      <div class="code-row">
+        <div class="code-seg copper" style="width:45px"></div>
+        <div class="code-seg" style="width:30px"></div>
+        <div class="code-seg" style="width:80px"></div>
+        <div class="code-seg gap" style="width:25px"></div>
+        <div class="code-seg" style="width:40px"></div>
+        <div class="code-seg copper" style="width:55px"></div>
+        <div class="code-seg" style="width:28px"></div>
+      </div>
+      <div class="code-row">
+        <div class="code-seg" style="width:25px"></div>
+        <div class="code-seg copper" style="width:60px"></div>
+        <div class="code-seg" style="width:40px"></div>
+        <div class="code-seg" style="width:35px"></div>
+        <div class="code-seg copper" style="width:20px"></div>
+        <div class="code-seg" style="width:70px"></div>
+        <div class="code-seg gap" style="width:20px"></div>
+      </div>
+    </div>
+
+    <div class="viz-caption">▸ CODE · GRID · NETWORK — 数字劳动的拓扑</div>
+  </div>
+
+  <div class="footer">
+    <span class="footer-text">OPEN-SOURCE.ORG &nbsp;·&nbsp; LECTURE DECK</span>
+    <div class="line"></div>
+    <span class="footer-page">06 / 24</span>
+  </div>
+</div>
+</body></html>

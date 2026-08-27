@@ -1,0 +1,182 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>关于本讲座的规则</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0;font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;color:#1B3B6B}
+body{background:#F5F0E8;position:relative}
+.parchment-texture{position:absolute;top:0;left:0;width:1600px;height:900px;background:
+  radial-gradient(ellipse at 20% 15%, rgba(139,115,85,0.04) 0%, transparent 50%),
+  radial-gradient(ellipse at 85% 80%, rgba(27,59,107,0.03) 0%, transparent 50%),
+  #F5F0E8;pointer-events:none;z-index:0}
+
+/* Frame border */
+.frame{position:absolute;top:50px;left:50px;width:1500px;height:800px;border:2px solid #1B3B6B;z-index:2}
+.frame-inner{position:absolute;top:62px;left:62px;width:1476px;height:776px;border:1px solid #1B3B6B;z-index:2}
+
+/* Corner decorations */
+.corner-tl{position:absolute;top:62px;left:62px;width:14px;height:14px;border-top:4px solid #1B3B6B;border-left:4px solid #1B3B6B;z-index:3}
+.corner-tr{position:absolute;top:62px;right:62px;width:14px;height:14px;border-top:4px solid #1B3B6B;border-right:4px solid #1B3B6B;z-index:3}
+.corner-bl{position:absolute;bottom:62px;left:62px;width:14px;height:14px;border-bottom:4px solid #1B3B6B;border-left:4px solid #1B3B6B;z-index:3}
+.corner-br{position:absolute;bottom:62px;right:62px;width:14px;height:14px;border-bottom:4px solid #1B3B6B;border-right:4px solid #1B3B6B;z-index:3}
+
+/* Header section */
+.header-area{position:absolute;top:95px;left:110px;right:110px;z-index:4;display:flex;align-items:flex-start;justify-content:space-between}
+.title-block{flex:1}
+.eyebrow{font-size:13px;letter-spacing:6px;color:#8B7355;font-weight:500;margin-bottom:16px}
+.main-title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:54px;font-weight:700;color:#1B3B6B;letter-spacing:2px;line-height:1.2}
+.subtitle{font-family:'Noto Serif SC',serif;font-size:18px;color:#8B7355;margin-top:14px;letter-spacing:1px;font-weight:400}
+
+/* Right geometric cluster */
+.geo-cluster{width:200px;height:180px;position:relative;flex-shrink:0;margin-top:5px}
+.geo-circle-outer{position:absolute;top:0;right:0;width:120px;height:120px;border:3px solid #1B3B6B;border-radius:50%}
+.geo-circle-inner{position:absolute;top:30px;right:30px;width:60px;height:60px;background:#1B3B6B;border-radius:50%}
+.geo-square{position:absolute;bottom:0;right:60px;width:60px;height:60px;border:3px solid #8B7355}
+.geo-line-h{position:absolute;top:70px;right:130px;width:100px;height:2px;background:#1B3B6B}
+.geo-dot{position:absolute;top:64px;right:135px;width:14px;height:14px;background:#8B7355;border-radius:50%}
+
+/* Divider */
+.divider{position:absolute;top:290px;left:110px;right:110px;height:1px;background:#1B3B6B;opacity:0.4;z-index:4}
+.divider-thick{position:absolute;top:290px;left:110px;width:80px;height:3px;background:#1B3B6B;z-index:5}
+
+/* Rules section */
+.rules-area{position:absolute;top:330px;left:110px;right:110px;z-index:4;display:grid;grid-template-columns:1fr 1fr;column-gap:80px;row-gap:32px}
+.rule-item{display:flex;align-items:flex-start;gap:22px}
+.rule-num{font-family:'Noto Serif SC',serif;font-size:32px;font-weight:700;color:#8B7355;min-width:52px;line-height:1;padding-top:2px;letter-spacing:1px}
+.rule-text{flex:1}
+.rule-title{font-family:'Noto Serif SC',serif;font-size:22px;font-weight:700;color:#1B3B6B;line-height:1.3;margin-bottom:6px;letter-spacing:0.5px}
+.rule-desc{font-size:14px;color:#555;line-height:1.6;letter-spacing:0.5px}
+
+/* Vertical separator line */
+.vsep{position:absolute;top:340px;left:750px;width:1px;height:380px;background:#1B3B6B;opacity:0.15;z-index:3}
+
+/* Bottom area */
+.bottom-area{position:absolute;bottom:80px;left:110px;right:110px;z-index:4;display:flex;align-items:flex-end;justify-content:space-between}
+.bottom-left{display:flex;align-items:center;gap:16px}
+.bottom-line{width:60px;height:2px;background:#1B3B6B}
+.bottom-text{font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:3px}
+.bottom-right{font-family:'Noto Serif SC',serif;font-size:13px;color:#555;letter-spacing:2px}
+
+/* Bottom geometric decorations */
+.bottom-geo{position:absolute;bottom:100px;left:50%;margin-left:-40px;width:80px;height:80px;z-index:3;pointer-events:none;display:none}
+
+/* Decorative circle on the left */
+.deco-circle-l{position:absolute;top:420px;left:62px;width:36px;height:36px;border:2px solid #1B3B6B;border-radius:50%;z-index:3}
+.deco-circle-l-inner{position:absolute;top:438px;left:72px;width:18px;height:18px;background:#8B7355;border-radius:50%;z-index:3}
+
+/* Decorative vertical lines on the right */
+.deco-vline-r1{position:absolute;top:420px;right:62px;width:2px;height:36px;background:#1B3B6B;z-index:3}
+.deco-vline-r2{position:absolute;top:420px;right:54px;width:2px;height:36px;background:#8B7355;z-index:3}
+.deco-square-r{position:absolute;top:468px;right:54px;width:18px;height:18px;background:#1B3B6B;z-index:3}
+
+/* Open source principle badge */
+.badge-area{position:absolute;top:580px;left:110px;right:110px;z-index:4;display:flex;align-items:center;justify-content:center;gap:24px;padding-top:18px;border-top:1px dashed rgba(27,59,107,0.3)}
+.badge-circle{width:48px;height:48px;border:2px solid #1B3B6B;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.badge-text{font-family:'Noto Serif SC',serif;font-size:18px;font-weight:700;color:#1B3B6B;letter-spacing:8px}
+.badge-en{font-size:11px;color:#8B7355;letter-spacing:3px}
+.badge-square{width:36px;height:36px;border:2px solid #8B7355;display:flex;align-items:center;justify-content:center}
+
+/* Footer mark */
+.footmark{position:absolute;bottom:30px;left:0;right:0;text-align:center;font-size:11px;color:#8B7355;letter-spacing:4px;z-index:5}
+</style></head><body>
+<div class="parchment-texture"></div>
+<div class="frame"></div>
+<div class="frame-inner"></div>
+<div class="corner-tl"></div>
+<div class="corner-tr"></div>
+<div class="corner-bl"></div>
+<div class="corner-br"></div>
+
+<!-- Header -->
+<div class="header-area">
+  <div class="title-block">
+    <div class="eyebrow">L &nbsp;·&nbsp; E &nbsp;·&nbsp; C &nbsp;·&nbsp; T &nbsp;·&nbsp; U &nbsp;·&nbsp; R &nbsp;·&nbsp; E &nbsp;·&nbsp; S</div>
+    <div class="main-title">关于本讲座的规则</div>
+    <div class="subtitle">— A Note on the Rules of Engagement</div>
+  </div>
+  <div class="geo-cluster">
+    <div class="geo-circle-outer"></div>
+    <div class="geo-circle-inner"></div>
+    <div class="geo-square"></div>
+    <div class="geo-line-h"></div>
+    <div class="geo-dot"></div>
+  </div>
+</div>
+
+<div class="divider-thick"></div>
+<div class="divider"></div>
+
+<!-- Side decorations -->
+<div class="deco-circle-l"></div>
+<div class="deco-circle-l-inner"></div>
+<div class="deco-vline-r1"></div>
+<div class="deco-vline-r2"></div>
+<div class="deco-square-r"></div>
+
+<div class="vsep"></div>
+
+<!-- Rules -->
+<div class="rules-area">
+  <div class="rule-item">
+    <div class="rule-num">01</div>
+    <div class="rule-text">
+      <div class="rule-title">随时交流或提问</div>
+      <div class="rule-desc">讲座不是单向的宣导，而是思维活动的共享。你随时可以打断、追问、反驳。</div>
+    </div>
+  </div>
+  <div class="rule-item">
+    <div class="rule-num">02</div>
+    <div class="rule-text">
+      <div class="rule-title">指出错误有奖励</div>
+      <div class="rule-desc">凡指出内容错误、逻辑漏洞、引用不当者，讲者将当场致谢，并附以一份诚意之礼。</div>
+    </div>
+  </div>
+  <div class="rule-item">
+    <div class="rule-num">03</div>
+    <div class="rule-text">
+      <div class="rule-title">所有的错误，我个人负责</div>
+      <div class="rule-desc">观点归我，错误也归我。不将任何误述归咎于合作者或文献作者。</div>
+    </div>
+  </div>
+  <div class="rule-item">
+    <div class="rule-num">04</div>
+    <div class="rule-text">
+      <div class="rule-title">个人的视角是有限的，协作更佳</div>
+      <div class="rule-desc">新制度经济学关注协作与治理，本讲座亦遵循其精神——思想的交叉方能逼近真实。</div>
+    </div>
+  </div>
+  <div class="rule-item">
+    <div class="rule-num">05</div>
+    <div class="rule-text">
+      <div class="rule-title">项目开始，就没有结束</div>
+      <div class="rule-desc">如同开源项目本身，本讲座是一个持续演化的工作稿，今日之结即为明日之始。</div>
+    </div>
+  </div>
+  <div class="rule-item">
+    <div class="rule-num">06</div>
+    <div class="rule-text">
+      <div class="rule-title">关于讲座的规则说明</div>
+      <div class="rule-desc">以上各条，是讲者与听众之间的一份非正式契约，其效力依赖于彼此的善意与诚意。</div>
+    </div>
+  </div>
+</div>
+
+<!-- Bottom principle -->
+<div class="badge-area">
+  <div class="badge-circle"><span style="width:20px;height:20px;background:#1B3B6B;border-radius:50%;"></span></div>
+  <div class="badge-square"><span style="width:14px;height:14px;background:#8B7355;"></span></div>
+  <div class="badge-text">遵 循 &nbsp;「开 源 之 道」</div>
+  <div class="badge-square"><span style="width:14px;height:14px;background:#8B7355;"></span></div>
+  <div class="badge-circle"><span style="width:20px;height:20px;background:#8B7355;border-radius:50%;"></span></div>
+</div>
+
+<!-- Bottom -->
+<div class="bottom-area">
+  <div class="bottom-left">
+    <div class="bottom-line"></div>
+    <div class="bottom-text">新制度经济学视角下的开源</div>
+  </div>
+  <div class="bottom-right">新制度经济学 · 开源软件 · 协作与治理</div>
+</div>
+
+<div class="footmark">RULES &nbsp;·&nbsp; 01</div>
+</body></html>

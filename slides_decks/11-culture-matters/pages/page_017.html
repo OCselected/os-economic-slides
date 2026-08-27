@@ -1,0 +1,177 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>开源运动的理论基础</title><style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0;}
+body{background:#F5F0E8;font-family:'Noto Sans SC','Source Han Sans SC','PingFang SC',sans-serif;color:#1B3B6B;position:relative;overflow:hidden;}
+.hdr{position:absolute;top:46px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:flex-end;}
+.hdr-title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:22px;font-weight:600;letter-spacing:2px;color:#1B3B6B;}
+.hdr-num{font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:3px;}
+.title-block{position:absolute;top:120px;left:80px;width:520px;}
+.kicker{font-size:13px;color:#8B7355;letter-spacing:5px;margin-bottom:18px;font-weight:500;}
+.main-title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:44px;font-weight:700;line-height:1.3;color:#1B3B6B;letter-spacing:1px;}
+.subtitle{margin-top:18px;font-size:14px;color:#555;line-height:1.8;letter-spacing:1px;max-width:460px;}
+.divider{width:60px;height:2px;background:#1B3B6B;margin-top:22px;}
+
+.metaphor{position:absolute;bottom:80px;left:80px;width:480px;padding:18px 22px;border-left:3px solid #1B3B6B;background:rgba(255,255,255,0.35);}
+.metaphor-label{font-size:11px;color:#8B7355;letter-spacing:4px;margin-bottom:8px;}
+.metaphor-text{font-family:'Noto Serif SC',serif;font-size:14px;color:#1B3B6B;line-height:1.6;}
+
+/* Central ring diagram */
+.ring-stage{position:absolute;top:90px;right:60px;width:860px;height:760px;}
+.ring-bg{position:absolute;top:60px;left:80px;width:700px;height:700px;}
+
+/* Concentric circles */
+.circle-outer{position:absolute;top:60px;left:80px;width:700px;height:700px;border:1.5px solid #1B3B6B;border-radius:50%;}
+.circle-mid{position:absolute;top:120px;left:140px;width:580px;height:580px;border:1px solid #8B7355;border-radius:50%;}
+.circle-inner{position:absolute;top:220px;left:240px;width:380px;height:380px;border:1px dashed #1B3B6B;border-radius:50%;}
+.circle-core{position:absolute;top:340px;left:360px;width:140px;height:140px;border:2px solid #1B3B6B;border-radius:50%;background:#F5F0E8;display:flex;align-items:center;justify-content:center;}
+.core-text{font-family:'Noto Serif SC',serif;font-size:15px;color:#1B3B6B;text-align:center;line-height:1.4;letter-spacing:1px;}
+.core-text small{display:block;font-size:10px;color:#8B7355;letter-spacing:3px;margin-top:4px;}
+
+/* Radiating light trails - lines from center outward */
+.rail{position:absolute;top:410px;left:430px;height:1px;background:#1B3B6B;transform-origin:0 50%;opacity:0.55;}
+.rail-copper{background:#8B7355;opacity:0.4;}
+
+/* Six sectors */
+.sector{position:absolute;width:130px;text-align:center;}
+.sector-num{font-family:'Noto Serif SC',serif;font-size:12px;color:#8B7355;letter-spacing:3px;margin-bottom:6px;}
+.sector-name{font-family:'Noto Serif SC',serif;font-size:19px;font-weight:700;color:#1B3B6B;letter-spacing:2px;margin-bottom:4px;}
+.sector-en{font-size:10px;color:#8B7355;letter-spacing:2px;}
+.sector-dot{width:10px;height:10px;background:#1B3B6B;border-radius:50%;margin:0 auto 8px;}
+
+/* Positions for six items around ring */
+.s1{top:80px;left:375px;}
+.s2{top:180px;left:590px;}
+.s3{top:400px;left:650px;}
+.s4{top:600px;left:375px;}
+.s5{top:400px;left:100px;}
+.s6{top:180px;left:10px;}
+
+/* Radial lines connecting center to sectors */
+.r-line{position:absolute;height:1px;background:#1B3B6B;opacity:0.35;top:410px;left:430px;}
+
+/* Decorative squares */
+.deco-square{position:absolute;background:#1B3B6B;}
+.deco-square-1{top:15px;right:25px;width:14px;height:14px;}
+.deco-square-2{bottom:15px;left:25px;width:10px;height:10px;background:#8B7355;}
+.deco-circle{position:absolute;border:1.5px solid #1B3B6B;border-radius:50%;}
+.deco-circle-1{top:15px;left:80px;width:18px;height:18px;}
+.deco-circle-2{bottom:20px;right:30px;width:12px;height:12px;background:#1B3B6B;}
+
+/* Bottom bar */
+.footer{position:absolute;bottom:28px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#8B7355;letter-spacing:2px;}
+.footer-line{flex:1;height:1px;background:#1B3B6B;opacity:0.3;margin:0 20px;}
+
+/* Light trail dots on radiating lines */
+.trail-dot{position:absolute;width:5px;height:5px;background:#8B7355;border-radius:50%;}
+</style></head><body>
+
+<div class="deco-square deco-square-1"></div>
+<div class="deco-square deco-square-2"></div>
+<div class="deco-circle deco-circle-1"></div>
+<div class="deco-circle deco-circle-2"></div>
+
+<div class="hdr">
+  <div class="hdr-title">新制度经济学视角下的开源软件</div>
+  <div class="hdr-num">03 / 18</div>
+</div>
+
+<div class="title-block">
+  <div class="kicker">SECTION III &nbsp;—&nbsp; 理论图谱</div>
+  <div class="main-title">开源运动的<br>理论基础</div>
+  <div class="divider"></div>
+  <div class="subtitle">开源并非无源之水。它从科研协作、技术标准、学术共同体、技术文化、工程实践与商业模式六大母体中汲取养分，形成今日数字时代的分布式协作生态。</div>
+</div>
+
+<div class="metaphor">
+  <div class="metaphor-label">VISUAL METAPHOR</div>
+  <div class="metaphor-text">垂直俯视城市环岛与光轨——<br>开源生态的辐射与汇聚</div>
+</div>
+
+<div class="ring-stage">
+  <div class="circle-outer"></div>
+  <div class="circle-mid"></div>
+  <div class="circle-inner"></div>
+  <div class="circle-core">
+    <div class="core-text">开源<br>生态<small>OPEN SOURCE</small></div>
+  </div>
+
+  <!-- Radial lines from center to each sector -->
+  <div class="r-line" style="width:270px;transform:rotate(265deg);"></div>
+  <div class="r-line" style="width:270px;transform:rotate(335deg);"></div>
+  <div class="r-line" style="width:270px;transform:rotate(35deg);"></div>
+  <div class="r-line" style="width:270px;transform:rotate(95deg);"></div>
+  <div class="r-line" style="width:270px;transform:rotate(155deg);"></div>
+  <div class="r-line" style="width:270px;transform:rotate(205deg);"></div>
+
+  <!-- Light trails (longer, copper) -->
+  <div class="rail" style="width:320px;transform:rotate(260deg);"></div>
+  <div class="rail rail-copper" style="width:300px;transform:rotate(340deg);"></div>
+  <div class="rail" style="width:320px;transform:rotate(40deg);"></div>
+  <div class="rail rail-copper" style="width:300px;transform:rotate(100deg);"></div>
+  <div class="rail" style="width:320px;transform:rotate(160deg);"></div>
+  <div class="rail rail-copper" style="width:300px;transform:rotate(210deg);"></div>
+
+  <!-- Trail dots -->
+  <div class="trail-dot" style="top:155px;left:420px;"></div>
+  <div class="trail-dot" style="top:130px;left:460px;"></div>
+  <div class="trail-dot" style="top:250px;left:670px;"></div>
+  <div class="trail-dot" style="top:540px;left:685px;"></div>
+  <div class="trail-dot" style="top:620px;left:445px;"></div>
+  <div class="trail-dot" style="top:550px;left:260px;"></div>
+  <div class="trail-dot" style="top:245px;left:255px;"></div>
+  <div class="trail-dot" style="top:395px;left:625px;"></div>
+  <div class="trail-dot" style="top:395px;left:235px;"></div>
+  <div class="trail-dot" style="top:200px;left:400px;"></div>
+  <div class="trail-dot" style="top:620px;left:410px;"></div>
+  <div class="trail-dot" style="top:430px;left:645px;"></div>
+
+  <!-- Six sectors -->
+  <div class="sector s1">
+    <div class="sector-dot"></div>
+    <div class="sector-num">Ⅰ</div>
+    <div class="sector-name">科　研</div>
+    <div class="sector-en">RESEARCH</div>
+  </div>
+  <div class="sector s2">
+    <div class="sector-dot"></div>
+    <div class="sector-num">Ⅱ</div>
+    <div class="sector-name">标　准</div>
+    <div class="sector-en">STANDARDS</div>
+  </div>
+  <div class="sector s3">
+    <div class="sector-dot"></div>
+    <div class="sector-num">Ⅲ</div>
+    <div class="sector-name">学　术</div>
+    <div class="sector-en">ACADEMIA</div>
+  </div>
+  <div class="sector s4">
+    <div class="sector-dot"></div>
+    <div class="sector-num">Ⅳ</div>
+    <div class="sector-name">技　术</div>
+    <div class="sector-en">TECHNOLOGY</div>
+  </div>
+  <div class="sector s5">
+    <div class="sector-dot"></div>
+    <div class="sector-num">Ⅴ</div>
+    <div class="sector-name">工　程</div>
+    <div class="sector-en">ENGINEERING</div>
+  </div>
+  <div class="sector s6">
+    <div class="sector-dot"></div>
+    <div class="sector-num">Ⅵ</div>
+    <div class="sector-name">商　业</div>
+    <div class="sector-en">BUSINESS</div>
+  </div>
+</div>
+
+<div class="footer">
+  <span>OPEN SOURCE ECONOMICS</span>
+  <div class="footer-line"></div>
+  <span>THEORETICAL FOUNDATIONS &nbsp;·&nbsp; 六大理论母体</span>
+  <div class="footer-line"></div>
+  <span>03 / 18</span>
+</div>
+
+</body></html>

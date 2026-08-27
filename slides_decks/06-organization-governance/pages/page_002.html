@@ -1,0 +1,131 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>第六期 组织结构与治理</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0;background:#F5F0E8;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif}
+.slide{position:relative;width:1600px;height:900px;background:#F5F0E8;overflow:hidden}
+.parchment{position:absolute;width:1600px;height:900px;background:radial-gradient(ellipse at 30% 20%, rgba(139,115,85,0.04) 0%, transparent 60%),radial-gradient(ellipse at 80% 90%, rgba(27,59,107,0.03) 0%, transparent 50%)}
+
+/* Left Prussian blue geometric panel */
+.blue-panel{position:absolute;left:0;top:0;width:640px;height:900px;background:#1B3B6B}
+.blue-inner{position:absolute;left:100px;top:100px;width:440px;height:700px}
+
+/* Geometric elements */
+.geo-circle-big{position:absolute;left:0;top:280px;width:340px;height:340px;border-radius:50%;background:#F5F0E8}
+.geo-circle-fill{position:absolute;left:60px;top:340px;width:220px;height:220px;border-radius:50%;background:#1B3B6B}
+.geo-circle-copper{position:absolute;left:130px;top:410px;width:80px;height:80px;border-radius:50%;background:#8B7355}
+
+.geo-square{position:absolute;left:0;top:0;width:120px;height:120px;background:#8B7355}
+.geo-square-hollow{position:absolute;left:320px;top:0;width:60px;height:60px;border:3px solid #F5F0E8;background:transparent}
+
+.geo-line-v{position:absolute;left:440px;top:80px;width:2px;height:540px;background:#F5F0E8;opacity:0.4}
+.geo-line-h{position:absolute;left:80px;top:680px;width:440px;height:2px;background:#F5F0E8;opacity:0.3}
+.geo-line-h2{position:absolute;left:80px;top:690px;width:200px;height:2px;background:#8B7355;opacity:0.6}
+
+/* Right content area */
+.right-area{position:absolute;left:640px;top:0;width:960px;height:900px}
+
+/* Top frame line */
+.top-line{position:absolute;left:80px;top:70px;width:800px;height:2px;background:#1B3B6B}
+.top-line-copper{position:absolute;left:80px;top:74px;width:200px;height:2px;background:#8B7355}
+
+/* Label */
+.label-top{position:absolute;left:80px;top:40px;font-size:13px;letter-spacing:6px;color:#8B7355;font-weight:500}
+
+/* Main title */
+.main-title{position:absolute;left:80px;top:130px;font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:96px;font-weight:700;color:#1B3B6B;letter-spacing:8px;line-height:1.1}
+.main-title-en{position:absolute;left:84px;top:240px;font-size:15px;letter-spacing:5px;color:#555;font-weight:400;font-style:italic}
+
+/* Divider */
+.divider{position:absolute;left:80px;top:320px;width:120px;height:3px;background:#1B3B6B}
+
+/* Lecture number block */
+.lecture-meta{position:absolute;left:80px;top:380px}
+.meta-line1{font-size:18px;color:#555;letter-spacing:4px;margin-bottom:14px}
+.meta-line2{font-size:18px;color:#555;letter-spacing:4px;margin-bottom:14px}
+
+/* Period number */
+.period-number{position:absolute;left:80px;top:500px;font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:240px;font-weight:700;color:#1B3B6B;line-height:0.9;letter-spacing:-4px}
+.period-label{position:absolute;left:370px;top:530px;font-family:'Noto Serif SC',serif;font-size:22px;color:#8B7355;letter-spacing:8px;writing-mode:vertical-rl;height:200px;line-height:2}
+
+/* Topic title */
+.topic-title{position:absolute;left:80px;top:740px;font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:52px;font-weight:700;color:#1B3B6B;letter-spacing:6px}
+.topic-sub{position:absolute;left:84px;top:808px;font-size:14px;letter-spacing:8px;color:#8B7355}
+
+/* Right decorative geometry */
+.deco-circle-r1{position:absolute;right:80px;top:100px;width:180px;height:180px;border-radius:50%;border:2px solid #1B3B6B;opacity:0.3}
+.deco-circle-r2{position:absolute;right:140px;top:160px;width:60px;height:60px;border-radius:50%;background:#8B7355;opacity:0.4}
+.deco-square-r{position:absolute;right:80px;top:100px;width:80px;height:80px;background:#1B3B6B;opacity:0.15}
+.deco-line-r{position:absolute;right:240px;top:280px;width:2px;height:380px;background:#1B3B6B;opacity:0.15}
+.deco-line-r2{position:absolute;right:80px;top:320px;width:160px;height:2px;background:#8B7355;opacity:0.25}
+
+/* Bottom footer */
+.foot-line{position:absolute;left:80px;top:860px;width:800px;height:1px;background:#555;opacity:0.3}
+.foot-text{position:absolute;left:80px;top:875px;font-size:11px;letter-spacing:3px;color:#555;opacity:0.7}
+.speaker-block{position:absolute;right:80px;bottom:60px;text-align:right}
+.speaker-name{font-family:'Noto Serif SC',serif;font-size:16px;color:#1B3B6B;letter-spacing:4px}
+.speaker-org{font-size:11px;color:#8B7355;letter-spacing:3px;margin-top:4px}
+
+/* Vertical accent strip */
+.accent-strip{position:absolute;left:620px;top:0;width:4px;height:900px;background:#8B7355;opacity:0.3}
+
+/* Small chapter mark */
+.chapter-mark{position:absolute;left:80px;top:15px;font-size:10px;letter-spacing:3px;color:#555;opacity:0.5}
+</style></head><body>
+<div class="slide">
+  <div class="parchment"></div>
+
+  <!-- Left blue panel -->
+  <div class="blue-panel"></div>
+  <div class="blue-inner">
+    <div class="geo-circle-big"></div>
+    <div class="geo-circle-fill"></div>
+    <div class="geo-circle-copper"></div>
+    <div class="geo-square"></div>
+    <div class="geo-square-hollow"></div>
+    <div class="geo-line-v"></div>
+    <div class="geo-line-h"></div>
+    <div class="geo-line-h2"></div>
+  </div>
+
+  <div class="accent-strip"></div>
+
+  <!-- Right content -->
+  <div class="right-area">
+    <div class="chapter-mark">OPEN SOURCE ECONOMICS · LECTURE DECK</div>
+    <div class="label-top">OPEN SOURCE &nbsp;×&nbsp; ECONOMICS</div>
+    <div class="top-line"></div>
+    <div class="top-line-copper"></div>
+
+    <div class="main-title">开源与经济学</div>
+    <div class="main-title-en">Open Source &amp; Economics &mdash; A Neo-Institutional Perspective</div>
+    <div class="divider"></div>
+
+    <div class="lecture-meta">
+      <div class="meta-line1">开源经济学 · 12 期讲座系列</div>
+      <div class="meta-line2">第六期 &nbsp;CHAPTER VI</div>
+    </div>
+
+    <div class="period-number">06</div>
+    <div class="period-label">CHAPTER</div>
+
+    <div class="topic-title">组织结构与治理</div>
+    <div class="topic-sub">ORGANIZATIONAL STRUCTURE &amp; GOVERNANCE</div>
+
+    <div class="foot-line"></div>
+    <div class="foot-text">LECTURE VI / XII &nbsp;&nbsp;·&nbsp;&nbsp; INSTITUTE OF OPEN SOURCE</div>
+
+    <!-- Right decoration -->
+    <div class="deco-circle-r1"></div>
+    <div class="deco-circle-r2"></div>
+    <div class="deco-square-r"></div>
+    <div class="deco-line-r"></div>
+    <div class="deco-line-r2"></div>
+
+    <div class="speaker-block">
+      <div class="speaker-name">适兕 &nbsp;SHI SI</div>
+      <div class="speaker-org">「开源之道」</div>
+    </div>
+  </div>
+</div>
+</body></html>

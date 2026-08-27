@@ -1,0 +1,298 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>软件分发：数字时代的贸易动脉</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0}
+body{font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;background:#F5F0E8;color:#1B3B6B;position:relative}
+.serif{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif}
+
+/* Header */
+.header{position:absolute;top:45px;left:80px;right:80px;display:flex;align-items:flex-end;justify-content:space-between}
+.title-block{display:flex;align-items:center;gap:20px}
+.title-accent{width:8px;height:56px;background:#1B3B6B}
+.title-text{display:flex;flex-direction:column;gap:6px}
+.title-zh{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:42px;font-weight:700;color:#1B3B6B;letter-spacing:2px}
+.title-en{font-size:13px;color:#8B7355;letter-spacing:4px;font-weight:300}
+.meta{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.meta-num{font-family:'Noto Serif SC',serif;font-size:38px;color:#8B7355;font-weight:300}
+.meta-label{font-size:11px;color:#555;letter-spacing:3px}
+
+/* Top rule */
+.rule-top{position:absolute;top:140px;left:80px;right:80px;height:1px;background:#1B3B6B;opacity:0.3}
+
+/* Subtitle */
+.subtitle{position:absolute;top:158px;left:80px;right:80px;display:flex;align-items:center;gap:16px}
+.subtitle-dot{width:8px;height:8px;background:#8B7355;border-radius:50%}
+.subtitle-text{font-family:'Noto Serif SC',serif;font-size:18px;color:#555;font-style:italic}
+.subtitle-line{flex:1;height:1px;background:#8B7355;opacity:0.4}
+
+/* Ship illustration area */
+.ship-area{position:absolute;top:210px;left:80px;width:680px;height:340px}
+
+/* Ship hull */
+.hull{position:absolute;bottom:40px;left:0;width:680px;height:60px;background:#1B3B6B;clip-path:polygon(0 0,100% 0,100% 100%,40px 100%)}
+.hull-stripe{position:absolute;bottom:50px;left:0;width:680px;height:6px;background:#8B7355;clip-path:polygon(0 0,100% 0,100% 100%,40px 100%)}
+
+/* Containers */
+.containers{position:absolute;bottom:106px;left:20px;width:640px;height:140px}
+.row1{position:absolute;bottom:0;left:0;width:640px;height:36px;display:flex;gap:3px}
+.row2{position:absolute;bottom:42px;left:0;width:640px;height:36px;display:flex;gap:3px}
+.row3{position:absolute;bottom:84px;left:0;width:640px;height:36px;display:flex;gap:3px}
+.con{flex:1;border:1px solid #1B3B6B}
+.con-blue{background:#1B3B6B;opacity:0.85}
+.con-copper{background:#8B7355;opacity:0.8}
+.con-gray{background:#555;opacity:0.6}
+.con-light{background:#1B3B6B;opacity:0.35}
+
+/* Crane tower */
+.crane{position:absolute;top:0;right:20px;width:60px;height:100px}
+.crane-base{position:absolute;bottom:0;left:10px;width:40px;height:6px;background:#1B3B6B}
+.crane-pole{position:absolute;bottom:6px;left:27px;width:6px;height:80px;background:#1B3B6B}
+.crane-arm{position:absolute;top:18px;left:-30px;width:90px;height:6px;background:#1B3B6B}
+.crane-cab{position:absolute;top:0;left:10px;width:40px;height:18px;background:#8B7355}
+
+/* Bridge */
+.bridge{position:absolute;top:60px;right:90px;width:45px;height:30px;background:#1B3B6B}
+.bridge-top{position:absolute;top:45px;right:90px;width:45px;height:15px;background:#8B7355}
+
+/* Water lines */
+.water{position:absolute;bottom:0;left:0;width:680px;height:40px}
+.water-line1{position:absolute;bottom:30px;left:0;width:680px;height:1px;background:#1B3B6B;opacity:0.4}
+.water-line2{position:absolute;bottom:20px;left:0;width:680px;height:1px;background:#1B3B6B;opacity:0.25}
+.water-line3{position:absolute;bottom:10px;left:0;width:680px;height:1px;background:#8B7355;opacity:0.3}
+
+/* Sun circle */
+.sun{position:absolute;top:10px;left:60px;width:50px;height:50px;border-radius:50%;border:2px solid #1B3B6B;background:#F5F0E8}
+.sun-inner{position:absolute;top:18px;left:18px;width:14px;height:14px;border-radius:50%;background:#8B7355}
+
+/* Ship label */
+.ship-label{position:absolute;bottom:8px;left:680px;width:120px;text-align:center}
+.ship-label-line{width:2px;height:20px;background:#8B7355;margin:0 auto 4px}
+.ship-label-text{font-size:11px;color:#555;letter-spacing:2px}
+
+/* Right content area */
+.content-area{position:absolute;top:210px;left:800px;right:80px}
+
+/* Category blocks */
+.cat{display:flex;align-items:flex-start;gap:16px;margin-bottom:14px}
+.cat-marker{flex-shrink:0;width:44px;height:44px;display:flex;align-items:center;justify-content:center}
+.cat-marker-square{width:44px;height:44px;background:#1B3B6B}
+.cat-marker-square-inner{width:20px;height:20px;background:#F5F0E8;margin:12px}
+.cat-marker-circle{width:44px;height:44px;border:3px solid #1B3B6B;border-radius:50%;position:relative}
+.cat-marker-circle::before{content:'';position:absolute;top:16px;left:16px;width:12px;height:12px;background:#8B7355;border-radius:50%}
+.cat-marker-cross{width:44px;height:44px;position:relative}
+.cat-marker-cross::before{content:'';position:absolute;top:20px;left:0;width:44px;height:4px;background:#1B3B6B}
+.cat-marker-cross::after{content:'';position:absolute;top:0;left:20px;width:4px;height:44px;background:#8B7355}
+.cat-marker-tri{width:44px;height:44px;background:#8B7355;clip-path:polygon(50% 0,100% 100%,0 100%)}
+.cat-info{flex:1;padding-top:4px}
+.cat-header{display:flex;align-items:baseline;gap:12px;margin-bottom:5px}
+.cat-zh{font-family:'Noto Serif SC',serif;font-size:18px;font-weight:700;color:#1B3B6B}
+.cat-en{font-size:11px;color:#8B7355;letter-spacing:2px}
+.cat-items{font-size:13px;color:#555;line-height:1.7;letter-spacing:0.5px}
+.cat-items .brand{color:#1B3B6B;font-weight:600}
+
+/* Bottom footer */
+.footer{position:absolute;bottom:35px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:center}
+.footer-left{display:flex;align-items:center;gap:12px}
+.footer-square{width:10px;height:10px;background:#1B3B6B}
+.footer-text{font-size:11px;color:#555;letter-spacing:3px}
+.footer-right{font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;font-style:italic}
+
+/* Vertical accent lines */
+.vline-left{position:absolute;top:210px;left:70px;width:1px;height:580px;background:#1B3B6B;opacity:0.2}
+.vline-right{position:absolute;top:210px;right:70px;width:1px;height:580px;background:#1B3B6B;opacity:0.2}
+
+/* Annotation arrow */
+.annotation{position:absolute;top:180px;left:720px;font-size:11px;color:#8B7355;letter-spacing:2px;display:flex;align-items:center;gap:8px}
+.annotation-line{width:60px;height:1px;background:#8B7355}
+</style></head><body>
+
+<!-- Vertical accent lines -->
+<div class="vline-left"></div>
+<div class="vline-right"></div>
+
+<!-- Header -->
+<div class="header">
+  <div class="title-block">
+    <div class="title-accent"></div>
+    <div class="title-text">
+      <div class="title-zh">软件分发：数字时代的贸易动脉</div>
+      <div class="title-en">SOFTWARE DISTRIBUTION · THE TRADE ARTERIES OF THE DIGITAL AGE</div>
+    </div>
+  </div>
+  <div class="meta">
+    <div class="meta-num">07</div>
+    <div class="meta-label">CHAPTER · VII</div>
+  </div>
+</div>
+
+<div class="rule-top"></div>
+
+<div class="subtitle">
+  <div class="subtitle-dot"></div>
+  <div class="subtitle-text">如集装箱货轮承运全球货物，软件仓库与分发平台构成数字时代的物流网络</div>
+  <div class="subtitle-line"></div>
+</div>
+
+<!-- Ship illustration -->
+<div class="ship-area">
+  <!-- Sun -->
+  <div class="sun">
+    <div class="sun-inner"></div>
+  </div>
+
+  <!-- Crane -->
+  <div class="crane">
+    <div class="crane-cab"></div>
+    <div class="crane-arm"></div>
+    <div class="crane-pole"></div>
+    <div class="crane-base"></div>
+  </div>
+
+  <!-- Bridge -->
+  <div class="bridge"></div>
+  <div class="bridge-top"></div>
+
+  <!-- Containers Row 3 (top) -->
+  <div class="containers">
+    <div class="row3">
+      <div class="con con-blue"></div>
+      <div class="con con-copper"></div>
+      <div class="con con-light"></div>
+      <div class="con con-gray"></div>
+      <div class="con con-blue"></div>
+      <div class="con con-light"></div>
+      <div class="con con-copper"></div>
+      <div class="con con-blue"></div>
+      <div class="con con-gray"></div>
+      <div class="con con-light"></div>
+      <div class="con con-copper"></div>
+      <div class="con con-blue"></div>
+      <div class="con con-light"></div>
+      <div class="con con-blue"></div>
+      <div class="con con-copper"></div>
+    </div>
+    <div class="row2">
+      <div class="con con-gray"></div>
+      <div class="con con-blue"></div>
+      <div class="con con-copper"></div>
+      <div class="con con-light"></div>
+      <div class="con con-blue"></div>
+      <div class="con con-copper"></div>
+      <div class="con con-gray"></div>
+      <div class="con con-blue"></div>
+      <div class="con con-light"></div>
+      <div class="con con-blue"></div>
+      <div class="con con-copper"></div>
+      <div class="con con-light"></div>
+      <div class="con con-gray"></div>
+      <div class="con con-blue"></div>
+      <div class="con con-copper"></div>
+    </div>
+    <div class="row1">
+      <div class="con con-blue"></div>
+      <div class="con con-light"></div>
+      <div class="con con-blue"></div>
+      <div class="con con-copper"></div>
+      <div class="con con-gray"></div>
+      <div class="con con-blue"></div>
+      <div class="con con-light"></div>
+      <div class="con con-copper"></div>
+      <div class="con con-blue"></div>
+      <div class="con con-gray"></div>
+      <div class="con con-light"></div>
+      <div class="con con-blue"></div>
+      <div class="con con-copper"></div>
+      <div class="con con-light"></div>
+      <div class="con con-blue"></div>
+    </div>
+  </div>
+
+  <!-- Hull -->
+  <div class="hull-stripe"></div>
+  <div class="hull"></div>
+
+  <!-- Water -->
+  <div class="water">
+    <div class="water-line1"></div>
+    <div class="water-line2"></div>
+    <div class="water-line3"></div>
+  </div>
+
+  <!-- Label -->
+  <div class="ship-label">
+    <div class="ship-label-line"></div>
+    <div class="ship-label-text">CONTAINER · 40ft</div>
+  </div>
+</div>
+
+<!-- Right content -->
+<div class="content-area">
+
+  <div class="cat">
+    <div class="cat-marker"><div class="cat-marker-circle"></div></div>
+    <div class="cat-info">
+      <div class="cat-header">
+        <span class="cat-zh">智能手机</span>
+        <span class="cat-en">MOBILE · APP STORES</span>
+      </div>
+      <div class="cat-items"><span class="brand">App Store</span>　·　<span class="brand">Google Play</span>　·　应用市场生态</div>
+    </div>
+  </div>
+
+  <div class="cat">
+    <div class="cat-marker"><div class="cat-marker-square"><div class="cat-marker-square-inner"></div></div></div>
+    <div class="cat-info">
+      <div class="cat-header">
+        <span class="cat-zh">个人电脑</span>
+        <span class="cat-en">DESKTOP · SOFTWARE REPOSITORIES</span>
+      </div>
+      <div class="cat-items"><span class="brand">Mac App Store</span>　·　<span class="brand">Microsoft Store</span>　·　<span class="brand">dnf</span> / <span class="brand">apt-get</span></div>
+    </div>
+  </div>
+
+  <div class="cat">
+    <div class="cat-marker"><div class="cat-marker-cross"></div></div>
+    <div class="cat-info">
+      <div class="cat-header">
+        <span class="cat-zh">服务器</span>
+        <span class="cat-en">SERVER · PACKAGE &amp; IMAGE REGISTRY</span>
+      </div>
+      <div class="cat-items"><span class="brand">Docker Image</span>　·　<span class="brand">yum install</span>　·　<span class="brand">npm install</span></div>
+    </div>
+  </div>
+
+  <div class="cat">
+    <div class="cat-marker"><div class="cat-marker-tri"></div></div>
+    <div class="cat-info">
+      <div class="cat-header">
+        <span class="cat-zh">开发者生态</span>
+        <span class="cat-en">DEVELOPER · PACKAGE MANAGERS</span>
+      </div>
+      <div class="cat-items"><span class="brand">PyPI</span>　·　<span class="brand">CPAN</span>　·　<span class="brand">Go Modules</span>　·　<span class="brand">Maven</span>　·　<span class="brand">RubyGems</span></div>
+    </div>
+  </div>
+
+  <div class="cat">
+    <div class="cat-marker"><div class="cat-marker-square" style="background:#8B7355"></div></div>
+    <div class="cat-info">
+      <div class="cat-header">
+        <span class="cat-zh">云计算平台</span>
+        <span class="cat-en">CLOUD · IaaS / PaaS / SaaS</span>
+      </div>
+      <div class="cat-items">基础设施即服务　·　平台即服务　·　软件即服务　·　三方市场生态</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <div class="footer-left">
+    <div class="footer-square"></div>
+    <div class="footer-text">OPEN SOURCE · NEW INSTITUTIONAL ECONOMICS</div>
+  </div>
+  <div class="footer-right">"每一个仓库都是一座港口"</div>
+</div>
+
+</body></html>

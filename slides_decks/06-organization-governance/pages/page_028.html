@@ -1,0 +1,192 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Android 的技术-法律战略与产业格局</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0}
+body{background:#F5F0E8;font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;color:#1B3B6B;position:relative}
+.title-serif{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif}
+
+/* Top decorative bar */
+.top-bar{position:absolute;top:0;left:0;width:1600px;height:8px;background:#1B3B6B}
+.top-bar-accent{position:absolute;top:8px;left:0;width:600px;height:4px;background:#8B7355}
+
+/* Header section */
+.header{position:absolute;top:50px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:flex-start}
+.section-tag{font-size:14px;letter-spacing:6px;color:#8B7355;font-weight:500}
+.header-line{width:120px;height:2px;background:#1B3B6B;margin-top:10px}
+.header-right{text-align:right;font-size:13px;color:#555;letter-spacing:3px}
+
+/* Main title */
+.main-title{position:absolute;top:110px;left:80px;font-size:46px;font-weight:700;color:#1B3B6B;line-height:1.2;letter-spacing:1px}
+.main-title .accent{color:#8B7355}
+.title-underline{position:absolute;top:200px;left:80px;width:180px;height:3px;background:#1B3B6B}
+
+/* Bauhaus geometric decoration - left */
+.geo-circle-1{position:absolute;top:60px;left:1350px;width:120px;height:120px;border-radius:50%;background:#1B3B6B;border:none}
+.geo-circle-2{position:absolute;top:85px;left:1375px;width:70px;height:70px;border-radius:50%;background:#F5F0E8}
+.geo-square-1{position:absolute;top:230px;left:1420px;width:50px;height:50px;background:#8B7355}
+.geo-line-1{position:absolute;top:130px;left:1260px;width:60px;height:2px;background:#1B3B6B}
+.geo-line-2{position:absolute;top:200px;left:1260px;width:60px;height:2px;background:#8B7355}
+.geo-dot{position:absolute;width:8px;height:8px;border-radius:50%;background:#1B3B6B}
+
+/* Central visual metaphor: puzzle/knowledge map */
+.metaphor-box{position:absolute;top:270px;left:80px;width:440px;height:560px;background:#F5F0E8;border:2px solid #1B3B6B}
+.metaphor-inner{position:absolute;top:20px;left:20px;right:20px;bottom:20px}
+
+/* Puzzle pieces */
+.puzzle{position:absolute;width:90px;height:90px;background:#F5F0E8;border:1.5px solid #1B3B6B;display:flex;align-items:center;justify-content:center;font-size:11px;color:#1B3B6B;font-weight:500;text-align:center;line-height:1.4;padding:5px}
+.puzzle-blue{background:#1B3B6B;color:#F5F0E8;border-color:#1B3B6B}
+.puzzle-copper{background:#8B7355;color:#F5F0E8;border-color:#8B7355}
+
+.p1{top:10px;left:10px}
+.p2{top:10px;left:130px}
+.p3{top:10px;left:250px}
+.p4{top:130px;left:10px}
+.p5{top:130px;left:130px;background:#1B3B6B;color:#F5F0E8;border-color:#1B3B6B}
+.p6{top:130px;left:250px}
+.p7{top:250px;left:10px}
+.p8{top:250px;left:130px}
+.p9{top:250px;left:250px;background:#8B7355;color:#F5F0E8;border-color:#8B7355}
+.p10{top:370px;left:10px}
+.p11{top:370px;left:130px}
+.p12{top:370px;left:250px}
+.p13{top:490px;left:10px;background:#1B3B6B;color:#F5F0E8;border-color:#1B3B6B}
+.p14{top:490px;left:130px}
+.p15{top:490px;left:250px}
+
+/* connecting lines for puzzle */
+.conn{position:absolute;height:1.5px;background:#1B3B6B;opacity:0.5}
+
+/* Right side content */
+.right-panel{position:absolute;top:270px;left:560px;width:960px;height:560px}
+.sub-title{font-size:24px;font-weight:700;color:#1B3B6B;margin-bottom:8px;font-family:'Noto Serif SC',serif;letter-spacing:1px}
+.sub-title-en{font-size:13px;color:#8B7355;letter-spacing:4px;margin-bottom:24px;font-family:'Noto Serif SC',serif}
+
+.bullets{list-style:none;margin:0;padding:0}
+.bullets li{position:relative;padding:12px 0 12px 40px;font-size:16px;color:#1B3B6B;line-height:1.6;border-bottom:1px solid rgba(27,59,107,0.12)}
+.bullets li:last-child{border-bottom:none}
+.bullets li .num{position:absolute;left:0;top:14px;width:26px;height:26px;background:#1B3B6B;color:#F5F0E8;font-size:12px;display:flex;align-items:center;justify-content:center;font-weight:600;font-family:'Noto Serif SC',serif}
+.bullets li .label{font-weight:600;margin-right:8px;color:#1B3B6B}
+.bullets li .desc{color:#555;font-size:14px}
+
+/* Final equation line */
+.equation-box{position:absolute;bottom:40px;left:80px;right:80px;height:60px;background:#1B3B6B;display:flex;align-items:center;justify-content:center;padding:0 40px}
+.equation-text{font-size:15px;color:#F5F0E8;font-family:'Noto Serif SC',serif;letter-spacing:2px;font-weight:500}
+.equation-text .plus{color:#8B7355;margin:0 6px}
+.equation-text .eq{color:#F5F0E8;margin:0 10px;font-weight:700}
+.equation-text .result{color:#F5F0E8;font-weight:700}
+
+/* Bottom geometric decoration */
+.bottom-bar{position:absolute;bottom:0;left:0;width:1600px;height:4px;background:#8B7355}
+.geo-square-2{position:absolute;bottom:40px;left:60px;width:18px;height:18px;background:#8B7355}
+.geo-circle-3{position:absolute;top:270px;left:540px;width:30px;height:30px;border-radius:50%;background:#1B3B6B}
+.geo-triangle{position:absolute;top:300px;left:540px;width:0;height:0;border-left:12px solid transparent;border-right:12px solid transparent;border-bottom:22px solid #8B7355}
+
+/* Right side vertical decoration */
+.right-deco-line{position:absolute;top:270px;right:40px;width:2px;height:560px;background:#1B3B6B;opacity:0.3}
+.right-deco-square{position:absolute;top:290px;right:25px;width:16px;height:16px;background:#8B7355}
+.right-deco-square2{position:absolute;top:330px;right:20px;width:10px;height:10px;background:#1B3B6B}
+.right-deco-circle{position:absolute;top:400px;right:30px;width:24px;height:24px;border-radius:50%;background:#F5F0E8;border:2px solid #1B3B6B}
+
+/* Tag label */
+.tag-label{position:absolute;top:270px;left:80px;font-size:12px;letter-spacing:4px;color:#8B7355;font-weight:600}
+</style></head><body>
+<div class="top-bar"></div>
+<div class="top-bar-accent"></div>
+
+<div class="header">
+  <div>
+    <div class="section-tag">OPEN SOURCE · INSTITUTE · ECON</div>
+    <div class="header-line"></div>
+  </div>
+  <div class="header-right">SECTION 04 / 12 &nbsp;·&nbsp; ANDROID ECOSYSTEM</div>
+</div>
+
+<h1 class="main-title title-serif">不同语言条目如拼图般<br>构建<span class="accent">全球知识图景</span></h1>
+<div class="title-underline"></div>
+
+<!-- Right top geometric decoration -->
+<div class="geo-circle-1"></div>
+<div class="geo-circle-2"></div>
+<div class="geo-square-1"></div>
+<div class="geo-line-1"></div>
+<div class="geo-line-2"></div>
+
+<div class="geo-dot" style="top:200px;left:1380px"></div>
+<div class="geo-dot" style="top:170px;left:1450px;background:#8B7355"></div>
+<div class="geo-dot" style="top:220px;left:1300px;background:#8B7355"></div>
+
+<!-- Central puzzle visual -->
+<div class="tag-label">视觉隐喻 · METAPHOR</div>
+<div class="metaphor-box">
+  <div class="metaphor-inner">
+    <div class="puzzle p1">技术架构<br>TECH</div>
+    <div class="puzzle p2 puzzle-blue">电信级<br>ALLIANCE</div>
+    <div class="puzzle p3">许可协议<br>LICENSE</div>
+    <div class="puzzle p4 puzzle-copper">专利交叉<br>PATENT</div>
+    <div class="puzzle p5">技术-法律<br>STRATEGY</div>
+    <div class="puzzle p6">搜索引擎<br>BUNDLE</div>
+    <div class="puzzle p7">开发者<br>DEV</div>
+    <div class="puzzle p8">贡献者协议<br>CLA</div>
+    <div class="puzzle p9">商业巨头<br>GIANTS</div>
+    <div class="puzzle p10 puzzle-blue">联盟合作<br>CONSORTIUM</div>
+    <div class="puzzle p11">供应链<br>SUPPLY</div>
+    <div class="puzzle p12">独立个体<br>INDIVIDUAL</div>
+    <div class="puzzle p13">上游 · UPSTREAM</div>
+    <div class="puzzle p14 puzzle-copper">下游 · DOWNSTREAM</div>
+    <div class="puzzle p15">生态系统<br>ECO</div>
+  </div>
+</div>
+
+<div class="geo-circle-3"></div>
+
+<!-- Right panel -->
+<div class="right-panel">
+  <div class="sub-title">Android 的技术-法律战略与产业格局</div>
+  <div class="sub-title-en">ANDROID · TECH-LEGAL STRATEGY &amp; INDUSTRIAL STRUCTURE</div>
+
+  <ul class="bullets">
+    <li>
+      <span class="num">01</span>
+      <span class="label">技术架构的选择</span>
+      <span class="desc">Linux 内核 + ART 虚拟机 + HAL 抽象层，构建跨设备可移植性</span>
+    </li>
+    <li>
+      <span class="num">02</span>
+      <span class="label">电信级的商业联盟</span>
+      <span class="desc">OHA 开放手机联盟，运营商、芯片商、终端厂商共同背书</span>
+    </li>
+    <li>
+      <span class="num">03</span>
+      <span class="label">开源许可与贡献者协议</span>
+      <span class="desc">Apache 2.0 主许可 + CLA，公司授权与个人贡献的双重机制</span>
+    </li>
+    <li>
+      <span class="num">04</span>
+      <span class="label">专利的交叉把控</span>
+      <span class="desc">OHA 成员间的专利交叉授权，构建进入壁垒与竞争护城河</span>
+    </li>
+    <li>
+      <span class="num">05</span>
+      <span class="label">商业搜索引擎的捆绑</span>
+      <span class="desc">Google Search 默认入口 + GMS 认证，形成流量-收入闭环</span>
+    </li>
+  </ul>
+</div>
+
+<!-- Right decoration -->
+<div class="right-deco-line"></div>
+<div class="right-deco-square"></div>
+<div class="right-deco-square2"></div>
+<div class="right-deco-circle"></div>
+
+<!-- Equation box -->
+<div class="equation-box">
+  <div class="equation-text title-serif">
+    商业巨头<span class="plus">+</span>商业联盟<span class="plus">+</span>开发者共同体<span class="plus">+</span>上下游供应链<span class="eq">=</span><span class="result">产 业</span>
+  </div>
+</div>
+
+<div class="bottom-bar"></div>
+<div class="geo-square-2"></div>
+</body></html>

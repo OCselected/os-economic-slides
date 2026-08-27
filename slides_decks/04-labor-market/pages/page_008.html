@@ -1,0 +1,133 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>开源技术的商业价值——26B</title><style>
+html,body{width:1600px;height:900px;overflow:hidden;margin:0;padding:0}
+body{background:#F5F0E8;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;color:#1B3B6B;position:relative}
+.serif{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif}
+
+/* Frame */
+.frame-top{position:absolute;top:40px;left:60px;right:60px;height:1px;background:#1B3B6B}
+.frame-bottom{position:absolute;bottom:40px;left:60px;right:60px;height:1px;background:#1B3B6B}
+.frame-tag{position:absolute;top:52px;left:60px;font-size:12px;letter-spacing:4px;color:#8B7355;font-weight:500}
+.frame-num{position:absolute;top:52px;right:60px;font-size:12px;letter-spacing:2px;color:#8B7355}
+
+/* Left geometric composition */
+.big-num{position:absolute;left:80px;top:180px;font-family:'Noto Serif SC',serif;font-size:280px;font-weight:700;color:#1B3B6B;line-height:1;letter-spacing:-4px}
+.big-num .dollar{font-size:140px;vertical-align:top;margin-right:6px;color:#8B7355}
+.big-num .unit{font-size:140px;color:#8B7355}
+
+.dollar-label{position:absolute;left:90px;top:130px;font-size:13px;letter-spacing:6px;color:#8B7355;font-weight:500}
+
+/* Bauhaus geometric elements */
+.circle-solid{position:absolute;left:80px;top:480px;width:80px;height:80px;border-radius:50%;background:#1B3B6B}
+.circle-outline{position:absolute;left:180px;top:480px;width:60px;height:60px;border-radius:50%;border:3px solid #8B7355;background:transparent}
+.square-solid{position:absolute;left:260px;top:490px;width:40px;height:40px;background:#1B3B6B}
+.line-vert{position:absolute;left:340px;top:480px;width:2px;height:80px;background:#8B7355}
+.circle-tri{position:absolute;left:400px;top:490px;width:30px;height:30px;background:#F5F0E8;border:2px solid #1B3B6B;border-radius:50%}
+
+.num-bar{position:absolute;left:80px;top:450px;width:4px;height:30px;background:#8B7355}
+.num-underline{position:absolute;left:80px;top:475px;width:340px;height:1px;background:#1B3B6B}
+
+/* Right content */
+.right-panel{position:absolute;left:720px;top:120px;width:800px}
+.section-tag{font-size:12px;letter-spacing:5px;color:#8B7355;font-weight:500;margin-bottom:14px}
+.section-tag::before{content:"";display:inline-block;width:30px;height:1px;background:#8B7355;margin-right:12px;vertical-align:middle}
+.main-title{font-family:'Noto Serif SC','Songti SC',serif;font-size:42px;font-weight:700;color:#1B3B6B;line-height:1.3;letter-spacing:2px}
+.main-title .accent{color:#8B7355}
+.sub-divider{width:60px;height:3px;background:#1B3B6B;margin:24px 0 20px 0}
+.sub-title{font-family:'Noto Serif SC',serif;font-size:18px;color:#555;line-height:1.6;font-style:italic;margin-bottom:8px}
+
+.bullets{margin-top:30px;padding:0;list-style:none}
+.bullets li{position:relative;padding-left:38px;margin-bottom:20px;font-size:15.5px;line-height:1.7;color:#1B3B6B;font-weight:400}
+.bullets li::before{content:"";position:absolute;left:0;top:9px;width:14px;height:14px;background:#1B3B6B}
+.bullets li:nth-child(2)::before{background:#8B7355;border-radius:50%}
+.bullets li:nth-child(3)::before{border:2px solid #1B3B6B;background:transparent;width:12px;height:12px;top:10px}
+.bullets li:nth-child(4)::before{border-radius:50%;background:#8B7355;width:10px;height:10px;top:11px}
+.bullets li strong{font-family:'Noto Serif SC',serif;font-weight:700;color:#1B3B6B}
+
+/* Source */
+.source-line{position:absolute;bottom:60px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:center}
+.source-text{font-size:12px;color:#555;letter-spacing:1px}
+.source-text .label{color:#8B7355;font-weight:500;letter-spacing:3px;margin-right:8px}
+
+/* Right decorative corner */
+.corner-square{position:absolute;right:60px;top:120px;width:18px;height:18px;background:#1B3B6B}
+.corner-circle{position:absolute;right:30px;top:120px;width:18px;height:18px;border-radius:50%;border:2px solid #1B3B6B;background:transparent}
+.corner-line{position:absolute;right:120px;top:127px;width:60px;height:2px;background:#8B7355}
+
+/* Big decorative circle bottom-right */
+.deco-circle{position:absolute;right:100px;bottom:130px;width:120px;height:120px;border-radius:50%;border:2px solid #1B3B6B;background:transparent}
+.deco-circle-inner{position:absolute;right:145px;bottom:175px;width:30px;height:30px;background:#8B7355;border-radius:50%}
+.deco-square{position:absolute;right:200px;bottom:130px;width:30px;height:30px;background:#1B3B6B}
+
+/* Middle vertical divider */
+.mid-divider{position:absolute;left:680px;top:120px;width:1px;height:660px;background:#1B3B6B}
+.mid-divider-tick{position:absolute;left:677px;top:660px;width:7px;height:7px;background:#8B7355;border-radius:50%}
+
+/* Annotation near number */
+.num-annotation{position:absolute;left:370px;top:200px;width:280px;font-size:11px;line-height:1.6;color:#555;letter-spacing:1px}
+.num-annotation .arrow{width:60px;height:1px;background:#8B7355;margin-bottom:8px;margin-left:auto}
+.num-annotation .key{color:#1B3B6B;font-weight:600}
+</style></head><body>
+
+<div class="frame-top"></div>
+<div class="frame-bottom"></div>
+<div class="frame-tag">OPEN SOURCE · NEOC-INSTITUTIONAL ECONOMICS</div>
+<div class="frame-num">07 / 商业价值</div>
+
+<div class="mid-divider"></div>
+<div class="mid-divider-tick"></div>
+
+<div class="corner-square"></div>
+<div class="corner-circle"></div>
+<div class="corner-line"></div>
+
+<div class="dollar-label">ANNUAL · REVENUE · 2024</div>
+<div class="big-num">
+  <span class="dollar">$</span>26<span class="unit">B</span>
+</div>
+
+<div class="num-underline"></div>
+<div class="num-bar"></div>
+
+<div class="circle-solid"></div>
+<div class="circle-outline"></div>
+<div class="square-solid"></div>
+<div class="line-vert"></div>
+<div class="circle-tri"></div>
+
+<div class="num-annotation">
+  <div class="arrow"></div>
+  <span class="key">企业年收入</span><br>
+  来自开源软件技术栈的<br>
+  直接商业转化规模
+</div>
+
+<div class="right-panel">
+  <div class="section-tag">SCALE OF INFLUENCE</div>
+  <div class="main-title">开源技术的<br><span class="accent">巨大商业价值</span>与影响力</div>
+  <div class="sub-divider"></div>
+  <div class="sub-title">"$26B" 不仅是数字，更是开源从协作运动<br>走向数字基础设施核心引擎的实证</div>
+
+  <ul class="bugs">
+    <li>
+      <ul class="bullets">
+        <li><strong>直接收入规模：</strong>企业每年从开源技术栈中获得的直接商业收入已达 260 亿美元，涵盖云基础设施、数据库、开发工具及中间件等核心层</li>
+        <li><strong>价值乘数效应：</strong>开源贡献间接撬动的下游应用市场价值远超直接收入，形成典型的"公共品—私有品"价值溢出结构</li>
+        <li><strong>投资集中度：</strong>Vercel 收购、GitHub 资本化、Red Hat 并购案等一系列资本动作，印证开源已成为数字经济最稀缺的生产要素</li>
+        <li><strong>治理与许可的制度套利空间：</strong>SSPL、BSL 等新型许可的涌现，反映了开源商业模式从"免费获取"向"受控分发"的范式转移</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="deco-circle"></div>
+<div class="deco-circle-inner"></div>
+<div class="deco-square"></div>
+
+<div class="source-line">
+  <div class="source-text"><span class="label">SOURCE</span>Linux Foundation · State of Open Source in the Enterprise Report, 2024</div>
+  <div class="source-text" style="letter-spacing:3px">07 — 商业价值</div>
+</div>
+
+</body></html>

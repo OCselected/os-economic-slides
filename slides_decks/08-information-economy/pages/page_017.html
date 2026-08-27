@@ -1,0 +1,224 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>订阅经济与开源的交汇 — 第08期</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0}
+body{background:#F5F0E8;color:#1B3B6B;font-family:'Noto Sans SC','Source Han Sans SC','PingFang SC',sans-serif;position:relative}
+.serif{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif}
+.parchment{background:#F5F0E8}
+
+/* Top header strip */
+.header{position:absolute;top:0;left:0;width:1600px;height:56px;background:#1B3B6B}
+.header-text{position:absolute;top:14px;left:52px;color:#F5F0E8;font-size:13px;letter-spacing:3px;font-weight:400}
+.header-right{position:absolute;top:16px;right:52px;color:#F5F0E8;font-size:11px;letter-spacing:2px}
+
+/* Lecture number */
+.num-circle{position:absolute;top:88px;left:48px;width:80px;height:80px;border-radius:50%;background:#8B7355;display:flex;align-items:center;justify-content:center}
+.num-circle span{color:#F5F0E8;font-family:'Noto Serif SC',serif;font-size:34px;font-weight:700}
+.num-label{position:absolute;top:100px;left:140px;color:#8B7355;font-size:12px;letter-spacing:4px;font-weight:500}
+.num-sub{position:absolute;top:122px;left:140px;color:#555;font-size:11px;letter-spacing:2px}
+
+/* Title area */
+.main-title{position:absolute;top:110px;left:240px;width:760px}
+.main-title h1{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:48px;font-weight:700;color:#1B3B6B;line-height:1.2;letter-spacing:2px}
+.main-title .subtitle{margin-top:16px;font-size:18px;color:#8B7355;font-weight:500;letter-spacing:1px}
+.title-underline{margin-top:18px;width:120px;height:3px;background:#1B3B6B}
+
+/* Decorative top-right elements */
+.deco-circle-1{position:absolute;top:88px;right:60px;width:52px;height:52px;border-radius:50%;background:#1B3B6B}
+.deco-square-1{position:absolute;top:100px;right:132px;width:28px;height:28px;background:#8B7355}
+.deco-line-1{position:absolute;top:114px;right:200px;width:40px;height:2px;background:#1B3B6B}
+
+/* Bridge area */
+.bridge-area{position:absolute;top:270px;left:48px;width:920px;height:380px}
+
+/* Left tower (buyout) */
+.tower-left{position:absolute;left:40px;top:20px;width:70px;height:270px;background:#1B3B6B}
+.tower-left-cap{position:absolute;left:30px;top:8px;width:90px;height:14px;background:#8B7355}
+.tower-left-label{position:absolute;left:0px;top:300px;width:140px;text-align:center;font-family:'Noto Serif SC',serif;font-size:15px;color:#1B3B6B;font-weight:600;letter-spacing:1px}
+.tower-left-sub{position:absolute;left:10px;top:328px;width:120px;text-align:center;font-size:11px;color:#555;letter-spacing:1px}
+
+/* Right tower (subscription) */
+.tower-right{position:absolute;right:40px;top:20px;width:70px;height:270px;background:#1B3B6B}
+.tower-right-cap{position:absolute;right:30px;top:8px;width:90px;height:14px;background:#8B7355}
+.tower-right-label{position:absolute;right:0px;top:300px;width:140px;text-align:center;font-family:'Noto Serif SC',serif;font-size:15px;color:#1B3B6B;font-weight:600;letter-spacing:1px}
+.tower-right-sub{position:absolute;right:10px;top:328px;width:120px;text-align:center;font-size:11px;color:#555;letter-spacing:1px}
+
+/* Bridge deck */
+.bridge-deck{position:absolute;left:80px;top:110px;width:760px;height:10px;background:#1B3B6B}
+.bridge-deck-2{position:absolute;left:80px;top:120px;width:760px;height:4px;background:#8B7355}
+
+/* Bridge arches */
+.arch{position:absolute;top:120px;width:160px;height:80px;border:3px solid #1B3B6B;border-bottom:none;border-radius:80px 80px 0 0}
+.arch-1{left:140px}
+.arch-2{left:340px}
+.arch-3{left:540px}
+
+/* Bridge vertical supports */
+.support{position:absolute;top:120px;width:2px;height:80px;background:#1B3B6B}
+.support-1{left:220px}
+.support-2{left:300px}
+.support-3{left:420px}
+.support-4{left:500px}
+.support-5{left:620px}
+.support-6{left:700px}
+
+/* Bridge direction arrow */
+.arrow-zone{position:absolute;left:240px;top:70px;width:440px;height:40px}
+.arrow-text{position:absolute;left:0;top:0;width:140px;text-align:center;font-size:11px;color:#8B7355;letter-spacing:2px;font-weight:500}
+.arrow-text-2{position:absolute;right:0;top:0;width:140px;text-align:center;font-size:11px;color:#8B7355;letter-spacing:2px;font-weight:500}
+.arrow-line{position:absolute;left:150px;top:16px;width:140px;height:2px;background:#1B3B6B}
+.arrow-head{position:absolute;left:290px;top:10px;width:0;height:0;border-top:7px solid transparent;border-bottom:7px solid transparent;border-left:12px solid #1B3B6B}
+
+/* Water lines below bridge */
+.water-line{position:absolute;left:80px;height:1px;background:#555}
+.water-1{top:210px;width:760px;opacity:0.5}
+.water-2{top:222px;width:760px;opacity:0.35}
+.water-3{top:234px;width:760px;opacity:0.25}
+
+/* Sun/moon circle above bridge */
+.bridge-sun{position:absolute;left:440px;top:-20px;width:56px;height:56px;border-radius:50%;background:#F5F0E8;border:3px solid #1B3B6B}
+.bridge-sun-inner{position:absolute;left:452px;top:-8px;width:32px;height:32px;border-radius:50%;background:#1B3B6B}
+
+/* Tower base platforms */
+.base-left{position:absolute;left:20px;top:280px;width:110px;height:6px;background:#8B7355}
+.base-right{position:absolute;right:20px;top:280px;width:110px;height:6px;background:#8B7355}
+
+/* Right column - bullets */
+.bullet-area{position:absolute;top:270px;right:48px;width:460px;height:440px}
+.bullet-area-title{font-family:'Noto Serif SC',serif;font-size:16px;color:#1B3B6B;font-weight:700;letter-spacing:2px;margin-bottom:6px;border-bottom:2px solid #1B3B6B;padding-bottom:10px;width:100%}
+.bullet-area-title-sub{font-size:11px;color:#8B7355;letter-spacing:1px;margin-top:-2px;margin-bottom:20px;padding-bottom:14px}
+.bullet{margin-bottom:18px;display:flex;align-items:flex-start}
+.bullet-marker{margin-right:14px;margin-top:4px;flex-shrink:0}
+.marker-square{width:14px;height:14px;background:#1B3B6B}
+.marker-circle{width:14px;height:14px;background:#8B7355;border-radius:50%}
+.marker-line{width:20px;height:2px;background:#1B3B6B;margin-top:8px}
+.marker-triangle{width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:14px solid #1B3B6B;margin-top:2px}
+.bullet-text{font-size:14px;color:#1B3B6B;line-height:1.6;letter-spacing:0.5px}
+.bullet-text strong{color:#1B3B6B;font-weight:700}
+.bullet-text .accent{color:#8B7355;font-weight:600}
+
+/* Bottom decorative strip */
+.bottom-bar{position:absolute;bottom:0;left:0;width:1600px;height:32px;background:#1B3B6B}
+.bottom-bar-text{position:absolute;bottom:8px;left:52px;color:#F5F0E8;font-size:10px;letter-spacing:3px;opacity:0.7}
+.bottom-bar-right{position:absolute;bottom:8px;right:52px;color:#F5F0E8;font-size:10px;letter-spacing:2px;opacity:0.6}
+
+/* Bottom geometric decorations */
+.deco-bottom-1{position:absolute;bottom:32px;left:48px;width:16px;height:16px;background:#8B7355}
+.deco-bottom-2{position:absolute;bottom:32px;left:80px;width:16px;height:16px;border:2px solid #1B3B6B}
+.deco-bottom-3{position:absolute;bottom:32px;left:112px;width:30px;height:2px;background:#1B3B6B}
+
+.deco-bottom-r1{position:absolute;bottom:32px;right:48px;width:16px;height:16px;border-radius:50%;background:#1B3B6B}
+.deco-bottom-r2{position:absolute;bottom:32px;right:80px;width:16px;height:16px;background:#F5F0E8;border:2px solid #8B7355}
+
+/* Divider line between bridge and bullets */
+.divider-v{position:absolute;top:270px;right:520px;width:1px;height:440px;background:#555;opacity:0.3}
+
+/* Page indicator */
+.page-indicator{position:absolute;top:88px;right:140px;color:#555;font-size:11px;letter-spacing:2px}
+</style></head><body>
+
+<div class="header"></div>
+<div class="header-text">第 08 期 · 信息规则与网络经济</div>
+<div class="header-right">INFORMATION RULES &amp; NETWORK ECONOMY</div>
+
+<!-- Lecture number -->
+<div class="num-circle"><span>08</span></div>
+<div class="num-label">LECTURE 08</div>
+<div class="num-sub">新制度经济学视角</div>
+
+<!-- Top-right decorative elements -->
+<div class="deco-circle-1"></div>
+<div class="deco-square-1"></div>
+<div class="deco-line-1"></div>
+
+<div class="page-indicator">— 30 —</div>
+
+<!-- Main Title -->
+<div class="main-title">
+  <h1>订阅经济与开源的交汇</h1>
+  <div class="subtitle">从产品到服务的制度转型</div>
+  <div class="title-underline"></div>
+</div>
+
+<!-- Bridge Visual -->
+<div class="bridge-area">
+  <div class="bridge-sun"></div>
+  <div class="bridge-sun-inner"></div>
+
+  <div class="tower-left-cap"></div>
+  <div class="tower-left"></div>
+  <div class="base-left"></div>
+  <div class="tower-left-label">买断通行权</div>
+  <div class="tower-left-sub">PERPETUAL LICENSE</div>
+
+  <div class="tower-right-cap"></div>
+  <div class="tower-right"></div>
+  <div class="base-right"></div>
+  <div class="tower-right-label">持续维护契约</div>
+  <div class="tower-right-sub">CONTINUOUS CONTRACT</div>
+
+  <div class="bridge-deck"></div>
+  <div class="bridge-deck-2"></div>
+
+  <div class="arch arch-1"></div>
+  <div class="arch arch-2"></div>
+  <div class="arch arch-3"></div>
+
+  <div class="support support-1"></div>
+  <div class="support support-2"></div>
+  <div class="support support-3"></div>
+  <div class="support support-4"></div>
+  <div class="support support-5"></div>
+  <div class="support support-6"></div>
+
+  <div class="arrow-zone">
+    <div class="arrow-text">ONCE &amp; FOR ALL</div>
+    <div class="arrow-text-2">ONGOING &amp; RENEWAL</div>
+    <div class="arrow-line"></div>
+    <div class="arrow-head"></div>
+  </div>
+
+  <div class="water-line water-1"></div>
+  <div class="water-line water-2"></div>
+  <div class="water-line water-3"></div>
+</div>
+
+<!-- Divider -->
+<div class="divider-v"></div>
+
+<!-- Bullet Points -->
+<div class="bullet-area">
+  <div class="bullet-area-title">核心论点 · KEY ARGUMENTS</div>
+  <div class="bullet-area-title-sub">从买断到订阅的制度经济学解读</div>
+
+  <div class="bullet">
+    <div class="bullet-marker marker-square"></div>
+    <div class="bullet-text"><strong>用户不再购买软件</strong>，而是购买<span class="accent">持续服务</span>；软件从商品变为关系。</div>
+  </div>
+  <div class="bullet">
+    <div class="bullet-marker marker-circle"></div>
+    <div class="bullet-text">开源许可证的角色从「<strong>授权使用</strong>」转变为「<span class="accent">信任基础</span>」。</div>
+  </div>
+  <div class="bullet">
+    <div class="bullet-marker marker-triangle"></div>
+    <div class="bullet-text">订阅的<strong>续费率</strong>是价值的<span class="accent">代理指标</span>——留存即认同。</div>
+  </div>
+  <div class="bullet">
+    <div class="bullet-marker marker-line"></div>
+    <div class="bullet-text">制度设计的核心是<strong>降低切换成本</strong>，而非提高退出壁垒。</div>
+  </div>
+</div>
+
+<!-- Bottom decorations -->
+<div class="bottom-bar"></div>
+<div class="bottom-bar-text">OPEN SOURCE · INSTITUTIONAL ECONOMICS · LECTURE 08</div>
+<div class="bottom-bar-right">BAUHAUS GEOMETRIC COMPOSITION</div>
+
+<div class="deco-bottom-1"></div>
+<div class="deco-bottom-2"></div>
+<div class="deco-bottom-3"></div>
+<div class="deco-bottom-r1"></div>
+<div class="deco-bottom-r2"></div>
+
+</body></html>

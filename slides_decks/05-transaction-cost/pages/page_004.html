@@ -1,0 +1,185 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>开源经济学 第六期 交易成本与路径依赖</title><style>
+html,body{width:1600px;height:900px;overflow:hidden;margin:0}
+body{font-family:'Noto Sans SC','Source Han Sans SC','PingFang SC',sans-serif;background:#F5F0E8;color:#1B3B6B;position:relative}
+.serif{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif}
+
+/* Background parchment texture */
+.parchment-texture{position:absolute;top:0;left:0;width:1600px;height:900px;background:
+  repeating-linear-gradient(0deg, transparent 0px, transparent 3px, rgba(139,115,85,0.02) 3px, rgba(139,115,85,0.02) 4px),
+  repeating-linear-gradient(90deg, transparent 0px, transparent 5px, rgba(27,59,107,0.01) 5px, rgba(27,59,107,0.01) 6px);
+  pointer-events:none;}
+
+/* Top border line */
+.top-rule{position:absolute;top:60px;left:80px;width:1440px;height:2px;background:#1B3B6B;}
+.top-rule-thin{position:absolute;top:68px;left:80px;width:1440px;height:1px;background:#8B7355;opacity:0.6;}
+
+/* Bottom border */
+.bottom-rule{position:absolute;bottom:60px;left:80px;width:1440px;height:1px;background:#8B7355;opacity:0.6;}
+.bottom-rule-thick{position:absolute;bottom:54px;left:80px;width:1440px;height:2px;background:#1B3B6B;}
+
+/* Header text */
+.header-left{position:absolute;top:80px;left:100px;font-size:13px;letter-spacing:6px;color:#8B7355;}
+.header-right{position:absolute;top:80px;right:100px;font-size:13px;letter-spacing:4px;color:#8B7355;text-align:right;}
+
+/* Main title */
+.main-title{position:absolute;top:180px;left:100px;font-size:88px;font-weight:700;letter-spacing:4px;color:#1B3B6B;line-height:1.1;}
+.main-title .accent{color:#8B7355;}
+
+/* Subtitle */
+.subtitle{position:absolute;top:340px;left:100px;font-size:22px;letter-spacing:8px;color:#1B3B6B;font-weight:400;}
+.subtitle-sep{display:inline-block;width:40px;height:1px;background:#8B7355;vertical-align:middle;margin:0 16px;}
+
+/* Episode info */
+.episode-box{position:absolute;top:400px;left:100px;width:620px;border-left:4px solid #1B3B6B;padding:14px 0 14px 24px;}
+.episode-num{font-size:16px;letter-spacing:6px;color:#8B7355;}
+.episode-title{font-size:36px;font-weight:600;color:#1B3B6B;letter-spacing:3px;margin-top:8px;}
+.episode-en{font-size:13px;letter-spacing:3px;color:#555;margin-top:10px;font-style:italic;}
+
+/* Description text */
+.desc{position:absolute;top:560px;left:100px;width:520px;font-size:15px;line-height:2.0;color:#555;letter-spacing:1px;}
+.desc .highlight{color:#1B3B6B;font-weight:600;}
+
+/* Speaker info */
+.speaker-box{position:absolute;bottom:110px;left:100px;}
+.speaker-label{font-size:12px;letter-spacing:6px;color:#8B7355;}
+.speaker-name{font-size:24px;font-weight:600;color:#1B3B6B;letter-spacing:3px;margin-top:6px;}
+.speaker-name .seal{display:inline-block;width:42px;height:42px;border:2px solid #8B7355;background:#8B7355;color:#F5F0E8;text-align:center;line-height:38px;font-size:18px;font-weight:700;margin-left:14px;vertical-align:middle;}
+
+/* Bauhaus geometric - Straw visual */
+.straw-zone{position:absolute;top:160px;right:80px;width:580px;height:600px;}
+
+/* Straw elements - vertical bars of different colors representing diverse topics */
+.straw{position:absolute;top:0;height:520px;border-radius:6px;}
+.straw-1{right:50px;width:28px;background:#1B3B6B;}
+.straw-2{right:95px;width:22px;background:#8B7355;}
+.straw-3{right:133px;width:26px;background:#555;}
+.straw-4{right:175px;width:20px;background:#C4A97D;}
+.straw-5{right:210px;width:24px;background:#1B3B6B;opacity:0.7;}
+.straw-6{right:250px;width:18px;background:#8B7355;opacity:0.8;}
+.straw-7{right:283px;width:22px;background:#555;opacity:0.6;}
+.straw-8{right:320px;width:26px;background:#1B3B6B;opacity:0.5;}
+.straw-9{right:362px;width:20px;background:#8B7355;opacity:0.7;}
+.straw-10{right:397px;width:24px;background:#555;opacity:0.5;}
+.straw-11{right:437px;width:18px;background:#C4A97D;opacity:0.8;}
+.straw-12{right:470px;width:22px;background:#1B3B6B;opacity:0.4;}
+
+/* Short straws */
+.straw-s{position:absolute;height:340px;border-radius:6px;top:60px;}
+.straw-s1{right:75px;width:18px;background:#C4A97D;}
+.straw-s2{right:110px;width:20px;background:#555;opacity:0.8;}
+.straw-s3{right:145px;width:16px;background:#1B3B6B;opacity:0.6;}
+
+/* Tall straw */
+.straw-t{position:absolute;top:-40px;height:560px;border-radius:6px;right:15px;width:14px;background:#8B7355;opacity:0.9;}
+
+/* Circle decorations on straws */
+.straw-circle{position:absolute;border-radius:50%;}
+.straw-circle-1{width:52px;height:52px;background:#1B3B6B;top:480px;right:30px;}
+.straw-circle-2{width:36px;height:36px;background:#8B7355;top:470px;right:100px;}
+.straw-circle-3{width:44px;height:44px;background:#555;top:485px;right:180px;opacity:0.8;}
+
+/* Bauhaus big circle */
+.bauhaus-circle{position:absolute;width:180px;height:180px;border-radius:50%;border:3px solid #1B3B6B;top:0;right:300px;background:transparent;}
+.bauhaus-circle-inner{position:absolute;width:80px;height:80px;border-radius:50%;background:#8B7355;top:75px;right:375px;}
+
+/* Bauhaus square */
+.bauhaus-square{position:absolute;width:90px;height:90px;background:#1B3B6B;right:470px;top:30px;opacity:0.9;}
+
+/* Bauhaus small elements */
+.bauhaus-triangle{position:absolute;width:0;height:0;border-left:30px solid transparent;border-right:30px solid transparent;border-bottom:52px solid #8B7355;right:530px;top:80px;opacity:0.85;}
+
+/* Horizontal accent lines on right */
+.right-line-1{position:absolute;top:100px;right:80px;width:400px;height:1px;background:#8B7355;}
+.right-line-2{position:absolute;top:700px;right:80px;width:480px;height:1px;background:#1B3B6B;}
+
+/* Number badge */
+.ep-number{position:absolute;top:80px;right:80px;width:60px;height:60px;border:2px solid #1B3B6B;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:700;color:#1B3B6B;letter-spacing:0;}
+
+/* Agenda labels on straws */
+.straw-labels{position:absolute;top:530px;right:80px;width:500px;display:flex;justify-content:space-between;align-items:flex-start;}
+.straw-lbl{font-size:11px;letter-spacing:2px;color:#8B7355;text-align:center;line-height:1.4;}
+.straw-lbl .n{font-size:14px;font-weight:700;color:#1B3B6B;display:block;margin-bottom:4px;}
+</style></head>
+<body>
+<div class="parchment-texture"></div>
+<div class="top-rule"></div>
+<div class="top-rule-thin"></div>
+<div class="bottom-rule"></div>
+<div class="bottom-rule-thick"></div>
+
+<div class="header-left serif">OPEN SOURCE  ×  ECONOMICS</div>
+<div class="header-right serif">SERIES · LECTURE 06 / 12</div>
+
+<div class="main-title serif">
+  开源<span class="accent">与</span>经济学
+</div>
+
+<div class="subtitle serif">
+  开源经济学 12 讲座<span class="subtitle-sep"></span>体系建构
+</div>
+
+<div class="episode-box serif">
+  <div class="episode-num">L·E·C·T·U·R·E  —  VI</div>
+  <div class="episode-title">交易成本与路径依赖</div>
+  <div class="episode-en">Transaction Costs &amp; Path Dependence</div>
+</div>
+
+<div class="desc serif">
+  <span class="highlight">新制度经济学视角。</span>以 Coase、North、Williamson 的制度分析框架，<br>
+  审视开源软件中的协作激励、治理结构与演化逻辑——<br>
+  从生产关系到产权安排，从交易边界到路径锁定。
+</div>
+
+<div class="speaker-box serif">
+  <div class="speaker-label">主讲</div>
+  <div class="speaker-name">
+    「开源之道」· 适兕
+    <span class="seal">兕</span>
+  </div>
+</div>
+
+<!-- Right side: Bauhaus straw composition -->
+<div class="straw-zone">
+  <div class="ep-number serif">VI</div>
+
+  <div class="bauhaus-square"></div>
+  <div class="bauhaus-triangle"></div>
+  <div class="bauhaus-circle"></div>
+  <div class="bauhaus-circle-inner"></div>
+
+  <div class="right-line-1"></div>
+
+  <div class="straw-t"></div>
+  <div class="straw straw-1"></div>
+  <div class="straw straw-2"></div>
+  <div class="straw straw-3"></div>
+  <div class="straw straw-4"></div>
+  <div class="straw straw-5"></div>
+  <div class="straw straw-6"></div>
+  <div class="straw straw-7"></div>
+  <div class="straw straw-8"></div>
+  <div class="straw straw-9"></div>
+  <div class="straw straw-10"></div>
+  <div class="straw straw-11"></div>
+  <div class="straw straw-12"></div>
+
+  <div class="straw-s straw-s1"></div>
+  <div class="straw-s straw-s2"></div>
+  <div class="straw-s straw-s3"></div>
+
+  <div class="straw-circle straw-circle-1"></div>
+  <div class="straw-circle straw-circle-2"></div>
+  <div class="straw-circle straw-circle-3"></div>
+
+  <div class="right-line-2"></div>
+
+  <div class="straw-labels">
+    <div class="straw-lbl"><span class="n">06</span>本期</div>
+    <div class="straw-lbl"><span class="n">12</span>系列</div>
+    <div class="straw-lbl"><span class="n">∞</span>议题</div>
+  </div>
+</div>
+
+</body></html>

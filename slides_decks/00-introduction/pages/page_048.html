@@ -1,0 +1,288 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>第10期：量化与劳动报酬</title><style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  width: 1600px; height: 900px; overflow: hidden;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: #1B3B6B;
+  background: #F5F0E8;
+}
+body {
+  position: relative;
+}
+.bg-texture {
+  position: absolute; top: 0; left: 0; width: 1600px; height: 900px;
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(139,115,85,0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(27,59,107,0.03) 0%, transparent 50%),
+    #F5F0E8;
+}
+/* Top bar */
+.top-bar {
+  position: absolute; top: 0; left: 0; width: 1600px; height: 6px;
+  background: #1B3B6B;
+}
+.bottom-bar {
+  position: absolute; bottom: 0; left: 0; width: 1600px; height: 6px;
+  background: #8B7355;
+}
+/* Header */
+.header {
+  position: absolute; top: 40px; left: 80px; right: 80px;
+  display: flex; justify-content: space-between; align-items: flex-start;
+}
+.deck-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14px; letter-spacing: 4px;
+  color: #8B7355; font-weight: 400;
+}
+.deck-title .sep { margin: 0 12px; color: #1B3B6B; }
+.episode-meta {
+  font-size: 12px; letter-spacing: 3px;
+  color: #555; text-align: right;
+}
+.episode-meta .num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 28px; color: #1B3B6B; letter-spacing: 0;
+  display: block; margin-top: 4px;
+}
+/* Main title area */
+.title-area {
+  position: absolute; top: 120px; left: 80px; width: 880px;
+}
+.title-en {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px; letter-spacing: 6px;
+  color: #8B7355; margin-bottom: 20px;
+  font-weight: 400;
+}
+.title-zh {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 64px; font-weight: 700;
+  color: #1B3B6B; line-height: 1.1;
+  letter-spacing: 2px;
+}
+.title-sub {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 20px; color: #555;
+  margin-top: 24px; letter-spacing: 1px;
+  line-height: 1.6; font-weight: 400;
+}
+.title-rule {
+  width: 120px; height: 2px;
+  background: #1B3B6B; margin-top: 30px;
+}
+/* Pyramid area */
+.pyramid-area {
+  position: absolute; top: 90px; right: 80px; width: 520px; height: 500px;
+}
+.pyramid-rule {
+  position: absolute; top: 0; right: 0;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12px; letter-spacing: 4px;
+  color: #8B7355;
+}
+.pyramid-rule-line {
+  position: absolute; top: 22px; right: 0;
+  width: 200px; height: 1px; background: #8B7355;
+}
+/* Pyramid SVG */
+.pyramid-svg {
+  position: absolute; top: 60px; right: 0; width: 520px; height: 440px;
+}
+/* Left decorative circle */
+.deco-circle-1 {
+  position: absolute; top: 460px; left: 40px;
+  width: 80px; height: 80px; border-radius: 50%;
+  background: #1B3B6B;
+}
+.deco-circle-2 {
+  position: absolute; top: 500px; left: 70px;
+  width: 20px; height: 20px; border-radius: 50%;
+  background: #8B7355;
+}
+/* Bottom content - bullet points */
+.content-area {
+  position: absolute; bottom: 60px; left: 80px; right: 80px; height: 340px;
+  display: flex; gap: 60px;
+}
+.bullets-left {
+  flex: 1; display: flex; flex-direction: column;
+  gap: 16px;
+}
+.bullets-right {
+  flex: 1; display: flex; flex-direction: column;
+  gap: 16px;
+}
+.bullet-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(27,59,107,0.12);
+}
+.bullet-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12px; color: #8B7355;
+  letter-spacing: 1px; min-width: 28px;
+  padding-top: 2px; font-weight: 400;
+}
+.bullet-text {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 18px; color: #1B3B6B;
+  line-height: 1.5; font-weight: 400;
+}
+.bullet-text .accent {
+  color: #8B7355; font-weight: 600;
+}
+/* Right decorative square */
+.deco-square-1 {
+  position: absolute; top: 80px; left: 30px;
+  width: 12px; height: 12px;
+  background: #1B3B6B;
+}
+.deco-square-2 {
+  position: absolute; top: 120px; left: 30px;
+  width: 12px; height: 12px;
+  border: 1px solid #1B3B6B;
+}
+.deco-line-left {
+  position: absolute; top: 160px; left: 30px;
+  width: 12px; height: 60px;
+  background: #1B3B6B;
+}
+/* Bottom meta */
+.bottom-meta {
+  position: absolute; bottom: 20px; left: 80px;
+  font-size: 10px; letter-spacing: 3px;
+  color: #8B7355;
+}
+.bottom-meta-right {
+  position: absolute; bottom: 20px; right: 80px;
+  font-size: 10px; letter-spacing: 3px;
+  color: #8B7355;
+}
+/* Central divider */
+.center-divider {
+  position: absolute; top: 40px; bottom: 40px; left: 50%;
+  width: 1px; background: rgba(27,59,107,0.08);
+}
+</style></head><body>
+<div class="bg-texture"></div>
+<div class="top-bar"></div>
+<div class="bottom-bar"></div>
+
+<div class="deco-square-1"></div>
+<div class="deco-square-2"></div>
+<div class="deco-line-left"></div>
+
+<div class="deco-circle-1"></div>
+<div class="deco-circle-2"></div>
+
+<div class="header">
+  <div class="deck-title">
+    新制度经济学视角下的开源
+    <span class="sep">/</span>
+    OPEN SOURCE ECONOMICS
+  </div>
+  <div class="episode-meta">
+    EPISODE
+    <span class="num">№ 10</span>
+  </div>
+</div>
+
+<div class="title-area">
+  <div class="title-en">QUANTIFICATION &amp; LABOR COMPENSATION</div>
+  <div class="title-zh">量化与<br>劳动报酬</div>
+  <div class="title-sub">当开源遭遇 KPI——<br>不可量化的劳动何以被承认？</div>
+  <div class="title-rule"></div>
+</div>
+
+<div class="pyramid-area">
+  <div class="pyramid-rule">INSTITUTIONAL HIERARCHY</div>
+  <div class="pyramid-rule-line"></div>
+  <svg class="pyramid-svg" viewBox="0 0 520 440" xmlns="http://www.w3.org/2000/svg">
+    <!-- Pyramid layers: episodes 1-12 represented as 6 tiers -->
+    <!-- Tier 6 (top) - Ep 11-12: Culture & Political -->
+    <polygon points="240,20 280,20 295,70 225,70" fill="none" stroke="#8B7355" stroke-width="1"/>
+    <text x="260" y="52" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="9" fill="#8B7355" letter-spacing="1">文化 · 政治</text>
+    <text x="260" y="64" text-anchor="middle" font-family="Noto Sans SC, sans-serif" font-size="8" fill="#8B7355">EP 11-12</text>
+
+    <!-- Tier 5 - Ep 9-10: Quantification & Labor (THIS IS US) -->
+    <polygon points="225,70 295,70 310,120 210,120" fill="#1B3B6B" stroke="#1B3B6B" stroke-width="1"/>
+    <text x="260" y="95" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="11" fill="#F5F0E8" letter-spacing="1" font-weight="700">量化 · 报酬</text>
+    <text x="260" y="110" text-anchor="middle" font-family="Noto Sans SC, sans-serif" font-size="8" fill="#F5F0E8">EP 09-10</text>
+
+    <!-- Tier 4 - Ep 7-8: Governance & Political Economy -->
+    <polygon points="210,120 310,120 330,180 190,180" fill="none" stroke="#1B3B6B" stroke-width="1"/>
+    <text x="260" y="152" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="10" fill="#1B3B6B" letter-spacing="1">治理 · 政治经济</text>
+    <text x="260" y="168" text-anchor="middle" font-family="Noto Sans SC, sans-serif" font-size="8" fill="#8B7355">EP 07-08</text>
+
+    <!-- Tier 3 - Ep 5-6: Transaction Costs -->
+    <polygon points="190,180 330,180 355,245 165,245" fill="none" stroke="#1B3B6B" stroke-width="1"/>
+    <text x="260" y="214" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="10" fill="#1B3B6B" letter-spacing="1">交易成本</text>
+    <text x="260" y="230" text-anchor="middle" font-family="Noto Sans SC, sans-serif" font-size="8" fill="#8B7355">EP 05-06</text>
+
+    <!-- Tier 2 - Ep 3-4: License & Business -->
+    <polygon points="165,245 355,245 385,320 135,320" fill="none" stroke="#1B3B6B" stroke-width="1"/>
+    <text x="260" y="280" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="10" fill="#1B3B6B" letter-spacing="1">许可 · 商业模式</text>
+    <text x="260" y="296" text-anchor="middle" font-family="Noto Sans SC, sans-serif" font-size="8" fill="#8B7355">EP 03-04</text>
+
+    <!-- Tier 1 (base) - Ep 1-2: Production & Labor Market -->
+    <polygon points="135,320 385,320 420,395 100,395" fill="none" stroke="#8B7355" stroke-width="1"/>
+    <text x="260" y="355" text-anchor="middle" font-family="Noto Serif SC, serif" font-size="10" fill="#1B3B6B" letter-spacing="1">生产 · 劳动力市场</text>
+    <text x="260" y="371" text-anchor="middle" font-family="Noto Sans SC, sans-serif" font-size="8" fill="#8B7355">EP 01-02</text>
+
+    <!-- Baseline -->
+    <line x1="60" y1="395" x2="460" y2="395" stroke="#1B3B6B" stroke-width="2"/>
+
+    <!-- Left label -->
+    <line x1="80" y1="50" x2="80" y2="395" stroke="#8B7355" stroke-width="0.5"/>
+    <text x="72" y="50" text-anchor="end" font-family="Noto Serif SC, serif" font-size="8" fill="#8B7355" letter-spacing="1">理想</text>
+    <text x="72" y="395" text-anchor="end" font-family="Noto Serif SC, serif" font-size="8" fill="#8B7355" letter-spacing="1">物质</text>
+
+    <!-- Right arrows -->
+    <line x1="440" y1="95" x2="470" y2="95" stroke="#1B3B6B" stroke-width="1"/>
+    <polygon points="470,95 464,91 464,99" fill="#1B3B6B"/>
+    <text x="478" y="90" font-family="Noto Serif SC, serif" font-size="9" fill="#1B3B6B">本讲</text>
+    <text x="478" y="103" font-family="Noto Sans SC, sans-serif" font-size="8" fill="#8B7355">here</text>
+
+    <!-- Decorative circle bottom right -->
+    <circle cx="440" cy="420" r="14" fill="none" stroke="#8B7355" stroke-width="1"/>
+    <circle cx="440" cy="420" r="4" fill="#8B7355"/>
+  </svg>
+</div>
+
+<div class="content-area">
+  <div class="bullets-left">
+    <div class="bullet-item">
+      <span class="bullet-num">01</span>
+      <span class="bullet-text">无报酬干活——<span class="accent">热爱是否足以支付劳动成本？</span></span>
+    </div>
+    <div class="bullet-item">
+      <span class="bullet-num">02</span>
+      <span class="bullet-text">财富自由回去写代码？<span class="accent">独立性与经济基础之张力</span></span>
+    </div>
+    <div class="bullet-item">
+      <span class="bullet-num">03</span>
+      <span class="bullet-text">KPI 的指标能否转化为<span class="accent">销售额</span>？</span>
+    </div>
+  </div>
+  <div class="bullets-right">
+    <div class="bullet-item">
+      <span class="bullet-num">04</span>
+      <span class="bullet-text">开源项目的<span class="accent">关键指标</span>是什么？</span>
+    </div>
+    <div class="bullet-item">
+      <span class="bullet-num">05</span>
+      <span class="bullet-text">与闭源项目的指标有何<span class="accent">结构性差异</span>？</span>
+    </div>
+    <div class="bullet-item">
+      <span class="bullet-num">06</span>
+      <span class="bullet-text">"无量化，不管理"<span class="accent">在开源中是否有效？</span></span>
+    </div>
+  </div>
+</div>
+
+<div class="bottom-meta">开源之道 · OPEN SOURCE ECONOMICS · LECTURE DECK</div>
+<div class="bottom-meta-right">第 10 期 / 全 12 期</div>
+</body></html>

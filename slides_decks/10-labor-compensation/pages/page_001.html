@@ -1,0 +1,212 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>前情提要 · 第 0–10 期学术路径</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0}
+body{background:#F5F0E8;color:#1B3B6B;font-family:'Noto Sans SC','Source Han Sans SC','PingFang SC',sans-serif;position:relative}
+
+/* Bauhaus background geometry */
+.bg-circle{position:absolute;border-radius:50%;background:#1B3B6B;opacity:0.06}
+.bg-circle.c1{width:380px;height:380px;top:-140px;right:-100px}
+.bg-circle.c2{width:220px;height:220px;bottom:-80px;left:-60px}
+.bg-square{position:absolute;background:#8B7355;opacity:0.08}
+.bg-square.s1{width:120px;height:120px;top:60px;left:40px;transform:rotate(15deg)}
+.bg-line{position:absolute;background:#1B3B6B;opacity:0.12}
+.bg-line.l1{width:2px;height:700px;left:1550px;top:100px}
+.bg-line.l2{width:400px;height:1px;top:860px;left:100px}
+
+/* Header */
+.header{position:absolute;top:48px;left:80px;right:80px;display:flex;align-items:flex-start;justify-content:space-between}
+.header-left{display:flex;flex-direction:column;gap:6px}
+.eyebrow{font-size:13px;letter-spacing:6px;color:#8B7355;font-weight:500}
+.title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:44px;font-weight:700;color:#1B3B6B;letter-spacing:2px}
+.subtitle{font-size:14px;color:#555;letter-spacing:3px;margin-top:2px}
+.header-right{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.deck-info{font-size:12px;color:#8B7355;letter-spacing:2px}
+.page-num{font-family:'Noto Serif SC',serif;font-size:13px;color:#555;letter-spacing:2px}
+.num-big{font-family:'Noto Serif SC',serif;font-size:28px;color:#1B3B6B;font-weight:600}
+
+/* Map area */
+.map-area{position:absolute;top:180px;left:0;width:1600px;height:660px}
+
+/* SVG path */
+.path-svg{position:absolute;top:0;left:0;width:1600px;height:660px;pointer-events:none}
+
+/* Milestones */
+.milestone{position:absolute;width:220px;text-align:center;transform:translateX(-50%)}
+.ms-stone{width:56px;height:56px;background:#1B3B6B;color:#F5F0E8;border-radius:4px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-family:'Noto Serif SC',serif;font-size:18px;font-weight:700;box-shadow:2px 2px 0 #8B7355}
+.ms-stone.small{width:44px;height:44px;font-size:14px}
+.ms-title{font-size:12px;color:#1B3B6B;line-height:1.4;font-weight:500;letter-spacing:0.5px}
+.ms-period{font-family:'Noto Serif SC',serif;font-size:11px;color:#8B7355;letter-spacing:2px;margin-bottom:4px}
+
+/* Current highlight */
+.milestone.current .ms-stone{width:72px;height:72px;font-size:20px;background:#1B3B6B;border:3px solid #8B7355;box-shadow:3px 3px 0 #8B7355,0 0 0 4px #F5F0E8,0 0 0 6px #1B3B6B}
+.milestone.current .ms-title{font-size:13px;font-weight:700;color:#1B3B6B}
+.milestone.current .ms-period{color:#1B3B6B;font-weight:700}
+
+/* Compass / legend */
+.compass{position:absolute;top:200px;right:60px;width:120px;display:flex;flex-direction:column;align-items:center;gap:8px}
+.compass-ring{width:90px;height:90px;border:2px solid #1B3B6B;border-radius:50%;display:flex;align-items:center;justify-content:center;position:relative}
+.compass-dot{width:6px;height:6px;background:#1B3B6B;border-radius:50%;position:absolute;top:6px;left:50%;transform:translateX(-50%)}
+.compass-label{font-family:'Noto Serif SC',serif;font-size:11px;color:#1B3B6B;letter-spacing:2px}
+.compass-sub{font-size:10px;color:#8B7355;letter-spacing:1px}
+
+/* Footer */
+.footer{position:absolute;bottom:28px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:center}
+.footer-left{font-size:11px;color:#555;letter-spacing:2px}
+.footer-right{font-family:'Noto Serif SC',serif;font-size:12px;color:#8B7355;letter-spacing:2px}
+
+/* Bauhaus accent */
+.accent-bar{position:absolute;top:170px;left:80px;width:60px;height:4px;background:#1B3B6B}
+.accent-bar2{position:absolute;top:170px;left:150px;width:120px;height:2px;background:#8B7355}
+
+.start-marker{position:absolute;font-family:'Noto Serif SC',serif;font-size:11px;color:#8B7355;letter-spacing:3px;transform:translateX(-50%)}
+.end-marker{position:absolute;font-family:'Noto Serif SC',serif;font-size:12px;color:#1B3B6B;letter-spacing:3px;transform:translateX(-50%);font-weight:700}
+</style></head><body>
+
+<div class="bg-circle c1"></div>
+<div class="bg-circle c2"></div>
+<div class="bg-square s1"></div>
+<div class="bg-line l1"></div>
+<div class="bg-line l2"></div>
+
+<!-- Header -->
+<div class="header">
+  <div class="header-left">
+    <div class="eyebrow">RECAP · 前情提要</div>
+    <div class="title">学术路径 · 第 0 至 10 期</div>
+    <div class="subtitle">A Winding Path Through Ten Periods of Open-Source Economics</div>
+  </div>
+  <div class="header-right">
+    <div class="deck-info">LABOR COMPENSATION &amp; PROPERTY DISTRIBUTION</div>
+    <div class="num-big">10 / 29</div>
+    <div class="page-num">PERIOD RECAP</div>
+  </div>
+</div>
+
+<div class="accent-bar"></div>
+<div class="accent-bar2"></div>
+
+<!-- Map -->
+<div class="map-area">
+  <svg class="path-svg" viewBox="0 0 1600 660" xmlns="http://www.w3.org/2000/svg">
+    <!-- Winding academic path -->
+    <path d="M 120 220 L 1380 220 C 1480 220, 1480 460, 1380 460 L 340 460"
+          fill="none" stroke="#1B3B6B" stroke-width="2" stroke-dasharray="1,0" opacity="0.7"/>
+    <path d="M 120 235 L 1380 235 C 1495 235, 1495 475, 1380 475 L 340 475"
+          fill="none" stroke="#8B7355" stroke-width="1" opacity="0.4" stroke-dasharray="4 6"/>
+
+    <!-- Decorative Bauhaus circles on path -->
+    <circle cx="750" cy="220" r="8" fill="none" stroke="#1B3B6B" stroke-width="1.5"/>
+    <circle cx="750" cy="460" r="8" fill="none" stroke="#1B3B6B" stroke-width="1.5"/>
+
+    <!-- Decorative squares -->
+    <rect x="500" y="210" width="12" height="20" fill="#8B7355" opacity="0.6"/>
+    <rect x="500" y="450" width="12" height="20" fill="#8B7355" opacity="0.6"/>
+
+    <rect x="1050" y="210" width="12" height="20" fill="#8B7355" opacity="0.6"/>
+    <rect x="1050" y="450" width="12" height="20" fill="#8B7355" opacity="0.6"/>
+
+    <!-- Small circles between milestones -->
+    <circle cx="340" cy="220" r="3" fill="#1B3B6B"/>
+    <circle cx="570" cy="220" r="3" fill="#1B3B6B"/>
+    <circle cx="800" cy="220" r="3" fill="#1B3B6B"/>
+    <circle cx="1030" cy="220" r="3" fill="#1B3B6B"/>
+    <circle cx="1260" cy="220" r="3" fill="#1B3B6B"/>
+    <circle cx="1260" cy="460" r="3" fill="#1B3B6B"/>
+    <circle cx="1030" cy="460" r="3" fill="#1B3B6B"/>
+    <circle cx="800" cy="460" r="3" fill="#1B3B6B"/>
+    <circle cx="570" cy="460" r="3" fill="#1B3B6B"/>
+    <circle cx="340" cy="460" r="3" fill="#1B3B6B"/>
+
+    <!-- Bauhaus decorative elements -->
+    <circle cx="1450" cy="340" r="40" fill="none" stroke="#1B3B6B" stroke-width="1" opacity="0.3"/>
+    <circle cx="1450" cy="340" r="20" fill="#1B3B6B" opacity="0.08"/>
+
+    <rect x="150" y="600" width="40" height="40" fill="none" stroke="#8B7355" stroke-width="1" opacity="0.5"/>
+
+    <line x1="200" y1="620" x2="1400" y2="620" stroke="#1B3B6B" stroke-width="0.5" opacity="0.15"/>
+    <line x1="200" y1="100" x2="1400" y2="100" stroke="#1B3B6B" stroke-width="0.5" opacity="0.15"/>
+  </svg>
+
+  <!-- Start marker -->
+  <div class="start-marker" style="top:170px;left:120px">起 · START</div>
+
+  <!-- Top row milestones: Periods 0-5 -->
+  <div class="milestone" style="top:240px;left:120px">
+    <div class="ms-stone small">0</div>
+    <div class="ms-period">PERIOD 0</div>
+    <div class="ms-title">开源与经济学</div>
+  </div>
+  <div class="milestone" style="top:240px;left:350px">
+    <div class="ms-stone small">1</div>
+    <div class="ms-period">PERIOD 1</div>
+    <div class="ms-title">软件的生产、<br>分销和消费</div>
+  </div>
+  <div class="milestone" style="top:240px;left:580px">
+    <div class="ms-stone small">2</div>
+    <div class="ms-period">PERIOD 2</div>
+    <div class="ms-title">知识财产法演变<br>与开源许可</div>
+  </div>
+  <div class="milestone" style="top:240px;left:810px">
+    <div class="ms-stone small">3</div>
+    <div class="ms-period">PERIOD 3</div>
+    <div class="ms-title">商业模式：<br>规则下的具体操作</div>
+  </div>
+  <div class="milestone" style="top:240px;left:1040px">
+    <div class="ms-stone small">4</div>
+    <div class="ms-period">PERIOD 4</div>
+    <div class="ms-title">软件开发<br>劳动力市场</div>
+  </div>
+  <div class="milestone" style="top:240px;left:1270px">
+    <div class="ms-stone small">5</div>
+    <div class="ms-period">PERIOD 5</div>
+    <div class="ms-title">交易成本<br>与路径依赖</div>
+  </div>
+
+  <!-- Bottom row milestones: Periods 6-10 -->
+  <div class="milestone" style="top:480px;left:1270px">
+    <div class="ms-stone small">6</div>
+    <div class="ms-period">PERIOD 6</div>
+    <div class="ms-title">组织结构<br>与治理</div>
+  </div>
+  <div class="milestone" style="top:480px;left:1040px">
+    <div class="ms-stone small">7</div>
+    <div class="ms-period">PERIOD 7</div>
+    <div class="ms-title">文化的重要作用</div>
+  </div>
+  <div class="milestone" style="top:480px;left:810px">
+    <div class="ms-stone small">8</div>
+    <div class="ms-period">PERIOD 8</div>
+    <div class="ms-title">商业价值<br>与社会价值</div>
+  </div>
+  <div class="milestone" style="top:480px;left:580px">
+    <div class="ms-stone small">9</div>
+    <div class="ms-period">PERIOD 9</div>
+    <div class="ms-title">信息规则<br>与网络经济</div>
+  </div>
+  <div class="milestone current" style="top:450px;left:340px">
+    <div class="ms-stone">10</div>
+    <div class="ms-period">CURRENT · 本期</div>
+    <div class="ms-title">排他权与容他权、<br>比例原则与 Copyleft</div>
+  </div>
+
+  <div class="end-marker" style="top:590px;left:340px">终 · HERE WE ARE</div>
+
+  <!-- Compass -->
+  <div class="compass">
+    <div class="compass-ring">
+      <div class="compass-dot"></div>
+      <span class="compass-label">N</span>
+    </div>
+    <div class="compass-sub">COMPASS</div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <div class="footer-left">开源之道 · 新制度经济学视角下的开源讲座</div>
+  <div class="footer-right">THE WINDING PATH OF OPEN-SOURCE ECONOMIC THOUGHT</div>
+</div>
+
+</body></html>

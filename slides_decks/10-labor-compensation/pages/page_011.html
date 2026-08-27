@@ -1,0 +1,211 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>第 10 期 · 信号的价值</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0;font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-serif}
+body{background:#F5F0E8;position:relative}
+
+/* page frame */
+.frame{position:absolute;left:60px;top:50px;width:1480px;height:800px;border:1px solid #1B3B6B}
+.frame-inner{position:absolute;left:76px;top:66px;width:1448px;height:768px;border:1px solid #8B7355}
+
+/* header */
+.header{position:absolute;left:100px;top:84px;right:100px;display:flex;justify-content:space-between;align-items:baseline}
+.lecture-tag{font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:3px}
+.lecture-num{font-family:'Noto Serif SC',serif;font-size:14px;color:#1B3B6B;letter-spacing:2px}
+.page-line{position:absolute;left:100px;top:118px;right:100px;height:1px;background:#1B3B6B}
+
+/* section number */
+.section-no{position:absolute;left:100px;top:138px;font-family:'Noto Serif SC',serif;font-size:18px;color:#8B7355;letter-spacing:4px}
+
+/* main title */
+.main-title{position:absolute;left:100px;top:178px;font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:62px;color:#1B3B6B;font-weight:700;letter-spacing:6px;line-height:1.1}
+.main-sub{position:absolute;left:100px;top:270px;font-family:'Noto Serif SC',serif;font-size:18px;color:#555;letter-spacing:3px;font-style:italic}
+
+/* divider */
+.title-divider{position:absolute;left:100px;top:310px;width:60px;height:3px;background:#8B7355}
+
+/* left column - content */
+.content-col{position:absolute;left:100px;top:348px;width:700px}
+.bullet{display:flex;align-items:flex-start;margin-bottom:26px}
+.bullet-num{font-family:'Noto Serif SC',serif;font-size:15px;color:#8B7355;min-width:42px;padding-top:6px;letter-spacing:2px}
+.bullet-text{font-family:'Noto Serif SC',serif;font-size:22px;color:#1B3B6B;line-height:1.5;letter-spacing:1px}
+.bullet-text .em{color:#8B7355;font-weight:600}
+.bullet-text .sub{font-size:15px;color:#555;display:block;margin-top:4px;letter-spacing:1px;font-style:italic}
+
+/* right column - geometric lighthouse composition */
+.geo-art{position:absolute;left:880px;top:340px;width:620px;height:440px}
+
+/* lighthouse base - square */
+.lh-base{position:absolute;right:180px;top:280px;width:80px;height:100px;background:#1B3B6B}
+.lh-base-strip{position:absolute;right:180px;top:310px;width:80px;height:10px;background:#F5F0E8}
+.lh-base-strip2{position:absolute;right:180px;top:350px;width:80px;height:8px;background:#F5F0E8}
+
+/* lighthouse top - circle */
+.lh-top{position:absolute;right:160px;top:200px;width:120px;height:80px;background:#1B3B6B;border-radius:0}
+.lh-top-window{position:absolute;right:185px;top:218px;width:70px;height:44px;background:#F5F0E8;border:2px solid #1B3B6B}
+
+/* lantern / light source */
+.lh-lantern{position:absolute;right:175px;top:160px;width:90px;height:36px;background:#8B7355;border-top:3px solid #1B3B6B;border-bottom:3px solid #1B3B6B}
+
+/* light beams - triangles as parallelograms */
+.beam1{position:absolute;left:0;top:170px;width:280px;height:24px;background:#8B7355;opacity:0.35;clip-path:polygon(100% 0,100% 100%,0 50%)}
+.beam2{position:absolute;left:20px;top:200px;width:240px;height:20px;background:#8B7355;opacity:0.25;clip-path:polygon(100% 0,100% 100%,0 50%)}
+.beam3{position:absolute;left:50px;top:230px;width:200px;height:18px;background:#1B3B6B;opacity:0.15;clip-path:polygon(100% 0,100% 100%,0 50%)}
+.beam4{position:absolute;left:-40px;top:200px;width:200px;height:22px;background:#8B7355;opacity:0.2;clip-path:polygon(0 0,0 100%,100% 50%)}
+.beam5{position:absolute;left:-20px;top:170px;width:220px;height:18px;background:#8B7355;opacity:0.3;clip-path:polygon(0 0,0 100%,100% 50%)}
+
+/* light rays - radial circles */
+.ray-circle1{position:absolute;right:160px;top:140px;width:140px;height:140px;border:1px solid #8B7355;border-radius:50%;opacity:0.5}
+.ray-circle2{position:absolute;right:135px;top:115px;width:190px;height:190px;border:1px solid #8B7355;border-radius:50%;opacity:0.3}
+.ray-circle3{position:absolute;right:110px;top:90px;width:240px;height:240px;border:1px solid #8B7355;border-radius:50%;opacity:0.18}
+
+/* horizon line */
+.horizon{position:absolute;left:0;right:0;top:388px;height:1px;background:#1B3B6B;opacity:0.6}
+.horizon-dash{position:absolute;left:0;right:0;top:392px;height:1px;background:repeating-linear-gradient(to right, #1B3B6B 0 8px, transparent 8px 16px);opacity:0.3}
+
+/* small boats / workers - triangles */
+.boat1{position:absolute;left:60px;top:384px;width:0;height:0;border-left:14px solid transparent;border-right:14px solid transparent;border-bottom:10px solid #1B3B6B}
+.boat2{position:absolute;left:140px;top:390px;width:0;height:0;border-left:12px solid transparent;border-right:12px solid transparent;border-bottom:8px solid #8B7355}
+.boat3{position:absolute;left:440px;top:386px;width:0;height:0;border-left:13px solid transparent;border-right:13px solid transparent;border-bottom:9px solid #1B3B6B}
+
+/* ships */
+.ship1{position:absolute;left:30px;top:376px;width:30px;height:12px;background:#1B3B6B}
+.ship2{position:absolute;left:380px;top:374px;width:40px;height:14px;background:#8B7355}
+
+/* decorative circles top-right */
+.deco-circle1{position:absolute;right:100px;top:148px;width:40px;height:40px;border:2px solid #1B3B6B;border-radius:50%}
+.deco-circle2{position:absolute;right:50px;top:140px;width:24px;height:24px;background:#8B7355;border-radius:50%}
+
+/* geometric squares decoration */
+.deco-square1{position:absolute;left:100px;top:148px;width:16px;height:16px;background:#1B3B6B}
+.deco-square2{position:absolute;left:128px;top:148px;width:8px;height:8px;background:#8B7355}
+.deco-square3{position:absolute;left:144px;top:152px;width:4px;height:4px;background:#1B3B6B}
+
+/* footer */
+.footer{position:absolute;left:100px;bottom:70px;right:100px;display:flex;justify-content:space-between;align-items:flex-end}
+.footer-left{font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;letter-spacing:2px}
+.footer-right{font-family:'Noto Serif SC',serif;font-size:13px;color:#555;letter-spacing:2px}
+
+/* quote mark */
+.quote-mark{position:absolute;right:100px;bottom:140px;font-family:'Noto Serif SC',serif;font-size:110px;color:#1B3B6B;opacity:0.08;line-height:0.8}
+.quote-text{position:absolute;right:100px;bottom:100px;width:300px;font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;font-style:italic;line-height:1.7;text-align:right;letter-spacing:1px}
+
+/* small horizontal line for aesthetic */
+.deco-line{position:absolute;left:100px;top:348px;width:50px;height:1px;background:#8B7355}
+</style></head><body>
+
+<div class="frame"></div>
+<div class="frame-inner"></div>
+
+<!-- decorative squares top-left -->
+<div class="deco-square1"></div>
+<div class="deco-square2"></div>
+<div class="deco-square3"></div>
+
+<!-- decorative circles top-right -->
+<div class="deco-circle1"></div>
+<div class="deco-circle2"></div>
+
+<!-- header -->
+<div class="header">
+    <div class="lecture-tag">Lecture 10 · Labor Compensation &amp; Property Distribution</div>
+    <div class="lecture-num">— 14 / 29 —</div>
+</div>
+<div class="page-line"></div>
+
+<div class="section-no">§ III . 信 号 的 价 值</div>
+
+<div class="main-title">信号的价值</div>
+<div class="main-sub">The Value of Signals — Code as Credential</div>
+<div class="title-divider"></div>
+
+<div class="content-col">
+    <div class="deco-line"></div>
+
+    <div class="bullet" style="margin-top:28px">
+        <div class="bullet-num">01</div>
+        <div class="bullet-text">
+            <span class="em">开源贡献是个人能力的公开证明</span>
+            <span class="sub">A public, verifiable testament to individual competence</span>
+        </div>
+    </div>
+
+    <div class="bullet">
+        <div class="bullet-num">02</div>
+        <div class="bullet-text">
+            <span class="em">它比简历更有说服力</span>
+            <span class="sub">More persuasive than any resume or cover letter</span>
+        </div>
+    </div>
+
+    <div class="bullet">
+        <div class="bullet-num">03</div>
+        <div class="bullet-text">
+            <span class="em">它比薪酬更能体现一个人的价值</span>
+            <span class="sub">A purer measure of worth than salary alone</span>
+        </div>
+    </div>
+
+    <div class="bullet">
+        <div class="bullet-num">04</div>
+        <div class="bullet-text">
+            <span class="em">这是开源劳动力市场的基础</span>
+            <span class="sub">The very foundation of the open-source labor market</span>
+        </div>
+    </div>
+
+    <div class="bullet">
+        <div class="bullet-num">05</div>
+        <div class="bullet-text">
+            <span class="em">信号本身就是一种报酬</span>
+            <span class="sub">The signal itself is the compensation</span>
+        </div>
+    </div>
+</div>
+
+<!-- Right side: Lighthouse geometric composition -->
+<div class="geo-art">
+    <!-- Light rays -->
+    <div class="ray-circle3"></div>
+    <div class="ray-circle2"></div>
+    <div class="ray-circle1"></div>
+
+    <!-- Beams left -->
+    <div class="beam5"></div>
+    <div class="beam4"></div>
+    <div class="beam1"></div>
+    <div class="beam2"></div>
+    <div class="beam3"></div>
+
+    <!-- Lantern -->
+    <div class="lh-lantern"></div>
+    <div class="lh-top"></div>
+    <div class="lh-top-window"></div>
+    <div class="lh-base"></div>
+    <div class="lh-base-strip"></div>
+    <div class="lh-base-strip2"></div>
+
+    <!-- Horizon -->
+    <div class="horizon"></div>
+    <div class="horizon-dash"></div>
+
+    <!-- Ships and boats -->
+    <div class="ship1"></div>
+    <div class="boat1"></div>
+    <div class="boat2"></div>
+    <div class="ship2"></div>
+    <div class="boat3"></div>
+</div>
+
+<!-- Quote -->
+<div class="quote-mark">"</div>
+<div class="quote-text">代码即凭证，<br>贡献即信号，<br>信号即报酬。</div>
+
+<!-- Footer -->
+<div class="footer">
+    <div class="footer-left">第 10 期 · 劳动报酬与财产分配 · 开源经济学讲座</div>
+    <div class="footer-right">Signal Theory × Labor Market</div>
+</div>
+
+</body></html>

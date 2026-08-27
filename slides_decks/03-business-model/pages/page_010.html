@@ -1,0 +1,418 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>软件的商品化及其发展</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0}
+body{background:#F5F0E8;font-family:'Noto Sans SC','Source Han Sans SC','PingFang SC',sans-serif;color:#1B3B6B;position:relative;overflow:hidden}
+
+/* parchment texture */
+body::before{content:'';position:absolute;top:0;left:0;width:1600px;height:900px;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(139,115,85,0.015) 3px,rgba(139,115,85,0.015) 4px);pointer-events:none;z-index:1}
+
+/* page border */
+.border{position:absolute;top:40px;left:40px;right:40px;bottom:40px;border:1px solid #1B3B6B;z-index:2}
+.border-inner{position:absolute;top:48px;left:48px;right:48px;bottom:48px;border:1px solid rgba(27,59,107,0.3);z-index:2}
+
+/* hex code stream - left side visual */
+.hex-stream{position:absolute;top:70px;left:70px;width:520px;height:760px;z-index:3;font-family:'Courier New',monospace;font-size:11px;line-height:1.6;color:#1B3B6B;letter-spacing:1px;overflow:hidden}
+.hex-col{position:absolute;top:0;width:140px;height:100%;opacity:0.85}
+.hex-col-1{left:0;opacity:0.9}
+.hex-col-2{left:145px;opacity:0.7}
+.hex-col-3{left:290px;opacity:0.5}
+.hex-col-4{left:435px;opacity:0.35}
+
+.hex-line{white-space:nowrap;opacity:0.9}
+
+/* decorative bauhaus elements */
+.deco-circle{position:absolute;top:80px;right:80px;width:80px;height:80px;border-radius:50%;background:#1B3B6B;z-index:3}
+.deco-circle-inner{position:absolute;top:100px;right:100px;width:40px;height:40px;border-radius:50%;background:#F5F0E8;z-index:4}
+.deco-square{position:absolute;top:180px;right:100px;width:60px;height:60px;background:#8B7355;z-index:3}
+.deco-line-v{position:absolute;top:80px;right:60px;width:1px;height:700px;background:#1B3B6B;z-index:3}
+.deco-line-h1{position:absolute;top:250px;left:620px;width:340px;height:2px;background:#1B3B6B;z-index:3}
+.deco-line-h2{position:absolute;top:780px;left:620px;width:800px;height:1px;background:rgba(27,59,107,0.4);z-index:3}
+.deco-tri{position:absolute;top:80px;right:170px;width:0;height:0;border-left:25px solid transparent;border-right:25px solid transparent;border-bottom:43px solid #1B3B6B;z-index:3}
+.deco-circle-2{position:absolute;bottom:80px;left:620px;width:36px;height:36px;border-radius:50%;border:2px solid #8B7355;z-index:3}
+.deco-square-2{position:absolute;bottom:80px;right:620px;width:28px;height:28px;background:#1B3B6B;z-index:3}
+
+/* header */
+.slide-header{position:absolute;top:90px;left:640px;width:760px;z-index:5}
+.kicker{font-size:12px;letter-spacing:6px;color:#8B7355;font-weight:600;margin-bottom:18px}
+.title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:36px;font-weight:700;color:#1B3B6B;line-height:1.25;letter-spacing:2px}
+.subtitle{font-size:14px;color:#555;margin-top:14px;letter-spacing:1px;line-height:1.6}
+
+/* divider */
+.title-divider{margin-top:22px;width:120px;height:3px;background:#1B3B6B}
+
+/* content area */
+.content{position:absolute;top:290px;left:640px;width:820px;z-index:5}
+.num-label{display:flex;align-items:center;gap:18px;margin-bottom:20px}
+.num-box{width:34px;height:34px;background:#1B3B6B;color:#F5F0E8;font-family:'Noto Serif SC',serif;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;letter-spacing:1px}
+.num-text{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:22px;color:#1B3B6B;font-weight:700;letter-spacing:3px}
+
+.bullets{margin-top:12px}
+.bullet{display:flex;align-items:flex-start;gap:16px;margin-bottom:16px}
+.bullet-dot{flex-shrink:0;width:8px;height:8px;background:#8B7355;margin-top:9px;margin-left:18px}
+.bullet-line{flex-shrink:0;width:16px;height:1px;background:#8B7355;margin-top:13px}
+.bullet-text{font-size:14px;color:#1B3B6B;line-height:1.7;letter-spacing:0.5px;flex:1}
+.bullet-text em{font-style:normal;color:#8B7355;font-weight:600}
+.bullet-text .key{color:#1B3B6B;font-weight:700}
+
+/* footer */
+.footer{position:absolute;bottom:58px;left:640px;width:820px;display:flex;justify-content:space-between;align-items:center;z-index:5}
+.footer-left{font-size:11px;letter-spacing:4px;color:#8B7355}
+.footer-right{font-size:11px;letter-spacing:2px;color:#555}
+
+/* side label */
+.side-label{position:absolute;top:400px;left:30px;width:30px;transform:rotate(-90deg);transform-origin:left top;font-size:10px;letter-spacing:6px;color:#8B7355;z-index:5}
+
+/* small hex accent top right */
+.hex-accent{position:absolute;top:62px;left:62px;font-family:'Courier New',monospace;font-size:10px;color:#8B7355;letter-spacing:3px;z-index:5}
+.hex-accent-2{position:absolute;bottom:62px;left:62px;font-family:'Courier New',monospace;font-size:10px;color:#8B7355;letter-spacing:3px;z-index:5}
+</style></head><body>
+
+<div class="border"></div>
+<div class="border-inner"></div>
+
+<div class="hex-accent">0x00 → 0xFF</div>
+<div class="hex-accent-2">STREAM · 0xDEAD</div>
+
+<div class="side-label">HEX · FLOW · DATA</div>
+
+<!-- Hex code stream visual -->
+<div class="hex-stream">
+  <div class="hex-col hex-col-1">
+    <div class="hex-line">0x1B3B6B</div>
+    <div class="hex-line">0xF5F0E8</div>
+    <div class="hex-line">0x8B7355</div>
+    <div class="hex-line">0x2D4A7A</div>
+    <div class="hex-line">0x3E5A8C</div>
+    <div class="hex-line">0x4B7BA0</div>
+    <div class="hex-line">0x1B3B6B</div>
+    <div class="hex-line">0x6E8FBE</div>
+    <div class="hex-line">0x85A8D6</div>
+    <div class="hex-line">0x9FC2E0</div>
+    <div class="hex-line">0x1B3B6B</div>
+    <div class="hex-line">0x2A4878</div>
+    <div class="hex-line">0x3D5E8A</div>
+    <div class="hex-line">0x51759C</div>
+    <div class="hex-line">0x648BAE</div>
+    <div class="hex-line">0x77A2C0</div>
+    <div class="hex-line">0x8AB8D2</div>
+    <div class="hex-line">0x9DCFE4</div>
+    <div class="hex-line">0x1B3B6B</div>
+    <div class="hex-line">0x2E5084</div>
+    <div class="hex-line">0x41659E</div>
+    <div class="hex-line">0x547AB8</div>
+    <div class="hex-line">0x678FD2</div>
+    <div class="hex-line">0x7AA4EC</div>
+    <div class="hex-line">0x8DB9F6</div>
+    <div class="hex-line">0x1B3B6B</div>
+    <div class="hex-line">0x355688</div>
+    <div class="hex-line">0x4F71A3</div>
+    <div class="hex-line">0x698CBE</div>
+    <div class="hex-line">0x83A7D9</div>
+    <div class="hex-line">0x9DC2E4</div>
+    <div class="hex-line">0x1B3B6B</div>
+    <div class="hex-line">0x2C4B79</div>
+    <div class="hex-line">0x3D5C89</div>
+    <div class="hex-line">0x4E6D99</div>
+    <div class="hex-line">0x5F7EA9</div>
+    <div class="hex-line">0x708FB9</div>
+    <div class="hex-line">0x81A0C9</div>
+    <div class="hex-line">0x92B1D9</div>
+    <div class="hex-line">0x1B3B6B</div>
+    <div class="hex-line">0x3A5A86</div>
+    <div class="hex-line">0x5075A0</div>
+    <div class="hex-line">0x6690BA</div>
+    <div class="hex-line">0x7CAAB4</div>
+    <div class="hex-line">0x92C5CE</div>
+    <div class="hex-line">0x1B3B6B</div>
+    <div class="hex-line">0x2A4977</div>
+    <div class="hex-line">0x385885</div>
+    <div class="hex-line">0x476793</div>
+    <div class="hex-line">0x5576A1</div>
+    <div class="hex-line">0x6385AF</div>
+    <div class="hex-line">0x7194BD</div>
+    <div class="hex-line">0x7FA3CB</div>
+    <div class="hex-line">0x1B3B6B</div>
+    <div class="hex-line">0x335280</div>
+    <div class="hex-line">0x496DA1</div>
+    <div class="hex-line">0x5F88BE</div>
+    <div class="hex-line">0x75A3D9</div>
+    <div class="hex-line">0x8BBE E4</div>
+    <div class="hex-line">0x1B3B6B</div>
+    <div class="hex-line">0x2F4E83</div>
+    <div class="hex-line">0x466A9E</div>
+    <div class="hex-line">0x5C85B9</div>
+    <div class="hex-line">0x73A0D4</div>
+    <div class="hex-line">0x89BBCF</div>
+  </div>
+  <div class="hex-col hex-col-2">
+    <div class="hex-line">0xDEADBEEF</div>
+    <div class="hex-line">0xCAFEBABE</div>
+    <div class="hex-line">0xFEEDFACE</div>
+    <div class="hex-line">0x1B3B6B1B</div>
+    <div class="hex-line">0x8B73558B</div>
+    <div class="hex-line">0xF5F0E8F5</div>
+    <div class="hex-line">0x00FF0000</div>
+    <div class="hex-line">0x1B3B6B00</div>
+    <div class="hex-line">0x4B7BA04B</div>
+    <div class="hex-line">0x6E8FBE6E</div>
+    <div class="hex-line">0x85A8D685</div>
+    <div class="hex-line">0x9FC2E09F</div>
+    <div class="hex-line">0x1B3B6BFF</div>
+    <div class="hex-line">0x2D4A7A2D</div>
+    <div class="hex-line">0x3E5A8C3E</div>
+    <div class="hex-line">0x4B7BA04B</div>
+    <div class="hex-line">0x5C8BB25C</div>
+    <div class="hex-line">0x6D9CC46D</div>
+    <div class="hex-line">0x1B3B6BDE</div>
+    <div class="hex-line">0xCAFE0000</div>
+    <div class="hex-line">0x00DE00AD</div>
+    <div class="hex-line">0x00BE00EF</div>
+    <div class="hex-line">0x00CA00FE</div>
+    <div class="hex-line">0x00BA00BE</div>
+    <div class="hex-line">0x1B3B6B00</div>
+    <div class="hex-line">0xFF00FF00</div>
+    <div class="hex-line">0xFF00FF00</div>
+    <div class="hex-line">0xEE00EE00</div>
+    <div class="hex-line">0xDD00DD00</div>
+    <div class="hex-line">0xCC00CC00</div>
+    <div class="hex-line">0xBB00BB00</div>
+    <div class="hex-line">0xAA00AA00</div>
+    <div class="hex-line">0x99009900</div>
+    <div class="hex-line">0x1B3B6B99</div>
+    <div class="hex-line">0x88008800</div>
+    <div class="hex-line">0x77007700</div>
+    <div class="hex-line">0x66006600</div>
+    <div class="hex-line">0x55005500</div>
+    <div class="hex-line">0x44004400</div>
+    <div class="hex-line">0x33003300</div>
+    <div class="hex-line">0x22002200</div>
+    <div class="hex-line">0x11001100</div>
+    <div class="hex-line">0x00000000</div>
+    <div class="hex-line">0x1B3B6B00</div>
+    <div class="hex-line">0xFF88FF88</div>
+    <div class="hex-line">0xEE77EE77</div>
+    <div class="hex-line">0xDD66DD66</div>
+    <div class="hex-line">0xCC55CC55</div>
+    <div class="hex-line">0xBB44BB44</div>
+    <div class="hex-line">0xAA33AA33</div>
+    <div class="hex-line">0x99229922</div>
+    <div class="hex-line">0x88118811</div>
+    <div class="hex-line">0x77007700</div>
+    <div class="hex-line">0x1B3B6B66</div>
+    <div class="hex-line">0xFFEEFFEE</div>
+    <div class="hex-line">0xDDCCDDCC</div>
+    <div class="hex-line">0xBBAA BBAA</div>
+    <div class="hex-line">0x99889988</div>
+    <div class="hex-line">0x77667766</div>
+    <div class="hex-line">0x55445544</div>
+    <div class="hex-line">0x33223322</div>
+    <div class="hex-line">0x11001100</div>
+  </div>
+  <div class="hex-col hex-col-3">
+    <div class="hex-line">0x1B3B6B</div>
+    <div class="hex-line">0x2A4A7A</div>
+    <div class="hex-line">0x395989</div>
+    <div class="hex-line">0x486898</div>
+    <div class="hex-line">0x5777A7</div>
+    <div class="hex-line">0x6686B6</div>
+    <div class="hex-line">0x7595C5</div>
+    <div class="hex-line">0x84A4D4</div>
+    <div class="hex-line">0x93B3E3</div>
+    <div class="hex-line">0xA2C2F2</div>
+    <div class="hex-line">0x1B3B6B</div>
+    <div class="hex-line">0xB1D1FF</div>
+    <div class="hex-line">0xC0E000</div>
+    <div class="hex-line">0xD1F000</div>
+    <div class="hex-line">0xE00000</div>
+    <div class="hex-line">0xF00000</div>
+    <div class="hex-line">0x000000</div>
+    <div class="hex-line">0x1B3B6B</div>
+    <div class="hex-line">0x200020</div>
+    <div class="hex-line">0x300030</div>
+    <div class="hex-line">0x400040</div>
+    <div class="hex-line">0x500050</div>
+    <div class="hex-line">0x600060</div>
+    <div class="hex-line">0x700070</div>
+    <div class="hex-line">0x800080</div>
+    <div class="hex-line">0x900090</div>
+    <div class="hex-line">0xA000A0</div>
+    <div class="hex-line">0xB000B0</div>
+    <div class="hex-line">0xC000C0</div>
+    <div class="hex-line">0xD000D0</div>
+    <div class="hex-line">0xE000E0</div>
+    <div class="hex-line">0xF000F0</div>
+    <div class="hex-line">0x000000</div>
+    <div class="hex-line">0x1B3B6B</div>
+    <div class="hex-line">0x100010</div>
+    <div class="hex-line">0x200020</div>
+    <div class="hex-line">0x300030</div>
+    <div class="hex-line">0x400040</div>
+    <div class="hex-line">0x500050</div>
+    <div class="hex-line">0x600060</div>
+    <div class="hex-line">0x700070</div>
+    <div class="hex-line">0x800080</div>
+    <div class="hex-line">0x900090</div>
+    <div class="hex-line">0xA000A0</div>
+    <div class="hex-line">0xB000B0</div>
+    <div class="hex-line">0xC000C0</div>
+    <div class="hex-line">0xD000D0</div>
+    <div class="hex-line">0xE000E0</div>
+    <div class="hex-line">0xF000F0</div>
+    <div class="hex-line">0x000000</div>
+    <div class="hex-line">0x1B3B6B</div>
+    <div class="hex-line">0x200020</div>
+    <div class="hex-line">0x300030</div>
+    <div class="hex-line">0x400040</div>
+    <div class="hex-line">0x500050</div>
+    <div class="hex-line">0x600060</div>
+    <div class="hex-line">0x700070</div>
+  </div>
+  <div class="hex-col hex-col-4">
+    <div class="hex-line">0x00</div>
+    <div class="hex-line">0x01</div>
+    <div class="hex-line">0x02</div>
+    <div class="hex-line">0x03</div>
+    <div class="hex-line">0x04</div>
+    <div class="hex-line">0x05</div>
+    <div class="hex-line">0x06</div>
+    <div class="hex-line">0x07</div>
+    <div class="hex-line">0x08</div>
+    <div class="hex-line">0x09</div>
+    <div class="hex-line">0x0A</div>
+    <div class="hex-line">0x0B</div>
+    <div class="hex-line">0x0C</div>
+    <div class="hex-line">0x0D</div>
+    <div class="hex-line">0x0E</div>
+    <div class="hex-line">0x0F</div>
+    <div class="hex-line">0x10</div>
+    <div class="hex-line">0x11</div>
+    <div class="hex-line">0x12</div>
+    <div class="hex-line">0x13</div>
+    <div class="hex-line">0x14</div>
+    <div class="hex-line">0x15</div>
+    <div class="hex-line">0x16</div>
+    <div class="hex-line">0x17</div>
+    <div class="hex-line">0x18</div>
+    <div class="hex-line">0x19</div>
+    <div class="hex-line">0x1A</div>
+    <div class="hex-line">0x1B</div>
+    <div class="hex-line">0x1C</div>
+    <div class="hex-line">0x1D</div>
+    <div class="hex-line">0x1E</div>
+    <div class="hex-line">0x1F</div>
+    <div class="hex-line">0x20</div>
+    <div class="hex-line">0x21</div>
+    <div class="hex-line">0x22</div>
+    <div class="hex-line">0x23</div>
+    <div class="hex-line">0x24</div>
+    <div class="hex-line">0x25</div>
+    <div class="hex-line">0x26</div>
+    <div class="hex-line">0x27</div>
+    <div class="hex-line">0x28</div>
+    <div class="hex-line">0x29</div>
+    <div class="hex-line">0x2A</div>
+    <div class="hex-line">0x2B</div>
+    <div class="hex-line">0x2C</div>
+    <div class="hex-line">0x2D</div>
+    <div class="hex-line">0x2E</div>
+    <div class="hex-line">0x2F</div>
+    <div class="hex-line">0x30</div>
+    <div class="hex-line">0x31</div>
+    <div class="hex-line">0x32</div>
+    <div class="hex-line">0x33</div>
+    <div class="hex-line">0x34</div>
+    <div class="hex-line">0x35</div>
+    <div class="hex-line">0x36</div>
+    <div class="hex-line">0x37</div>
+    <div class="hex-line">0x38</div>
+    <div class="hex-line">0x39</div>
+    <div class="hex-line">0x3A</div>
+    <div class="hex-line">0x3B</div>
+    <div class="hex-line">0x3C</div>
+    <div class="hex-line">0x3D</div>
+    <div class="hex-line">0x3E</div>
+    <div class="hex-line">0x3F</div>
+    <div class="hex-line">0x40</div>
+    <div class="hex-line">0x41</div>
+    <div class="hex-line">0x42</div>
+    <div class="hex-line">0x43</div>
+    <div class="hex-line">0x44</div>
+    <div class="hex-line">0x45</div>
+    <div class="hex-line">0x46</div>
+    <div class="hex-line">0x47</div>
+    <div class="hex-line">0x48</div>
+    <div class="hex-line">0x49</div>
+    <div class="hex-line">0x4A</div>
+    <div class="hex-line">0x4B</div>
+    <div class="hex-line">0x4C</div>
+    <div class="hex-line">0x4D</div>
+    <div class="hex-line">0x4E</div>
+    <div class="hex-line">0x4F</div>
+    <div class="hex-line">0x50</div>
+    <div class="hex-line">0x51</div>
+    <div class="hex-line">0x52</div>
+    <div class="hex-line">0x53</div>
+    <div class="hex-line">0x54</div>
+    <div class="hex-line">0x55</div>
+  </div>
+</div>
+
+<!-- Decorative Bauhaus elements -->
+<div class="deco-line-v"></div>
+<div class="deco-circle"></div>
+<div class="deco-circle-inner"></div>
+<div class="deco-tri"></div>
+<div class="deco-square"></div>
+<div class="deco-line-h1"></div>
+<div class="deco-line-h2"></div>
+<div class="deco-circle-2"></div>
+<div class="deco-square-2"></div>
+
+<!-- Header -->
+<div class="slide-header">
+  <div class="kicker">CHAPTER · 04 &nbsp;·&nbsp; COMMODIFICATION</div>
+  <div class="title">软件的商品化<br>及其发展</div>
+  <div class="title-divider"></div>
+  <div class="subtitle">从硬件附属到独立产业：一条关于知识产权、法律边界<br>与制度建构的历史线索</div>
+</div>
+
+<!-- Content -->
+<div class="content">
+  <div class="num-label">
+    <div class="num-box">04</div>
+    <div class="num-text">FROM SEPARATION TO SOVEREIGNTY</div>
+  </div>
+
+  <div class="bullets">
+    <div class="bullet">
+      <div class="bullet-line"></div>
+      <div class="bullet-text">软件最初从硬件中分离出来，处于<em>无法律保护</em>的原始状态，被视为附属于机器的操作说明</div>
+    </div>
+    <div class="bullet">
+      <div class="bullet-line"></div>
+      <div class="bullet-text">在<em>专利</em>、<em>版权</em>与<em>商业秘密</em>三种制度路径的竞争与博弈中，版权路径凭借低成本与自动取得优势胜出</div>
+    </div>
+    <div class="bullet">
+      <div class="bullet-line"></div>
+      <div class="bullet-text">最终用户许可协议（EULA）的扩张，将<em>使用行为</em>本身纳入契约规制，重构了软件消费者与生产者之间的权力关系</div>
+    </div>
+    <div class="bullet">
+      <div class="bullet-line"></div>
+      <div class="bullet-text">技术保护措施与数字版权管理（DRM）的实施，使<em>法律权利</em>获得了技术强制执行的外衣</div>
+    </div>
+    <div class="bullet">
+      <div class="bullet-line"></div>
+      <div class="bullet-text">由此，以版权制度为基石的<em>软件与信息产品帝国</em>得以建立，完成了从自由流通到制度垄断的历史转变</div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <div class="footer-left">NEW INSTITUTIONAL ECONOMICS · OPEN SOURCE</div>
+  <div class="footer-right">SLIDE 04 / 20</div>
+</div>
+
+</body></html>

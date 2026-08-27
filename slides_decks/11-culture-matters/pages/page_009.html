@@ -1,0 +1,251 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>边缘与非主流文化——数字技术构建乌托邦</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;font-family:'Noto Sans SC','PingFang SC',sans-serif;color:#1B3B6B}
+body{background:#F5F0E8;position:relative}
+
+.matrix-bg{position:absolute;top:0;left:0;width:1600px;height:900px;overflow:hidden;opacity:0.07;font-family:'Courier New',monospace;font-size:13px;line-height:16px;color:#1B3B6B;letter-spacing:1px;padding:20px 30px;word-break:break-all;white-space:pre;pointer-events:none}
+
+.deck-frame{position:absolute;top:0;left:0;width:1600px;height:900px;padding:50px 70px;display:flex;flex-direction:column}
+
+/* Top decorative bar */
+.top-bar{display:flex;align-items:center;gap:0;margin-bottom:20px}
+.top-bar .line{flex:1;height:2px;background:#1B3B6B}
+.top-bar .dot{width:10px;height:10px;background:#1B3B6B;border-radius:50%;margin:0 14px}
+.top-bar .square{width:14px;height:14px;background:#8B7355;margin:0 14px}
+.top-bar .circle-outline{width:16px;height:16px;border:2px solid #1B3B6B;border-radius:50%;margin:0 14px}
+
+/* Header */
+.header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:30px}
+.title-block{max-width:1050px}
+.eyebrow{font-size:13px;letter-spacing:6px;color:#8B7355;margin-bottom:14px;font-weight:500}
+.main-title{font-family:'Noto Serif SC','Songti SC',serif;font-size:46px;font-weight:700;line-height:1.15;color:#1B3B6B;letter-spacing:1px}
+.subtitle{font-size:15px;color:#555;margin-top:14px;line-height:1.7;max-width:900px;font-weight:400}
+
+/* Geometric decoration top-right */
+.geo-cluster{position:relative;width:200px;height:80px;flex-shrink:0}
+.geo-cluster .g-circle{position:absolute;width:60px;height:60px;border:2px solid #1B3B6B;border-radius:50%;right:0;top:10px}
+.geo-cluster .g-square{position:absolute;width:36px;height:36px;background:#8B7355;right:70px;top:22px;opacity:0.85}
+.geo-cluster .g-half{position:absolute;width:30px;height:15px;background:#1B3B6B;border-radius:30px 30px 0 0;right:110px;top:32px}
+
+/* Body grid */
+.body-grid{display:grid;grid-template-columns:340px 1fr;gap:50px;flex:1;margin-top:10px}
+
+/* Left panel */
+.left-panel{display:flex;flex-direction:column;gap:24px}
+.visual-card{position:relative;background:#FFFFFF;border:2px solid #1B3B6B;padding:24px 22px;height:340px;overflow:hidden}
+.visual-card-label{position:absolute;top:-1px;left:-1px;background:#1B3B6B;color:#F5F0E8;font-size:11px;padding:6px 12px;letter-spacing:3px;font-weight:600}
+.visual-card-code{font-family:'Courier New',monospace;font-size:11px;line-height:1.85;color:#1B3B6B;opacity:0.55;letter-spacing:0.5px}
+.visual-card-code .hl{color:#8B7355;font-weight:700;opacity:1}
+.visual-card-code .acc{background:#1B3B6B;color:#F5F0E8;padding:0 4px;opacity:1}
+.visual-card-metaphor{margin-top:16px;font-family:'Noto Serif SC',serif;font-size:13px;line-height:1.7;color:#1B3B6B;border-top:1px solid #1B3B6B;padding-top:14px;font-style:italic}
+
+.left-quote{font-family:'Noto Serif SC',serif;font-size:15px;line-height:1.75;color:#1B3B6B;padding-left:18px;border-left:3px solid #8B7355;font-style:italic}
+.left-quote-author{font-size:11px;color:#8B7355;margin-top:10px;letter-spacing:2px;font-style:normal;font-weight:600}
+
+/* Right panel */
+.right-panel{display:flex;flex-direction:column;gap:16px}
+.right-eyebrow{font-size:11px;letter-spacing:4px;color:#8B7355;font-weight:600;margin-bottom:4px}
+
+.bullet-list{display:flex;flex-direction:column;gap:14px}
+.bullet{display:flex;align-items:flex-start;gap:18px;padding:12px 18px 12px 0;border-bottom:1px solid rgba(27,59,107,0.12)}
+.bullet:last-child{border-bottom:none}
+.bullet-num{flex-shrink:0;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif SC',serif;font-size:14px;font-weight:700;color:#1B3B6B}
+.bullet-num.circle{border:2px solid #1B3B6B;border-radius:50%}
+.bullet-num.sq{background:#1B3B6B;color:#F5F0E8}
+.bullet-num.half{width:36px;height:18px;border-radius:18px 18px 0 0;background:#8B7355;color:#F5F0E8;margin-top:9px}
+.bullet-num.dia{background:transparent;color:#1B3B6B;border:2px solid #8B7355;transform:none;width:28px;height:28px;margin-top:4px;font-size:12px}
+.bullet-text{flex:1;padding-top:6px}
+.bullet-title{font-family:'Noto Serif SC',serif;font-size:16px;font-weight:700;color:#1B3B6B;line-height:1.4;margin-bottom:4px}
+.bullet-desc{font-size:12.5px;color:#555;line-height:1.6}
+
+/* Footer */
+.footer{display:flex;align-items:center;justify-content:space-between;margin-top:24px;padding-top:18px;border-top:2px solid #1B3B6B}
+.footer-left{display:flex;align-items:center;gap:14px}
+.footer-square{width:12px;height:12px;background:#1B3B6B}
+.footer-circle{width:12px;height:12px;border:2px solid #8B7355;border-radius:50%}
+.footer-text{font-size:11px;letter-spacing:3px;color:#8B7355;font-weight:600}
+.footer-page{font-family:'Noto Serif SC',serif;font-size:13px;color:#1B3B6B;font-weight:700;letter-spacing:1px}
+.footer-divider{display:flex;align-items:center;gap:10px}
+.footer-divider .line-s{width:80px;height:1px;background:#8B7355}
+
+</style></head><body>
+
+<div class="matrix-bg">&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-CN"&gt;
+&lt;head&gt;&lt;meta charset="UTF-8"&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;div id="utopia"&gt;
+&lt;script&gt;
+  function hackThePlanet() {
+    const freedom = new Protocol({
+      open: true,
+      shared: true,
+      decentralized: true,
+      copyleft: 'GPLv3'
+    });
+    freedom.distribute();
+    freedom.mutate().evolve();
+    return &lt;!-- liberation --&gt;;
+  }
+&lt;/script&gt;
+&lt;div class="manifesto"&gt;
+&lt;p&gt;This is the people's technology&lt;/p&gt;
+&lt;p&gt;Code is speech. Speech is free.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;&lt;/html&gt;
+&lt;!--
+  &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;
+  <h1>We build with code</h1>
+  <p>Open source is a movement,</p>
+  <p>not merely a methodology.</p>
+  <ul>
+    <li>GNU General Public License</li>
+    <li>Free Software Foundation</li>
+    <li>Electronic Frontier Foundation</li>
+    <li>Open Source Initiative</li>
+  </ul>
+  &lt;div class="code"&gt;
+  while(world.notFree()){
+    redistribute();
+    liberate();
+  }
+  &lt;/div&gt;
+  &lt;/body&gt;&lt;/html&gt;
+--&gt;</div>
+
+<div class="deck-frame">
+
+  <div class="top-bar">
+    <div class="line"></div>
+    <div class="dot"></div>
+    <div class="square"></div>
+    <div class="line"></div>
+    <div class="circle-outline"></div>
+    <div class="line"></div>
+  </div>
+
+  <div class="header">
+    <div class="title-block">
+      <div class="eyebrow">CHAPTER · V · 文化语境</div>
+      <div class="main-title">边缘与非主流文化<br/>数字技术构建乌托邦</div>
+      <div class="subtitle">HTML 代码覆盖《黑客帝国》背景——在主流视野之外，一群人用代码重写社会契约；他们相信互联网将扩展地理边疆，重塑权力结构，让自由成为一种可编译的协议。</div>
+    </div>
+    <div class="geo-cluster">
+      <div class="g-circle"></div>
+      <div class="g-square"></div>
+      <div class="g-half"></div>
+    </div>
+  </div>
+
+  <div class="body-grid">
+
+    <div class="left-panel">
+      <div class="visual-card">
+        <div class="visual-card-label">VISUAL METAPHOR</div>
+        <div class="visual-card-code">
+<span class="hl">&lt;!DOCTYPE html&gt;</span>
+<span class="hl">&lt;html</span> lang="zh-CN"<span class="hl">&gt;</span>
+<span class="hl">&lt;head&gt;</span>
+  <span class="hl">&lt;meta</span> charset="UTF-8"<span class="hl">&gt;</span>
+<span class="hl">&lt;/head&gt;</span>
+<span class="hl">&lt;body&gt;</span>
+  <span class="acc">&lt;div class="utopia"&gt;</span>
+    <span class="hl">&lt;p&gt;</span>自由即协议<span class="hl">&lt;/p&gt;</span>
+    <span class="hl">&lt;p&gt;</span>代码即表达<span class="hl">&lt;/p&gt;</span>
+    <span class="hl">&lt;p&gt;</span>协作即革命<span class="hl">&lt;/p&gt;</span>
+    <span class="acc">&lt;pre&gt;</span>
+while(world.caged()){
+  fork(git);
+  commit(hope);
+  push(freedom);
+}
+    <span class="acc">&lt;/pre&gt;</span>
+  <span class="acc">&lt;/div&gt;</span>
+<span class="hl">&lt;/body&gt;</span>
+<span class="hl">&lt;/html&gt;</span>
+<span class="hl">&lt;!-- 乌托邦在编译中 --&gt;</span>
+        </div>
+        <div class="visual-card-metaphor">"代码即法典，协议即制度"<br/>—— 边缘文化以技术文本为宣言，<br/>在主流经济体系之外构建替代秩序</div>
+      </div>
+      <div class="left-quote">
+        "We're not anarchists. We're just the future."
+        <div class="left-quote-author">— 开源文化观察者</div>
+      </div>
+    </div>
+
+    <div class="right-panel">
+      <div class="right-eyebrow">CORE ARGUMENTS · 六点观察</div>
+      <div class="bullet-list">
+
+        <div class="bullet">
+          <div class="bullet-num circle">01</div>
+          <div class="bullet-text">
+            <div class="bullet-title">HTML 代码覆盖《黑客帝国》背景</div>
+            <div class="bullet-desc">数字技术构建乌托邦——代码不仅是工具，更是一种世界观：世界由可读、可改写的文本构成，秩序可以被重新编译。</div>
+          </div>
+        </div>
+
+        <div class="bullet">
+          <div class="bullet-num sq">02</div>
+          <div class="bullet-text">
+            <div class="bullet-title">边缘与非主流文化</div>
+            <div class="bullet-desc">开源起源于反主流的技术共同体，他们拒绝闭源的商业逻辑，以共享与协作对抗私有与垄断。</div>
+          </div>
+        </div>
+
+        <div class="bullet">
+          <div class="bullet-num half">03</div>
+          <div class="bullet-text">
+            <div class="bullet-title">世界很大，人很多，选择迥异</div>
+            <div class="bullet-desc">互联网扩展了地理边疆，让分布式协作成为可能——不同制度偏好、不同协作模式在同一平台上并存竞合。</div>
+          </div>
+        </div>
+
+        <div class="bullet">
+          <div class="bullet-num dia">04</div>
+          <div class="bullet-text">
+            <div class="bullet-title">电子前沿基金会（EFF）：自由的捍卫者</div>
+            <div class="bullet-desc">致力于保护网络空间的言论自由、隐私权与技术创新自由，以法律与工程为武器，对抗过度监控与技术垄断。</div>
+          </div>
+        </div>
+
+        <div class="bullet">
+          <div class="bullet-num circle">05</div>
+          <div class="bullet-text">
+            <div class="bullet-title">两场文化运动：GNU 与开源</div>
+            <div class="bullet-desc">GNU 运动以"自由软件"为旗帜，强调用户对软件的控制权；开源运动以实践为导向，将协作模式制度化、工业化。</div>
+          </div>
+        </div>
+
+        <div class="bullet">
+          <div class="bullet-num sq">06</div>
+          <div class="bullet-text">
+            <div class="bullet-title">改变世界与深远意义</div>
+            <div class="bullet-desc">开源改变了世界的技术基础设施、生产关系与知识传播方式——尽管它仍然是非主流的制度选择，但其深远意义正在被重新评估。</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div class="footer-left">
+      <div class="footer-square"></div>
+      <div class="footer-text">OPEN SOURCE · NEW INSTITUTIONAL ECONOMICS</div>
+      <div class="footer-circle"></div>
+    </div>
+    <div class="footer-divider">
+      <div class="line-s"></div>
+      <div class="footer-page">V / IX</div>
+      <div class="line-s"></div>
+    </div>
+  </div>
+
+</div>
+
+</body></html>

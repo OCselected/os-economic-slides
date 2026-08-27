@@ -1,0 +1,144 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>第 08 期 · 信息规则与网络经济</title><style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0;}
+body{font-family:'Noto Sans SC',sans-serif;background:#F5F0E8;color:#1B3B6B;position:relative;}
+.serif{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;}
+
+/* subtle parchment texture */
+body::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;background:radial-gradient(ellipse at 20% 30%,rgba(139,115,85,0.04) 0%,transparent 50%),radial-gradient(ellipse at 80% 70%,rgba(27,59,107,0.03) 0%,transparent 50%);pointer-events:none;z-index:0;}
+
+/* Bauhaus geometric composition - left panel */
+.geo-circle{position:absolute;left:80px;top:180px;width:280px;height:280px;border-radius:50%;background:#1B3B6B;z-index:2;}
+.geo-circle-inner{position:absolute;left:170px;top:270px;width:100px;height:100px;border-radius:50%;background:#F5F0E8;z-index:3;}
+.geo-square{position:absolute;left:280px;top:120px;width:120px;height:120px;background:#8B7355;z-index:2;}
+.geo-square-small{position:absolute;left:220px;top:580px;width:60px;height:60px;background:#1B3B6B;z-index:2;}
+.geo-line-v{position:absolute;left:400px;top:80px;width:2px;height:740px;background:#1B3B6B;z-index:1;}
+.geo-line-h{position:absolute;left:80px;top:530px;width:340px;height:2px;background:#8B7355;z-index:1;}
+.geo-line-h2{position:absolute;left:80px;top:100px;width:340px;height:2px;background:#1B3B6B;z-index:1;}
+.geo-halfcircle{position:absolute;left:80px;top:460px;width:160px;height:80px;border-radius:80px 80px 0 0;background:#8B7355;z-index:2;}
+.geo-dot{position:absolute;width:12px;height:12px;border-radius:50%;background:#1B3B6B;z-index:3;}
+
+/* Main title block */
+.title-frame{position:absolute;left:500px;top:130px;width:1040px;height:460px;border-top:3px solid #1B3B6B;border-bottom:3px solid #1B3B6B;z-index:5;padding:50px 60px 40px 60px;}
+.main-title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:96px;font-weight:700;color:#1B3B6B;letter-spacing:8px;line-height:1.15;}
+.main-title-gold{display:inline-block;color:#1B3B6B;background:linear-gradient(180deg,rgba(139,115,85,0.15),rgba(139,115,85,0.05));padding:0 6px;border-bottom:2px solid #8B7355;}
+.title-divider{width:80px;height:3px;background:#8B7355;margin:30px 0 24px 0;}
+.subtitle-1{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:26px;color:#555;letter-spacing:4px;font-weight:400;}
+.subtitle-2{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:22px;color:#8B7355;letter-spacing:3px;margin-top:10px;font-weight:400;}
+
+/* Network node graph - right side */
+.network-canvas{position:absolute;right:60px;top:80px;width:200px;height:180px;z-index:4;opacity:0.7;}
+.node{position:absolute;width:8px;height:8px;border-radius:50%;background:#1B3B6B;}
+.node-copper{background:#8B7355;}
+.edge{position:absolute;height:1px;background:#1B3B6B;opacity:0.4;transform-origin:left center;}
+
+/* Vermilion seal */
+.seal{position:absolute;right:60px;bottom:120px;width:88px;height:88px;border-radius:6px;background:#C0392B;display:flex;align-items:center;justify-content:center;z-index:6;box-shadow:2px 2px 0 rgba(0,0,0,0.15);}
+.seal-text{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:22px;color:#F5F0E8;letter-spacing:2px;font-weight:700;text-align:center;line-height:1.1;}
+
+/* Bottom info bar */
+.info-bar{position:absolute;left:500px;bottom:50px;width:1040px;height:60px;border-top:2px solid #1B3B6B;padding-top:16px;display:flex;justify-content:space-between;align-items:flex-start;z-index:5;}
+.info-left{font-size:15px;color:#555;letter-spacing:2px;line-height:1.6;}
+.info-left .bold{color:#1B3B6B;font-weight:700;}
+.info-right{text-align:right;font-size:15px;color:#555;letter-spacing:2px;line-height:1.6;}
+.info-right .bold{color:#1B3B6B;font-weight:700;}
+
+/* Page number decoration */
+.page-num{position:absolute;right:60px;top:50px;font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:3px;z-index:5;}
+.dek-mark{position:absolute;left:80px;bottom:40px;font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;letter-spacing:3px;z-index:5;}
+
+/* Bauhaus corner marks */
+.corner-tl{position:absolute;left:40px;top:40px;width:20px;height:20px;border-top:3px solid #1B3B6B;border-left:3px solid #1B3B6B;z-index:5;}
+.corner-tr{position:absolute;right:40px;top:40px;width:20px;height:20px;border-top:3px solid #1B3B6B;border-right:3px solid #1B3B6B;z-index:5;}
+.corner-bl{position:absolute;left:40px;bottom:40px;width:20px;height:20px;border-bottom:3px solid #1B3B6B;border-left:3px solid #1B3B6B;z-index:5;}
+.corner-br{position:absolute;right:40px;bottom:40px;width:20px;height:20px;border-bottom:3px solid #1B3B6B;border-right:3px solid #1B3B6B;z-index:5;}
+
+/* Vertical text on far left */
+.side-label{position:absolute;left:140px;top:80px;width:20px;height:740px;display:flex;align-items:center;justify-content:center;z-index:5;opacity:0;}
+
+/* Bauhaus accent bar */
+.accent-bar{position:absolute;left:500px;top:100px;width:80px;height:6px;background:#1B3B6B;z-index:5;}
+.accent-bar-copper{position:absolute;left:500px;top:610px;width:200px;height:4px;background:#8B7355;z-index:5;}
+</style></head><body>
+
+<div class="corner-tl"></div>
+<div class="corner-tr"></div>
+<div class="corner-bl"></div>
+<div class="corner-br"></div>
+
+<!-- Bauhaus geometric composition - left panel -->
+<div class="geo-line-h2"></div>
+<div class="geo-line-v"></div>
+<div class="geo-line-h"></div>
+<div class="geo-circle"></div>
+<div class="geo-circle-inner"></div>
+<div class="geo-square"></div>
+<div class="geo-halfcircle"></div>
+<div class="geo-square-small"></div>
+<div class="geo-dot" style="left:60px;top:80px;"></div>
+<div class="geo-dot" style="left:420px;top:460px;width:16px;height:16px;"></div>
+<div class="geo-dot" style="left:380px;top:640px;width:8px;height:8px;background:#8B7355;"></div>
+
+<!-- Network node graph -->
+<div class="network-canvas">
+  <div class="node" style="left:20px;top:30px;"></div>
+  <div class="node" style="left:60px;top:60px;"></div>
+  <div class="node-copper" style="left:100px;top:20px;"></div>
+  <div class="node" style="left:140px;top:70px;"></div>
+  <div class="node-copper" style="left:30px;top:100px;"></div>
+  <div class="node" style="left:90px;top:120px;"></div>
+  <div class="node" style="left:150px;top:130px;"></div>
+  <div class="node-copper" style="left:170px;top:40px;"></div>
+  <div class="node" style="left:60px;top:150px;"></div>
+  <div class="node-copper" style="left:120px;top:90px;"></div>
+  <!-- edges -->
+  <div class="edge" style="left:24px;top:34px;width:40px;transform:rotate(37deg);"></div>
+  <div class="edge" style="left:64px;top:64px;width:40px;transform:rotate(-27deg);"></div>
+  <div class="edge" style="left:104px;top:24px;width:40px;transform:rotate(53deg);"></div>
+  <div class="edge" style="left:34px;top:34px;width:60px;transform:rotate(63deg);"></div>
+  <div class="edge" style="left:34px;top:104px;width:56px;transform:rotate(15deg);"></div>
+  <div class="edge" style="left:94px;top:124px;width:56px;transform:rotate(8deg);"></div>
+  <div class="edge" style="left:144px;top:74px;width:26px;transform:rotate(45deg);"></div>
+  <div class="edge" style="left:64px;top:154px;width:26px;transform:rotate(-60deg);"></div>
+  <div class="edge" style="left:124px;top:94px;width:36px;transform:rotate(30deg);"></div>
+</div>
+
+<div class="page-num">No. 08 / 30</div>
+
+<!-- Accent bars -->
+<div class="accent-bar"></div>
+<div class="accent-bar-copper"></div>
+
+<!-- Main title frame -->
+<div class="title-frame">
+  <div class="main-title">
+    <span class="main-title-gold">信息规则</span><br>
+    <span class="main-title-gold">网络经济</span>
+  </div>
+  <div class="title-divider"></div>
+  <div class="subtitle-1">开源经济学十二讲　·　第九期</div>
+  <div class="subtitle-2">「开源之道」　·　适兕</div>
+</div>
+
+<!-- Vermilion seal -->
+<div class="seal">
+  <div class="seal-text">开<br>源</div>
+</div>
+
+<!-- Bottom info bar -->
+<div class="info-bar">
+  <div class="info-left">
+    <span class="bold">主　讲</span>　适兕　·　社会黑客 / 协作机制设计师<br>
+    <span class="bold">主　题</span>　新制度经济学视角下的开源经济
+  </div>
+  <div class="info-right">
+    <span class="bold">时　间</span>　2024　甲辰年　初冬<br>
+    <span class="bold">场　所</span>　「开源之道」线上讲堂
+  </div>
+</div>
+
+<div class="dek-mark">DECK · 08 · INFORMATION ECONOMY</div>
+
+</body></html>

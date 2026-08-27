@@ -1,0 +1,217 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Wikipedia — 阶梯上的集体智慧</title><style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;}
+body{background:#F5F0E8;color:#1B3B6B;position:relative;}
+
+/* subtle parchment texture */
+body::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;background:
+  radial-gradient(ellipse at 20% 30%, rgba(139,115,85,0.04) 0%, transparent 50%),
+  radial-gradient(ellipse at 80% 70%, rgba(27,59,107,0.03) 0%, transparent 50%);
+  pointer-events:none;z-index:0;}
+
+/* header bar */
+.header{position:absolute;top:48px;left:64px;right:64px;display:flex;align-items:center;justify-content:space-between;z-index:5;}
+.header-line{flex:0 0 auto;width:60px;height:3px;background:#1B3B6B;margin-right:20px;}
+.header-text{font-family:'Noto Serif SC','Songti SC',serif;font-size:15px;letter-spacing:8px;color:#8B7355;font-weight:400;}
+.header-num{font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:3px;}
+
+/* Bauhaus top-right decoration */
+.deco-circle{position:absolute;top:36px;right:36px;width:42px;height:42px;border:2.5px solid #1B3B6B;border-radius:50%;z-index:5;}
+.deco-square{position:absolute;top:42px;right:92px;width:30px;height:30px;background:#8B7355;z-index:5;}
+
+/* main content area */
+.main{position:absolute;top:130px;left:64px;right:64px;bottom:80px;display:flex;z-index:4;}
+
+/* LEFT: staircase sticky notes */
+.stairs{flex:0 0 720px;position:relative;height:690px;}
+.stair-title{position:absolute;top:0;left:0;font-family:'Noto Serif SC','Songti SC',serif;font-size:18px;color:#555;letter-spacing:4px;}
+.stair-title-en{position:absolute;top:28px;left:0;font-size:11px;color:#8B7355;letter-spacing:3px;}
+
+.note{position:absolute;background:#F5F0E8;border:2px solid #1B3B6B;padding:14px 16px 12px 16px;box-shadow:3px 3px 0 rgba(27,59,107,0.12);}
+.note-inner{position:relative;z-index:2;}
+.note-num{font-family:'Noto Serif SC',serif;font-size:11px;color:#8B7355;letter-spacing:2px;margin-bottom:5px;}
+.note-text{font-family:'Noto Serif SC',serif;font-size:13px;color:#1B3B6B;line-height:1.5;font-weight:600;}
+.note-text small{display:block;font-family:'Noto Sans SC',sans-serif;font-size:10px;color:#555;font-weight:400;margin-top:3px;letter-spacing:1px;}
+
+/* Stair positions — bottom-left ascending to top-right */
+.n1{left:0;   bottom:0;   width:210px;}
+.n2{left:180px;bottom:70px;width:210px;}
+.n3{left:360px;bottom:140px;width:220px;}
+.n4{left:200px;bottom:250px;width:220px;background:#F5F0E8;}
+.n5{left:380px;bottom:320px;width:220px;}
+.n6{left:60px; bottom:430px;width:230px;}
+.n7{left:240px;bottom:500px;width:220px;background:#F5F0E8;}
+.n8{left:420px;bottom:570px;width:230px;}
+
+/* staircase line beneath notes */
+.stair-line{position:absolute;left:0;bottom:0;width:720px;height:690px;pointer-events:none;}
+.s-line{position:absolute;background:#1B3B6B;height:2px;}
+.s-vline{position:absolute;background:#1B3B6B;width:2px;}
+
+/* Bauhaus circle behind stairs */
+.bh-circle{position:absolute;left:-40px;bottom:-40px;width:200px;height:200px;border:2.5px solid #8B7355;border-radius:50%;z-index:0;opacity:0.4;}
+.bh-small-circle{position:absolute;right:20px;top:80px;width:60px;height:60px;background:#1B3B6B;border-radius:50%;z-index:0;opacity:0.9;}
+.bh-triangle{position:absolute;left:300px;top:0;width:0;height:0;border-left:30px solid transparent;border-right:30px solid transparent;border-bottom:50px solid #8B7355;opacity:0.35;z-index:0;}
+
+/* RIGHT: content */
+.right{flex:1;padding-left:56px;display:flex;flex-direction:column;justify-content:flex-start;position:relative;}
+.right-deco{width:50px;height:50px;border:2.5px solid #1B3B6B;margin-bottom:24px;}
+.right-deco::after{content:"";position:absolute;width:14px;height:14px;background:#1B3B6B;top:20px;left:30px;}
+
+.subtitle-top{font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;letter-spacing:6px;margin-bottom:10px;}
+.main-title{font-family:'Noto Serif SC','Songti SC',serif;font-size:52px;color:#1B3B6B;line-height:1.15;font-weight:700;margin-bottom:6px;}
+.main-title-en{font-family:'Noto Serif SC',serif;font-size:16px;color:#555;letter-spacing:3px;font-style:italic;margin-bottom:30px;font-weight:400;}
+
+.divider{width:80px;height:2px;background:#8B7355;margin-bottom:26px;}
+
+.bullets{display:flex;flex-direction:column;gap:16px;}
+.bullet{display:flex;align-items:flex-start;gap:14px;}
+.bullet-idx{flex:0 0 auto;width:26px;height:26px;border:1.5px solid #1B3B6B;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif SC',serif;font-size:11px;color:#1B3B6B;font-weight:600;margin-top:3px;}
+.bullet-text{font-size:14px;color:#1B3B6B;line-height:1.6;font-weight:400;}
+.bullet-text strong{color:#1B3B6B;font-weight:700;}
+.bullet-text .accent{color:#8B7355;font-weight:600;}
+.bullet-text .num{font-family:'Noto Serif SC',serif;font-weight:700;color:#1B3B6B;}
+
+/* footer */
+.footer{position:absolute;bottom:32px;left:64px;right:64px;display:flex;align-items:center;justify-content:space-between;z-index:5;}
+.footer-line{flex:1;height:1px;background:#8B7355;opacity:0.3;margin:0 20px;}
+.footer-text{font-size:11px;color:#8B7355;letter-spacing:4px;font-family:'Noto Serif SC',serif;}
+
+/* page number accent square */
+.page-sq{width:10px;height:10px;background:#1B3B6B;display:inline-block;margin-right:10px;vertical-align:middle;}
+</style></head>
+<body>
+
+<div class="deco-square"></div>
+<div class="deco-circle"></div>
+
+<div class="header">
+  <div style="display:flex;align-items:center;">
+    <div class="header-line"></div>
+    <div class="header-text">新 制 度 经 济 学 视 角 · 开 源 经 济 学</div>
+  </div>
+  <div class="header-num">— 第三章 协作 / 集体智慧 —</div>
+</div>
+
+<div class="main">
+
+  <!-- LEFT: staircase sticky notes -->
+  <div class="stairs">
+    <div class="bh-circle"></div>
+    <div class="bh-small-circle"></div>
+    <div class="bh-triangle"></div>
+
+    <div class="stair-title">便 宜 贴 · 阶 梯</div>
+    <div class="stair-title-en">STICKY NOTES AS STAIRCASE</div>
+
+    <!-- Bauhaus geometric lines forming staircase guide -->
+    <div class="stair-line">
+      <div class="s-line" style="left:0;bottom:0;width:720px;"></div>
+      <div class="s-line" style="left:210px;bottom:70px;width:150px;"></div>
+      <div class="s-line" style="left:390px;bottom:140px;width:90px;"></div>
+      <div class="s-line" style="left:230px;bottom:250px;width:220px;"></div>
+      <div class="s-line" style="left:410px;bottom:320px;width:90px;"></div>
+      <div class="s-line" style="left:86px;bottom:430px;width:230px;"></div>
+      <div class="s-line" style="left:266px;bottom:500px;width:180px;"></div>
+      <div class="s-line" style="left:450px;bottom:570px;width:200px;"></div>
+      <div class="s-line" style="left:650px;bottom:570px;width:70px;"></div>
+    </div>
+
+    <div class="note n1">
+      <div class="note-inner">
+        <div class="note-num">STEP 01</div>
+        <div class="note-text">协作的起点<small>从一张便签开始</small></div>
+      </div>
+    </div>
+    <div class="note n2">
+      <div class="note-inner">
+        <div class="note-num">STEP 02</div>
+        <div class="note-text">集体智慧的小步积累<small>每一次编辑都是台阶</small></div>
+      </div>
+    </div>
+    <div class="note n3">
+      <div class="note-inner">
+        <div class="note-num">STEP 03</div>
+        <div class="note-text">阶梯式上升<small>知识的高度由协作撑起</small></div>
+      </div>
+    </div>
+    <div class="note n4">
+      <div class="note-inner">
+        <div class="note-num">STEP 04</div>
+        <div class="note-text">协商与共识<small>词条编写是一门协作艺术</small></div>
+      </div>
+    </div>
+    <div class="note n5">
+      <div class="note-inner">
+        <div class="note-num">STEP 05</div>
+        <div class="note-text">从个人到共同体<small>制度将散沙变为塔</small></div>
+      </div>
+    </div>
+    <div class="note n6">
+      <div class="note-inner">
+        <div class="note-num">STEP 06</div>
+        <div class="note-text">跨语言的全球网络<small>按人口分布的知识图景</small></div>
+      </div>
+    </div>
+    <div class="note n7">
+      <div class="note-inner">
+        <div class="note-num">STEP 07</div>
+        <div class="note-text">训练时代的基石<small>为AI时代积累语料</small></div>
+      </div>
+    </div>
+    <div class="note n8">
+      <div class="note-inner">
+        <div class="note-num">STEP 08</div>
+        <div class="note-text">通往更高处的协作<small>没有一个人能独自登顶</small></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: text content -->
+  <div class="right">
+    <div style="position:relative;">
+      <div class="right-deco"></div>
+    </div>
+    <div class="subtitle-top">WIKIPEDIA</div>
+    <div class="main-title">维 基 百 科</div>
+    <div class="main-title-en">The Encyclopedia of Collective Wisdom</div>
+    <div class="divider"></div>
+
+    <div class="bullets">
+      <div class="bullet">
+        <div class="bullet-idx">01</div>
+        <div class="bullet-text"><strong>整合全球智慧</strong>——以开放词条聚合人类训练数据，<span class="accent">知识基础设施</span></div>
+      </div>
+      <div class="bullet">
+        <div class="bullet-idx">02</div>
+        <div class="bullet-text"><span class="num">2001年1月</span> 发布，仅 <span class="num">10 人</span>、<span class="num">25</span> 词条起步</div>
+      </div>
+      <div class="bullet">
+        <div class="bullet-idx">03</div>
+        <div class="bullet-text">至 <span class="num">2024年4月</span>，<span class="num">6,300 万</span>词条，<span class="num">271,286</span> 活跃编辑</div>
+      </div>
+      <div class="bullet">
+        <div class="bullet-idx">04</div>
+        <div class="bullet-text">语言分布基本<span class="accent">按人口基数</span>排列，中文语区除外</div>
+      </div>
+      <div class="bullet">
+        <div class="bullet-idx">05</div>
+        <div class="bullet-text"><strong>GPT 时代主要训练数据源</strong>之一</div>
+      </div>
+      <div class="bullet">
+        <div class="bullet-idx">06</div>
+        <div class="bullet-text">词条编写的<span class="accent">协商机制</span>是一门重要的协作基石</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-text"><span class="page-sq"></span>CHAPTER 03 · COLLECTIVE WISDOM</div>
+  <div class="footer-line"></div>
+  <div class="footer-text">开 源 之 道 / OPEN SOURCE ECONOMICS</div>
+</div>
+
+</body></html>

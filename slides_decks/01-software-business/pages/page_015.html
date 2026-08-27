@@ -1,0 +1,132 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>互联网的崛起——数字基础设施与开源协作的黎明</title><style>
+html,body{width:1600px;height:900px;overflow:hidden;margin:0;padding:0}
+body{background:#F5F0E8;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;color:#1B3B6B;position:relative}
+.slide{width:1600px;height:900px;position:relative;overflow:hidden}
+
+/* Bauhaus geometric decorations */
+.deco-circle-tl{position:absolute;top:-120px;left:-120px;width:320px;height:320px;border-radius:50%;background:#1B3B6B;opacity:0.08}
+.deco-circle-br{position:absolute;bottom:-160px;right:-160px;width:380px;height:380px;border-radius:50%;border:2px solid #1B3B6B;opacity:0.15}
+.deco-square{position:absolute;top:60px;right:80px;width:60px;height:60px;background:#8B7355;opacity:0.3}
+.deco-line-v{position:absolute;top:0;right:200px;width:1px;height:900px;background:#1B3B6B;opacity:0.08}
+.deco-line-h{position:absolute;left:0;top:720px;width:1600px;height:1px;background:#1B3B6B;opacity:0.12}
+.deco-bar{position:absolute;left:60px;top:60px;width:4px;height:60px;background:#1B3B6B}
+.deco-dot{position:absolute;left:80px;top:80px;width:8px;height:8px;background:#8B7355;border-radius:50%}
+
+/* Title area */
+.slide-title{position:absolute;left:100px;top:120px;font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:48px;font-weight:700;color:#1B3B6B;letter-spacing:2px;line-height:1.2}
+.slide-subtitle{position:absolute;left:104px;top:195px;font-family:'Noto Serif SC',serif;font-size:20px;color:#8B7355;letter-spacing:6px;font-weight:400}
+.slide-rule{position:absolute;left:100px;top:240px;width:200px;height:3px;background:#1B3B6B}
+
+/* Binary flow visualization - central visual metaphor */
+.binary-void{position:absolute;left:980px;top:80px;width:540px;height:580px;background:#1B3B6B;border-radius:4px;overflow:hidden;box-shadow:0 0 0 1px rgba(27,59,107,0.3)}
+.binary-stream{position:absolute;left:0;top:0;width:100%;height:100%;font-family:'Courier New',monospace;font-size:11px;line-height:1.5;color:#F5F0E8;opacity:0.75;padding:20px;word-break:break-all;letter-spacing:1px;white-space:pre-wrap}
+.binary-overlay-top{position:absolute;left:0;top:0;width:100%;height:120px;background:linear-gradient(to bottom,rgba(27,59,107,1),rgba(27,59,107,0))}
+.binary-overlay-bot{position:absolute;left:0;bottom:0;width:100%;height:120px;background:linear-gradient(to top,rgba(27,59,107,1),rgba(27,59,107,0))}
+.void-caption{position:absolute;left:0;bottom:0;width:100%;padding:15px 20px;font-family:'Noto Serif SC',serif;font-size:14px;color:#F5F0E8;letter-spacing:3px;opacity:0.85;background:rgba(27,59,107,0.6);text-align:center}
+.void-circuit-1{position:absolute;top:60px;right:-40px;width:120px;height:120px;border:1px solid rgba(245,240,232,0.2);border-radius:50%}
+.void-circuit-2{position:absolute;top:180px;right:-80px;width:180px;height:180px;border:1px solid rgba(245,240,232,0.15);border-radius:50%}
+
+/* Bullet points */
+.bullets{position:absolute;left:100px;top:300px;width:820px}
+.bullet{display:flex;align-items:flex-start;margin-bottom:38px}
+.bullet-num{flex-shrink:0;width:44px;height:44px;background:#1B3B6B;color:#F5F0E8;font-family:'Noto Serif SC',serif;font-size:18px;display:flex;align-items:center;justify-content:center;margin-right:24px;font-weight:400;letter-spacing:1px}
+.bullet-num.hollow{background:transparent;border:2px solid #1B3B6B;color:#1B3B6B}
+.bullet-num.copper{background:#8B7355;border:none}
+.bullet-text{flex:1;padding-top:6px}
+.bullet-head{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:22px;color:#1B3B6B;font-weight:700;line-height:1.4;margin-bottom:6px}
+.bullet-desc{font-size:14px;color:#555;line-height:1.7;letter-spacing:0.5px}
+.bullet-head .accent{color:#8B7355}
+
+/* Footer */
+.footer-line{position:absolute;left:100px;bottom:60px;width:1400px;height:1px;background:#1B3B6B;opacity:0.15}
+.footer-left{position:absolute;left:100px;bottom:30px;font-size:12px;color:#555;letter-spacing:3px}
+.footer-right{position:absolute;right:100px;bottom:30px;font-size:12px;color:#8B7355;letter-spacing:3px;font-family:'Noto Serif SC',serif}
+
+/* Geometric accents */
+.deco-triangle{position:absolute;top:110px;left:860px;width:0;height:0;border-left:25px solid transparent;border-right:25px solid transparent;border-bottom:42px solid #8B7355;opacity:0.4}
+.deco-small-circle{position:absolute;left:940px;top:680px;width:18px;height:18px;background:#1B3B6B;border-radius:50%}
+.deco-tiny-square{position:absolute;left:970px;top:686px;width:6px;height:6px;background:#8B7355}
+</style></head><body>
+<div class="slide">
+
+  <div class="deco-circle-tl"></div>
+  <div class="deco-circle-br"></div>
+  <div class="deco-square"></div>
+  <div class="deco-line-v"></div>
+  <div class="deco-line-h"></div>
+  <div class="deco-bar"></div>
+  <div class="deco-dot"></div>
+  <div class="deco-triangle"></div>
+  <div class="deco-small-circle"></div>
+  <div class="deco-tiny-square"></div>
+
+  <div class="slide-title">互联网的崛起</div>
+  <div class="slide-subtitle">THE RISE OF THE INTERNET</div>
+  <div class="slide-rule"></div>
+
+  <div class="binary-void">
+    <div class="binary-stream">01001000 01100101 01101100 01101100 01101111
+01010111 01101111 01110010 01101100 01100100
+00100000 01110100 01101000 01100101 01110000 01100001 01110101 01100001 01100011 01101100 01110001
+10101010 01001101 01100101 01110100 01101000 01101111 01100001 01101110 01100111
+01100100 01110101 01110011 01110100 01110010 01101001 01100100 01110111 01101001 01110100 01100101
+01001001 00100000 01101101 01100001 01101011 01100101
+11000011 11001010 11000101 11001111 00100000 11010001 11010111 00100000 11000101 10110000 11000010 11000101
+01110000 01100101 01100101 01110010 01110000 01101000 01101111 01100011 01101011 00100000 01110010 01100101 01100110 01100101 01110010 01110011
+01101000 01110101 01100011 01101010
+00110001 00110000 00110001 00110010 00110011 00110100 00110101 00110110 00110111
+01001100 01100001 01110110 00100000 01101001 01110011 00100000 01101110 01101111 01110100
+01101100 01110010 01100111 01110010 01100101 01110101 01110011 01101000
+01010100 01001111 01000011 01001000 00100000 01101110 01100101 01110100 01110000 01101111 01110010 01101011
+01110000 01110010 01101111 01110100 01101111 01100011 01101111 01101100 01101100 01100001 01110100 01101001 01101111 01101110
+11010000 10100100 11010111 10101101 00100000 11000101 11000011 10000110 11001011 10010111 00100000 11001011 10011101 10101101 10010100 10110011
+01000001 01100011 01110100 01110000 01101001 01110101 01101101 00100000 11001100 01110101 10100001
+01010100 01101000 01100101 00100000 01001001 01101110 01110100 01100101 01110010 01101110 01100101 01110100
+01001110 01101111 01110000 01110101 01101100 01100001 01110100 01101001 01101111 01101110
+00110011 00110000 00110011 00110000 00110001 00110011 00110001 00110000</div>
+    <div class="binary-overlay-top"></div>
+    <div class="binary-overlay-bot"></div>
+    <div class="void-circuit-1"></div>
+    <div class="void-circuit-2"></div>
+    <div class="void-caption">数字虚空 · 高速流动的二进制</div>
+  </div>
+
+  <div class="bullets">
+    <div class="bullet">
+      <div class="bullet-num">01</div>
+      <div class="bullet-text">
+        <div class="bullet-head">互联网 <span class="accent">Killer App</span> —— e-mail 的流行</div>
+        <div class="bullet-desc">电子邮件成为第一批大规模普及的互联网应用，改变了信息传递的速度与成本结构，奠定了分布式协作的技术前提。</div>
+      </div>
+    </div>
+    <div class="bullet">
+      <div class="bullet-num hollow">02</div>
+      <div class="bullet-text">
+        <div class="bullet-head">新闻组 · 邮件列表 · 富文本</div>
+        <div class="bullet-desc">Usenet 新闻组与邮件列表（mailing list）催生了最早的分布式开发协作社区，富文本格式进一步降低了代码审查与知识传递的门槛。</div>
+      </div>
+    </div>
+    <div class="bullet">
+      <div class="bullet-num copper">03</div>
+      <div class="bullet-text">
+        <div class="bullet-head">FTP 加速软件分发</div>
+        <div class="bullet-desc">文件传输协议的普及使软件以零边际成本在全球范围内传播，开源项目借此突破地理边界，形成去中心化的分发网络。</div>
+      </div>
+    </div>
+    <div class="bullet">
+      <div class="bullet-num">04</div>
+      <div class="bullet-text">
+        <div class="bullet-head">集市式的开发模式 <span class="accent">成为可能</span></div>
+        <div class="bullet-desc">Raymond 所言「大教堂与集市」：互联网的即时连接使大量松散贡献者能够围绕共同目标协同迭代，开源生产关系由此确立。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-line"></div>
+  <div class="footer-left">新制度经济学视角下的开源 · 数字基础设施</div>
+  <div class="footer-right">II.</div>
+
+</div>
+</body></html>

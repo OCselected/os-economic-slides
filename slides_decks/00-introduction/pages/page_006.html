@@ -1,0 +1,217 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>讲座规则</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0}
+body{background:#F5F0E8;font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-serif;color:#1B3B6B;position:relative;overflow:hidden}
+
+/* Subtle parchment texture */
+body::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(139,115,85,0.015) 3px,rgba(139,115,85,0.015) 4px),repeating-linear-gradient(90deg,transparent,transparent 5px,rgba(27,59,107,0.01) 5px,rgba(27,59,107,0.01) 6px);pointer-events:none;z-index:0}
+
+.slide{position:absolute;top:0;left:0;width:1600px;height:900px;z-index:1}
+
+/* Top bar */
+.top-bar{position:absolute;top:40px;left:80px;width:1440px;height:1px;background:#1B3B6B;opacity:0.4}
+.top-bar-tag{position:absolute;top:22px;left:80px;font-size:12px;letter-spacing:4px;color:#8B7355;font-weight:400}
+.top-bar-num{position:absolute;top:22px;right:80px;font-size:12px;letter-spacing:2px;color:#555;font-weight:400}
+
+/* Left panel - visual */
+.visual-panel{position:absolute;top:100px;left:80px;width:620px;height:720px}
+
+/* Right panel - text */
+.text-panel{position:absolute;top:120px;right:80px;width:640px;height:700px}
+
+/* Title */
+.title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:68px;font-weight:700;color:#1B3B6B;line-height:1.1;letter-spacing:2px}
+.subtitle{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:20px;color:#8B7355;margin-top:14px;letter-spacing:3px;font-weight:400}
+
+.title-rule{width:80px;height:3px;background:#1B3B6B;margin-top:28px}
+.title-rule-copper{width:30px;height:3px;background:#8B7355;margin-top:8px}
+
+/* Bullets */
+.bullets{margin-top:42px;display:flex;flex-direction:column;gap:18px}
+.bullet{display:flex;align-items:flex-start;gap:18px}
+.bullet-marker{flex-shrink:0;width:28px;height:28px;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.bullet-marker .sq{width:16px;height:16px;background:#1B3B6B}
+.bullet-marker .ci{width:16px;height:16px;border-radius:50%;border:2px solid #1B3B6B}
+.bullet-marker .ln{width:16px;height:2px;background:#1B3B6B}
+.bullet-marker .di{width:16px;height:16px;background:#8B7355;transform:rotate(45deg)}
+.bullet-text{font-size:19px;color:#1B3B6B;line-height:1.5;font-weight:400;flex:1}
+.bullet-text .em{color:#8B7355;font-weight:600}
+.bullet-text .num{font-family:'Noto Serif SC',serif;color:#8B7355;font-weight:700;font-size:16px;margin-right:8px;display:inline-block;min-width:22px}
+
+/* Bottom bar */
+.bottom-bar{position:absolute;bottom:40px;left:80px;width:1440px;height:1px;background:#1B3B6B;opacity:0.4}
+.bottom-tag{position:absolute;bottom:22px;left:80px;font-size:12px;letter-spacing:4px;color:#8B7355;font-weight:400}
+.bottom-meta{position:absolute;bottom:22px;right:80px;font-size:12px;letter-spacing:2px;color:#555;font-weight:400}
+
+/* === Bauhaus Geometric Visual === */
+.scene{position:absolute;top:0;left:0;width:620px;height:720px}
+
+/* Central circle = table */
+.table-outer{position:absolute;left:155px;top:270px;width:310px;height:310px;border-radius:50%;border:2px solid #1B3B6B;opacity:0.7}
+.table-inner{position:absolute;left:195px;top:310px;width:230px;height:230px;border-radius:50%;background:#1B3B6B;opacity:0.06}
+.table-core{position:absolute;left:255px;top:370px;width:110px;height:110px;border-radius:50%;background:#1B3B6B}
+.table-core-ring{position:absolute;left:235px;top:350px;width:150px;height:150px;border-radius:50%;border:1px solid #8B7355}
+
+/* Copper accent line */
+.acc-line-v{position:absolute;left:85px;top:60px;width:1px;height:600px;background:#8B7355;opacity:0.4}
+.acc-line-v2{position:absolute;right:40px;top:40px;width:1px;height:640px;background:#8B7355;opacity:0.3}
+.acc-line-h{position:absolute;left:60px;top:52px;width:200px;height:1px;background:#8B7355;opacity:0.4}
+
+/* Corner square */
+.corner-sq{position:absolute;right:0;top:0;width:50px;height:50px;background:#1B3B6B}
+.corner-sq2{position:absolute;left:0;bottom:0;width:35px;height:35px;border:2px solid #1B3B6B;background:transparent}
+
+/* People around the table - geometric figures */
+.person{position:absolute;display:flex;flex-direction:column;align-items:center}
+.person .head{width:22px;height:22px;border-radius:50%;background:#1B3B6B;margin-bottom:6px}
+.person .body{width:2px;height:30px;background:#1B3B6B}
+.person .base{width:30px;height:2px;background:#1B3B6B;margin-top:2px}
+
+.person-1{left:80px;top:120px}
+.person-2{left:80px;top:310px}
+.person-3{left:80px;top:500px}
+.person-4{left:275px;top:60px}
+.person-5{left:440px;top:60px}
+.person-6{right:20px;top:120px}
+.person-7{right:20px;top:310px}
+.person-8{right:20px;top:500px}
+.person-9{left:275px;bottom:40px}
+.person-10{left:440px;bottom:40px}
+
+.person-copper .head{background:#8B7355}
+.person-copper .body{background:#8B7355}
+.person-copper .base{background:#8B7355}
+
+.person-small .head{width:16px;height:16px}
+.person-small .body{height:20px}
+.person-small .base{width:22px}
+
+/* Connection lines from people to table */
+.connect{position:absolute;height:1px;background:#8B7355;opacity:0.5;transform-origin:left center}
+
+/* Radial marks on table */
+.radial{position:absolute;left:255px;top:370px;width:55px;height:1px;background:#8B7355;opacity:0.6}
+.radial-r1{transform:rotate(0deg);transform-origin:0 0.5px}
+.radial-r2{transform:rotate(60deg);transform-origin:0 0.5px}
+.radial-r3{transform:rotate(120deg);transform-origin:0 0.5px}
+.radial-r4{transform:rotate(180deg);transform-origin:0 0.5px}
+.radial-r5{transform:rotate(240deg);transform-origin:0 0.5px}
+.radial-r6{transform:rotate(300deg);transform-origin:0 0.5px}
+
+/* Decorative small circles */
+.deco-c1{position:absolute;left:60px;top:380px;width:10px;height:10px;border-radius:50%;background:#8B7355;opacity:0.6}
+.deco-c2{position:absolute;right:50px;top:400px;width:8px;height:8px;border-radius:50%;background:#1B3B6B;opacity:0.5}
+.deco-c3{position:absolute;left:320px;top:90px;width:6px;height:6px;border-radius:50%;background:#1B3B6B;opacity:0.4}
+
+/* Visual caption */
+.visual-caption{position:absolute;left:0;bottom:0;width:620px;font-size:13px;color:#8B7355;letter-spacing:2px;font-weight:400}
+.visual-caption-rule{width:40px;height:1px;background:#8B7355;margin-bottom:10px;opacity:0.6}
+
+/* Section label */
+.section-label{font-size:11px;letter-spacing:6px;color:#8B7355;font-weight:400;margin-bottom:14px}
+
+/* Rule number badge */
+.rule-num-badge{position:absolute;top:560px;right:80px;width:60px;height:60px;border:1px solid #1B3B6B;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif SC',serif;font-size:13px;color:#1B3B6B;letter-spacing:1px;font-weight:600;background:#F5F0E8}
+</style></head><body>
+<div class="slide">
+
+  <!-- Top bar -->
+  <div class="top-bar"></div>
+  <div class="top-bar-tag">OPEN SOURCE · INSTITUTE OF ECONOMIC STUDIES</div>
+  <div class="top-bar-num">01 / 12</div>
+
+  <!-- Left visual panel -->
+  <div class="visual-panel">
+    <div class="scene">
+      <!-- Decorative elements -->
+      <div class="acc-line-v"></div>
+      <div class="acc-line-v2"></div>
+      <div class="acc-line-h"></div>
+      <div class="corner-sq"></div>
+      <div class="corner-sq2"></div>
+      <div class="deco-c1"></div>
+      <div class="deco-c2"></div>
+      <div class="deco-c3"></div>
+
+      <!-- Central table -->
+      <div class="table-outer"></div>
+      <div class="table-inner"></div>
+      <div class="table-core-ring"></div>
+      <div class="table-core"></div>
+
+      <!-- Radial marks -->
+      <div class="radial radial-r1"></div>
+      <div class="radial radial-r2"></div>
+      <div class="radial radial-r3"></div>
+      <div class="radial radial-r4"></div>
+      <div class="radial radial-r5"></div>
+      <div class="radial radial-r6"></div>
+
+      <!-- People around table -->
+      <div class="person person-1"><div class="head"></div><div class="body"></div><div class="base"></div></div>
+      <div class="person person-copper person-2"><div class="head"></div><div class="body"></div><div class="base"></div></div>
+      <div class="person person-3"><div class="head"></div><div class="body"></div><div class="base"></div></div>
+      <div class="person person-small person-4"><div class="head"></div><div class="body"></div><div class="base"></div></div>
+      <div class="person person-small person-5 person-copper"><div class="head"></div><div class="body"></div><div class="base"></div></div>
+      <div class="person person-6"><div class="head"></div><div class="body"></div><div class="base"></div></div>
+      <div class="person person-copper person-7"><div class="head"></div><div class="body"></div><div class="base"></div></div>
+      <div class="person person-8"><div class="head"></div><div class="body"></div><div class="base"></div></div>
+      <div class="person person-small person-9"><div class="head"></div><div class="body"></div><div class="base"></div></div>
+      <div class="person person-small person-copper person-10"><div class="head"></div><div class="body"></div><div class="base"></div></div>
+
+      <!-- Visual caption -->
+      <div class="visual-caption">
+        <div class="visual-caption-rule"></div>
+        圆 · 平等 · 协作
+      </div>
+    </div>
+  </div>
+
+  <!-- Right text panel -->
+  <div class="text-panel">
+    <div class="section-label">RULES · 关于本讲座</div>
+    <div class="title">讲座规则</div>
+    <div class="subtitle">RULES OF ENGAGEMENT</div>
+    <div class="title-rule"></div>
+    <div class="title-rule-copper"></div>
+
+    <div class="bullets">
+      <div class="bullet">
+        <div class="bullet-marker"><div class="sq"></div></div>
+        <div class="bullet-text"><span class="num">01</span>关于讲座的规则说明——<span class="em">圆桌无尊卑</span>，每一位在场者皆为平等的对话者</div>
+      </div>
+      <div class="bullet">
+        <div class="bullet-marker"><div class="ci"></div></div>
+        <div class="bullet-text"><span class="num">02</span><span class="em">随时交流或提问</span>，无需等待特定环节，思辨发生于每一刻</div>
+      </div>
+      <div class="bullet">
+        <div class="bullet-marker"><div class="ln"></div></div>
+        <div class="bullet-text"><span class="num">03</span><span class="em">指出错误有奖励</span>，诚实比正确更珍贵，勘误即贡献</div>
+      </div>
+      <div class="bullet">
+        <div class="bullet-marker"><div class="sq"></div></div>
+        <div class="bullet-text"><span class="num">04</span>个人的视角是有限的，<span class="em">协作更佳</span>——多元之见交织方为智识</div>
+      </div>
+      <div class="bullet">
+        <div class="bullet-marker"><div class="di"></div></div>
+        <div class="bullet-text"><span class="num">05</span>项目开始，<span class="em">就没有结束</span>，学术与代码皆在持续迭代之中</div>
+      </div>
+      <div class="bullet">
+        <div class="bullet-marker"><div class="ci"></div></div>
+        <div class="bullet-text"><span class="num">06</span>遵循<span class="em">「开源之道」</span>——开放、协作、共享、递进</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rule number badge -->
+  <div class="rule-num-badge">圆桌</div>
+
+  <!-- Bottom bar -->
+  <div class="bottom-bar"></div>
+  <div class="bottom-tag">新制度经济学视角下的开源 · INSTITUTIONAL ECONOMICS OF OPEN SOURCE</div>
+  <div class="bottom-meta">「开源之道」 · 2024</div>
+
+</div>
+</body></html>

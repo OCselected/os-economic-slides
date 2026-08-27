@@ -1,0 +1,201 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>开源的六种面向</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0;background:#F5F0E8}
+.slide{position:relative;width:1600px;height:900px;background:#F5F0E8;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;color:#1B3B6B}
+/* subtle parchment texture */
+.slide::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;background:repeating-linear-gradient(0deg,transparent 0px,transparent 3px,rgba(139,115,85,0.015) 3px,rgba(139,115,85,0.015) 4px),repeating-linear-gradient(90deg,transparent 0px,transparent 5px,rgba(27,59,107,0.008) 5px,rgba(27,59,107,0.008) 6px);pointer-events:none;z-index:0}
+/* top hairline */
+.top-rule{position:absolute;top:60px;left:80px;width:1440px;height:1px;background:#1B3B6B;opacity:0.4;z-index:1}
+.top-rule-thin{position:absolute;top:66px;left:80px;width:1440px;height:1px;background:#1B3B6B;opacity:0.2;z-index:1}
+/* bottom rule */
+.bot-rule{position:absolute;bottom:60px;left:80px;width:1440px;height:1px;background:#1B3B6B;opacity:0.4;z-index:1}
+.bot-rule-thin{position:absolute;bottom:66px;left:80px;width:1440px;height:1px;background:#1B3B6B;opacity:0.2;z-index:1}
+
+/* header */
+.kicker{position:absolute;top:82px;left:80px;font-size:13px;letter-spacing:6px;color:#8B7355;font-weight:500;z-index:2;text-transform:uppercase}
+.main-title{position:absolute;top:110px;left:80px;font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:60px;font-weight:700;color:#1B3B6B;letter-spacing:2px;line-height:1.1;z-index:2}
+.sub-title{position:absolute;top:188px;left:84px;font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:22px;font-weight:400;color:#8B7355;letter-spacing:1px;z-index:2;font-style:italic}
+
+/* left visual zone - Bauhaus key + heart-house */
+.viz{position:absolute;top:240px;left:60px;width:560px;height:560px;z-index:2}
+
+/* vertical divider */
+.divider{position:absolute;top:240px;left:650px;width:1px;height:560px;background:#1B3B6B;opacity:0.3;z-index:2}
+.divider-dot{position:absolute;top:237px;left:646px;width:9px;height:9px;background:#1B3B6B;z-index:3}
+.divider-dot2{position:absolute;top:798px;left:646px;width:9px;height:9px;background:#8B7355;z-index:3}
+
+/* right content */
+.bullets{position:absolute;top:258px;left:690px;width:830px;z-index:2}
+.bullet{position:relative;padding-left:38px;margin-bottom:26px;font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:24px;color:#1B3B6B;line-height:1.5;letter-spacing:0.5px}
+.bullet-num{position:absolute;left:0;top:2px;font-family:'Noto Serif SC',serif;font-size:16px;color:#8B7355;font-weight:600;letter-spacing:1px}
+.bullet-en{display:block;font-family:'Noto Sans SC',sans-serif;font-size:13px;color:#8B7355;letter-spacing:2px;margin-top:3px;font-weight:400}
+.bullet-line{position:absolute;left:24px;top:14px;width:8px;height:1px;background:#1B3B6B}
+
+/* Bauhaus visual elements - KEY */
+.key-bow{position:absolute;top:170px;left:60px;width:130px;height:130px;border-radius:50%;border:4px solid #1B3B6B;background:transparent;z-index:2}
+.key-bow-inner{position:absolute;top:200px;left:90px;width:70px;height:70px;border-radius:50%;background:#1B3B6B;z-index:2}
+.key-shaft{position:absolute;top:232px;left:180px;width:300px;height:6px;background:#1B3B6B;z-index:2}
+.key-tooth1{position:absolute;top:232px;left:380px;width:6px;height:22px;background:#1B3B6B;z-index:2}
+.key-tooth2{position:absolute;top:232px;left:400px;width:6px;height:30px;background:#1B3B6B;z-index:2}
+.key-head{position:absolute;top:224px;left:450px;width:30px;height:22px;background:#1B3B6B;z-index:2}
+
+/* Copper accent line under key */
+.key-accent{position:absolute;top:244px;left:60px;width:420px;height:2px;background:#8B7355;z-index:1}
+
+/* Heart-house pendant below key */
+.house-body{position:absolute;top:340px;left:150px;width:150px;height:130px;background:#F5F0E8;border:3px solid #8B7355;z-index:2}
+.house-roof{position:absolute;top:300px;left:130px;width:190px;height:44px;background:transparent;z-index:2}
+.house-roof-left{position:absolute;top:300px;left:130px;width:0;height:0;border-left:95px solid #8B7355;border-bottom:44px solid transparent;z-index:2}
+.house-roof-right{position:absolute;top:300px;left:130px;width:0;height:0;border-right:95px solid #8B7355;border-bottom:44px solid transparent;z-index:2}
+.house-roof-fill{position:absolute;top:300px;left:135px;width:180px;height:42px;background:#8B7355;z-index:1}
+
+/* heart shape formed by two quarter circles */
+.heart-left{position:absolute;top:355px;left:175px;width:50px;height:50px;border-radius:50% 50% 0 50%;background:#1B3B6B;z-index:3}
+.heart-right{position:absolute;top:355px;left:215px;width:50px;height:50px;border-radius:50% 50% 50% 0;background:#1B3B6B;z-index:3}
+.heart-tri{position:absolute;top:385px;left:175px;width:0;height:0;border-left:25px solid #1B3B6B;border-right:25px solid #1B3B6B;border-top:25px solid transparent;z-index:3}
+
+/* door window in house */
+.house-window{position:absolute;top:410px;left:200px;width:50px;height:50px;border:2px solid #8B7355;background:transparent;z-index:3}
+.house-window-bar{position:absolute;top:410px;left:224px;width:2px;height:50px;background:#8B7355;z-index:3}
+.house-window-bar2{position:absolute;top:434px;left:200px;width:50px;height:2px;background:#8B7355;z-index:3}
+
+/* chain/pendant connector */
+.chain{position:absolute;top:232px;left:225px;width:3px;height:78px;background:#8B7355;z-index:2}
+.chain-dot{position:absolute;top:305px;left:221px;width:11px;height:11px;border-radius:50%;border:2px solid #8B7355;background:#F5F0E8;z-index:3}
+
+/* small floating circles - bauhaus deco */
+.deco-c1{position:absolute;top:260px;left:400px;width:38px;height:38px;border-radius:50%;background:#1B3B6B;z-index:2;opacity:0.85}
+.deco-c2{position:absolute;top:400px;left:370px;width:22px;height:22px;border-radius:50%;border:2px solid #8B7355;z-index:2}
+.deco-sq{position:absolute;top:490px;left:360px;width:40px;height:40px;background:#1B3B6B;opacity:0.15;z-index:2}
+.deco-line{position:absolute;top:520px;left:60px;width:200px;height:2px;background:#1B3B6B;z-index:2}
+.deco-tri{position:absolute;top:545px;left:100px;width:0;height:0;border-left:20px solid transparent;border-right:20px solid transparent;border-bottom:34px solid #8B7355;z-index:2;opacity:0.7}
+
+/* bottom left metadata */
+.meta-left{position:absolute;bottom:24px;left:80px;font-size:11px;color:#8B7355;letter-spacing:3px;z-index:2}
+.meta-right{position:absolute;bottom:24px;right:80px;font-size:11px;color:#8B7355;letter-spacing:3px;z-index:2}
+
+/* corner marks */
+.corner-tl{position:absolute;top:80px;left:60px;width:18px;height:18px;border-top:1px solid #1B3B6B;border-left:1px solid #1B3B6B;z-index:1}
+.corner-tr{position:absolute;top:80px;right:60px;width:18px;height:18px;border-top:1px solid #1B3B6B;border-right:1px solid #1B3B6B;z-index:1}
+.corner-bl{position:absolute;bottom:80px;left:60px;width:18px;height:18px;border-bottom:1px solid #1B3B6B;border-left:1px solid #1B3B6B;z-index:1}
+.corner-br{position:absolute;bottom:80px;right:60px;width:18px;height:18px;border-bottom:1px solid #1B3B6B;border-right:1px solid #1B3B6B;z-index:1}
+
+/* visual label */
+.viz-label{position:absolute;top:790px;left:120px;width:440px;text-align:center;font-size:12px;color:#8B7355;letter-spacing:4px;z-index:2}
+
+/* small key hole */
+.key-hole{position:absolute;top:228px;left:130px;width:16px;height:24px;border-radius:8px 8px 3px 3px;background:#F5F0E8;z-index:3}
+
+/* pendant ring */
+.pendant-ring{position:absolute;top:278px;left:212px;width:28px;height:28px;border-radius:50%;border:2px solid #8B7355;background:#F5F0E8;z-index:3}
+</style></head><body><div class="slide">
+
+<!-- corner marks -->
+<div class="corner-tl"></div>
+<div class="corner-tr"></div>
+<div class="corner-bl"></div>
+<div class="corner-br"></div>
+
+<!-- rules -->
+<div class="top-rule"></div>
+<div class="top-rule-thin"></div>
+<div class="bot-rule"></div>
+<div class="bot-rule-thin"></div>
+
+<!-- header -->
+<div class="kicker">OPEN SOURCE · SIX FACES</div>
+<div class="main-title">Business is just business.</div>
+<div class="sub-title">开源的六种面向 —— 钥匙与爱心屋挂件：开启商业价值之门与利益归属</div>
+
+<!-- divider -->
+<div class="divider"></div>
+<div class="divider-dot"></div>
+<div class="divider-dot2"></div>
+
+<!-- Bauhaus visual composition: KEY -->
+<div class="viz">
+  <div class="key-bow"></div>
+  <div class="key-bow-inner"></div>
+  <div class="key-hole"></div>
+  <div class="key-shaft"></div>
+  <div class="key-tooth1"></div>
+  <div class="key-tooth2"></div>
+  <div class="key-head"></div>
+  <div class="key-accent"></div>
+
+  <div class="deco-c1"></div>
+  <div class="deco-c2"></div>
+  <div class="deco-sq"></div>
+  <div class="deco-line"></div>
+  <div class="deco-tri"></div>
+
+  <!-- chain connecting key to house pendant -->
+  <div class="chain"></div>
+  <div class="chain-dot"></div>
+  <div class="pendant-ring"></div>
+
+  <!-- house body with heart -->
+  <div class="house-roof-fill"></div>
+  <div class="house-roof-left"></div>
+  <div class="house-roof-right"></div>
+  <div class="house-body"></div>
+
+  <!-- heart inside house -->
+  <div class="heart-left"></div>
+  <div class="heart-right"></div>
+  <div class="heart-tri"></div>
+
+  <div class="house-window"></div>
+  <div class="house-window-bar"></div>
+  <div class="house-window-bar2"></div>
+</div>
+
+<div class="viz-label">A KEY · A HOUSE · A HEART</div>
+
+<!-- bullets -->
+<div class="bullets">
+  <div class="bullet">
+    <span class="bullet-num">Ⅰ.</span>
+    <span class="bullet-line"></span>
+    一种软件的许可方式
+    <span class="bullet-en">A SOFTWARE LICENSING MODEL</span>
+  </div>
+  <div class="bullet">
+    <span class="bullet-num">Ⅱ.</span>
+    <span class="bullet-line"></span>
+    一种社会文化运动
+    <span class="bullet-en">A SOCIO-CULTURAL MOVEMENT</span>
+  </div>
+  <div class="bullet">
+    <span class="bullet-num">Ⅲ.</span>
+    <span class="bullet-line"></span>
+    一种协作方式
+    <span class="bullet-en">A MODE OF COLLABORATION</span>
+  </div>
+  <div class="bullet">
+    <span class="bullet-num">Ⅳ.</span>
+    <span class="bullet-line"></span>
+    一种软件开发工程
+    <span class="bullet-en">A SOFTWARE ENGINEERING PRACTICE</span>
+  </div>
+  <div class="bullet">
+    <span class="bullet-num">Ⅴ.</span>
+    <span class="bullet-line"></span>
+    一种 cyberspace 共同体
+    <span class="bullet-en">A CYBERSPACE COMMUNITY</span>
+  </div>
+  <div class="bullet">
+    <span class="bullet-num">Ⅵ.</span>
+    <span class="bullet-line"></span>
+    一种财产分配方式
+    <span class="bullet-en">A MODE OF PROPERTY DISTRIBUTION</span>
+  </div>
+</div>
+
+<!-- footer meta -->
+<div class="meta-left">OPEN SOURCE LECTURE SERIES</div>
+<div class="meta-right">— 开源之道 —</div>
+
+</div></body></html>

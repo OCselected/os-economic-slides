@@ -1,0 +1,67 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>案例分析之：基金会及财务信托</title><style>html,body{width:1600px;height:900px;overflow:hidden;margin:0;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;color:#1B3B6B;background:#F5F0E8;position:relative;}h1,h2,h3,.heading{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-weight:600;}
+.slide{width:1600px;height:900px;position:relative;background:#F5F0E8;}
+/* subtle parchment texture */
+.slide::before{content:'';position:absolute;top:0;left:0;width:1600px;height:900px;background:repeating-linear-gradient(0deg,transparent 0,transparent 4px,rgba(139,115,85,0.015) 4px,rgba(139,115,85,0.015) 8px),repeating-linear-gradient(90deg,transparent 0,transparent 6px,rgba(27,59,107,0.01) 6px,rgba(27,59,107,0.01) 12px);pointer-events:none;}
+/* top bar */
+.top-bar{position:absolute;top:0;left:0;width:1600px;height:8px;background:#1B3B6B;}
+/* header */
+.header{position:absolute;top:50px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:flex-start;}
+.deck-label{font-size:14px;color:#8B7355;letter-spacing:3px;font-weight:400;}
+.slide-num{font-family:'Noto Serif SC',serif;font-size:14px;color:#555;letter-spacing:2px;}
+/* title area */
+.title-block{position:absolute;top:100px;left:80px;width:780px;}
+.eyebrow{font-size:13px;color:#8B7355;letter-spacing:4px;margin-bottom:16px;}
+.main-title{font-family:'Noto Serif SC',serif;font-size:44px;line-height:1.3;color:#1B3B6B;font-weight:700;letter-spacing:1px;}
+.title-underline{width:120px;height:4px;background:#1B3B6B;margin-top:22px;}
+.title-underline2{width:60px;height:4px;background:#8B7355;margin-top:8px;}
+/* content bullets */
+.content-block{position:absolute;top:340px;left:80px;width:780px;}
+.bullet-item{display:flex;align-items:flex-start;margin-bottom:20px;}
+.bullet-marker{width:10px;height:10px;background:#1B3B6B;margin-top:9px;margin-right:18px;flex-shrink:0;}
+.bullet-marker.copper{background:#8B7355;}
+.bullet-marker.square{width:10px;height:10px;background:#1B3B6B;}
+.bullet-marker.circle{width:10px;height:10px;background:#8B7355;border-radius:50%;}
+.bullet-text{font-size:18px;line-height:1.7;color:#1B3B6B;flex:1;}
+.bullet-text .sub{font-size:15px;color:#555;display:block;margin-top:4px;line-height:1.6;}
+.bullet-text .highlight{color:#8B7355;font-weight:600;}
+/* right visual area - Bauhaus geometric guardian */
+.visual-area{position:absolute;top:100px;right:80px;width:600px;height:720px;}
+/* giant guardian: large circle + square + triangle elements */
+.guardian-circle{position:absolute;top:20px;left:180px;width:280px;height:280px;border-radius:50%;background:#1B3B6B;}
+.guardian-square-body{position:absolute;top:280px;left:230px;width:180px;height:200px;background:#1B3B6B;}
+.guardian-arms-left{position:absolute;top:300px;left:150px;width:80px;height:14px;background:#1B3B6B;}
+.guardian-arms-right{position:absolute;top:300px;right:150px;width:80px;height:14px;background:#1B3B6B;}
+.guardian-legs-left{position:absolute;top:480px;left:240px;width:40px;height:120px;background:#1B3B6B;}
+.guardian-legs-right{position:absolute;top:480px;left:340px;width:40px;height:120px;background:#1B3B6B;}
+/* guardian face elements */
+.guardian-eye-l{position:absolute;top:120px;left:260px;width:20px;height:20px;background:#F5F0E8;border-radius:50%;}
+.guardian-eye-r{position:absolute;top:120px;left:340px;width:20px;height:20px;background:#F5F0E8;border-radius:50%;}
+.guardian-mouth{position:absolute;top:170px;left:285px;width:50px;height:6px;background:#F5F0E8;}
+/* creator figure - small person in front */
+.creator-body{position:absolute;top:520px;left:410px;width:50px;height:80px;background:#8B7355;}
+.creator-head{position:absolute;top:490px;left:420px;width:30px;height:30px;background:#8B7355;border-radius:50%;}
+.creator-arm{position:absolute;top:540px;left:385px;width:30px;height:8px;background:#8B7355;}
+.creator-leg-l{position:absolute;top:600px;left:415px;width:16px;height:60px;background:#8B7355;}
+.creator-leg-r{position:absolute;top:600px;left:440px;width:16px;height:60px;background:#8B7355;}
+/* copper geometric accents */
+.accent-circle-copper{position:absolute;top:60px;right:30px;width:60px;height:60px;border-radius:50%;border:3px solid #8B7355;background:transparent;}
+.accent-square-copper{position:absolute;top:60px;right:120px;width:36px;height:36px;background:#8B7355;}
+.accent-line-v{position:absolute;top:300px;right:10px;width:2px;height:200px;background:#8B7355;}
+.accent-line-v2{position:absolute;top:300px;right:20px;width:2px;height:140px;background:#1B3B6B;}
+.accent-arc{position:absolute;top:10px;right:200px;width:120px;height:120px;border:3px solid #8B7355;border-radius:50%;border-right-color:transparent;border-bottom-color:transparent;}
+/* ground line */
+.ground-line{position:absolute;bottom:180px;left:120px;width:560px;height:2px;background:#555;}
+.ground-line2{position:absolute;bottom:178px;left:120px;width:560px;height:6px;background:repeating-linear-gradient(90deg,#555 0,#555 8px,transparent 8px,transparent 16px);opacity:0.3;}
+/* visual label */
+.visual-label{position:absolute;bottom:110px;left:160px;font-size:12px;color:#555;letter-spacing:2px;font-family:'Noto Serif SC',serif;font-style:italic;}
+.visual-label-line{position:absolute;bottom:140px;left:160px;width:100px;height:1px;background:#8B7355;}
+/* bottom section - metadata */
+.bottom-section{position:absolute;bottom:40px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid #8B7355;padding-top:18px;}
+.bottom-left{font-size:12px;color:#555;letter-spacing:2px;}
+.bottom-center{font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;letter-spacing:3px;}
+.bottom-right{font-size:12px;color:#555;letter-spacing:2px;}
+/* section divider */
+.section-tag{position:absolute;top:250px;left:80px;width:6px;height:30px;background:#8B7355;}
+</style></head><body><div class="slide"><div class="top-bar"></div><div class="header"><div class="deck-label">第 03 期 · 商业模式</div><div class="slide-num">03 / 30</div></div><div class="title-block"><div class="eyebrow">CASE STUDY · 案例分析</div><div class="main-title">基金会及财务信托</div><div class="title-underline"></div><div class="title-underline2"></div></div><div class="section-tag"></div><div class="content-block"><div class="bullet-item"><div class="bullet-marker"></div><div class="bullet-text"><span class="highlight">Linux 基金会</span> — FOSS 治理典范<span class="sub">开放协作的制度基础设施，连接社区、企业与法律框架</span></div></div><div class="bullet-item"><div class="bullet-marker square"></div><div class="bullet-text">1993年 Linus Torvalds 发布 Linux 内核<span class="sub">2000年成立 OSDL（Open Source Development Labs）</span><span class="sub">2007年与 FSG（Free Standards Group）合并为 Linux Foundation</span></div></div><div class="bullet-item"><div class="bullet-marker circle"></div><div class="bullet-text">核心托管项目<span class="sub">Linux · Kubernetes · Node.js · Node-RED · 等</span></div></div><div class="bullet-item"><div class="bullet-marker copper"></div><div class="bullet-text">财务信托模式：捐赠基金、赞助会员、专利池管理<span class="sub">确保项目中立性与长期可持续性</span></div></div></div><div class="visual-area"><div class="accent-arc"></div><div class="accent-circle-copper"></div><div class="accent-square-copper"></div><div class="accent-line-v"></div><div class="accent-line-v2"></div><div class="guardian-circle"></div><div class="guardian-eye-l"></div><div class="guardian-eye-r"></div><div class="guardian-mouth"></div><div class="guardian-arms-left"></div><div class="guardian-arms-right"></div><div class="guardian-square-body"></div><div class="guardian-legs-left"></div><div class="guardian-legs-right"></div><div class="creator-arm"></div><div class="creator-head"></div><div class="creator-body"></div><div class="creator-leg-l"></div><div class="creator-leg-r"></div><div class="ground-line"></div><div class="ground-line2"></div><div class="visual-label">守护者与创造者</div><div class="visual-label-line"></div></div><div class="bottom-section"><div class="bottom-left">开源之道 · NEW INSTITUTIONAL ECONOMICS</div><div class="bottom-center">FOUNDATION AS TRUST</div><div class="bottom-right">SLIDE 03 · 30</div></div></div></body></html>

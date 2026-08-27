@@ -1,0 +1,633 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>开源软件运动</title><style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
+  background: #F5F0E8;
+  font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+  color: #1B3B6B;
+  position: relative;
+}
+
+/* subtle parchment texture */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 1600px; height: 900px;
+  background:
+    radial-gradient(ellipse at 20% 10%, rgba(139,115,85,0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 90%, rgba(27,59,107,0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Top frame line */
+.top-line {
+  position: absolute;
+  top: 60px;
+  left: 80px;
+  width: 1440px;
+  height: 1px;
+  background: #1B3B6B;
+  opacity: 0.4;
+  z-index: 1;
+}
+
+.top-line-thin {
+  position: absolute;
+  top: 66px;
+  left: 80px;
+  width: 1440px;
+  height: 1px;
+  background: #1B3B6B;
+  opacity: 0.2;
+  z-index: 1;
+}
+
+/* Page number / section marker top-right */
+.section-mark {
+  position: absolute;
+  top: 30px;
+  right: 80px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14px;
+  letter-spacing: 6px;
+  color: #8B7355;
+  z-index: 2;
+}
+
+/* Main title area */
+.title-block {
+  position: absolute;
+  top: 110px;
+  left: 80px;
+  z-index: 2;
+}
+
+.title-cn {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 72px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: #1B3B6B;
+  line-height: 1.1;
+}
+
+.title-en {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 16px;
+  letter-spacing: 8px;
+  color: #8B7355;
+  margin-top: 16px;
+  text-transform: uppercase;
+}
+
+.title-rule {
+  width: 120px;
+  height: 3px;
+  background: #1B3B6B;
+  margin-top: 24px;
+}
+
+/* Content bullets area */
+.content-area {
+  position: absolute;
+  top: 340px;
+  left: 80px;
+  width: 800px;
+  z-index: 2;
+}
+
+.bullet {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 36px;
+  position: relative;
+}
+
+.bullet-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1B3B6B;
+  width: 60px;
+  flex-shrink: 0;
+  line-height: 1.2;
+  border-top: 1px solid #1B3B6B;
+  padding-top: 8px;
+}
+
+.bullet-text {
+  flex: 1;
+  padding-top: 8px;
+  border-top: 1px solid #1B3B6B;
+}
+
+.bullet-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1B3B6B;
+  margin-bottom: 6px;
+  letter-spacing: 1px;
+}
+
+.bullet-desc {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+}
+
+.bullet-tag {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #8B7355;
+  border: 1px solid #8B7355;
+  padding: 2px 10px;
+  margin-top: 8px;
+}
+
+/* Right visual — geometric cyberpunk street */
+.street-visual {
+  position: absolute;
+  top: 120px;
+  right: 60px;
+  width: 600px;
+  height: 700px;
+  z-index: 1;
+}
+
+/* Ground line / street */
+.ground {
+  position: absolute;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #1B3B6B;
+}
+
+.ground-thin {
+  position: absolute;
+  bottom: 56px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #1B3B6B;
+  opacity: 0.3;
+}
+
+/* Buildings - geometric rectangles */
+.bldg-1 {
+  position: absolute;
+  bottom: 62px;
+  left: 30px;
+  width: 70px;
+  height: 280px;
+  background: #1B3B6B;
+}
+
+.bldg-1-windows {
+  position: absolute;
+  bottom: 62px;
+  left: 30px;
+  width: 70px;
+  height: 280px;
+  background:
+    repeating-linear-gradient(0deg,
+      transparent 0px, transparent 14px,
+      rgba(245,240,232,0.3) 14px, rgba(245,240,232,0.3) 16px),
+    repeating-linear-gradient(90deg,
+      transparent 0px, transparent 14px,
+      rgba(245,240,232,0.2) 14px, rgba(245,240,232,0.2) 16px);
+  opacity: 0.5;
+}
+
+.bldg-2 {
+  position: absolute;
+  bottom: 62px;
+  left: 110px;
+  width: 55px;
+  height: 350px;
+  background: #1B3B6B;
+  opacity: 0.85;
+}
+
+.bldg-3 {
+  position: absolute;
+  bottom: 62px;
+  left: 175px;
+  width: 80px;
+  height: 220px;
+  background: #8B7355;
+  opacity: 0.8;
+}
+
+.bldg-4 {
+  position: absolute;
+  bottom: 62px;
+  left: 265px;
+  width: 60px;
+  height: 380px;
+  background: #1B3B6B;
+}
+
+.bldg-4-accent {
+  position: absolute;
+  bottom: 62px;
+  left: 265px;
+  width: 60px;
+  height: 380px;
+  background:
+    repeating-linear-gradient(90deg,
+      transparent 0px, transparent 18px,
+      rgba(245,240,232,0.25) 18px, rgba(245,240,232,0.25) 20px);
+}
+
+.bldg-5 {
+  position: absolute;
+  bottom: 62px;
+  left: 335px;
+  width: 90px;
+  height: 180px;
+  background: #1B3B6B;
+  opacity: 0.9;
+}
+
+.bldg-6 {
+  position: absolute;
+  bottom: 62px;
+  left: 435px;
+  width: 50px;
+  height: 320px;
+  background: #8B7355;
+}
+
+.bldg-7 {
+  position: absolute;
+  bottom: 62px;
+  left: 495px;
+  width: 75px;
+  height: 260px;
+  background: #1B3B6B;
+  opacity: 0.8;
+}
+
+/* Neon circles - "signs" */
+.neon-circle-1 {
+  position: absolute;
+  top: 80px;
+  left: 195px;
+  width: 40px;
+  height: 40px;
+  border: 3px solid #8B7355;
+  border-radius: 50%;
+}
+
+.neon-circle-1-inner {
+  position: absolute;
+  top: 93px;
+  left: 208px;
+  width: 14px;
+  height: 14px;
+  background: #8B7355;
+  border-radius: 50%;
+}
+
+.neon-circle-2 {
+  position: absolute;
+  top: 140px;
+  left: 460px;
+  width: 30px;
+  height: 30px;
+  border: 2px solid #1B3B6B;
+  border-radius: 50%;
+}
+
+.neon-circle-3 {
+  position: absolute;
+  top: 200px;
+  left: 80px;
+  width: 20px;
+  height: 20px;
+  background: #1B3B6B;
+  border-radius: 50%;
+}
+
+.neon-circle-4 {
+  position: absolute;
+  top: 340px;
+  left: 430px;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #8B7355;
+  border-radius: 50%;
+}
+
+/* Neon vertical lines - light poles */
+.neon-pole-1 {
+  position: absolute;
+  bottom: 62px;
+  left: 100px;
+  width: 2px;
+  height: 400px;
+  background: #8B7355;
+  opacity: 0.6;
+}
+
+.neon-pole-2 {
+  position: absolute;
+  bottom: 62px;
+  left: 325px;
+  width: 2px;
+  height: 420px;
+  background: #8B7355;
+  opacity: 0.6;
+}
+
+.neon-pole-3 {
+  position: absolute;
+  bottom: 62px;
+  left: 590px;
+  width: 2px;
+  height: 380px;
+  background: #8B7355;
+  opacity: 0.6;
+}
+
+/* Neon glow halos */
+.neon-glow-1 {
+  position: absolute;
+  top: 75px;
+  left: 185px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139,115,85,0.15) 0%, transparent 70%);
+}
+
+.neon-glow-2 {
+  position: absolute;
+  top: 135px;
+  left: 455px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(27,59,107,0.12) 0%, transparent 70%);
+}
+
+/* Horizontal neon bar signs */
+.neon-bar-1 {
+  position: absolute;
+  top: 300px;
+  left: 175px;
+  width: 80px;
+  height: 4px;
+  background: #8B7355;
+}
+
+.neon-bar-2 {
+  position: absolute;
+  top: 250px;
+  left: 435px;
+  width: 50px;
+  height: 3px;
+  background: #1B3B6B;
+  opacity: 0.6;
+}
+
+.neon-bar-3 {
+  position: absolute;
+  top: 400px;
+  left: 30px;
+  width: 70px;
+  height: 3px;
+  background: #1B3B6B;
+  opacity: 0.5;
+}
+
+/* Distant skyline (above main buildings) */
+.skyline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  border-bottom: 1px solid #1B3B6B;
+  opacity: 0.15;
+  background:
+    repeating-linear-gradient(90deg,
+      #1B3B6B 0px, #1B3B6B 1px,
+      transparent 1px, transparent 30px);
+}
+
+/* Perspective lines from buildings toward vanishing point */
+.perspective-1 {
+  position: absolute;
+  bottom: 62px;
+  left: 290px;
+  width: 320px;
+  height: 1px;
+  background: #1B3B6B;
+  opacity: 0.1;
+}
+
+/* Bottom frame */
+.bottom-line {
+  position: absolute;
+  bottom: 50px;
+  left: 80px;
+  width: 1440px;
+  height: 1px;
+  background: #1B3B6B;
+  opacity: 0.3;
+  z-index: 2;
+}
+
+.bottom-info {
+  position: absolute;
+  bottom: 24px;
+  left: 80px;
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: #8B7355;
+  z-index: 2;
+}
+
+.bottom-right {
+  position: absolute;
+  bottom: 24px;
+  right: 80px;
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: #8B7355;
+  z-index: 2;
+  font-family: 'Noto Serif SC', serif;
+}
+
+/* Geometric corner ornament */
+.corner-sq {
+  position: absolute;
+  top: 80px;
+  left: 80px;
+  width: 12px;
+  height: 12px;
+  background: #1B3B6B;
+  z-index: 3;
+}
+
+.corner-circle {
+  position: absolute;
+  top: 83px;
+  right: 80px;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #8B7355;
+  border-radius: 50%;
+  z-index: 3;
+}
+
+/* Subtitle / metaphor description */
+.metaphor-box {
+  position: absolute;
+  top: 250px;
+  left: 80px;
+  width: 800px;
+  z-index: 2;
+}
+
+.metaphor-label {
+  font-size: 11px;
+  letter-spacing: 5px;
+  color: #8B7355;
+  margin-bottom: 8px;
+}
+
+.metaphor-text {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 15px;
+  color: #555;
+  font-style: italic;
+  line-height: 1.5;
+  letter-spacing: 1px;
+}
+
+/* Year markers along the visual */
+.year-mark {
+  position: absolute;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  color: #8B7355;
+  letter-spacing: 2px;
+  z-index: 3;
+}
+</style></head>
+<body>
+
+<div class="corner-sq"></div>
+<div class="corner-circle"></div>
+
+<div class="top-line"></div>
+<div class="top-line-thin"></div>
+<div class="section-mark">PART · 一</div>
+
+<div class="title-block">
+  <div class="title-cn">开源软件运动</div>
+  <div class="title-en">The Open Source Software Movement</div>
+  <div class="title-rule"></div>
+</div>
+
+<div class="metaphor-box">
+  <div class="metaphor-label">视觉隐喻</div>
+  <div class="metaphor-text">赛博朋克霓虹街道——开源运动的技术乌托邦背景</div>
+</div>
+
+<div class="content-area">
+  <div class="bullet">
+    <div class="bullet-num">01</div>
+    <div class="bullet-text">
+      <div class="bullet-title">浏览器战争之 Netscape</div>
+      <div class="bullet-desc">Navigator 的市场主导地位与微软 IE 的免费捆绑策略，迫使 Netscape 于 1998 年开放源码——开源运动的商业起点。</div>
+      <div class="bullet-tag">1998 · ORIGIN</div>
+    </div>
+  </div>
+
+  <div class="bullet">
+    <div class="bullet-num">02</div>
+    <div class="bullet-text">
+      <div class="bullet-title">开源的发明（被忽略的主题）</div>
+      <div class="bullet-desc">Bruce Perens 与 Eric S. Raymond 的"术语再造"——从 Free Software 到 Open Source，一场品牌化运动。</div>
+      <div class="bullet-tag">BRAND · REBRANDING</div>
+    </div>
+  </div>
+
+  <div class="bullet">
+    <div class="bullet-num">03</div>
+    <div class="bullet-text">
+      <div class="bullet-title">开源促进会（OSI）</div>
+      <div class="bullet-desc">Open Source Initiative 的成立——为开源建立制度化的认定标准与治理框架。</div>
+      <div class="bullet-tag">1998 · INSTITUTION</div>
+    </div>
+  </div>
+
+  <div class="bullet">
+    <div class="bullet-num">04</div>
+    <div class="bullet-text">
+      <div class="bullet-title">开源的定义（OSD）</div>
+      <div class="bullet-desc">Open Source Definition 十项准则——从源代码可及性到非歧视条款，勾勒开源许可的制度边界。</div>
+      <div class="bullet-tag">DEFINITION · 10 CRITERIA</div>
+    </div>
+  </div>
+</div>
+
+<!-- Right geometric cyberpunk street visual -->
+<div class="street-visual">
+  <div class="skyline"></div>
+
+  <div class="neon-glow-1"></div>
+  <div class="neon-glow-2"></div>
+
+  <div class="neon-circle-3"></div>
+  <div class="neon-bar-3"></div>
+  <div class="neon-circle-1"></div>
+  <div class="neon-circle-1-inner"></div>
+  <div class="neon-circle-2"></div>
+  <div class="neon-bar-1"></div>
+  <div class="neon-bar-2"></div>
+  <div class="neon-circle-4"></div>
+
+  <div class="neon-pole-1"></div>
+  <div class="neon-pole-2"></div>
+  <div class="neon-pole-3"></div>
+
+  <div class="bldg-1"></div>
+  <div class="bldg-1-windows"></div>
+  <div class="bldg-2"></div>
+  <div class="bldg-3"></div>
+  <div class="bldg-4"></div>
+  <div class="bldg-4-accent"></div>
+  <div class="bldg-5"></div>
+  <div class="bldg-6"></div>
+  <div class="bldg-7"></div>
+
+  <div class="perspective-1"></div>
+  <div class="ground"></div>
+  <div class="ground-thin"></div>
+
+  <div class="year-mark" style="top: 530px; left: 50px;">1991</div>
+  <div class="year-mark" style="top: 470px; left: 275px;">1998</div>
+  <div class="year-mark" style="top: 510px; left: 445px;">2001</div>
+</div>
+
+<div class="bottom-line"></div>
+<div class="bottom-info">开源经济学 · 新制度经济学视角</div>
+<div class="bottom-right">SLIDE 03 / 24</div>
+
+</body></html>

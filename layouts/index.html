@@ -285,11 +285,10 @@ body{
   color:var(--cream);
   border-top:1px solid var(--copper);
   display:flex;
-  justify-content:space-between;
+  justify-content:center;
   align-items:center;
-  flex-wrap:wrap;
-  gap:1rem;
-  font-size:0.8rem;
+  text-align:center;
+  font-size:0.85rem;
 }
 .footer a{color:var(--copper);text-decoration:none}
 .footer a:hover{color:var(--cream)}
@@ -310,11 +309,10 @@ body{
   text-transform:uppercase;
   box-shadow:0 2px 8px rgba(0,0,0,0.2);
 }
-.topbar .logo{display:flex;align-items:center;gap:0.6rem}
+.topbar .logo{display:flex;align-items:center;gap:0.6rem;text-decoration:none}
+.topbar .logo a{display:flex;align-items:center}
 .topbar .logo img{height:48px;width:auto}
-.topbar .site-domain{margin-left:0.8rem;font-size:12px;color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
-.topbar .site-domain a{color:var(--muted);text-decoration:none}
-.topbar .site-domain a:hover{color:var(--amber)}
+
 .topbar .brand{font-weight:600;opacity:0.9}
 .topbar .nav{display:flex;gap:1.5rem}
 .topbar .nav a{color:var(--cream);text-decoration:none;opacity:0.8;transition:opacity 0.2s}
@@ -327,11 +325,10 @@ body{
 <body>
 
 <header class="topbar">
-  <div class="logo"><img src="/logo.svg" alt="开源的经济学"></div><span class="site-domain"><a href="https://os-economic.opensourceway.blog/">os-economic.opensourceway.blog</a></span>
+  <div class="logo"><img src="/logo.svg" alt="开源的经济学"/></div>
   <nav class="nav">
-    <a href="#lectures">课程</a>
     <a href="/sponsor/">赞助</a>
-    <a href="https://opensourceway.blog/posts/open-source-economic/12-lectures-of-open-source/">大纲</a>
+    <a href="/acknowledgments/">致谢</a>
   </nav>
 </header>
 
@@ -346,11 +343,7 @@ body{
       从新制度经济学的视角，系统梳理开源软件的生产、许可、商业模式、劳动力市场、
       交易成本、组织治理、文化与政治经济学。
     </p>
-    <div class="hero-meta">
-      <span><strong>12</strong>讲</span>
-      <span><strong>368</strong>张 Slide</span>
-      <span><strong>开源之道</strong>·适兕</span>
-    </div>
+
   </div>
   <div class="hero-right">
     <div class="geo-ring r1"></div>
@@ -398,21 +391,23 @@ body{
   </blockquote>
   <div class="manifesto-text">
     <p><strong>关于本讲</strong></p>
-    <p>本讲座系列由「开源之道」·适兕主创，从新制度经济学的视角系统梳理开源软件
-    的经济本质。内容涵盖 12 个主题，每讲包含 20-40 张 Slide，共 368 张。</p>
-    <p style="margin-top:1rem"><strong>数据源</strong>：
-      <a href="https://github.com/OCselected/markdown-to-slides" style="color:var(--copper)">markdown-to-slides</a> ·
-      <a href="https://opensourceway.blog/posts/open-source-economic/12-lectures-of-open-source/" style="color:var(--copper)">课程大纲</a>
-    </p>
+    <p>本讲座系列由「开源之道」·适兕主创，从新制度经济学的视角，
+    以科斯、威廉姆森、诺斯的制度分析为骨架，系统审视开源软件
+    从生产、许可、商业到治理的每一个环节。</p>
+    <p style="margin-top:1rem">
+    从大教堂与集市的分工悖论，到公共物品的供给困境；从俱乐部品的
+    边界政治，到创新的经济基础——每一讲都是一个独立的问题域，
+    共同构成开源何以可能的制度地图。</p>
+    <p style="margin-top:1rem">
+    本讲座不是对开源技术的科普，也不是对开源运动的颂歌。它追问的是：
+    当市场失灵、政府缺位、企业抽身时，开源如何自我组织？
+    当知识产权被扩张、合规被武器化时，开源如何自处？
+    这些问题的答案不在代码里，而在制度中。</p>
   </div>
 </section>
 
 <footer class="footer">
-  <span>© 2026 开源之道 · 开源经济学</span>
-  <span>
-    <a href="https://opensourceway.blog">opensourceway.blog</a> ·
-    <a href="https://github.com/OCselected/os-economic-slides">GitHub</a>
-  </span>
+  <p>© 2026  <a href="https://opensourceway.blog/">「开源之道」</a>  ·  开源经济学</p>
 </footer>
 
 </body>

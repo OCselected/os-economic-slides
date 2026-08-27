@@ -4,4 +4,5 @@ slides_deck_id: "03-business-model"
 slide_count: 30
 lecture_num: 3
 slug: "03-business-model"
+layout: "single"
 ---

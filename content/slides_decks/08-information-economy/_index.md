@@ -4,4 +4,5 @@ slides_deck_id: "08-information-economy"
 slide_count: 30
 lecture_num: 8
 slug: "08-information-economy"
+layout: "single"
 ---

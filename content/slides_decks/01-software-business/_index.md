@@ -4,4 +4,5 @@ slides_deck_id: "01-software-business"
 slide_count: 30
 lecture_num: 1
 slug: "01-software-business"
+layout: "single"
 ---

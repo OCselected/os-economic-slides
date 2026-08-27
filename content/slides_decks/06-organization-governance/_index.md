@@ -4,4 +4,5 @@ slides_deck_id: "06-organization-governance"
 slide_count: 38
 lecture_num: 6
 slug: "06-organization-governance"
+layout: "single"
 ---

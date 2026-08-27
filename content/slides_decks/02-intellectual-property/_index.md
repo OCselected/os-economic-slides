@@ -4,4 +4,5 @@ slides_deck_id: "02-intellectual-property"
 slide_count: 24
 lecture_num: 2
 slug: "02-intellectual-property"
+layout: "single"
 ---

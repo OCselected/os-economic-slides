@@ -4,4 +4,5 @@ slides_deck_id: "00-introduction"
 slide_count: 52
 lecture_num: 0
 slug: "00-introduction"
+layout: "single"
 ---

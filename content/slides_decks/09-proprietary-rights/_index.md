@@ -4,4 +4,5 @@ slides_deck_id: "09-proprietary-rights"
 slide_count: 28
 lecture_num: 9
 slug: "09-proprietary-rights"
+layout: "single"
 ---

@@ -4,3 +4,4 @@
 *.zip
 slides_designed/
 slides_designed/
+.hugo_build.lock

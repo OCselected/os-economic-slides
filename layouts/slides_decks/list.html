@@ -111,11 +111,14 @@ body{
   background:var(--prussian);border-bottom:1px solid var(--prussian);
 }
 .deck-preview iframe{
-  position:absolute;top:0;left:0;width:1600px;height:900px;
-  border:none;transform-origin:top left;pointer-events:none;
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  border:none;pointer-events:none;
+  contain:strict;
+  transform:translateZ(0);
 }
-.deck-preview iframe{transform:scale(0.2)}
-.deck-card:hover .deck-preview iframe{transform:scale(0.21)}
+.deck-preview iframe::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+}
 .deck-num{
   position:absolute;top:0.4rem;right:0.4rem;z-index:2;
   font-family:'Source Serif 4',serif;font-size:0.65rem;

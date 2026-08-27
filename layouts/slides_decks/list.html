@@ -1,30 +1,201 @@
 {{- $decks := .Site.RegularPages -}}
 {{- $decks = where $decks "Section" "slides_decks" -}}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>酷炫模式 · 开源的经济学</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,600;8..60,700&family=Noto+Serif+SC:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --prussian:#1B3B6B;
+  --cream:#F5F0E8;
+  --ink:#1A1A1A;
+  --copper:#8B7355;
+  --muted:#555555;
+  --amber:#D4A853;
+  --paper:#EDE7DA;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Source Serif 4','Noto Serif SC',Georgia,serif;
+  background:var(--cream);color:var(--ink);line-height:1.7;
+}
+/* ── Topbar (site-wide) ── */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:var(--prussian);
+  padding:0.6rem clamp(1rem,4vw,4rem);
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:0.75rem;color:var(--cream);
+  letter-spacing:0.15em;text-transform:uppercase;
+  box-shadow:0 2px 8px rgba(0,0,0,0.2);
+}
+.topbar .logo{display:flex;align-items:center;text-decoration:none}
+.topbar .logo img{height:36px;width:auto}
+.topbar .nav{display:flex;gap:1.5rem;align-items:center}
+.topbar .nav a{color:var(--cream);text-decoration:none;opacity:0.8;transition:opacity 0.2s}
+.topbar .nav a:hover{opacity:1}
+.topbar .nav .back{
+  border:1px solid var(--copper);padding:0.3rem 0.8rem;border-radius:3px;
+}
 
-<section class="mx-auto max-w-screen-xl px-6 py-8">
-  <div class="flex items-end justify-between mb-8">
-    <div>
-      <h1 class="text-3xl font-bold text-amber-100 mb-1">开源经济学 · 幻灯片</h1>
-      <p class="text-sm text-gray-400">Bauhaus 学术风格 · 12 讲 · 共 350 张 slide</p>
-    </div>
-    <a href="/" class="text-sm text-gray-500 hover:text-amber-400 transition-colors">← 返回主页</a>
+/* ── Hero ── */
+.hero{
+  padding:120px clamp(2rem,5vw,6rem) clamp(3rem,5vh,5rem);
+  background:var(--prussian);color:var(--cream);
+  border-bottom:5px solid var(--copper);
+  text-align:center;position:relative;overflow:hidden;
+}
+.hero::before{
+  content:"";position:absolute;top:-120px;right:-120px;
+  width:400px;height:400px;border-radius:50%;
+  border:2px solid var(--cream);opacity:0.1;
+}
+.hero::after{
+  content:"";position:absolute;bottom:-80px;left:-80px;
+  width:280px;height:280px;border-radius:50%;
+  border:2px solid var(--copper);opacity:0.15;
+}
+.hero h1{
+  font-size:clamp(2rem,5vw,3.2rem);font-weight:700;
+  color:var(--cream);line-height:1.2;margin-bottom:1rem;
+  letter-spacing:-0.02em;
+}
+.hero h1 .accent{
+  display:block;font-style:italic;font-weight:300;
+  font-size:0.4em;color:var(--amber);
+  letter-spacing:0.05em;margin-top:0.6rem;
+}
+.hero .eyebrow{
+  display:inline-block;font-size:0.7rem;font-weight:600;
+  letter-spacing:0.3em;text-transform:uppercase;color:var(--amber);
+  padding:6px 14px;background:rgba(212,168,83,0.08);
+  border:1px solid var(--copper);margin-bottom:1.5rem;
+}
+.hero-desc{
+  font-size:0.95rem;color:var(--copper);max-width:600px;
+  margin:0 auto;font-weight:300;font-style:italic;
+}
+
+/* ── Deck Grid ── */
+.decks{
+  padding:clamp(3rem,6vh,5rem) clamp(2rem,5vw,6rem);
+  max-width:1200px;margin:0 auto;
+}
+.section-header{
+  display:flex;align-items:baseline;justify-content:space-between;
+  flex-wrap:wrap;gap:1rem;
+  margin-bottom:2.5rem;
+  border-bottom:1px solid var(--prussian);
+  padding-bottom:1rem;
+}
+.section-header h2{
+  font-size:1.5rem;color:var(--prussian);font-weight:600;
+}
+.section-header .count{
+  font-size:0.8rem;color:var(--muted);font-style:italic;
+}
+.deck-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
+}
+@media(max-width:900px){.deck-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.deck-grid{grid-template-columns:1fr}}
+
+.deck-card{
+  position:relative;padding:1.6rem 1.4rem 1.3rem;
+  background:var(--paper);border:1px solid var(--prussian);
+  border-top:4px solid var(--prussian);
+  display:flex;flex-direction:column;min-height:180px;
+  text-decoration:none;color:var(--ink);
+  transition:transform 0.2s ease, box-shadow 0.2s ease;
+}
+.deck-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 8px 24px rgba(27,59,107,0.15);
+  border-top-color:var(--copper);
+}
+.deck-num{
+  position:absolute;top:-4px;right:12px;
+  font-family:'Source Serif 4',serif;font-size:0.7rem;
+  font-weight:600;letter-spacing:0.2em;color:var(--prussian);
+  background:var(--cream);padding:0 8px;
+}
+.deck-card h3{
+  font-size:1.05rem;color:var(--prussian);font-weight:600;
+  line-height:1.4;margin-bottom:0.7rem;padding-right:2rem;
+}
+.deck-meta{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-top:auto;padding-top:0.8rem;border-top:1px solid var(--prussian);
+  font-size:0.75rem;color:var(--copper);
+}
+.deck-meta .slides{color:var(--amber);font-weight:600}
+.deck-meta .arrow{
+  font-family:'Source Serif 4',serif;font-size:1.2rem;color:var(--prussian);
+}
+
+/* ── Footer ── */
+.footer{
+  padding:2rem clamp(2rem,5vw,6rem);
+  background:var(--prussian);color:var(--cream);
+  border-top:1px solid var(--copper);
+  display:flex;justify-content:center;align-items:center;
+  text-align:center;font-size:0.85rem;
+}
+.footer a{color:var(--copper);text-decoration:none}
+.footer a:hover{color:var(--cream)}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a href="/" class="logo"><img src="/logo.svg" alt="开源的经济学"/></a>
+  <nav class="nav">
+    <a href="/">首页</a>
+    <a href="/lectures/">讲座</a>
+    <a href="/sponsor/">赞助</a>
+    <a href="/acknowledgments/">致谢</a>
+    <a href="/" class="back">← 返回首页</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <span class="eyebrow">Interactive Mode</span>
+  <h1>
+    酷炫模式 · 幻灯片剧场
+    <span class="accent">The Interactive Deck Experience</span>
+  </h1>
+  <p class="hero-desc">全屏沉浸 · 键盘翻页 · 12 讲 · 350+ 张独立 slide</p>
+</section>
+
+<section class="decks">
+  <div class="section-header">
+    <h2>十二讲 · 幻灯片目录</h2>
+    <span class="count">{{ len $decks }} 讲 · 点击卡片进入播放器</span>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+  <div class="deck-grid">
     {{ range $decks }}
-    <a href="{{ .RelPermalink }}"
-       class="group block rounded-xl border border-white/10 bg-white/5 p-5 hover:border-amber-600/60 hover:bg-white/8 transition-all">
-      <div class="flex items-start justify-between mb-3">
-        <span class="text-xs font-mono text-copper">LECTURE {{ .Params.lecture_num | default "—" }}</span>
-        <span class="text-[10px] text-gray-500">{{ .Params.slide_count }} slides</span>
-      </div>
-      <h2 class="text-lg font-bold text-amber-50 group-hover:text-amber-300 transition-colors mb-1">
-        {{ .Title }}
-      </h2>
+    <a href="{{ .RelPermalink }}" class="deck-card">
+      <span class="deck-num">L {{ .Params.lecture_num | default "—" }}</span>
+      <h3>{{ .Title }}</h3>
       {{ if .Params.subtitle }}
-      <p class="text-xs text-gray-400 leading-relaxed">{{ .Params.subtitle }}</p>
+      <p class="deck-subtitle" style="font-size:0.8rem;color:var(--muted);line-height:1.5;margin-bottom:0.5rem;">{{ .Params.subtitle }}</p>
       {{ end }}
+      <div class="deck-meta">
+        <span class="slides">{{ .Params.slide_count }} slides</span>
+        <span class="arrow">→</span>
+      </div>
     </a>
     {{ end }}
   </div>
 </section>
+
+<footer class="footer">
+  <p>© 2026  <a href="https://opensourceway.blog/">「开源之道」</a>  ·  开源经济学 · 酷炫模式</p>
+</footer>
+</body>
+</html>

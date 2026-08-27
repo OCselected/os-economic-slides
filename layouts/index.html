@@ -328,6 +328,35 @@ body{
 .topbar .nav a{color:var(--cream);text-decoration:none;opacity:0.8;transition:opacity 0.2s}
 .topbar .nav a:hover{opacity:1}
 
+/* Cool-mode button — centered under lecture grid */
+.cool-mode-btn{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  padding:0.7rem 2rem;
+  font-family:'Source Serif 4','Noto Serif SC',serif;
+  font-size:1rem;font-weight:600;
+  color:var(--cream);
+  background:var(--prussian);
+  border:2px solid var(--prussian);
+  border-radius:0;
+  text-decoration:none;
+  letter-spacing:0.08em;
+  transition:all 0.25s ease;
+  box-shadow:4px 4px 0 var(--copper);
+}
+.cool-mode-btn:hover{
+  background:var(--copper);
+  border-color:var(--copper);
+  transform:translate(-2px,-2px);
+  box-shadow:6px 6px 0 var(--prussian);
+  color:var(--cream);
+}
+.cool-mode-btn::before{
+  content:"▶";
+  font-size:0.7rem;
+  color:var(--copper);
+  margin-right:0.3rem;
+}
+
 /* Hero offset for fixed topbar */
 .hero{padding-top:60px}
 </style>
@@ -339,8 +368,7 @@ body{
   <nav class="nav">
     <a href="/sponsor/">赞助</a>
     <a href="/acknowledgments/">致谢</a>
-    <a href="/slides_decks/" style="border:1px solid var(--copper);padding:0.3rem 0.8rem;border-radius:3px;opacity:0.9">幻灯片模式</a>
-  </nav>
+    </nav>
 </header>
 
 <section class="hero">
@@ -389,6 +417,9 @@ body{
     </a>
     {{ end }}
     {{ end }}
+  </div>
+  <div style="text-align:center;margin-top:2.5rem;">
+    <a href="/slides_decks/" class="cool-mode-btn">酷炫模式</a>
   </div>
 </section>
 

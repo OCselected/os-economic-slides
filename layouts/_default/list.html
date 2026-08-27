@@ -100,6 +100,31 @@ body{
 }
 .lecture-row:hover .arrow{color:var(--amber);transform:translateX(4px)}
 
+/* Cool-mode button on lectures page */
+.cool-mode-btn-lectures{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  padding:0.5rem 1.4rem;
+  font-family:'Source Serif 4','Noto Serif SC',serif;
+  font-size:0.85rem;font-weight:600;
+  color:var(--cream);
+  background:var(--prussian);
+  border:2px solid var(--copper);
+  text-decoration:none;
+  letter-spacing:0.08em;
+  transition:all 0.25s ease;
+}
+.cool-mode-btn-lectures:hover{
+  background:var(--copper);
+  color:var(--cream);
+  border-color:var(--amber);
+  box-shadow:3px 3px 0 var(--prussian);
+}
+.cool-mode-btn-lectures::before{
+  content:"▶";
+  font-size:0.6rem;
+  color:var(--amber);
+}
+
 /* ── Manifesto ── */
 .manifesto{
   padding:clamp(3rem,6vh,5rem) clamp(2rem,5vw,6rem);
@@ -147,8 +172,11 @@ body{
 </section>
 
 <section class="lectures">
-  <div class="section-eyebrow">I · 课程目录</div>
-  <div class="lecture-list">
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1.2rem;">
+      <div class="section-eyebrow">I · 课程目录</div>
+      <a href="/slides_decks/" class="cool-mode-btn-lectures">酷炫模式</a>
+    </div>
+    <div class="lecture-list">
 {{ range $idx, $item := .Data.Pages }}
     <a class="lecture-row" href="{{ $item.RelPermalink }}">
       <div class="lecture-num">{{ printf "%02d" $idx }}</div>

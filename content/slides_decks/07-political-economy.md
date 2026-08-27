@@ -1,3 +1,11 @@
+---
+title: "第 07 期 · 商业价值与社会价值：开源的政治经济学"
+subtitle: "包豪斯几何构成（Bauhaus geometric composition）"
+lecture_num: "7"
+slide_count: 26
+slides_deck_id: "07-political-economy"
+---
+
 # [输入给 NotebookLM / AI 图像生成引擎的系统提示/背景信息]
 
 ## 文档用途

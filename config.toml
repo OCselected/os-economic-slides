@@ -2,6 +2,9 @@ baseURL = "https://os-economic.opensourceway.blog/"
 locale = "zh-CN"
 title = "开源的经济学 · 12 讲"
 
+[staticDirs]
+slides_decks = "slides_decks"
+
 [params]
 description = "Open Source Economics — 12 lectures on the institutional economics of open source software"
 prussian = "#1B3B6B"

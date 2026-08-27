@@ -1,3 +1,11 @@
+---
+title: "第 03 期 · 商业模式：规则下的具体操作"
+subtitle: "包豪斯几何构成（Bauhaus geometric composition）"
+lecture_num: "3"
+slide_count: 30
+slides_deck_id: "03-business-model"
+---
+
 # [输入给 NotebookLM / AI 图像生成引擎的系统提示/背景信息]
 
 ## 文档用途

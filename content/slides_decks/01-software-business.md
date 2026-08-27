@@ -1,3 +1,11 @@
+---
+title: "第 01 期 · 软件的生产、分销和消费"
+subtitle: "包豪斯几何构成（Bauhaus geometric composition）"
+lecture_num: "1"
+slide_count: 30
+slides_deck_id: "01-software-business"
+---
+
 # [输入给 NotebookLM / AI 图像生成引擎的系统提示/背景信息]
 
 ## 文档用途

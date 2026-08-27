@@ -1,3 +1,11 @@
+---
+title: "第 08 期 · 信息规则与网络经济"
+subtitle: "包豪斯几何构成（Bauhaus geometric composition）"
+lecture_num: "8"
+slide_count: 30
+slides_deck_id: "08-information-economy"
+---
+
 # [输入给 NotebookLM / AI 图像生成引擎的系统提示/背景信息]
 
 ## 文档用途

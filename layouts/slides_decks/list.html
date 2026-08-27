@@ -1,0 +1,30 @@
+{{- $decks := .Site.RegularPages -}}
+{{- $decks = where $decks "Section" "slides_decks" -}}
+
+<section class="mx-auto max-w-screen-xl px-6 py-8">
+  <div class="flex items-end justify-between mb-8">
+    <div>
+      <h1 class="text-3xl font-bold text-amber-100 mb-1">开源经济学 · 幻灯片</h1>
+      <p class="text-sm text-gray-400">Bauhaus 学术风格 · 12 讲 · 共 350 张 slide</p>
+    </div>
+    <a href="/" class="text-sm text-gray-500 hover:text-amber-400 transition-colors">← 返回主页</a>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    {{ range $decks }}
+    <a href="{{ .RelPermalink }}"
+       class="group block rounded-xl border border-white/10 bg-white/5 p-5 hover:border-amber-600/60 hover:bg-white/8 transition-all">
+      <div class="flex items-start justify-between mb-3">
+        <span class="text-xs font-mono text-copper">LECTURE {{ .Params.lecture_num | default "—" }}</span>
+        <span class="text-[10px] text-gray-500">{{ .Params.slide_count }} slides</span>
+      </div>
+      <h2 class="text-lg font-bold text-amber-50 group-hover:text-amber-300 transition-colors mb-1">
+        {{ .Title }}
+      </h2>
+      {{ if .Params.subtitle }}
+      <p class="text-xs text-gray-400 leading-relaxed">{{ .Params.subtitle }}</p>
+      {{ end }}
+    </a>
+    {{ end }}
+  </div>
+</section>

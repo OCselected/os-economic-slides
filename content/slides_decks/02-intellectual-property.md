@@ -1,3 +1,11 @@
+---
+title: "第 02 期 · 数字时代的知识财产法与开源许可"
+subtitle: "包豪斯几何构成（Bauhaus geometric composition）"
+lecture_num: "2"
+slide_count: 24
+slides_deck_id: "02-intellectual-property"
+---
+
 # [输入给 NotebookLM / AI 图像生成引擎的系统提示/背景信息]
 
 ## 文档用途

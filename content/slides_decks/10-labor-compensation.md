@@ -1,3 +1,11 @@
+---
+title: "第 10 期 · 劳动报酬与财产分配"
+subtitle: "包豪斯几何构成（Bauhaus geometric composition）"
+lecture_num: "10"
+slide_count: 29
+slides_deck_id: "10-labor-compensation"
+---
+
 # [输入给 NotebookLM / AI 图像生成引擎的系统提示/背景信息]
 
 ## 文档用途

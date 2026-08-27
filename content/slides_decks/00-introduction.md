@@ -1,3 +1,11 @@
+---
+title: "第 00 期 · 开源与经济学"
+subtitle: "包豪斯几何构成（Bauhaus geometric composition）"
+lecture_num: "0"
+slide_count: 52
+slides_deck_id: "00-introduction"
+---
+
 # [输入给 NotebookLM / AI 图像生成引擎的系统提示/背景信息]
 
 ## 文档用途

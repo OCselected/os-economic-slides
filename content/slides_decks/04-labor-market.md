@@ -1,3 +1,11 @@
+---
+title: "第 04 期 · 软件开发劳动力市场"
+subtitle: "包豪斯几何构成（Bauhaus geometric composition）"
+lecture_num: "4"
+slide_count: 26
+slides_deck_id: "04-labor-market"
+---
+
 # [输入给 NotebookLM / AI 图像生成引擎的系统提示/背景信息]
 
 ## 文档用途

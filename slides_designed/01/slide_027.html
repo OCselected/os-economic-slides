@@ -1,0 +1,104 @@
+<div class="slide-page designed">
+
+
+<div class="penguin">
+  <div class="penguin-head"></div>
+  <div class="penguin-body"></div>
+  <div class="penguin-belly"></div>
+</div>
+
+<div class="slide-header">
+  <h2>手动画 Gentoo Linux 的构建之旅</h2>
+  <span class="accent">from source · institutional journey</span>
+</div>
+
+<div class="progress-wrap">
+  <div class="progress-bar">
+    <div class="progress-fill"></div>
+  </div>
+  <div class="progress-labels">
+    <span>0% — BOOT</span>
+    <span>STAGE3</span>
+    <span>EMERGE WORLD</span>
+    <span>USE FLAGS</span>
+    <span>KERNEL</span>
+    <span>USERLAND</span>
+    <span>100% — ROOT</span>
+  </div>
+</div>
+
+<div class="steps-grid">
+
+  <div class="step-card">
+    <div class="step-num">STEP 01 — BOOT</div>
+    <div class="step-title">硬件就绪</div>
+    <div class="step-body">U 盘刻录 LiveCD ISO，BIOS/UEFI 引导进入临时系统——一切从零开始。</div>
+    <div class="step-metaphor">↘ 建国前的荒野</div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">STEP 02 — FOUNDATION</div>
+    <div class="step-title">下载 stage3 快照（30MB）</div>
+    <div class="step-body">官方预编译最小镜像，含 <code>bash</code>、<code>coreutils</code>、<code>glibc</code>、<code>Portage</code>。</div>
+    <div class="step-metaphor">↘ "建国元勋"——制度基础</div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">STEP 03 — CHARTER</div>
+    <div class="step-title">配置 Portage：make.conf</div>
+    <div class="step-body">写入 <code>ACCEPT_KEYWORDS</code>、<code>MAKEOPTS</code>、<code>FEATURES</code>——决定什么能装、怎么编译。</div>
+    <div class="step-metaphor">↘ 发行版的"宪章"</div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">STEP 04 — EMERGE</div>
+    <div class="step-title">首次 emerge world</div>
+    <div class="step-body"><code>emerge --sync</code> 同步 ebuild 仓库（数千上游元数据），<code>chroot</code> 后 <code>--newuse --deep --update world</code>。</div>
+    <div class="step-metaphor">↘ 全体项目从头立法</div>
+  </div>
+
+  <div class="step-card is-constitution">
+    <div class="step-num">STEP 05 — USE FLAGS</div>
+    <div class="step-title">USE flags 选择</div>
+    <div class="step-body">同一源码编译出不同形态：<code>+gtk -qt5 +dbus -java</code>——制度选择在此显形。</div>
+    <div class="step-metaphor">↘ 契约的"弹性条款"</div>
+  </div>
+
+  <div class="step-card is-constitution">
+    <div class="step-num">STEP 06 — CONSTITUTION</div>
+    <div class="step-title">内核构建</div>
+    <div class="step-body"><code>genkernel all</code> 或 <code>make menuconfig</code>——从上游选驱动、FS、模块，编译 <code>bzImage</code>。</div>
+    <div class="step-metaphor">↘ 发行版的"宪法"</div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-num">STEP 07 — USERLAND</div>
+    <div class="step-title">用户空间套件</div>
+    <div class="step-body"><code>emerge xorg-server</code> + <code>plasma-meta</code>：递归编译 KDE（~600 依赖包），耗时以小时计。</div>
+    <div class="step-metaphor">↘ 社会基础设施的逐块搭建</div>
+  </div>
+
+  <div class="step-card is-pancake">
+    <div class="step-num">STEP 08 — 包管理哲学光谱</div>
+    <div class="step-body" style="font-size:11px; line-height:1.55;">
+      <strong style="color:var(--cream);">Debian</strong>（预编译 <code style="font-family:'Source Serif 4',Georgia,serif; background:rgba(212,168,83,0.12); color:var(--amber); padding:0 4px; border-radius:2px;">.deb</code>）—— 快速稳定
+      &nbsp;&nbsp;→&nbsp;&nbsp;
+      <strong style="color:var(--cream);">Fedora</strong>（预编译 <code style="font-family:'Source Serif 4',Georgia,serif; background:rgba(212,168,83,0.12); color:var(--amber); padding:0 4px; border-radius:2px;">.rpm</code>）—— 前沿尝鲜
+      &nbsp;&nbsp;→&nbsp;&nbsp;
+      <strong style="color:var(--amber);">Gentoo</strong>（全部源码编译）—— 极致定制
+      &nbsp;&nbsp;·&nbsp;&nbsp; 越接近源码，构建越慢，但定制化和透明度越高。
+    </div>
+  </div>
+
+  <div class="step-card is-conclusion">
+    <div class="step-num">STEP 09 — 制度启示</div>
+    <div class="step-title" style="font-size:11.5px;">发行版 = 一套"制度契约"</div>
+    <div class="step-body">
+      把数千个上游项目的协作秩序固化为可安装的系统；<strong style="color:var(--amber);">USE flags</strong> 是契约的弹性条款，<strong style="color:var(--amber);">内核配置</strong> 是宪法，<strong style="color:var(--amber);">stage tarball</strong> 是建国元勋——每一行 <code>emerge</code> 都是制度选择。
+    </div>
+  </div>
+
+</div>
+
+<div class="page-footer">27 / 30</div>
+</div>

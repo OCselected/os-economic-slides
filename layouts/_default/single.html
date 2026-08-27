@@ -18,7 +18,7 @@
   --paper:#EDE7DA;
   --amber:#D4A853;
 }
-html,body{height:100%;overflow:hidden}
+html{height:100%}body{height:100%;overflow:auto}
 body{
   font-family:'Source Serif 4','Noto Serif SC',Georgia,serif;
   background:#0F1B2D;
@@ -46,7 +46,7 @@ body{
 
 /* ── Header ── */
 .lecture-head{
-  padding:40px clamp(2rem,5vw,6rem) 0.8rem;
+  padding:32px clamp(2rem,5vw,6rem) 0.6rem;
   border-bottom:1px solid rgba(212,168,83,0.15);
 }
 .breadcrumb{
@@ -90,13 +90,12 @@ body{
 
 /* Stage — 16:9, max 1280px, centered */
 #slide-stage{
-  width:100%;height:auto;
+  width:1280px;height:720px;
   max-width:calc(100vw - 4rem);
-  max-height:calc(100vh - 240px);
+  max-height:calc(100vh - 280px);
   aspect-ratio:16/9;
   flex-shrink:0;flex-grow:0;
   overflow:hidden;
-  aspect-ratio:16/9;
   background:var(--prussian);
   border:2px solid var(--copper);border-radius:8px;
   overflow:hidden;position:relative;
@@ -224,11 +223,12 @@ body{
 
 /* ── Fullscreen ── */
 [data-fs="1"] #deck-nav,[data-fs="1"] .lecture-head{display:none}
-[data-fs="1"] #slide-stage{width:90vw;height:80vh;border-color:var(--amber)}
+[data-fs="1"] #slide-stage{width:100vw;height:100vh;max-width:none;max-height:none;border:none;border-radius:0;box-shadow:none;background:var(--prussian)}
 [data-fs="1"] #thumb-strip{
   position:fixed;bottom:0;left:0;right:0;
   background:rgba(15,27,45,0.95);
-  padding:0.5rem 2rem;border-top:1px solid var(--copper);
+  padding:0.4rem 1.5rem;border-top:1px solid var(--copper);
+  z-index:200;
 }
 
 /* ── Slide-type visual differentiation ── */

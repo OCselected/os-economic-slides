@@ -1,5 +1,4 @@
-{{- $decks := .Site.RegularPages -}}
-{{- $decks = where $decks "Section" "slides_decks" -}}
+{{- $decks := .Site.Data.slides_decks.decks -}}
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -23,7 +22,6 @@ body{
   font-family:'Source Serif 4','Noto Serif SC',Georgia,serif;
   background:var(--cream);color:var(--ink);line-height:1.7;
 }
-/* ── Topbar (site-wide) ── */
 .topbar{
   position:fixed;top:0;left:0;right:0;z-index:100;
   background:var(--prussian);
@@ -42,7 +40,6 @@ body{
   border:1px solid var(--copper);padding:0.3rem 0.8rem;border-radius:3px;
 }
 
-/* ── Hero ── */
 .hero{
   padding:120px clamp(2rem,5vw,6rem) clamp(3rem,5vh,5rem);
   background:var(--prussian);color:var(--cream);
@@ -80,7 +77,6 @@ body{
   margin:0 auto;font-weight:300;font-style:italic;
 }
 
-/* ── Deck Grid ── */
 .decks{
   padding:clamp(3rem,6vh,5rem) clamp(2rem,5vw,6rem);
   max-width:1200px;margin:0 auto;
@@ -92,12 +88,8 @@ body{
   border-bottom:1px solid var(--prussian);
   padding-bottom:1rem;
 }
-.section-header h2{
-  font-size:1.5rem;color:var(--prussian);font-weight:600;
-}
-.section-header .count{
-  font-size:0.8rem;color:var(--muted);font-style:italic;
-}
+.section-header h2{font-size:1.5rem;color:var(--prussian);font-weight:600}
+.section-header .count{font-size:0.8rem;color:var(--muted);font-style:italic}
 .deck-grid{
   display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
 }
@@ -137,7 +129,6 @@ body{
   font-family:'Source Serif 4',serif;font-size:1.2rem;color:var(--prussian);
 }
 
-/* ── Footer ── */
 .footer{
   padding:2rem clamp(2rem,5vw,6rem);
   background:var(--prussian);color:var(--cream);
@@ -168,7 +159,7 @@ body{
     酷炫模式 · 幻灯片剧场
     <span class="accent">The Interactive Deck Experience</span>
   </h1>
-  <p class="hero-desc">全屏沉浸 · 键盘翻页 · 12 讲 · 350+ 张独立 slide</p>
+  <p class="hero-desc">全屏沉浸 · 键盘翻页 · 12 讲 · 367 张独立 slide</p>
 </section>
 
 <section class="decks">
@@ -179,14 +170,11 @@ body{
 
   <div class="deck-grid">
     {{ range $decks }}
-    <a href="{{ .RelPermalink }}" class="deck-card">
-      <span class="deck-num">L {{ .Params.lecture_num | default "—" }}</span>
-      <h3>{{ .Title }}</h3>
-      {{ if .Params.subtitle }}
-      <p class="deck-subtitle" style="font-size:0.8rem;color:var(--muted);line-height:1.5;margin-bottom:0.5rem;">{{ .Params.subtitle }}</p>
-      {{ end }}
+    <a href="/slides_decks/{{ .deck_id }}/" class="deck-card">
+      <span class="deck-num">L {{ printf "%02d" .lecture_num }}</span>
+      <h3>{{ .title }}</h3>
       <div class="deck-meta">
-        <span class="slides">{{ .Params.slide_count }} slides</span>
+        <span class="slides">{{ .slide_count }} slides</span>
         <span class="arrow">→</span>
       </div>
     </a>

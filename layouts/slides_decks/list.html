@@ -97,31 +97,40 @@ body{
 @media(max-width:600px){.deck-grid{grid-template-columns:1fr}}
 
 .deck-card{
-  position:relative;padding:1.6rem 1.4rem 1.3rem;
-  background:var(--paper);border:1px solid var(--prussian);
+  position:relative;background:var(--paper);border:1px solid var(--prussian);
   border-top:4px solid var(--prussian);
-  display:flex;flex-direction:column;min-height:180px;
-  text-decoration:none;color:var(--ink);
-  transition:transform 0.2s ease, box-shadow 0.2s ease;
+  display:flex;flex-direction:column;text-decoration:none;color:var(--ink);
+  transition:transform 0.2s ease, box-shadow 0.2s ease, border-top-color 0.2s ease;
 }
 .deck-card:hover{
   transform:translateY(-4px);
   box-shadow:0 8px 24px rgba(27,59,107,0.15);
   border-top-color:var(--copper);
 }
-.deck-num{
-  position:absolute;top:-4px;right:12px;
-  font-family:'Source Serif 4',serif;font-size:0.7rem;
-  font-weight:600;letter-spacing:0.2em;color:var(--prussian);
-  background:var(--cream);padding:0 8px;
+.deck-preview{
+  position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;
+  background:var(--prussian);border-bottom:1px solid var(--prussian);
 }
+.deck-preview iframe{
+  position:absolute;top:0;left:0;width:1600px;height:900px;
+  border:none;transform-origin:top left;pointer-events:none;
+}
+.deck-preview iframe{transform:scale(0.2)}
+.deck-card:hover .deck-preview iframe{transform:scale(0.21)}
+.deck-num{
+  position:absolute;top:0.4rem;right:0.4rem;z-index:2;
+  font-family:'Source Serif 4',serif;font-size:0.65rem;
+  font-weight:600;letter-spacing:0.2em;color:var(--cream);
+  background:rgba(27,59,107,0.9);padding:2px 8px;border-radius:2px;
+}
+.deck-body{padding:1rem 1.2rem 0.9rem}
 .deck-card h3{
-  font-size:1.05rem;color:var(--prussian);font-weight:600;
-  line-height:1.4;margin-bottom:0.7rem;padding-right:2rem;
+  font-size:0.95rem;color:var(--prussian);font-weight:600;
+  line-height:1.35;margin-bottom:0.6rem;
 }
 .deck-meta{
   display:flex;justify-content:space-between;align-items:center;
-  margin-top:auto;padding-top:0.8rem;border-top:1px solid var(--prussian);
+  margin-top:0.6rem;padding-top:0.6rem;border-top:1px solid var(--prussian);
   font-size:0.75rem;color:var(--copper);
 }
 .deck-meta .slides{color:var(--amber);font-weight:600}
@@ -197,11 +206,17 @@ body{
   <div class="deck-grid">
     {{ range $decks }}
     <a href="/slides_decks/{{ .deck_id }}/" class="deck-card">
-      <span class="deck-num">L {{ printf "%02d" (int .lecture_num) }}</span>
-      <h3>{{ .title }}</h3>
-      <div class="deck-meta">
-        <span class="slides">{{ int .slide_count }} slides</span>
-        <span class="arrow">→</span>
+      <div class="deck-preview">
+        <span class="deck-num">L {{ printf "%02d" (int .lecture_num) }}</span>
+        <iframe src="/slides_decks/{{ .deck_id }}/pages/page_001.html"
+                scrolling="no" loading="lazy"></iframe>
+      </div>
+      <div class="deck-body">
+        <h3>{{ .title }}</h3>
+        <div class="deck-meta">
+          <span class="slides">{{ int .slide_count }} slides</span>
+          <span class="arrow">→</span>
+        </div>
       </div>
     </a>
     {{ end }}

@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>赞助 · 开源的经济学</title>
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -15,211 +20,143 @@ body{
   color:var(--cream);
   line-height:1.8;
 }
-
+/* ── Top bar (same as homepage) ── */
 .topbar{
   position:fixed;top:0;left:0;right:0;z-index:100;
   background:rgba(15,27,45,0.95);backdrop-filter:blur(8px);
-  padding:0.6rem clamp(1rem,4vw,4rem);
+  padding:0.8rem clamp(2rem,5vw,6rem);
   display:flex;align-items:center;justify-content:space-between;
   font-size:0.75rem;color:var(--cream);
-  letter-spacing:0.15em;text-transform:uppercase;
-  border-bottom:1px solid rgba(212,168,83,0.2);
-}
-.topbar .logo{display:flex;align-items:center;gap:0.6rem}
-.topbar .logo img{height:32px;width:auto}
-.topbar .nav a{color:var(--cream);text-decoration:none;margin-left:1.5rem;opacity:0.7;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase}
-.topbar .nav a:hover{opacity:1;color:var(--amber)}
-
-.hero{
-  padding:100px clamp(2rem,5vw,6rem) 3rem;
-  text-align:center;
+  letter-spacing:0.2em;text-transform:uppercase;
   border-bottom:1px solid rgba(212,168,83,0.15);
 }
+.topbar .logo{display:flex;align-items:center;text-decoration:none}
+.topbar .logo img{height:32px;width:auto}
+.topbar .nav{display:flex;gap:1.5rem}
+.topbar .nav a{color:var(--cream);text-decoration:none;opacity:0.7}
+.topbar .nav a:hover{opacity:1;color:var(--amber)}
+
+/* ── Hero (same as homepage) ── */
+.hero{
+  padding:120px clamp(2rem,5vw,6rem) clamp(3rem,6vh,5rem);
+  background:var(--prussian);
+  overflow:hidden;position:relative;
+  display:flex;align-items:center;justify-content:center;
+  min-height:400px;
+}
+.hero-inner{max-width:800px;text-align:center}
 .eyebrow{
-  display:inline-block;font-size:0.7rem;
-  font-weight:600;letter-spacing:0.3em;text-transform:uppercase;
+  display:inline-block;font-size:0.7rem;font-weight:600;
+  letter-spacing:0.3em;text-transform:uppercase;
   color:var(--amber);padding:6px 14px;
   background:rgba(212,168,83,0.08);
   border:1px solid var(--copper);
   margin-bottom:1.5rem;
 }
 .hero h1{
-  font-size:clamp(2rem,5vw,3.5rem);font-weight:700;
-  color:var(--cream);line-height:1.2;margin-bottom:1rem;
+  font-size:clamp(2rem,5vw,3.2rem);font-weight:600;
+  color:var(--cream);line-height:1.3;margin-bottom:1rem;
 }
 .hero h1 .accent{
   display:block;font-style:italic;font-weight:300;
-  font-size:0.4em;color:var(--amber);
-  letter-spacing:0.05em;margin-top:1rem;
+  font-size:0.45em;color:var(--amber);
+  letter-spacing:0.05em;margin-top:0.8rem;
 }
 .hero-desc{
-  font-size:1rem;color:var(--muted);
+  font-size:0.95rem;color:var(--copper);
   max-width:600px;margin:0 auto;
-  font-weight:300;font-style:italic;
+  font-weight:300;font-style:italic;line-height:1.7;
 }
 
-.benefits{
-  padding:4rem clamp(2rem,5vw,6rem);
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:2rem;
-}
-@media(max-width:900px){.benefits{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.benefits{grid-template-columns:1fr}}
-
-.benefit{
-  padding:2rem 1.5rem;
-  background:rgba(27,59,107,0.3);
-  border:1px solid var(--copper);
-  border-top:4px solid var(--amber);
-  transition:transform 0.2s, box-shadow 0.2s;
-}
-.benefit:hover{
-  transform:translateY(-4px);
-  box-shadow:0 8px 24px rgba(0,0,0,0.3);
-}
-.benefit-num{
-  font-family:'Source Serif 4',serif;
-  font-size:2.5rem;font-weight:300;
-  color:var(--amber);font-style:italic;
-  line-height:1;margin-bottom:1rem;
-}
-.benefit h3{font-size:1.1rem;font-weight:600;color:var(--cream);margin-bottom:0.8rem;}
-.benefit p{font-size:0.85rem;color:var(--muted);line-height:1.7;}
-.benefit-tags{
-  margin-top:1rem;padding-top:0.8rem;
-  border-top:1px solid rgba(212,168,83,0.2);
-  display:flex;flex-wrap:wrap;gap:0.4rem;
-}
-.benefit-tags span{
-  font-size:0.7rem;color:var(--amber);
-  padding:0.2rem 0.6rem;
-  background:rgba(212,168,83,0.08);
-  border:1px solid var(--copper);
-}
-
-.open-sponsor{padding:4rem clamp(2rem,5vw,6rem);border-top:1px solid var(--copper);border-bottom:1px solid var(--copper);margin-bottom:0}
-.open-body{display:grid;grid-template-columns:1fr 1.5fr;gap:3rem;align-items:start}
-@media(max-width:900px){.open-body{grid-template-columns:1fr}}
-.open-left .lead{font-size:1.2rem;font-weight:600;color:var(--cream);line-height:1.6;margin-bottom:1rem}
-.open-left p{font-size:0.95rem;color:var(--muted);line-height:1.8}
-.open-right{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
-@media(max-width:600px){.open-right{grid-template-columns:1fr}}
-.open-option{
-  padding:1.5rem 1.2rem;
-  background:rgba(27,59,107,0.4);
-  border:1px solid var(--copper);
-  border-left:3px solid var(--amber);
-  display:flex;gap:1rem;align-items:flex-start;
-}
-.opt-icon{
-  font-size:1.6rem;color:var(--amber);
-  font-weight:300;line-height:1;flex-shrink:0;
-}
-.opt-content h4{
-  font-size:0.95rem;color:var(--cream);
-  font-weight:600;margin-bottom:0.4rem;
-}
-.opt-content p{
-  font-size:0.8rem;color:var(--muted);
-  line-height:1.6;
-}
-
-.footer{
-  padding:1.5rem clamp(2rem,5vw,6rem);
-  background:rgba(15,27,45,0.8);
-  color:var(--copper);
-  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;
-  font-size:0.75rem;
-}
-.footer a{color:var(--copper);text-decoration:none;}
-.footer a:hover{color:var(--amber)}
-
-.contact{
-  padding:3rem clamp(2rem,5vw,6rem);
+/* ── Manifesto (same as homepage's manifesto section) ── */
+.open-sponsor{
+  padding:clamp(3rem,6vh,5rem) clamp(2rem,5vw,6rem);
+  background:var(--prussian);color:var(--cream);
   border-top:1px solid var(--copper);
-  text-align:center;
-}
-.contact h2{
-  font-size:clamp(1.5rem,3vw,2rem);
-  color:var(--cream);
-  font-weight:300;
-  letter-spacing:0.08em;
-  margin-bottom:1.2rem;
-}
-.contact h2::after{
-  content:"";display:block;width:48px;height:2px;
-  background:linear-gradient(to right,var(--amber),transparent);
-  margin:0.8rem auto 0;
-}
-.contact p{
-  color:var(--copper);
-  font-size:1rem;
-  line-height:1.8;
-  max-width:600px;margin:0 auto;
-}
-
-.note{
-  color:var(--copper);
-  font-size:0.85rem;
-  letter-spacing:0.15em;
-  text-transform:uppercase;
-  text-align:center;
-  padding:1rem 0 0;
+  border-bottom:1px solid var(--copper);
 }
 .tiers-header{
-  display:flex;align-items:baseline;gap:1.5rem;
+  display:flex;align-items:baseline;gap:1.5rem;flex-wrap:wrap;
   margin-bottom:2.5rem;
   border-bottom:1px solid var(--copper);
   padding-bottom:1rem;
 }
+.tiers-header h2{font-size:1.8rem;color:var(--cream);font-weight:600}
+.tiers-header .note{
+  font-size:0.85rem;color:var(--copper);
+  letter-spacing:0.05em;font-style:italic;
+}
+.open-body{display:grid;grid-template-columns:1fr 1.6fr;gap:3rem;align-items:start}
+@media(max-width:900px){.open-body{grid-template-columns:1fr}}
 .open-left{
   padding:2rem clamp(1.5rem,4vw,4rem);
-  background:rgba(27,59,107,0.3);
-  border-left:2px solid var(--amber);
+  background:rgba(27,59,107,0.4);
+  border-left:3px solid var(--amber);
 }
-.open-left .opt-icon{font-size:1.5rem;margin-bottom:0.8rem;color:var(--amber);}
-.open-left .opt-content h4{color:var(--cream);font-size:1.1rem;font-weight:600;margin-bottom:0.6rem;}
-.open-left .opt-content p{color:var(--copper);font-size:0.9rem;line-height:1.6;}
-.nav a{color:var(--cream);text-decoration:none;font-size:0.75rem;letter-spacing:0.1em;padding:0.6rem 1rem;border-right:1px solid var(--copper);}
-.nav a:first-child{border-left:1px solid var(--copper);}
-.nav a:hover{color:var(--amber);}
+.open-left .lead{font-size:1.15rem;font-weight:600;color:var(--cream);line-height:1.6;margin-bottom:1rem}
+.open-left p{font-size:0.9rem;color:var(--copper);line-height:1.8}
+
+.open-right{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+@media(max-width:600px){.open-right{grid-template-columns:1fr}}
+.open-option{
+  padding:1.5rem 1.2rem;
+  background:rgba(27,59,107,0.3);
+  border:1px solid var(--copper);
+  border-top:3px solid var(--amber);
+  display:flex;gap:1rem;align-items:flex-start;
+}
+.opt-icon{font-size:1.5rem;color:var(--amber);font-weight:300;line-height:1;flex-shrink:0}
+.opt-content h4{font-size:0.95rem;color:var(--cream);font-weight:600;margin-bottom:0.4rem}
+.opt-content p{font-size:0.8rem;color:var(--copper);line-height:1.6}
+
+/* ── Contact (manifesto style) ── */
+.contact{
+  padding:clamp(3rem,6vh,5rem) clamp(2rem,5vw,6rem);
+  background:var(--cream);color:var(--ink);
+  display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;
+}
+@media(max-width:700px){.contact{grid-template-columns:1fr}}
+.contact-quote{
+  font-size:1.2rem;font-style:italic;font-weight:300;
+  line-height:1.6;border-left:3px solid var(--copper);
+  padding-left:1.5rem;color:var(--prussian);
+}
+.contact-quote cite{
+  display:block;margin-top:1rem;font-style:normal;
+  font-size:0.85rem;color:var(--copper);
+}
+.contact-text h2{font-size:1.6rem;color:var(--prussian);font-weight:600;margin-bottom:1rem}
+.contact-text p{font-size:0.9rem;color:var(--muted);line-height:1.8;margin-bottom:1.2rem}
+.contact-text p:last-child{margin-bottom:0}
+
+/* ── Footer (same as homepage) ── */
+.footer{
+  padding:2rem clamp(2rem,5vw,6rem);
+  background:var(--prussian);color:var(--cream);
+  border-top:1px solid var(--copper);
+  display:flex;justify-content:center;align-items:center;
+  text-align:center;font-size:0.85rem;
+}
+.footer a{color:var(--copper);text-decoration:none}
+.footer a:hover{color:var(--cream)}
 </style>
 </head>
 <body>
 
 <header class="topbar">
-  <div class="logo"><img src="/logo.svg" alt="开源的经济学"></div>
+  <a href="/" class="logo"><img src="/logo.svg" alt="开源的经济学"/></a>
   <nav class="nav">
     <a href="/">首页</a>
     <a href="/lectures/">讲座</a>
-    <a href="https://opensourceway.blog/posts/open-source-economic/12-lectures-of-open-source/">课程大纲</a>
+    <a href="/acknowledgments/">致谢</a>
   </nav>
 </header>
 
 <section class="hero">
-  <span class="eyebrow">Support Open Source Economics</span>
-  <h1>赞助「开源之道」·开源的经济学<span class="accent">Sponsor the Economics of Open Source</span></h1>
-  <p class="hero-desc">「开源之道」·开源的经济学是一项长期知识工程——12 讲、368 张 Slide、持续更新。赞助支持者将获得讲座参与和交流权益。</p>
-</section>
-
-<section class="benefits">
-  <div class="benefit">
-    <div class="benefit-num">01</div>
-    <h3>思想交流</h3>
-    <p>加入线下沙龙和线上读书会，与适兕和社区思想者面对面交流。</p>
-    <div class="benefit-tags"><span>线下 meetup</span><span>线上读书会</span></div>
-  </div>
-  <div class="benefit">
-    <div class="benefit-num">02</div>
-    <h3>讲座参与</h3>
-    <p>优先获得讲座席位、提前观看录播、参与课后 Q&amp;A。</p>
-    <div class="benefit-tags"><span>优先席位</span><span>录播 access</span><span>Q&amp;A</span></div>
-  </div>
-  <div class="benefit">
-    <div class="benefit-num">03</div>
-    <h3>知识贡献</h3>
-    <p>你的名字出现在致谢页和贡献者名单中，永久铭刻。</p>
-    <div class="benefit-tags"><span>致谢铭刻</span><span>永久署名</span></div>
+  <div class="hero-inner">
+    <span class="eyebrow">Support Open Source Economics</span>
+    <h1>赞助「开源之道」·开源的经济学<span class="accent">Sponsor the Economics of Open Source</span></h1>
+    <p class="hero-desc">「开源之道」·开源的经济学是一项长期知识工程——12 讲、368 张 Slide、持续更新。赞助是全定制的，不设金额层级，按需而为。</p>
   </div>
 </section>
 
@@ -238,14 +175,14 @@ body{
         <div class="opt-icon">◐</div>
         <div class="opt-content">
           <h4>讲座参与</h4>
-          <p>线下 meetup、线上读书会、讲座 Q&amp;A、录播观看——按需选择，不限次数。</p>
+          <p>线下 meetup、线上读书会、讲座 Q&amp;A、录播观看——按需选择。</p>
         </div>
       </div>
       <div class="open-option">
         <div class="opt-icon">◑</div>
         <div class="opt-content">
           <h4>思想交流</h4>
-          <p>与适兕一对一交流、参与年度深度对谈、加入私享读书会——形式由你定。</p>
+          <p>与适兕一对一交流、参与年度深度对谈、加入私享读书会。</p>
         </div>
       </div>
       <div class="open-option">
@@ -259,7 +196,7 @@ body{
         <div class="opt-icon">◓</div>
         <div class="opt-content">
           <h4>致谢铭刻</h4>
-          <p>你的名字或机构名出现在项目致谢页、README、年度报告中——永久署名，与开源经济学同行。</p>
+          <p>你的名字或机构名出现在项目致谢页、README、年度报告中——永久署名。</p>
         </div>
       </div>
     </div>
@@ -267,13 +204,19 @@ body{
 </section>
 
 <section class="contact">
-  <h2>联系我们</h2>
-  <p>如需了解企业赞助方案、长期合作或定制讲座，请联系「开源之道」·适兕。</p>
+  <div class="contact-quote">
+    &ldquo;知识服务于理解，而非指导。&rdquo;
+    <cite>—— 适兕</cite>
+  </div>
+  <div class="contact-text">
+    <h2>联系我们</h2>
+    <p>如需了解企业赞助方案、长期合作或定制讲座，请联系「开源之道」·适兕。</p>
+    <p>所有赞助权益均以双方约定为准，不预设标准，不设金额门槛。</p>
+  </div>
 </section>
 
 <footer class="footer">
-  <span>© 2026 开源之道 · 开源的经济学</span>
-  <span><a href="https://opensourceway.blog">opensourceway.blog</a></span>
+  <p>© 2026  <a href="https://opensourceway.blog/">「开源之道」</a>  ·  开源经济学</p>
 </footer>
 </body>
 </html>

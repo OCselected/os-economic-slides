@@ -61,7 +61,7 @@ def parse_deck(path):
     header = header_m.group(1).strip() if header_m else ''
 
     slides = []
-    for m in re.finditer(r'## Slide (\d+)\n(.*?)(?=\n## Slide \d+|\Z)', text, re.DOTALL):
+    for m in re.finditer(r'## Slide (\d+)\s*(.*?)(?=\n## Slide \d+|\Z)', text, re.DOTALL):
         slides.append({
             'num': int(m.group(1)),
             'content': m.group(2).strip(),

@@ -2,85 +2,85 @@
   {
     "deck_id": "00-introduction",
     "lecture_num": 0,
-    "title": "[输入给 NotebookLM / AI 图像生成引擎的系统提示/背景信息]",
-    "subtitle": "文档用途",
+    "title": "第 00 期 · 开源与经济学",
+    "subtitle": "互动幻灯片剧场",
     "slide_count": 52
   },
   {
     "deck_id": "01-software-business",
     "lecture_num": 1,
-    "title": "[输入给 NotebookLM / AI 图像生成引擎的系统提示/背景信息]",
-    "subtitle": "文档用途",
+    "title": "第 01 期 · 软件的生产、分销和消费",
+    "subtitle": "互动幻灯片剧场",
     "slide_count": 30
   },
   {
     "deck_id": "02-intellectual-property",
     "lecture_num": 2,
-    "title": "[输入给 NotebookLM / AI 图像生成引擎的系统提示/背景信息]",
-    "subtitle": "文档用途",
+    "title": "第 02 期 · 数字时代的知识财产法与开源许可",
+    "subtitle": "互动幻灯片剧场",
     "slide_count": 24
   },
   {
     "deck_id": "03-business-model",
     "lecture_num": 3,
-    "title": "[输入给 NotebookLM / AI 图像生成引擎的系统提示/背景信息]",
-    "subtitle": "文档用途",
+    "title": "第 03 期 · 商业模式：规则下的具体操作",
+    "subtitle": "互动幻灯片剧场",
     "slide_count": 30
   },
   {
     "deck_id": "04-labor-market",
     "lecture_num": 4,
-    "title": "[输入给 NotebookLM / AI 图像生成引擎的系统提示/背景信息]",
-    "subtitle": "文档用途",
+    "title": "第 04 期 · 软件开发劳动力市场",
+    "subtitle": "互动幻灯片剧场",
     "slide_count": 26
   },
   {
     "deck_id": "05-transaction-cost",
     "lecture_num": 5,
-    "title": "[输入给 NotebookLM / AI 图像生成引擎的系统提示/背景信息]",
-    "subtitle": "文档用途",
+    "title": "第 05 期 · 交易成本与路径依赖",
+    "subtitle": "互动幻灯片剧场",
     "slide_count": 27
   },
   {
     "deck_id": "06-organization-governance",
     "lecture_num": 6,
-    "title": "[输入给 NotebookLM / AI 图像生成引擎的系统提示/背景信息]",
-    "subtitle": "文档用途",
+    "title": "第 06 期 · 组织结构与治理",
+    "subtitle": "互动幻灯片剧场",
     "slide_count": 38
   },
   {
     "deck_id": "07-political-economy",
     "lecture_num": 7,
-    "title": "[输入给 NotebookLM / AI 图像生成引擎的系统提示/背景信息]",
-    "subtitle": "文档用途",
+    "title": "第 07 期 · 商业价值与社会价值：开源的政治经济学",
+    "subtitle": "互动幻灯片剧场",
     "slide_count": 25
   },
   {
     "deck_id": "08-information-economy",
     "lecture_num": 8,
-    "title": "[输入给 NotebookLM / AI 图像生成引擎的系统提示/背景信息]",
-    "subtitle": "文档用途",
+    "title": "第 08 期 · 信息规则与网络经济",
+    "subtitle": "互动幻灯片剧场",
     "slide_count": 30
   },
   {
     "deck_id": "09-proprietary-rights",
     "lecture_num": 9,
-    "title": "[输入给 NotebookLM / AI 图像生成引擎的系统提示/背景信息]",
-    "subtitle": "文档用途",
+    "title": "第 09 期 · 排他权与容他权、比例原则与 copyleft",
+    "subtitle": "互动幻灯片剧场",
     "slide_count": 28
   },
   {
     "deck_id": "10-labor-compensation",
     "lecture_num": 10,
-    "title": "[输入给 NotebookLM / AI 图像生成引擎的系统提示/背景信息]",
-    "subtitle": "文档用途",
+    "title": "第 10 期 · 劳动报酬与财产分配",
+    "subtitle": "互动幻灯片剧场",
     "slide_count": 29
   },
   {
     "deck_id": "11-culture-matters",
     "lecture_num": 11,
-    "title": "[输入给 NotebookLM / AI 图像生成引擎的系统提示/背景信息]",
-    "subtitle": "文档用途",
+    "title": "第 11 期 · 文化的重要作用",
+    "subtitle": "互动幻灯片剧场",
     "slide_count": 28
   }
 ]

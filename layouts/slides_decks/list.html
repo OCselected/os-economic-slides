@@ -171,10 +171,10 @@ body{
   <div class="deck-grid">
     {{ range $decks }}
     <a href="/slides_decks/{{ .deck_id }}/" class="deck-card">
-      <span class="deck-num">L {{ printf "%02d" .lecture_num }}</span>
+      <span class="deck-num">L {{ printf "%02d" (int .lecture_num) }}</span>
       <h3>{{ .title }}</h3>
       <div class="deck-meta">
-        <span class="slides">{{ .slide_count }} slides</span>
+        <span class="slides">{{ int .slide_count }} slides</span>
         <span class="arrow">→</span>
       </div>
     </a>

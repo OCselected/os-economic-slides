@@ -125,9 +125,11 @@ body{
   display:block;margin-top:1rem;font-style:normal;
   font-size:0.85rem;color:var(--copper);
 }
-.contact-text h2{font-size:1.6rem;color:var(--prussian);font-weight:600;margin-bottom:1rem}
-.contact-text p{font-size:0.9rem;color:var(--muted);line-height:1.8;margin-bottom:1.2rem}
-.contact-text p:last-child{margin-bottom:0}
+.contact-text h2{font-size:1.6rem;color:var(--prussian);font-weight:600;margin-bottom:1rem;letter-spacing:0.02em}
+.contact-text .intro{font-size:1rem;color:var(--ink);line-height:1.9;margin-bottom:1rem;font-weight:400}
+.contact-text .intro a{color:var(--amber);text-decoration:none;border-bottom:1px solid var(--copper);padding-bottom:1px;font-weight:600}
+.contact-text .intro a:hover{color:var(--prussian)}
+.contact-text p:last-child{font-size:0.85rem;color:var(--muted);line-height:1.7;margin-bottom:0;font-style:italic}
 
 /* ── Footer (same as homepage) ── */
 .footer{
@@ -175,14 +177,14 @@ body{
         <div class="opt-icon">◐</div>
         <div class="opt-content">
           <h4>讲座参与</h4>
-          <p>线下 meetup、线上读书会、讲座 Q&amp;A、录播观看——按需选择。</p>
+          <p>线下 meetup、讲座 Q&amp;A——按需参与。</p>
         </div>
       </div>
       <div class="open-option">
         <div class="opt-icon">◑</div>
         <div class="opt-content">
           <h4>思想交流</h4>
-          <p>与适兕一对一交流、参与年度深度对谈、加入私享读书会。</p>
+          <p>与适兕一对一交流、参与年度深度对谈。</p>
         </div>
       </div>
       <div class="open-option">
@@ -209,8 +211,8 @@ body{
     <cite>—— 适兕</cite>
   </div>
   <div class="contact-text">
-    <h2>联系我们</h2>
-    <p>如需了解企业赞助方案、长期合作或定制讲座，请联系「开源之道」·适兕。</p>
+    <h2>联系主讲</h2>
+    <p class="intro">如需了解企业赞助方案、长期合作或定制讲座，请联系 <a href="https://opensourceway.blog/posts/the_way_of_open_source/kuosi-2022-find-sponsor/" target="_blank" rel="noopener">「开源之道」·适兕</a>。</p>
     <p>所有赞助权益均以双方约定为准，不预设标准，不设金额门槛。</p>
   </div>
 </section>

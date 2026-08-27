@@ -253,7 +253,7 @@ body{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:3rem;
-  align-items:start;
+  align-items:center;
 }
 @media(max-width:700px){.manifesto{grid-template-columns:1fr}}
 .manifesto-quote{
@@ -263,6 +263,9 @@ body{
   line-height:1.6;
   border-left:3px solid var(--copper);
   padding-left:1.5rem;
+  text-align:center;
+  max-width:540px;
+  margin:0 auto;
 }
 .manifesto-quote cite{
   display:block;
@@ -276,6 +279,13 @@ body{
   line-height:1.8;
   opacity:0.85;
   font-weight:300;
+}
+
+/* ── About heading ── */
+.about-heading{
+  font-size:1.15rem;font-weight:700;color:var(--amber);
+  letter-spacing:0.1em;line-height:1.4;margin-bottom:0.8rem;
+  padding-bottom:0.5rem;border-bottom:1px solid rgba(212,168,83,0.2);
 }
 
 /* ── Footer ── */
@@ -364,7 +374,6 @@ body{
 <section class="lectures-section" id="lectures">
   <div class="section-header">
     <h2>十二讲 · 制度经济学的开源</h2>
-    <span class="count">12 lectures / 368 slides</span>
   </div>
   <div class="grid">
     {{ range sort .Site.RegularPages "Params.lecture_number" }}
@@ -374,7 +383,6 @@ body{
       <h3>{{ .Title }}</h3>
       <p class="card-topics">{{ .Params.topics }}</p>
       <div class="card-meta">
-        <span>{{ .Params.slide_count }} slides</span>
         <span class="arrow">→</span>
       </div>
     </a>
@@ -390,7 +398,7 @@ body{
     <cite>—— 「开源之道」·适兕</cite>
   </blockquote>
   <div class="manifesto-text">
-    <p><strong>关于本讲</strong></p>
+    <h3 class="about-heading">关于本讲</h3>
     <p>本讲座系列由「开源之道」·适兕主创，从新制度经济学的视角，
     以科斯、威廉姆森、诺斯的制度分析为骨架，系统审视开源软件
     从生产、许可、商业到治理的每一个环节。</p>

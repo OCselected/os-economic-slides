@@ -88,10 +88,11 @@ body{
 }
 #deck-section[data-fs="1"]{height:100vh;padding:0;justify-content:center;align-items:center}
 
-/* Stage — 16:9, max 1280px, centered */
+/* Stage — 16:9, scales with viewport height, capped by width */
 #slide-stage{
-  width:1280px;height:720px;
-  max-width:calc(100vw - 4rem);
+  height:calc(100vh - 280px);
+  width:calc((100vh - 280px) * 16 / 9);
+  max-width:calc(100vw - 2rem);
   max-height:calc(100vh - 280px);
   aspect-ratio:16/9;
   flex-shrink:0;flex-grow:0;
@@ -170,11 +171,16 @@ body{
 /* ── Thumb strip ── */
 #thumb-strip{
   display:flex;gap:0.4rem;
-  overflow-x:auto;overflow-y:hidden;
+  overflow-x:scroll;overflow-y:hidden;
   padding:0.4rem 0;
   scrollbar-width:thin;scrollbar-color:var(--copper) transparent;
   flex-shrink:0;max-height:72px;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-gutter:stable;
 }
+#thumb-strip::-webkit-scrollbar{height:6px}
+#thumb-strip::-webkit-scrollbar-track{background:transparent}
+#thumb-strip::-webkit-scrollbar-thumb{background:var(--copper);border-radius:3px}
 .thumb-item{
   flex-shrink:0;cursor:pointer;
   min-width:100px;max-width:140px;height:60px;

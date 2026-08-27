@@ -27,7 +27,7 @@ from model_client import llm  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 DECKS_DIR = ROOT / 'content' / 'slides_decks'
-OUT_DIR = ROOT / 'slides_decks'  # git-tracked (history/diff); deploy copies to public/
+OUT_DIR = ROOT / 'static' / 'slides_decks'  # Hugo copies static/ → public/ verbatim
 
 
 SYSTEM = """You are a slide designer. Generate ONE complete standalone HTML document for a single slide.

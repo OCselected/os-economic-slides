@@ -1,0 +1,217 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>十二次讲座的思路与目标</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0}
+body{font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;background:#F5F0E8;color:#1B3B6B;position:relative}
+.canvas{width:1600px;height:900px;position:relative;overflow:hidden}
+
+/* subtle parchment texture */
+.canvas::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:
+  repeating-linear-gradient(0deg,transparent 0,transparent 3px,rgba(139,115,85,0.02) 3px,rgba(139,115,85,0.02) 4px);
+  pointer-events:none;z-index:0}
+
+/* Top frame */
+.top-bar{position:absolute;top:0;left:0;width:1600px;height:6px;background:#1B3B6B;z-index:2}
+.top-bar-accent{position:absolute;top:0;left:0;width:533px;height:6px;background:#8B7355;z-index:3}
+
+/* Bauhaus decorative elements */
+.deco-circle-1{position:absolute;top:80px;right:80px;width:120px;height:120px;border:3px solid #1B3B6B;border-radius:50%;z-index:1}
+.deco-circle-2{position:absolute;top:110px;right:110px;width:60px;height:60px;background:#8B7355;border-radius:50%;z-index:1}
+.deco-square{position:absolute;top:95px;right:200px;width:30px;height:30px;background:#1B3B6B;z-index:1}
+.deco-line-h{position:absolute;top:200px;left:100px;width:1400px;height:1px;background:#1B3B6B;opacity:0.4;z-index:1}
+.deco-line-h2{position:absolute;bottom:40px;left:100px;width:1400px;height:1px;background:#1B3B6B;opacity:0.4;z-index:1}
+.deco-tri{position:absolute;bottom:60px;left:80px;width:0;height:0;border-left:20px solid transparent;border-right:20px solid transparent;border-bottom:34px solid #8B7355;z-index:1}
+.deco-dot{position:absolute;bottom:62px;left:140px;width:8px;height:8px;background:#1B3B6B;border-radius:50%;z-index:1}
+
+/* Header */
+.header{position:absolute;top:60px;left:100px;z-index:2}
+.lecture-num{font-size:14px;letter-spacing:6px;color:#8B7355;font-weight:500}
+.main-title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:56px;font-weight:700;color:#1B3B6B;margin-top:14px;letter-spacing:4px}
+.sub-title{font-size:18px;color:#555;margin-top:18px;letter-spacing:2px;font-weight:300}
+.sub-divider{width:80px;height:2px;background:#8B7355;margin-top:18px}
+
+/* Visual metaphor area - glove illustration */
+.glove-area{position:absolute;top:290px;left:100px;width:360px;height:440px;z-index:2}
+.glove-title{font-size:13px;letter-spacing:3px;color:#8B7355;margin-bottom:12px;font-weight:500}
+.glove-subtitle{font-family:'Noto Serif SC',serif;font-size:16px;color:#1B3B6B;line-height:1.8;margin-bottom:24px}
+
+/* Leather glove illustration - geometric abstraction */
+.glove-svg{position:relative;width:360px;height:280px}
+.glove-outer{position:absolute;left:20px;top:20px;width:200px;height:240px;border:3px solid #1B3B6B;border-radius:80px 80px 20px 20px}
+.glove-inner{position:absolute;left:50px;top:50px;width:140px;height:190px;border:2px solid #8B7355;border-radius:65px 65px 15px 15px}
+.glove-finger1{position:absolute;left:65px;top:20px;width:18px;height:55px;background:#8B7355;border-radius:8px 8px 0 0}
+.glove-finger2{position:absolute;left:88px;top:15px;width:18px;height:60px;background:#8B7355;border-radius:8px 8px 0 0}
+.glove-finger3{position:absolute;left:111px;top:18px;width:18px;height:58px;background:#8B7355;border-radius:8px 8px 0 0}
+.glove-finger4{position:absolute;left:134px;top:25px;width:18px;height:50px;background:#8B7355;border-radius:8px 8px 0 0}
+.glove-thumb{position:absolute;left:20px;top:70px;width:35px;height:75px;background:#8B7355;border-radius:18px 8px 0 18px;border:2px solid #1B3B6B;border-right:none}
+.glove-stitch1{position:absolute;left:60px;top:90px;width:120px;height:1px;background:#1B3B6B;opacity:0.5}
+.glove-stitch2{position:absolute;left:60px;top:160px;width:120px;height:1px;background:#1B3B6B;opacity:0.5}
+.glove-wrist{position:absolute;left:55px;top:225px;width:130px;height:25px;background:#1B3B6B;border-radius:0 0 10px 10px}
+.glove-label{position:absolute;bottom:0;left:20px;width:200px;text-align:center;font-size:12px;color:#555;letter-spacing:2px}
+
+.glove-quote{margin-top:20px;font-family:'Noto Serif SC',serif;font-size:14px;color:#555;line-height:1.9;font-style:italic;padding-left:12px;border-left:2px solid #8B7355}
+
+/* Lectures grid */
+.lectures-area{position:absolute;top:290px;left:500px;width:1000px;z-index:2}
+.lectures-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(4,auto);gap:14px 20px}
+.lecture-item{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;border:1px solid rgba(27,59,107,0.15);background:rgba(245,240,232,0.7);position:relative;transition:none}
+.lecture-item::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:#8B7355}
+.l-num{font-family:'Noto Serif SC',serif;font-size:22px;font-weight:700;color:#1B3B6B;min-width:28px;line-height:1.2}
+.l-content{flex:1}
+.l-title{font-size:13px;color:#1B3B6B;font-weight:600;line-height:1.4;letter-spacing:0.5px}
+.l-desc{font-size:10.5px;color:#555;margin-top:4px;line-height:1.5;font-weight:300}
+
+/* Footer */
+.footer{position:absolute;bottom:50px;right:100px;z-index:2;text-align:right}
+.footer-text{font-size:12px;color:#555;letter-spacing:2px}
+.footer-accent{font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;letter-spacing:3px;margin-bottom:4px}
+
+/* side accent bar */
+.side-bar{position:absolute;top:80px;left:0;width:6px;height:740px;background:#1B3B6B;z-index:2}
+.side-bar-accent{position:absolute;top:200px;left:0;width:6px;height:120px;background:#8B7355;z-index:3}
+
+/* corner marks */
+.corner-tl{position:absolute;top:30px;left:40px;font-family:'Noto Serif SC',serif;font-size:11px;color:#8B7355;letter-spacing:3px;z-index:2}
+.corner-br{position:absolute;bottom:30px;right:40px;font-size:11px;color:#8B7355;letter-spacing:3px;z-index:2}
+</style></head><body>
+<div class="canvas">
+<div class="top-bar"></div>
+<div class="top-bar-accent"></div>
+<div class="side-bar"></div>
+<div class="side-bar-accent"></div>
+
+<div class="deco-circle-1"></div>
+<div class="deco-circle-2"></div>
+<div class="deco-square"></div>
+<div class="deco-line-h"></div>
+<div class="deco-line-h2"></div>
+<div class="deco-tri"></div>
+<div class="deco-dot"></div>
+
+<div class="corner-tl">OS · NIE · 2024</div>
+<div class="corner-br">NEW INSTITUTIONAL ECONOMICS × OPEN SOURCE</div>
+
+<div class="header">
+<div class="lecture-num">OVERVIEW · 讲座总览</div>
+<div class="main-title">十二次讲座的思路与目标</div>
+<div class="sub-title">以新制度经济学为框架，理解开源的协作、激励与秩序</div>
+<div class="sub-divider"></div>
+</div>
+
+<div class="glove-area">
+<div class="glove-title">— 视觉隐喻 —</div>
+<div class="glove-subtitle">旧皮革工作手套叠放<br>开源工作者的双手：劳动与守护</div>
+
+<div class="glove-svg">
+<div class="glove-finger1"></div>
+<div class="glove-finger2"></div>
+<div class="glove-finger3"></div>
+<div class="glove-finger4"></div>
+<div class="glove-outer"></div>
+<div class="glove-inner"></div>
+<div class="glove-thumb"></div>
+<div class="glove-stitch1"></div>
+<div class="glove-stitch2"></div>
+<div class="glove-wrist"></div>
+<div class="glove-label">GLOVES · 双手</div>
+</div>
+
+<div class="glove-quote">"开源不是免费的午餐，而是无数双手<br>在制度框架下编织的劳动契约。"</div>
+</div>
+
+<div class="lectures-area">
+<div class="lectures-grid">
+<div class="lecture-item">
+<div class="l-num">01</div>
+<div class="l-content">
+<div class="l-title">引言：新制度经济学何以观照开源</div>
+<div class="l-desc">制度、交易成本与数字协作的基本命题</div>
+</div>
+</div>
+<div class="lecture-item">
+<div class="l-num">02</div>
+<div class="l-content">
+<div class="l-title">开源软件的生产模式</div>
+<div class="l-desc">从大教堂到集市：公共物品与志愿劳动</div>
+</div>
+</div>
+<div class="lecture-item">
+<div class="l-num">03</div>
+<div class="l-content">
+<div class="l-title">开源许可制度解析</div>
+<div class="l-desc">GPL、MIT、Apache：契约设计与权利分配</div>
+</div>
+</div>
+<div class="lecture-item">
+<div class="l-num">04</div>
+<div class="l-content">
+<div class="l-title">开源的商业模式</div>
+<div class="l-desc">互补品策略、服务收入与双边市场</div>
+</div>
+</div>
+<div class="lecture-item">
+<div class="l-num">05</div>
+<div class="l-content">
+<div class="l-title">开源劳动力市场</div>
+<div class="l-desc">声誉机制、信号传递与非货币激励</div>
+</div>
+</div>
+<div class="lecture-item">
+<div class="l-num">06</div>
+<div class="l-content">
+<div class="l-title">交易成本与分布式协作</div>
+<div class="l-desc">协调成本、治理成本与网络效应</div>
+</div>
+</div>
+<div class="lecture-item">
+<div class="l-num">07</div>
+<div class="l-content">
+<div class="l-title">组织治理与决策机制</div>
+<div class="l-desc">BDFL、基金会与共识驱动模式</div>
+</div>
+</div>
+<div class="lecture-item">
+<div class="l-num">08</div>
+<div class="l-content">
+<div class="l-title">开源文化与行为规范</div>
+<div class="l-desc">社会规范、准入机制与社区认同</div>
+</div>
+</div>
+<div class="lecture-item">
+<div class="l-num">09</div>
+<div class="l-content">
+<div class="l-title">政治经济学视角下的开源</div>
+<div class="l-desc">权力、依附、数字封建与平台治理</div>
+</div>
+</div>
+<div class="lecture-item">
+<div class="l-num">10</div>
+<div class="l-content">
+<div class="l-title">平台与基础设施</div>
+<div class="l-desc">GitHub、GitLab：私有平台承载公共代码</div>
+</div>
+</div>
+<div class="lecture-item">
+<div class="l-num">11</div>
+<div class="l-content">
+<div class="l-title">制度演化与路径依赖</div>
+<div class="l-desc">从内核到云原生：开源范式的迭代变迁</div>
+</div>
+</div>
+<div class="lecture-item">
+<div class="l-num">12</div>
+<div class="l-content">
+<div class="l-title">总结、争议与未来方向</div>
+<div class="l-desc">未竟之问：AI、商业压力与公共性危机</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="footer">
+<div class="footer-accent">— 开源之道 · Open Source Philosophy —</div>
+<div class="footer-text">十二讲 · 一次漫长的制度考察</div>
+</div>
+</div>
+</body></html>

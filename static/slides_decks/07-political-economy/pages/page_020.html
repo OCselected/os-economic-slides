@@ -1,0 +1,223 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>第07期 · 公共政策视角下的开源治理</title><style>html,body{width:1600px;height:900px;overflow:hidden;margin:0;padding:0;}body{background:#F5F0E8;font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-serif;color:#1B3B6B;position:relative;}h1,h2,h3,.serif{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;}
+
+.canvas{position:relative;width:1600px;height:900px;overflow:hidden;}
+
+.header{position:absolute;top:50px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid #1B3B6B;padding-bottom:18px;}
+.header-left{display:flex;align-items:baseline;gap:24px;}
+.lecture-num{font-family:'Noto Serif SC',serif;font-size:64px;font-weight:900;color:#1B3B6B;line-height:1;}
+.lecture-meta{font-size:14px;color:#555;letter-spacing:2px;text-transform:uppercase;}
+.header-title{font-family:'Noto Serif SC',serif;font-size:28px;font-weight:700;color:#1B3B6B;letter-spacing:1px;}
+.header-right{text-align:right;font-size:13px;color:#8B7355;letter-spacing:3px;}
+
+.deck-id{position:absolute;top:170px;right:80px;font-size:11px;color:#8B7355;letter-spacing:4px;}
+
+.main{position:absolute;top:220px;left:80px;right:80px;bottom:80px;display:flex;gap:60px;}
+
+.visual-panel{width:560px;height:580px;position:relative;background:#F5F0E8;border:1px solid #D4CCBC;padding:30px;display:flex;flex-direction:column;}
+.visual-label{font-size:11px;color:#8B7355;letter-spacing:4px;text-transform:uppercase;margin-bottom:6px;}
+.visual-title{font-family:'Noto Serif SC',serif;font-size:19px;font-weight:700;color:#1B3B6B;line-height:1.5;margin-bottom:20px;}
+.visual-canvas{position:relative;width:100%;flex:1;overflow:hidden;}
+
+.bench-base{position:absolute;bottom:60px;left:60px;right:60px;height:14px;background:#1B3B6B;}
+.bench-left-leg{position:absolute;bottom:20px;left:70px;width:8px;height:40px;background:#1B3B6B;}
+.bench-right-leg{position:absolute;bottom:20px;right:70px;width:8px;height:40px;background:#1B3B6B;}
+.bench-mid-leg-l{position:absolute;bottom:20px;left:200px;width:6px;height:30px;background:#8B7355;}
+.bench-mid-leg-r{position:absolute;bottom:20px;right:200px;width:6px;height:30px;background:#8B7355;}
+.bench-back{position:absolute;bottom:74px;left:60px;width:8px;height:70px;background:#1B3B6B;}
+.bench-back-r{position:absolute;bottom:74px;right:60px;width:8px;height:70px;background:#1B3B6B;}
+.bench-back-top{position:absolute;bottom:142px;left:56px;right:56px;height:6px;background:#1B3B6B;}
+
+.figure-1{position:absolute;bottom:74px;left:140px;width:80px;height:120px;}
+.f1-head{position:absolute;top:0;left:25px;width:30px;height:30px;background:#1B3B6B;border-radius:50%;}
+.f1-body{position:absolute;top:30px;left:15px;width:50px;height:60px;background:#1B3B6B;}
+.f1-arms{position:absolute;top:36px;left:2px;width:60px;height:12px;background:#8B7355;}
+
+.figure-2{position:absolute;bottom:74px;left:280px;width:80px;height:120px;}
+.f2-head{position:absolute;top:0;left:25px;width:30px;height:30px;background:#8B7355;border-radius:50%;}
+.f2-body{position:absolute;top:30px;left:15px;width:50px;height:60px;background:#8B7355;}
+.f2-arms{position:absolute;top:36px;left:2px;width:60px;height:12px;background:#1B3B6B;}
+
+.ground-line{position:absolute;bottom:20px;left:60px;right:60px;height:1px;background:#8B7355;}
+
+.sun-circle{position:absolute;top:30px;right:80px;width:70px;height:70px;border:3px solid #8B7355;border-radius:50%;}
+.sun-arc{position:absolute;top:38px;right:88px;width:54px;height:27px;border:3px solid #8B7355;border-bottom:0;border-left:0;border-right:0;border-radius:100% 100% 0 0;}
+
+.decor-square{position:absolute;top:40px;left:60px;width:50px;height:50px;background:#1B3B6B;opacity:0.9;}
+.decor-square-2{position:absolute;top:96px;left:60px;width:50px;height:50px;border:2px solid #1B3B6B;}
+
+.tree-trunk{position:absolute;bottom:20px;left:400px;width:6px;height:100px;background:#8B7355;}
+.tree-crown{position:absolute;bottom:90px;left:370px;width:66px;height:66px;background:#1B3B6B;border-radius:50%;}
+
+.metaphor-text{margin-top:20px;font-size:13px;color:#555;line-height:1.7;border-top:1px solid #D4CCBC;padding-top:14px;}
+.metaphor-text .zh{font-family:'Noto Serif SC',serif;color:#1B3B6B;font-size:14px;font-weight:600;display:block;margin-bottom:4px;}
+
+.content-panel{flex:1;display:flex;flex-direction:column;justify-content:flex-start;}
+.section-num{font-size:12px;color:#8B7355;letter-spacing:5px;margin-bottom:8px;}
+.section-title{font-family:'Noto Serif SC',serif;font-size:34px;font-weight:900;color:#1B3B6B;line-height:1.3;margin-bottom:8px;}
+.section-subtitle{font-size:14px;color:#555;line-height:1.6;margin-bottom:30px;max-width:520px;}
+
+.bullet-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px;}
+.bullet-list li{display:flex;align-items:flex-start;gap:18px;padding:12px 0;border-bottom:1px solid #E0D8C8;}
+.bullet-num{font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;width:30px;flex-shrink:0;padding-top:2px;letter-spacing:2px;}
+.bullet-text{flex:1;}
+.bullet-title{font-family:'Noto Serif SC',serif;font-size:17px;font-weight:700;color:#1B3B6B;margin-bottom:4px;}
+.bullet-desc{font-size:12px;color:#555;line-height:1.6;}
+.bullet-geo{width:18px;height:18px;flex-shrink:0;margin-top:4px;}
+.geo-circle{border-radius:50%;background:#1B3B6B;}
+.geo-square{background:#8B7355;}
+.geo-outline-circle{border:2px solid #1B3B6B;border-radius:50%;}
+.geo-outline-square{border:2px solid #8B7355;}
+.geo-half{background:#1B3B6B;width:18px;height:18px;border-radius:18px 0 0 18px;}
+.geo-ring{border:3px solid #8B7355;border-radius:50%;width:18px;height:18px;background:transparent;}
+
+.footer{position:absolute;bottom:30px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#8B7355;letter-spacing:3px;border-top:1px solid #D4CCBC;padding-top:14px;}
+.footer-left{display:flex;gap:20px;align-items:center;}
+.footer-dot{width:8px;height:8px;background:#1B3B6B;border-radius:50%;display:inline-block;}
+.footer-right{font-family:'Noto Serif SC',serif;font-style:italic;}
+
+.bg-circle{position:absolute;top:-120px;right:-120px;width:300px;height:300px;border:1px solid #E0D8C8;border-radius:50%;}
+.bg-square{position:absolute;bottom:-60px;left:-60px;width:200px;height:200px;background:#1B3B6B;opacity:0.03;}
+</style></head><body><div class="canvas">
+
+<div class="bg-circle"></div>
+<div class="bg-square"></div>
+
+<div class="header">
+  <div class="header-left">
+    <span class="lecture-num">07</span>
+    <div>
+      <div class="header-title">商业价值与社会价值：开源的政治经济学</div>
+      <div class="lecture-meta">OPEN SOURCE · POLITICAL ECONOMY</div>
+    </div>
+  </div>
+  <div class="header-right">2025 · LECTURE SERIES</div>
+</div>
+
+<div class="deck-id">DECK · 07-POLITICAL-ECONOMY</div>
+
+<div class="main">
+
+  <div class="visual-panel">
+    <div class="visual-label">Visual Metaphor / 视觉隐喻</div>
+    <div class="visual-title">长椅上的守候与陪伴<br><span style="font-size:13px;font-weight:400;color:#8B7355;">Waiting &amp; Companionship on the Bench</span></div>
+
+    <div class="visual-canvas">
+      <div class="decor-square"></div>
+      <div class="decor-square-2"></div>
+      <div class="sun-circle"></div>
+      <div class="sun-arc"></div>
+
+      <div class="tree-trunk"></div>
+      <div class="tree-crown"></div>
+
+      <div class="bench-back-top"></div>
+      <div class="bench-back"></div>
+      <div class="bench-back-r"></div>
+      <div class="bench-base"></div>
+      <div class="bench-left-leg"></div>
+      <div class="bench-right-leg"></div>
+      <div class="bench-mid-leg-l"></div>
+      <div class="bench-mid-leg-r"></div>
+
+      <div class="figure-1">
+        <div class="f1-head"></div>
+        <div class="f1-body"></div>
+        <div class="f1-arms"></div>
+      </div>
+
+      <div class="figure-2">
+        <div class="f2-head"></div>
+        <div class="f2-body"></div>
+        <div class="f2-arms"></div>
+      </div>
+
+      <div class="ground-line"></div>
+    </div>
+
+    <div class="metaphor-text">
+      <span class="zh">信任与忠诚，是公共物品治理的基石</span>
+      长椅上并肩而坐的两道身影，象征着开源社区中对信任、陪伴与忠诚的持久期待——公共物品不仅需要规则的约束，更需要人与人之间的守望。
+    </div>
+  </div>
+
+  <div class="content-panel">
+    <div class="section-num">SECTION · 03</div>
+    <div class="section-title">各国政府的政策建议</div>
+    <div class="section-subtitle">从事件驱动的应急响应到公共政策的系统建构，开源治理在国家安全、成本效率与透明行政的张力中被不断重新定义。</div>
+
+    <ul class="bullet-list">
+
+      <li>
+        <span class="bullet-num">I.</span>
+        <div class="bullet-text">
+          <div class="bullet-title">回顾一番各国政府的政策建议</div>
+          <div class="bullet-desc">从欧盟到美国，从日本到印度，各国政府陆续出台开源软件战略，政策工具箱日趋丰富。</div>
+        </div>
+        <div class="bullet-geo geo-circle"></div>
+      </li>
+
+      <li>
+        <span class="bullet-num">II.</span>
+        <div class="bullet-text">
+          <div class="bullet-title">事件驱动的政策演进</div>
+          <div class="bullet-desc">重大供应链安全事件（如 SolarWinds、Log4j）往往成为政策转向的直接催化剂。</div>
+        </div>
+        <div class="bullet-geo geo-square"></div>
+      </li>
+
+      <li>
+        <span class="bullet-num">III.</span>
+        <div class="bullet-text">
+          <div class="bullet-title">公共政策视角的系统性重构</div>
+          <div class="bullet-desc">将开源视为公共基础设施的一部分，纳入政府采购、标准制定与人才培养的框架之中。</div>
+        </div>
+        <div class="bullet-geo geo-outline-circle"></div>
+      </li>
+
+      <li>
+        <span class="bullet-num">IV.</span>
+        <div class="bullet-text">
+          <div class="bullet-title">安全需要：主权与韧性</div>
+          <div class="bullet-desc">代码可审计性被视为数字主权的技术前提，开源成为对抗软件黑箱化的政策工具。</div>
+        </div>
+        <div class="bullet-geo geo-half"></div>
+      </li>
+
+      <li>
+        <span class="bullet-num">V.</span>
+        <div class="bullet-text">
+          <div class="bullet-title">成本与创新的双重考量</div>
+          <div class="bullet-desc">降低许可成本与激发创新活力，是政府推广开源战略的两大核心经济论证。</div>
+        </div>
+        <div class="bullet-geo geo-ring"></div>
+      </li>
+
+      <li>
+        <span class="bullet-num">VI.</span>
+        <div class="bullet-text">
+          <div class="bullet-title">透明办公的制度化要求</div>
+          <div class="bullet-desc">部分国家已将政府数字系统的开源化上升为行政透明的法定义务，重塑公共服务的问责机制。</div>
+        </div>
+        <div class="bullet-geo geo-outline-square"></div>
+      </li>
+
+    </ul>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-left">
+    <span class="footer-dot"></span>
+    <span>07-POLITICAL-ECONOMY</span>
+    <span>·</span>
+    <span>OPEN SOURCE</span>
+    <span>·</span>
+    <span>NEW INSTITUTIONAL ECONOMICS</span>
+  </div>
+  <div class="footer-right">— Trust, Companionship &amp; the Governance of Public Goods —</div>
+</div>
+
+</div></body></html>

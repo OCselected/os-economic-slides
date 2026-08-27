@@ -1,0 +1,153 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>激励范式：事前与事后</title><style>
+html,body{width:1600px;height:900px;overflow:hidden;margin:0}
+body{font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;background:#F5F0E8;color:#1B3B6B;position:relative}
+
+/* Parchment texture */
+body::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;background:radial-gradient(ellipse at 30% 20%, rgba(139,115,85,0.05) 0%, transparent 50%),radial-gradient(ellipse at 80% 70%, rgba(27,59,107,0.04) 0%, transparent 50%);pointer-events:none}
+
+/* Header bar */
+.header-line{position:absolute;top:48px;left:80px;width:1440px;height:2px;background:#1B3B6B}
+.header-num{position:absolute;top:60px;left:80px;font-family:'Noto Serif SC',serif;font-size:14px;letter-spacing:4px;color:#8B7355}
+.header-label{position:absolute;top:60px;right:80px;font-family:'Noto Serif SC',serif;font-size:12px;letter-spacing:3px;color:#8B7355}
+
+/* Left visual composition - unstable foundation */
+.left-viz{position:absolute;top:140px;left:80px;width:580px;height:680px}
+
+/* Downward diagonal line */
+.downward-line{position:absolute;top:60px;left:120px;width:500px;height:4px;background:#1B3B6B;transform-origin:left center;transform:rotate(18deg)}
+.downward-shadow{position:absolute;top:74px;left:130px;width:460px;height:2px;background:#555;opacity:0.3;transform-origin:left center;transform:rotate(18deg)}
+
+/* Unstable blocks - stacked squares tilted */
+.block-1{position:absolute;top:200px;left:160px;width:160px;height:160px;background:#1B3B6B}
+.block-2{position:absolute;top:220px;left:220px;width:130px;height:130px;background:#8B7355;transform:rotate(-8deg)}
+.block-3{position:absolute;top:250px;left:180px;width:100px;height:100px;background:#1B3B6B;transform:rotate(12deg);opacity:0.85}
+
+/* Circle element */
+.circle-main{position:absolute;top:380px;left:380px;width:120px;height:120px;border:3px solid #1B3B6B;border-radius:50%}
+.circle-inner{position:absolute;top:410px;left:410px;width:60px;height:60px;background:#8B7355;border-radius:50%}
+
+/* Downward arrow */
+.arrow-shaft{position:absolute;top:310px;left:520px;width:4px;height:280px;background:#1B3B6B}
+.arrow-head-top{position:absolute;top:300px;left:510px;width:24px;height:24px;border-top:4px solid #1B3B6B;border-right:4px solid #1B3B6B;transform:rotate(45deg)}
+.arrow-head-bottom{position:absolute;top:590px;left:510px;width:24px;height:24px;border-bottom:4px solid #1B3B6B;border-left:4px solid #1B3B6B;transform:rotate(45deg)}
+
+/* Cracked foundation line */
+.foundation{position:absolute;top:620px;left:100px;width:480px;height:3px;background:#1B3B6B}
+.foundation-crack1{position:absolute;top:620px;left:240px;width:1px;height:40px;background:#8B7355}
+.foundation-crack2{position:absolute;top:622px;left:340px;width:2px;height:30px;background:#555;opacity:0.6}
+.foundation-crack3{position:absolute;top:624px;left:420px;width:1px;height:25px;background:#8B7355;opacity:0.7}
+
+/* Small floating dots - instability */
+.dot-1{position:absolute;top:180px;left:400px;width:8px;height:8px;background:#1B3B6B;border-radius:50%}
+.dot-2{position:absolute;top:150px;left:470px;width:6px;height:6px;background:#8B7355;border-radius:50%}
+.dot-3{position:absolute;top:560px;left:350px;width:7px;height:7px;background:#1B3B6B;border-radius:50%}
+.dot-4{position:absolute;top:500px;left:450px;width:5px;height:5px;background:#8B7355;border-radius:50%}
+
+/* Vertical balance line */
+.balance-line{position:absolute;top:100px;left:520px;width:2px;height:500px;background:#555;opacity:0.3}
+.balance-node{position:absolute;top:340px;left:512px;width:18px;height:18px;background:#F5F0E8;border:2px solid #1B3B6B;border-radius:50%}
+
+/* Right content area */
+.right-area{position:absolute;top:140px;left:730px;width:800px}
+
+.eyebrow{font-family:'Noto Serif SC',serif;font-size:13px;letter-spacing:5px;color:#8B7355;margin-bottom:18px}
+
+.title{font-family:'Noto Serif SC','Songti SC',serif;font-size:48px;line-height:1.3;color:#1B3B6B;font-weight:700;margin-bottom:14px}
+.title-accent{color:#8B7355}
+
+.subtitle{font-family:'Noto Serif SC',serif;font-size:17px;line-height:1.6;color:#555;margin-bottom:36px;font-style:italic;border-left:3px solid #1B3B6B;padding-left:14px}
+
+.divider{width:80px;height:3px;background:#1B3B6B;margin-bottom:28px}
+
+.bullets{list-style:none;padding:0;margin:0}
+.bullets li{position:relative;padding-left:32px;margin-bottom:22px;font-size:16px;line-height:1.7;color:#1B3B6B}
+.bullets li .num{position:absolute;left:0;top:2px;font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;font-weight:700;letter-spacing:1px}
+.bullets li .text-main{font-weight:600}
+.bullets li .text-sub{color:#555;font-size:14px;margin-left:6px}
+
+/* Bottom footer */
+.footer-line{position:absolute;bottom:36px;left:80px;width:1440px;height:1px;background:#8B7355;opacity:0.4}
+.footer-left{position:absolute;bottom:14px;left:80px;font-family:'Noto Serif SC',serif;font-size:11px;letter-spacing:3px;color:#8B7355}
+.footer-right{position:absolute;bottom:14px;right:80px;font-family:'Noto Serif SC',serif;font-size:11px;letter-spacing:3px;color:#8B7355}
+
+/* Small geometric decorations */
+.deco-square{position:absolute;bottom:60px;left:680px;width:14px;height:14px;background:#1B3B6B;opacity:0.6}
+.deco-circle{position:absolute;bottom:55px;left:710px;width:10px;height:10px;border:2px solid #8B7355;border-radius:50%}
+</style></head><body>
+
+<div class="header-line"></div>
+<div class="header-num">IV / VII</div>
+<div class="header-label">INCENTIVE PARADIGM</div>
+
+<!-- Left visual: unstable foundation, downward trend, balancing -->
+<div class="left-viz">
+  <div class="downward-line"></div>
+  <div class="downward-shadow"></div>
+
+  <div class="block-1"></div>
+  <div class="block-2"></div>
+  <div class="block-3"></div>
+
+  <div class="circle-main"></div>
+  <div class="circle-inner"></div>
+
+  <div class="balance-line"></div>
+  <div class="balance-node"></div>
+
+  <div class="arrow-shaft"></div>
+  <div class="arrow-head-top"></div>
+  <div class="arrow-head-bottom"></div>
+
+  <div class="foundation"></div>
+  <div class="foundation-crack1"></div>
+  <div class="foundation-crack2"></div>
+  <div class="foundation-crack3"></div>
+
+  <div class="dot-1"></div>
+  <div class="dot-2"></div>
+  <div class="dot-3"></div>
+  <div class="dot-4"></div>
+</div>
+
+<!-- Right content -->
+<div class="right-area">
+  <div class="eyebrow">第四章 &nbsp;·&nbsp; 激励范式</div>
+  <div class="title">事前与事后，<br><span class="title-accent">激励范式的</span>视角</div>
+  <div class="subtitle">「如同著作权的无限延期，软件也应被垄断——<br>而 DRM 与技术锁，不过是这条路径上的证据。」</div>
+
+  <div class="divider"></div>
+
+  <ul class="bullets">
+    <li>
+      <span class="num">01</span>
+      <span><span class="text-main">激励的时态分野</span>
+      <span class="text-sub">— 事前激励期待回报，事后垄断锁定既得</span></span>
+    </li>
+    <li>
+      <span class="num">02</span>
+      <span><span class="text-main">软件如著作权，理应垄断</span>
+      <span class="text-sub">— 权利延展的逻辑从纸面迁移至代码</span></span>
+    </li>
+    <li>
+      <span class="num">03</span>
+      <span><span class="text-main">DRM 与技术方案即证据</span>
+      <span class="text-sub">— 加密、锁区、协议限制——制度的技术化表达</span></span>
+    </li>
+    <li>
+      <span class="num">04</span>
+      <span><span class="text-main">不利于创新，甚至阻止</span>
+      <span class="text-sub">— 稳固的垄断基石，恰恰是创新的阻力</span></span>
+    </li>
+  </ul>
+</div>
+
+<div class="deco-square"></div>
+<div class="deco-circle"></div>
+
+<div class="footer-line"></div>
+<div class="footer-left">OPEN SOURCE &nbsp;·&nbsp; NEW INSTITUTIONAL ECONOMICS</div>
+<div class="footer-right">基石不稳 &nbsp;·&nbsp; 趋势下行 &nbsp;·&nbsp; 艰难平衡</div>
+
+</body></html>

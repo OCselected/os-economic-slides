@@ -1,0 +1,540 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>第 09 期 · 排他权与容他权、比例原则与 Copyleft</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
+  font-family: 'Noto Sans SC', 'Source Han Sans SC', sans-serif;
+  color: #F5F0E8;
+}
+body {
+  background: #1B3B6B;
+  position: relative;
+}
+
+.deco-circle-1 {
+  position: absolute;
+  top: -70px;
+  right: -70px;
+  width: 240px;
+  height: 240px;
+  border: 2px solid #8B7355;
+  border-radius: 50%;
+}
+.deco-circle-2 {
+  position: absolute;
+  top: 60px;
+  right: 100px;
+  width: 100px;
+  height: 100px;
+  background: #8B7355;
+  border-radius: 50%;
+  opacity: 0.25;
+}
+.deco-square-1 {
+  position: absolute;
+  bottom: 50px;
+  right: 70px;
+  width: 80px;
+  height: 80px;
+  border: 2px solid #F5F0E8;
+  opacity: 0.3;
+}
+.deco-line-left {
+  position: absolute;
+  top: 0;
+  left: 80px;
+  width: 2px;
+  height: 900px;
+  background: #8B7355;
+  opacity: 0.25;
+}
+.deco-line-left2 {
+  position: absolute;
+  top: 0;
+  left: 120px;
+  width: 1px;
+  height: 900px;
+  background: #F5F0E8;
+  opacity: 0.12;
+}
+.deco-circle-3 {
+  position: absolute;
+  bottom: -50px;
+  left: 40px;
+  width: 180px;
+  height: 180px;
+  border: 2px solid #F5F0E8;
+  border-radius: 50%;
+  opacity: 0.15;
+}
+.deco-square-2 {
+  position: absolute;
+  top: 360px;
+  left: 135px;
+  width: 26px;
+  height: 26px;
+  background: #8B7355;
+}
+.deco-circle-4 {
+  position: absolute;
+  bottom: 100px;
+  left: 60px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #F5F0E8;
+  opacity: 0.5;
+}
+
+.issue-num {
+  position: absolute;
+  top: 60px;
+  left: 160px;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 68px;
+  font-weight: 700;
+  color: #8B7355;
+  letter-spacing: 4px;
+  line-height: 1;
+}
+.issue-label {
+  position: absolute;
+  top: 148px;
+  left: 165px;
+  font-size: 13px;
+  letter-spacing: 8px;
+  color: #8B7355;
+  font-weight: 400;
+}
+.header-line {
+  position: absolute;
+  top: 188px;
+  left: 160px;
+  width: 1280px;
+  height: 1px;
+  background: #F5F0E8;
+  opacity: 0.25;
+}
+
+.title {
+  position: absolute;
+  top: 200px;
+  left: 160px;
+  right: 80px;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 38px;
+  font-weight: 700;
+  color: #F5F0E8;
+  line-height: 1.3;
+  letter-spacing: 2px;
+}
+.subtitle {
+  position: absolute;
+  top: 272px;
+  left: 160px;
+  font-size: 14px;
+  color: #8B7355;
+  letter-spacing: 4px;
+  font-family: 'Noto Serif SC', serif;
+}
+
+.accent-square-small {
+  position: absolute;
+  top: 212px;
+  right: 260px;
+  width: 14px;
+  height: 14px;
+  background: #8B7355;
+  opacity: 0.7;
+}
+.accent-circle-small {
+  position: absolute;
+  top: 200px;
+  right: 210px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid #F5F0E8;
+  opacity: 0.5;
+}
+.accent-triangle {
+  position: absolute;
+  top: 205px;
+  right: 130px;
+  width: 0;
+  height: 0;
+  border-left: 22px solid transparent;
+  border-right: 22px solid transparent;
+  border-bottom: 38px solid #8B7355;
+  opacity: 0.55;
+}
+
+.spectrum-title {
+  position: absolute;
+  top: 322px;
+  left: 160px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 17px;
+  color: #F5F0E8;
+  letter-spacing: 3px;
+  font-weight: 700;
+}
+.spectrum-en {
+  position: absolute;
+  top: 348px;
+  left: 160px;
+  font-size: 10px;
+  color: #8B7355;
+  letter-spacing: 2px;
+}
+
+.spectrum-container {
+  position: absolute;
+  top: 390px;
+  left: 160px;
+  width: 1280px;
+  height: 150px;
+}
+
+.spectrum-bar {
+  position: absolute;
+  top: 30px;
+  left: 60px;
+  width: 1160px;
+  height: 4px;
+  background: linear-gradient(to right, #8B7355 0%, #A89274 25%, #C4A882 50%, #D4B896 75%, #F5F0E8 100%);
+}
+.spectrum-axis {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  width: 1220px;
+  height: 1px;
+  background: #F5F0E8;
+  opacity: 0.4;
+}
+.spectrum-arrow-right {
+  position: absolute;
+  top: 26px;
+  left: 1250px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid #F5F0E8;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  opacity: 0.5;
+}
+
+.tick {
+  position: absolute;
+  top: 22px;
+  width: 1px;
+  height: 18px;
+  background: #F5F0E8;
+  opacity: 0.4;
+}
+
+.license-marker {
+  position: absolute;
+  width: 220px;
+  height: 100px;
+}
+.marker-permissive { top: 0; left: 60px; }
+.marker-mid { top: 0; left: 420px; }
+.marker-gpl { top: 0; left: 780px; }
+
+.marker-shape {
+  position: absolute;
+  top: 12px;
+  left: 90px;
+}
+.marker-permissive .marker-shape {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #8B7355;
+  border: 2px solid #F5F0E8;
+}
+.marker-mid .marker-shape {
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: 2px solid #F5F0E8;
+}
+.marker-gpl .marker-shape {
+  width: 36px;
+  height: 36px;
+  background: #F5F0E8;
+}
+
+.marker-label {
+  position: absolute;
+  top: 56px;
+  left: 0;
+  width: 220px;
+  text-align: center;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #F5F0E8;
+  letter-spacing: 2px;
+}
+.marker-desc {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  width: 220px;
+  text-align: center;
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 1px;
+}
+.marker-intensity {
+  position: absolute;
+  top: 98px;
+  left: 0;
+  width: 220px;
+  text-align: center;
+  font-size: 10px;
+  color: #F5F0E8;
+  opacity: 0.5;
+  letter-spacing: 2px;
+}
+
+.end-label-left {
+  position: absolute;
+  top: 6px;
+  left: 30px;
+  font-size: 10px;
+  color: #8B7355;
+  letter-spacing: 2px;
+  font-family: 'Noto Serif SC', serif;
+  width: 100px;
+  text-align: left;
+}
+.end-label-right {
+  position: absolute;
+  top: 6px;
+  left: 1090px;
+  font-size: 10px;
+  color: #F5F0E8;
+  letter-spacing: 2px;
+  font-family: 'Noto Serif SC', serif;
+  width: 160px;
+  text-align: right;
+  opacity: 0.7;
+}
+
+.spectrum-footnote {
+  position: absolute;
+  top: 550px;
+  left: 160px;
+  right: 80px;
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 1px;
+  line-height: 1.6;
+  opacity: 0.85;
+  font-family: 'Noto Serif SC', serif;
+}
+
+.mid-divider {
+  position: absolute;
+  top: 578px;
+  left: 160px;
+  width: 1280px;
+  height: 1px;
+  background: #8B7355;
+  opacity: 0.3;
+}
+
+.bullets {
+  position: absolute;
+  top: 600px;
+  left: 160px;
+  width: 1280px;
+  display: flex;
+  gap: 0;
+}
+.bullet-col {
+  width: 300px;
+  padding-right: 20px;
+  position: relative;
+}
+.bullet-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #8B7355;
+  letter-spacing: 3px;
+  margin-bottom: 6px;
+}
+.bullet-rule {
+  width: 30px;
+  height: 2px;
+  background: #F5F0E8;
+  opacity: 0.5;
+  margin-bottom: 10px;
+}
+.bullet-text {
+  font-size: 12px;
+  color: #F5F0E8;
+  line-height: 1.75;
+  letter-spacing: 1px;
+  opacity: 0.92;
+}
+
+.bottom-line {
+  position: absolute;
+  bottom: 50px;
+  left: 160px;
+  width: 1280px;
+  height: 1px;
+  background: #F5F0E8;
+  opacity: 0.18;
+}
+.footer-text {
+  position: absolute;
+  bottom: 32px;
+  left: 160px;
+  font-size: 10px;
+  color: #8B7355;
+  letter-spacing: 4px;
+}
+.footer-right {
+  position: absolute;
+  bottom: 32px;
+  right: 80px;
+  font-size: 10px;
+  color: #8B7355;
+  letter-spacing: 4px;
+}
+
+.deco-cross {
+  position: absolute;
+  bottom: 70px;
+  left: 750px;
+  width: 1px;
+  height: 20px;
+  background: #F5F0E8;
+  opacity: 0.3;
+}
+.deco-cross-h {
+  position: absolute;
+  bottom: 78px;
+  left: 740px;
+  width: 20px;
+  height: 1px;
+  background: #F5F0E8;
+  opacity: 0.3;
+}
+</style>
+</head>
+<body>
+
+<div class="deco-circle-1"></div>
+<div class="deco-circle-2"></div>
+<div class="deco-square-1"></div>
+<div class="deco-line-left"></div>
+<div class="deco-line-left2"></div>
+<div class="deco-circle-3"></div>
+<div class="deco-square-2"></div>
+<div class="deco-circle-4"></div>
+<div class="deco-cross"></div>
+<div class="deco-cross-h"></div>
+
+<div class="issue-num">09</div>
+<div class="issue-label">L E C T U R E &nbsp; N U M B E R</div>
+<div class="header-line"></div>
+
+<div class="title">排他权与容他权 · 比例原则与 Copyleft</div>
+<div class="subtitle">许可证光谱与制度均衡 &nbsp;&mdash;&nbsp; License Spectrum &amp; Institutional Equilibrium</div>
+
+<div class="accent-square-small"></div>
+<div class="accent-circle-small"></div>
+<div class="accent-triangle"></div>
+
+<div class="spectrum-title">许可证制度光谱</div>
+<div class="spectrum-en">A SPECTRUM OF OPEN-SOURCE LICENSING INSTITUTIONS</div>
+
+<div class="spectrum-container">
+  <div class="end-label-left">排他权主导 &nbsp;/&nbsp; EXCLUSIVE</div>
+  <div class="end-label-right">容他权主导 &nbsp;/&nbsp; INCLUSIVE</div>
+
+  <div class="spectrum-axis"></div>
+  <div class="spectrum-bar"></div>
+  <div class="spectrum-arrow-right"></div>
+
+  <div class="tick" style="left: 60px;"></div>
+  <div class="tick" style="left: 240px;"></div>
+  <div class="tick" style="left: 420px;"></div>
+  <div class="tick" style="left: 600px;"></div>
+  <div class="tick" style="left: 780px;"></div>
+  <div class="tick" style="left: 960px;"></div>
+  <div class="tick" style="left: 1140px;"></div>
+
+  <div class="license-marker marker-permissive">
+    <div class="marker-shape"></div>
+    <div class="marker-label">BSD / MIT</div>
+    <div class="marker-desc">几乎无 Copyleft</div>
+    <div class="marker-intensity">C O P Y L E F T &nbsp; ≈ &nbsp; 0</div>
+  </div>
+
+  <div class="license-marker marker-mid">
+    <div class="marker-shape"></div>
+    <div class="marker-label">MPL / APL</div>
+    <div class="marker-desc">中间路线</div>
+    <div class="marker-intensity">C O P Y L E F T &nbsp; ≈ &nbsp; 1 / 2</div>
+  </div>
+
+  <div class="license-marker marker-gpl">
+    <div class="marker-shape"></div>
+    <div class="marker-label">GPL / AGPL</div>
+    <div class="marker-desc">强 Copyleft</div>
+    <div class="marker-intensity">C O P Y L E F T &nbsp; ≈ &nbsp; 1</div>
+  </div>
+</div>
+
+<div class="spectrum-footnote">
+  光谱非定论，而是制度多样性的空间 &mdash; 每一款许可证都在排他权与容他权之间划定不同的边界。
+</div>
+
+<div class="mid-divider"></div>
+
+<div class="bullets">
+  <div class="bullet-col">
+    <div class="bullet-num">壹</div>
+    <div class="bullet-rule"></div>
+    <div class="bullet-text">排他权与容他权的动态均衡 &mdash; 不同许可在光谱两端之间寻求各自的最优制度解</div>
+  </div>
+  <div class="bullet-col">
+    <div class="bullet-num">贰</div>
+    <div class="bullet-rule"></div>
+    <div class="bullet-text">BSD / MIT 几乎无 Copyleft，GPL 强 Copyleft，MPL / APL 取中间路线</div>
+  </div>
+  <div class="bullet-col">
+    <div class="bullet-num">叁</div>
+    <div class="bullet-rule"></div>
+    <div class="bullet-text">许可证的光谱本身就是制度多样性 &mdash; 不同项目选择不同强度的排他权</div>
+  </div>
+  <div class="bullet-col">
+    <div class="bullet-num">肆</div>
+    <div class="bullet-rule"></div>
+    <div class="bullet-text">Ostrom 的 Design Principles 在知识产权领域的具体化与实践映射</div>
+  </div>
+</div>
+
+<div class="bottom-line"></div>
+<div class="footer-text">开 源 之 道 &nbsp;·&nbsp; 新 制 度 经 济 学</div>
+<div class="footer-right">S L I D E &nbsp; 0 9 &nbsp; / &nbsp; 2 8</div>
+</body>
+</html>

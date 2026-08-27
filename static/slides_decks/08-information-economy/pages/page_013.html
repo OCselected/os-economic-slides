@@ -1,0 +1,234 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>谁在补贴谁？— 第 08 期</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0}
+body{font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;background:#F5F0E8;color:#1B3B6B;position:relative;width:1600px;height:900px}
+
+.parchment-texture{position:absolute;width:1600px;height:900px;top:0;left:0;background:
+  repeating-linear-gradient(90deg, rgba(27,59,107,0.012) 0px, rgba(27,59,107,0.012) 1px, transparent 1px, transparent 3px),
+  repeating-linear-gradient(0deg, rgba(27,59,107,0.008) 0px, rgba(27,59,107,0.008) 1px, transparent 1px, transparent 4px);
+  pointer-events:none}
+
+.frame-top{position:absolute;top:48px;left:80px;width:1440px;height:1px;background:#1B3B6B;opacity:0.6}
+.frame-top-left{position:absolute;top:48px;left:80px;width:120px;height:6px;background:#1B3B6B}
+.frame-top-right{position:absolute;top:48px;right:80px;width:120px;height:6px;background:#8B7355}
+
+.header-num{position:absolute;top:72px;left:80px;font-family:'Noto Serif SC','Songti SC',serif;font-size:14px;letter-spacing:6px;color:#8B7355}
+.header-label{position:absolute;top:72px;right:80px;font-size:12px;letter-spacing:4px;color:#8B7355}
+
+.title-main{position:absolute;top:118px;left:80px;font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:42px;font-weight:600;color:#1B3B6B;letter-spacing:2px}
+.title-sub{position:absolute;top:178px;left:82px;font-size:14px;color:#555;letter-spacing:3px}
+
+.title-underline{position:absolute;top:200px;left:80px;width:80px;height:3px;background:#1B3B6B}
+.title-dot{position:absolute;top:194px;left:170px;width:14px;height:14px;background:#8B7355;border-radius:50%}
+
+/* Left diagram area */
+.diagram-area{position:absolute;top:240px;left:50px;width:760px;height:560px}
+
+.flow-title{position:absolute;top:0;left:10px;font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;letter-spacing:4px}
+.flow-rule{position:absolute;top:24px;left:0;width:760px;height:1px;background:#1B3B6B;opacity:0.25}
+
+/* Three nodes */
+.node-ent{position:absolute;top:40px;left:320px;width:180px;height:96px}
+.node-ent-bg{position:absolute;top:0;left:0;width:180px;height:96px;background:#1B3B6B}
+.node-ent-label{position:absolute;top:0;left:0;width:180px;height:96px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#F5F0E8;font-family:'Noto Serif SC',serif;font-size:18px;letter-spacing:2px}
+.node-ent-sub{font-size:10px;color:#8B7355;letter-spacing:3px;margin-top:4px;font-family:'Noto Sans SC',sans-serif}
+
+.node-dev{position:absolute;top:280px;left:10px;width:160px;height:80px}
+.node-dev-rect{position:absolute;top:0;left:0;width:160px;height:80px;border:2px solid #1B3B6B;background:transparent}
+.node-dev-label{position:absolute;top:0;left:0;width:160px;height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#1B3B6B;font-family:'Noto Serif SC',serif;font-size:16px;letter-spacing:2px}
+.node-dev-sub{font-size:10px;color:#8B7355;letter-spacing:3px;margin-top:4px}
+
+.node-user{position:absolute;top:280px;left:590px;width:160px;height:80px}
+.node-user-circle{position:absolute;top:0;left:0;width:80px;height:80px;border:2px solid #1B3B6B;background:transparent}
+.node-user-square{position:absolute;top:0;left:80px;width:80px;height:80px;background:#8B7355;opacity:0.3}
+.node-user-label{position:absolute;top:0;left:0;width:160px;height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#1B3B6B;font-family:'Noto Serif SC',serif;font-size:16px;letter-spacing:2px}
+.node-user-sub{font-size:10px;color:#8B7355;letter-spacing:3px;margin-top:4px}
+
+/* Flow lines - SVG */
+.flow-svg{position:absolute;top:0;left:0;width:760px;height:560px;pointer-events:none}
+
+/* Flow legend */
+.legend{position:absolute;bottom:60px;left:0;width:760px;display:flex;justify-content:center;gap:40px}
+.legend-item{display:flex;align-items:center;gap:8px;font-size:11px;color:#555;letter-spacing:2px}
+.legend-line-solid{width:30px;height:2px;background:#1B3B6B}
+.legend-line-dashed{width:30px;height:0;border-top:2px dashed #8B7355}
+
+/* Right content area */
+.content-area{position:absolute;top:240px;left:850px;width:680px;height:560px}
+
+.q-block{margin-bottom:28px}
+.q-number{font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;letter-spacing:3px;margin-bottom:6px}
+.q-text{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:18px;color:#1B3B6B;font-weight:500;line-height:1.5}
+.q-bar{width:40px;height:2px;background:#1B3B6B;margin-top:8px}
+
+/* Irrigation metaphor caption */
+.metaphor-cap{position:absolute;bottom:10px;left:0;width:760px;font-size:10px;color:#8B7355;letter-spacing:3px;text-align:center;font-style:italic}
+
+/* Decorative geometric elements */
+.deco-circle-1{position:absolute;top:100px;left:720px;width:8px;height:8px;border:2px solid #1B3B6B;border-radius:50%}
+.deco-square-1{position:absolute;top:340px;left:735px;width:10px;height:10px;background:#8B7355}
+.deco-line-1{position:absolute;top:500px;left:720px;width:40px;height:1px;background:#1B3B6B;opacity:0.4}
+
+.deco-square-2{position:absolute;bottom:60px;left:80px;width:14px;height:14px;background:#1B3B6B;opacity:0.15}
+.deco-circle-2{position:absolute;bottom:60px;left:110px;width:10px;height:10px;border:1.5px solid #8B7355;border-radius:50%}
+
+.footer{position:absolute;bottom:30px;left:80px;font-size:11px;color:#8B7355;letter-spacing:3px}
+.footer-right{position:absolute;bottom:30px;right:80px;font-size:11px;color:#8B7355;letter-spacing:3px}
+
+/* Channel labels on the diagram */
+.channel-label-money{position:absolute;top:170px;left:190px;font-size:10px;color:#1B3B6B;letter-spacing:2px;background:#F5F0E8;padding:2px 6px}
+.channel-label-rep{position:absolute;top:170px;left:510px;font-size:10px;color:#8B7355;letter-spacing:2px;background:#F5F0E8;padding:2px 6px}
+.channel-label-svc{position:absolute;top:350px;left:360px;font-size:10px;color:#1B3B6B;letter-spacing:2px;background:#F5F0E8;padding:2px 6px}
+
+/* Central emblem */
+.center-emblem{position:absolute;top:200px;left:320px;width:180px;height:80px}
+.center-emblem-bg{position:absolute;top:0;left:0;width:180px;height:80px;background:transparent;border:1px dashed #1B3B6B;opacity:0.3}
+.center-emblem-text{position:absolute;top:0;left:0;width:180px;height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Noto Serif SC',serif;font-size:14px;color:#1B3B6B;letter-spacing:2px}
+</style></head><body>
+<div class="parchment-texture"></div>
+<div class="frame-top"></div>
+<div class="frame-top-left"></div>
+<div class="frame-top-right"></div>
+
+<div class="header-num">N° 08 · 信息规则与网络经济</div>
+<div class="header-label">OPEN SOURCE / INSTITUTIONAL ECON.</div>
+
+<div class="title-main">谁在补贴谁？</div>
+<div class="title-sub">WHO SUBSIDIZES WHOM</div>
+<div class="title-underline"></div>
+<div class="title-dot"></div>
+
+<!-- Left: irrigation diagram -->
+<div class="diagram-area">
+  <div class="flow-title">Irrigation System · 灌溉系统</div>
+  <div class="flow-rule"></div>
+
+  <!-- Enterprise node (top) -->
+  <div class="node-ent">
+    <div class="node-ent-bg"></div>
+    <div class="node-ent-label">
+      <span>企 业</span>
+      <span class="node-ent-sub">ENTERPRISE</span>
+    </div>
+  </div>
+
+  <!-- Contributor node (bottom left) -->
+  <div class="node-dev">
+    <div class="node-dev-rect"></div>
+    <div class="node-dev-label">
+      <span>贡献者</span>
+      <span class="node-dev-sub">CONTRIBUTOR</span>
+    </div>
+  </div>
+
+  <!-- User node (bottom right) -->
+  <div class="node-user">
+    <div class="node-user-circle"></div>
+    <div class="node-user-square"></div>
+    <div class="node-user-label">
+      <span>用 户</span>
+      <span class="node-user-sub">USER</span>
+    </div>
+  </div>
+
+  <!-- Flow SVG -->
+  <svg class="flow-svg" viewBox="0 0 760 560" xmlns="http://www.w3.org/2000/svg">
+    <!-- Enterprise to Contributor: dashed (reputation) -->
+    <path d="M 360 136 C 340 200, 320 240, 160 280" fill="none" stroke="#8B7355" stroke-width="2" stroke-dasharray="6,4" />
+    <polygon points="160,280 168,274 168,284" fill="#8B7355" />
+
+    <!-- Enterprise to User: dashed (reputation/free code) -->
+    <path d="M 400 136 C 460 200, 520 240, 670 280" fill="none" stroke="#8B7355" stroke-width="2" stroke-dasharray="6,4" />
+    <polygon points="670,280 662,274 662,284" fill="#8B7355" />
+
+    <!-- User to Enterprise: solid (money/subscription) -->
+    <path d="M 620 360 C 500 320, 400 300, 400 140" fill="none" stroke="#1B3B6B" stroke-width="2.5" />
+    <polygon points="400,140 394,148 394,148" fill="#1B3B6B" />
+    <polygon points="400,140 393,150 407,150" fill="#1B3B6B" />
+
+    <!-- Contributor to Enterprise: solid (code/R&D) -->
+    <path d="M 200 320 C 280 280, 320 240, 380 140" fill="none" stroke="#1B3B6B" stroke-width="2.5" />
+    <polygon points="380,140 372,148 372,148" fill="#1B3B6B" />
+    <polygon points="380,140 373,150 387,150" fill="#1B3B6B" />
+
+    <!-- User to Contributor: thin dotted (recognition) -->
+    <path d="M 580 320 C 440 360, 340 370, 180 320" fill="none" stroke="#555" stroke-width="1.2" stroke-dasharray="2,3" opacity="0.6" />
+
+    <!-- Small circles representing water droplets/money along paths -->
+    <circle cx="270" cy="240" r="4" fill="#8B7355" />
+    <circle cx="450" cy="240" r="4" fill="#8B7355" />
+    <circle cx="510" cy="280" r="5" fill="#1B3B6B" />
+    <circle cx="280" cy="270" r="5" fill="#1B3B6B" />
+
+    <!-- Decorative squares -->
+    <rect x="360" y="370" width="8" height="8" fill="none" stroke="#1B3B6B" opacity="0.4" />
+    <rect x="370" y="380" width="6" height="6" fill="#8B7355" opacity="0.3" />
+
+    <!-- Bottom decorative line -->
+    <line x1="40" y1="440" x2="720" y2="440" stroke="#1B3B6B" stroke-width="0.5" opacity="0.15" />
+    <line x1="40" y1="450" x2="720" y2="450" stroke="#8B7355" stroke-width="0.5" opacity="0.2" stroke-dasharray="10,5" />
+
+    <!-- Tributary marks -->
+    <line x1="60" y1="460" x2="60" y2="480" stroke="#1B3B6B" stroke-width="1" opacity="0.3" />
+    <line x1="180" y1="460" x2="180" y2="478" stroke="#1B3B6B" stroke-width="1" opacity="0.3" />
+    <line x1="300" y1="460" x2="300" y2="480" stroke="#1B3B6B" stroke-width="1" opacity="0.3" />
+    <line x1="420" y1="460" x2="420" y2="478" stroke="#1B3B6B" stroke-width="1" opacity="0.3" />
+    <line x1="540" y1="460" x2="540" y2="480" stroke="#1B3B6B" stroke-width="1" opacity="0.3" />
+    <line x1="660" y1="460" x2="660" y2="478" stroke="#1B3B6B" stroke-width="1" opacity="0.3" />
+
+    <text x="40" y="500" font-family="'Noto Serif SC',serif" font-size="10" fill="#8B7355" letter-spacing="2">CANAL BED · 渠床</text>
+  </svg>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-line-solid"></div><span>资金流向 · CAPITAL FLOW</span></div>
+    <div class="legend-item"><div class="legend-line-dashed"></div><span>声誉流向 · REPUTATION FLOW</span></div>
+  </div>
+
+  <div class="metaphor-cap">— 复杂灌溉水渠：资金与声誉在三方田地间循环流动 —</div>
+</div>
+
+<!-- Right: bullet points -->
+<div class="content-area">
+  <div class="q-block">
+    <div class="q-number">§ 01</div>
+    <div class="q-text">企业投入研发，通过订阅与服务收回成本</div>
+    <div class="q-bar"></div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-number">§ 02</div>
+    <div class="q-text">个人贡献者贡献时间与技能，换取声誉与机会</div>
+    <div class="q-bar"></div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-number">§ 03</div>
+    <div class="q-text">用户使用免费代码，通过购买服务表达价值</div>
+    <div class="q-bar"></div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-number">§ 04</div>
+    <div class="q-text">这是一个跨市场的补贴结构</div>
+    <div class="q-bar"></div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-number">§ 05</div>
+    <div class="q-text">不存在单一的价格信号</div>
+    <div class="q-bar"></div>
+  </div>
+</div>
+
+<!-- Decorative elements -->
+<div class="deco-circle-1"></div>
+<div class="deco-square-1"></div>
+<div class="deco-line-1"></div>
+<div class="deco-square-2"></div>
+<div class="deco-circle-2"></div>
+
+<div class="footer">开源之道 · OPEN SOURCE WAYS</div>
+<div class="footer-right">08 / 30 · SUBSIDY STRUCTURE</div>
+</body></html>

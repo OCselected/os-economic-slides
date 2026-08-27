@@ -1,0 +1,140 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>标准的故事：MP3、Bit 与唱片行业</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0}
+body{background:#F5F0E8;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;color:#1B3B6B;position:relative;overflow:hidden}
+.bg-texture{position:absolute;top:0;left:0;width:1600px;height:900px;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(139,115,85,0.015) 3px,rgba(139,115,85,0.015) 4px),repeating-linear-gradient(90deg,transparent,transparent 5px,rgba(27,59,107,0.008) 5px,rgba(27,59,107,0.008) 6px);pointer-events:none}
+.header-bar{position:absolute;top:0;left:0;width:1600px;height:8px;background:#1B3B6B}
+.accent-line{position:absolute;top:8px;left:0;width:1600px;height:2px;background:#8B7355}
+
+.title-zone{position:absolute;top:60px;left:100px;width:880px}
+.slide-number{font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:6px;margin-bottom:18px}
+.main-title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:48px;font-weight:700;color:#1B3B6B;line-height:1.25;margin-bottom:14px}
+.subtitle{font-family:'Noto Serif SC',serif;font-size:20px;color:#8B7355;line-height:1.6;font-style:italic}
+.divider{width:120px;height:2px;background:#1B3B6B;margin-top:24px;margin-bottom:8px}
+
+.visual-zone{position:absolute;top:70px;right:60px;width:580px;height:380px}
+.stone-stage{position:relative;width:580px;height:380px}
+.ground-line{position:absolute;bottom:20px;left:0;width:580px;height:2px;background:#1B3B6B}
+.ground-shade{position:absolute;bottom:0;left:0;width:580px;height:20px;background:rgba(139,115,85,0.12)}
+
+.stone{position:absolute;border-radius:50%;opacity:0.88}
+.stone-1{width:80px;height:80px;left:30px;bottom:22px;background:#555;border:3px solid #1B3B6B}
+.stone-2{width:60px;height:60px;left:120px;bottom:22px;background:#8B7355;border:3px solid #1B3B6B;opacity:0.9}
+.stone-3{width:100px;height:100px;left:195px;bottom:22px;background:#1B3B6B;border:3px solid #555}
+.stone-4{width:50px;height:50px;left:305px;bottom:22px;background:#555;border:3px solid #8B7355}
+.stone-5{width:70px;height:70px;left:365px;bottom:22px;background:#8B7355;border:3px solid #1B3B6B}
+.stone-6{width:90px;height:90px;left:445px;bottom:22px;background:#1B3B6B;border:3px solid #555}
+
+.chip-mark{position:absolute;background:#F5F0E8;width:6px;height:6px;border-radius:50%}
+.stone-1 .chip-mark{top:20px;left:55px}
+.stone-3 .chip-mark{top:30px;left:65px;width:10px;height:10px}
+.stone-6 .chip-mark{top:25px;left:55px;width:8px;height:8px}
+.stone-6 .chip-mark-2{top:55px;left:40px;width:5px;height:5px}
+
+.triangle-mark{position:absolute;width:0;height:0;border-left:14px solid transparent;border-right:14px solid transparent;border-bottom:22px solid #F5F0E8;left:60px;bottom:150px;opacity:0.7}
+.circle-mark{position:absolute;width:36px;height:36px;border:2px solid #1B3B6B;border-radius:50%;right:40px;top:40px;opacity:0.6}
+.square-mark{position:absolute;width:30px;height:30px;border:2px solid #8B7355;left:80px;top:60px;opacity:0.5}
+.line-deco{position:absolute;width:180px;height:1px;background:#8B7355;left:100px;top:30px;opacity:0.4}
+
+.metaphor-label{position:absolute;bottom:-30px;left:0;width:580px;text-align:center;font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;letter-spacing:3px;font-style:italic}
+
+.content-zone{position:absolute;top:490px;left:100px;width:1400px;height:360px;display:flex;gap:50px}
+.bullet-column{flex:1;position:relative}
+.bullet-item{display:flex;align-items:flex-start;margin-bottom:18px;gap:14px}
+.bullet-index{font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;width:28px;flex-shrink:0;padding-top:4px;font-weight:700;letter-spacing:1px}
+.bullet-text{font-family:'Noto Sans SC',sans-serif;font-size:15px;color:#1B3B6B;line-height:1.55;font-weight:400}
+.bullet-text strong{color:#1B3B6B;font-weight:700}
+.bullet-text .accent{color:#8B7355;font-weight:600}
+
+.col-divider{position:absolute;left:50%;top:0;width:1px;height:100%;background:rgba(27,59,107,0.15)}
+
+.tag-box{position:absolute;bottom:30px;left:100px;display:flex;align-items:center;gap:14px}
+.tag-dot{width:10px;height:10px;background:#1B3B6B;border-radius:50%}
+.tag-text{font-family:'Noto Serif SC',serif;font-size:12px;color:#555;letter-spacing:4px}
+
+.footer-zone{position:absolute;bottom:30px;right:100px;display:flex;align-items:center;gap:12px;font-family:'Noto Serif SC',serif;font-size:11px;color:#8B7355;letter-spacing:3px}
+.footer-line{width:60px;height:1px;background:#8B7355}
+
+.corner-square{position:absolute;width:18px;height:18px;border:2px solid #1B3B6B;top:45px;left:45px}
+.corner-circle{position:absolute;width:14px;height:14px;border:2px solid #8B7355;border-radius:50%;top:50px;right:50px}
+</style></head><body>
+<div class="bg-texture"></div>
+<div class="header-bar"></div>
+<div class="accent-line"></div>
+<div class="corner-square"></div>
+<div class="corner-circle"></div>
+
+<div class="title-zone">
+<div class="slide-number">SLIDE — 04</div>
+<div class="main-title">标准的故事：MP3、Bit<br>与唱片行业</div>
+<div class="subtitle">「粗糙石器的排列，象征技术作为人类文明的<br>起源与递归性建构。」</div>
+<div class="divider"></div>
+</div>
+
+<div class="visual-zone">
+<div class="stone-stage">
+<div class="line-deco"></div>
+<div class="square-mark"></div>
+<div class="circle-mark"></div>
+<div class="triangle-mark"></div>
+
+<div class="stone stone-1"><div class="chip-mark"></div></div>
+<div class="stone stone-2"></div>
+<div class="stone stone-3"><div class="chip-mark"></div></div>
+<div class="stone stone-4"></div>
+<div class="stone stone-5"></div>
+<div class="stone stone-6"><div class="chip-mark chip-mark-2"></div></div>
+
+<div class="ground-line"></div>
+<div class="ground-shade"></div>
+<div class="metaphor-label">— 技术递归 · TECHNIQUE RECURSIVE —</div>
+</div>
+</div>
+
+<div class="content-zone">
+<div class="bullet-column">
+<div class="bullet-item">
+<span class="bullet-index">Ⅰ</span>
+<span class="bullet-text"><strong>标准的故事</strong>：MP3、Bit 与唱片行业——<span class="accent">技术标准如何重塑产业结构</span></span>
+</div>
+<div class="bullet-item">
+<span class="bullet-index">Ⅱ</span>
+<span class="bullet-text"><strong>Mp2 的垄断地位</strong>——被忽视的中间形态，<span class="accent">技术路径的暗线</span></span>
+</div>
+<div class="bullet-item">
+<span class="bullet-index">Ⅲ</span>
+<span class="bullet-text"><strong>万维网的崛起</strong>——分发渠道的底层革命，<span class="accent">降低交易成本的范式转移</span></span>
+</div>
+<div class="bullet-item">
+<span class="bullet-index">Ⅳ</span>
+<span class="bullet-text"><strong>MP3 剑走偏锋</strong>——开发从 CD 转录 mp3 的软件，<span class="accent">并免费分发</span></span>
+</div>
+<div class="col-divider"></div>
+</div>
+<div class="bullet-column">
+<div class="bullet-item">
+<span class="bullet-index">Ⅴ</span>
+<span class="bullet-text"><strong>唱片行业的颠覆</strong>与<span class="accent">善于寻找机会者</span>——制度变迁中的先行者与套利者</span>
+</div>
+<div class="bullet-item">
+<span class="bullet-index">Ⅵ</span>
+<span class="bullet-text"><strong>设备、分发平台</strong>……造成了<span class="accent">路径依赖</span>——初始选择的锁定效应与不可逆性</span>
+</div>
+<div class="bullet-item" style="margin-top:32px;padding:14px 18px;background:rgba(27,59,107,0.05);border-left:3px solid #1B3B6B">
+<span class="bullet-text" style="font-size:13px;color:#555;line-height:1.7;font-style:italic;font-family:'Noto Serif SC',serif">「每一种标准都是一把石器——粗糙却决定了<br>人类处理信息的方式。递归地，我们用手中的<br>技术制造下一代技术。」</span>
+</div>
+</div>
+</div>
+
+<div class="tag-box">
+<span class="tag-dot"></span>
+<span class="tag-text">新制度经济学 · 开源研究</span>
+</div>
+<div class="footer-zone">
+<span>OPEN SOURCE</span>
+<span class="footer-line"></span>
+<span>2025</span>
+</div>
+</body></html>

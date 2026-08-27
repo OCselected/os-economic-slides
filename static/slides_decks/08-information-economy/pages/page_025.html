@@ -1,0 +1,395 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>历史上的价格信号 · 制度路径</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  width: 1600px; height: 900px; overflow: hidden;
+  font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+  background: #F5F0E8;
+  color: #1B3B6B;
+}
+body {
+  position: relative;
+}
+
+/* Subtle parchment texture */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 1600px; height: 900px;
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(139,115,85,0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(27,59,107,0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Header bar */
+.header {
+  position: absolute;
+  top: 48px; left: 80px; right: 80px;
+  display: flex; justify-content: space-between; align-items: flex-start;
+  border-bottom: 2px solid #1B3B6B;
+  padding-bottom: 16px;
+}
+.header-left {
+  display: flex; align-items: baseline; gap: 20px;
+}
+.lecture-num {
+  font-family: 'Noto Serif SC', 'Songti SC', serif;
+  font-size: 28px; font-weight: 700;
+  color: #1B3B6B;
+  letter-spacing: 2px;
+}
+.lecture-divider {
+  width: 1px; height: 24px; background: #8B7355;
+  display: inline-block;
+}
+.lecture-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 16px; color: #555;
+  letter-spacing: 1px;
+}
+.header-right {
+  font-size: 13px; color: #555;
+  letter-spacing: 1px; text-align: right;
+}
+.header-right .decker {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14px; color: #8B7355;
+  letter-spacing: 2px;
+}
+
+/* Section label */
+.section-label {
+  position: absolute;
+  top: 140px; left: 80px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  letter-spacing: 6px;
+  color: #8B7355;
+}
+
+/* Main title */
+.main-title {
+  position: absolute;
+  top: 170px; left: 80px;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 52px; font-weight: 700;
+  color: #1B3B6B;
+  letter-spacing: 4px;
+  line-height: 1.2;
+}
+.main-subtitle {
+  position: absolute;
+  top: 250px; left: 80px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 18px;
+  color: #555;
+  letter-spacing: 3px;
+  font-style: italic;
+}
+
+/* Decorative elements top-right */
+.deco-square {
+  position: absolute;
+  top: 130px; right: 80px;
+  width: 60px; height: 60px;
+  background: #1B3B6B;
+}
+.deco-circle {
+  position: absolute;
+  top: 140px; right: 160px;
+  width: 40px; height: 40px;
+  border: 3px solid #8B7355;
+  border-radius: 50%;
+}
+.deco-line-v {
+  position: absolute;
+  top: 130px; right: 60px;
+  width: 3px; height: 80px;
+  background: #1B3B6B;
+}
+
+/* Timeline area */
+.timeline-area {
+  position: absolute;
+  top: 340px; left: 80px; right: 80px;
+  height: 340px;
+}
+
+.timeline-line {
+  position: absolute;
+  top: 155px; left: 0; right: 0;
+  height: 3px;
+  background: #1B3B6B;
+}
+
+.timeline-tick {
+  position: absolute;
+  top: 150px;
+  width: 3px; height: 13px;
+  background: #1B3B6B;
+}
+
+.node {
+  position: absolute;
+  top: 0;
+  width: 240px;
+  height: 310px;
+  transform: translateX(-50%);
+}
+
+.node-year {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  text-align: center;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14px;
+  letter-spacing: 3px;
+  color: #8B7355;
+}
+
+.node-shape {
+  position: absolute;
+  top: 100px; left: 50%;
+  transform: translateX(-50%);
+}
+
+.node-platform {
+  position: absolute;
+  top: 200px; left: 0; right: 0;
+  text-align: center;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 22px; font-weight: 700;
+  color: #1B3B6B;
+  letter-spacing: 2px;
+}
+
+.node-pricing {
+  position: absolute;
+  top: 240px; left: 0; right: 0;
+  text-align: center;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 15px;
+  color: #555;
+  letter-spacing: 1px;
+  line-height: 1.5;
+}
+
+.node-bar {
+  position: absolute;
+  top: 280px; left: 50%;
+  transform: translateX(-50%);
+  height: 4px;
+}
+
+/* Node 1: Windows - square */
+.node-1 { left: 180px; }
+.node-1 .node-shape {
+  width: 52px; height: 52px;
+  background: #1B3B6B;
+}
+.node-1 .node-bar {
+  width: 80px; background: #1B3B6B;
+}
+
+/* Node 2: Linux - circle */
+.node-2 { left: 540px; }
+.node-2 .node-shape {
+  width: 56px; height: 56px;
+  border: 4px solid #1B3B6B;
+  border-radius: 50%;
+}
+.node-2 .node-bar {
+  width: 80px; background: #1B3B6B;
+}
+
+/* Node 3: Ubuntu - triangle */
+.node-3 { left: 900px; }
+.node-3 .node-shape {
+  width: 0; height: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 52px solid #1B3B6B;
+  top: 104px;
+}
+.node-3 .node-bar {
+  width: 80px; background: #1B3B6B;
+}
+
+/* Node 4: Kubernetes - diamond */
+.node-4 { left: 1260px; }
+.node-4 .node-shape {
+  width: 44px; height: 44px;
+  background: #1B3B6B;
+  top: 108px;
+  transform: translateX(-50%) rotate(45deg);
+}
+.node-4 .node-bar {
+  width: 80px; background: #1B3B6B;
+}
+
+/* Era labels under timeline */
+.era-label {
+  position: absolute;
+  top: 175px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #8B7355;
+}
+
+/* Bottom insight panel */
+.insight-panel {
+  position: absolute;
+  bottom: 80px; left: 80px; right: 80px;
+  height: 90px;
+  border-left: 4px solid #1B3B6B;
+  padding: 14px 30px;
+  display: flex; align-items: center;
+  gap: 30px;
+  background: rgba(27, 59, 107, 0.04);
+}
+.insight-label {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12px;
+  letter-spacing: 5px;
+  color: #8B7355;
+  white-space: nowrap;
+  border-right: 1px solid #8B7355;
+  padding-right: 24px;
+}
+.insight-text {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 24px; font-weight: 700;
+  color: #1B3B6B;
+  letter-spacing: 4px;
+}
+
+/* Footer */
+.footer {
+  position: absolute;
+  bottom: 30px; left: 80px; right: 80px;
+  display: flex; justify-content: space-between;
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 2px;
+}
+
+/* Decorative corner marks */
+.corner-tl {
+  position: absolute;
+  top: 120px; left: 80px;
+  width: 40px; height: 2px; background: #8B7355;
+}
+.corner-tl2 {
+  position: absolute;
+  top: 115px; left: 80px;
+  width: 2px; height: 30px; background: #8B7355;
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <div class="header-left">
+    <span class="lecture-num">第 08 期</span>
+    <span class="lecture-divider"></span>
+    <span class="lecture-title">信息规则与网络经济</span>
+  </div>
+  <div class="header-right">
+    <div class="decker">BAUHAUS · INTELLECTUAL</div>
+    <div style="margin-top:4px;">新制度经济学 · 开源之道</div>
+  </div>
+</div>
+
+<!-- Decorative corner -->
+<div class="corner-tl"></div>
+<div class="corner-tl2"></div>
+
+<!-- Decorative elements -->
+<div class="deco-circle"></div>
+<div class="deco-square"></div>
+<div class="deco-line-v"></div>
+
+<!-- Section label -->
+<div class="section-label">V · 价 格 信 号 的 制 度 演 化</div>
+
+<!-- Main title -->
+<div class="main-title">历史上的价格信号</div>
+<div class="main-subtitle">Pricing Signals Through Institutional Pathways</div>
+
+<!-- Timeline -->
+<div class="timeline-area">
+  <div class="timeline-line"></div>
+
+  <!-- Ticks -->
+  <div class="timeline-tick" style="left: 160px;"></div>
+  <div class="timeline-tick" style="left: 520px;"></div>
+  <div class="timeline-tick" style="left: 880px;"></div>
+  <div class="timeline-tick" style="left: 1240px;"></div>
+  <div class="timeline-tick" style="left: 1480px;"></div>
+
+  <div class="era-label" style="left: 155px;">1985</div>
+  <div class="era-label" style="left: 515px;">1991</div>
+  <div class="era-label" style="left: 875px;">2004</div>
+  <div class="era-label" style="left: 1235px;">2014</div>
+  <div class="era-label" style="left: 1465px;">…</div>
+
+  <!-- Node 1: Windows -->
+  <div class="node node-1">
+    <div class="node-year">PC 时代</div>
+    <div class="node-shape"></div>
+    <div class="node-platform">Windows</div>
+    <div class="node-pricing">按拷贝收费<br><span style="font-size:12px; color:#8B7355;">Per Copy License</span></div>
+    <div class="node-bar"></div>
+  </div>
+
+  <!-- Node 2: Linux -->
+  <div class="node node-2">
+    <div class="node-year">Unix 替代时代</div>
+    <div class="node-shape"></div>
+    <div class="node-platform">Linux</div>
+    <div class="node-pricing">按服务收费<br><span style="font-size:12px; color:#8B7355;">Per Service</span></div>
+    <div class="node-bar"></div>
+  </div>
+
+  <!-- Node 3: Ubuntu -->
+  <div class="node node-3">
+    <div class="node-year">云计算时代</div>
+    <div class="node-shape"></div>
+    <div class="node-platform">Ubuntu</div>
+    <div class="node-pricing">按云服务费收费<br><span style="font-size:12px; color:#8B7355;">Per Cloud Subscription</span></div>
+    <div class="node-bar"></div>
+  </div>
+
+  <!-- Node 4: Kubernetes -->
+  <div class="node node-4">
+    <div class="node-year">容器编排时代</div>
+    <div class="node-shape"></div>
+    <div class="node-platform">Kubernetes</div>
+    <div class="node-pricing">按托管服务收费<br><span style="font-size:12px; color:#8B7355;">Per Managed Service</span></div>
+    <div class="node-bar"></div>
+  </div>
+</div>
+
+<!-- Insight panel -->
+<div class="insight-panel">
+  <div class="insight-label">CORE INSIGHT</div>
+  <div class="insight-text">制度路径决定价格路径</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <span>开源之道 · 新制度经济学视角下的开源</span>
+  <span>SLIDE 05 / 30</span>
+</div>
+
+</body>
+</html>

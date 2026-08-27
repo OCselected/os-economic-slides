@@ -1,0 +1,197 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>第 09 期 · 排他权与容他权、比例原则与 copyleft</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0}
+body{background:#F5F0E8;font-family:'Noto Sans SC','Source Han Sans SC','PingFang SC',sans-serif;color:#1B3B6B;position:relative}
+
+/* subtle parchment texture */
+body::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;background:radial-gradient(ellipse at 20% 15%,rgba(139,115,85,0.05) 0%,transparent 40%),radial-gradient(ellipse at 80% 85%,rgba(27,59,107,0.04) 0%,transparent 45%);pointer-events:none}
+
+/* corner marks */
+.corner{position:absolute;width:36px;height:36px;border:1.5px solid #1B3B6B}
+.corner-tl{top:36px;left:36px;border-right:none;border-bottom:none}
+.corner-tr{top:36px;right:36px;border-left:none;border-bottom:none}
+.corner-bl{bottom:36px;left:36px;border-right:none;border-top:none}
+.corner-br{bottom:36px;right:36px;border-left:none;border-top:none}
+
+/* header */
+.header{position:absolute;top:60px;left:80px;width:1440px;height:80px;display:flex;align-items:flex-start;justify-content:space-between}
+.lecture-tag{font-size:14px;letter-spacing:4px;color:#8B7355;font-weight:500}
+.lecture-tag .num{display:inline-block;width:32px;height:32px;background:#1B3B6B;color:#F5F0E8;text-align:center;line-height:32px;font-size:14px;letter-spacing:0;font-weight:700;margin-right:12px;vertical-align:middle}
+.header-meta{text-align:right;font-size:12px;letter-spacing:3px;color:#555;line-height:1.8}
+
+/* title block */
+.title-block{position:absolute;top:140px;left:80px;width:1440px}
+.title-main{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:42px;font-weight:700;color:#1B3B6B;line-height:1.2;letter-spacing:2px}
+.title-sub{font-size:13px;color:#8B7355;letter-spacing:5px;margin-top:14px;font-weight:400}
+.title-rule{width:80px;height:2px;background:#1B3B6B;margin-top:18px}
+
+/* central visual — scroll archive */
+.visual-area{position:absolute;top:280px;left:80px;width:1440px;height:280px}
+.scroll-row{position:absolute;top:40px;left:0;width:1440px;height:180px;display:flex;align-items:flex-end;justify-content:center;gap:14px}
+.scroll{background:#1B3B6B;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:18px}
+.scroll .seal{width:22px;height:22px;background:#8B7355;border:1.5px solid #F5F0E8;border-radius:50%;margin-bottom:12px}
+.scroll .lines{width:30px;display:flex;flex-direction:column;gap:4px}
+.scroll .lines span{height:1.5px;background:#F5F0E8;opacity:0.7}
+.scroll.copper{background:#8B7355}
+.scroll.copper .seal{background:#1B3B6B;border-color:#F5F0E8}
+.scroll.dark{background:#1B3B6B}
+
+/* Bauhaus geometric decorations around scrolls */
+.deco-circle{position:absolute;top:30px;left:60px;width:80px;height:80px;border:2px solid #1B3B6B;border-radius:50%;z-index:2}
+.deco-circle-inner{position:absolute;top:50px;left:80px;width:40px;height:40px;background:#1B3B6B;border-radius:50%;z-index:3}
+.deco-square{position:absolute;top:60px;right:80px;width:50px;height:50px;background:#8B7355;z-index:2}
+.deco-line-v{position:absolute;top:50px;right:170px;width:2px;height:60px;background:#1B3B6B;z-index:2}
+.deco-tri{position:absolute;top:120px;left:50px;width:0;height:0;border-left:14px solid transparent;border-right:14px solid transparent;border-bottom:24px solid #8B7355;z-index:2}
+.deco-tri2{position:absolute;top:140px;right:60px;width:0;height:0;border-left:10px solid transparent;border-right:10px solid transparent;border-bottom:18px solid #1B3B6B;z-index:2}
+
+/* bottom arc / timeline */
+.timeline{position:absolute;top:250px;left:0;width:1440px;height:2px;background:#555;opacity:0.4}
+.timeline-tick{position:absolute;top:-5px;width:2px;height:12px;background:#8B7355}
+
+/* bullet area */
+.bullets{position:absolute;top:590px;left:80px;width:1440px;height:220px;display:flex;justify-content:space-between;align-items:flex-start;gap:30px}
+.bullet{width:274px;height:200px;position:relative;padding:22px 20px 22px 20px;background:rgba(245,240,232,0.9);border:1px solid rgba(27,59,107,0.15);border-top:3px solid #1B3B6B}
+.bullet .idx{font-family:'Noto Serif SC','Songti SC',serif;font-size:11px;letter-spacing:3px;color:#8B7355;margin-bottom:10px}
+.bullet .b-title{font-family:'Noto Serif SC','Songti SC',serif;font-size:17px;font-weight:700;color:#1B3B6B;line-height:1.4;margin-bottom:10px;letter-spacing:1px}
+.bullet .b-text{font-size:12.5px;color:#555;line-height:1.75;font-weight:400}
+.bullet .deco-dot{position:absolute;top:18px;right:18px;width:8px;height:8px;background:#8B7355;border-radius:50%}
+
+/* footer */
+.footer{position:absolute;bottom:60px;left:80px;width:1440px;display:flex;justify-content:space-between;align-items:center;font-size:11px;letter-spacing:2px;color:#8B7355}
+.footer-line{flex:1;height:1px;background:rgba(27,59,107,0.2);margin:0 20px}
+
+/* side label */
+.side-label{position:absolute;top:400px;left:30px;writing-mode:vertical-rl;font-size:11px;letter-spacing:6px;color:#8B7355}
+.side-label-r{position:absolute;top:400px;right:30px;writing-mode:vertical-rl;font-size:11px;letter-spacing:6px;color:#8B7355}
+
+/* evolution arrow */
+.evo-label{position:absolute;font-size:10px;letter-spacing:2px;color:#8B7355;font-family:'Noto Serif SC',serif}
+</style></head><body>
+
+<div class="corner corner-tl"></div>
+<div class="corner corner-tr"></div>
+<div class="corner corner-bl"></div>
+<div class="corner corner-br"></div>
+
+<div class="side-label">INSTITUTIONAL EVOLUTION</div>
+<div class="side-label-r">LICENSE ARCHIVE · 许可证档案</div>
+
+<div class="header">
+  <div class="lecture-tag"><span class="num">09</span>开源经济学讲座 · 新制度经济视角</div>
+  <div class="header-meta">
+    <div>排他权与容他权 · 比例原则与 COPIFLEFT</div>
+    <div>OPEN SOURCE ECONOMICS / VOL.09</div>
+  </div>
+</div>
+
+<div class="title-block">
+  <div class="title-main">许可证作为制度多样性</div>
+  <div class="title-sub">LICENSES AS INSTITUTIONAL DIVERSITY — 演化的规则谱系</div>
+  <div class="title-rule"></div>
+</div>
+
+<div class="visual-area">
+  <div class="timeline"></div>
+
+  <div class="deco-circle"></div>
+  <div class="deco-circle-inner"></div>
+  <div class="deco-square"></div>
+  <div class="deco-line-v"></div>
+  <div class="deco-tri"></div>
+  <div class="deco-tri2"></div>
+
+  <div class="scroll-row">
+    <div class="scroll" style="width:60px;height:120px">
+      <div class="seal"></div>
+      <div class="lines"><span style="width:30px"></span><span style="width:24px"></span><span style="width:28px"></span><span style="width:20px"></span><span style="width:26px"></span><span style="width:22px"></span><span style="width:28px"></span></div>
+    </div>
+    <div class="scroll copper" style="width:52px;height:160px">
+      <div class="seal"></div>
+      <div class="lines"><span style="width:26px"></span><span style="width:22px"></span><span style="width:24px"></span><span style="width:20px"></span><span style="width:26px"></span><span style="width:22px"></span><span style="width:24px"></span><span style="width:20px"></span><span style="width:26px"></span></div>
+    </div>
+    <div class="scroll" style="width:68px;height:140px">
+      <div class="seal"></div>
+      <div class="lines"><span style="width:36px"></span><span style="width:30px"></span><span style="width:34px"></span><span style="width:26px"></span><span style="width:32px"></span><span style="width:28px"></span><span style="width:34px"></span><span style="width:30px"></span></div>
+    </div>
+    <div class="scroll copper" style="width:44px;height:200px">
+      <div class="seal"></div>
+      <div class="lines"><span style="width:22px"></span><span style="width:18px"></span><span style="width:20px"></span><span style="width:22px"></span><span style="width:18px"></span><span style="width:20px"></span><span style="width:22px"></span><span style="width:18px"></span><span style="width:20px"></span><span style="width:22px"></span><span style="width:18px"></span></div>
+    </div>
+    <div class="scroll" style="width:56px;height:180px">
+      <div class="seal"></div>
+      <div class="lines"><span style="width:28px"></span><span style="width:24px"></span><span style="width:26px"></span><span style="width:22px"></span><span style="width:28px"></span><span style="width:24px"></span><span style="width:26px"></span><span style="width:22px"></span><span style="width:28px"></span><span style="width:24px"></span></div>
+    </div>
+    <div class="scroll" style="width:72px;height:110px">
+      <div class="seal"></div>
+      <div class="lines"><span style="width:40px"></span><span style="width:34px"></span><span style="width:38px"></span><span style="width:30px"></span><span style="width:36px"></span><span style="width:32px"></span></div>
+    </div>
+    <div class="scroll copper" style="width:48px;height:170px">
+      <div class="seal"></div>
+      <div class="lines"><span style="width:24px"></span><span style="width:20px"></span><span style="width:22px"></span><span style="width:24px"></span><span style="width:20px"></span><span style="width:22px"></span><span style="width:24px"></span><span style="width:20px"></span><span style="width:22px"></span><span style="width:24px"></span></div>
+    </div>
+    <div class="scroll" style="width:60px;height:150px">
+      <div class="seal"></div>
+      <div class="lines"><span style="width:30px"></span><span style="width:26px"></span><span style="width:28px"></span><span style="width:24px"></span><span style="width:30px"></span><span style="width:26px"></span><span style="width:28px"></span><span style="width:24px"></span><span style="width:30px"></span></div>
+    </div>
+    <div class="scroll copper" style="width:52px;height:190px">
+      <div class="seal"></div>
+      <div class="lines"><span style="width:26px"></span><span style="width:22px"></span><span style="width:24px"></span><span style="width:26px"></span><span style="width:22px"></span><span style="width:24px"></span><span style="width:26px"></span><span style="width:22px"></span><span style="width:24px"></span><span style="width:26px"></span><span style="width:22px"></span></div>
+    </div>
+    <div class="scroll" style="width:66px;height:130px">
+      <div class="seal"></div>
+      <div class="lines"><span style="width:34px"></span><span style="width:28px"></span><span style="width:32px"></span><span style="width:26px"></span><span style="width:30px"></span><span style="width:28px"></span><span style="width:34px"></span><span style="width:30px"></span></div>
+    </div>
+    <div class="scroll copper" style="width:42px;height:160px">
+      <div class="seal"></div>
+      <div class="lines"><span style="width:20px"></span><span style="width:18px"></span><span style="width:20px"></span><span style="width:18px"></span><span style="width:20px"></span><span style="width:18px"></span><span style="width:20px"></span><span style="width:18px"></span><span style="width:20px"></span><span style="width:18px"></span></div>
+    </div>
+  </div>
+
+  <div class="evo-label" style="left:20px;bottom:0">← EARLY</div>
+  <div class="evo-label" style="right:20px;bottom:0">DIVERSITY →</div>
+</div>
+
+<div class="bullets">
+  <div class="bullet">
+    <div class="deco-dot"></div>
+    <div class="idx">I · 01</div>
+    <div class="b-title">许可证即制度</div>
+    <div class="b-text">许可证并非技术性附属品，而是一套完整的制度安排——定义权利边界、约束行为模式、塑造协作秩序。</div>
+  </div>
+  <div class="bullet">
+    <div class="deco-dot"></div>
+    <div class="idx">II · 02</div>
+    <div class="b-title">规则即多样性</div>
+    <div class="b-text">从 GPL 的强 copyleft 到 MIT 的最小约束，每种许可证都是一套独特规则，映射着不同的价值取向与治理哲学。</div>
+  </div>
+  <div class="bullet">
+    <div class="deco-dot"></div>
+    <div class="idx">III · 03</div>
+    <div class="b-title">适配与场景</div>
+    <div class="b-text">不同的规则适用于不同的协作场景——核心基础设施、商业产品集成、公共领域贡献，各有其制度最优解。</div>
+  </div>
+  <div class="bullet">
+    <div class="deco-dot"></div>
+    <div class="idx">IV · 04</div>
+    <div class="b-title">制度演化论</div>
+    <div class="b-text">制度不是统一的、被设计的，而是在实践冲突中被反复选择和调适的结果。许可证谱系的每一次分叉都是制度演化的见证。</div>
+  </div>
+  <div class="bullet">
+    <div class="deco-dot"></div>
+    <div class="idx">V · 05</div>
+    <div class="b-title">开源之制度厚度</div>
+    <div class="b-text">许可证的演化史，即是开源制度从朴素理想走向精细化治理的过程——也是开源之道的深层肌理。</div>
+  </div>
+</div>
+
+<div class="footer">
+  <div>OPEN SOURCE · LECTURE 09</div>
+  <div class="footer-line"></div>
+  <div>排他权与容他权 · 比例原则与 copyleft</div>
+  <div class="footer-line"></div>
+  <div>SLIDE 09 / 28</div>
+</div>
+
+</body></html>

@@ -1,0 +1,301 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>第 08 期 · 信息规则与网络经济</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0;font-family:'Noto Sans SC',sans-serif;color:#1B3B6B;background:#F5F0E8}
+.slide{position:relative;width:1600px;height:900px;background:#F5F0E8;overflow:hidden}
+.bg-texture{position:absolute;top:0;left:0;width:1600px;height:900px;background:radial-gradient(ellipse at 20% 10%,rgba(139,115,85,0.04) 0%,transparent 50%),radial-gradient(ellipse at 80% 90%,rgba(27,59,107,0.03) 0%,transparent 50%);pointer-events:none}
+
+/* Header bar */
+.header-bar{position:absolute;top:56px;left:80px;right:80px;display:flex;align-items:center;justify-content:space-between}
+.lecture-badge{display:flex;align-items:center;gap:16px}
+.badge-circle{width:56px;height:56px;border-radius:50%;background:#1B3B6B;display:flex;align-items:center;justify-content:center;color:#F5F0E8;font-family:'Noto Serif SC',serif;font-size:22px;font-weight:600}
+.badge-text{font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:2px}
+.header-right{display:flex;align-items:center;gap:20px}
+.header-line{width:120px;height:1px;background:#1B3B6B;opacity:0.4}
+.header-meta{font-size:12px;color:#555;letter-spacing:1.5px}
+
+/* Title area */
+.title-area{position:absolute;top:150px;left:80px;right:80px}
+.title-main{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:42px;font-weight:600;color:#1B3B6B;line-height:1.3;letter-spacing:1px}
+.title-sub{font-family:'Noto Serif SC',serif;font-size:16px;color:#8B7355;margin-top:12px;letter-spacing:3px}
+.title-rule{width:80px;height:3px;background:#1B3B6B;margin-top:20px}
+.title-rule-copper{width:40px;height:3px;background:#8B7355;margin-top:6px}
+
+/* Main content area */
+.main-area{position:absolute;top:320px;left:80px;right:80px;bottom:80px;display:flex;gap:40px}
+
+/* Left: Visual metaphor */
+.visual-panel{position:relative;width:520px;height:470px;background:#1B3B6B;border:1px solid #1B3B6B;overflow:hidden}
+.blueprint-grid{position:absolute;top:0;left:0;width:100%;height:100%;opacity:0.12}
+.bp-h{position:absolute;left:0;right:0;height:1px;background:#F5F0E8}
+.bp-v{position:absolute;top:0;bottom:0;width:1px;background:#F5F0E8}
+
+/* Sand base */
+.sand-zone{position:absolute;bottom:0;left:0;right:0;height:130px;background:linear-gradient(180deg,transparent 0%,rgba(139,115,85,0.25) 40%,rgba(139,115,85,0.45) 100%)}
+.sand-line{position:absolute;left:0;right:0;height:1px;background:rgba(245,240,232,0.3)}
+.sand-dune{position:absolute;border-radius:50%;background:rgba(139,115,85,0.3)}
+
+/* Framework structures */
+.framework{position:absolute}
+.fw-base{bottom:60px;width:80px;height:4px;background:#F5F0E8}
+.fw-pillar{width:6px;height:120px;background:#F5F0E8}
+.fw-beam{height:6px;background:#F5F0E8}
+.fw-triangle{width:0;height:0}
+
+/* Architects (abstract) */
+.architect{position:absolute}
+.arch-head{width:18px;height:18px;border-radius:50%;background:#F5F0E8}
+.arch-body{width:3px;height:40px;background:#F5F0E8}
+.arch-arm{position:absolute;width:30px;height:3px;background:#F5F0E8}
+.arch-leg{width:3px;height:30px;background:#F5F0E8}
+
+/* Geometric accents on blueprint */
+.geo-circle-outline{border-radius:50%;border:1.5px solid rgba(245,240,232,0.5);position:absolute}
+.geo-square-outline{border:1.5px solid rgba(245,240,232,0.5);position:absolute}
+.geo-diagonal{position:absolute;background:rgba(245,240,232,0.3);height:1px;transform-origin:left center}
+
+/* Visual label */
+.visual-label{position:absolute;bottom:-30px;left:0;font-size:11px;color:#8B7355;letter-spacing:2px;font-family:'Noto Serif SC',serif}
+
+/* Right: Content */
+.content-panel{position:relative;width:640px;height:470px;display:flex;flex-direction:column;justify-content:center;gap:20px}
+.content-item{display:flex;gap:18px;align-items:flex-start;position:relative}
+.content-num{font-family:'Noto Serif SC',serif;font-size:24px;font-weight:600;color:#1B3B6B;width:36px;flex-shrink:0;line-height:1.2}
+.content-num-rule{width:36px;height:1px;background:#1B3B6B;opacity:0.3;margin-top:8px}
+.content-text{flex:1;padding-top:2px}
+.content-key{font-family:'Noto Serif SC',serif;font-size:18px;font-weight:600;color:#1B3B6B;line-height:1.5}
+.content-desc{font-size:13px;color:#555;margin-top:4px;line-height:1.6;letter-spacing:0.5px}
+.content-key.copper{color:#8B7355}
+.content-underline{display:inline-block;height:2px;background:#8B7355;margin-top:6px}
+
+/* Decorative elements */
+.deco-circle-1{position:absolute;width:80px;height:80px;border-radius:50%;border:2px solid #1B3B6B;top:60px;right:60px;opacity:0.2}
+.deco-square-1{position:absolute;width:30px;height:30px;background:#8B7355;bottom:60px;right:120px;opacity:0.3}
+.deco-line-1{position:absolute;width:200px;height:1px;background:#1B3B6B;top:56px;right:80px;opacity:0.15}
+.deco-line-2{position:absolute;width:1px;height:80px;background:#8B7355;bottom:80px;left:40px;opacity:0.2}
+
+/* Footer */
+.footer{position:absolute;bottom:30px;left:80px;right:80px;display:flex;align-items:center;justify-content:space-between}
+.footer-left{font-size:11px;color:#8B7355;letter-spacing:2px}
+.footer-center{display:flex;align-items:center;gap:8px}
+.footer-dot{width:5px;height:5px;background:#1B3B6B;border-radius:50%}
+.footer-square{width:6px;height:6px;background:#8B7355}
+.footer-triangle{width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-bottom:8px solid #1B3B6B}
+.footer-right{font-size:11px;color:#555;letter-spacing:2px}
+
+/* Vertical accent lines */
+.left-accent{position:absolute;top:150px;left:48px;width:1px;height:600px;background:#1B3B6B;opacity:0.1}
+.right-accent{position:absolute;top:150px;right:48px;width:1px;height:600px;background:#8B7355;opacity:0.15}
+
+/* Watermark number */
+.watermark{position:absolute;top:180px;right:80px;font-family:'Noto Serif SC',serif;font-size:180px;color:#1B3B6B;opacity:0.04;line-height:1;font-weight:600;pointer-events:none}
+</style></head><body>
+<div class="slide">
+<div class="bg-texture"></div>
+<div class="deco-circle-1"></div>
+<div class="deco-square-1"></div>
+<div class="deco-line-1"></div>
+<div class="deco-line-2"></div>
+<div class="left-accent"></div>
+<div class="right-accent"></div>
+<div class="watermark">08</div>
+
+<!-- Header -->
+<div class="header-bar">
+<div class="lecture-badge">
+<div class="badge-circle">08</div>
+<div class="badge-text">OPEN SOURCE ECONOMICS · LECTURE EIGHT</div>
+</div>
+<div class="header-right">
+<span class="header-meta">INFORMATION RULES &amp; NETWORK ECONOMY</span>
+<div class="header-line"></div>
+</div>
+</div>
+
+<!-- Title -->
+<div class="title-area">
+<div class="title-main">从制度经济学视角看信息经济</div>
+<div class="title-sub">Institutional Economics &amp; the Information Economy</div>
+<div class="title-rule"></div>
+<div class="title-rule-copper"></div>
+</div>
+
+<!-- Main content -->
+<div class="main-area">
+<!-- Left: Visual Metaphor - Blueprint with Architects on Sand -->
+<div class="visual-panel">
+<div class="blueprint-grid">
+<div class="bp-h" style="top:30px"></div>
+<div class="bp-h" style="top:70px"></div>
+<div class="bp-h" style="top:110px"></div>
+<div class="bp-h" style="top:150px"></div>
+<div class="bp-h" style="top:190px"></div>
+<div class="bp-h" style="top:230px"></div>
+<div class="bp-h" style="top:270px"></div>
+<div class="bp-h" style="top:310px"></div>
+<div class="bp-h" style="top:350px"></div>
+<div class="bp-h" style="top:390px"></div>
+<div class="bp-h" style="top:430px"></div>
+<div class="bp-v" style="left:30px"></div>
+<div class="bp-v" style="left:70px"></div>
+<div class="bp-v" style="left:110px"></div>
+<div class="bp-v" style="left:150px"></div>
+<div class="bp-v" style="left:190px"></div>
+<div class="bp-v" style="left:230px"></div>
+<div class="bp-v" style="left:270px"></div>
+<div class="bp-v" style="left:310px"></div>
+<div class="bp-v" style="left:350px"></div>
+<div class="bp-v" style="left:390px"></div>
+<div class="bp-v" style="left:430px"></div>
+<div class="bp-v" style="left:470px"></div>
+<div class="bp-v" style="left:510px"></div>
+</div>
+
+<!-- Geometric decorative elements on blueprint -->
+<div class="geo-circle-outline" style="top:40px;left:350px;width:60px;height:60px"></div>
+<div class="geo-square-outline" style="top:20px;left:30px;width:50px;height:50px"></div>
+<div class="geo-circle-outline" style="top:150px;left:180px;width:30px;height:30px"></div>
+<div class="geo-diagonal" style="top:120px;left:400px;width:80px;transform:rotate(45deg)"></div>
+
+<!-- Sand zone -->
+<div class="sand-zone"></div>
+<div class="sand-line" style="bottom:85px"></div>
+<div class="sand-line" style="bottom:70px"></div>
+<div class="sand-dune" style="bottom:50px;left:-40px;width:180px;height:120px"></div>
+<div class="sand-dune" style="bottom:40px;left:200px;width:160px;height:100px"></div>
+<div class="sand-dune" style="bottom:60px;left:340px;width:200px;height:80px"></div>
+
+<!-- Framework 1: Central structure -->
+<div class="framework">
+<div class="fw-base" style="bottom:110px;left:180px"></div>
+<div class="fw-pillar" style="bottom:114px;left:195px"></div>
+<div class="fw-pillar" style="bottom:114px;left:245px"></div>
+<div class="fw-beam" style="bottom:230px;left:190px;width:60px"></div>
+<div class="fw-beam" style="bottom:180px;left:190px;width:60px"></div>
+<div class="fw-triangle" style="bottom:230px;left:190px;border-left:30px solid transparent;border-right:30px solid transparent;border-bottom:24px solid rgba(245,240,232,0.7)"></div>
+</div>
+
+<!-- Framework 2: Left structure -->
+<div class="framework">
+<div class="fw-base" style="bottom:110px;left:60px"></div>
+<div class="fw-pillar" style="bottom:114px;left:75px;height:90px"></div>
+<div class="fw-pillar" style="bottom:114px;left:125px;height:90px"></div>
+<div class="fw-beam" style="bottom:200px;left:70px;width:60px"></div>
+<div class="fw-beam" style="bottom:160px;left:70px;width:60px"></div>
+</div>
+
+<!-- Framework 3: Right structure -->
+<div class="framework">
+<div class="fw-base" style="bottom:110px;left:340px"></div>
+<div class="fw-pillar" style="bottom:114px;left:355px;height:100px"></div>
+<div class="fw-pillar" style="bottom:114px;left:405px;height:100px"></div>
+<div class="fw-pillar" style="bottom:114px;left:455px;height:100px"></div>
+<div class="fw-beam" style="bottom:210px;left:350px;width:110px"></div>
+<div class="fw-beam" style="bottom:170px;left:350px;width:110px"></div>
+</div>
+
+<!-- Architect 1 -->
+<div class="architect" style="bottom:148px;left:88px">
+<div class="arch-head" style="position:absolute;bottom:70px;left:0"></div>
+<div class="arch-body" style="position:absolute;bottom:30px;left:7px"></div>
+<div class="arch-arm" style="bottom:60px;left:8px"></div>
+<div class="arch-arm" style="bottom:50px;left:-14px"></div>
+<div class="arch-leg" style="position:absolute;bottom:0;left:4px"></div>
+<div class="arch-leg" style="position:absolute;bottom:0;left:12px"></div>
+</div>
+
+<!-- Architect 2 -->
+<div class="architect" style="bottom:148px;left:200px">
+<div class="arch-head" style="position:absolute;bottom:70px;left:0"></div>
+<div class="arch-body" style="position:absolute;bottom:30px;left:7px"></div>
+<div class="arch-arm" style="bottom:60px;left:-14px"></div>
+<div class="arch-arm" style="bottom:52px;left:8px"></div>
+<div class="arch-leg" style="position:absolute;bottom:0;left:4px"></div>
+<div class="arch-leg" style="position:absolute;bottom:0;left:12px"></div>
+</div>
+
+<!-- Architect 3 -->
+<div class="architect" style="bottom:148px;left:365px">
+<div class="arch-head" style="position:absolute;bottom:70px;left:0"></div>
+<div class="arch-body" style="position:absolute;bottom:30px;left:7px"></div>
+<div class="arch-arm" style="bottom:60px;left:8px"></div>
+<div class="arch-arm" style="bottom:52px;left:-14px"></div>
+<div class="arch-leg" style="position:absolute;bottom:0;left:4px"></div>
+<div class="arch-leg" style="position:absolute;bottom:0;left:12px"></div>
+</div>
+
+<div class="visual-label">VISUAL METAPHOR · 蓝图与流沙上的建筑师</div>
+</div>
+
+<!-- Right: Content bullets -->
+<div class="content-panel">
+<div class="content-item">
+<div>
+<div class="content-num">01</div>
+<div class="content-num-rule"></div>
+</div>
+<div class="content-text">
+<div class="content-key">从制度经济学视角看信息经济</div>
+<div class="content-desc">以制度、协作与激励机制理解数字时代的开源现象，探讨信息资产与网络规则的新秩序。</div>
+</div>
+</div>
+
+<div class="content-item">
+<div>
+<div class="content-num">02</div>
+<div class="content-num-rule"></div>
+</div>
+<div class="content-text">
+<div class="content-key">科斯 <span style="color:#8B7355;font-size:14px;font-weight:400;letter-spacing:1px;margin-left:8px">Coase</span></div>
+<div class="content-desc">当交易成本趋近于零，所有权的重要性需要重新评估——信息的非排他性挑战了传统产权框架。</div>
+</div>
+</div>
+
+<div class="content-item">
+<div>
+<div class="content-num">03</div>
+<div class="content-num-rule"></div>
+</div>
+<div class="content-text">
+<div class="content-key">阿瑟 <span style="color:#8B7355;font-size:14px;font-weight:400;letter-spacing:1px;margin-left:8px">W.B. Arthur</span></div>
+<div class="content-desc">技术是累积性进化的，制度需要适应技术的变化——路径依赖与锁定效应塑造了开源的演化轨迹。</div>
+</div>
+</div>
+
+<div class="content-item">
+<div>
+<div class="content-num">04</div>
+<div class="content-num-rule"></div>
+</div>
+<div class="content-text">
+<div class="content-key">梅特卡夫 <span style="color:#8B7355;font-size:14px;font-weight:400;letter-spacing:1px;margin-left:8px">Metcalfe</span></div>
+<div class="content-desc">网络价值是指数级的，市场必须适应——n² 法则要求经济模型超越线性框架。</div>
+</div>
+</div>
+
+<div class="content-item">
+<div>
+<div class="content-num">05</div>
+<div class="content-num-rule"></div>
+</div>
+<div class="content-text">
+<div class="content-key copper">制度的作用是降低网络效应中的不确定性</div>
+<div class="content-desc">许可协议、社区治理与协作规范，共同构成开源生态的稳定基础设施。</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+<div class="footer-left">开源之道 · OPEN SOURCE WAYS</div>
+<div class="footer-center">
+<div class="footer-dot"></div>
+<div class="footer-square"></div>
+<div class="footer-triangle"></div>
+</div>
+<div class="footer-right">SLIDE 10 / 30</div>
+</div>
+</div>
+</body></html>

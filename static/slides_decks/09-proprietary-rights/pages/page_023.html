@@ -1,0 +1,199 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>第 09 期 · 排他权与容他权、比例原则与 copyleft</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden}
+body{font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-serif;background:#1B3B6B;color:#F5F0E8;position:relative;overflow:hidden}
+
+/* subtle parchment texture */
+body::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;background:repeating-linear-gradient(0deg,rgba(245,240,232,0.012) 0px,rgba(245,240,232,0.012) 1px,transparent 1px,transparent 3px),repeating-linear-gradient(90deg,rgba(245,240,232,0.01) 0px,rgba(245,240,232,0.01) 1px,transparent 1px,transparent 5px);pointer-events:none}
+
+/* Header band */
+.header-band{position:absolute;top:0;left:0;width:1600px;height:6px;background:#8B7355}
+.header-text{position:absolute;top:36px;left:80px;font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:14px;letter-spacing:6px;color:#8B7355;font-weight:400}
+.header-right{position:absolute;top:36px;right:80px;font-size:12px;letter-spacing:3px;color:#8B7355;font-weight:400}
+
+/* Central geometric map composition */
+.map-area{position:absolute;top:80px;left:60px;width:820px;height:740px}
+
+/* Outer circle - transaction cost field */
+.circle-tc{position:absolute;top:60px;left:60px;width:680px;height:680px;border:1.5px solid #8B7355;border-radius:50%}
+.circle-tc-inner{position:absolute;top:120px;left:120px;width:560px;height:560px;border:1px dashed rgba(139,115,85,0.4);border-radius:50%}
+.circle-tc-label{position:absolute;top:90px;left:360px;font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;letter-spacing:4px;text-align:center;width:120px}
+
+/* Square - property rights boundary */
+.square-pr{position:absolute;top:180px;left:200px;width:520px;height:520px;border:1.5px solid #F5F0E8}
+.square-pr-inner{position:absolute;top:230px;left:250px;width:420px;height:420px;border:1px solid rgba(245,240,232,0.3)}
+
+/* Small filled circle at intersection */
+.intersect-dot{position:absolute;top:395px;left:440px;width:20px;height:20px;background:#F5F0E8;border-radius:50%}
+.intersect-ring{position:absolute;top:375px;left:420px;width:60px;height:60px;border:1px solid #F5F0E8;border-radius:50%;opacity:0.5}
+
+/* Copper square */
+.copper-sq{position:absolute;top:280px;left:340px;width:16px;height:16px;background:#8B7355}
+
+/* Cross lines */
+.cross-h{position:absolute;top:450px;left:160px;width:520px;height:1px;background:rgba(245,240,232,0.35)}
+.cross-v{position:absolute;top:200px;left:420px;width:1px;height:520px;background:rgba(245,240,232,0.35)}
+
+/* Map graticule lines */
+.grat1{position:absolute;top:120px;left:80px;width:600px;height:1px;background:rgba(245,240,232,0.08)}
+.grat2{position:absolute;top:200px;left:80px;width:600px;height:1px;background:rgba(245,240,232,0.08)}
+.grat3{position:absolute;top:280px;left:80px;width:600px;height:1px;background:rgba(245,240,232,0.08)}
+.grat4{position:absolute;top:360px;left:80px;width:600px;height:1px;background:rgba(245,240,232,0.08)}
+.grat5{position:absolute;top:440px;left:80px;width:600px;height:1px;background:rgba(245,240,232,0.08)}
+.grat6{position:absolute;top:520px;left:80px;width:600px;height:1px;background:rgba(245,240,232,0.08)}
+.grat7{position:absolute;top:600px;left:80px;width:600px;height:1px;background:rgba(245,240,232,0.08)}
+
+.gv1{position:absolute;top:100px;left:140px;width:1px;height:600px;background:rgba(245,240,232,0.08)}
+.gv2{position:absolute;top:100px;left:240px;width:1px;height:600px;background:rgba(245,240,232,0.08)}
+.gv3{position:absolute;top:100px;left:340px;width:1px;height:600px;background:rgba(245,240,232,0.08)}
+.gv4{position:absolute;top:100px;left:440px;width:1px;height:600px;background:rgba(245,240,232,0.08)}
+.gv5{position:absolute;top:100px;left:540px;width:1px;height:600px;background:rgba(245,240,232,0.08)}
+.gv6{position:absolute;top:100px;left:640px;width:1px;height:600px;background:rgba(245,240,232,0.08)}
+
+/* Map labels */
+.map-label-tc{position:absolute;top:735px;left:360px;font-family:'Noto Serif SC',serif;font-size:12px;color:#8B7355;letter-spacing:3px;text-align:center;width:180px}
+.map-label-pr{position:absolute;top:620px;left:560px;font-family:'Noto Serif SC',serif;font-size:12px;color:#F5F0E8;letter-spacing:2px}
+.map-label-eq{position:absolute;top:465px;left:490px;font-family:'Noto Serif SC',serif;font-size:11px;color:#F5F0E8;letter-spacing:2px;opacity:0.7}
+
+/* Compass rose mini */
+.compass{position:absolute;top:50px;left:385px;width:50px;height:50px}
+.compass-n{position:absolute;top:0;left:24px;width:2px;height:25px;background:#8B7355}
+.compass-s{position:absolute;top:25px;left:24px;width:2px;height:25px;background:#8B7355;opacity:0.4}
+.compass-e{position:absolute;top:24px;left:0;width:25px;height:2px;background:#8B7355;opacity:0.4}
+.compass-w{position:absolute;top:24px;left:25px;width:25px;height:2px;background:#8B7355;opacity:0.4}
+
+/* Right side content */
+.content-area{position:absolute;top:80px;right:60px;width:620px;height:740px}
+
+.slide-num{font-family:'Noto Serif SC',serif;font-size:64px;color:#8B7355;font-weight:400;line-height:1;margin-bottom:6px}
+.slide-num-sub{font-size:11px;letter-spacing:5px;color:#8B7355;margin-bottom:30px}
+
+.divider-line{width:80px;height:2px;background:#8B7355;margin-bottom:24px}
+
+.section-label{font-family:'Noto Serif SC',serif;font-size:13px;letter-spacing:4px;color:#8B7355;margin-bottom:14px}
+
+.main-title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:32px;font-weight:400;line-height:1.45;color:#F5F0E8;margin-bottom:6px;letter-spacing:1px}
+.main-title-accent{font-family:'Noto Serif SC',serif;font-size:20px;font-weight:400;color:#8B7355;line-height:1.6;margin-bottom:28px;letter-spacing:2px}
+
+/* Timeline */
+.timeline{margin-bottom:28px}
+.timeline-row{display:flex;align-items:center;margin-bottom:14px;position:relative}
+.tl-num{width:48px;height:48px;border:1.5px solid #8B7355;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif SC',serif;font-size:16px;color:#8B7355;flex-shrink:0;background:#1B3B6B}
+.tl-num.active{background:#F5F0E8;color:#1B3B6B;border-color:#F5F0E8;font-weight:700}
+.tl-num.future{border-style:dashed;opacity:0.7}
+.tl-content{margin-left:18px;flex:1}
+.tl-title{font-family:'Noto Serif SC',serif;font-size:16px;color:#F5F0E8;margin-bottom:3px;letter-spacing:1px}
+.tl-desc{font-size:12px;color:#8B7355;letter-spacing:1px;line-height:1.5}
+.tl-connector{position:absolute;left:23px;top:48px;width:1px;height:12px;background:rgba(139,115,85,0.5)}
+
+/* Core question box */
+.question-box{border:1.5px solid #8B7355;padding:20px 22px;margin-bottom:22px;position:relative}
+.question-box::before{content:"";position:absolute;top:-1px;left:-1px;width:12px;height:12px;border-top:3px solid #F5F0E8;border-left:3px solid #F5F0E8}
+.question-box::after{content:"";position:absolute;bottom:-1px;right:-1px;width:12px;height:12px;border-bottom:3px solid #F5F0E8;border-right:3px solid #F5F0E8}
+.q-label{font-size:11px;letter-spacing:4px;color:#8B7355;margin-bottom:10px}
+.q-text{font-family:'Noto Serif SC',serif;font-size:20px;color:#F5F0E8;line-height:1.6;letter-spacing:1px}
+
+/* Bottom insight */
+.insight{display:flex;align-items:flex-start;gap:16px}
+.insight-square{width:14px;height:14px;background:#F5F0E8;flex-shrink:0;margin-top:4px}
+.insight-text{font-size:13px;color:#F5F0E8;line-height:1.8;letter-spacing:0.5px;opacity:0.9}
+.insight-text .highlight{color:#8B7355;font-weight:700}
+
+/* Footer */
+.footer-line{position:absolute;bottom:36px;left:80px;right:80px;height:1px;background:rgba(139,115,85,0.3)}
+.footer-text{position:absolute;bottom:16px;left:80px;font-size:10px;letter-spacing:4px;color:#8B7355;opacity:0.7}
+.footer-right{position:absolute;bottom:16px;right:80px;font-size:10px;letter-spacing:4px;color:#8B7355;opacity:0.7}
+</style></head>
+<body>
+
+<div class="header-band"></div>
+<div class="header-text">OPEN SOURCE · INSTITUTIONAL ECONOMICS</div>
+<div class="header-right">LECTURE 09 / 28</div>
+
+<!-- Left: Geometric Map -->
+<div class="map-area">
+  <div class="grat1"></div><div class="grat2"></div><div class="grat3"></div>
+  <div class="grat4"></div><div class="grat5"></div><div class="grat6"></div><div class="grat7"></div>
+  <div class="gv1"></div><div class="gv2"></div><div class="gv3"></div>
+  <div class="gv4"></div><div class="gv5"></div><div class="gv6"></div>
+
+  <div class="circle-tc"></div>
+  <div class="circle-tc-inner"></div>
+  <div class="square-pr"></div>
+  <div class="square-pr-inner"></div>
+
+  <div class="cross-h"></div>
+  <div class="cross-v"></div>
+
+  <div class="intersect-ring"></div>
+  <div class="intersect-dot"></div>
+  <div class="copper-sq"></div>
+
+  <div class="compass">
+    <div class="compass-n"></div><div class="compass-s"></div>
+    <div class="compass-e"></div><div class="compass-w"></div>
+  </div>
+
+  <div class="map-label-tc">交易成本 / TRANSACTION COST</div>
+  <div class="map-label-pr">产权边界 / PROPERTY RIGHTS</div>
+  <div class="map-label-eq">均衡点 · EQUILIBRIUM</div>
+</div>
+
+<!-- Right: Content -->
+<div class="content-area">
+  <div class="slide-num">09</div>
+  <div class="slide-num-sub">PERIOD NINE</div>
+  <div class="divider-line"></div>
+
+  <div class="section-label">— 承上启下 —</div>
+  <div class="main-title">制度边界何处？</div>
+  <div class="main-title-accent">Where does the institutional boundary lie?</div>
+
+  <div class="timeline">
+    <div class="timeline-row">
+      <div class="tl-num">05</div>
+      <div class="tl-content">
+        <div class="tl-title">科斯的交易成本</div>
+        <div class="tl-desc">当产权界定不清，交易成本攀升，市场失灵</div>
+      </div>
+      <div class="tl-connector"></div>
+    </div>
+    <div class="timeline-row">
+      <div class="tl-num active">09</div>
+      <div class="tl-content">
+        <div class="tl-title">排他权与容他权</div>
+        <div class="tl-desc">copyleft 以法律编码重构产权的排除与容纳</div>
+      </div>
+      <div class="tl-connector"></div>
+    </div>
+    <div class="timeline-row">
+      <div class="tl-num future">10</div>
+      <div class="tl-content">
+        <div class="tl-title">比例原则</div>
+        <div class="tl-desc">手段与目的之均衡：制度干预的合宜尺度</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-box">
+    <div class="q-label">— 共同追问 —</div>
+    <div class="q-text">当排他权与容他权达到动态均衡——<br>交易成本最低，协作最优。</div>
+  </div>
+
+  <div class="insight">
+    <div class="insight-square"></div>
+    <div class="insight-text">
+      <span class="highlight">制度的边界</span>不在于排他与容他的二元对立，<br>
+      而在于二者之间那张不断被协商、被重构的<span class="highlight">灰色地带</span>——<br>
+      这正是开源许可所开辟的智识空间。
+    </div>
+  </div>
+</div>
+
+<div class="footer-line"></div>
+<div class="footer-text">开源之道 · 新制度经济学视角</div>
+<div class="footer-right">BAUHAUS COMPOSITION · MAP OF INSTITUTIONS</div>
+
+</body></html>

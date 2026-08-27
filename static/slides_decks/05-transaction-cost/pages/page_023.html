@@ -1,0 +1,354 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>路径依赖的代价 — 开源之道</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  width: 1600px; height: 900px; overflow: hidden;
+  font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+  background: #F5F0E8;
+  color: #1B3B6B;
+}
+.slide {
+  position: relative; width: 1600px; height: 900px;
+  background: #F5F0E8;
+  overflow: hidden;
+}
+/* Subtle parchment texture */
+.slide::before {
+  content: '';
+  position: absolute; top: 0; left: 0; width: 1600px; height: 900px;
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(139,115,85,0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(27,59,107,0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Header bar */
+.header-bar {
+  position: absolute; top: 0; left: 0; width: 1600px; height: 6px;
+  background: #1B3B6B;
+}
+.header-bar-accent {
+  position: absolute; top: 6px; left: 0; width: 600px; height: 3px;
+  background: #8B7355;
+}
+
+/* Page number / section marker */
+.section-tag {
+  position: absolute; top: 30px; left: 50px;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 13px; letter-spacing: 4px; color: #8B7355;
+  font-weight: 600;
+}
+.page-num {
+  position: absolute; top: 30px; right: 50px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px; letter-spacing: 3px; color: #555;
+}
+
+/* Title area */
+.title-zone {
+  position: absolute; top: 60px; left: 50px; width: 900px;
+}
+.title-eyebrow {
+  font-size: 12px; letter-spacing: 6px; color: #8B7355;
+  margin-bottom: 14px; font-weight: 600;
+}
+.main-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 44px; font-weight: 700; color: #1B3B6B;
+  line-height: 1.25; letter-spacing: 1px;
+}
+.title-underline {
+  width: 120px; height: 2px; background: #1B3B6B;
+  margin-top: 18px;
+}
+.title-sub {
+  margin-top: 16px;
+  font-size: 14px; color: #555; line-height: 1.8;
+  font-family: 'Noto Serif SC', serif;
+  letter-spacing: 1px;
+  max-width: 720px;
+}
+
+/* Patchwork visual - left side */
+.patchwork-zone {
+  position: absolute; top: 200px; left: 50px;
+  width: 560px; height: 560px;
+}
+.patch {
+  position: absolute;
+  border: 1px solid rgba(27,59,107,0.15);
+}
+.patch-1 { top: 0; left: 0; width: 180px; height: 180px; background: #1B3B6B; }
+.patch-2 { top: 0; left: 180px; width: 140px; height: 140px; background: #8B7355; }
+.patch-3 { top: 0; left: 320px; width: 100px; height: 180px; background: #D4C5A9; }
+.patch-4 { top: 0; left: 420px; width: 140px; height: 120px; background: #C9803F; }
+.patch-5 { top: 180px; left: 0; width: 100px; height: 160px; background: #8B7355; }
+.patch-6 { top: 180px; left: 100px; width: 160px; height: 100px; background: #1B3B6B; }
+.patch-7 { top: 180px; left: 260px; width: 140px; height: 160px; background: #E8DCC4; border: 1px solid rgba(27,59,107,0.2); }
+.patch-8 { top: 180px; left: 400px; width: 160px; height: 100px; background: #A08766; }
+.patch-9 { top: 340px; left: 0; width: 200px; height: 120px; background: #C9803F; }
+.patch-10 { top: 340px; left: 200px; width: 160px; height: 120px; background: #1B3B6B; }
+.patch-11 { top: 340px; left: 360px; width: 200px; height: 120px; background: #8B7355; }
+.patch-12 { top: 460px; left: 0; width: 140px; height: 100px; background: #D4C5A9; border: 1px solid rgba(27,59,107,0.2); }
+.patch-13 { top: 460px; left: 140px; width: 180px; height: 100px; background: #A08766; }
+.patch-14 { top: 460px; left: 320px; width: 240px; height: 100px; background: #1B3B6B; }
+
+/* Silver threads / winding paths */
+.silver-thread {
+  position: absolute;
+  top: 0; left: 0;
+  width: 560px; height: 560px;
+  pointer-events: none;
+}
+
+/* Circle accents */
+.circle-blue {
+  position: absolute;
+  top: 400px; left: 360px;
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  z-index: 3;
+}
+.circle-outline {
+  position: absolute;
+  top: 430px; left: 400px;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: 2px solid #F5F0E8;
+  z-index: 4;
+}
+
+/* Right content zone */
+.content-zone {
+  position: absolute; top: 200px; right: 50px;
+  width: 780px; height: 560px;
+}
+.exp-label {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 11px; letter-spacing: 5px; color: #8B7355;
+  margin-bottom: 8px; font-weight: 600;
+}
+.exp-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 22px; font-weight: 700; color: #1B3B6B;
+  margin-bottom: 22px; letter-spacing: 1px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(27,59,107,0.2);
+}
+.exp-title-en {
+  font-size: 11px; letter-spacing: 3px; color: #8B7355;
+  font-weight: 400; margin-top: 4px;
+}
+
+.bullet-list {
+  list-style: none; padding: 0; margin: 0;
+}
+.bullet-item {
+  position: relative;
+  padding: 12px 0 12px 48px;
+  border-bottom: 1px dashed rgba(139,115,85,0.25);
+}
+.bullet-num {
+  position: absolute;
+  left: 0; top: 14px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px; font-weight: 700;
+  color: #8B7355;
+  letter-spacing: 1px;
+}
+.bullet-num-bar {
+  position: absolute;
+  left: 28px; top: 18px;
+  width: 12px; height: 1px;
+  background: #1B3B6B;
+}
+.bullet-text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #1B3B6B;
+  font-weight: 400;
+}
+.bullet-text .em {
+  color: #8B7355;
+  font-weight: 600;
+  font-family: 'Noto Serif SC', serif;
+}
+.bullet-text .accent {
+  color: #C9803F;
+  font-weight: 700;
+}
+.bullet-text .key {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 600;
+  color: #1B3B6B;
+}
+
+/* Footer */
+.footer-bar {
+  position: absolute; bottom: 0; left: 0; width: 1600px; height: 4px;
+  background: #8B7355;
+}
+.footer-text {
+  position: absolute; bottom: 20px; left: 50px;
+  font-size: 11px; letter-spacing: 3px; color: #555;
+}
+.footer-text-right {
+  position: absolute; bottom: 20px; right: 50px;
+  font-size: 11px; letter-spacing: 3px; color: #555;
+  font-family: 'Noto Serif SC', serif;
+}
+
+/* Decorative geometric elements */
+.deco-square-tl {
+  position: absolute;
+  top: 30px; right: 340px;
+  width: 24px; height: 24px;
+  background: #1B3B6B;
+}
+.deco-line-tl {
+  position: absolute;
+  top: 41px; right: 372px;
+  width: 60px; height: 2px;
+  background: #8B7355;
+}
+.deco-circle-tr {
+  position: absolute;
+  top: 34px; right: 300px;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  border: 1.5px solid #8B7355;
+  background: transparent;
+}
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="header-bar"></div>
+  <div class="header-bar-accent"></div>
+
+  <div class="section-tag">CHAPTER · 路径依赖</div>
+  <div class="page-num">NIE / 07</div>
+
+  <div class="deco-square-tl"></div>
+  <div class="deco-line-tl"></div>
+  <div class="deco-circle-tr"></div>
+
+  <div class="title-zone">
+    <div class="title-eyebrow">PATH DEPENDENCY</div>
+    <div class="main-title">迁移的代价</div>
+    <div class="title-underline"></div>
+    <div class="title-sub">
+      大地如斑斓拼布，蜿蜒道路似银线穿梭其间——<br>
+      每一次路径的选择，都意味着对另一条道路的永久放弃。
+    </div>
+  </div>
+
+  <!-- Patchwork visual -->
+  <div class="patchwork-zone">
+    <div class="patch patch-1"></div>
+    <div class="patch patch-2"></div>
+    <div class="patch patch-3"></div>
+    <div class="patch patch-4"></div>
+    <div class="patch patch-5"></div>
+    <div class="patch patch-6"></div>
+    <div class="patch patch-7"></div>
+    <div class="patch patch-8"></div>
+    <div class="patch patch-9"></div>
+    <div class="patch patch-10"></div>
+    <div class="patch patch-11"></div>
+    <div class="patch patch-12"></div>
+    <div class="patch patch-13"></div>
+    <div class="patch patch-14"></div>
+
+    <svg class="silver-thread" viewBox="0 0 560 560">
+      <!-- Winding silver thread 1 -->
+      <path d="M 0 60 Q 120 30, 200 90 T 400 110 Q 500 120, 560 80"
+            stroke="#F5F0E8" stroke-width="2.5" fill="none" opacity="0.85" stroke-linecap="round"/>
+      <!-- Winding silver thread 2 -->
+      <path d="M 0 220 Q 100 260, 180 210 T 360 240 Q 460 270, 560 220"
+            stroke="#F5F0E8" stroke-width="2.5" fill="none" opacity="0.85" stroke-linecap="round"/>
+      <!-- Winding silver thread 3 -->
+      <path d="M 0 380 Q 140 350, 240 400 T 440 380 Q 520 370, 560 400"
+            stroke="#F5F0E8" stroke-width="2.5" fill="none" opacity="0.85" stroke-linecap="round"/>
+      <!-- Winding silver thread 4 -->
+      <path d="M 0 510 Q 120 490, 220 520 T 420 510 Q 500 500, 560 520"
+            stroke="#F5F0E8" stroke-width="2.5" fill="none" opacity="0.85" stroke-linecap="round"/>
+      <!-- Vertical crossing thread -->
+      <path d="M 250 0 Q 260 100, 240 200 T 270 400 Q 260 480, 280 560"
+            stroke="#F5F0E8" stroke-width="1.5" fill="none" opacity="0.5" stroke-linecap="round" stroke-dasharray="4 6"/>
+      <path d="M 90 0 Q 80 140, 110 240 T 80 440 Q 90 520, 100 560"
+            stroke="#F5F0E8" stroke-width="1.5" fill="none" opacity="0.4" stroke-linecap="round" stroke-dasharray="3 5"/>
+      <path d="M 450 0 Q 460 120, 440 220 T 470 420 Q 460 500, 440 560"
+            stroke="#F5F0E8" stroke-width="1.5" fill="none" opacity="0.4" stroke-linecap="round" stroke-dasharray="3 5"/>
+    </svg>
+
+    <div class="circle-blue"></div>
+    <div class="circle-outline"></div>
+  </div>
+
+  <!-- Right content -->
+  <div class="content-zone">
+    <div class="exp-label">THOUGHT EXPERIMENT</div>
+    <div class="exp-title">
+      思想实验：从 Android / Java 迁移
+      <div class="exp-title-en">What if the road forked here?</div>
+    </div>
+
+    <ul class="bullet-list">
+      <li class="bullet-item">
+        <span class="bullet-num">01</span>
+        <span class="bullet-num-bar"></span>
+        <span class="bullet-text">
+          <span class="key">小米 / vivo / OPPO</span> 需要多大的代价？
+          <span class="em">生态迁移的成本以百亿计。</span>
+        </span>
+      </li>
+      <li class="bullet-item">
+        <span class="bullet-num">02</span>
+        <span class="bullet-num-bar"></span>
+        <span class="bullet-text">
+          <span class="key">仓颉语言</span>：不基于任何已有语言——
+          <span class="em">从零开始的语法体系与运行时。</span>
+        </span>
+      </li>
+      <li class="bullet-item">
+        <span class="bullet-num">03</span>
+        <span class="bullet-num-bar"></span>
+        <span class="bullet-text">
+          <span class="key">Google 的 Kotlin</span> 为何没有完全替代 Java？
+          <span class="em">Java 的官司都没有动摇的根基。</span>
+        </span>
+      </li>
+      <li class="bullet-item">
+        <span class="bullet-num">04</span>
+        <span class="bullet-num-bar"></span>
+        <span class="bullet-text">
+          开发者需要<span class="em">重新来一遍</span>——
+          <span class="key">打破惯性</span>，不仅是技术，更是认知框架的重塑。
+        </span>
+      </li>
+      <li class="bullet-item">
+        <span class="bullet-num">05</span>
+        <span class="bullet-num-bar"></span>
+        <span class="bullet-text">
+          所有的<span class="em">库与兼容性</span>都成为推动力，
+          <span class="accent">无疑是一场巨大的革命。</span>
+        </span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="footer-bar"></div>
+  <div class="footer-text">新制度经济学视角下的开源 · 开源之道</div>
+  <div class="footer-text-right">Path Dependency — The Cost of Migration</div>
+</div>
+</body>
+</html>

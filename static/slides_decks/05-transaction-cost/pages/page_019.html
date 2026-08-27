@@ -1,0 +1,252 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>技术的本质与路径依赖</title><style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0;}
+body{font-family:'Noto Sans SC','Source Han Serif SC','Songti SC',serif;background:#F5F0E8;color:#1B3B6B;position:relative;overflow:hidden;}
+
+/* subtle parchment texture */
+body::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;background:repeating-linear-gradient(0deg,rgba(139,115,85,0.02) 0px,rgba(139,115,85,0.02) 1px,transparent 1px,transparent 4px);pointer-events:none;z-index:0;}
+
+/* Bauhaus geometric decorations */
+.deco-circle-1{position:absolute;top:60px;right:120px;width:80px;height:80px;border-radius:50%;background:#1B3B6B;z-index:1;}
+.deco-circle-2{position:absolute;top:140px;right:60px;width:36px;height:36px;border-radius:50%;background:#8B7355;z-index:1;}
+.deco-square-1{position:absolute;bottom:50px;left:60px;width:48px;height:48px;background:#1B3B6B;z-index:1;}
+.deco-line-1{position:absolute;top:40px;left:0;width:600px;height:3px;background:#1B3B6B;z-index:1;}
+.deco-line-2{position:absolute;top:43px;left:0;width:120px;height:1px;background:#8B7355;z-index:1;}
+.deco-line-bottom{position:absolute;bottom:0;left:0;width:1600px;height:4px;background:#1B3B6B;z-index:1;}
+.deco-line-v{position:absolute;top:120px;left:740px;width:2px;height:680px;background:#1B3B6B;z-index:1;opacity:0.6;}
+.deco-triangle{position:absolute;top:80px;left:80px;width:0;height:0;border-left:18px solid transparent;border-right:18px solid transparent;border-bottom:30px solid #8B7355;z-index:1;}
+.deco-circle-outline{position:absolute;bottom:80px;right:80px;width:60px;height:60px;border-radius:50%;border:3px solid #1B3B6B;z-index:1;}
+
+/* Title section */
+.title-area{position:absolute;top:100px;left:80px;width:620px;z-index:2;}
+.title-num{font-family:'Noto Sans SC',sans-serif;font-size:14px;color:#8B7355;letter-spacing:6px;margin-bottom:18px;font-weight:400;}
+.title-main{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:48px;color:#1B3B6B;line-height:1.2;font-weight:700;letter-spacing:2px;}
+.title-sub{font-family:'Noto Serif SC',serif;font-size:20px;color:#8B7355;margin-top:16px;font-weight:400;letter-spacing:1px;line-height:1.6;}
+.title-underline{width:120px;height:2px;background:#1B3B6B;margin-top:24px;}
+
+/* Bullet points */
+.bullets{position:absolute;top:340px;left:80px;width:620px;z-index:2;}
+.bullet-item{display:flex;align-items:flex-start;margin-bottom:14px;}
+.bullet-num{font-family:'Noto Serif SC',serif;font-size:16px;color:#8B7355;width:32px;flex-shrink:0;line-height:1.7;font-weight:700;}
+.bullet-text{font-family:'Noto Sans SC',sans-serif;font-size:17px;color:#1B3B6B;line-height:1.7;font-weight:400;}
+.bullet-dot{width:6px;height:6px;background:#1B3B6B;border-radius:50%;margin-top:12px;margin-right:12px;flex-shrink:0;}
+
+/* Typewriter visual metaphor */
+.typewriter-area{position:absolute;top:80px;right:240px;width:760px;height:520px;z-index:2;}
+
+/* Typewriter body */
+.tw-body{position:absolute;top:20px;left:20px;width:720px;height:280px;background:#2a2a2a;border-radius:8px;box-shadow:inset 0 -4px 8px rgba(0,0,0,0.3),inset 0 2px 4px rgba(255,255,255,0.05);}
+.tw-paper{position:absolute;top:-20px;left:180px;width:360px;height:200px;background:#F5F0E8;border-radius:2px;box-shadow:0 2px 4px rgba(0,0,0,0.2);}
+.tw-paper-text{position:absolute;top:20px;left:30px;width:300px;font-family:'Noto Serif SC',serif;font-size:11px;color:#555;line-height:1.6;letter-spacing:1px;}
+.tw-paper-cursor{position:absolute;top:100px;left:180px;width:2px;height:14px;background:#1B3B6B;}
+
+/* QWERTY key grid */
+.key-row{display:flex;justify-content:center;margin-bottom:6px;}
+.key{width:38px;height:32px;background:#F5F0E8;border:1.5px solid #3a3a3a;border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif SC',serif;font-size:11px;color:#1B3B6B;font-weight:600;margin:0 3px;box-shadow:inset 0 -2px 0 #666;}
+.key.active{background:#1B3B6B;color:#F5F0E8;border-color:#1B3B6B;box-shadow:inset 0 -2px 0 #0d1f3a;}
+.key.accent{background:#8B7355;color:#F5F0E8;border-color:#8B7355;box-shadow:inset 0 -2px 0 #6b5a42;}
+.key-space{width:240px;height:32px;}
+.key-tab{width:54px;}
+.key-shift{width:90px;}
+.key-enter{width:72px;}
+.key-back{width:60px;}
+.key-cap{width:66px;}
+.key-ctrl{width:54px;}
+
+.key-area{position:absolute;top:200px;left:20px;width:720px;}
+
+/* Typewriter decorative elements */
+.tw-label{position:absolute;top:180px;left:30px;font-family:'Noto Serif SC',serif;font-size:11px;color:#8B7355;letter-spacing:4px;}
+.tw-rollers{position:absolute;top:0px;left:160px;width:400px;height:20px;background:#5a5a5a;border-radius:10px;}
+.tw-roller-side{width:20px;height:20px;background:#4a4a4a;border-radius:50%;position:absolute;top:0;}
+.tw-roller-side.l{left:-10px;}
+.tw-roller-side.r{right:-10px;}
+
+/* Path dependency flow diagram below typewriter */
+.flow-area{position:absolute;top:380px;left:20px;width:720px;height:160px;}
+.flow-node{width:80px;height:80px;border-radius:50%;border:2px solid #1B3B6B;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif SC',serif;font-size:13px;color:#1B3B6B;background:#F5F0E8;text-align:center;line-height:1.3;padding:8px;position:absolute;}
+.flow-node.filled{background:#1B3B6B;color:#F5F0E8;border-color:#1B3B6B;}
+.flow-node.copper{border-color:#8B7355;color:#8B7355;}
+.flow-arrow{position:absolute;height:2px;background:#1B3B6B;}
+.flow-arrow-tip{width:0;height:0;border-left:8px solid #1B3B6B;border-top:5px solid transparent;border-bottom:5px solid transparent;position:absolute;}
+.flow-label{position:absolute;font-family:'Noto Sans SC',sans-serif;font-size:10px;color:#8B7355;letter-spacing:1px;}
+
+/* Image source */
+.source{position:absolute;bottom:30px;left:80px;width:1440px;font-family:'Noto Sans SC',sans-serif;font-size:11px;color:#8B7355;letter-spacing:1px;line-height:1.6;z-index:2;}
+.source-line{width:60px;height:1px;background:#8B7355;margin-bottom:8px;}
+
+/* Right column text block */
+.right-text{position:absolute;top:600px;right:80px;width:700px;z-index:2;}
+.right-quote{font-family:'Noto Serif SC',serif;font-size:18px;color:#1B3B6B;line-height:1.8;font-weight:400;font-style:italic;letter-spacing:1px;}
+.right-quote-mark{font-size:36px;color:#8B7355;font-weight:700;line-height:0;position:relative;top:12px;}
+.right-divider{width:80px;height:1px;background:#8B7355;margin:14px 0;}
+.right-meta{font-family:'Noto Sans SC',sans-serif;font-size:12px;color:#8B7355;letter-spacing:3px;}
+
+/* Page footer mark */
+.page-mark{position:absolute;bottom:30px;right:80px;font-family:'Noto Sans SC',sans-serif;font-size:11px;color:#8B7355;letter-spacing:4px;z-index:2;}
+</style></head><body>
+
+<div class="deco-line-1"></div>
+<div class="deco-line-2"></div>
+<div class="deco-circle-1"></div>
+<div class="deco-circle-2"></div>
+<div class="deco-triangle"></div>
+<div class="deco-square-1"></div>
+<div class="deco-circle-outline"></div>
+<div class="deco-line-bottom"></div>
+<div class="deco-line-v"></div>
+
+<!-- Title -->
+<div class="title-area">
+<div class="title-num">CHAPTER · 04</div>
+<div class="title-main">技术的本质<br>与路径依赖</div>
+<div class="title-sub">Technological Essence &amp; Path Dependency</div>
+<div class="title-underline"></div>
+</div>
+
+<!-- Bullets -->
+<div class="bullets">
+<div class="bullet-item">
+<div class="bullet-num">01</div>
+<div class="bullet-text">技术不是无中生有被发明出来的</div>
+</div>
+<div class="bullet-item">
+<div class="bullet-num">02</div>
+<div class="bullet-text">总是在一种新形式出现之前，就有前置条件</div>
+</div>
+<div class="bullet-item">
+<div class="bullet-num">03</div>
+<div class="bullet-text">被建构、被聚集、被集成——非自然涌现</div>
+</div>
+<div class="bullet-item">
+<div class="bullet-num">04</div>
+<div class="bullet-text">由部件和零件构成：集成件与次级集成件的层叠</div>
+</div>
+<div class="bullet-item">
+<div class="bullet-num">05</div>
+<div class="bullet-text">技术有一个递归性的结构</div>
+</div>
+</div>
+
+<!-- Typewriter visual -->
+<div class="typewriter-area">
+<div class="tw-body">
+<div class="tw-rollers">
+<div class="tw-roller-side l"></div>
+<div class="tw-roller-side r"></div>
+</div>
+<div class="tw-paper">
+<div class="tw-paper-text">
+Q W E R T Y  —  路径的<br>
+刻印，是不可逆的<br>
+书写痕迹。每一按键<br>
+都是一次历史的<br>
+决定。<span class="tw-paper-cursor"></span>
+</div>
+</div>
+<div class="tw-label">REMINGTON · TYPEWRITER</div>
+</div>
+
+<div class="key-area">
+<div class="key-row">
+<div class="key accent">Q</div>
+<div class="key accent">W</div>
+<div class="key accent">E</div>
+<div class="key active">R</div>
+<div class="key active">T</div>
+<div class="key active">Y</div>
+<div class="key accent">U</div>
+<div class="key accent">I</div>
+<div class="key accent">O</div>
+<div class="key accent">P</div>
+<div class="key">[</div>
+<div class="key">]</div>
+</div>
+<div class="key-row">
+<div class="key shift">SHIFT</div>
+<div class="key">A</div>
+<div class="key">S</div>
+<div class="key">D</div>
+<div class="key">F</div>
+<div class="key">G</div>
+<div class="key">H</div>
+<div class="key">J</div>
+<div class="key">K</div>
+<div class="key">L</div>
+<div class="key">;</div>
+<div class="key enter">ENT</div>
+</div>
+<div class="key-row">
+<div class="key ctrl">CTRL</div>
+<div class="key">Z</div>
+<div class="key">X</div>
+<div class="key">C</div>
+<div class="key">V</div>
+<div class="key">B</div>
+<div class="key">N</div>
+<div class="key">M</div>
+<div class="key">,</div>
+<div class="key">.</div>
+<div class="key back">←</div>
+<div class="key enter">↵</div>
+</div>
+<div class="key-row">
+<div class="key ctrl">FN</div>
+<div class="key ctrl">ALT</div>
+<div class="key space">SPACE</div>
+<div class="key ctrl">ALT</div>
+<div class="key ctrl">CTRL</div>
+</div>
+</div>
+
+<!-- Flow diagram -->
+<div class="flow-area">
+<div class="flow-node filled" style="left:0;top:10px;">部件<br>Parts</div>
+<div class="flow-arrow" style="left:90px;top:52px;width:50px;"></div>
+<div class="flow-arrow-tip" style="left:138px;top:49px;"></div>
+
+<div class="flow-node copper" style="left:150px;top:10px;">集成件<br>Assemblies</div>
+<div class="flow-arrow" style="left:240px;top:52px;width:50px;"></div>
+<div class="flow-arrow-tip" style="left:288px;top:49px;"></div>
+
+<div class="flow-node" style="left:300px;top:10px;">次级<br>集成件</div>
+<div class="flow-arrow" style="left:390px;top:52px;width:50px;"></div>
+<div class="flow-arrow-tip" style="left:438px;top:49px;"></div>
+
+<div class="flow-node filled" style="left:450px;top:10px;">技术<br>Technique</div>
+<div class="flow-arrow" style="left:540px;top:52px;width:50px;"></div>
+<div class="flow-arrow-tip" style="left:588px;top:49px;"></div>
+
+<div class="flow-node copper" style="left:600px;top:10px;">递归<br>Recursion</div>
+
+<div class="flow-label" style="left:100px;top:100px;">→ 层叠</div>
+<div class="flow-label" style="left:250px;top:100px;">→ 聚合</div>
+<div class="flow-label" style="left:400px;top:100px;">→ 涌现</div>
+<div class="flow-label" style="left:550px;top:100px;">→ 自指</div>
+</div>
+</div>
+
+<!-- Right quote -->
+<div class="right-text">
+<div class="right-quote">
+<span class="right-quote-mark">「</span>科学是技术的姊姊——<br>
+前者观察规律，后者固化选择；<br>
+每一次按键，都是对另一种可能的<br>
+永久放弃。<span class="right-quote-mark">」</span>
+</div>
+<div class="right-divider"></div>
+<div class="right-meta">PATH DEPENDENCY · CUMULATIVE CULTURE</div>
+</div>
+
+<!-- Source -->
+<div class="source">
+<div class="source-line"></div>
+图片来源：ASU 研究 — "Science and technology: ASU study points to origin of cumulative culture in human evolution" (2024)<br>
+https://news.asu.edu/20240617-science-and-technology-asu-study-points-origin-cumulative-culture-human-evolution
+</div>
+
+<div class="page-mark">OPEN SOURCE · NEO-INSTITUTIONAL ECONOMICS · 04 / 16</div>
+
+</body></html>

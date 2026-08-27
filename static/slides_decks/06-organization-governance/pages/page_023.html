@@ -1,0 +1,122 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>扩展的规模：超越企业的组织演进</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0}
+body{background:#F5F0E8;font-family:'Noto Sans SC','PingFang SC',sans-serif;color:#1B3B6B;position:relative;overflow:hidden}
+.title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-weight:600;font-size:48px;letter-spacing:6px;color:#1B3B6B;position:absolute;top:70px;left:90px}
+.subtitle{font-family:'Noto Sans SC',sans-serif;font-size:18px;letter-spacing:14px;color:#8B7355;position:absolute;top:140px;left:95px;font-weight:300}
+.rule{position:absolute;top:175px;left:95px;width:120px;height:2px;background:#1B3B6B}
+.subtitle-en{font-family:'Noto Sans SC',sans-serif;font-size:13px;letter-spacing:4px;color:#555;position:absolute;top:178px;left:230px;font-style:italic}
+
+/* Geometric composition on the right */
+.geo-circle-1{position:absolute;top:230px;left:1040px;width:280px;height:280px;border-radius:50%;background:#1B3B6B;opacity:0.92}
+.geo-circle-2{position:absolute;top:180px;left:1150px;width:120px;height:120px;border-radius:50%;border:3px solid #1B3B6B;background:transparent}
+.geo-square-1{position:absolute;top:490px;left:1050px;width:160px;height:160px;background:#8B7355;opacity:0.85}
+.geo-square-2{position:absolute;top:560px;left:1240px;width:80px;height:80px;border:3px solid #1B3B6B;background:transparent}
+.geo-line-1{position:absolute;top:350px;left:1370px;width:3px;height:280px;background:#1B3B6B}
+.geo-line-2{position:absolute;top:490px;left:990px;width:80px;height:2px;background:#1B3B6B}
+.geo-dot{position:absolute;top:220px;left:1385px;width:12px;height:12px;border-radius:50%;background:#1B3B6B}
+.geo-triangle{position:absolute;top:700px;left:1100px;width:0;height:0;border-left:40px solid transparent;border-right:40px solid transparent;border-bottom:70px solid #8B7355;opacity:0.6}
+
+/* Central visual: expanding circles representing scale */
+.center-group{position:absolute;top:270px;left:620px;width:360px;height:360px}
+.expand-1{position:absolute;top:140px;left:140px;width:80px;height:80px;border-radius:50%;border:2px solid #1B3B6B;background:transparent}
+.expand-2{position:absolute;top:80px;left:80px;width:200px;height:200px;border-radius:50%;border:1.5px solid #1B3B6B;background:transparent;opacity:0.7}
+.expand-3{position:absolute;top:0px;left:0px;width:320px;height:320px;border-radius:50%;border:1px solid #8B7355;background:transparent;opacity:0.5}
+.expand-4{position:absolute;top:40px;left:40px;width:240px;height:240px;border-radius:50%;border:1px solid #8B7355;background:transparent;opacity:0.3}
+.center-label{position:absolute;top:170px;left:175px;width:80px;height:80px;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif SC',serif;font-size:22px;color:#1B3B6B;font-weight:600;letter-spacing:2px}
+
+/* Content area */
+.content{position:absolute;top:230px;left:95px;width:460px}
+.bullet{display:flex;align-items:flex-start;margin-bottom:22px}
+.bullet-num{font-family:'Noto Serif SC',serif;font-size:20px;color:#8B7355;width:38px;flex-shrink:0;font-weight:600;line-height:1.6}
+.bullet-text{font-family:'Noto Sans SC',sans-serif;font-size:19px;color:#1B3B6B;line-height:1.7;flex:1;font-weight:400}
+.bullet-divider{width:24px;height:1px;background:#8B7355;flex-shrink:0;margin-top:14px;margin-right:8px}
+.bullet-line{width:1px;height:22px;background:#1B3B6B;flex-shrink:0;margin-right:14px;margin-top:2px}
+
+/* Bottom section */
+.bottom-rule{position:absolute;top:760px;left:95px;width:1410px;height:1px;background:#1B3B6B;opacity:0.3}
+.footer-label{position:absolute;top:780px;left:95px;font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;letter-spacing:6px}
+.footer-right{position:absolute;top:780px;right:95px;font-family:'Noto Sans SC',sans-serif;font-size:13px;color:#555;letter-spacing:3px;font-style:italic}
+
+/* Right side labels */
+.side-label-1{position:absolute;top:530px;left:990px;font-family:'Noto Serif SC',serif;font-size:15px;color:#F5F0E8;letter-spacing:3px;font-weight:600}
+.side-label-2{position:absolute;top:730px;left:995px;font-family:'Noto Serif SC',serif;font-size:14px;color:#1B3B6B;letter-spacing:3px}
+
+/* Corner marks */
+.corner-tl{position:absolute;top:30px;left:30px;width:20px;height:20px;border-top:2px solid #1B3B6B;border-left:2px solid #1B3B6B}
+.corner-tr{position:absolute;top:30px;right:30px;width:20px;height:20px;border-top:2px solid #1B3B6B;border-right:2px solid #1B3B6B}
+.corner-bl{position:absolute;bottom:30px;left:30px;width:20px;height:20px;border-bottom:2px solid #1B3B6B;border-left:2px solid #1B3B6B}
+.corner-br{position:absolute;bottom:30px;right:30px;width:20px;height:20px;border-bottom:2px solid #1B3B6B;border-right:2px solid #1B3B6B}
+
+.tag-rect{position:absolute;top:530px;left:1250px;width:56px;height:56px;background:#1B3B6B;display:flex;align-items:center;justify-content:center}
+.tag-rect span{font-family:'Noto Serif SC',serif;font-size:20px;color:#F5F0E8;font-weight:600}
+</style></head><body>
+<div class="corner-tl"></div>
+<div class="corner-tr"></div>
+<div class="corner-bl"></div>
+<div class="corner-br"></div>
+
+<div class="title">扩展的规模</div>
+<div class="subtitle">超越企业的组织演进</div>
+<div class="rule"></div>
+<div class="subtitle-en">Scaled Beyond the Firm</div>
+
+<div class="content">
+  <div class="bullet">
+    <div class="bullet-line"></div>
+    <div class="bullet-num">01</div>
+    <div class="bullet-text">报团取暖或保持中立</div>
+  </div>
+  <div class="bullet">
+    <div class="bullet-line"></div>
+    <div class="bullet-num">02</div>
+    <div class="bullet-text">Debian / Python —— 自主治理的传统</div>
+  </div>
+  <div class="bullet">
+    <div class="bullet-line"></div>
+    <div class="bullet-num">03</div>
+    <div class="bullet-text">Software Freedom Conservancy 旗下项目</div>
+  </div>
+  <div class="bullet">
+    <div class="bullet-line"></div>
+    <div class="bullet-num">04</div>
+    <div class="bullet-text">成为重要的基础设施</div>
+  </div>
+  <div class="bullet">
+    <div class="bullet-line"></div>
+    <div class="bullet-num">05</div>
+    <div class="bullet-text">项目保持稳定开发，community 基本平稳</div>
+  </div>
+  <div class="bullet">
+    <div class="bullet-line"></div>
+    <div class="bullet-num">06</div>
+    <div class="bullet-text">按部就班，稳重前进</div>
+  </div>
+</div>
+
+<div class="center-group">
+  <div class="expand-4"></div>
+  <div class="expand-3"></div>
+  <div class="expand-2"></div>
+  <div class="expand-1"></div>
+  <div class="center-label">SCALE</div>
+</div>
+
+<div class="geo-circle-1"></div>
+<div class="geo-circle-2"></div>
+<div class="geo-square-1"></div>
+<div class="side-label-1">EXPAND</div>
+<div class="geo-square-2"></div>
+<div class="geo-line-1"></div>
+<div class="geo-line-2"></div>
+<div class="geo-dot"></div>
+<div class="geo-triangle"></div>
+<div class="tag-rect"><span>∞</span></div>
+<div class="side-label-2">稳 定 · 进 化</div>
+
+<div class="bottom-rule"></div>
+<div class="footer-label">新制度经济学视角下的开源</div>
+<div class="footer-right">Institutional Economics of Open Source</div>
+</body></html>

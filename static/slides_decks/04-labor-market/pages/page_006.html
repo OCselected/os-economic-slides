@@ -1,0 +1,185 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>劳动力市场——当我们提起它时，在说什么？</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0}
+body{background:#F5F0E8;font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-serif;color:#1B3B6B;position:relative;overflow:hidden}
+.serif{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif}
+
+/* Parchment texture overlay */
+body::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;background:repeating-linear-gradient(90deg,rgba(139,115,85,0.03) 0px,rgba(139,115,85,0.03) 1px,transparent 1px,transparent 120px),repeating-linear-gradient(0deg,rgba(139,115,85,0.02) 0px,rgba(139,115,85,0.02) 1px,transparent 1px,transparent 80px);pointer-events:none;z-index:0}
+
+/* Frame */
+.frame{position:absolute;top:30px;left:30px;right:30px;bottom:30px;border:2px solid #1B3B6B;z-index:1}
+.frame-inner{position:absolute;top:42px;left:42px;right:42px;bottom:42px;border:1px solid rgba(27,59,107,0.35);z-index:1}
+
+/* Top-left corner mark */
+.corner-tl{position:absolute;top:42px;left:42px;width:24px;height:24px;border-top:3px solid #8B7355;border-left:3px solid #8B7355;z-index:3}
+.corner-tr{position:absolute;top:42px;right:42px;width:24px;height:24px;border-top:3px solid #8B7355;border-right:3px solid #8B7355;z-index:3}
+.corner-bl{position:absolute;bottom:42px;left:42px;width:24px;height:24px;border-bottom:3px solid #8B7355;border-left:3px solid #8B7355;z-index:3}
+.corner-br{position:absolute;bottom:42px;right:42px;width:24px;height:24px;border-bottom:3px solid #8B7355;border-right:3px solid #8B7355;z-index:3}
+
+/* Top bar label */
+.top-label{position:absolute;top:52px;left:110px;font-size:13px;letter-spacing:8px;color:#8B7355;z-index:5}
+.top-label-r{position:absolute;top:52px;right:110px;font-size:13px;letter-spacing:6px;color:#8B7355;z-index:5}
+
+/* Section number */
+.section-num{position:absolute;top:90px;left:90px;font-size:14px;letter-spacing:4px;color:#8B7355;z-index:5}
+.section-num::before{content:"";display:inline-block;width:40px;height:1px;background:#8B7355;vertical-align:middle;margin-right:14px}
+
+/* Main title */
+.main-title{position:absolute;top:128px;left:90px;font-size:38px;font-weight:700;color:#1B3B6B;letter-spacing:2px;line-height:1.4;z-index:5;width:900px}
+.main-title-sub{position:absolute;top:210px;left:92px;font-size:15px;color:#555;letter-spacing:3px;z-index:5}
+
+/* Horizontal divider */
+.divider{position:absolute;top:248px;left:90px;width:1420px;height:1px;background:#1B3B6B;z-index:4}
+.divider-thin{position:absolute;top:252px;left:90px;width:1420px;height:1px;background:rgba(27,59,107,0.3);z-index:4}
+
+/* Left composition area */
+.left-composition{position:absolute;top:290px;left:80px;width:560px;height:490px;z-index:5}
+
+/* "就业让人愁" characters */
+.char-yu{position:absolute;top:0;left:0;font-size:120px;font-weight:700;color:#1B3B6B;line-height:1;z-index:6}
+.char-y2{position:absolute;top:0;left:130px;font-size:120px;font-weight:700;color:#1B3B6B;line-height:1;z-index:6}
+.char-r{position:absolute;top:0;left:260px;font-size:120px;font-weight:700;color:#8B7355;line-height:1;z-index:6}
+.char-r2{position:absolute;top:0;left:390px;font-size:120px;font-weight:700;color:#1B3B6B;line-height:1;z-index:6}
+.char-c{position:absolute;top:140px;left:0;font-size:120px;font-weight:700;color:#1B3B6B;line-height:1;z-index:6}
+
+/* Geometric shapes around the characters */
+.geo-circle-1{position:absolute;top:60px;right:0;width:180px;height:180px;border-radius:50%;background:#1B3B6B;z-index:4}
+.geo-circle-2{position:absolute;top:90px;right:30px;width:120px;height:120px;border-radius:50%;background:#F5F0E8;z-index:5}
+.geo-circle-3{position:absolute;top:120px;right:60px;width:60px;height:60px;border-radius:50%;background:#1B3B6B;z-index:6}
+
+.geo-square-1{position:absolute;top:280px;right:20px;width:140px;height:140px;background:#1B3B6B;z-index:4}
+.geo-square-2{position:absolute;top:295px;right:35px;width:110px;height:110px;background:transparent;border:3px solid #F5F0E8;z-index:5}
+.geo-square-3{position:absolute;top:430px;left:140px;width:80px;height:80px;background:#8B7355;z-index:5}
+
+.geo-triangle{position:absolute;top:370px;left:0;width:0;height:0;border-left:60px solid transparent;border-right:60px solid transparent;border-bottom:104px solid #1B3B6B;z-index:5}
+.geo-triangle-in{position:absolute;top:390px;left:15px;width:0;height:0;border-left:45px solid transparent;border-right:45px solid transparent;border-bottom:79px solid #F5F0E8;z-index:6}
+
+.geo-line-1{position:absolute;top:135px;left:0;width:560px;height:3px;background:#1B3B6B;z-index:3}
+.geo-line-2{position:absolute;top:245px;left:0;width:400px;height:2px;background:#8B7355;z-index:3}
+.geo-line-3{position:absolute;top:450px;left:60px;width:300px;height:2px;background:#8B7355;z-index:3}
+
+/* Annotation */
+.geo-anno{position:absolute;top:460px;left:370px;font-size:12px;color:#555;letter-spacing:2px;z-index:6}
+
+/* Right content area */
+.right-content{position:absolute;top:290px;right:80px;width:730px;height:490px;z-index:5}
+
+.content-label{font-size:13px;letter-spacing:4px;color:#8B7355;margin-bottom:18px;position:relative;padding-left:20px}
+.content-label::before{content:"";position:absolute;left:0;top:8px;width:10px;height:10px;background:#1B3B6B}
+
+/* Bullet items */
+.bullet{display:flex;align-items:center;margin-bottom:14px;position:relative}
+.bullet-num{font-size:15px;font-weight:700;color:#1B3B6B;width:48px;font-family:'Noto Serif SC',serif;letter-spacing:1px}
+.bullet-line{flex:1;height:1px;background:rgba(27,59,107,0.3);margin-right:16px;position:relative}
+.bullet-line::after{content:"";position:absolute;right:-4px;top:-3px;width:7px;height:7px;background:#1B3B6B;border-radius:50%}
+.bullet-text{font-size:20px;font-weight:600;color:#1B3B6B;letter-spacing:2px;min-width:200px;text-align:right}
+
+/* Highlight item */
+.bullet.highlight .bullet-num{color:#8B7355}
+.bullet.highlight .bullet-text{color:#1B3B6B;font-size:21px}
+.bullet.highlight .bullet-line{background:rgba(139,115,85,0.4)}
+.bullet.highlight .bullet-line::after{background:#8B7355}
+
+/* Bottom note */
+.bottom-note{position:absolute;bottom:72px;left:90px;font-size:12px;color:#555;letter-spacing:3px;z-index:5}
+.bottom-note::before{content:"";display:inline-block;width:30px;height:1px;background:#8B7355;vertical-align:middle;margin-right:12px}
+
+/* Bottom right quote */
+.bottom-quote{position:absolute;bottom:72px;right:90px;font-size:12px;color:#8B7355;letter-spacing:3px;z-index:5;text-align:right}
+.bottom-quote::after{content:"";display:block;width:30px;height:1px;background:#8B7355;margin-left:auto;margin-top:8px}
+
+/* Decorative geometric marks in top right */
+.deco-circle-r{position:absolute;top:85px;right:180px;width:12px;height:12px;border-radius:50%;background:#8B7355;z-index:5}
+.deco-circle-r2{position:absolute;top:100px;right:160px;width:6px;height:6px;border-radius:50%;background:#1B3B6B;z-index:5}
+.deco-square-r{position:absolute;top:78px;right:120px;width:14px;height:14px;background:transparent;border:2px solid #8B7355;z-index:5}
+</style></head><body>
+<div class="frame"></div>
+<div class="frame-inner"></div>
+<div class="corner-tl"></div>
+<div class="corner-tr"></div>
+<div class="corner-bl"></div>
+<div class="corner-br"></div>
+
+<div class="top-label">OPEN SOURCE · ECONOMIC LECTURE</div>
+<div class="top-label-r">CHAPTER · V</div>
+
+<div class="section-num">SECTION 05 / LABOR MARKET</div>
+
+<div class="deco-circle-r"></div>
+<div class="deco-circle-r2"></div>
+<div class="deco-square-r"></div>
+
+<div class="main-title serif">当我们提起劳动力市场时，<br>究竟在说什么？</div>
+<div class="main-title-sub">A Question of Labor — 岗位 · 薪酬 · 技能 · 产业 · 投资 · 教育</div>
+
+<div class="divider"></div>
+<div class="divider-thin"></div>
+
+<!-- Left geometric composition -->
+<div class="left-composition">
+  <div class="char-yu serif">就</div>
+  <div class="char-y2 serif">业</div>
+  <div class="char-r serif">让</div>
+  <div class="char-r2 serif">人</div>
+  <div class="char-c serif">愁</div>
+
+  <div class="geo-circle-1"></div>
+  <div class="geo-circle-2"></div>
+  <div class="geo-circle-3"></div>
+
+  <div class="geo-square-1"></div>
+  <div class="geo-square-2"></div>
+  <div class="geo-square-3"></div>
+
+  <div class="geo-triangle"></div>
+  <div class="geo-triangle-in"></div>
+
+  <div class="geo-line-1"></div>
+  <div class="geo-line-2"></div>
+  <div class="geo-line-3"></div>
+
+  <div class="geo-anno">GEOMETRIC WEIGHT · 沉重的基调</div>
+</div>
+
+<!-- Right content -->
+<div class="right-content">
+  <div class="content-label">SIX DIMENSIONS OF LABOR MARKET</div>
+
+  <div class="bullet highlight">
+    <div class="bullet-num">I</div>
+    <div class="bullet-line"></div>
+    <div class="bullet-text">岗位需求</div>
+  </div>
+  <div class="bullet">
+    <div class="bullet-num">II</div>
+    <div class="bullet-line"></div>
+    <div class="bullet-text">工资待遇</div>
+  </div>
+  <div class="bullet">
+    <div class="bullet-num">III</div>
+    <div class="bullet-line"></div>
+    <div class="bullet-text">技能标准</div>
+  </div>
+  <div class="bullet">
+    <div class="bullet-num">IV</div>
+    <div class="bullet-line"></div>
+    <div class="bullet-text">产业概况</div>
+  </div>
+  <div class="bullet">
+    <div class="bullet-num">V</div>
+    <div class="bullet-line"></div>
+    <div class="bullet-text">人力投资</div>
+  </div>
+  <div class="bullet highlight">
+    <div class="bullet-num">VI</div>
+    <div class="bullet-line"></div>
+    <div class="bullet-text">职业教育</div>
+  </div>
+</div>
+
+<div class="bottom-note">LABOR — 制度、激励与协作的交汇点</div>
+<div class="bottom-quote">"就业让人愁" · 一枚沉重的硬币</div>
+</body></html>

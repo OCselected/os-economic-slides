@@ -1,0 +1,195 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>排他权的制度起源——从印刷特权到数字版权</title><style>
+html,body{width:1600px;height:900px;overflow:hidden;margin:0;padding:0}
+body{font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;background:#F5F0E8;color:#1B3B6B;position:relative}
+
+/* Subtle parchment texture */
+body::before{content:'';position:absolute;top:0;left:0;width:1600px;height:900px;
+background:repeating-linear-gradient(0deg,rgba(139,115,85,0.03) 0px,rgba(139,115,85,0.03) 1px,transparent 1px,transparent 4px),
+repeating-linear-gradient(90deg,rgba(27,59,107,0.02) 0px,rgba(27,59,107,0.02) 1px,transparent 1px,transparent 6px);
+pointer-events:none}
+
+/* Header bar */
+.header{position:absolute;top:48px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid #1B3B6B;padding-bottom:14px}
+.header-title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:22px;font-weight:600;color:#1B3B6B;letter-spacing:2px}
+.header-meta{font-size:13px;color:#555;letter-spacing:1px;font-family:'Noto Sans SC',sans-serif}
+
+/* Section number */
+.section-num{position:absolute;top:130px;left:80px;font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:4px}
+.section-line{position:absolute;top:142px;left:160px;width:80px;height:1px;background:#8B7355}
+
+/* Left geometric composition - printing press */
+.geo-zone{position:absolute;top:170px;left:80px;width:620px;height:660px}
+
+/* Large circle - press wheel */
+.wheel{position:absolute;top:20px;left:80px;width:280px;height:280px;border:5px solid #1B3B6B;border-radius:50%}
+.wheel-inner{position:absolute;top:75px;left:135px;width:170px;height:170px;border:2px solid #1B3B6B;border-radius:50%}
+.wheel-spoke-h{position:absolute;top:145px;left:80px;width:280px;height:2px;background:#1B3B6B}
+.wheel-spoke-v{position:absolute;top:20px;left:219px;width:2px;height:280px;background:#1B3B6B}
+.wheel-diag1{position:absolute;top:20px;left:80px;width:280px;height:280px;border:2px solid #1B3B6B;border-radius:50%;clip-path:polygon(0 45%,45% 0,55% 0,55% 45%)}
+.wheel-diag2{position:absolute;top:20px;left:80px;width:280px;height:280px;border:2px solid #1B3B6B;border-radius:50%;clip-path:polygon(55% 55%,100% 55%,100% 100%,55% 100%,45% 55%,45% 100%)}
+.wheel-dot{position:absolute;top:142px;left:215px;width:10px;height:10px;background:#1B3B6B;border-radius:50%}
+
+/* Press bar - horizontal thick line */
+.press-bar{position:absolute;top:300px;left:80px;width:560px;height:18px;background:#1B3B6B}
+.press-bar-label{position:absolute;top:323px;left:88px;font-size:9px;color:#F5F0E8;letter-spacing:3px}
+
+/* Stacked documents - squares */
+.doc-stack{position:absolute;top:340px;left:80px;width:360px;height:240px}
+.doc1{position:absolute;top:0;left:0;width:300px;height:40px;background:#F5F0E8;border:2px solid #1B3B6B}
+.doc1-text{position:absolute;top:14px;left:15px;font-size:10px;color:#1B3B6B;letter-spacing:1px}
+.doc1-year{position:absolute;top:12px;right:12px;font-size:14px;color:#1B3B6B;font-family:'Noto Serif SC',serif;font-weight:700}
+
+.doc2{position:absolute;top:50px;left:30px;width:300px;height:40px;background:#F5F0E8;border:2px solid #8B7355}
+.doc2-text{position:absolute;top:14px;left:15px;font-size:10px;color:#8B7355;letter-spacing:1px}
+.doc2-year{position:absolute;top:12px;right:12px;font-size:14px;color:#8B7355;font-family:'Noto Serif SC',serif;font-weight:700}
+
+.doc3{position:absolute;top:100px;left:60px;width:300px;height:40px;background:#F5F0E8;border:2px solid #555}
+.doc3-text{position:absolute;top:14px;left:15px;font-size:10px;color:#555;letter-spacing:1px}
+.doc3-year{position:absolute;top:12px;right:12px;font-size:14px;color:#555;font-family:'Noto Serif SC',serif;font-weight:700}
+
+.doc4{position:absolute;top:150px;left:20px;width:300px;height:40px;background:#1B3B6B;border:2px solid #1B3B6B}
+.doc4-text{position:absolute;top:14px;left:15px;font-size:10px;color:#F5F0E8;letter-spacing:1px}
+.doc4-year{position:absolute;top:12px;right:12px;font-size:14px;color:#F5F0E8;font-family:'Noto Serif SC',serif;font-weight:700}
+
+/* Small decorative elements */
+.deco-square{position:absolute;top:20px;left:410px;width:60px;height:60px;background:#8B7355}
+.deco-square-inner{position:absolute;top:32px;left:422px;width:36px;height:36px;border:2px solid #F5F0E8;background:transparent}
+.deco-line-v{position:absolute;top:90px;left:478px;width:2px;height:120px;background:#1B3B6B}
+.deco-dot{position:absolute;top:216px;left:468px;width:20px;height:20px;background:#1B3B6B;border-radius:50%}
+
+/* Typographic label on geometric zone */
+.geo-label{position:absolute;top:600px;left:80px;width:560px;font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;letter-spacing:2px;border-top:1px solid #8B7355;padding-top:10px}
+.geo-label strong{color:#1B3B6B;font-weight:700}
+
+/* Right content zone */
+.content-zone{position:absolute;top:170px;left:740px;width:780px;height:660px}
+
+.main-title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:36px;font-weight:700;color:#1B3B6B;line-height:1.35;letter-spacing:1px}
+.main-title .accent{color:#8B7355}
+.title-underline{width:120px;height:4px;background:#1B3B6B;margin-top:12px}
+
+.subtitle-cn{font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;margin-top:14px;letter-spacing:2px;line-height:1.6}
+
+.bullets{margin-top:28px;display:flex;flex-direction:column;gap:14px}
+.bullet{display:flex;align-items:flex-start;gap:14px}
+.bullet-marker{flex-shrink:0;width:24px;height:24px;position:relative;margin-top:2px}
+.bullet-marker .b-square{width:14px;height:14px;background:#1B3B6B;position:absolute;top:5px;left:5px}
+.bullet-marker .b-circle{width:14px;height:14px;border:2px solid #8B7355;border-radius:50%;position:absolute;top:5px;left:5px;background:#F5F0E8}
+.bullet-marker .b-line{width:18px;height:2px;background:#1B3B6B;position:absolute;top:11px;left:3px}
+.bullet-text{font-size:15px;line-height:1.7;color:#1B3B6B;flex:1}
+.bullet-text .year{font-family:'Noto Serif SC',serif;font-weight:700;color:#8B7355;font-size:16px;margin-right:6px}
+.bullet-text .key{font-weight:600;color:#1B3B6B}
+.bullet-text .quote{font-style:italic;color:#555}
+
+/* Williamson tag */
+.will-tag{margin-top:24px;display:flex;align-items:center;gap:12px;padding:14px 18px;background:#1B3B6B;color:#F5F0E8;border-left:4px solid #8B7355}
+.will-label{font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;letter-spacing:2px;font-weight:700}
+.will-text{font-size:14px;line-height:1.6;letter-spacing:0.5px}
+
+/* Footer */
+.footer{position:absolute;bottom:32px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid #8B7355;padding-top:12px}
+.footer-left{font-size:11px;color:#555;letter-spacing:2px}
+.footer-right{font-size:11px;color:#8B7355;letter-spacing:2px}
+
+/* Corner decorations */
+.corner-tl{position:absolute;top:16px;left:16px;width:24px;height:24px;border-top:2px solid #1B3B6B;border-left:2px solid #1B3B6B}
+.corner-tr{position:absolute;top:16px;right:16px;width:24px;height:24px;border-top:2px solid #1B3B6B;border-right:2px solid #1B3B6B}
+.corner-bl{position:absolute;bottom:16px;left:16px;width:24px;height:24px;border-bottom:2px solid #1B3B6B;border-left:2px solid #1B3B6B}
+.corner-br{position:absolute;bottom:16px;right:16px;width:24px;height:24px;border-bottom:2px solid #1B3B6B;border-right:2px solid #1B3B6B}
+</style></head><body>
+
+<div class="corner-tl"></div>
+<div class="corner-tr"></div>
+<div class="corner-bl"></div>
+<div class="corner-br"></div>
+
+<div class="header">
+  <div class="header-title">第 09 期 · 排他权与容他权、比例原则与 Copyleft</div>
+  <div class="header-meta">NEW INSTITUTIONAL ECONOMICS / OPEN SOURCE — LECTURE 09 / 28</div>
+</div>
+
+<div class="section-num">03 · INTELLECTUAL PROPERTY</div>
+<div class="section-line"></div>
+
+<!-- Left geometric composition -->
+<div class="geo-zone">
+  <div class="wheel"></div>
+  <div class="wheel-inner"></div>
+  <div class="wheel-spoke-h"></div>
+  <div class="wheel-spoke-v"></div>
+  <div class="wheel-dot"></div>
+
+  <div class="press-bar">
+    <div class="press-bar-label">PRESS · 印刷机 · L342</div>
+  </div>
+
+  <div class="doc-stack">
+    <div class="doc1">
+      <div class="doc1-text">Licensing Act — 出版许可法</div>
+      <div class="doc1-year">1662</div>
+    </div>
+    <div class="doc2">
+      <div class="doc2-text">Statute of Anne — 安妮法典</div>
+      <div class="doc2-year">1710</div>
+    </div>
+    <div class="doc3">
+      <div class="doc3-text">Copyright Act — 现代版权法</div>
+      <div class="doc3-year">1840</div>
+    </div>
+    <div class="doc4">
+      <div class="doc4-text">Digital Millennium Copyright Act</div>
+      <div class="doc4-year">1998</div>
+    </div>
+  </div>
+
+  <div class="deco-square"></div>
+  <div class="deco-square-inner"></div>
+  <div class="deco-line-v"></div>
+  <div class="deco-dot"></div>
+
+  <div class="geo-label"><strong>视觉隐喻</strong>　古旧印刷机旁，堆叠 1662 年特许状与安妮法典——从墨香纸页到比特字节</div>
+</div>
+
+<!-- Right content -->
+<div class="content-zone">
+  <div class="main-title">排他权的<span class="accent">制度起源</span><br>——从印刷特权到数字版权</div>
+  <div class="title-underline"></div>
+  <div class="subtitle-cn">Institutional Genesis of Exclusionary Rights — From Printing Privilege to Digital Copyright</div>
+
+  <div class="bullets">
+    <div class="bullet">
+      <div class="bullet-marker"><div class="b-square"></div></div>
+      <div class="bullet-text"><span class="year">1662</span><span class="key">英国《出版许可法》</span>——"印刷特权"是排他权的雏形，王室以特许权控制信息生产</div>
+    </div>
+    <div class="bullet">
+      <div class="bullet-marker"><div class="b-circle"></div></div>
+      <div class="bullet-text"><span class="year">1710</span><span class="key">《安妮法》</span>——世界上第一部版权法，将保护对象从<span class="quote">出版商</span>转向<span class="quote">作者</span>，权利逻辑发生根本位移</div>
+    </div>
+    <div class="bullet">
+      <div class="bullet-marker"><div class="b-line"></div></div>
+      <div class="bullet-text"><span class="year">19C</span>工业革命推动版权从<span class="quote">"保护作者"</span>向<span class="quote">"保护投资者"</span>转变，资本逻辑渗入知识产权体系</div>
+    </div>
+    <div class="bullet">
+      <div class="bullet-marker"><div class="b-square"></div></div>
+      <div class="bullet-text"><span class="year">数字时代</span>版权保护从<span class="quote">"保护创意"</span>演变为<span class="quote">"保护商业模式"</span>，DMCA 将技术措施升格为法律权利</div>
+    </div>
+    <div class="bullet">
+      <div class="bullet-marker"><div class="b-circle"></div></div>
+      <div class="bullet-text">排他权不是中性的——它塑造了<span class="key">谁能生产、谁能使用、谁能受益</span></div>
+    </div>
+  </div>
+
+  <div class="will-tag">
+    <div class="will-label">WILLIAMSON · L2</div>
+    <div class="will-text">排他权是数字时代最根本的制度环境之一——它决定了交易成本的分布格局</div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-left">开源之道 · 新制度经济学视角下的开源讲座</div>
+  <div class="footer-right">SLIDE 03 / 28 — EXCLUSIONARY RIGHTS</div>
+</div>
+
+</body></html>

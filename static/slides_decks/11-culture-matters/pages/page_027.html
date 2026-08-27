@@ -1,0 +1,349 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>文化的重要作用 — 乌托邦对比</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
+}
+body {
+  background: #F5F0E8;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  color: #1B3B6B;
+}
+
+/* Outer parchment frame area */
+.slide {
+  position: absolute;
+  width: 1600px;
+  height: 900px;
+}
+
+/* Bauhaus geometric decorations on parchment */
+.deco-circle-lg {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 2px solid #1B3B6B;
+  top: 30px;
+  left: 40px;
+}
+.deco-circle-lg::after {
+  content: '';
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: #8B7355;
+  top: 65px;
+  left: 65px;
+}
+.deco-square-tr {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: #1B3B6B;
+  top: 40px;
+  right: 40px;
+}
+.deco-square-tr2 {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  background: #F5F0E8;
+  top: 62px;
+  right: 62px;
+}
+.deco-line-h {
+  position: absolute;
+  height: 1px;
+  background: #1B3B6B;
+  bottom: 52px;
+  left: 50px;
+  width: 1500px;
+}
+.deco-line-h2 {
+  position: absolute;
+  height: 1px;
+  background: #8B7355;
+  bottom: 44px;
+  left: 50px;
+  width: 1500px;
+}
+.deco-chapter {
+  position: absolute;
+  bottom: 14px;
+  left: 50px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: #555;
+}
+.deco-title-tag {
+  position: absolute;
+  top: 12px;
+  right: 40px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #555;
+  text-align: right;
+}
+
+/* Central dark panel */
+.panel {
+  position: absolute;
+  top: 60px;
+  left: 90px;
+  width: 1420px;
+  height: 700px;
+  background: #1B3B6B;
+}
+/* Panel inner border */
+.panel-border {
+  position: absolute;
+  top: 60px;
+  left: 90px;
+  width: 1420px;
+  height: 700px;
+  border: 1px solid #8B7355;
+  pointer-events: none;
+}
+/* Inner offset line */
+.panel-inner {
+  position: absolute;
+  top: 70px;
+  left: 100px;
+  width: 1400px;
+  height: 680px;
+  border: 1px solid rgba(245, 240, 232, 0.12);
+  pointer-events: none;
+}
+
+/* Geometric elements on dark panel */
+.panel-deco-circle {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  border: 1px solid rgba(245, 240, 232, 0.2);
+  top: -90px;
+  right: 80px;
+}
+.panel-deco-circle2 {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  border: 1px solid rgba(139, 115, 85, 0.35);
+  top: -70px;
+  right: 100px;
+}
+.panel-deco-square {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: #8B7355;
+  bottom: 50px;
+  left: 60px;
+}
+.panel-deco-line {
+  position: absolute;
+  width: 120px;
+  height: 1px;
+  background: rgba(245, 240, 232, 0.4);
+  top: 80px;
+  left: 70px;
+}
+.panel-deco-line2 {
+  position: absolute;
+  width: 120px;
+  height: 2px;
+  background: #8B7355;
+  top: 76px;
+  left: 70px;
+}
+
+/* Panel top label */
+.panel-top-label {
+  position: absolute;
+  top: 36px;
+  left: 70px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  letter-spacing: 5px;
+  color: rgba(245, 240, 232, 0.55);
+}
+.panel-top-label-r {
+  position: absolute;
+  top: 36px;
+  right: 70px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: rgba(245, 240, 232, 0.45);
+}
+
+/* Chapter marker */
+.chapter-mark {
+  position: absolute;
+  top: 80px;
+  left: 70px;
+  width: 12px;
+  height: 12px;
+  background: #8B7355;
+}
+
+/* Main content area */
+.content {
+  position: absolute;
+  top: 130px;
+  left: 90px;
+  width: 1240px;
+  height: 490px;
+}
+
+.quote-mark {
+  font-family: 'Noto Serif SC', 'Songti SC', serif;
+  font-size: 120px;
+  color: #8B7355;
+  line-height: 0.5;
+  margin-bottom: 20px;
+  opacity: 0.7;
+}
+
+.quote-text {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 26px;
+  line-height: 2.0;
+  color: #F5F0E8;
+  letter-spacing: 1px;
+  font-weight: 300;
+}
+
+.quote-text .hl-blue {
+  color: #A8C4E8;
+}
+.quote-text .hl-copper {
+  color: #C9A96A;
+}
+
+.quote-divider {
+  width: 60px;
+  height: 1px;
+  background: #8B7355;
+  margin: 35px 0 30px 0;
+}
+
+.attribution {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 17px;
+  color: rgba(245, 240, 232, 0.7);
+  letter-spacing: 2px;
+  font-style: italic;
+}
+
+/* Bottom geometric marks */
+.panel-bottom-row {
+  position: absolute;
+  bottom: 50px;
+  left: 160px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.panel-bottom-row .dot {
+  width: 8px;
+  height: 8px;
+  background: #F5F0E8;
+  border-radius: 50%;
+  opacity: 0.5;
+}
+.panel-bottom-row .dot-copper {
+  background: #8B7355;
+  opacity: 1;
+}
+.panel-bottom-row .line {
+  width: 80px;
+  height: 1px;
+  background: rgba(245, 240, 232, 0.3);
+}
+.panel-bottom-row .label {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: rgba(245, 240, 232, 0.4);
+}
+
+.panel-bottom-right {
+  position: absolute;
+  bottom: 50px;
+  right: 60px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: rgba(245, 240, 232, 0.4);
+  text-align: right;
+}
+</style>
+</head>
+<body>
+<div class="slide">
+
+  <div class="deco-title-tag">CHAPTER 04 · UTOPIA</div>
+  <div class="deco-circle-lg"></div>
+  <div class="deco-square-tr"></div>
+  <div class="deco-square-tr2"></div>
+  <div class="deco-line-h"></div>
+  <div class="deco-line-h2"></div>
+  <div class="deco-chapter">OPEN-SOURCE × INSTITUTIONAL ECONOMICS — LECTURE DECK</div>
+
+  <div class="panel"></div>
+  <div class="panel-border"></div>
+  <div class="panel-inner"></div>
+
+  <div class="panel-deco-circle"></div>
+  <div class="panel-deco-circle2"></div>
+  <div class="panel-deco-square"></div>
+  <div class="panel-deco-line"></div>
+  <div class="panel-deco-line2"></div>
+
+  <div class="panel-top-label">EXCERPT &nbsp;/&nbsp; 引文</div>
+  <div class="panel-top-label-r">FOURTH CHAPTER</div>
+
+  <div class="chapter-mark"></div>
+
+  <div class="content">
+    <div class="quote-mark">「</div>
+    <div class="quote-text">
+      有利于<span class="hl-blue">进步的</span>文化和阻碍<span class="hl-blue">进步的</span>文化，都有自己憧憬的<span class="hl-copper">乌托邦</span>，即理想境界。
+      在进步的文化中，人们认为世界是通过个人的<span class="hl-copper">创造性和努力</span>而慢慢向遥远的乌托邦前进。
+      在抵制进步的文化中，个人却是寻求早日进入一个实际上<span class="hl-blue">达不到的</span>乌托邦，结果又是摇摆于<span class="hl-copper">狂热</span>和<span class="hl-copper">悲观怀疑</span>之间。
+    </div>
+    <div class="quote-divider"></div>
+    <div class="attribution">————《文化的重要作用》 &nbsp;·&nbsp; 第四章</div>
+  </div>
+
+  <div class="panel-bottom-row">
+    <span class="dot"></span>
+    <span class="dot-copper"></span>
+    <span class="dot"></span>
+    <span class="line"></span>
+    <span class="label">PROGRESS &nbsp;◆&nbsp; RESISTANCE</span>
+  </div>
+
+  <div class="panel-bottom-right">
+    DOUGLAS C. NORTH · 1990
+  </div>
+
+</div>
+</body>
+</html>

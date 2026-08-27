@@ -1,0 +1,152 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>案例一：Linux 的危机</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif}
+body{background:#F5F0E8;position:relative}
+
+/* parchment texture */
+body::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;background:radial-gradient(ellipse at 20% 10%,rgba(139,115,85,0.05) 0%,transparent 50%),radial-gradient(ellipse at 80% 90%,rgba(27,59,107,0.04) 0%,transparent 50%);pointer-events:none}
+
+/* top border line */
+.top-rule{position:absolute;top:56px;left:80px;width:1440px;height:1px;background:#1B3B6B}
+.bottom-rule{position:absolute;bottom:56px;left:80px;width:1440px;height:1px;background:#1B3B6B}
+
+/* page header */
+.page-header{position:absolute;top:30px;left:80px;font-size:13px;color:#8B7355;letter-spacing:6px;font-weight:400}
+.page-num{position:absolute;top:30px;right:80px;font-size:13px;color:#8B7355;letter-spacing:3px}
+
+/* LEFT: Bauhaus geometric composition */
+.geo-area{position:absolute;top:100px;left:80px;width:520px;height:720px}
+
+.geo-circle-outer{position:absolute;top:60px;left:60px;width:360px;height:360px;border-radius:50%;border:3px solid #1B3B6B;background:transparent}
+.geo-circle-inner{position:absolute;top:160px;left:160px;width:160px;height:160px;border-radius:50%;background:#1B3B6B}
+.geo-circle-copper{position:absolute;top:100px;left:200px;width:80px;height:80px;border-radius:50%;border:3px solid #8B7355;background:transparent}
+
+.geo-square{position:absolute;top:460px;left:120px;width:120px;height:120px;background:#1B3B6B}
+.geo-square-inner{position:absolute;top:490px;left:150px;width:60px;height:60px;border:2px solid #F5F0E8;background:transparent}
+
+.geo-rect{position:absolute;top:510px;left:260px;width:200px;height:40px;background:#8B7355}
+
+/* vertical line */
+.geo-vline{position:absolute;top:80px;left:460px;width:2px;height:600px;background:#1B3B6B}
+
+/* horizontal line through composition */
+.geo-hline{position:absolute;top:240px;left:40px;width:440px;height:2px;background:#8B7355}
+
+/* small accent square */
+.geo-acc1{position:absolute;top:40px;left:40px;width:16px;height:16px;background:#1B3B6B}
+.geo-acc2{position:absolute;top:40px;left:460px;width:16px;height:16px;background:#8B7355}
+.geo-acc3{position:absolute;top:740px;left:40px;width:16px;height:16px;background:#8B7355}
+.geo-acc4{position:absolute;top:740px;left:460px;width:16px;height:16px;background:#1B3B6B}
+
+/* center cross point */
+.geo-cross-v{position:absolute;top:60px;left:238px;width:2px;height:360px;background:rgba(139,115,85,0.3)}
+.geo-cross-h{position:absolute;top:238px;left:60px;width:360px;height:2px;background:rgba(139,115,85,0.3)}
+
+/* RIGHT: content */
+.content{position:absolute;top:110px;left:660px;width:860px;height:700px}
+
+.case-label{font-size:14px;color:#8B7355;letter-spacing:8px;margin-bottom:14px}
+.case-num{font-size:13px;color:#555;letter-spacing:4px;margin-bottom:24px}
+
+.main-title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:48px;color:#1B3B6B;font-weight:600;line-height:1.2;margin-bottom:8px}
+.title-accent{display:inline-block;width:60px;height:4px;background:#8B7355;margin-bottom:32px;margin-top:16px}
+
+/* timeline-style content */
+.timeline{position:relative;margin-top:8px}
+.timeline-item{position:relative;padding-left:44px;margin-bottom:20px;min-height:24px}
+.timeline-dot{position:absolute;left:12px;top:6px;width:12px;height:12px;border-radius:50%;background:#1B3B6B}
+.timeline-line{position:absolute;left:17px;top:18px;width:2px;height:22px;background:#8B7355}
+.timeline-item:last-child .timeline-line{display:none}
+
+.timeline-dot.copper{background:#8B7355}
+.timeline-dot.outline{background:transparent;border:2px solid #1B3B6B;width:14px;height:14px;left:11px}
+
+.timeline-text{font-size:17px;color:#1B3B6B;line-height:1.5;font-weight:400}
+.timeline-text .em{font-family:'Noto Serif SC',serif;font-weight:600;color:#1B3B6B}
+.timeline-text .accent{color:#8B7355;font-weight:500}
+.timeline-text .key{font-family:'Noto Serif SC',serif;font-weight:600;font-size:18px;color:#1B3B6B}
+
+/* divider */
+.divider{margin:8px 0 4px 44px;height:1px;background:rgba(139,115,85,0.3);width:180px}
+
+/* footer meta */
+.footer-left{position:absolute;bottom:24px;left:80px;font-size:12px;color:#555;letter-spacing:3px}
+.footer-right{position:absolute;bottom:24px;right:80px;font-size:12px;color:#555;letter-spacing:2px}
+</style></head><body>
+
+<div class="top-rule"></div>
+<div class="bottom-rule"></div>
+
+<div class="page-header">OPEN SOURCE · INSTITUTIONAL ECONOMICS</div>
+<div class="page-num">0 5 / 1 2</div>
+
+<!-- GEOMETRIC COMPOSITION -->
+<div class="geo-area">
+  <div class="geo-acc1"></div>
+  <div class="geo-acc2"></div>
+  <div class="geo-acc3"></div>
+  <div class="geo-acc4"></div>
+
+  <div class="geo-vline"></div>
+  <div class="geo-hline"></div>
+
+  <div class="geo-circle-outer"></div>
+  <div class="geo-cross-v"></div>
+  <div class="geo-cross-h"></div>
+  <div class="geo-circle-copper"></div>
+  <div class="geo-circle-inner"></div>
+
+  <div class="geo-square"></div>
+  <div class="geo-square-inner"></div>
+  <div class="geo-rect"></div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+  <div class="case-label">CASE STUDY</div>
+  <div class="case-num">CASE · 一</div>
+  <div class="main-title">Linux 的危机</div>
+  <span class="title-accent"></span>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-line"></div>
+      <div class="timeline-text">Linus 毕业后加入<span class="em">芯片公司</span>，开始忙碌</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-line"></div>
+      <div class="timeline-text"><span class="accent">拒绝</span>加入任何 Linux 有关的公司</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot copper"></div>
+      <div class="timeline-line"></div>
+      <div class="timeline-text">维护 kernel 时间<span class="em">减少</span>，面临<span class="em">分裂</span>危机</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot outline"></div>
+      <div class="timeline-line"></div>
+      <div class="timeline-text"><span class="key">OSDL</span>（Linux 基金会前身）<span class="em">挺身而出</span></div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot outline"></div>
+      <div class="timeline-line"></div>
+      <div class="timeline-text">雇佣了 Linus，成为 OSDL 的<span class="em">第一位 Fellow</span></div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot outline"></div>
+      <div class="timeline-text"><span class="key">OSDL</span> + <span class="key">FSG</span> = <span class="key">Linux Foundation</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-left">新制度经济学视角 · 开源讲座</div>
+<div class="footer-right">CHAPTER Ⅲ / GOVERNANCE &amp; ORGANIZATION</div>
+
+</body></html>

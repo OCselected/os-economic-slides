@@ -1,0 +1,217 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>网络效应与正反馈回路</title><style>
+html,body{width:1600px;height:900px;overflow:hidden;margin:0;padding:0;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;}
+body{background:#F5F0E8;color:#1B3B6B;position:relative;}
+
+/* subtle parchment texture */
+.parchment{position:absolute;top:0;left:0;width:1600px;height:900px;background:
+  radial-gradient(ellipse at 20% 15%, rgba(139,115,85,0.06) 0%, transparent 50%),
+  radial-gradient(ellipse at 80% 85%, rgba(27,59,107,0.04) 0%, transparent 50%),
+  radial-gradient(ellipse at 50% 50%, rgba(245,240,232,0) 0%, rgba(235,228,215,0.3) 100%);
+  pointer-events:none;}
+
+/* header bar */
+.header-bar{position:absolute;top:0;left:0;width:1600px;height:6px;background:#1B3B6B;}
+.header-bar-accent{position:absolute;top:6px;left:0;width:1600px;height:3px;background:#8B7355;}
+
+/* lecture number circle - top left */
+.lecture-num{position:absolute;top:40px;left:60px;width:72px;height:72px;border-radius:50%;background:#1B3B6B;display:flex;align-items:center;justify-content:center;color:#F5F0E8;font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:28px;font-weight:700;letter-spacing:1px;}
+
+/* top right decorative geometry */
+.deco-square{position:absolute;top:45px;right:60px;width:48px;height:48px;background:#8B7355;}
+.deco-square-2{position:absolute;top:100px;right:120px;width:24px;height:24px;background:#1B3B6B;border-radius:50%;}
+.deco-line-h{position:absolute;top:94px;right:170px;width:120px;height:2px;background:#1B3B6B;}
+.deco-line-h2{position:absolute;top:94px;right:296px;width:70px;height:2px;background:#8B7355;}
+
+/* section label */
+.section-label{position:absolute;top:52px;left:160px;font-size:13px;letter-spacing:6px;color:#8B7355;font-weight:500;text-transform:uppercase;}
+.section-label-cn{position:absolute;top:78px;left:160px;font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:14px;color:#555;letter-spacing:2px;}
+
+/* main title */
+.main-title{position:absolute;top:200px;left:60px;font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:52px;font-weight:700;color:#1B3B6B;line-height:1.3;letter-spacing:2px;width:760px;}
+.title-underline{position:absolute;top:340px;left:60px;width:140px;height:4px;background:#1B3B6B;}
+.title-underline-2{position:absolute;top:340px;left:210px;width:60px;height:4px;background:#8B7355;}
+
+/* constellation visual */
+.constellation{position:absolute;top:370px;left:40px;width:780px;height:480px;}
+.constellation svg{width:780px;height:480px;display:block;}
+
+/* formula box */
+.formula-box{position:absolute;top:400px;right:60px;width:580px;background:#FFFFFF;border:1px solid #1B3B6B;padding:28px 32px;}
+.formula-title{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:16px;color:#8B7355;letter-spacing:3px;margin-bottom:14px;}
+.formula-eq{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:28px;color:#1B3B6B;text-align:center;padding:12px 0;border-top:1px solid #8B7355;border-bottom:1px solid #8B7355;letter-spacing:2px;}
+.formula-desc{font-size:13px;color:#555;line-height:1.8;margin-top:12px;text-align:center;}
+
+/* bullet points */
+.bullets{position:absolute;top:560px;right:60px;width:580px;}
+.bullet{display:flex;align-items:flex-start;margin-bottom:16px;}
+.bullet-num{width:32px;height:32px;background:#1B3B6B;color:#F5F0E8;font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:14px;}
+.bullet-text{font-size:14px;color:#1B3B6B;line-height:1.6;padding-top:4px;flex:1;}
+.bullet-text strong{font-family:'Noto Serif SC','Source Han Serif SC',serif;color:#1B3B6B;font-weight:700;}
+
+/* bottom accent */
+.bottom-bar{position:absolute;bottom:0;left:0;width:1600px;height:6px;background:#1B3B6B;}
+.bottom-bar-accent{position:absolute;bottom:6px;left:0;width:1600px;height:3px;background:#8B7355;}
+
+/* footer info */
+.footer-left{position:absolute;bottom:22px;left:60px;font-size:11px;color:#8B7355;letter-spacing:4px;}
+.footer-right{position:absolute;bottom:22px;right:60px;font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:12px;color:#555;letter-spacing:2px;}
+
+/* constellation labels */
+.constellation-label{position:absolute;font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:12px;color:#1B3B6B;letter-spacing:1px;}
+</style></head><body>
+<div class="parchment"></div>
+
+<div class="header-bar"></div>
+<div class="header-bar-accent"></div>
+
+<div class="lecture-num">08</div>
+
+<div class="deco-square"></div>
+<div class="deco-square-2"></div>
+<div class="deco-line-h"></div>
+<div class="deco-line-h2"></div>
+
+<div class="section-label">NETWORK EFFECTS · POSITIVE FEEDBACK</div>
+<div class="section-label-cn">网络外部性与自我强化机制</div>
+
+<div class="main-title">网络效应<br>与正反馈回路</div>
+<div class="title-underline"></div>
+<div class="title-underline-2"></div>
+
+<!-- Constellation: nodes connected, showing positive feedback -->
+<div class="constellation">
+<svg viewBox="0 0 780 480" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1B3B6B" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#1B3B6B" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- glow background for central cluster -->
+  <circle cx="390" cy="240" r="180" fill="url(#glow1)"/>
+
+  <!-- Connection lines (thin, showing network) -->
+  <g stroke="#1B3B6B" stroke-width="0.8" opacity="0.55">
+    <line x1="390" y1="240" x2="180" y2="100"/>
+    <line x1="390" y1="240" x2="620" y2="90"/>
+    <line x1="390" y1="240" x2="120" y2="240"/>
+    <line x1="390" y1="240" x2="680" y2="260"/>
+    <line x1="390" y1="240" x2="200" y2="400"/>
+    <line x1="390" y1="240" x2="580" y2="420"/>
+    <line x1="390" y1="240" x2="300" y2="130"/>
+    <line x1="390" y1="240" x2="500" y2="140"/>
+    <line x1="390" y1="240" x2="260" y2="350"/>
+    <line x1="390" y1="240" x2="490" y2="350"/>
+    <line x1="390" y1="240" x2="430" y2="120"/>
+    <line x1="390" y1="240" x2="430" y2="360"/>
+    <line x1="180" y1="100" x2="300" y2="130"/>
+    <line x1="620" y1="90" x2="500" y2="140"/>
+    <line x1="120" y1="240" x2="200" y2="400"/>
+    <line x1="680" y1="260" x2="580" y2="420"/>
+    <line x1="180" y1="100" x2="120" y2="240"/>
+    <line x1="620" y1="90" x2="680" y2="260"/>
+    <line x1="200" y1="400" x2="260" y2="350"/>
+    <line x1="580" y1="420" x2="490" y2="350"/>
+    <line x1="300" y1="130" x2="430" y2="120"/>
+    <line x1="260" y1="350" x2="390" y2="360"/>
+    <line x1="500" y1="140" x2="430" y2="120"/>
+    <line x1="490" y1="350" x2="430" y2="360"/>
+  </g>
+
+  <!-- Copper secondary lines -->
+  <g stroke="#8B7355" stroke-width="0.6" opacity="0.4">
+    <line x1="180" y1="100" x2="500" y2="140"/>
+    <line x1="620" y1="90" x2="300" y2="130"/>
+    <line x1="120" y1="240" x2="580" y2="420"/>
+    <line x1="680" y1="260" x2="200" y2="400"/>
+    <line x1="300" y1="130" x2="260" y2="350"/>
+    <line x1="500" y1="140" x2="490" y2="350"/>
+  </g>
+
+  <!-- Central node (largest, brightest) -->
+  <circle cx="390" cy="240" r="22" fill="#1B3B6B"/>
+  <circle cx="390" cy="240" r="30" fill="none" stroke="#1B3B6B" stroke-width="1" opacity="0.4"/>
+  <circle cx="390" cy="240" r="38" fill="none" stroke="#1B3B6B" stroke-width="0.5" opacity="0.25"/>
+
+  <!-- Major nodes -->
+  <circle cx="180" cy="100" r="10" fill="#1B3B6B"/>
+  <circle cx="620" cy="90" r="10" fill="#1B3B6B"/>
+  <circle cx="120" cy="240" r="9" fill="#1B3B6B"/>
+  <circle cx="680" cy="260" r="9" fill="#1B3B6B"/>
+  <circle cx="200" cy="400" r="10" fill="#1B3B6B"/>
+  <circle cx="580" cy="420" r="10" fill="#1B3B6B"/>
+
+  <!-- Medium nodes -->
+  <circle cx="300" cy="130" r="6" fill="#8B7355"/>
+  <circle cx="500" cy="140" r="6" fill="#8B7355"/>
+  <circle cx="260" cy="350" r="6" fill="#8B7355"/>
+  <circle cx="490" cy="350" r="6" fill="#8B7355"/>
+  <circle cx="430" cy="120" r="5" fill="#8B7355"/>
+  <circle cx="430" cy="360" r="5" fill="#8B7355"/>
+
+  <!-- Minor nodes -->
+  <circle cx="240" cy="180" r="3" fill="#555"/>
+  <circle cx="540" cy="180" r="3" fill="#555"/>
+  <circle cx="240" cy="300" r="3" fill="#555"/>
+  <circle cx="540" cy="300" r="3" fill="#555"/>
+  <circle cx="350" cy="180" r="3" fill="#555"/>
+  <circle cx="430" cy="300" r="3" fill="#555"/>
+  <circle cx="350" cy="300" r="3" fill="#555"/>
+  <circle cx="430" cy="180" r="3" fill="#555"/>
+
+  <!-- Outer faint nodes suggesting growth -->
+  <g opacity="0.5">
+    <circle cx="60" cy="80" r="2" fill="#555"/>
+    <circle cx="720" cy="60" r="2" fill="#555"/>
+    <circle cx="40" cy="380" r="2" fill="#555"/>
+    <circle cx="740" cy="440" r="2" fill="#555"/>
+    <line x1="60" y1="80" x2="180" y2="100" stroke="#555" stroke-width="0.3" opacity="0.4"/>
+    <line x1="720" y1="60" x2="620" y2="90" stroke="#555" stroke-width="0.3" opacity="0.4"/>
+    <line x1="40" y1="380" x2="120" y2="240" stroke="#555" stroke-width="0.3" opacity="0.4"/>
+    <line x1="740" y1="440" x2="680" y2="260" stroke="#555" stroke-width="0.3" opacity="0.4"/>
+  </g>
+
+  <!-- Node count labels -->
+  <text x="390" y="290" text-anchor="middle" font-family="'Noto Serif SC',serif" font-size="10" fill="#1B3B6B" letter-spacing="1">N 个节点</text>
+  <text x="390" y="305" text-anchor="middle" font-family="'Noto Serif SC',serif" font-size="9" fill="#8B7355" letter-spacing="1">N² 种连接</text>
+
+  <!-- Growth arrow curve -->
+  <path d="M 60 460 Q 200 430 350 445 T 720 460" fill="none" stroke="#8B7355" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <polygon points="720,456 728,460 720,464" fill="#8B7355"/>
+  <text x="60" y="475" font-family="'Noto Serif SC',serif" font-size="9" fill="#8B7355">节点增长</text>
+  <text x="640" y="475" font-family="'Noto Serif SC',serif" font-size="9" fill="#8B7355">网络价值 ↑↑</text>
+</svg>
+</div>
+
+<!-- Formula box -->
+<div class="formula-box">
+  <div class="formula-title">— METCALFE'S LAW —</div>
+  <div class="formula-eq">V = k · N²</div>
+  <div class="formula-desc">网络价值 V 与节点数 N 的平方成正比<br>新增一个节点带来的价值增长远超线性</div>
+</div>
+
+<!-- Bullet points -->
+<div class="bullets">
+  <div class="bullet">
+    <div class="bullet-num">I</div>
+    <div class="bullet-text"><strong>开源项目</strong>是典型的多边网络，参与者跨越生产、消费与治理边界</div>
+  </div>
+  <div class="bullet">
+    <div class="bullet-num">II</div>
+    <div class="bullet-text"><strong>使用者 → 贡献者 → 赞助者</strong>，三角关系形成自我强化的正反馈回路</div>
+  </div>
+  <div class="bullet">
+    <div class="bullet-num">III</div>
+    <div class="bullet-text">这种网络外部性<strong>无法被市场单独定价</strong>，是开源经济的制度之谜</div>
+  </div>
+</div>
+
+<div class="bottom-bar"></div>
+<div class="bottom-bar-accent"></div>
+
+<div class="footer-left">08 · INFORMATION ECONOMY</div>
+<div class="footer-right">第 08 期 · 信息规则与网络经济</div>
+</body></html>

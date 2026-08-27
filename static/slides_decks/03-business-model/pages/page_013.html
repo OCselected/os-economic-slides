@@ -1,0 +1,255 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>开源软件的性质</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0;font-family:'Noto Sans SC','Source Han Sans SC','PingFang SC',sans-serif}
+body{background:#F5F0E8;position:relative;color:#1B3B6B}
+
+/* subtle parchment texture */
+body::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;background:
+  radial-gradient(ellipse at 20% 10%, rgba(139,115,85,0.04) 0%, transparent 50%),
+  radial-gradient(ellipse at 80% 90%, rgba(27,59,107,0.03) 0%, transparent 50%);
+pointer-events:none;z-index:0}
+
+/* header rule */
+.top-rule{position:absolute;top:50px;left:80px;width:1440px;height:1px;background:#1B3B6B;z-index:2}
+.top-rule-thin{position:absolute;top:56px;left:80px;width:1440px;height:1px;background:#1B3B6B;opacity:0.3;z-index:2}
+
+/* section label */
+.section-label{position:absolute;top:24px;left:80px;font-size:11px;letter-spacing:4px;color:#8B7355;z-index:3;font-weight:500}
+.section-label-right{position:absolute;top:24px;right:80px;font-size:11px;letter-spacing:4px;color:#8B7355;z-index:3;font-weight:500}
+
+/* main title */
+.main-title{position:absolute;top:78px;left:80px;font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:52px;font-weight:700;color:#1B3B6B;letter-spacing:2px;z-index:3;line-height:1.1}
+.main-title-sub{position:absolute;top:148px;left:84px;font-size:14px;letter-spacing:6px;color:#8B7355;z-index:3;font-weight:400}
+
+/* vertical accent bar */
+.accent-bar{position:absolute;top:78px;left:580px;width:3px;height:74px;background:#1B3B6B;z-index:3}
+.accent-square{position:absolute;top:78px;left:700px;width:12px;height:12px;background:#1B3B6B;z-index:3}
+.accent-circle{position:absolute;top:134px;left:700px;width:12px;height:12px;border:2px solid #1B3B6B;border-radius:50%;z-index:3}
+
+/* shopping cart perspective illustration area */
+.illust-area{position:absolute;top:200px;left:50px;width:750px;height:620px;z-index:2;overflow:hidden}
+
+.floor-line{position:absolute;bottom:0;left:0;width:750px;height:1px;background:#1B3B6B;opacity:0.2}
+.floor-line2{position:absolute;top:50%;left:0;width:750px;height:1px;background:#1B3B6B;opacity:0.12}
+
+/* cart row container */
+.cart-row{position:absolute;display:flex;align-items:flex-end;justify-content:center;gap:0}
+
+/* individual cart - geometric construction */
+.cart{position:relative;display:inline-block}
+.cart .basket{background:transparent;border:2px solid #1B3B6B;position:relative}
+.cart .basket-inner{position:absolute;top:6px;left:6px;right:6px;bottom:6px;border:1px solid #1B3B6B;opacity:0.4}
+.cart .handle{position:absolute;width:2px;background:#1B3B6B}
+.cart .handle-bar{position:absolute;height:2px;background:#1B3B6B}
+.cart .wheel{width:14px;height:14px;border:2px solid #1B3B6B;border-radius:50%;position:absolute;bottom:-7px}
+.cart .axle{position:absolute;width:2px;background:#1B3B6B;opacity:0.5}
+
+/* row labels */
+.row-label{position:absolute;font-size:10px;letter-spacing:3px;color:#8B7355;font-weight:400}
+.row-label-l{left:10px}
+.row-label-r{right:10px}
+
+/* perspective lines */
+.perspective-line{position:absolute;background:#1B3B6B;opacity:0.15}
+
+/* right panel */
+.right-panel{position:absolute;top:200px;left:850px;width:670px;z-index:3}
+
+.bullet-num{font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:2px;font-weight:600;margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.bullet-num .num-circle{width:22px;height:22px;border:1.5px solid #1B3B6B;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:11px;color:#1B3B6B;letter-spacing:0}
+.bullet-text{font-family:'Noto Serif SC',serif;font-size:20px;font-weight:500;color:#1B3B6B;line-height:1.5;padding-bottom:18px;border-bottom:1px solid rgba(27,59,107,0.15);padding-left:32px}
+.bullet-text .key{color:#1B3B6B;font-weight:700}
+.bullet-text .em{color:#8B7355;font-weight:600}
+
+/* bottom decorative elements */
+.bottom-rule{position:absolute;bottom:40px;left:80px;width:1440px;height:1px;background:#1B3B6B;opacity:0.4;z-index:3}
+.bottom-meta-l{position:absolute;bottom:18px;left:80px;font-size:10px;letter-spacing:3px;color:#8B7355;z-index:3}
+.bottom-meta-r{position:absolute;bottom:18px;right:80px;font-size:10px;letter-spacing:3px;color:#8B7355;z-index:3}
+
+/* vanishing point marker */
+.vanishing-point{position:absolute;top:0px;left:375px;width:6px;height:6px;background:#1B3B6B;border-radius:50%;transform:translate(-50%,-50%);z-index:3}
+.vp-label{position:absolute;top:14px;left:375px;font-size:9px;letter-spacing:2px;color:#8B7355;z-index:3;transform:translateX(-50%)}
+
+/* caption for illustration */
+.illust-caption{position:absolute;bottom:8px;left:0;width:750px;text-align:center;font-size:11px;letter-spacing:4px;color:#555;z-index:3;font-style:italic}
+
+/* geometric decorations */
+.deco-square-tl{position:absolute;top:160px;left:700px;width:8px;height:8px;background:#8B7355;z-index:3}
+.deco-line-vert{position:absolute;top:200px;left:830px;width:1px;height:580px;background:#1B3B6B;opacity:0.2;z-index:2}
+</style></head><body>
+
+<div class="section-label">NEW INSTITUTIONAL ECONOMICS × OPEN SOURCE</div>
+<div class="section-label-right">LECTURE · 04 / 12</div>
+
+<div class="top-rule"></div>
+<div class="top-rule-thin"></div>
+
+<div class="main-title">开源软件的性质</div>
+<div class="main-title-sub">THE NATURE OF OPEN SOURCE SOFTWARE</div>
+
+<div class="accent-bar"></div>
+<div class="accent-square"></div>
+<div class="accent-circle"></div>
+
+<!-- Illustration: shopping carts in perspective -->
+<div class="illust-area">
+  <div class="floor-line"></div>
+  <div class="floor-line2"></div>
+
+  <!-- perspective converging lines -->
+  <div class="perspective-line" style="top:0;left:80px;height:620px;width:1px;"></div>
+  <div class="perspective-line" style="top:0;left:670px;height:620px;width:1px;"></div>
+  <div class="perspective-line" style="top:0;left:100px;height:620px;width:1px;"></div>
+  <div class="perspective-line" style="top:0;left:650px;height:620px;width:1px;"></div>
+  <div class="perspective-line" style="top:0;left:200px;height:620px;width:1px;opacity:0.08;"></div>
+  <div class="perspective-line" style="top:0;left:550px;height:620px;width:1px;opacity:0.08;"></div>
+  <div class="perspective-line" style="top:0;left:300px;height:620px;width:1px;opacity:0.06;"></div>
+  <div class="perspective-line" style="top:0;left:450px;height:620px;width:1px;opacity:0.06;"></div>
+
+  <div class="vanishing-point"></div>
+  <div class="vp-label">VANISHING POINT · 秩序之极</div>
+
+  <!-- Row 4: farthest, smallest -->
+  <div class="cart-row" style="top:30px;left:320px;">
+    <div class="cart">
+      <div class="basket" style="width:32px;height:22px;">
+        <div class="basket-inner"></div>
+        <div class="wheel" style="left:2px;"></div>
+        <div class="wheel" style="right:2px;"></div>
+        <div class="handle" style="left:28px;top:-12px;height:14px;"></div>
+        <div class="handle-bar" style="left:26px;top:-12px;width:10px;"></div>
+      </div>
+    </div>
+    <div class="cart" style="margin-left:14px;">
+      <div class="basket" style="width:30px;height:20px;">
+        <div class="basket-inner"></div>
+        <div class="wheel" style="left:2px;width:10px;height:10px;bottom:-5px;"></div>
+        <div class="wheel" style="right:2px;width:10px;height:10px;bottom:-5px;"></div>
+        <div class="handle" style="left:26px;top:-10px;height:12px;"></div>
+        <div class="handle-bar" style="left:24px;top:-10px;width:8px;"></div>
+      </div>
+    </div>
+    <div class="cart" style="margin-left:12px;">
+      <div class="basket" style="width:28px;height:18px;">
+        <div class="basket-inner"></div>
+        <div class="wheel" style="left:2px;width:10px;height:10px;bottom:-5px;"></div>
+        <div class="wheel" style="right:2px;width:10px;height:10px;bottom:-5px;"></div>
+        <div class="handle" style="left:24px;top:-10px;height:12px;"></div>
+        <div class="handle-bar" style="left:22px;top:-10px;width:8px;"></div>
+      </div>
+    </div>
+    <div class="cart" style="margin-left:10px;">
+      <div class="basket" style="width:26px;height:16px;">
+        <div class="basket-inner"></div>
+        <div class="wheel" style="left:2px;width:8px;height:8px;bottom:-4px;"></div>
+        <div class="wheel" style="right:2px;width:8px;height:8px;bottom:-4px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 3 -->
+  <div class="cart-row" style="top:110px;left:240px;">
+    <div class="cart">
+      <div class="basket" style="width:52px;height:36px;">
+        <div class="basket-inner"></div>
+        <div class="wheel" style="left:4px;"></div>
+        <div class="wheel" style="right:4px;"></div>
+        <div class="handle" style="left:44px;top:-18px;height:20px;"></div>
+        <div class="handle-bar" style="left:42px;top:-18px;width:14px;"></div>
+      </div>
+    </div>
+    <div class="cart" style="margin-left:20px;">
+      <div class="basket" style="width:48px;height:32px;">
+        <div class="basket-inner"></div>
+        <div class="wheel" style="left:4px;"></div>
+        <div class="wheel" style="right:4px;"></div>
+        <div class="handle" style="left:40px;top:-16px;height:18px;"></div>
+        <div class="handle-bar" style="left:38px;top:-16px;width:12px;"></div>
+      </div>
+    </div>
+    <div class="cart" style="margin-left:18px;">
+      <div class="basket" style="width:44px;height:30px;">
+        <div class="basket-inner"></div>
+        <div class="wheel" style="left:4px;"></div>
+        <div class="wheel" style="right:4px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 2 -->
+  <div class="cart-row" style="top:240px;left:140px;">
+    <div class="cart">
+      <div class="basket" style="width:80px;height:56px;">
+        <div class="basket-inner"></div>
+        <div class="wheel" style="left:6px;"></div>
+        <div class="wheel" style="right:6px;"></div>
+        <div class="handle" style="left:68px;top:-26px;height:28px;"></div>
+        <div class="handle-bar" style="left:64px;top:-26px;width:20px;"></div>
+      </div>
+    </div>
+    <div class="cart" style="margin-left:32px;">
+      <div class="basket" style="width:74px;height:50px;">
+        <div class="basket-inner"></div>
+        <div class="wheel" style="left:6px;"></div>
+        <div class="wheel" style="right:6px;"></div>
+        <div class="handle" style="left:62px;top:-22px;height:24px;"></div>
+        <div class="handle-bar" style="left:58px;top:-22px;width:18px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 1: closest, largest -->
+  <div class="cart-row" style="top:430px;left:80px;">
+    <div class="cart">
+      <div class="basket" style="width:120px;height:82px;">
+        <div class="basket-inner"></div>
+        <div class="wheel" style="left:10px;"></div>
+        <div class="wheel" style="right:10px;"></div>
+        <div class="handle" style="left:104px;top:-38px;height:40px;"></div>
+        <div class="handle-bar" style="left:98px;top:-38px;width:26px;"></div>
+      </div>
+    </div>
+    <div class="cart" style="margin-left:48px;">
+      <div class="basket" style="width:110px;height:74px;">
+        <div class="basket-inner"></div>
+        <div class="wheel" style="left:8px;"></div>
+        <div class="wheel" style="right:8px;"></div>
+        <div class="handle" style="left:94px;top:-34px;height:36px;"></div>
+        <div class="handle-bar" style="left:88px;top:-34px;width:22px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="illust-caption">— 消费社会的秩序与待满足的欲望 —</div>
+</div>
+
+<!-- vertical separator -->
+<div class="deco-line-vert"></div>
+
+<!-- Right panel: bullet points -->
+<div class="right-panel">
+
+  <div class="bullet-num"><span class="num-circle">1</span> 基本命题</div>
+  <div class="bullet-text">开源软件<span class="key">仍然是软件</span></div>
+
+  <div class="bullet-num" style="margin-top:22px;"><span class="num-circle">2</span> 制度的介入</div>
+  <div class="bullet-text">人为的定义：<span class="key">法律</span>与<span class="key">许可</span></div>
+
+  <div class="bullet-num" style="margin-top:22px;"><span class="num-circle">3</span> 权利的让渡</div>
+  <div class="bullet-text">源代码<span class="em">公开、复制、修改与再分发</span></div>
+
+  <div class="bullet-num" style="margin-top:22px;"><span class="num-circle">4</span> 定价的放弃</div>
+  <div class="bullet-text">放弃了<span class="key">收取许可费用</span>的传统路径</div>
+
+  <div class="bullet-num" style="margin-top:22px;"><span class="num-circle">5</span> 范式之异</div>
+  <div class="bullet-text" style="border-bottom:none;">和<span class="em">排他权</span>选择完全不同的道路</div>
+
+</div>
+
+<div class="bottom-rule"></div>
+<div class="bottom-meta-l">开源之道 · 新制度经济学视角</div>
+<div class="bottom-meta-r">04 / 12 · NATURE OF OSS</div>
+
+</body></html>

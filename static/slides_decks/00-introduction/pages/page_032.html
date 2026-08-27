@@ -1,0 +1,347 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>商业模式的探索 — 开源经济学</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0;}
+body{
+  background:#F5F0E8;
+  font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-serif;
+  color:#1B3B6B;
+  position:relative;
+  overflow:hidden;
+}
+/* parchment texture overlay */
+body::before{
+  content:"";
+  position:absolute;top:0;left:0;width:1600px;height:900px;
+  background:
+    radial-gradient(ellipse at 20% 10%, rgba(139,115,85,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 90%, rgba(27,59,107,0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(245,240,232,0) 0%, rgba(245,240,232,0.3) 100%);
+  pointer-events:none;
+  z-index:0;
+}
+
+/* ── header bar ── */
+.header{
+  position:absolute;top:60px;left:90px;right:90px;
+  display:flex;align-items:center;justify-content:space-between;
+  z-index:2;
+}
+.header-left{
+  display:flex;align-items:center;gap:18px;
+}
+.sec-num{
+  font-family:'Noto Serif SC','Songti SC',serif;
+  font-size:14px;letter-spacing:6px;color:#8B7355;
+  font-weight:600;
+}
+.sec-bar{
+  width:60px;height:2px;background:#1B3B6B;
+}
+.sec-tag{
+  font-size:12px;letter-spacing:4px;color:#555;
+  font-family:'Noto Sans SC',sans-serif;
+}
+.header-right{
+  font-size:12px;letter-spacing:3px;color:#8B7355;
+  font-family:'Noto Serif SC',serif;
+}
+
+/* ── left column ── */
+.left-col{
+  position:absolute;top:170px;left:90px;width:560px;
+  z-index:2;
+}
+.main-title{
+  font-family:'Noto Serif SC','Songti SC',serif;
+  font-size:64px;font-weight:700;color:#1B3B6B;
+  line-height:1.15;letter-spacing:2px;
+}
+.title-underline{
+  width:120px;height:4px;background:#1B3B6B;
+  margin:28px 0 10px 0;
+}
+.subtitle{
+  font-family:'Noto Serif SC',serif;
+  font-size:18px;color:#8B7355;
+  letter-spacing:2px;
+  margin-bottom:38px;
+}
+
+.bullet-list{
+  list-style:none;padding:0;margin:0;
+}
+.bullet-item{
+  display:flex;align-items:flex-start;gap:18px;
+  margin-bottom:22px;
+}
+.bullet-mark{
+  flex-shrink:0;
+  width:14px;height:14px;
+  margin-top:8px;
+  background:#1B3B6B;
+}
+.bullet-mark.square{background:#8B7355;}
+.bullet-mark.circle{background:transparent;border:2px solid #1B3B6B;border-radius:50%;width:12px;height:12px;}
+.bullet-text{
+  font-size:18px;line-height:1.7;color:#1B3B6B;
+  font-weight:500;
+}
+.bullet-text .sub{
+  display:block;font-size:13px;color:#555;
+  font-weight:400;margin-top:4px;letter-spacing:0.5px;
+}
+
+/* ── right column: knot visual ── */
+.right-col{
+  position:absolute;top:140px;right:90px;width:520px;height:620px;
+  z-index:2;
+}
+.knot-frame{
+  position:relative;
+  width:520px;height:520px;
+  border:1px solid rgba(27,59,107,0.2);
+  background:rgba(245,240,232,0.4);
+}
+.knot-frame::before{
+  content:"";position:absolute;top:12px;left:12px;right:12px;bottom:12px;
+  border:1px solid rgba(139,115,85,0.2);
+  pointer-events:none;
+}
+.knot-caption{
+  margin-top:22px;
+  display:flex;align-items:center;gap:14px;
+  justify-content:center;
+}
+.caption-dot{
+  width:8px;height:8px;background:#1B3B6B;border-radius:50%;
+}
+.caption-text{
+  font-family:'Noto Serif SC',serif;
+  font-size:14px;letter-spacing:3px;color:#8B7355;
+}
+
+/* ── geometric decorations ── */
+.deco-circle{
+  position:absolute;
+  border-radius:50%;
+}
+.deco-circle.c1{
+  width:120px;height:120px;
+  border:2px solid #1B3B6B;
+  top:80px;right:60px;
+  z-index:1;
+}
+.deco-circle.c2{
+  width:60px;height:60px;
+  background:#8B7355;
+  bottom:80px;left:60px;
+  z-index:1;
+  opacity:0.15;
+}
+.deco-square{
+  position:absolute;
+  width:36px;height:36px;
+  background:#1B3B6B;
+  top:120px;left:50px;
+  z-index:1;
+}
+.deco-line{
+  position:absolute;
+  background:#1B3B6B;
+}
+.deco-line.l1{
+  width:200px;height:1px;
+  bottom:90px;right:90px;
+}
+.deco-line.l2{
+  width:1px;height:200px;
+  top:100px;right:60px;
+}
+
+/* ── footer ── */
+.footer{
+  position:absolute;bottom:50px;left:90px;right:90px;
+  display:flex;align-items:center;justify-content:space-between;
+  z-index:2;
+}
+.footer-left{
+  display:flex;align-items:center;gap:16px;
+  font-size:12px;letter-spacing:3px;color:#8B7355;
+  font-family:'Noto Serif SC',serif;
+}
+.footer-bar{
+  width:80px;height:1px;background:#8B7355;opacity:0.5;
+}
+.footer-right{
+  font-size:12px;letter-spacing:2px;color:#555;
+}
+
+/* ── rope end tags ── */
+.rope-tags{
+  position:absolute;
+  top:8px;left:0;right:0;height:36px;
+  display:flex;justify-content:space-around;
+  align-items:center;
+  z-index:3;
+}
+.rope-tag{
+  font-size:11px;letter-spacing:1.5px;color:#8B7355;
+  font-family:'Noto Serif SC',serif;
+  padding:3px 10px;
+  border:1px solid rgba(139,115,85,0.4);
+  background:rgba(245,240,232,0.6);
+}
+</style>
+</head>
+<body>
+
+<!-- decorative geometric elements -->
+<div class="deco-circle c1"></div>
+<div class="deco-circle c2"></div>
+<div class="deco-square"></div>
+<div class="deco-line l1"></div>
+<div class="deco-line l2"></div>
+
+<!-- header -->
+<div class="header">
+  <div class="header-left">
+    <span class="sec-num">04 / 商业</span>
+    <span class="sec-bar"></span>
+    <span class="sec-tag">OPEN SOURCE ECONOMICS</span>
+  </div>
+  <div class="header-right">NEW INSTITUTIONAL ECONOMICS</div>
+</div>
+
+<!-- left column -->
+<div class="left-col">
+  <div class="main-title">商业模式的<br>探索</div>
+  <div class="title-underline"></div>
+  <div class="subtitle">Modes of Open Source Monetization</div>
+
+  <ul class="bullet-list">
+    <li class="bullet-item">
+      <span class="bullet-mark"></span>
+      <span class="bullet-text">
+        商业是制度的产物
+        <span class="sub">Commerce is a product of institutions</span>
+      </span>
+    </li>
+    <li class="bullet-item">
+      <span class="bullet-mark square"></span>
+      <span class="bullet-text">
+        开源许可放弃了排他权式的授权收费模式
+        <span class="sub">Open source licensing abandons exclusive-authorization fee models</span>
+      </span>
+    </li>
+    <li class="bullet-item">
+      <span class="bullet-mark circle"></span>
+      <span class="bullet-text">
+        服务层：定制 · 支持 · 培训 · 咨询
+        <span class="sub">Customization / Support / Training / Consulting</span>
+      </span>
+    </li>
+    <li class="bullet-item">
+      <span class="bullet-mark"></span>
+      <span class="bullet-text">
+        信任层：安全 · 声誉 · 保证
+        <span class="sub">Security / Reputation / Assurance</span>
+      </span>
+    </li>
+    <li class="bullet-item">
+      <span class="bullet-mark square"></span>
+      <span class="bullet-text">
+        订阅模式
+        <span class="sub">Subscription</span>
+      </span>
+    </li>
+  </ul>
+</div>
+
+<!-- right column: rope knot -->
+<div class="right-col">
+  <div class="knot-frame">
+    <div class="rope-tags">
+      <span class="rope-tag">服务 · SERVICE</span>
+      <span class="rope-tag">信任 · TRUST</span>
+      <span class="rope-tag">订阅 · SUBSCRIBE</span>
+    </div>
+
+    <svg width="520" height="520" viewBox="0 0 520 520" style="position:absolute;top:36px;left:0;">
+      <defs>
+        <linearGradient id="strand1" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1B3B6B"/>
+          <stop offset="100%" stop-color="#0F2748"/>
+        </linearGradient>
+        <linearGradient id="strand2" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#8B7355"/>
+          <stop offset="100%" stop-color="#6B5740"/>
+        </linearGradient>
+        <linearGradient id="strand3" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#3D5A3D"/>
+          <stop offset="100%" stop-color="#2A4028"/>
+        </linearGradient>
+      </defs>
+
+      <!-- center circle -->
+      <circle cx="260" cy="280" r="58" fill="none" stroke="#1B3B6B" stroke-width="1" opacity="0.3"/>
+      <circle cx="260" cy="280" r="42" fill="none" stroke="#8B7355" stroke-width="1" opacity="0.3"/>
+
+      <!-- Strand 1: Prussian blue - top to center -->
+      <path d="M 130 60 C 130 160, 200 220, 260 280 C 320 340, 390 380, 390 480"
+            stroke="url(#strand1)" stroke-width="14" fill="none" stroke-linecap="round"/>
+      <!-- Strand 2: Copper - right diagonal -->
+      <path d="M 460 60 C 380 130, 340 200, 260 280 C 180 360, 140 420, 60 480"
+            stroke="url(#strand2)" stroke-width="14" fill="none" stroke-linecap="round"/>
+      <!-- Strand 3: olive green - bottom arc -->
+      <path d="M 60 80 C 100 180, 160 240, 260 280 C 360 320, 420 400, 460 480"
+            stroke="url(#strand3)" stroke-width="14" fill="none" stroke-linecap="round"/>
+
+      <!-- Over/under knot crossings: three interlocking loops -->
+      <!-- Central knot: 3 braided loops -->
+      <ellipse cx="220" cy="260" rx="30" ry="18" fill="#1B3B6B" opacity="0.15"/>
+      <ellipse cx="300" cy="260" rx="30" ry="18" fill="#8B7355" opacity="0.15"/>
+      <ellipse cx="260" cy="300" rx="18" ry="30" fill="#3D5A3D" opacity="0.15"/>
+
+      <!-- crossing highlight circles -->
+      <circle cx="240" cy="255" r="6" fill="#1B3B6B"/>
+      <circle cx="280" cy="255" r="6" fill="#8B7355"/>
+      <circle cx="260" cy="290" r="6" fill="#3D5A3D"/>
+      <circle cx="260" cy="278" r="4" fill="#F5F0E8"/>
+
+      <!-- geometric accents -->
+      <rect x="105" y="460" width="12" height="12" fill="#1B3B6B"/>
+      <rect x="403" y="460" width="12" height="12" fill="#8B7355"/>
+      <rect x="254" y="460" width="12" height="12" fill="#3D5A3D"/>
+
+      <circle cx="130" cy="60" r="6" fill="#1B3B6B"/>
+      <circle cx="460" cy="60" r="6" fill="#8B7355"/>
+      <circle cx="60" cy="80" r="6" fill="#3D5A3D"/>
+    </svg>
+  </div>
+
+  <div class="knot-caption">
+    <span class="caption-dot"></span>
+    <span class="caption-text">三色绳索的交织 — 商业模式的多元融合</span>
+    <span class="caption-dot"></span>
+  </div>
+</div>
+
+<!-- footer -->
+<div class="footer">
+  <div class="footer-left">
+    <span>开源之道 · Open Source Studies</span>
+    <span class="footer-bar"></span>
+    <span>新制度经济学视角</span>
+  </div>
+  <div class="footer-right">04 — Business Models / 商业模式</div>
+</div>
+
+</body>
+</html>

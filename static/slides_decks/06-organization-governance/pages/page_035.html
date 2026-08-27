@@ -1,0 +1,568 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>第 06 期 · 组织结构与治理 — 开放口岸</title><style>
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
+  font-family: 'Noto Sans SC', 'Source Han Sans SC', sans-serif;
+  background: #F5F0E8;
+  color: #1B3B6B;
+}
+
+body {
+  position: relative;
+}
+
+/* Subtle parchment texture */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(139,115,85,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 70%, rgba(27,59,107,0.03) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* Top header bar */
+.header-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1600px;
+  height: 56px;
+  border-bottom: 1px solid #1B3B6B;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  font-family: 'Noto Serif SC', 'Songti SC', serif;
+}
+
+.header-left {
+  font-size: 15px;
+  letter-spacing: 2px;
+  color: #1B3B6B;
+  font-weight: 600;
+}
+
+.header-right {
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  color: #8B7355;
+}
+
+/* Left panel: geometric nautical chart */
+.chart-panel {
+  position: absolute;
+  top: 96px;
+  left: 48px;
+  width: 720px;
+  height: 720px;
+  background: #F5F0E8;
+  border: 2px solid #1B3B6B;
+}
+
+.chart-label {
+  position: absolute;
+  top: 16px;
+  left: 20px;
+  font-family: 'Noto Serif SC', 'Songti SC', serif;
+  font-size: 14px;
+  letter-spacing: 3px;
+  color: #8B7355;
+  font-weight: 600;
+}
+
+.chart-sublabel {
+  position: absolute;
+  top: 40px;
+  left: 20px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #555;
+}
+
+.chart-compass {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  width: 60px;
+  height: 60px;
+}
+
+/* Scale bar */
+.chart-scale {
+  position: absolute;
+  bottom: 18px;
+  left: 20px;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  color: #555;
+}
+
+.scale-bar-line {
+  display: inline-block;
+  width: 120px;
+  height: 8px;
+  border: 1px solid #1B3B6B;
+  border-bottom: none;
+  position: relative;
+  top: 3px;
+}
+
+.scale-bar-line::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 60px;
+  height: 6px;
+  background: #1B3B6B;
+}
+
+/* Nautical chart elements */
+.chart-ocean {
+  position: absolute;
+  top: 70px;
+  left: 20px;
+  width: 680px;
+  height: 620px;
+  background: #1B3B6B;
+  overflow: hidden;
+}
+
+.ocean-grid-h, .ocean-grid-v {
+  position: absolute;
+  background: rgba(245,240,232,0.08);
+}
+
+.ocean-grid-h {
+  width: 100%;
+  height: 1px;
+}
+
+.ocean-grid-v {
+  height: 100%;
+  width: 1px;
+}
+
+/* Sea routes (dashed lines) */
+.route-line {
+  position: absolute;
+  background: rgba(245,240,232,0.35);
+}
+
+/* Ports (circles) */
+.port {
+  position: absolute;
+  border-radius: 50%;
+  background: #F5F0E8;
+  border: 2px solid #F5F0E8;
+  z-index: 3;
+}
+
+.port-dot {
+  position: absolute;
+  border-radius: 50%;
+  background: #1B3B6B;
+  z-index: 4;
+}
+
+.port-label {
+  position: absolute;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 11px;
+  color: #F5F0E8;
+  letter-spacing: 1px;
+  z-index: 5;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.port-status {
+  position: absolute;
+  font-size: 9px;
+  color: rgba(245,240,232,0.65);
+  letter-spacing: 2px;
+  z-index: 5;
+  white-space: nowrap;
+}
+
+/* Invisible barrier markers (dashed squares and X marks) */
+.barrier {
+  position: absolute;
+  border: 1.5px dashed rgba(245,240,232,0.45);
+  z-index: 2;
+}
+
+.barrier-x {
+  position: absolute;
+  z-index: 2;
+  color: rgba(245,240,232,0.4);
+  font-size: 22px;
+  font-family: 'Noto Serif SC', serif;
+  line-height: 1;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Right panel: text content */
+.text-panel {
+  position: absolute;
+  top: 96px;
+  left: 816px;
+  width: 736px;
+  height: 720px;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-marker {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.marker-square {
+  width: 18px;
+  height: 18px;
+  background: #1B3B6B;
+  flex-shrink: 0;
+}
+
+.marker-line {
+  width: 60px;
+  height: 1px;
+  background: #1B3B6B;
+}
+
+.section-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: #8B7355;
+  font-weight: 600;
+}
+
+.slide-title {
+  font-family: 'Noto Serif SC', 'Songti SC', serif;
+  font-size: 28px;
+  color: #1B3B6B;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 14px;
+  letter-spacing: 1px;
+}
+
+.slide-title-en {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14px;
+  color: #555;
+  letter-spacing: 1.5px;
+  font-style: italic;
+  margin-bottom: 28px;
+  font-weight: 400;
+}
+
+.visual-metaphor {
+  border-left: 3px solid #8B7355;
+  padding: 12px 18px;
+  margin-bottom: 28px;
+  background: rgba(139,115,85,0.06);
+}
+
+.vm-label {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: #8B7355;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.vm-text {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 15px;
+  color: #1B3B6B;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.quote-block {
+  margin-bottom: 22px;
+  padding-left: 8px;
+  position: relative;
+}
+
+.quote-mark {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 56px;
+  color: #1B3B6B;
+  line-height: 0.6;
+  margin-bottom: 12px;
+  display: block;
+  font-weight: 700;
+}
+
+.quote-text {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14.5px;
+  line-height: 1.85;
+  color: #1B3B6B;
+  font-weight: 400;
+  text-align: justify;
+}
+
+.quote-text .em {
+  color: #8B7355;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.attribution {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(27,59,107,0.2);
+  font-size: 12px;
+  color: #555;
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+}
+
+.attribution .author {
+  font-family: 'Noto Serif SC', serif;
+  color: #1B3B6B;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.attribution .book {
+  font-style: italic;
+  color: #555;
+  display: block;
+  margin-top: 3px;
+  font-size: 11.5px;
+}
+
+/* Bottom footer */
+.footer-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 1600px;
+  height: 40px;
+  border-top: 1px solid #1B3B6B;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #555;
+}
+
+.footer-geo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-geo .sq {
+  width: 8px;
+  height: 8px;
+  background: #1B3B6B;
+}
+
+.footer-geo .circle {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1.5px solid #8B7355;
+}
+
+.footer-geo .line {
+  width: 24px;
+  height: 1px;
+  background: #555;
+}
+</style></head>
+<body>
+
+<!-- Header -->
+<div class="header-bar">
+  <div class="header-left">第 06 期 · 组织结构与治理</div>
+  <div class="header-right">包豪斯几何构成　BAUHAUS GEOMETRIC COMPOSITION</div>
+</div>
+
+<!-- Left: Geometric Nautical Chart -->
+<div class="chart-panel">
+  <div class="chart-label">TRADE PORT CHART · 贸易口岸图</div>
+  <div class="chart-sublabel">SEA OF OPENNESS — 开放之海</div>
+
+  <!-- Compass rose -->
+  <svg class="chart-compass" viewBox="0 0 60 60">
+    <circle cx="30" cy="30" r="26" fill="none" stroke="#1B3B6B" stroke-width="1"/>
+    <circle cx="30" cy="30" r="20" fill="none" stroke="#8B7355" stroke-width="0.5"/>
+    <line x1="30" y1="4" x2="30" y2="56" stroke="#1B3B6B" stroke-width="0.5"/>
+    <line x1="4" y1="30" x2="56" y2="30" stroke="#1B3B6B" stroke-width="0.5"/>
+    <polygon points="30,8 33,30 30,28 27,30" fill="#1B3B6B"/>
+    <polygon points="30,52 27,30 30,32 33,30" fill="#8B7355"/>
+    <polygon points="8,30 30,27 28,30 30,33" fill="none" stroke="#8B7355" stroke-width="0.5"/>
+    <polygon points="52,30 30,33 32,30 30,27" fill="none" stroke="#8B7355" stroke-width="0.5"/>
+    <text x="30" y="3" text-anchor="middle" font-size="6" fill="#1B3B6B" font-family="serif">N</text>
+    <text x="30" y="58" text-anchor="middle" font-size="6" fill="#555" font-family="serif">S</text>
+    <text x="2" y="32" text-anchor="middle" font-size="6" fill="#555" font-family="serif">W</text>
+    <text x="58" y="32" text-anchor="middle" font-size="6" fill="#555" font-family="serif">E</text>
+  </svg>
+
+  <div class="chart-scale">
+    SCALE　<span class="scale-bar-line"></span>　0　500　KM
+  </div>
+
+  <div class="chart-ocean">
+    <!-- Grid lines -->
+    <div class="ocean-grid-h" style="top:100px;"></div>
+    <div class="ocean-grid-h" style="top:200px;"></div>
+    <div class="ocean-grid-h" style="top:300px;"></div>
+    <div class="ocean-grid-h" style="top:400px;"></div>
+    <div class="ocean-grid-h" style="top:500px;"></div>
+
+    <div class="ocean-grid-v" style="left:100px;"></div>
+    <div class="ocean-grid-v" style="left:200px;"></div>
+    <div class="ocean-grid-v" style="left:300px;"></div>
+    <div class="ocean-grid-v" style="left:400px;"></div>
+    <div class="ocean-grid-v" style="left:500px;"></div>
+    <div class="ocean-grid-v" style="left:600px;"></div>
+
+    <!-- Trade routes (dashed polylines using individual segments) -->
+    <div class="route-line" style="left:80px; top:180px; width:120px; height:1px;"></div>
+    <div class="route-line" style="left:200px; top:180px; width:1px; height:120px;"></div>
+    <div class="route-line" style="left:200px; top:300px; width:180px; height:1px;"></div>
+    <div class="route-line" style="left:380px; top:300px; width:1px; height:120px;"></div>
+    <div class="route-line" style="left:380px; top:420px; width:160px; height:1px;"></div>
+    <div class="route-line" style="left:540px; top:420px; width:1px; height:-120px; top:300px;"></div>
+
+    <div class="route-line" style="left:120px; top:480px; width:200px; height:1px;"></div>
+    <div class="route-line" style="left:320px; top:480px; width:1px; height:80px;"></div>
+    <div class="route-line" style="left:320px; top:560px; width:160px; height:1px;"></div>
+
+    <div class="route-line" style="left:80px; top:100px; width:1px; height:80px;"></div>
+    <div class="route-line" style="left:460px; top:160px; width:1px; height:80px;"></div>
+    <div class="route-line" style="left:540px; top:200px; width:100px; height:1px;"></div>
+
+    <!-- Invisible barrier markers -->
+    <div class="barrier" style="left:140px; top:150px; width:30px; height:30px;"></div>
+    <div class="barrier" style="left:340px; top:270px; width:24px; height:24px;"></div>
+    <div class="barrier" style="left:430px; top:390px; width:28px; height:28px;"></div>
+    <div class="barrier" style="left:220px; top:450px; width:26px; height:26px;"></div>
+    <div class="barrier" style="left:480px; top:490px; width:32px; height:32px;"></div>
+
+    <div class="barrier-x" style="left:260px; top:200px;">✕</div>
+    <div class="barrier-x" style="left:600px; top:340px;">✕</div>
+    <div class="barrier-x" style="left:160px; top:380px;">✕</div>
+    <div class="barrier-x" style="left:400px; top:520px;">✕</div>
+    <div class="barrier-x" style="left:60px; top:280px;">✕</div>
+
+    <!-- Ports (circles with inner dots) -->
+    <div class="port" style="left:72px; top:92px; width:16px; height:16px;"></div>
+    <div class="port-dot" style="left:78px; top:98px; width:4px; height:4px;"></div>
+    <div class="port-label" style="left:56px; top:76px;">IBM</div>
+    <div class="port-status" style="left:56px; top:112px;">OPEN</div>
+
+    <div class="port" style="left:192px; top:172px; width:16px; height:16px;"></div>
+    <div class="port-dot" style="left:198px; top:178px; width:4px; height:4px;"></div>
+    <div class="port-label" style="left:178px; top:156px;">MICROSOFT</div>
+    <div class="port-status" style="left:172px; top:192px;">OPEN</div>
+
+    <div class="port" style="left:372px; top:292px; width:16px; height:16px;"></div>
+    <div class="port-dot" style="left:378px; top:298px; width:4px; height:4px;"></div>
+    <div class="port-label" style="left:356px; top:276px;">ORACLE</div>
+    <div class="port-status" style="left:358px; top:312px;">OPEN</div>
+
+    <div class="port" style="left:532px; top:192px; width:16px; height:16px;"></div>
+    <div class="port-dot" style="left:538px; top:198px; width:4px; height:4px;"></div>
+    <div class="port-label" style="left:512px; top:176px;">SUN</div>
+    <div class="port-status" style="left:518px; top:212px;">OPEN</div>
+
+    <div class="port" style="left:112px; top:472px; width:16px; height:16px;"></div>
+    <div class="port-dot" style="left:118px; top:478px; width:4px; height:4px;"></div>
+    <div class="port-label" style="left:80px; top:456px;">APPLE</div>
+    <div class="port-status" style="left:84px; top:492px;">OPEN</div>
+
+    <div class="port" style="left:522px; top:412px; width:16px; height:16px;"></div>
+    <div class="port-dot" style="left:528px; top:418px; width:4px; height:4px;"></div>
+    <div class="port-label" style="left:504px; top:396px;">LINUX</div>
+    <div class="port-status" style="left:500px; top:432px;">OPEN</div>
+
+    <div class="port" style="left:452px; top:152px; width:16px; height:16px;"></div>
+    <div class="port-dot" style="left:458px; top:158px; width:4px; height:4px;"></div>
+    <div class="port-label" style="left:436px; top:136px;">GOOGLE</div>
+    <div class="port-status" style="left:440px; top:172px;">OPEN</div>
+
+    <div class="port" style="left:312px; top:552px; width:16px; height:16px;"></div>
+    <div class="port-dot" style="left:318px; top:558px; width:4px; height:4px;"></div>
+    <div class="port-label" style="left:296px; top:536px;">DEC</div>
+    <div class="port-status" style="left:296px; top:572px;">OPEN</div>
+
+    <div class="port" style="left:600px; top:330px; width:14px; height:14px;"></div>
+    <div class="port-dot" style="left:605px; top:335px; width:4px; height:4px;"></div>
+    <div class="port-label" style="left:616px; top:322px;">SGI</div>
+    <div class="port-status" style="left:616px; top:342px;">OPEN</div>
+
+    <!-- Depth markers (small numbers) -->
+    <text x="450" y="260" fill="rgba(245,240,232,0.25)" font-size="9" font-family="serif">— — 320</text>
+    <text x="90" y="380" fill="rgba(245,240,232,0.25)" font-size="9" font-family="serif">— 540 —</text>
+    <text x="420" y="460" fill="rgba(245,240,232,0.25)" font-size="9" font-family="serif">— 210 —</text>
+  </div>
+</div>
+
+<!-- Right: Text Content -->
+<div class="text-panel">
+  <div class="section-marker">
+    <div class="marker-square"></div>
+    <div class="marker-line"></div>
+    <div class="section-num">§ 06 · 07</div>
+  </div>
+
+  <div class="slide-title">隐形的壁垒，"开放"的口岸</div>
+  <div class="slide-title-en">Invisible Barriers at the "Open" Ports</div>
+
+  <div class="visual-metaphor">
+    <div class="vm-label">视觉隐喻　VISUAL METAPHOR</div>
+    <div class="vm-text">深蓝海图上，标注隐形壁垒的"开放"贸易口岸</div>
+  </div>
+
+  <div class="quote-block">
+    <span class="quote-mark">"</span>
+    <div class="quote-text">
+      In fact, the dirty secret of the computer industry is that everyone is
+      <span class="em">"open, but not open"</span>; they differ only in degree. Every computer company has proprietary pieces in its solutions, while every company in the industry claims to be
+      <span class="em">"open,"</span> including Microsoft and IBM. Bill Gates likes to say that Microsoft is the most open software company in the world because anyone can write an application for Microsoft's proprietary APIs.
+    </div>
+  </div>
+
+  <div class="attribution">
+    <span class="author">— Michael A. Cusumano / David B. Yoffie</span>
+    <span class="book">Competing on Internet Time: Lessons From Netscape and Its Battle With Microsoft (1999)</span>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer-bar">
+  <div class="footer-geo">
+    <span class="sq"></span>
+    <span class="circle"></span>
+    <span class="line"></span>
+    <span style="margin-left:8px;">第 06 期 · 组织结构与治理</span>
+  </div>
+  <div>07 / 38　—　SLIDES_DECK_ID: 06-organization-governance</div>
+</div>
+
+</body></html>

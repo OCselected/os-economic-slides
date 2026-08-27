@@ -1,0 +1,280 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>开源与云计算的制度冲突</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0}
+body{font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;background:#F5F0E8;color:#1B3B6B;position:relative}
+h1,h2,h3{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-weight:600}
+
+/* Decorative top bar */
+.top-bar{position:absolute;top:0;left:0;width:1600px;height:6px;background:#1B3B6B}
+.top-bar-accent{position:absolute;top:0;left:0;width:533px;height:6px;background:#8B7355}
+
+/* Lecture number badge */
+.lecture-badge{position:absolute;top:38px;left:60px;font-family:'Noto Serif SC',serif;font-size:14px;letter-spacing:3px;color:#555}
+.lecture-num{position:absolute;top:30px;left:180px;width:48px;height:48px;background:#1B3B6B;color:#F5F0E8;font-family:'Noto Serif SC',serif;font-size:26px;display:flex;align-items:center;justify-content:center;border-radius:50%}
+
+/* Title area */
+.title-block{position:absolute;top:105px;left:60px;width:860px}
+.main-title{font-size:42px;color:#1B3B6B;line-height:1.3;letter-spacing:2px}
+.sub-title{font-size:15px;color:#555;margin-top:14px;letter-spacing:4px}
+
+/* Divider line under title */
+.title-divider{position:absolute;top:235px;left:60px;width:500px;height:1px;background:#8B7355}
+
+/* Visual metaphor area - left side */
+.visual-area{position:absolute;top:260px;left:60px;width:820px;height:560px}
+
+/* Farmland grid background */
+.farmland{position:absolute;top:30px;left:0;width:820px;height:380px;background:repeating-linear-gradient(0deg,transparent 0px,transparent 49px,rgba(27,59,107,0.06) 49px,rgba(27,59,107,0.06) 50px),repeating-linear-gradient(90deg,transparent 0px,transparent 49px,rgba(27,59,107,0.06) 49px,rgba(27,59,107,0.06) 50px)}
+
+/* Blue field patches */
+.field-1{position:absolute;top:30px;left:0;width:280px;height:380px;background:#1B3B6B;opacity:0.85}
+.field-2{position:absolute;top:30px;left:290px;width:180px;height:220px;background:#1B3B6B;opacity:0.65}
+.field-3{position:absolute;top:170px;left:290px;width:180px;height:240px;background:#1B3B6B;opacity:0.75}
+.field-4{position:absolute;top:30px;left:480px;width:200px;height:380px;background:#1B3B6B;opacity:0.55}
+.field-5{position:absolute;top:30px;left:690px;width:130px;height:380px;background:#1B3B6B;opacity:0.9}
+
+/* Crops - small squares on farmland */
+.crop{position:absolute;width:8px;height:8px;background:#F5F0E8;opacity:0.9}
+.crop-cluster-1{position:absolute;top:80px;left:60px}
+.crop-cluster-2{position:absolute;top:120px;left:140px}
+.crop-cluster-3{position:absolute;top:200px;left:90px}
+.crop-cluster-4{position:absolute;top:260px;left:180px}
+.crop-cluster-5{position:absolute;top:100px;left:220px}
+
+/* Crops on field 2 */
+.crop-c{position:absolute;width:8px;height:8px;background:#F5F0E8;opacity:0.85}
+
+/* Harvested zones (darker, with circle indicating collection) */
+.harvest-circle-1{position:absolute;top:120px;left:530px;width:100px;height:100px;border:3px solid #F5F0E8;border-radius:50%;background:transparent}
+.harvest-circle-2{position:absolute;top:200px;left:350px;width:80px;height:80px;border:3px solid #F5F0E8;border-radius:50%;opacity:0.7}
+
+/* Arrow lines from cloud to field - harvesting motion */
+.harvest-line-1{position:absolute;top:0px;left:450px;width:3px;height:80px;background:#F5F0E8}
+.harvest-line-2{position:absolute;top:0px;left:640px;width:3px;height:80px;background:#F5F0E8}
+.harvest-line-3{position:absolute;top:0px;left:240px;width:3px;height:80px;background:#F5F0E8}
+
+/* Cloud (geometric, Bauhaus style) */
+.cloud{position:absolute;top:-40px;left:420px;width:280px;height:80px;background:#8B7355;border-radius:50% 50% 0 0;opacity:0.9}
+.cloud-part{position:absolute;top:-30px;left:490px;width:120px;height:60px;background:#8B7355;border-radius:60px 60px 0 0}
+.cloud-part2{position:absolute;top:-50px;left:380px;width:100px;height:70px;background:#8B7355;border-radius:70px 70px 0 0;opacity:0.8}
+
+/* Scythe/harvester geometric mark */
+.scythe{position:absolute;top:60px;left:500px;width:60px;height:60px}
+.scythe-bar{position:absolute;top:20px;left:0;width:60px;height:3px;background:#F5F0E8}
+.scythe-blade{position:absolute;top:0;left:20px;width:3px;height:40px;background:#F5F0E8}
+
+/* Field label */
+.field-label{position:absolute;bottom:340px;left:0;width:820px;text-align:center;font-size:12px;color:#555;letter-spacing:5px}
+
+/* Visual metaphor caption */
+.visual-caption{position:absolute;bottom:0px;left:0;width:820px;text-align:center;font-size:14px;color:#555;font-style:italic;letter-spacing:2px;line-height:1.6}
+.visual-caption strong{color:#1B3B6B;font-style:normal}
+
+/* Right side - content */
+.content-area{position:absolute;top:260px;left:930px;width:600px;height:560px}
+.content-title{font-family:'Noto Serif SC',serif;font-size:22px;color:#1B3B6B;margin-bottom:30px;letter-spacing:1px;line-height:1.4;padding-bottom:16px;border-bottom:2px solid #1B3B6B}
+
+.bullet{margin-bottom:22px;position:relative;padding-left:30px}
+.bullet-marker{position:absolute;left:0;top:6px;width:16px;height:16px}
+.bullet-marker-square{background:#1B3B6B}
+.bullet-marker-circle{background:#1B3B6B;border-radius:50%}
+.bullet-marker-hollow{border:2px solid #8B7355;background:transparent}
+.bullet-marker-line{width:18px;height:2px;background:#1B3B6B}
+
+.bullet-text{font-size:16px;color:#1B3B6B;line-height:1.65;letter-spacing:0.5px}
+.bullet-text .em{color:#8B7355;font-weight:600}
+.bullet-text .ref{font-size:13px;color:#555;font-style:italic;display:block;margin-top:3px}
+
+/* Bottom bar */
+.bottom-bar{position:absolute;bottom:0;left:0;width:1600px;height:4px;background:#1B3B6B}
+.bottom-bar-accent{position:absolute;bottom:0;left:0;width:533px;height:4px;background:#8B7355}
+
+/* Footer info */
+.footer{position:absolute;bottom:20px;left:60px;font-size:11px;color:#555;letter-spacing:2px}
+.footer-right{position:absolute;bottom:20px;right:60px;font-size:11px;color:#555;letter-spacing:2px}
+
+/* Decorative circles top right */
+.deco-circle-1{position:absolute;top:40px;right:60px;width:36px;height:36px;border:2px solid #1B3B6B;border-radius:50%}
+.deco-circle-2{position:absolute;top:55px;right:110px;width:18px;height:18px;background:#8B7355;border-radius:50%}
+.deco-square{position:absolute;top:85px;right:60px;width:18px;height:18px;background:#1B3B6B}
+
+/* Small dot decorations on farmland */
+.dot{position:absolute;width:6px;height:6px;border-radius:50%}
+</style></head><body>
+
+<div class="top-bar"></div>
+<div class="top-bar-accent"></div>
+
+<div class="lecture-badge">LECTURE</div>
+<div class="lecture-num">8</div>
+
+<div class="title-block">
+  <div class="main-title">开源与云计算的制度冲突</div>
+  <div class="sub-title">INSTITUTIONAL CONFLICT · OPEN SOURCE &amp; CLOUD COMPUTING</div>
+</div>
+<div class="title-divider"></div>
+
+<div class="deco-circle-1"></div>
+<div class="deco-circle-2"></div>
+<div class="deco-square"></div>
+
+<!-- Visual Metaphor Area -->
+<div class="visual-area">
+  <div class="cloud-part2"></div>
+  <div class="cloud-part"></div>
+  <div class="cloud"></div>
+
+  <div class="harvest-line-1"></div>
+  <div class="harvest-line-2"></div>
+  <div class="harvest-line-3"></div>
+
+  <div class="scythe">
+    <div class="scythe-bar"></div>
+    <div class="scythe-blade"></div>
+  </div>
+
+  <div class="farmland"></div>
+  <div class="field-1"></div>
+  <div class="field-2"></div>
+  <div class="field-3"></div>
+  <div class="field-4"></div>
+  <div class="field-5"></div>
+
+  <!-- Crops on field 1 -->
+  <div class="crop" style="top:70px;left:50px"></div>
+  <div class="crop" style="top:70px;left:65px"></div>
+  <div class="crop" style="top:70px;left:80px"></div>
+  <div class="crop" style="top:90px;left:50px"></div>
+  <div class="crop" style="top:90px;left:80px"></div>
+  <div class="crop" style="top:110px;left:65px"></div>
+  <div class="crop" style="top:130px;left:50px"></div>
+  <div class="crop" style="top:130px;left:80px"></div>
+  <div class="crop" style="top:150px;left:50px"></div>
+  <div class="crop" style="top:150px;left:65px"></div>
+  <div class="crop" style="top:170px;left:80px"></div>
+  <div class="crop" style="top:190px;left:50px"></div>
+  <div class="crop" style="top:190px;left:65px"></div>
+  <div class="crop" style="top:210px;left:50px"></div>
+  <div class="crop" style="top:210px;left:80px"></div>
+  <div class="crop" style="top:230px;left:65px"></div>
+  <div class="crop" style="top:250px;left:50px"></div>
+  <div class="crop" style="top:250px;left:80px"></div>
+  <div class="crop" style="top:270px;left:50px"></div>
+  <div class="crop" style="top:270px;left:65px"></div>
+  <div class="crop" style="top:290px;left:80px"></div>
+  <div class="crop" style="top:310px;left:50px"></div>
+  <div class="crop" style="top:310px;left:65px"></div>
+  <div class="crop" style="top:330px;left:50px"></div>
+  <div class="crop" style="top:330px;left:80px"></div>
+  <div class="crop" style="top:350px;left:65px"></div>
+
+  <!-- Crops on field 2 -->
+  <div class="crop" style="top:60px;left:330px"></div>
+  <div class="crop" style="top:60px;left:360px"></div>
+  <div class="crop" style="top:60px;left:390px"></div>
+  <div class="crop" style="top:90px;left:330px"></div>
+  <div class="crop" style="top:90px;left:390px"></div>
+  <div class="crop" style="top:120px;left:360px"></div>
+  <div class="crop" style="top:150px;left:330px"></div>
+  <div class="crop" style="top:150px;left:360px"></div>
+  <div class="crop" style="top:180px;left:390px"></div>
+
+  <!-- Crops on field 3 -->
+  <div class="crop" style="top:200px;left:330px"></div>
+  <div class="crop" style="top:200px;left:360px"></div>
+  <div class="crop" style="top:230px;left:330px"></div>
+  <div class="crop" style="top:230px;left:390px"></div>
+  <div class="crop" style="top:260px;left:360px"></div>
+  <div class="crop" style="top:290px;left:330px"></div>
+  <div class="crop" style="top:290px;left:360px"></div>
+
+  <!-- Crops on field 4 -->
+  <div class="crop" style="top:70px;left:510px"></div>
+  <div class="crop" style="top:70px;left:540px"></div>
+  <div class="crop" style="top:70px;left:570px"></div>
+  <div class="crop" style="top:100px;left:510px"></div>
+  <div class="crop" style="top:100px;left:570px"></div>
+  <div class="crop" style="top:330px;left:540px"></div>
+  <div class="crop" style="top:330px;left:570px"></div>
+  <div class="crop" style="top:350px;left:510px"></div>
+  <div class="crop" style="top:350px;left:540px"></div>
+
+  <!-- Crops on field 5 -->
+  <div class="crop" style="top:80px;left:720px"></div>
+  <div class="crop" style="top:80px;left:750px"></div>
+  <div class="crop" style="top:110px;left:720px"></div>
+  <div class="crop" style="top:110px;left:750px"></div>
+  <div class="crop" style="top:140px;left:720px"></div>
+  <div class="crop" style="top:140px;left:750px"></div>
+  <div class="crop" style="top:170px;left:720px"></div>
+  <div class="crop" style="top:170px;left:750px"></div>
+  <div class="crop" style="top:200px;left:720px"></div>
+  <div class="crop" style="top:200px;left:750px"></div>
+  <div class="crop" style="top:230px;left:720px"></div>
+  <div class="crop" style="top:230px;left:750px"></div>
+  <div class="crop" style="top:260px;left:720px"></div>
+  <div class="crop" style="top:260px;left:750px"></div>
+  <div class="crop" style="top:290px;left:720px"></div>
+  <div class="crop" style="top:290px;left:750px"></div>
+
+  <div class="harvest-circle-1"></div>
+  <div class="harvest-circle-2"></div>
+
+  <div class="visual-caption">
+    <strong>深普鲁士蓝农田</strong>——云厂商在公共代码田中收割，未向地主交租
+  </div>
+</div>
+
+<!-- Content Area -->
+<div class="content-area">
+  <div class="content-title">谁在收割这片公共代码之田？</div>
+
+  <div class="bullet">
+    <div class="bullet-marker bullet-marker-square"></div>
+    <div class="bullet-text">
+      <span class="em">云厂商利用开源代码提供托管服务</span>
+      <span class="ref">— AWS 托管 MySQL、Kubernetes、Prometheus</span>
+    </div>
+  </div>
+
+  <div class="bullet">
+    <div class="bullet-marker bullet-marker-circle"></div>
+    <div class="bullet-text">
+      <span class="em">开源项目的商业模式被侵蚀</span>
+      <span class="ref">— 社区耕作，资本收割，贡献者无直接回报</span>
+    </div>
+  </div>
+
+  <div class="bullet">
+    <div class="bullet-marker bullet-marker-hollow"></div>
+    <div class="bullet-text">
+      这不仅是技术问题，更是<span class="em">产权问题</span>
+    </div>
+  </div>
+
+  <div class="bullet">
+    <div class="bullet-marker bullet-marker-line"></div>
+    <div class="bullet-text">
+      <span class="em">Coase 意义上的产权重新界定</span>
+      <span class="ref">— 谁有权从代码公共池中获益？</span>
+    </div>
+  </div>
+
+  <div class="bullet">
+    <div class="bullet-marker bullet-marker-square"></div>
+    <div class="bullet-text">
+      谁拥有<span class="em">数字基础设施的控制权</span>？
+      <span class="ref">— 源代码 ≠ 运行权 ≠ 服务权</span>
+    </div>
+  </div>
+</div>
+
+<div class="footer">08 · INFORMATION ECONOMY &nbsp;/&nbsp; OPEN SOURCE &amp; CLOUD</div>
+<div class="footer-right">第 08 期 &nbsp;·&nbsp; INFORMATION RULES &amp; NETWORK ECONOMY</div>
+
+<div class="bottom-bar"></div>
+<div class="bottom-bar-accent"></div>
+
+</body></html>

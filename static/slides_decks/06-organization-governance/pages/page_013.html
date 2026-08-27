@@ -1,0 +1,109 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>互联网改变了一些事情</title><style>*{margin:0;padding:0;box-sizing:border-box}html,body{width:1600px;height:900px;overflow:hidden;margin:0}body{background:#F5F0E8;color:#1B3B6B;font-family:'Noto Sans SC','Source Han Sans SC','PingFang SC',sans-serif;position:relative}canvas{position:absolute;top:0;left:0}#parchment{position:absolute;top:0;left:0;width:1600px;height:900px;opacity:.15;pointer-events:none;background-image:radial-gradient(ellipse at 20% 30%,rgba(139,115,85,.12) 0%,transparent 50%),radial-gradient(ellipse at 80% 70%,rgba(27,59,107,.08) 0%,transparent 50%),radial-gradient(circle at 50% 50%,rgba(139,115,85,.04) 0%,transparent 70%)}#topBar{position:absolute;top:0;left:0;width:1600px;height:6px;background:#1B3B6B}#botBar{position:absolute;bottom:0;left:0;width:1600px;height:3px;background:#8B7355}.corner-tl{position:absolute;top:30px;left:30px;width:40px;height:40px;border-top:2px solid #1B3B6B;border-left:2px solid #1B3B6B}.corner-tr{position:absolute;top:30px;right:30px;width:40px;height:40px;border-top:2px solid #1B3B6B;border-right:2px solid #1B3B6B}.corner-bl{position:absolute;bottom:30px;left:30px;width:40px;height:40px;border-bottom:2px solid #8B7355;border-left:2px solid #8B7355}.corner-br{position:absolute;bottom:30px;right:30px;width:40px;height:40px;border-bottom:2px solid #8B7355;border-right:2px solid #8B7355}#netCanvas{position:absolute;top:100px;left:60px;width:720px;height:700px}#netLabel{position:absolute;top:770px;left:60px;width:720px;text-align:center;font-size:13px;color:#8B7355;letter-spacing:3px;font-family:'Noto Serif SC',serif}.deco-circle{position:absolute;top:80px;left:800px;width:80px;height:80px;border-radius:50%;background:#1B3B6B;opacity:.85}.deco-square{position:absolute;top:740px;left:810px;width:60px;height:60px;background:#8B7355;opacity:.7}.deco-line{position:absolute;top:200px;left:1450px;width:2px;height:500px;background:#1B3B6B;opacity:.4}.deco-line2{position:absolute;top:480px;left:1380px;width:120px;height:2px;background:#8B7355;opacity:.5}.deco-ring{position:absolute;top:340px;left:1380px;width:100px;height:100px;border:2px solid #1B3B6B;border-radius:50%;opacity:.5}.deco-square2{position:absolute;top:650px;left:1400px;width:40px;height:40px;border:2px solid #8B7355;background:transparent}#titleBlock{position:absolute;top:120px;left:860px;width:680px}#num{font-size:14px;color:#8B7355;letter-spacing:6px;margin-bottom:18px;font-family:'Noto Serif SC',serif}#mainTitle{font-size:48px;font-weight:700;color:#1B3B6B;font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;line-height:1.3;letter-spacing:1px}#subTitle{font-size:18px;color:#555;margin-top:16px;line-height:1.7;letter-spacing:1px;border-left:3px solid #8B7355;padding-left:14px}#bullets{position:absolute;top:360px;left:860px;width:680px;display:flex;flex-direction:column;gap:18px} .bullet{display:flex;align-items:flex-start;gap:16px} .bullet-num{font-family:'Noto Serif SC',serif;font-size:20px;color:#8B7355;min-width:32px;line-height:1.4} .bullet-text{font-size:17px;color:#1B3B6B;line-height:1.5;letter-spacing:.5px} .bullet-rule{height:1px;background:#1B3B6B;opacity:.15;width:680px}#closing{position:absolute;bottom:60px;left:860px;width:680px;font-size:15px;color:#555;font-style:italic;font-family:'Noto Serif SC',serif;letter-spacing:1px;border-top:1px solid rgba(27,59,107,.2);padding-top:14px;line-height:1.6}#footer{position:absolute;bottom:30px;left:860px;width:680px;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#8B7355;letter-spacing:2px;font-family:'Noto Serif SC',serif}.footer-mark{width:24px;height:24px;border-radius:50%;background:#1B3B6B;display:inline-block;vertical-align:middle;margin-right:8px}.dot-accent{position:absolute;width:8px;height:8px;border-radius:50%;background:#1B3B6B}.dot-accent.c{background:#8B7355}</style></head><body><div id="parchment"></div><div id="topBar"></div><div id="botBar"></div><div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div><canvas id="netCanvas" width="1440" height="1400"></canvas><div id="netLabel">— NODE NETWORK · 节点互联 · 虚拟共同体的信息拓扑 —</div><div class="deco-circle"></div><div class="deco-square"></div><div class="deco-line"></div><div class="deco-line2"></div><div class="deco-ring"></div><div class="deco-square2"></div><div id="titleBlock"><div id="num">SECTION Ⅰ / 引论</div><div id="mainTitle">互联网改变了<br>一些事情</div><div id="subTitle">信息、知识与文化的生产逻辑，<br>正在被一种新的协作拓扑重新定义。</div></div><div id="bullets"><div class="bullet"><span class="bullet-num">01</span><span class="bullet-text">信息、知识和文化的生产，<br>不再依赖于工业时期昂贵的前期投入。</span></div><div class="bullet-rule"></div><div class="bullet"><span class="bullet-num">02</span><span class="bullet-text">计算机、存储与网络技术的迭代，<br>将知识生产的边际成本压向零。</span></div><div class="bullet-rule"></div><div class="bullet"><span class="bullet-num">03</span><span class="bullet-text">个人得以跨地域协作，<br>在虚拟共同体中共同创造。</span></div><div class="bullet-rule"></div><div class="bullet"><span class="bullet-num">04</span><span class="bullet-text">不止娱乐与交换，<br>还可以进行高质量的生产。</span></div><div class="bullet-rule"></div><div class="bullet"><span class="bullet-num">05</span><span class="bullet-text">力量强大——拥抱它，或傲慢地无视它。</span></div></div><div id="closing">"我们正站在新制度形成的门槛上——<br>旧的范式尚未退场，新的秩序正在被节点们书写。"</div><div id="footer"><span><span class="footer-mark"></span>开源之道 · 新制度经济学视角</span><span>2024 / LECTURE Ⅰ</span></div><div class="dot-accent" style="top:70px;left:840px"></div><div class="dot-accent c" style="top:80px;left:910px"></div><div class="dot-accent" style="top:820px;left:790px"></div><div class="dot-accent c" style="top:800px;left:940px"></div>
+<script>
+(function(){
+var c=document.getElementById('netCanvas');
+var ctx=c.getContext('2d');
+var W=c.width,H=c.height;
+var nodes=[];
+var N=42;
+var seed=42;
+function rand(){seed=(seed*9301+49297)%233280;return seed/233280;}
+var cx=W/2, cy=H/2;
+for(var i=0;i<N;i++){
+  var a=rand()*Math.PI*2;
+  var r=200+rand()*480;
+  var jitter=(rand()-0.5)*120;
+  var x=cx+Math.cos(a)*r+jitter;
+  var y=cy+Math.sin(a)*r*0.75+jitter;
+  if(x<80||x>W-80||y<80||y>H-80){i--;continue;}
+  var size=4+rand()*10;
+  var type=rand()>0.7?'square':(rand()>0.4?'ring':'dot');
+  nodes.push({x:x,y:y,size:size,type:type,opacity:0.4+rand()*0.6});
+}
+function drawConnections(){
+  ctx.strokeStyle='rgba(27,59,107,0.18)';
+  ctx.lineWidth=1.2;
+  for(var i=0;i<nodes.length;i++){
+    for(var j=i+1;j<nodes.length;j++){
+      var dx=nodes[i].x-nodes[j].x;
+      var dy=nodes[i].y-nodes[j].y;
+      var d=Math.sqrt(dx*dx+dy*dy);
+      if(d<240){
+        var alpha=(1-d/240)*0.35;
+        ctx.strokeStyle='rgba(27,59,107,'+alpha.toFixed(3)+')';
+        ctx.beginPath();
+        ctx.moveTo(nodes[i].x,nodes[i].y);
+        ctx.lineTo(nodes[j].x,nodes[j].y);
+        ctx.stroke();
+      }
+    }
+  }
+  ctx.strokeStyle='rgba(139,115,85,0.12)';
+  for(var i=0;i<nodes.length;i++){
+    for(var j=i+1;j<nodes.length;j++){
+      var dx=nodes[i].x-nodes[j].x;
+      var dy=nodes[i].y-nodes[j].y;
+      var d=Math.sqrt(dx*dx+dy*dy);
+      if(d<140){
+        var alpha=(1-d/140)*0.3;
+        ctx.strokeStyle='rgba(139,115,85,'+alpha.toFixed(3)+')';
+        ctx.lineWidth=0.8;
+        ctx.beginPath();
+        ctx.moveTo(nodes[i].x,nodes[i].y);
+        ctx.lineTo(nodes[j].x,nodes[j].y);
+        ctx.stroke();
+      }
+    }
+  }
+}
+function drawNode(n){
+  if(n.type==='square'){
+    ctx.fillStyle='rgba(27,59,107,'+(n.opacity*0.7).toFixed(3)+')';
+    ctx.fillRect(n.x-n.size/2,n.y-n.size/2,n.size,n.size);
+  }else if(n.type==='ring'){
+    ctx.strokeStyle='rgba(139,115,85,'+n.opacity+')';
+    ctx.lineWidth=1.5;
+    ctx.beginPath();
+    ctx.arc(n.x,n.y,n.size,0,Math.PI*2);
+    ctx.stroke();
+  }else{
+    ctx.fillStyle='rgba(27,59,107,'+(n.opacity*0.8).toFixed(3)+')';
+    ctx.beginPath();
+    ctx.arc(n.x,n.y,n.size/2,0,Math.PI*2);
+    ctx.fill();
+  }
+}
+// draw concentric decorative rings
+ctx.strokeStyle='rgba(27,59,107,0.08)';
+ctx.lineWidth=1;
+for(var r=100;r<=520;r+=80){
+  ctx.beginPath();
+  ctx.arc(cx,cy,r,0,Math.PI*2);
+  ctx.stroke();
+}
+// horizontal and vertical guide lines
+ctx.strokeStyle='rgba(139,115,85,0.12)';
+ctx.lineWidth=1;
+ctx.setLineDash([4,8]);
+ctx.beginPath();ctx.moveTo(0,cy);ctx.lineTo(W,cy);ctx.stroke();
+ctx.beginPath();ctx.moveTo(cx,0);ctx.lineTo(cx,H);ctx.stroke();
+ctx.setLineDash([]);
+// big central ring
+ctx.strokeStyle='rgba(27,59,107,0.15)';
+ctx.lineWidth=2;
+ctx.beginPath();ctx.arc(cx,cy,560,0,Math.PI*2);ctx.stroke();
+drawConnections();
+for(var i=0;i<nodes.length;i++){drawNode(nodes[i]);}
+// central large element
+ctx.fillStyle='rgba(27,59,107,0.85)';
+ctx.beginPath();ctx.arc(cx,cy,22,0,Math.PI*2);ctx.fill();
+ctx.strokeStyle='rgba(139,115,85,0.6)';
+ctx.lineWidth=2;
+ctx.beginPath();ctx.arc(cx,cy,40,0,Math.PI*2);ctx.stroke();
+ctx.fillStyle='rgba(245,240,232,1)';
+ctx.fillRect(cx-6,cy-1,12,2);
+ctx.fillRect(cx-1,cy-6,2,12);
+})();
+</script></body></html>

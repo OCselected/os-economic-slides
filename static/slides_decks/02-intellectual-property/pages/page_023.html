@@ -1,0 +1,243 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>产权扩张与公共领域——知识蔓延的裂缝</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0}
+body{
+  background:#F5F0E8;
+  font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;
+  color:#1B3B6B;
+  position:relative;
+}
+/* parchment texture */
+body::before{
+  content:'';position:absolute;top:0;left:0;width:1600px;height:900px;
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(139,115,85,0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(27,59,107,0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(139,115,85,0.02) 0%, transparent 70%);
+  pointer-events:none;z-index:0;
+}
+.slide{position:absolute;top:0;left:0;width:1600px;height:900px;padding:60px 80px;display:flex;flex-direction:column}
+
+/* header bar */
+.header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;position:relative;z-index:2}
+.header-left{display:flex;align-items:center;gap:16px}
+.header-num{font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:3px}
+.header-line{width:120px;height:1px;background:#1B3B6B;opacity:0.6}
+.header-tag{font-size:12px;color:#8B7355;letter-spacing:4px;font-weight:300}
+
+.main{display:grid;grid-template-columns:1fr 1fr;gap:40px;flex:1;align-items:stretch;position:relative;z-index:2}
+
+/* left column: visual metaphor */
+.visual-area{position:relative;height:100%;border:1px solid rgba(27,59,107,0.15)}
+
+/* map grid background - property rights lattice */
+.map-grid{position:absolute;top:0;left:0;width:100%;height:100%;
+  background-image:
+    linear-gradient(rgba(27,59,107,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(27,59,107,0.08) 1px, transparent 1px);
+  background-size:40px 40px;
+}
+
+/* property squares - representing claimed property rights */
+.prop-square{position:absolute;border:2px solid #1B3B6B;background:rgba(27,59,107,0.08)}
+.prop-square.s1{top:80px;left:80px;width:90px;height:90px;background:rgba(27,59,107,0.15)}
+.prop-square.s2{top:80px;left:200px;width:90px;height:90px}
+.prop-square.s3{top:80px;left:320px;width:90px;height:90px;background:rgba(27,59,107,0.12)}
+.prop-square.s4{top:200px;left:80px;width:90px;height:90px}
+.prop-square.s5{top:200px;left:200px;width:90px;height:90px;background:rgba(27,59,107,0.1)}
+.prop-square.s6{top:200px;left:320px;width:90px;height:90px}
+.prop-square.s7{top:320px;left:80px;width:90px;height:90px;background:rgba(27,59,107,0.06)}
+.prop-square.s8{top:320px;left:200px;width:90px;height:90px;border-style:dashed;border-color:#8B7355}
+.prop-square.s9{top:320px;left:320px;width:90px;height:90px;background:rgba(27,59,107,0.13)}
+
+/* crack lines */
+.crack{position:absolute;background:#1B3B6B}
+.crack.c1{top:0;left:170px;width:2px;height:500px;opacity:0.7}
+.crack.c2{top:0;left:172px;width:1px;height:280px;opacity:0.4;transform-origin:top;transform:rotate(2deg)}
+.crack.c3{top:148px;left:170px;width:2px;height:1px;height:300px;opacity:0.5;transform-origin:top left;transform:rotate(15deg)}
+
+/* vines - knowledge spreading */
+.vine{position:absolute;background:none;border:none}
+.vine-path{position:absolute}
+.v1{top:175px;left:170px;width:2px;height:0;border-left:2px solid #8B7355;height:60px;opacity:0.8}
+.v2{top:230px;left:165px;width:60px;height:2px;border-top:2px solid #8B7355;opacity:0.7}
+.v3{top:235px;left:215px;width:2px;height:80px;border-left:2px solid #8B7355;opacity:0.6}
+.v4{top:310px;left:213px;width:50px;height:2px;border-top:2px solid #8B7355;opacity:0.5}
+.v5{top:312px;left:253px;width:2px;height:60px;border-left:2px solid #8B7355;opacity:0.5}
+.v6{top:368px;left:172px;width:2px;height:100px;border-left:2px solid #8B7355;opacity:0.4}
+.v7{top:463px;left:168px;width:80px;height:2px;border-top:2px solid #8B7355;opacity:0.4}
+.v8{top:465px;left:243px;width:2px;height:40px;border-left:2px solid #8B7355;opacity:0.3}
+
+/* vine dots - knowledge nodes */
+.knode{position:absolute;width:8px;height:8px;border-radius:50%;background:#8B7355}
+.knode.k1{top:228px;left:167px}
+.knode.k2{top:230px;left:222px;width:6px;height:6px;left:224px}
+.knode.k3{top:308px;left:211px;width:6px;height:6px;left:213px}
+.knode.k4{top:310px;left:260px}
+.knode.k5{top:366px;left:170px;width:10px;height:10px;background:#1B3B6B;top:364px;left:168px}
+.knode.k6{top:461px;left:245px;width:6px;height:6px;left:247px}
+.knode.k7{top:500px;left:165px;width:6px;height:6px;left:167px}
+
+/* vine circle center */
+.center-circle{position:absolute;top:270px;left:150px;width:40px;height:40px;border:2px solid #8B7355;border-radius:50%;background:rgba(139,115,85,0.1)}
+
+/* property labels */
+.prop-label{position:absolute;font-size:9px;color:#555;letter-spacing:1px;top:-16px;left:0}
+.prop-label.l1{top:64px;left:80px}
+.prop-label.l2{top:64px;left:200px}
+.prop-label.l3{top:64px;left:320px}
+.prop-label.l4{top:304px;left:80px}
+.prop-label.l5{top:304px;left:200px}
+.prop-label.l6{top:304px;left:320px}
+
+/* lower zone - public domain */
+.public-domain-zone{position:absolute;bottom:0;left:0;width:100%;height:180px;
+  background:linear-gradient(to top, rgba(139,115,85,0.08), transparent);
+  border-top:1px dashed rgba(139,115,85,0.4)}
+.public-domain-label{position:absolute;bottom:60px;left:50%;transform:translateX(-50%);
+  font-size:11px;color:#8B7355;letter-spacing:4px;font-family:'Noto Serif SC',serif}
+
+/* right column content */
+.content-area{display:flex;flex-direction:column;justify-content:center;padding-left:20px;position:relative}
+
+.title-zh{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:38px;font-weight:600;color:#1B3B6B;line-height:1.4;letter-spacing:1px}
+.title-sub{font-family:'Noto Serif SC',serif;font-size:18px;color:#8B7355;margin-top:16px;letter-spacing:2px;font-style:italic}
+
+.divider{width:80px;height:3px;background:#1B3B6B;margin:30px 0 30px 0}
+
+.quote-block{position:relative;padding-left:40px}
+.quote-mark{position:absolute;top:-20px;left:0;font-family:'Noto Serif SC',serif;font-size:60px;color:#1B3B6B;opacity:0.3;line-height:1}
+.quote-text{font-family:'Noto Serif SC',serif;font-size:19px;line-height:1.85;color:#1B3B6B;font-weight:400;letter-spacing:0.5px}
+.quote-text .highlight{background:rgba(139,115,85,0.15);padding:2px 6px;border-left:3px solid #8B7355}
+
+.quote-attr{margin-top:28px;font-size:13px;color:#8B7355;line-height:1.6;letter-spacing:1px;padding-left:40px}
+.quote-attr .attr-name{font-weight:600;color:#555}
+.quote-attr .attr-book{font-family:'Noto Serif SC',serif;font-style:italic}
+
+/* decorative elements */
+.deco-circle{position:absolute;top:70px;right:80px;width:60px;height:60px;border:2px solid #1B3B6B;border-radius:50%;opacity:0.2}
+.deco-square{position:absolute;bottom:60px;right:80px;width:40px;height:40px;background:#1B3B6B;opacity:0.1}
+.deco-line{position:absolute;top:140px;right:80px;width:1px;height:60px;background:#8B7355;opacity:0.4}
+
+/* footer */
+.footer{display:flex;align-items:center;justify-content:space-between;margin-top:20px;position:relative;z-index:2}
+.footer-left{font-size:11px;color:#8B7355;letter-spacing:3px}
+.footer-right{display:flex;align-items:center;gap:12px}
+.footer-right .dot{width:6px;height:6px;background:#1B3B6B;border-radius:50%}
+.footer-right .fname{font-size:11px;color:#555;letter-spacing:2px}
+.footer-right .page-num{font-family:'Noto Serif SC',serif;font-size:13px;color:#1B3B6B;letter-spacing:2px}
+
+/* visual area title */
+.va-title{position:absolute;top:16px;left:20px;font-family:'Noto Serif SC',serif;font-size:13px;color:#1B3B6B;letter-spacing:3px;z-index:3}
+.va-subtitle{position:absolute;top:36px;left:20px;font-size:10px;color:#8B7355;letter-spacing:2px;z-index:3}
+.va-legend{position:absolute;bottom:20px;right:16px;display:flex;flex-direction:column;gap:6px;font-size:9px;color:#555;z-index:3;letter-spacing:1px}
+.va-legend-item{display:flex;align-items:center;gap:6px}
+.va-legend-swatch{width:14px;height:2px;background:#1B3B6B}
+.va-legend-swatch.alt{background:#8B7355;height:8px;width:8px;border-radius:50%}
+.va-legend-swatch.alt2{background:none;border:1.5px solid #1B3B6B;height:8px;width:8px}
+
+</style></head>
+<body>
+<div class="slide">
+  <div class="header">
+    <div class="header-left">
+      <span class="header-num">§ 03</span>
+      <span class="header-line"></span>
+      <span class="header-tag">PUBLIC DOMAIN / 公共领域</span>
+    </div>
+    <span class="header-tag">新制度经济学视角下的开源</span>
+  </div>
+
+  <div class="deco-circle"></div>
+  <div class="deco-square"></div>
+  <div class="deco-line"></div>
+
+  <div class="main">
+    <!-- Left: Visual Metaphor -->
+    <div class="visual-area">
+      <div class="map-grid"></div>
+      <div class="va-title">产权扩张地图 · 裂缝中的知识蔓延</div>
+      <div class="va-subtitle">Property Rights Lattice &amp; Knowledge Vines</div>
+
+      <!-- property squares -->
+      <span class="prop-label l1">专利 P1</span>
+      <span class="prop-label l2">版权 C1</span>
+      <span class="prop-label l3">商标 T1</span>
+      <span class="prop-label l4">专有软件</span>
+      <span class="prop-label l5">加密标准</span>
+      <span class="prop-label l6">数据产权</span>
+
+      <div class="prop-square s1"></div>
+      <div class="prop-square s2"></div>
+      <div class="prop-square s3"></div>
+      <div class="prop-square s4"></div>
+      <div class="prop-square s5"></div>
+      <div class="prop-square s6"></div>
+      <div class="prop-square s7"></div>
+      <div class="prop-square s8"></div>
+      <div class="prop-square s9"></div>
+
+      <!-- cracks -->
+      <div class="crack c1"></div>
+      <div class="crack c2"></div>
+
+      <!-- center knowledge origin -->
+      <div class="center-circle"></div>
+
+      <!-- vines -->
+      <div class="v1"></div>
+      <div class="v2"></div>
+      <div class="v3"></div>
+      <div class="v4"></div>
+      <div class="v5"></div>
+      <div class="v6"></div>
+      <div class="v7"></div>
+      <div class="v8"></div>
+
+      <div class="knode k1"></div>
+      <div class="knode k2"></div>
+      <div class="knode k3"></div>
+      <div class="knode k4"></div>
+      <div class="knode k5"></div>
+      <div class="knode k6"></div>
+      <div class="knode k7"></div>
+
+      <div class="public-domain-zone">
+        <span class="public-domain-label">— 公 共 领 域 · PUBLIC DOMAIN —</span>
+      </div>
+
+      <div class="va-legend">
+        <div class="va-legend-item"><span class="va-legend-swatch"></span>产权边界</div>
+        <div class="va-legend-item"><span class="va-legend-swatch" style="background:#1B3B6B;height:2px;opacity:0.5"></span>制度裂缝</div>
+        <div class="va-legend-item"><span class="va-legend-swatch alt"></span>知识节点</div>
+      </div>
+    </div>
+
+    <!-- Right: Content -->
+    <div class="content-area">
+      <div class="title-zh">当产权扩张的地图出现裂缝</div>
+      <div class="title-sub">Cracks in the Map of Property Expansion</div>
+      <div class="divider"></div>
+      <div class="quote-block">
+        <span class="quote-mark">"</span>
+        <p class="quote-text">自由软件、知识共享和其它增强公共领域的活动的现象，可以理解为中央机构对产权扩张<span class="highlight">效率低下</span>的市场反应。</p>
+      </div>
+      <div class="quote-attr">
+        — <span class="attr-name">Elkin-Koren</span> &amp; <span class="attr-name">Salzberger</span><br>
+        <span class="attr-book">《数字时代的知识产权法经济学》</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span class="footer-left">OPEN SOURCE / INSTITUTIONAL ECONOMICS</span>
+    <div class="footer-right">
+      <span class="dot"></span>
+      <span class="fname">开源之道 · 日常交流</span>
+      <span class="page-num">03 / 12</span>
+    </div>
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,181 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>开源经济：开源的价值</title><style>
+html,body{width:1600px;height:900px;overflow:hidden;margin:0;padding:0}
+body{font-family:'Noto Sans SC',sans-serif;background:#F5F0E8;color:#1B3B6B;position:relative;box-sizing:border-box}
+.slide{width:1600px;height:900px;position:relative;overflow:hidden}
+
+/* Bauhaus geometric decorations */
+.deco-circle-1{position:absolute;top:-80px;right:-80px;width:280px;height:280px;border-radius:50%;background:#1B3B6B;opacity:0.06}
+.deco-circle-2{position:absolute;bottom:60px;left:-60px;width:180px;height:180px;border-radius:50%;border:2px solid #1B3B6B;opacity:0.15}
+.deco-square{position:absolute;top:80px;left:60px;width:36px;height:36px;background:#8B7355;opacity:0.7}
+.deco-line-h{position:absolute;top:170px;left:60px;width:200px;height:2px;background:#1B3B6B;opacity:0.4}
+.deco-line-v{position:absolute;top:0;right:100px;width:2px;height:900px;background:#1B3B6B;opacity:0.06}
+.deco-dot{position:absolute;width:8px;height:8px;border-radius:50%;background:#1B3B6B;opacity:0.5}
+
+/* Header */
+.header-num{position:absolute;top:50px;left:130px;font-family:'Noto Serif SC',serif;font-size:14px;letter-spacing:6px;color:#8B7355;font-weight:400}
+.header-bar{position:absolute;top:80px;left:130px;width:60px;height:3px;background:#1B3B6B}
+
+/* Title area */
+.title-wrap{position:absolute;top:110px;left:130px;width:680px}
+.title-zh{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:64px;font-weight:700;color:#1B3B6B;line-height:1.15;letter-spacing:2px}
+.title-sub{font-family:'Noto Serif SC',serif;font-size:22px;color:#8B7355;margin-top:16px;letter-spacing:4px;font-weight:400}
+.title-en{font-family:'Noto Serif SC',serif;font-size:14px;color:#555;margin-top:10px;letter-spacing:3px;font-style:italic;font-weight:400}
+
+/* Dandelion visual - right side */
+.dandelion-wrap{position:absolute;top:120px;right:60px;width:440px;height:440px}
+.core-circle{position:absolute;top:140px;left:160px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,#1B3B6B 0%,#1B3B6B 60%,rgba(27,59,107,0.8) 100%);opacity:0.9}
+.core-ring{position:absolute;top:155px;left:175px;width:90px;height:90px;border-radius:50%;border:1.5px solid #1B3B6B;opacity:0.5}
+.core-ring2{position:absolute;top:170px;left:190px;width:60px;height:60px;border-radius:50%;border:1px solid #8B7355;opacity:0.6}
+
+/* Dandelion stem lines */
+.stem{position:absolute;top:200px;left:220px;width:1px;height:200px;background:#1B3B6B;opacity:0.6}
+
+/* Seed lines and seed circles */
+.seed-line{position:absolute;background:#1B3B6B;opacity:0.35;height:1px}
+.seed-dot{position:absolute;border-radius:50%;background:#1B3B6B;opacity:0.7}
+.seed-dot-light{position:absolute;border-radius:50%;border:1.5px solid #1B3B6B;opacity:0.5;background:transparent}
+.seed-dot-copper{position:absolute;border-radius:50%;background:#8B7355;opacity:0.6}
+
+/* Dispersing seeds (floating away) */
+.float-seed{position:absolute;border-radius:50%;background:#1B3B6B;opacity:0.5}
+.float-seed-ring{position:absolute;border-radius:50%;border:1px solid #1B3B6B;opacity:0.35;background:transparent}
+
+/* Bullets area */
+.bullets{position:absolute;bottom:60px;left:130px;width:680px}
+.bullet-item{display:flex;align-items:flex-start;margin-bottom:12px}
+.bullet-num{font-family:'Noto Serif SC',serif;font-size:16px;color:#8B7355;margin-right:14px;min-width:28px;padding-top:2px;letter-spacing:1px}
+.bullet-text{font-size:16px;line-height:1.6;color:#1B3B6B;font-weight:400}
+.bullet-text strong{font-weight:600;color:#1B3B6B}
+
+/* Visual caption */
+.viz-caption{position:absolute;bottom:40px;right:60px;width:440px;text-align:center;font-family:'Noto Serif SC',serif;font-size:12px;color:#8B7355;letter-spacing:3px;line-height:1.8;font-style:italic}
+
+/* Footer */
+.footer{position:absolute;bottom:30px;left:130px;width:680px;display:flex;align-items:center;gap:12px}
+.footer-dot{width:6px;height:6px;background:#1B3B6B;border-radius:50%;opacity:0.6}
+.footer-line{width:40px;height:1px;background:#1B3B6B;opacity:0.3}
+.footer-text{font-size:11px;color:#555;letter-spacing:3px}
+
+/* Small Bauhaus accents */
+.accent-square-2{position:absolute;width:16px;height:16px;background:#1B3B6B;opacity:0.8}
+.accent-tri{position:absolute;width:0;height:0;border-left:10px solid transparent;border-right:10px solid transparent;border-bottom:16px solid #8B7355;opacity:0.6}
+</style></head><body><div class="slide">
+
+  <div class="deco-circle-1"></div>
+  <div class="deco-circle-2"></div>
+  <div class="deco-square"></div>
+  <div class="deco-line-h"></div>
+  <div class="deco-line-v"></div>
+  <div class="deco-dot" style="top:200px;left:290px"></div>
+  <div class="deco-dot" style="top:320px;left:40px;opacity:0.3"></div>
+  <div class="deco-dot" style="bottom:200px;right:40px;opacity:0.3"></div>
+
+  <div class="header-num">CHAPTER &nbsp;·&nbsp; 0 1</div>
+  <div class="header-bar"></div>
+
+  <div class="title-wrap">
+    <div class="title-zh">开源经济：开源的价值</div>
+    <div class="title-sub">蓝色微距下的蒲公英绒球</div>
+    <div class="title-en">The Value of Open Source &mdash; Dispersing with the Wind</div>
+  </div>
+
+  <div class="accent-square-2" style="top:340px;left:80px"></div>
+  <div class="accent-tri" style="top:370px;left:80px"></div>
+
+  <!-- Dandelion Geometric Composition -->
+  <div class="dandelion-wrap">
+
+    <!-- Core -->
+    <div class="core-circle"></div>
+    <div class="core-ring"></div>
+    <div class="core-ring2"></div>
+
+    <!-- Stem -->
+    <div class="stem"></div>
+    <div class="stem" style="left:222px;height:180px;opacity:0.3"></div>
+
+    <!-- Radiating seed lines from core (top-left quadrant) -->
+    <div class="seed-line" style="top:155px;left:175px;width:90px;transform-origin:0 0"></div>
+    <div class="seed-line" style="top:158px;left:170px;width:110px"></div>
+    <div class="seed-line" style="top:160px;left:168px;width:120px"></div>
+    <div class="seed-line" style="top:163px;left:165px;width:130px"></div>
+    <div class="seed-line" style="top:165px;left:163px;width:140px"></div>
+    <div class="seed-line" style="top:167px;left:160px;width:145px"></div>
+    <div class="seed-line" style="top:170px;left:158px;width:148px"></div>
+
+    <!-- Seed dots around core -->
+    <div class="seed-dot" style="top:140px;left:160px;width:8px;height:8px"></div>
+    <div class="seed-dot-light" style="top:130px;left:170px;width:12px;height:12px"></div>
+    <div class="seed-dot" style="top:125px;left:185px;width:6px;height:6px;opacity:0.5"></div>
+    <div class="seed-dot-light" style="top:135px;left:200px;width:14px;height:14px"></div>
+    <div class="seed-dot" style="top:148px;left:215px;width:7px;height:7px;opacity:0.4"></div>
+    <div class="seed-dot-copper" style="top:120px;left:210px;width:8px;height:8px"></div>
+    <div class="seed-dot" style="top:170px;left:155px;width:6px;height:6px;opacity:0.4"></div>
+    <div class="seed-dot-light" style="top:180px;left:145px;width:12px;height:12px"></div>
+    <div class="seed-dot" style="top:190px;left:135px;width:7px;height:7px;opacity:0.35"></div>
+    <div class="seed-dot-copper" style="top:155px;left:140px;width:6px;height:6px;opacity:0.7"></div>
+
+    <!-- Dispersing seeds - floating away (upper right, upper area) -->
+    <div class="float-seed" style="top:60px;left:240px;width:10px;height:10px;opacity:0.6"></div>
+    <div class="float-seed-ring" style="top:55px;left:235px;width:14px;height:14px;opacity:0.3"></div>
+    <div class="float-seed" style="top:50px;left:280px;width:8px;height:8px;opacity:0.5"></div>
+    <div class="float-seed-ring" style="top:42px;left:275px;width:12px;height:12px;opacity:0.25"></div>
+    <div class="float-seed" style="top:30px;left:320px;width:7px;height:7px;opacity:0.4"></div>
+    <div class="float-seed" style="top:70px;left:350px;width:6px;height:6px;opacity:0.35"></div>
+    <div class="float-seed-ring" style="top:60px;left:345px;width:10px;height:10px;opacity:0.2"></div>
+    <div class="float-seed" style="top:95px;left:380px;width:8px;height:8px;opacity:0.45"></div>
+    <div class="float-seed" style="top:120px;left:400px;width:6px;height:6px;opacity:0.3"></div>
+    <div class="float-seed-ring" style="top:110px;left:395px;width:12px;height:12px;opacity:0.2"></div>
+    <div class="float-seed" style="top:80px;left:410px;width:5px;height:5px;opacity:0.3"></div>
+    <div class="float-seed-copper" style="top:45px;left:250px;width:6px;height:6px;background:#8B7355;opacity:0.5;border-radius:50%;position:absolute"></div>
+    <div class="float-seed" style="top:15px;left:270px;width:5px;height:5px;opacity:0.35"></div>
+    <div class="float-seed" style="top:25px;left:360px;width:5px;height:5px;opacity:0.25"></div>
+
+    <!-- A few floating downward-left seeds -->
+    <div class="float-seed" style="top:310px;left:80px;width:7px;height:7px;opacity:0.3"></div>
+    <div class="float-seed-ring" style="top:305px;left:75px;width:11px;height:11px;opacity:0.18"></div>
+    <div class="float-seed" style="top:340px;left:50px;width:5px;height:5px;opacity:0.25"></div>
+    <div class="float-seed" style="top:290px;left:110px;width:6px;height:6px;opacity:0.28"></div>
+
+    <!-- Floating ring - representing open source spreading -->
+    <div class="float-seed-ring" style="top:200px;left:270px;width:60px;height:60px;border-width:1px;opacity:0.15"></div>
+    <div class="float-seed-ring" style="top:195px;left:265px;width:70px;height:70px;border-width:1px;opacity:0.1"></div>
+
+    <!-- Wind direction arrow -->
+    <div style="position:absolute;top:160px;left:260px;width:160px;height:1px;background:#8B7355;opacity:0.4"></div>
+    <div style="position:absolute;top:156px;left:410px;width:0;height:0;border-left:8px solid #8B7355;border-top:4px solid transparent;border-bottom:4px solid transparent;opacity:0.4"></div>
+    <div style="position:absolute;top:170px;left:270px;width:130px;height:1px;background:#8B7355;opacity:0.3"></div>
+  </div>
+
+  <div class="viz-caption">
+    蓝色微距下的蒲公英绒球 —— 开源价值随风飘散而自由传播
+  </div>
+
+  <div class="bullets">
+    <div class="bullet-item">
+      <div class="bullet-num">01</div>
+      <div class="bullet-text"><strong>正外部性</strong> &mdash; 开源代码的边际分发成本趋近于零，每一颗种子都携带完整价值</div>
+    </div>
+    <div class="bullet-item">
+      <div class="bullet-num">02</div>
+      <div class="bullet-text"><strong>网络效应</strong> &mdash; 使用者即贡献者，协作规模越大，生态价值呈非线性增长</div>
+    </div>
+    <div class="bullet-item">
+      <div class="bullet-num">03</div>
+      <div class="bullet-text"><strong>制度创新</strong> &mdash; 许可证作为新型产权安排，在公共与私有之间开辟第三条道路</div>
+    </div>
+    <div class="bullet-item">
+      <div class="bullet-num">04</div>
+      <div class="bullet-text"><strong>知识溢出</strong> &mdash; 开源降低了技术获取门槛，加速人类共同知识的累积与再生产</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-dot"></div>
+    <div class="footer-line"></div>
+    <div class="footer-text">新制度经济学视角下的开源 &nbsp;·&nbsp; Open Source Economics</div>
+  </div>
+
+</div></body></html>

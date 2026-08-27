@@ -1,0 +1,240 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>许可证光谱的制度含义</title><style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1600px; height: 900px; overflow: hidden; margin: 0; font-family: 'Noto Sans SC', 'PingFang SC', sans-serif; }
+body { background: #F5F0E8; position: relative; }
+
+/* Top header bar */
+.header-bar { position: absolute; top: 0; left: 0; width: 1600px; height: 6px; background: #1B3B6B; }
+
+/* Lecture number marker */
+.lecture-num { position: absolute; top: 30px; left: 50px; font-family: 'Noto Serif SC', serif; font-size: 14px; letter-spacing: 3px; color: #555; }
+.lecture-num-line { position: absolute; top: 52px; left: 50px; width: 30px; height: 2px; background: #8B7355; }
+
+/* Title area */
+.title-area { position: absolute; top: 80px; left: 50px; width: 520px; }
+.title-main { font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif; font-size: 36px; font-weight: 700; color: #1B3B6B; line-height: 1.4; letter-spacing: 1px; }
+.title-sub { font-family: 'Noto Serif SC', serif; font-size: 15px; color: #8B7355; margin-top: 12px; letter-spacing: 2px; }
+
+/* Decorative circle top-right */
+.deco-circle-1 { position: absolute; top: 40px; right: 50px; width: 70px; height: 70px; border: 3px solid #1B3B6B; border-radius: 50%; }
+.deco-circle-2 { position: absolute; top: 62px; right: 72px; width: 26px; height: 26px; background: #1B3B6B; border-radius: 50%; }
+.deco-square-1 { position: absolute; top: 55px; right: 140px; width: 24px; height: 24px; background: #8B7355; }
+
+/* Central visual: Canal lock system */
+.lock-system { position: absolute; top: 170px; left: 50px; width: 720px; height: 620px; background: #1B3B6B; overflow: hidden; }
+
+/* Water channels */
+.channel-top { position: absolute; top: 60px; left: 0; width: 720px; height: 8px; background: #2A5A8F; }
+.channel-mid { position: absolute; top: 270px; left: 0; width: 720px; height: 8px; background: #2A5A8F; }
+.channel-bot { position: absolute; top: 480px; left: 0; width: 720px; height: 8px; background: #2A5A8F; }
+
+/* Lock chambers */
+.lock-chamber-1 { position: absolute; top: 68px; left: 80px; width: 180px; height: 194px; border: 3px solid #F5F0E8; background: rgba(245,240,232,0.08); }
+.lock-chamber-2 { position: absolute; top: 278px; left: 280px; width: 180px; height: 194px; border: 3px solid #F5F0E8; background: rgba(245,240,232,0.08); }
+.lock-chamber-3 { position: absolute; top: 488px; left: 480px; width: 180px; height: 100px; border: 3px solid #F5F0E8; background: rgba(245,240,232,0.08); }
+
+/* Lock gates - perpendicular lines */
+.gate-h-1 { position: absolute; top: 150px; left: 80px; width: 180px; height: 2px; background: #F5F0E8; }
+.gate-h-2 { position: absolute; top: 350px; left: 280px; width: 180px; height: 2px; background: #F5F0E8; }
+.gate-h-3 { position: absolute; top: 540px; left: 480px; width: 180px; height: 2px; background: #F5F0E8; }
+
+/* Gate posts */
+.gate-post-1-l { position: absolute; top: 144px; left: 78px; width: 4px; height: 14px; background: #F5F0E8; }
+.gate-post-1-r { position: absolute; top: 144px; left: 256px; width: 4px; height: 14px; background: #F5F0E8; }
+.gate-post-2-l { position: absolute; top: 344px; left: 278px; width: 4px; height: 14px; background: #F5F0E8; }
+.gate-post-2-r { position: absolute; top: 344px; left: 456px; width: 4px; height: 14px; background: #F5F0E8; }
+.gate-post-3-l { position: absolute; top: 534px; left: 478px; width: 4px; height: 14px; background: #F5F0E8; }
+.gate-post-3-r { position: absolute; top: 534px; left: 656px; width: 4px; height: 14px; background: #F5F0E8; }
+
+/* Flow arrows - code (open) */
+.flow-code { position: absolute; top: 100px; right: 30px; width: 130px; height: 40px; border: 2px solid #F5F0E8; }
+.flow-code::after { content: ''; position: absolute; right: -2px; top: 12px; width: 0; height: 0; border-top: 8px solid transparent; border-bottom: 8px solid transparent; border-left: 12px solid #F5F0E8; }
+.flow-code-label { position: absolute; top: 108px; right: 40px; font-family: 'Noto Serif SC', serif; font-size: 13px; color: #F5F0E8; letter-spacing: 2px; }
+
+.flow-code-2 { position: absolute; top: 310px; right: 30px; width: 130px; height: 40px; border: 2px solid #F5F0E8; }
+.flow-code-2::after { content: ''; position: absolute; right: -2px; top: 12px; width: 0; height: 0; border-top: 8px solid transparent; border-bottom: 8px solid transparent; border-left: 12px solid #F5F0E8; }
+
+.flow-code-3 { position: absolute; top: 510px; right: 30px; width: 130px; height: 40px; border: 2px solid #F5F0E8; }
+.flow-code-3::after { content: ''; position: absolute; right: -2px; top: 12px; width: 0; height: 0; border-top: 8px solid transparent; border-bottom: 8px solid transparent; border-left: 12px solid #F5F0E8; }
+
+/* Capital flow - blocked */
+.capital-block { position: absolute; top: 190px; right: 40px; width: 110px; height: 30px; border: 2px dashed #8B7355; }
+.capital-x { position: absolute; top: 185px; right: 35px; width: 40px; height: 40px; }
+.capital-x::before, .capital-x::after { content: ''; position: absolute; top: 50%; left: 50%; width: 40px; height: 2px; background: #8B7355; }
+.capital-x::before { transform: rotate(45deg); margin-left: -20px; margin-top: -1px; }
+.capital-x::after { transform: rotate(-45deg); margin-left: -20px; margin-top: -1px; }
+.capital-label { position: absolute; top: 195px; right: 80px; font-family: 'Noto Serif SC', serif; font-size: 12px; color: #8B7355; letter-spacing: 2px; }
+
+.capital-block-2 { position: absolute; top: 400px; right: 40px; width: 110px; height: 30px; border: 2px dashed #8B7355; }
+.capital-x2 { position: absolute; top: 395px; right: 35px; width: 40px; height: 40px; }
+.capital-x2::before, .capital-x2::after { content: ''; position: absolute; top: 50%; left: 50%; width: 40px; height: 2px; background: #8B7355; }
+.capital-x2::before { transform: rotate(45deg); margin-left: -20px; margin-top: -1px; }
+.capital-x2::after { transform: rotate(-45deg); margin-left: -20px; margin-top: -1px; }
+
+.capital-pass { position: absolute; top: 570px; right: 40px; width: 100px; height: 28px; border: 2px solid #8B7355; }
+.capital-pass::after { content: ''; position: absolute; right: -2px; top: 8px; width: 0; height: 0; border-top: 7px solid transparent; border-bottom: 7px solid transparent; border-left: 11px solid #8B7355; }
+
+/* Labels on the lock system */
+.lock-label-1 { position: absolute; top: 90px; left: 100px; font-family: 'Noto Serif SC', serif; font-size: 11px; color: #F5F0E8; opacity: 0.7; letter-spacing: 1px; }
+.lock-label-2 { position: absolute; top: 298px; left: 300px; font-family: 'Noto Serif SC', serif; font-size: 11px; color: #F5F0E8; opacity: 0.7; letter-spacing: 1px; }
+.lock-label-3 { position: absolute; top: 498px; left: 500px; font-family: 'Noto Serif SC', serif; font-size: 11px; color: #F5F0E8; opacity: 0.7; letter-spacing: 1px; }
+
+/* System labels */
+.sys-title { position: absolute; bottom: 30px; left: 80px; font-family: 'Noto Serif SC', serif; font-size: 12px; color: #F5F0E8; opacity: 0.6; letter-spacing: 3px; }
+.sys-title-cn { position: absolute; bottom: 50px; left: 80px; font-family: 'Noto Serif SC', serif; font-size: 14px; color: #F5F0E8; opacity: 0.8; letter-spacing: 2px; }
+
+/* Decorative geometric elements on lock system */
+.deco-lock-circle { position: absolute; bottom: 30px; right: 30px; width: 30px; height: 30px; border: 2px solid #F5F0E8; border-radius: 50%; opacity: 0.5; }
+.deco-lock-square { position: absolute; bottom: 70px; right: 40px; width: 16px; height: 16px; background: #F5F0E8; opacity: 0.3; }
+
+/* Right content panel */
+.content-panel { position: absolute; top: 170px; right: 50px; width: 740px; height: 620px; padding: 40px 45px; }
+
+/* Spectrum bar */
+.spectrum-bar { position: relative; width: 650px; height: 44px; margin-bottom: 8px; }
+.spectrum-permissive { position: absolute; top: 0; left: 0; width: 217px; height: 44px; background: #1B3B6B; }
+.spectrum-middle { position: absolute; top: 0; left: 217px; width: 216px; height: 44px; background: #5A7BA5; }
+.spectrum-copyleft { position: absolute; top: 0; left: 433px; width: 217px; height: 44px; background: #8B7355; }
+
+.spectrum-label-l { position: absolute; bottom: -22px; left: 0; font-family: 'Noto Serif SC', serif; font-size: 11px; color: #555; letter-spacing: 2px; }
+.spectrum-label-c { position: absolute; bottom: -22px; left: 217px; font-family: 'Noto Serif SC', serif; font-size: 11px; color: #555; letter-spacing: 2px; }
+.spectrum-label-r { position: absolute; bottom: -22px; left: 433px; font-family: 'Noto Serif SC', serif; font-size: 11px; color: #555; letter-spacing: 2px; }
+
+.spectrum-arrow { position: absolute; top: 22px; left: -20px; width: 690px; height: 2px; background: #555; }
+.spectrum-arrow-l { position: absolute; top: 18px; left: -20px; width: 0; height: 0; border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-right: 8px solid #555; }
+.spectrum-arrow-r { position: absolute; top: 18px; left: 662px; width: 0; height: 0; border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 8px solid #555; }
+
+.spectrum-title { font-family: 'Noto Serif SC', serif; font-size: 14px; color: #1B3B6B; margin-bottom: 36px; letter-spacing: 3px; font-weight: 600; }
+
+/* Bullet points */
+.bullet-list { margin-top: 30px; }
+.bullet-item { display: flex; align-items: flex-start; margin-bottom: 22px; }
+.bullet-marker { width: 14px; height: 14px; margin-top: 6px; margin-right: 16px; flex-shrink: 0; }
+.bullet-marker-square { background: #1B3B6B; }
+.bullet-marker-circle { border: 2px solid #1B3B6B; border-radius: 50%; }
+.bullet-marker-hollow { background: #F5F0E8; border: 2px solid #8B7355; }
+.bullet-marker-fill { background: #8B7355; }
+.bullet-marker-stripe { background: #1B3B6B; position: relative; }
+.bullet-marker-stripe::after { content: ''; position: absolute; top: 4px; left: 0; width: 14px; height: 6px; background: #F5F0E8; }
+
+.bullet-text { font-family: 'Noto Sans SC', sans-serif; font-size: 16px; color: #1B3B6B; line-height: 1.7; letter-spacing: 0.5px; flex: 1; }
+.bullet-text strong { font-family: 'Noto Serif SC', serif; font-weight: 700; font-size: 17px; }
+
+.bullet-emphasis { margin-top: 28px; padding: 18px 22px; border-left: 4px solid #1B3B6B; background: rgba(27,59,107,0.05); }
+.bullet-emphasis-text { font-family: 'Noto Serif SC', serif; font-size: 18px; color: #1B3B6B; line-height: 1.5; letter-spacing: 1px; font-weight: 600; }
+.bullet-emphasis-sub { font-family: 'Noto Sans SC', sans-serif; font-size: 13px; color: #555; margin-top: 6px; letter-spacing: 1px; }
+
+/* Bottom bar */
+.bottom-bar { position: absolute; bottom: 0; left: 0; width: 1600px; height: 4px; background: #1B3B6B; }
+.footer-text { position: absolute; bottom: 16px; right: 50px; font-family: 'Noto Serif SC', serif; font-size: 11px; color: #555; letter-spacing: 3px; }
+.footer-text-left { position: absolute; bottom: 16px; left: 50px; font-family: 'Noto Serif SC', serif; font-size: 11px; color: #555; letter-spacing: 2px; }
+</style></head><body>
+
+<div class="header-bar"></div>
+<div class="bottom-bar"></div>
+
+<div class="lecture-num">LECTURE 09 / 28</div>
+<div class="lecture-num-line"></div>
+
+<div class="deco-circle-1"></div>
+<div class="deco-circle-2"></div>
+<div class="deco-square-1"></div>
+
+<div class="title-area">
+  <div class="title-main">许可证光谱的<br>制度含义</div>
+  <div class="title-sub">LICENSE SPECTRUM · INSTITUTIONAL IMPLICATIONS</div>
+</div>
+
+<!-- Central visual: Canal lock system -->
+<div class="lock-system">
+  <div class="channel-top"></div>
+  <div class="channel-mid"></div>
+  <div class="channel-bot"></div>
+
+  <div class="lock-chamber-1"></div>
+  <div class="lock-chamber-2"></div>
+  <div class="lock-chamber-3"></div>
+
+  <div class="gate-h-1"></div>
+  <div class="gate-h-2"></div>
+  <div class="gate-h-3"></div>
+
+  <div class="gate-post-1-l"></div>
+  <div class="gate-post-1-r"></div>
+  <div class="gate-post-2-l"></div>
+  <div class="gate-post-2-r"></div>
+  <div class="gate-post-3-l"></div>
+  <div class="gate-post-3-r"></div>
+
+  <div class="lock-label-1">GATE · 闸门一</div>
+  <div class="lock-label-2">GATE · 闸门二</div>
+  <div class="lock-label-3">GATE · 闸门三</div>
+
+  <div class="flow-code"></div>
+  <div class="flow-code-label">CODE ▸ 代码流</div>
+  <div class="flow-code-2"></div>
+  <div class="flow-code-3"></div>
+
+  <div class="capital-block"></div>
+  <div class="capital-x"></div>
+  <div class="capital-label">资本 X</div>
+
+  <div class="capital-block-2"></div>
+  <div class="capital-x2"></div>
+
+  <div class="capital-pass"></div>
+
+  <div class="sys-title-cn">运河闸口系统</div>
+  <div class="sys-title">CANAL LOCK SYSTEM · CAPITAL &amp; CODE</div>
+
+  <div class="deco-lock-circle"></div>
+  <div class="deco-lock-square"></div>
+</div>
+
+<!-- Right content panel -->
+<div class="content-panel">
+  <div class="spectrum-title">许可证光谱 LICENSE SPECTRUM</div>
+
+  <div class="spectrum-bar">
+    <div class="spectrum-permissive"></div>
+    <div class="spectrum-middle"></div>
+    <div class="spectrum-copyleft"></div>
+    <div class="spectrum-arrow"></div>
+    <div class="spectrum-arrow-l"></div>
+    <div class="spectrum-arrow-r"></div>
+    <div class="spectrum-label-l">宽松许可</div>
+    <div class="spectrum-label-c">中间许可</div>
+    <div class="spectrum-label-r">强 Copyleft</div>
+  </div>
+
+  <div class="bullet-list">
+    <div class="bullet-item">
+      <div class="bullet-marker bullet-marker-square"></div>
+      <div class="bullet-text"><strong>宽松许可：</strong>鼓励企业采用，代码可自由流入闭源体系</div>
+    </div>
+    <div class="bullet-item">
+      <div class="bullet-marker bullet-marker-fill"></div>
+      <div class="bullet-text"><strong>强 Copyleft：</strong>保障开源扩散，代码流出必带自由条款</div>
+    </div>
+    <div class="bullet-item">
+      <div class="bullet-marker bullet-marker-hollow"></div>
+      <div class="bullet-text"><strong>中间许可：</strong>平衡企业需求与开源精神，设定条件性自由</div>
+    </div>
+    <div class="bullet-item">
+      <div class="bullet-marker bullet-marker-circle"></div>
+      <div class="bullet-text">选择哪种许可证是<strong>项目治理的核心决策</strong></div>
+    </div>
+  </div>
+
+  <div class="bullet-emphasis">
+    <div class="bullet-emphasis-text">这个决策影响的是——</div>
+    <div class="bullet-emphasis-sub">谁 可 以 获 利 ？ · WHO GETS TO PROFIT?</div>
+  </div>
+</div>
+
+<div class="footer-text-left">09 · PROPRIETARY RIGHTS &amp; COPLSFT</div>
+<div class="footer-text">OPEN SOURCE · NEW INSTITUTIONAL ECONOMICS</div>
+
+</body></html>

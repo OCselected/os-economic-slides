@@ -1,0 +1,501 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>虚拟共同体的人类学</title>
+<style>
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
+  font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+  background: #F5F0E8;
+  color: #1B3B6B;
+}
+
+.slide {
+  position: relative;
+  width: 1600px;
+  height: 900px;
+  background: #F5F0E8;
+  overflow: hidden;
+}
+
+/* subtle parchment texture */
+.slide::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: 
+    radial-gradient(ellipse at 20% 30%, rgba(139,115,85,0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(27,59,107,0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Top accent line */
+.top-rule {
+  position: absolute;
+  top: 60px;
+  left: 80px;
+  width: 1440px;
+  height: 2px;
+  background: #1B3B6B;
+}
+
+.top-rule-thin {
+  position: absolute;
+  top: 68px;
+  left: 80px;
+  width: 1440px;
+  height: 1px;
+  background: #8B7355;
+  opacity: 0.6;
+}
+
+/* Header section */
+.header {
+  position: absolute;
+  top: 90px;
+  left: 80px;
+  right: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lecture-label {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 14px;
+  letter-spacing: 6px;
+  color: #8B7355;
+  font-weight: 400;
+}
+
+.slide-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14px;
+  letter-spacing: 3px;
+  color: #555;
+}
+
+/* Main layout */
+.main {
+  position: absolute;
+  top: 150px;
+  left: 80px;
+  right: 80px;
+  bottom: 100px;
+  display: flex;
+}
+
+/* Left: visual metaphor */
+.visual-zone {
+  position: relative;
+  width: 620px;
+  height: 100%;
+  flex-shrink: 0;
+}
+
+/* Dark void circle */
+.void-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 320px;
+  height: 320px;
+  margin-top: -160px;
+  margin-left: -160px;
+  border-radius: 50%;
+  background: #0a0a14;
+  box-shadow: 0 0 60px rgba(10,10,20,0.3);
+}
+
+.void-ring1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 400px;
+  margin-top: -200px;
+  margin-left: -200px;
+  border-radius: 50%;
+  border: 1px solid rgba(27,59,107,0.3);
+}
+
+.void-ring2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 470px;
+  height: 470px;
+  margin-top: -235px;
+  margin-left: -235px;
+  border-radius: 50%;
+  border: 1px dashed rgba(139,115,85,0.4);
+}
+
+.void-ring3 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 540px;
+  height: 540px;
+  margin-top: -270px;
+  margin-left: -270px;
+  border-radius: 50%;
+  border: 1px solid rgba(27,59,107,0.15);
+}
+
+/* Particles - purple red nebula */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.p1 { top: 42%; left: 44%; width: 8px; height: 8px; background: #7B2D6B; }
+.p2 { top: 45%; left: 47%; width: 4px; height: 4px; background: #C44569; }
+.p3 { top: 50%; left: 52%; width: 6px; height: 6px; background: #8B3A6B; }
+.p4 { top: 47%; left: 43%; width: 3px; height: 3px; background: #D4618A; }
+.p5 { top: 53%; left: 48%; width: 5px; height: 5px; background: #7B2D6B; }
+.p6 { top: 44%; left: 55%; width: 4px; height: 4px; background: #A8446B; }
+.p7 { top: 56%; left: 45%; width: 3px; height: 3px; background: #C44569; }
+.p8 { top: 38%; left: 50%; width: 5px; height: 5px; background: #7B2D6B; }
+.p9 { top: 50%; left: 38%; width: 6px; height: 6px; background: #8B3A6B; }
+.p10 { top: 60%; left: 52%; width: 4px; height: 4px; background: #A8446B; }
+.p11 { top: 40%; left: 40%; width: 3px; height: 3px; background: #D4618A; }
+.p12 { top: 55%; left: 55%; width: 5px; height: 5px; background: #7B2D6B; }
+.p13 { top: 48%; left: 60%; width: 3px; height: 3px; background: #C44569; }
+.p14 { top: 35%; left: 45%; width: 4px; height: 4px; background: #8B3A6B; }
+.p15 { top: 62%; left: 42%; width: 5px; height: 5px; background: #A8446B; }
+.p16 { top: 43%; left: 35%; width: 3px; height: 3px; background: #7B2D6B; }
+.p17 { top: 58%; left: 58%; width: 4px; height: 4px; background: #D4618A; }
+.p18 { top: 36%; left: 58%; width: 3px; height: 3px; background: #8B3A6B; }
+.p19 { top: 63%; left: 38%; width: 4px; height: 4px; background: #C44569; }
+.p20 { top: 33%; left: 42%; width: 3px; height: 3px; background: #7B2D6B; }
+
+/* Outer scattered particles */
+.op1 { top: 25%; left: 48%; width: 3px; height: 3px; background: #8B3A6B; opacity: 0.7; }
+.op2 { top: 30%; left: 30%; width: 2px; height: 2px; background: #C44569; opacity: 0.5; }
+.op3 { top: 70%; left: 65%; width: 3px; height: 3px; background: #7B2D6B; opacity: 0.6; }
+.op4 { top: 20%; left: 55%; width: 2px; height: 2px; background: #A8446B; opacity: 0.4; }
+.op5 { top: 75%; left: 30%; width: 2px; height: 2px; background: #D4618A; opacity: 0.5; }
+.op6 { top: 15%; left: 40%; width: 2px; height: 2px; background: #8B3A6B; opacity: 0.4; }
+.op7 { top: 80%; left: 50%; width: 2px; height: 2px; background: #C44569; opacity: 0.5; }
+.op8 { top: 22%; left: 65%; width: 2px; height: 2px; background: #7B2D6B; opacity: 0.4; }
+.op9 { top: 78%; left: 60%; width: 2px; height: 2px; background: #A8446B; opacity: 0.4; }
+.op10 { top: 12%; left: 35%; width: 2px; height: 2px; background: #D4618A; opacity: 0.3; }
+.op11 { top: 82%; left: 45%; width: 2px; height: 2px; background: #8B3A6B; opacity: 0.4; }
+.op12 { top: 28%; left: 22%; width: 2px; height: 2px; background: #C44569; opacity: 0.3; }
+.op13 { top: 68%; left: 72%; width: 2px; height: 2px; background: #7B2D6B; opacity: 0.4; }
+.op14 { top: 18%; left: 25%; width: 2px; height: 2px; background: #A8446B; opacity: 0.3; }
+.op15 { top: 72%; left: 18%; width: 2px; height: 2px; background: #D4618A; opacity: 0.4; }
+
+/* Radiating lines from void */
+.radial-line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 180px;
+  height: 1px;
+  background: rgba(139,58,107,0.3);
+  transform-origin: left center;
+}
+
+.rl1 { transform: rotate(0deg); }
+.rl2 { transform: rotate(45deg); background: rgba(196,69,105,0.25); }
+.rl3 { transform: rotate(90deg); }
+.rl4 { transform: rotate(135deg); background: rgba(139,58,107,0.25); }
+.rl5 { transform: rotate(180deg); }
+.rl6 { transform: rotate(225deg); background: rgba(196,69,105,0.25); }
+.rl7 { transform: rotate(270deg); }
+.rl8 { transform: rotate(315deg); background: rgba(139,58,107,0.25); }
+
+/* Bauhaus geometric accents on visual */
+.geo-square {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  width: 60px;
+  height: 60px;
+  background: #1B3B6B;
+}
+
+.geo-square-2 {
+  position: absolute;
+  bottom: 30px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border: 2px solid #8B7355;
+}
+
+.geo-triangle {
+  position: absolute;
+  top: 60px;
+  right: 40px;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 34px solid #C44569;
+  opacity: 0.8;
+}
+
+/* Visual caption */
+.visual-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  color: #555;
+  letter-spacing: 2px;
+  text-align: center;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* Right: content area */
+.content-zone {
+  position: relative;
+  width: calc(100% - 620px);
+  height: 100%;
+  padding-left: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.eyebrow {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  letter-spacing: 4px;
+  color: #8B7355;
+  margin-bottom: 18px;
+}
+
+.title-main {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 48px;
+  font-weight: 600;
+  color: #1B3B6B;
+  line-height: 1.3;
+  letter-spacing: 3px;
+  margin-bottom: 8px;
+}
+
+.title-sub {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 17px;
+  color: #8B7355;
+  letter-spacing: 5px;
+  margin-bottom: 30px;
+}
+
+.title-divider {
+  width: 80px;
+  height: 3px;
+  background: #1B3B6B;
+  margin-bottom: 28px;
+}
+
+.bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bullets li {
+  position: relative;
+  padding-left: 36px;
+  font-size: 17px;
+  line-height: 1.7;
+  color: #1B3B6B;
+  margin-bottom: 16px;
+  letter-spacing: 1px;
+}
+
+.bullets li .marker {
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 18px;
+  height: 18px;
+}
+
+.marker-circle {
+  border-radius: 50%;
+  background: #1B3B6B;
+}
+
+.marker-square {
+  background: #8B7355;
+}
+
+.marker-hollow {
+  border: 2px solid #1B3B6B;
+}
+
+.marker-diagonal {
+  background: transparent;
+  border-top: 2px solid #C44569;
+  width: 22px;
+  top: 12px;
+}
+
+.bullets li em {
+  font-style: normal;
+  color: #555;
+  font-size: 14px;
+  display: block;
+  margin-top: 2px;
+  letter-spacing: 0.5px;
+}
+
+/* Footer */
+.footer-rule {
+  position: absolute;
+  bottom: 55px;
+  left: 80px;
+  width: 1440px;
+  height: 1px;
+  background: #8B7355;
+  opacity: 0.4;
+}
+
+.footer {
+  position: absolute;
+  bottom: 25px;
+  left: 80px;
+  right: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #555;
+  letter-spacing: 2px;
+}
+
+.footer-left {
+  font-family: 'Noto Serif SC', serif;
+}
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="top-rule"></div>
+  <div class="top-rule-thin"></div>
+
+  <div class="header">
+    <div class="lecture-label">新制度经济学视角 · 开源之道</div>
+    <div class="slide-num">04 / 12</div>
+  </div>
+
+  <div class="main">
+    <div class="visual-zone">
+      <div class="geo-square"></div>
+      <div class="geo-square-2"></div>
+      <div class="geo-triangle"></div>
+
+      <div class="void-ring3"></div>
+      <div class="void-ring2"></div>
+      <div class="void-ring1"></div>
+
+      <div class="void-core"></div>
+
+      <div class="radial-line rl1"></div>
+      <div class="radial-line rl2"></div>
+      <div class="radial-line rl3"></div>
+      <div class="radial-line rl4"></div>
+      <div class="radial-line rl5"></div>
+      <div class="radial-line rl6"></div>
+      <div class="radial-line rl7"></div>
+      <div class="radial-line rl8"></div>
+
+      <div class="particle p1"></div>
+      <div class="particle p2"></div>
+      <div class="particle p3"></div>
+      <div class="particle p4"></div>
+      <div class="particle p5"></div>
+      <div class="particle p6"></div>
+      <div class="particle p7"></div>
+      <div class="particle p8"></div>
+      <div class="particle p9"></div>
+      <div class="particle p10"></div>
+      <div class="particle p11"></div>
+      <div class="particle p12"></div>
+      <div class="particle p13"></div>
+      <div class="particle p14"></div>
+      <div class="particle p15"></div>
+      <div class="particle p16"></div>
+      <div class="particle p17"></div>
+      <div class="particle p18"></div>
+      <div class="particle p19"></div>
+      <div class="particle p20"></div>
+
+      <div class="particle op1"></div>
+      <div class="particle op2"></div>
+      <div class="particle op3"></div>
+      <div class="particle op4"></div>
+      <div class="particle op5"></div>
+      <div class="particle op6"></div>
+      <div class="particle op7"></div>
+      <div class="particle op8"></div>
+      <div class="particle op9"></div>
+      <div class="particle op10"></div>
+      <div class="particle op11"></div>
+      <div class="particle op12"></div>
+      <div class="particle op13"></div>
+      <div class="particle op14"></div>
+      <div class="particle op15"></div>
+
+      <div class="visual-caption">紫红粒子星云在黑色虚空中爆发<br>——赛博共同体的能量涌现</div>
+    </div>
+
+    <div class="content-zone">
+      <div class="eyebrow">CHAPTER · 共同体与涌现</div>
+      <div class="title-main">虚拟共同体的人类学</div>
+      <div class="title-sub">ANTHROPOLOGY OF THE VIRTUAL COMMONS</div>
+      <div class="title-divider"></div>
+      <ul class="bullets">
+        <li>
+          <span class="marker marker-circle"></span>
+          Common-based 生产
+          <em>基于共同体的协作生产模式</em>
+        </li>
+        <li>
+          <span class="marker marker-square"></span>
+          没有人拥有项目本身
+          <em>No one owns the project</em>
+        </li>
+        <li>
+          <span class="marker marker-hollow"></span>
+          有的时候是卡玛斯拉的人物
+          <em>Camassia — 采集者的比喻</em>
+        </li>
+        <li>
+          <span class="marker marker-diagonal"></span>
+          会形成自发的秩序
+          <em>Spontaneous order emerges</em>
+        </li>
+        <li>
+          <span class="marker marker-circle"></span>
+          行为准则、社会契约、共同价值观
+          <em>Norms · Social contract · Shared values</em>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-rule"></div>
+  <div class="footer">
+    <div class="footer-left">开源之道 · 新制度经济学视角</div>
+    <div>虚拟共同体 · 涌现与秩序</div>
+  </div>
+</div>
+</body>
+</html>

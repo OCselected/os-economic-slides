@@ -1,0 +1,161 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>第 07 期 · 案例三：Kubernetes 的崛起</title><style>html,body{width:1600px;height:900px;overflow:hidden;margin:0;padding:0;background:#F5F0E8;font-family:'Noto Sans SC','Source Han Sans SC','PingFang SC',sans-serif;color:#1B3B6B;box-sizing:border-box;}*{margin:0;padding:0;box-sizing:border-box;}body{position:relative;display:flex;flex-direction:column;}
+
+.header{display:flex;align-items:center;justify-content:space-between;padding:40px 70px 0 70px;}
+.lecture-tag{display:flex;align-items:center;gap:16px;}
+.lecture-num{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:14px;letter-spacing:4px;color:#8B7355;font-weight:600;}
+.lecture-sep{width:40px;height:1px;background:#8B7355;}
+.lecture-topic{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:14px;color:#555;letter-spacing:2px;}
+.header-right{font-family:'Noto Serif SC',serif;font-size:13px;color:#555;letter-spacing:2px;}
+
+.main{display:flex;padding:30px 70px 0 70px;gap:60px;flex:1;}
+
+.left-section{width:340px;display:flex;flex-direction:column;position:relative;}
+
+.geometric-frame{position:relative;width:340px;height:340px;margin-top:10px;}
+.geo-circle-outer{position:absolute;top:20px;left:20px;width:300px;height:300px;border:2px solid #1B3B6B;border-radius:50%;}
+.geo-circle-inner{position:absolute;top:80px;left:80px;width:160px;height:160px;background:#1B3B6B;border-radius:50%;}
+.geo-square{position:absolute;top:180px;left:0;width:80px;height:80px;background:#8B7355;}
+.geo-triangle{position:absolute;top:0;left:240px;width:0;height:0;border-left:40px solid transparent;border-right:40px solid transparent;border-bottom:70px solid #1B3B6B;}
+.geo-line-v{position:absolute;top:0;left:170px;width:2px;height:60px;background:#8B7355;}
+.geo-line-h{position:absolute;top:170px;left:260px;width:60px;height:2px;background:#8B7355;}
+.geo-dot{position:absolute;top:300px;left:155px;width:16px;height:16px;background:#8B7355;border-radius:50%;}
+.geo-k{position:absolute;top:110px;left:115px;font-family:'Noto Serif SC',serif;font-size:48px;font-weight:700;color:#F5F0E8;letter-spacing:1px;}
+
+.case-label{margin-top:24px;display:flex;align-items:center;gap:14px;}
+.case-label-bar{width:48px;height:3px;background:#1B3B6B;}
+.case-label-text{font-family:'Noto Serif SC',serif;font-size:15px;letter-spacing:3px;color:#8B7355;font-weight:600;}
+
+.title-area{margin-top:20px;}
+.title-cn{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:32px;font-weight:700;color:#1B3B6B;line-height:1.3;letter-spacing:1px;}
+.title-en{font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;margin-top:10px;letter-spacing:2px;font-style:italic;}
+
+.right-section{flex:1;display:flex;flex-direction:column;justify-content:flex-start;padding-top:10px;}
+
+.section-header{display:flex;align-items:flex-end;gap:20px;margin-bottom:20px;border-bottom:1px solid #1B3B6B;padding-bottom:16px;}
+.section-num{font-family:'Noto Serif SC',serif;font-size:48px;font-weight:700;color:#1B3B6B;line-height:0.9;}
+.section-meta{flex:1;}
+.section-topic{font-family:'Noto Serif SC',serif;font-size:16px;color:#8B7355;letter-spacing:2px;font-weight:600;}
+.section-desc{font-family:'Noto Serif SC',serif;font-size:12px;color:#555;letter-spacing:1px;margin-top:6px;font-style:italic;}
+
+.bullets{display:flex;flex-direction:column;gap:14px;}
+.bullet{display:flex;gap:20px;align-items:flex-start;padding:12px 0;border-bottom:1px dotted #C8BFB0;}
+.bullet:last-child{border-bottom:none;}
+.bullet-marker{flex-shrink:0;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif SC',serif;font-size:14px;font-weight:700;color:#F5F0E8;background:#1B3B6B;border-radius:50%;margin-top:2px;}
+.bullet-marker-square{background:#8B7355;border-radius:0;}
+.bullet-marker-tri{background:transparent;color:#1B3B6B;border-radius:0;width:0;height:0;border-left:16px solid transparent;border-right:16px solid transparent;border-bottom:28px solid #8B7355;display:flex;align-items:flex-start;justify-content:center;margin-top:6px;}
+.bullet-text{flex:1;}
+.bullet-title{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:17px;font-weight:700;color:#1B3B6B;line-height:1.4;letter-spacing:0.5px;}
+.bullet-sub{font-family:'Noto Sans SC',sans-serif;font-size:12px;color:#555;margin-top:4px;line-height:1.5;letter-spacing:0.5px;}
+
+.footer{position:absolute;bottom:30px;left:70px;right:70px;display:flex;align-items:center;justify-content:space-between;}
+.footer-line{flex:1;height:1px;background:#8B7355;margin:0 20px;opacity:0.5;}
+.footer-left{font-family:'Noto Serif SC',serif;font-size:11px;color:#8B7355;letter-spacing:2px;}
+.footer-right{font-family:'Noto Serif SC',serif;font-size:11px;color:#8B7355;letter-spacing:2px;}
+.footer-brand{font-family:'Noto Serif SC',serif;font-size:11px;color:#555;letter-spacing:2px;}
+
+.deco-corner-tl{position:absolute;top:0;left:0;width:3px;height:60px;background:#1B3B6B;}
+.deco-corner-bl{position:absolute;bottom:0;left:0;width:3px;height:60px;background:#1B3B6B;}
+.deco-corner-tr{position:absolute;top:0;right:0;width:3px;height:60px;background:#8B7355;}
+.deco-corner-br{position:absolute;bottom:0;right:0;width:3px;height:60px;background:#8B7355;}
+</style></head><body>
+
+<div class="deco-corner-tl"></div>
+<div class="deco-corner-bl"></div>
+<div class="deco-corner-tr"></div>
+<div class="deco-corner-br"></div>
+
+<div class="header">
+  <div class="lecture-tag">
+    <span class="lecture-num">LECTURE 07</span>
+    <span class="lecture-sep"></span>
+    <span class="lecture-topic">商业价值与社会价值：开源的政治经济学</span>
+  </div>
+  <div class="header-right">07 · POLITICAL ECONOMY</div>
+</div>
+
+<div class="main">
+  <div class="left-section">
+    <div class="geometric-frame">
+      <div class="geo-circle-outer"></div>
+      <div class="geo-circle-inner"></div>
+      <div class="geo-k">K</div>
+      <div class="geo-square"></div>
+      <div class="geo-triangle"></div>
+      <div class="geo-line-v"></div>
+      <div class="geo-line-h"></div>
+      <div class="geo-dot"></div>
+    </div>
+    <div class="case-label">
+      <span class="case-label-bar"></span>
+      <span class="case-label-text">CASE · 03</span>
+    </div>
+    <div class="title-area">
+      <div class="title-cn">Kubernetes<br>的崛起</div>
+      <div class="title-en">The Rise of Kubernetes — From Borg to Cloud Native</div>
+    </div>
+  </div>
+
+  <div class="right-section">
+    <div class="section-header">
+      <div class="section-num">03</div>
+      <div class="section-meta">
+        <div class="section-topic">从内部工具到行业标准</div>
+        <div class="section-desc">How Google turned an internal orchestration system into the open-source standard for container management.</div>
+      </div>
+    </div>
+
+    <div class="bullets">
+      <div class="bullet">
+        <div class="bullet-marker">I</div>
+        <div class="bullet-text">
+          <div class="bullet-title">Google 在大数据架构上的失利</div>
+          <div class="bullet-sub">MapReduce 与 GFS 未成为通用基础设施 —— 内部架构的局限性暴露</div>
+        </div>
+      </div>
+
+      <div class="bullet">
+        <div class="bullet-marker bullet-marker-square">II</div>
+        <div class="bullet-text">
+          <div class="bullet-title">Borg 系统的深厚基石</div>
+          <div class="bullet-sub">历经十余年锤炼的集群调度系统，为容器编排提供了底层逻辑与工程沉淀</div>
+        </div>
+      </div>
+
+      <div class="bullet">
+        <div class="bullet-marker bullet-marker-tri"></div>
+        <div class="bullet-text">
+          <div class="bullet-title">开源的战略决定与竞争格局</div>
+          <div class="bullet-sub">面对 Docker Swarm、Mesosphere Marathon 等竞争者，选择开放以定义标准</div>
+        </div>
+      </div>
+
+      <div class="bullet">
+        <div class="bullet-marker">IV</div>
+        <div class="bullet-text">
+          <div class="bullet-title">成立 Cloud Native Computing Foundation</div>
+          <div class="bullet-sub">与 Linux Foundation 联合组建 CNCF，将治理权移交社区，构建中立生态</div>
+        </div>
+      </div>
+
+      <div class="bullet">
+        <div class="bullet-marker bullet-marker-square">V</div>
+        <div class="bullet-text">
+          <div class="bullet-title">加大 Community 建设</div>
+          <div class="bullet-sub">通过 KubeCon、SIG 工作组与 Contributor 计划，建立自下而上的协同治理机制</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <span class="footer-left">KUBERNETES · ORIGIN</span>
+  <span class="footer-line"></span>
+  <span class="footer-brand">开源之道 · 新制度经济学视角</span>
+  <span class="footer-line"></span>
+  <span class="footer-right">SLIDE 12 / 26</span>
+</div>
+
+</body></html>

@@ -1,0 +1,165 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>软件零售：商业旅程的孤独与宏大</title><style>
+html,body{width:1600px;height:900px;overflow:hidden;margin:0;}
+body{background:#F5F0E8;color:#1B3B6B;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;position:relative;overflow:hidden;}
+h1,h2,h3{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-weight:700;color:#1B3B6B;margin:0;}
+
+/* Decorative geometric elements */
+.deco-circle-1{position:absolute;left:-60px;top:-60px;width:180px;height:180px;border-radius:50%;background:#1B3B6B;opacity:0.9;}
+.deco-circle-2{position:absolute;left:100px;top:30px;width:50px;height:50px;border-radius:50%;border:2px solid #8B7355;}
+.deco-square{position:absolute;right:40px;top:40px;width:36px;height:36px;background:#1B3B6B;}
+.deco-line-v{position:absolute;left:60px;top:200px;width:2px;height:500px;background:#8B7355;opacity:0.5;}
+
+/* Header */
+.header-bar{position:absolute;left:80px;top:80px;right:80px;display:flex;align-items:center;gap:20px;}
+.header-bar .dot{width:12px;height:12px;background:#1B3B6B;border-radius:50%;flex-shrink:0;}
+.header-bar .line{flex:1;height:1.5px;background:#1B3B6B;opacity:0.7;}
+.header-bar .label{font-size:13px;letter-spacing:4px;color:#8B7355;font-family:'Noto Sans SC',sans-serif;}
+
+.title{position:absolute;left:80px;top:120px;font-size:38px;line-height:1.35;letter-spacing:2px;font-weight:700;}
+.subtitle{position:absolute;left:80px;top:210px;font-size:15px;letter-spacing:3px;color:#8B7355;font-family:'Noto Serif SC',serif;font-style:italic;}
+
+/* Visual metaphor area */
+.visual-area{position:absolute;left:60px;top:270px;width:860px;height:520px;}
+
+/* Sun/moon circle */
+.sun{position:absolute;left:540px;top:20px;width:120px;height:120px;border-radius:50%;background:#1B3B6B;opacity:0.15;}
+.sun-inner{position:absolute;left:580px;top:60px;width:40px;height:40px;border-radius:50%;border:2px solid #8B7355;opacity:0.4;}
+
+/* Horizon line */
+.horizon{position:absolute;left:0;top:200px;width:860px;height:1px;background:#1B3B6B;opacity:0.6;}
+
+/* Ship - geometric construction */
+.ship-hull{position:absolute;left:280px;top:220px;width:280px;height:60px;background:#1B3B6B;}
+.ship-hull-bottom{position:absolute;left:270px;top:262px;width:300px;height:12px;background:#1B3B6B;}
+.ship-cabin{position:absolute;left:330px;top:170px;width:80px;height:55px;background:#1B3B6B;}
+.ship-cabin-2{position:absolute;left:420px;top:190px;width:50px;height:35px;background:#1B3B6B;}
+.ship-chimney{position:absolute;left:350px;top:140px;width:16px;height:35px;background:#8B7355;}
+
+/* Mast */
+.mast{position:absolute;left:450px;top:80px;width:3px;height:145px;background:#1B3B6B;}
+.mast-2{position:absolute;left:360px;top:110px;width:3px;height:115px;background:#1B3B6B;}
+
+/* Sail */
+.sail-tri{position:absolute;left:455px;top:85px;width:0;height:0;border-left:55px solid transparent;border-bottom:70px solid #1B3B6B;opacity:0.25;}
+.sail-tri-2{position:absolute;left:300px;top:110px;width:0;height:0;border-right:60px solid transparent;border-bottom:65px solid #8B7355;opacity:0.35;}
+
+/* Water lines */
+.water-1{position:absolute;left:0;top:320px;width:860px;height:1px;background:#555;opacity:0.4;}
+.water-2{position:absolute;left:40px;top:345px;width:780px;height:1px;background:#555;opacity:0.35;}
+.water-3{position:absolute;left:0;top:375px;width:860px;height:1px;background:#555;opacity:0.3;}
+.water-4{position:absolute;left:80px;top:410px;width:700px;height:1px;background:#555;opacity:0.25;}
+.water-5{position:absolute;left:0;top:450px;width:860px;height:1px;background:#555;opacity:0.2;}
+.water-6{position:absolute;left:120px;top:495px;width:620px;height:1px;background:#555;opacity:0.15;}
+.water-7{position:absolute;left:0;top:540px;width:860px;height:1px;background:#555;opacity:0.1;}
+
+/* Ship reflection (mirror) */
+.refl-hull{position:absolute;left:280px;top:335px;width:280px;height:40px;background:#1B3B6B;opacity:0.12;}
+.refl-cabin{position:absolute;left:330px;top:340px;width:80px;height:30px;background:#1B3B6B;opacity:0.12;}
+.refl-cabin-2{position:absolute;left:420px;top:340px;width:50px;height:20px;background:#1B3B6B;opacity:0.1;}
+.refl-mast{position:absolute;left:450px;top:325px;width:3px;height:90px;background:#1B3B6B;opacity:0.08;}
+.refl-sun{position:absolute;left:540px;top:340px;width:120px;height:60px;border-radius:50%;background:#1B3B6B;opacity:0.08;}
+
+/* Caption under visual */
+.visual-caption{position:absolute;left:80px;top:795px;font-size:12px;letter-spacing:3px;color:#8B7355;font-family:'Noto Serif SC',serif;font-style:italic;}
+
+/* Right side content */
+.right-panel{position:absolute;left:960px;top:280px;width:560px;}
+.panel-title{font-size:18px;letter-spacing:3px;color:#1B3B6B;margin-bottom:8px;font-family:'Noto Serif SC',serif;}
+.panel-rule{width:60px;height:2px;background:#1B3B6B;margin-bottom:24px;}
+
+.bullets{list-style:none;padding:0;margin:0;}
+.bullets li{position:relative;padding:14px 0 14px 38px;border-bottom:1px solid #1B3B6B;border-bottom-color:rgba(27,59,107,0.15);font-size:14.5px;line-height:1.7;color:#333;font-family:'Noto Sans SC',sans-serif;}
+.bullets li:last-child{border-bottom:none;}
+.bullets li .num{position:absolute;left:0;top:14px;font-family:'Noto Serif SC',serif;font-size:13px;color:#1B3B6B;letter-spacing:1px;font-weight:700;}
+.bullets li .highlight{color:#1B3B6B;font-weight:600;}
+
+/* Footer */
+.footer{position:absolute;left:80px;bottom:30px;right:80px;display:flex;justify-content:space-between;align-items:center;}
+.footer-line{flex:1;height:1px;background:#1B3B6B;opacity:0.3;margin:0 24px;}
+.footer-text{font-size:11px;letter-spacing:3px;color:#8B7355;font-family:'Noto Serif SC',serif;}
+.page-num{font-family:'Noto Serif SC',serif;font-size:14px;color:#1B3B6B;letter-spacing:2px;}
+
+/* Decorative small elements near ship */
+.deco-flag{position:absolute;left:470px;top:76px;width:24px;height:14px;background:#8B7355;opacity:0.7;}
+
+/* Large faint circle - moon reflection */
+.moon-faint{position:absolute;left:540px;top:200px;width:120px;height:120px;border-radius:50%;border:1px solid #1B3B6B;opacity:0.15;}
+</style></head><body>
+
+<!-- Decorative Bauhaus elements -->
+<div class="deco-circle-1"></div>
+<div class="deco-circle-2"></div>
+<div class="deco-square"></div>
+<div class="deco-line-v"></div>
+
+<!-- Header -->
+<div class="header-bar">
+  <div class="dot"></div>
+  <div class="label">新制度经济学 · 开源讲座</div>
+  <div class="line"></div>
+</div>
+
+<h1 class="title">商业旅程的孤独与宏大</h1>
+<div class="subtitle">巨轮独行于镜面水域 · The Commercial Voyage</div>
+
+<!-- Visual metaphor -->
+<div class="visual-area">
+  <div class="sun"></div>
+  <div class="sun-inner"></div>
+
+  <div class="moon-faint"></div>
+  <div class="horizon"></div>
+
+  <div class="ship-cabin"></div>
+  <div class="ship-cabin-2"></div>
+  <div class="ship-chimney"></div>
+  <div class="ship-hull"></div>
+  <div class="ship-hull-bottom"></div>
+
+  <div class="mast"></div>
+  <div class="mast-2"></div>
+  <div class="sail-tri"></div>
+  <div class="sail-tri-2"></div>
+  <div class="deco-flag"></div>
+
+  <div class="water-1"></div>
+  <div class="water-2"></div>
+  <div class="water-3"></div>
+  <div class="water-4"></div>
+  <div class="water-5"></div>
+  <div class="water-6"></div>
+  <div class="water-7"></div>
+
+  <div class="refl-hull"></div>
+  <div class="refl-cabin"></div>
+  <div class="refl-cabin-2"></div>
+  <div class="refl-mast"></div>
+  <div class="refl-sun"></div>
+</div>
+
+<div class="visual-caption">— 一叶孤帆，水面如镜，倒影与本体互为映照 —</div>
+
+<!-- Right panel -->
+<div class="right-panel">
+  <div class="panel-title">软件零售与许可制度</div>
+  <div class="panel-rule"></div>
+  <ul class="bullets">
+    <li><span class="num">01</span>软件的<span class="highlight">零售与定制交付</span>，从盒装到数字分发</li>
+    <li><span class="num">02</span>物流与互联网改变了<span class="highlight">介质的交付方式</span></li>
+    <li><span class="num">03</span>拆包装即同意、点击即同意——<span class="highlight">合同签署的仪式化</span></li>
+    <li><span class="num">04</span><span class="highlight">统一定价</span>让个人付费的争议逐渐减少</li>
+    <li><span class="num">05</span>技术保护措施的发展与扩张：<span class="highlight">加密、硬件绑定</span></li>
+    <li><span class="num">06</span>移动端 App 的<span class="highlight">"免费"</span>——不知道用啥换来的</li>
+  </ul>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <div class="footer-text">OPEN SOURCE · INSTITUTIONAL ECONOMICS</div>
+  <div class="footer-line"></div>
+  <div class="page-num">— 07 —</div>
+</div>
+
+</body></html>

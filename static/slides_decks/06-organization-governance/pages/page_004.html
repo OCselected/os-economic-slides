@@ -1,0 +1,235 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Williamson OLR 三重治理框架</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0}
+body{background:#F5F0E8;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;color:#1B3B6B;position:relative}
+.serif{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif}
+.parchment{position:absolute;top:0;left:0;width:1600px;height:900px;background:repeating-linear-gradient(45deg,rgba(139,115,85,0.015) 0px,rgba(139,115,85,0.015) 1px,transparent 1px,transparent 20px)}
+.header-bar{position:absolute;top:50px;left:80px;right:80px;height:3px;background:#1B3B6B}
+.subtitle-bar{position:absolute;top:55px;left:80px;right:80px;height:1px;background:#8B7355;opacity:0.5}
+.header-text{position:absolute;top:25px;left:80px;font-size:13px;letter-spacing:6px;color:#555;font-weight:300}
+.header-num{position:absolute;top:25px;right:80px;font-size:13px;letter-spacing:4px;color:#555;font-weight:300}
+.main-title{position:absolute;top:90px;left:80px;font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:46px;font-weight:700;color:#1B3B6B;letter-spacing:2px;line-height:1.2}
+.main-title-en{position:absolute;top:158px;left:82px;font-size:14px;letter-spacing:5px;color:#8B7355;font-weight:400}
+
+/* Left visual: raised hands geometric composition */
+.visual-area{position:absolute;top:210px;left:80px;width:680px;height:540px}
+.desk-line{position:absolute;bottom:0;left:0;width:680px;height:2px;background:#1B3B6B;opacity:0.7}
+.desk-line2{position:absolute;bottom:0;left:0;width:680px;height:60px;background:linear-gradient(to top, rgba(27,59,107,0.06), transparent)}
+
+/* Person figures - abstract geometric */
+.person{position:absolute;bottom:0;width:56px}
+.person .body{position:absolute;bottom:0;width:56px;height:130px;background:#1B3B6B;opacity:0.9}
+.person .body-side{position:absolute;bottom:0;width:56px;height:130px;background:#8B7355;opacity:0.85}
+.person .head{position:absolute;bottom:130px;width:32px;height:32px;border-radius:50%;left:12px;background:#1B3B6B}
+.person .head-side{position:absolute;bottom:130px;width:32px;height:32px;border-radius:50%;left:12px;background:#8B7355}
+.person .arm{position:absolute;bottom:60px;width:8px;background:#1B3B6B}
+.person .arm-side{position:absolute;bottom:60px;width:8px;background:#8B7355}
+.person .arm-up{bottom:130px;width:10px;height:90px;background:#1B3B6B;transform-origin:bottom center}
+.person .arm-up-side{bottom:130px;width:10px;height:90px;background:#8B7355;transform-origin:bottom center}
+.person .hand{position:absolute;width:14px;height:14px;background:#1B3B6B;border-radius:3px}
+
+/* Person 1 */
+.p1{left:60px}
+.p1 .body{background:#1B3B6B;opacity:0.15;border:1.5px solid #1B3B6B}
+.p1 .head{background:#1B3B6B;opacity:0.15;border:1.5px solid #1B3B6B}
+.p1 .arm-right{right:6px}
+.p1 .arm-up{right:6px;height:110px}
+.p1 .hand{right:0px;top:-16px}
+
+/* Person 2 - raised hand */
+.p2{left:155px}
+.p2 .body{background:#1B3B6B}
+.p2 .head{background:#1B3B6B}
+.p2 .arm-up{right:2px;height:130px}
+.p2 .hand{right:-4px;top:-18px;background:#1B3B6B}
+
+/* Person 3 */
+.p3{left:250px}
+.p3 .body{background:#8B7355}
+.p3 .head{background:#8B7355}
+.p3 .arm-up{right:2px;height:105px}
+.p3 .hand{right:-4px;top:-16px;background:#8B7355}
+
+/* Person 4 - raised */
+.p4{left:355px}
+.p4 .body{background:#1B3B6B}
+.p4 .head{background:#1B3B6B}
+.p4 .arm-up{right:2px;height:135px}
+.p4 .hand{right:-4px;top:-20px;background:#1B3B6B}
+
+/* Person 5 */
+.p5{left:460px}
+.p5 .body{background:#8B7355;opacity:0.8}
+.p5 .head{background:#8B7355;opacity:0.8}
+.p5 .arm-up{right:2px;height:100px}
+.p5 .hand{right:-4px;top:-16px;background:#8B7355}
+
+/* Person 6 */
+.p6{left:545px}
+.p6 .body{background:#1B3B6B;opacity:0.6}
+.p6 .head{background:#1B3B6B;opacity:0.6}
+.p6 .arm-up{right:2px;height:120px}
+.p6 .hand{right:-4px;top:-18px;background:#1B3B6B;opacity:0.6}
+
+/* Decorative geometric elements */
+.deco-circle{position:absolute;top:230px;left:510px;width:60px;height:60px;border-radius:50%;background:#8B7355;opacity:0.3;border:1.5px solid #1B3B6B}
+.deco-square{position:absolute;top:220px;left:420px;width:30px;height:30px;background:#1B3B6B;opacity:0.15}
+.deco-dot{position:absolute;width:10px;height:10px;border-radius:50%;background:#8B7355}
+.deco-dot1{top:280px;left:590px}
+.deco-dot2{top:240px;left:630px;width:6px;height:6px}
+.deco-dot3{top:320px;left:540px;width:8px;height:8px}
+.deco-line-v{position:absolute;top:195px;left:615px;width:1px;height:55px;background:#1B3B6B;opacity:0.4}
+
+/* Right content area */
+.content-area{position:absolute;top:210px;left:820px;width:700px}
+.oli-box{display:flex;align-items:stretch;gap:14px;margin-bottom:20px}
+.oli-icon{flex:0 0 76px;display:flex;align-items:center;justify-content:center;flex-direction:column}
+.oli-icon-shape{width:48px;height:48px;display:flex;align-items:center;justify-content:center}
+.oli-icon-label{font-size:11px;letter-spacing:3px;color:#8B7355;margin-top:6px;font-weight:400}
+.oli-content{flex:1;border-left:1px solid rgba(139,115,85,0.4);padding-left:16px}
+.oli-letter{font-family:'Noto Serif SC',serif;font-size:28px;font-weight:700;color:#1B3B6B;line-height:1}
+.oli-letter-cn{font-size:13px;color:#555;margin-top:3px;letter-spacing:1px}
+.oli-desc{font-size:14px;color:#1B3B6B;margin-top:6px;line-height:1.5}
+.oli-q{font-size:12px;color:#8B7355;margin-top:4px;letter-spacing:1px;font-style:italic}
+
+.shape-o{width:48px;height:48px;border-radius:50%;background:#1B3B6B;opacity:0.15;border:2px solid #1B3B6B;display:flex;align-items:center;justify-content:center}
+.shape-o::after{content:"O";font-family:'Noto Serif SC',serif;font-size:22px;color:#1B3B6B;font-weight:700;opacity:1}
+.shape-l{width:48px;height:48px;background:#1B3B6B;opacity:0.12;display:flex;align-items:center;justify-content:center}
+.shape-l::after{content:"L";font-family:'Noto Serif SC',serif;font-size:22px;color:#1B3B6B;font-weight:700;opacity:1}
+.shape-r{width:48px;height:48px;background:#8B7355;opacity:0.12;border:2px solid #8B7355;display:flex;align-items:center;justify-content:center}
+.shape-r::after{content:"R";font-family:'Noto Serif SC',serif;font-size:22px;color:#8B7355;font-weight:700;opacity:1}
+
+.note-box{margin-top:8px;padding:18px 22px;background:rgba(27,59,107,0.04);border-left:3px solid #1B3B6B}
+.note-title{font-family:'Noto Serif SC',serif;font-size:16px;font-weight:700;color:#1B3B6B;margin-bottom:8px}
+.note-list{list-style:none;font-size:13px;line-height:1.7;color:#1B3B6B}
+.note-list li{padding-left:16px;position:relative;margin-bottom:3px}
+.note-list li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:1px;background:#8B7355}
+.note-list li strong{color:#1B3B6B;font-weight:600}
+
+.footer{position:absolute;bottom:35px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#555;letter-spacing:3px}
+.footer-line{flex:1;height:1px;background:#1B3B6B;opacity:0.3;margin:0 20px}
+
+.metaphor-text{position:absolute;top:740px;left:80px;width:680px;font-size:11px;color:#8B7355;letter-spacing:2px;font-style:italic;line-height:1.5}
+.metaphor-text .mb-title{font-style:normal;font-weight:600;color:#555;letter-spacing:3px;font-size:10px;display:block;margin-bottom:4px}
+</style></head><body>
+<div class="parchment"></div>
+<div class="header-bar"></div>
+<div class="subtitle-bar"></div>
+<div class="header-text serif">NEW INSTITUTIONAL ECONOMICS · OPEN SOURCE</div>
+<div class="header-num serif">SLIDE / 07</div>
+
+<div class="main-title serif">Williamson OLR 三重治理框架</div>
+<div class="main-title-en">GOVERNANCE TRIAD: ORGANIZATION · LAW · RULES</div>
+
+<div class="visual-area">
+  <div class="deco-square"></div>
+  <div class="deco-circle"></div>
+  <div class="deco-dot deco-dot1"></div>
+  <div class="deco-dot deco-dot2"></div>
+  <div class="deco-dot deco-dot3"></div>
+  <div class="deco-line-v"></div>
+
+  <div class="person p1">
+    <div class="head"></div>
+    <div class="body"></div>
+    <div class="arm-up"></div>
+    <div class="hand"></div>
+  </div>
+  <div class="person p2">
+    <div class="head"></div>
+    <div class="body"></div>
+    <div class="arm-up"></div>
+    <div class="hand"></div>
+  </div>
+  <div class="person p3">
+    <div class="head"></div>
+    <div class="body"></div>
+    <div class="arm-up"></div>
+    <div class="hand"></div>
+  </div>
+  <div class="person p4">
+    <div class="head"></div>
+    <div class="body"></div>
+    <div class="arm-up"></div>
+    <div class="hand"></div>
+  </div>
+  <div class="person p5">
+    <div class="head"></div>
+    <div class="body"></div>
+    <div class="arm-up"></div>
+    <div class="hand"></div>
+  </div>
+  <div class="person p6">
+    <div class="head"></div>
+    <div class="body"></div>
+    <div class="arm-up"></div>
+    <div class="hand"></div>
+  </div>
+
+  <div class="desk-line2"></div>
+  <div class="desk-line"></div>
+</div>
+
+<div class="metaphor-text">
+  <span class="mb-title">VISUAL METAPHOR</span>
+  课堂举手场景 —— 求知若渴，积极参与，协作互动的基础姿态。
+</div>
+
+<div class="content-area">
+  <div class="oli-box">
+    <div class="oli-icon">
+      <div class="oli-icon-shape shape-o"></div>
+      <div class="oli-icon-label">ORGANIZATION</div>
+    </div>
+    <div class="oli-content">
+      <div class="oli-letter">O — 组织</div>
+      <div class="oli-letter-cn">谁来做决策？</div>
+      <div class="oli-desc">基金会、核心开发团队</div>
+      <div class="oli-q">— Who decides?</div>
+    </div>
+  </div>
+
+  <div class="oli-box">
+    <div class="oli-icon">
+      <div class="oli-icon-shape shape-l"></div>
+      <div class="oli-icon-label">LAW</div>
+    </div>
+    <div class="oli-content">
+      <div class="oli-letter">L — 法律</div>
+      <div class="oli-letter-cn">法律边界在哪里？</div>
+      <div class="oli-desc">许可证、版权、合规</div>
+      <div class="oli-q">— Where are the legal boundaries?</div>
+    </div>
+  </div>
+
+  <div class="oli-box">
+    <div class="oli-icon">
+      <div class="oli-icon-shape shape-r"></div>
+      <div class="oli-icon-label">RULES</div>
+    </div>
+    <div class="oli-content">
+      <div class="oli-letter">R — 规则</div>
+      <div class="oli-letter-cn">协作规范是什么？</div>
+      <div class="oli-desc">行为准则、RFC 流程、社区共识</div>
+      <div class="oli-q">— What are the norms of collaboration?</div>
+    </div>
+  </div>
+
+  <div class="note-box">
+    <div class="note-title">治理逻辑</div>
+    <ul class="note-list">
+      <li>开源治理不是靠单一制度，而是 <strong>OLR 三层同时运作</strong></li>
+      <li>法律（L）设定边界 · 规则（R）规范行为 · 组织（O）执行决策</li>
+      <li>三者失衡，项目便会失败——<strong>这是开源治理失败的根本原因</strong></li>
+    </ul>
+  </div>
+</div>
+
+<div class="footer">
+  <span>OPEN SOURCE · GOVERNANCE</span>
+  <div class="footer-line"></div>
+  <span class="serif">WILLIAMSON · O · L · R</span>
+</div>
+</body></html>

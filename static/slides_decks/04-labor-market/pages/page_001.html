@@ -1,0 +1,124 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>开源与经济学·第五期</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0}
+body{font-family:'Noto Sans SC','Source Han Sans SC','PingFang SC',sans-serif;background:#F5F0E8;color:#1B3B6B;position:relative}
+
+/* parchment texture */
+body::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;background:repeating-linear-gradient(0deg,rgba(139,115,85,0.03) 0px,rgba(139,115,85,0.03) 1px,transparent 1px,transparent 3px),repeating-linear-gradient(90deg,rgba(27,59,107,0.02) 0px,rgba(27,59,107,0.02) 1px,transparent 1px,transparent 5px);pointer-events:none;z-index:0}
+
+/* Bauhaus geometric elements */
+.geo-circle-blue{position:absolute;width:520px;height:520px;border-radius:50%;background:#1B3B6B;left:-120px;top:180px;z-index:1}
+.geo-circle-cream{position:absolute;width:340px;height:340px;border-radius:50%;background:#F5F0E8;left:0px;top:180px;z-index:2}
+.geo-circle-copper{position:absolute;width:60px;height:60px;border-radius:50%;background:#8B7355;left:380px;top:420px;z-index:3}
+.geo-square{position:absolute;width:120px;height:120px;background:#1B3B6B;left:540px;top:220px;z-index:1}
+.geo-square-outline{position:absolute;width:120px;height:120px;border:2px solid #1B3B6B;left:700px;top:380px;z-index:1;background:transparent}
+.geo-line-h{position:absolute;height:3px;background:#1B3B6B;z-index:1}
+.geo-line-v{position:absolute;width:3px;background:#1B3B6B;z-index:1}
+
+.line1{left:900px;top:120px;width:560px}
+.line2{left:900px;top:780px;width:560px}
+.line3{left:900px;top:780px;width:3px;height:0;background:#8B7355;height:0}
+.line4{left:1400px;top:120px;width:0;height:0;background:transparent}
+
+/* main text block */
+.main-block{position:absolute;right:0;top:0;width:700px;height:900px;z-index:10;padding:90px 80px 80px 60px;display:flex;flex-direction:column}
+.lecture-label{font-size:14px;letter-spacing:8px;color:#8B7355;font-weight:500;margin-bottom:18px}
+.main-title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:58px;line-height:1.25;color:#1B3B6B;font-weight:700;letter-spacing:2px;margin-bottom:8px}
+.main-title-en{font-family:'Noto Serif SC',serif;font-size:18px;color:#555;letter-spacing:4px;margin-bottom:36px;font-style:italic}
+.title-underline{width:100px;height:3px;background:#1B3B6B;margin-bottom:40px}
+
+/* recap section */
+.recap-title{font-family:'Noto Serif SC',serif;font-size:18px;color:#1B3B6B;font-weight:600;margin-bottom:24px;letter-spacing:3px;border-bottom:1px solid #1B3B6B;padding-bottom:10px;width:fit-content}
+.recap-title::after{content:"";position:absolute;left:calc(100% + 0px);bottom:-10px;height:1px;width:0}
+.recap-list{list-style:none;display:flex;flex-direction:column;gap:14px}
+.recap-list li{display:flex;align-items:flex-start;gap:16px;font-size:15px;line-height:1.6;color:#1B3B6B}
+.recap-num{font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;min-width:44px;font-weight:600;letter-spacing:1px;padding-top:2px}
+.recap-text{flex:1}
+.recap-text .lecture-num{font-family:'Noto Serif SC',serif;font-weight:600;color:#1B3B6B;margin-right:8px}
+
+/* bottom area */
+.bottom-area{position:absolute;left:80px;right:80px;bottom:70px;display:flex;justify-content:space-between;align-items:flex-end;z-index:10}
+.bottom-meta{font-size:12px;color:#555;letter-spacing:2px;line-height:1.8}
+.bottom-meta .label{color:#8B7355;font-weight:500}
+
+/* small geometric accents */
+.accent-triangle{position:absolute;width:0;height:0;border-left:20px solid transparent;border-right:20px solid transparent;border-bottom:34px solid #8B7355;left:1510px;top:130px;z-index:5}
+.accent-dot{position:absolute;width:8px;height:8px;border-radius:50%;background:#1B3B6B}
+
+/* side text */
+.side-text{position:absolute;left:240px;top:780px;font-size:11px;color:#555;letter-spacing:4px;z-index:5;writing-mode:vertical-rl}
+
+/* chapter mark */
+.chapter-mark{position:absolute;left:1090px;top:640px;font-family:'Noto Serif SC',serif;font-size:200px;color:#1B3B6B;opacity:0.06;font-weight:700;line-height:1;z-index:1;letter-spacing:-8px}
+
+/* vertical bar accent */
+.v-bar{position:absolute;left:770px;top:140px;width:1px;height:620px;background:linear-gradient(to bottom,transparent,#1B3B6B 20%,#1B3B6B 80%,transparent);z-index:2}
+</style></head><body>
+
+<!-- Bauhaus geometric composition -->
+<div class="geo-circle-blue"></div>
+<div class="geo-circle-cream"></div>
+<div class="geo-circle-copper"></div>
+<div class="geo-square"></div>
+<div class="geo-square-outline"></div>
+<div class="geo-line-h line1"></div>
+<div class="geo-line-h line2"></div>
+
+<!-- chapter watermark -->
+<div class="chapter-mark">V</div>
+
+<!-- vertical separator -->
+<div class="v-bar"></div>
+
+<!-- side vertical text -->
+<div class="side-text">OPEN SOURCE · ECONOMICS · LECTURE V</div>
+
+<!-- main text block on right -->
+<div class="main-block">
+  <div class="lecture-label">第 五 讲</div>
+  <div class="main-title">劳动力的幽灵</div>
+  <div class="main-title-en">Ghosts of the Labor Market</div>
+  <div class="title-underline"></div>
+
+  <div class="recap-title">前 情 提 要</div>
+  <ul class="recap-list">
+    <li>
+      <span class="recap-num">— 00 —</span>
+      <span class="recap-text"><span class="lecture-num">第0讲</span>增长的开源经济：何以开源成为增长引擎？</span>
+    </li>
+    <li>
+      <span class="recap-num">— 01 —</span>
+      <span class="recap-text"><span class="lecture-num">第1讲</span>软件的生产、分销和消费：代码的价值链条</span>
+    </li>
+    <li>
+      <span class="recap-num">— 02 —</span>
+      <span class="recap-text"><span class="lecture-num">第2讲</span>数字时代的知识财产法演变与开源许可制度</span>
+    </li>
+    <li>
+      <span class="recap-num">— 03 —</span>
+      <span class="recap-text"><span class="lecture-num">第3讲</span>开源软件的商业模式：产权制度与案例分析</span>
+    </li>
+  </ul>
+</div>
+
+<!-- bottom meta -->
+<div class="bottom-area">
+  <div class="bottom-meta">
+    <div><span class="label">课 程</span> &nbsp; 开源之道 · 新制度经济学视角</div>
+    <div><span class="label">第 五 期</span> &nbsp; 劳动力市场与协作治理</div>
+  </div>
+  <div class="bottom-meta" style="text-align:right">
+    <div><span class="label">SESSION</span> &nbsp; V / VIII</div>
+    <div><span class="label">STATUS</span> &nbsp; 议题开启</div>
+  </div>
+</div>
+
+<!-- small accents -->
+<div class="accent-triangle"></div>
+<div class="accent-dot" style="left:960px;top:160px"></div>
+<div class="accent-dot" style="left:970px;top:160px"></div>
+<div class="accent-dot" style="left:980px;top:160px"></div>
+
+</body></html>

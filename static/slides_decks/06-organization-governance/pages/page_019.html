@@ -1,0 +1,228 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>类Unix家族谱系与开源共同体治理失败</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0}
+body{background:#F5F0E8;font-family:'Noto Sans SC','Source Han Serif SC','Microsoft YaHei',sans-serif;color:#1B3B6B;position:relative}
+
+/* Bauhaus geometric decorations */
+.deco-circle-1{position:absolute;top:-80px;right:-80px;width:240px;height:240px;border-radius:50%;background:#1B3B6B;opacity:0.06}
+.deco-circle-2{position:absolute;bottom:60px;left:-60px;width:160px;height:160px;border-radius:50%;border:2px solid #8B7355;opacity:0.3}
+.deco-square-1{position:absolute;top:200px;right:40px;width:60px;height:60px;background:#8B7355;opacity:0.12}
+.deco-line-1{position:absolute;top:130px;left:80px;width:80px;height:2px;background:#1B3B6B}
+.deco-line-2{position:absolute;top:130px;right:80px;width:120px;height:2px;background:#1B3B6B}
+.deco-dot{position:absolute;width:8px;height:8px;background:#1B3B6B;border-radius:50%;opacity:0.4}
+
+/* Header */
+.header{position:absolute;top:55px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:flex-end}
+.title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:36px;font-weight:700;color:#1B3B6B;letter-spacing:2px;line-height:1.3}
+.subtitle{font-size:14px;color:#8B7355;letter-spacing:4px;margin-top:8px;font-family:'Noto Serif SC',serif}
+.header-meta{font-size:11px;color:#555;letter-spacing:2px;text-align:right;line-height:1.8}
+
+/* Separator */
+.sep{position:absolute;top:160px;left:80px;width:60px;height:3px;background:#1B3B6B}
+.sep-right{position:absolute;top:163px;right:80px;width:200px;height:1px;background:#8B7355;opacity:0.5}
+
+/* Family tree area */
+.tree-section{position:absolute;top:185px;left:80px;width:700px;height:320px}
+.tree-title{font-family:'Noto Serif SC',serif;font-size:15px;color:#1B3B6B;letter-spacing:1px;margin-bottom:15px;display:flex;align-items:center;gap:10px}
+.tree-title .num{font-size:11px;background:#1B3B6B;color:#F5F0E8;padding:2px 8px;border-radius:2px}
+.tree-canvas{position:relative;width:700px;height:290px}
+
+/* Timeline vertical line */
+.tl-main{position:absolute;left:120px;top:0;width:2px;height:290px;background:#1B3B6B;opacity:0.7}
+
+/* Timeline nodes */
+.tl-node{position:absolute;display:flex;align-items:center;gap:12px}
+.tl-dot{width:14px;height:14px;background:#1B3B6B;border-radius:50%;position:relative;z-index:2}
+.tl-dot.faded{background:#8B7355;opacity:0.4}
+.tl-dot.x{background:#F5F0E8;border:2px solid #8B7355}
+.tl-node-left{position:absolute;right:142px;text-align:right;width:200px}
+.tl-node-right{position:absolute;left:142px;width:260px}
+.tl-name{font-family:'Noto Serif SC',serif;font-size:13px;color:#1B3B6B;font-weight:600}
+.tl-name.faded{color:#8B7355;opacity:0.6;font-style:italic}
+.tl-year{font-size:10px;color:#555;letter-spacing:1px}
+.tl-desc{font-size:10px;color:#8B7355;margin-top:2px}
+
+/* Branch lines */
+.branch{position:absolute;height:1px;background:#1B3B6B;opacity:0.3}
+
+/* Right content panels */
+.right-col{position:absolute;top:185px;left:820px;width:700px;height:560px;display:flex;flex-direction:column;gap:20px}
+
+.panel{background:#FFFFFF;border:1px solid #8B7355;border-opacity:0.3;padding:18px 22px;position:relative}
+.panel::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:#1B3B6B}
+.panel-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.panel-num{font-family:'Noto Serif SC',serif;font-size:11px;background:#1B3B6B;color:#F5F0E8;padding:2px 8px;letter-spacing:1px}
+.panel-title{font-family:'Noto Serif SC',serif;font-size:16px;color:#1B3B6B;font-weight:700;letter-spacing:1px}
+
+.cases{display:grid;grid-template-columns:1fr 1fr;gap:8px 18px}
+.case-item{display:flex;align-items:flex-start;gap:8px;font-size:11px;color:#555;line-height:1.5}
+.case-mark{font-family:'Noto Serif SC',serif;font-size:12px;color:#8B7355;margin-top:1px;min-width:14px}
+.case-name{color:#1B3B6B;font-weight:600;font-size:11px}
+.case-desc{color:#555}
+
+/* Ostrom panel */
+.ostrom-title-sub{font-size:10px;color:#8B7355;letter-spacing:1px;margin-bottom:10px;margin-top:-6px}
+.ostrom-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 16px}
+.ostrom-item{font-size:11px;color:#1B3B6B;padding:4px 0;display:flex;align-items:center;gap:8px}
+.ostrom-dot{width:6px;height:6px;background:#8B7355;border-radius:50%;flex-shrink:0}
+.ostrom-item .q{color:#555;font-size:10px}
+
+/* Bottom conclusion */
+.conclusion{position:absolute;bottom:50px;left:80px;right:80px;display:flex;align-items:center;justify-content:space-between;padding-top:18px;border-top:2px solid #1B3B6B}
+.conclusion-text{font-family:'Noto Serif SC',serif;font-size:18px;color:#1B3B6B;letter-spacing:2px;font-weight:700}
+.conclusion-text .em{color:#8B7355;font-style:italic}
+.conclusion-meta{font-size:10px;color:#555;letter-spacing:3px;text-align:right}
+
+/* Small decorative elements */
+.corner-mark{position:absolute;bottom:15px;right:80px;font-size:9px;color:#8B7355;letter-spacing:2px}
+.page-num{position:absolute;bottom:15px;left:80px;font-size:9px;color:#555;letter-spacing:2px}
+
+/* Additional dots positioning */
+.d1{top:30px;left:400px}
+.d2{top:50px;right:200px}
+.d3{top:80px;left:550px}
+
+/* Timeline specific positioning */
+.n1-left{top:15px;right:142px}
+.n1-right{top:10px;left:142px}
+.n2-left{top:60px;right:142px}
+.n2-right{top:55px;left:142px}
+.n3-right{top:100px;left:142px}
+.n4-left{top:140px;right:142px}
+.n4-right{top:135px;left:142px}
+.n5-right{top:175px;left:142px}
+.n6-left{top:210px;right:142px}
+.n6-right{top:205px;left:142px}
+.n7-right{top:245px;left:142px}
+
+/* Faded/dying tree annotation */
+.tree-annot{position:absolute;bottom:-2px;left:142px;font-size:9px;color:#8B7355;font-style:italic;letter-spacing:1px}
+</style></head><body>
+
+<div class="deco-circle-1"></div>
+<div class="deco-circle-2"></div>
+<div class="deco-square-1"></div>
+<div class="deco-line-1"></div>
+<div class="deco-line-2"></div>
+<div class="deco-dot d1"></div>
+<div class="deco-dot d2"></div>
+<div class="deco-dot d3"></div>
+
+<div class="header">
+  <div>
+    <div class="title">缩微的共同体：类Unix家族谱系中的<br/>开源治理失败诊断</div>
+    <div class="subtitle">FAMILY TREE OF DECLINE — Ostrom Diagnostic Framework</div>
+  </div>
+  <div class="header-meta">
+    开源之道 · 新制度经济学视角<br/>
+    LECTURE / 07 / GOVERNANCE FAILURE
+  </div>
+</div>
+
+<div class="sep"></div>
+<div class="sep-right"></div>
+
+<!-- Unix Family Tree -->
+<div class="tree-section">
+  <div class="tree-title"><span class="num">I</span> 类Unix操作系统家族谱系与演变</div>
+  <div class="tree-canvas">
+    <div class="tl-main"></div>
+
+    <!-- branch lines -->
+    <div class="branch" style="left:120px;top:20px;width:60px"></div>
+    <div class="branch" style="left:120px;top:65px;width:60px"></div>
+    <div class="branch" style="left:120px;top:105px;width:60px"></div>
+    <div class="branch" style="left:120px;top:145px;width:60px"></div>
+    <div class="branch" style="left:120px;top:180px;width:60px"></div>
+    <div class="branch" style="left:120px;top:215px;width:60px"></div>
+    <div class="branch" style="left:120px;top:250px;width:60px"></div>
+
+    <!-- 1969 AT&T Unix -->
+    <div class="tl-node" style="left:113px;top:15px"><div class="tl-dot"></div></div>
+    <div class="tl-node-left n1-left"><span class="tl-name">AT&T Unix</span><div class="tl-year">1969 · BELL LABS</div></div>
+    <div class="tl-node-right n1-right"><div class="tl-desc">一切始于此——闭源，商业，大学实验室</div></div>
+
+    <!-- BSD -->
+    <div class="tl-node" style="left:113px;top:60px"><div class="tl-dot"></div></div>
+    <div class="tl-node-left n2-left"><span class="tl-name">BSD</span><div class="tl-year">1977 · BERKELEY</div></div>
+    <div class="tl-node-right n2-right"><div class="tl-desc">学术传统 → FreeBSD / OpenBSD 延续至今</div></div>
+
+    <!-- GNU/Linux -->
+    <div class="tl-node" style="left:113px;top:100px"><div class="tl-dot"></div></div>
+    <div class="tl-node-right n3-right"><div class="tl-name">GNU/Linux</div><div class="tl-year">1983 → 1991</div><div class="tl-desc">理想主义内核 + 实用主义外壳</div></div>
+
+    <!-- Minix -->
+    <div class="tl-node" style="left:113px;top:140px"><div class="tl-dot faded"></div></div>
+    <div class="tl-node-left n4-left"><span class="tl-name faded">Minix</span><div class="tl-year">1987 · TEACHING OS</div></div>
+    <div class="tl-node-right n4-right"><div class="tl-desc">教学系统 — 边缘化后以 Minix 3 重生</div></div>
+
+    <!-- HP-UX / AIX -->
+    <div class="tl-node" style="left:113px;top:175px"><div class="tl-dot x"></div></div>
+    <div class="tl-node-right n5-right"><div class="tl-name faded">HP-UX / AIX / IRIX</div><div class="tl-year">1980s — 2000s</div><div class="tl-desc">商业Unix——随硬件衰退而消亡</div></div>
+
+    <!-- Solaris/OpenSolaris -->
+    <div class="tl-node" style="left:113px;top:210px"><div class="tl-dot x"></div></div>
+    <div class="tl-node-left n6-left"><span class="tl-name faded">OpenSolaris</span><div class="tl-year">2005 — 2010</div></div>
+    <div class="tl-node-right n6-right"><div class="tl-desc">Oracle 收购后社区分裂，illumos 分叉</div></div>
+
+    <!-- Plan 9 / Inferno -->
+    <div class="tl-node" style="left:113px;top:245px"><div class="tl-dot x"></div></div>
+    <div class="tl-node-right n7-right"><div class="tl-name faded">Plan 9 / Inferno</div><div class="tl-year">1993 · BELL LABS</div><div class="tl-desc">超前于时代，使用者寥寥</div></div>
+
+    <div class="tree-annot">— 谱系中的断裂点 —</div>
+  </div>
+</div>
+
+<!-- Right column -->
+<div class="right-col">
+
+  <!-- Panel 1: Failing Communities -->
+  <div class="panel">
+    <div class="panel-head">
+      <span class="panel-num">II</span>
+      <span class="panel-title">消亡与收缩中的开源共同体</span>
+    </div>
+    <div class="cases">
+      <div class="case-item"><span class="case-mark">·</span><div><span class="case-name">GNU 项目</span><br/><span class="case-desc">理想主义与现实落差的张力——道德号召力难以替代实用选择</span></div></div>
+      <div class="case-item"><span class="case-mark">·</span><div><span class="case-name">Perl</span><br/><span class="case-desc">单核维护者的脆弱性——一人之死即一语之衰</span></div></div>
+      <div class="case-item"><span class="case-mark">·</span><div><span class="case-name">OpenStack</span><br/><span class="case-desc">企业博弈导致的项目分裂——多方控制权的零和竞争</span></div></div>
+      <div class="case-item"><span class="case-mark">·</span><div><span class="case-name">Mozilla</span><br/><span class="case-desc">资金依赖与决策权的矛盾——资助方俘获基金会</span></div></div>
+    </div>
+  </div>
+
+  <!-- Panel 2: Ostrom Diagnosis -->
+  <div class="panel">
+    <div class="panel-head">
+      <span class="panel-num">III</span>
+      <span class="panel-title">奥斯特罗姆的治理失败诊断</span>
+    </div>
+    <div class="ostrom-title-sub">八条设计原则 · 哪一条被破坏？</div>
+    <div class="ostrom-grid">
+      <div class="ostrom-item"><span class="ostrom-dot"></span><span>边界不清</span><span class="q">— 谁有资格参与？</span></div>
+      <div class="ostrom-item"><span class="ostrom-dot"></span><span>监督失效</span><span class="q">— 谁在观察？</span></div>
+      <div class="ostrom-item"><span class="ostrom-dot"></span><span>制裁过度</span><span class="q">— 惩罚是否成比例？</span></div>
+      <div class="ostrom-item"><span class="ostrom-dot"></span><span>冲突解决缺失</span><span class="q">— 无处申诉</span></div>
+      <div class="ostrom-item"><span class="ostrom-dot"></span><span>嵌套治理</span><span class="q">— 层级之间的协调</span></div>
+      <div class="ostrom-item"><span class="ostrom-dot"></span><span>集体选择权</span><span class="q">— 谁定规则？</span></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Conclusion -->
+<div class="conclusion">
+  <div class="conclusion-text">
+    治理失败不是<span class="em">道德</span>问题，而是<span class="em">制度设计</span>问题。
+  </div>
+  <div class="conclusion-meta">
+    COMMONS · GOVERNANCE · DESIGN<br/>
+    <span style="opacity:0.6">— Governance failure is a design problem, not a moral one —</span>
+  </div>
+</div>
+
+<div class="page-num">SLIDE 07 / OPEN SOURCE — NEON INSTITUTIONAL ECONOMICS</div>
+<div class="corner-mark">bauhaus · academic · 2024</div>
+
+</body></html>

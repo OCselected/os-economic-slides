@@ -1,0 +1,141 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>保持独立和发展的开源</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden}
+body{font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;background:#F5F0E8;color:#1B3B6B;position:relative;width:1600px;height:900px}
+
+.page{position:absolute;top:0;left:0;width:1600px;height:900px;padding:60px 80px}
+
+/* Top bar */
+.top-bar{position:absolute;top:40px;left:80px;right:80px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:'Noto Serif SC','Songti SC',serif;font-size:14px;letter-spacing:6px;color:#8B7355}
+.brand-line{flex:1;height:1px;background:#1B3B6B;margin:0 24px;opacity:0.4}
+.brand-num{font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:2px}
+
+/* Geometric decorations */
+.geo-circle-1{position:absolute;top:100px;right:120px;width:180px;height:180px;border:2px solid #1B3B6B;border-radius:50%}
+.geo-circle-2{position:absolute;top:140px;right:160px;width:100px;height:100px;background:#1B3B6B;border-radius:50%}
+.geo-square-1{position:absolute;top:120px;right:100px;width:60px;height:60px;background:#8B7355;opacity:0.7}
+.geo-line-v{position:absolute;top:300px;right:200px;width:1px;height:280px;background:#1B3B6B;opacity:0.3}
+.geo-line-h{position:absolute;top:820px;left:80px;right:80px;height:1px;background:#1B3B6B;opacity:0.25}
+
+/* Small accent circle bottom-left */
+.geo-dot-1{position:absolute;bottom:100px;left:140px;width:14px;height:14px;background:#1B3B6B;border-radius:50%}
+.geo-dot-2{position:absolute;bottom:100px;left:180px;width:14px;height:14px;background:#8B7355;border-radius:50%}
+.geo-dot-3{position:absolute;bottom:100px;left:220px;width:14px;height:14px;background:#555;border-radius:50%}
+.geo-triangle{position:absolute;bottom:60px;left:80px;width:0;height:0;border-left:20px solid transparent;border-right:20px solid transparent;border-bottom:34px solid #8B7355;opacity:0.6}
+
+/* Section label */
+.section-tag{font-family:'Noto Sans SC',sans-serif;font-size:12px;letter-spacing:8px;color:#8B7355;margin-bottom:20px}
+.section-tag-cn{font-family:'Noto Serif SC',serif;font-size:13px;letter-spacing:4px;color:#555;margin-bottom:30px}
+
+/* Main title */
+.main-title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:72px;font-weight:700;color:#1B3B6B;line-height:1.15;letter-spacing:2px;position:relative}
+.main-title-en{font-family:'Noto Serif SC',serif;font-size:20px;color:#8B7355;font-style:italic;margin-top:20px;letter-spacing:3px;font-weight:400}
+
+/* Divider */
+.title-divider{width:80px;height:4px;background:#1B3B6B;margin-top:35px}
+
+/* Content area */
+.content{position:absolute;left:80px;top:420px;width:900px;display:flex;flex-direction:column;gap:18px}
+.bullet{display:flex;align-items:flex-start;gap:20px;padding:12px 0;border-bottom:1px solid rgba(27,59,107,0.12)}
+.bullet-num{font-family:'Noto Serif SC',serif;font-size:18px;color:#8B7355;min-width:36px;padding-top:2px;letter-spacing:1px}
+.bullet-text{flex:1;font-size:15px;line-height:1.75;color:#1B3B6B}
+.bullet-text strong{color:#1B3B6B;font-weight:600;font-family:'Noto Serif SC',serif;font-size:16px}
+.bullet-text .en{color:#555;font-size:13px;font-style:italic;margin-left:8px;font-family:'Noto Serif SC',serif}
+
+/* Right side — architectural diagram */
+.diagram{position:absolute;top:340px;right:80px;width:520px;height:440px}
+.diag-circle-outer{position:absolute;top:20px;right:40px;width:280px;height:280px;border:2px solid #1B3B6B;border-radius:50%}
+.diag-circle-inner{position:absolute;top:90px;right:110px;width:140px;height:140px;background:#1B3B6B;border-radius:50%}
+.diag-square{position:absolute;top:160px;right:60px;width:80px;height:80px;background:#8B7355}
+.diag-bar-h{position:absolute;top:320px;right:0;width:440px;height:3px;background:#1B3B6B}
+.diag-bar-v{position:absolute;top:200px;right:180px;width:3px;height:120px;background:#8B7355}
+.diag-label-1{position:absolute;top:155px;right:30px;font-family:'Noto Serif SC',serif;font-size:12px;color:#8B7355;letter-spacing:2px}
+.diag-label-2{position:absolute;top:200px;right:220px;font-family:'Noto Serif SC',serif;font-size:12px;color:#8B7355;letter-spacing:2px}
+.diag-label-3{position:absolute;top:305px;right:0;font-family:'Noto Serif SC',serif;font-size:12px;color:#555;letter-spacing:2px}
+.diag-arrows{position:absolute;top:360px;right:0;width:440px;height:60px}
+.diag-arrow-line{position:absolute;top:10px;left:0;width:100px;height:1px;background:#1B3B6B;opacity:0.5}
+.diag-arrow-line-2{position:absolute;top:10px;left:120px;width:100px;height:1px;background:#8B7355;opacity:0.5}
+.diag-arrow-line-3{position:absolute;top:10px;left:240px;width:100px;height:1px;background:#555;opacity:0.4}
+.diag-arrow-head{position:absolute;top:6px;right:0;width:0;height:0;border-left:8px solid #1B3B6B;border-top:4px solid transparent;border-bottom:4px solid transparent}
+
+/* Bottom info */
+.bottom-info{position:absolute;bottom:30px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#8B7355;letter-spacing:3px;font-family:'Noto Serif SC',serif}
+</style></head>
+<body>
+<div class="page">
+
+  <div class="top-bar">
+    <span class="brand">OPEN SOURCE · 新制度经济学视角</span>
+    <span class="brand-line"></span>
+    <span class="brand-num">§ 结 语</span>
+  </div>
+
+  <div class="geo-circle-1"></div>
+  <div class="geo-circle-2"></div>
+  <div class="geo-square-1"></div>
+  <div class="geo-line-v"></div>
+
+  <div class="section-tag">PART · 06 — SYNTHESIS</div>
+  <div class="section-tag-cn">结 论 篇</div>
+
+  <h1 class="main-title">保持独立和发展的开源</h1>
+  <div class="title-divider"></div>
+  <div class="main-title-en">Maintaining Independence &amp; Development in Open Source</div>
+
+  <div class="content">
+    <div class="bullet">
+      <span class="bullet-num">01</span>
+      <span class="bullet-text"><strong>制度性独立的必要性</strong> <span class="en">— Institutional Independence</span><br>开源项目须通过许可协议、治理结构与基金会架构，确立对抗商业收编与政治干预的制度屏障。</span>
+    </div>
+    <div class="bullet">
+      <span class="bullet-num">02</span>
+      <span class="bullet-text"><strong>多元供给的生态韧性</strong> <span class="en">— Ecosystem Resilience</span><br>避免单一企业主导，通过多利益相关方协作、分叉机制与替代实现，维持创新供给的多样性与抗风险能力。</span>
+    </div>
+    <div class="bullet">
+      <span class="bullet-num">03</span>
+      <span class="bullet-text"><strong>可持续的激励与筹资</strong> <span class="en">— Sustainable Incentives</span><br>结合服务化收费、订阅模型、捐赠机制与公共资助，构建不依赖单一商业逻辑的复合型收入结构。</span>
+    </div>
+    <div class="bullet">
+      <span class="bullet-num">04</span>
+      <span class="bullet-text"><strong>知识公地的长期治理</strong> <span class="en">— Governing the Commons</span><br>以奥斯特罗姆式的自治规则为基础，建立清晰的贡献门槛、决策流程与冲突仲裁机制，防止公地悲剧。</span>
+    </div>
+    <div class="bullet">
+      <span class="bullet-num">05</span>
+      <span class="bullet-text"><strong>文化的自觉与传承</strong> <span class="en">— Cultural Self-Awareness</span><br>守护"分享、协作、自由"的原始精神，在商业化浪潮中保持社区的批判性距离与价值共识。</span>
+    </div>
+  </div>
+
+  <div class="diagram">
+    <div class="diag-circle-outer"></div>
+    <div class="diag-circle-inner"></div>
+    <div class="diag-square"></div>
+    <div class="diag-label-1">独立 INDEPENDENCE</div>
+    <div class="diag-label-2">发展 GROWTH</div>
+    <div class="diag-bar-h"></div>
+    <div class="diag-bar-v"></div>
+    <div class="diag-label-3">制度 · 治理 · 文化</div>
+    <div class="diag-arrows">
+      <div class="diag-arrow-line"></div>
+      <div class="diag-arrow-line-2"></div>
+      <div class="diag-arrow-line-3"></div>
+      <div class="diag-arrow-head"></div>
+    </div>
+  </div>
+
+  <div class="geo-triangle"></div>
+  <div class="geo-dot-1"></div>
+  <div class="geo-dot-2"></div>
+  <div class="geo-dot-3"></div>
+  <div class="geo-line-h"></div>
+
+  <div class="bottom-info">
+    <span>开源之道 · OPEN SOURCE</span>
+    <span>新制度经济学视角下的开源 / A New Institutional Economics Perspective</span>
+    <span>06 / END</span>
+  </div>
+
+</div>
+</body></html>

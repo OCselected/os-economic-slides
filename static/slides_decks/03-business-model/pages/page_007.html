@@ -1,0 +1,203 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>跨越有形与无形财产的边界</title><style>html,body{width:1600px;height:900px;overflow:hidden;margin:0;}body{background:#F5F0E8;font-family:'Noto Sans SC','PingFang SC',sans-serif;color:#1B3B6B;position:relative;}h1,h2,h3{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-weight:400;}
+/* Bauhaus geometric decorations */
+.deco-circle-1{position:absolute;top:60px;left:80px;width:120px;height:120px;border-radius:50%;background:#1B3B6B;}
+.deco-square-1{position:absolute;top:80px;left:230px;width:40px;height:40px;background:#8B7355;}
+.deco-line-1{position:absolute;top:120px;left:80px;width:200px;height:2px;background:#1B3B6B;}
+.deco-line-vertical{position:absolute;top:60px;left:500px;width:2px;height:60px;background:#1B3B6B;}
+.deco-number{position:absolute;top:30px;right:80px;font-family:'Noto Serif SC',serif;font-size:18px;color:#8B7355;letter-spacing:3px;}
+.deco-underline{position:absolute;top:68px;right:80px;width:60px;height:2px;background:#8B7355;}
+
+/* Visual metaphor area */
+.metaphor-area{position:absolute;top:200px;left:80px;width:700px;height:480px;}
+.boardwalk{position:absolute;top:280px;left:0;width:700px;height:60px;background:#8B7355;opacity:0.85;}
+.boardwalk-line{position:absolute;background:#5C4A32;height:1px;}
+.boardwalk-line:nth-child(1){top:295px;left:0;width:700px;}
+.boardwalk-line:nth-child(2){top:315px;left:0;width:700px;}
+.boardwalk-line:nth-child(3){top:335px;left:0;width:700px;}
+.water-line{position:absolute;top:278px;left:0;width:700px;height:3px;background:#1B3B6B;}
+.splash{position:absolute;border-radius:50%;background:#1B3B6B;}
+.splash-1{top:250px;left:120px;width:16px;height:16px;}
+.splash-2{top:240px;left:135px;width:10px;height:10px;}
+.splash-3{top:255px;left:110px;width:8px;height:8px;}
+.splash-4{top:245px;left:148px;width:6px;height:6px;}
+.splash-5{top:260px;left:128px;width:5px;height:5px;}
+.splash-6{top:230px;left:132px;width:4px;height:4px;}
+.splash-7{top:250px;left:380px;width:18px;height:18px;}
+.splash-8{top:238px;left:395px;width:11px;height:11px;}
+.splash-9{top:255px;left:370px;width:7px;height:7px;}
+.splash-10{top:245px;left:408px;width:5px;height:5px;}
+.splash-11{top:262px;left:388px;width:4px;height:4px;}
+.splash-12{top:232px;left:392px;width:3px;height:3px;}
+.splash-13{top:250px;left:600px;width:14px;height:14px;}
+.splash-14{top:242px;left:612px;width:8px;height:8px;}
+.splash-15{top:256px;left:592px;width:6px;height:6px;}
+.splash-16{top:262px;left:608px;width:4px;height:4px;}
+
+/* Footprints on the boardwalk */
+.footprint{position:absolute;border-radius:50%;background:#1B3B6B;opacity:0.7;}
+.fp-1{top:295px;left:125px;width:18px;height:22px;border-radius:50% 50% 40% 40%/60% 60% 40% 40%;}
+.fp-2{top:298px;left:155px;width:14px;height:18px;border-radius:50% 50% 40% 40%/60% 60% 40% 40%;}
+.fp-3{top:296px;left:240px;width:18px;height:22px;border-radius:50% 50% 40% 40%/60% 60% 40% 40%;}
+.fp-4{top:299px;left:270px;width:14px;height:18px;border-radius:50% 50% 40% 40%/60% 60% 40% 40%;}
+.fp-5{top:295px;left:385px;width:18px;height:22px;border-radius:50% 50% 40% 40%/60% 60% 40% 40%;}
+.fp-6{top:298px;left:415px;width:14px;height:18px;border-radius:50% 50% 40% 40%/60% 60% 40% 40%;}
+.fp-7{top:296px;left:510px;width:18px;height:22px;border-radius:50% 50% 40% 40%/60% 60% 40% 40%;}
+.fp-8{top:299px;left:540px;width:14px;height:18px;border-radius:50% 50% 40% 40%/60% 60% 40% 40%;}
+.fp-9{top:295px;left:605px;width:18px;height:22px;border-radius:50% 50% 40% 40%/60% 60% 40% 40%;}
+.fp-10{top:298px;left:635px;width:14px;height:18px;border-radius:50% 50% 40% 40%/60% 60% 40% 40%;}
+
+/* Water ripples */
+.ripple{position:absolute;border-radius:50%;border:1px solid #1B3B6B;opacity:0.3;}
+.rip-1{top:270px;left:90px;width:80px;height:80px;}
+.rip-2{top:265px;left:82px;width:96px;height:96px;opacity:0.15;}
+.rip-3{top:268px;left:348px;width:64px;height:64px;}
+.rip-4{top:263px;left:340px;width:80px;height:80px;opacity:0.15;}
+.rip-5{top:272px;left:568px;width:64px;height:64px;}
+.rip-6{top:267px;left:560px;width:80px;height:80px;opacity:0.15;}
+
+.metaphor-label{position:absolute;top:370px;left:0;width:700px;text-align:center;font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:4px;}
+.metaphor-sublabel{position:absolute;top:400px;left:0;width:700px;text-align:center;font-size:12px;color:#555;letter-spacing:2px;}
+
+/* Boundary markers */
+.boundary-left{position:absolute;top:180px;left:60px;width:20px;height:20px;border:2px solid #1B3B6B;background:transparent;}
+.boundary-right{position:absolute;top:180px;left:680px;width:20px;height:20px;border:2px solid #1B3B6B;background:#1B3B6B;}
+.boundary-tag-left{position:absolute;top:155px;left:20px;font-family:'Noto Serif SC',serif;font-size:13px;color:#1B3B6B;letter-spacing:2px;}
+.boundary-tag-right{position:absolute;top:155px;left:660px;font-family:'Noto Serif SC',serif;font-size:13px;color:#1B3B6B;letter-spacing:2px;}
+.boundary-bridge{position:absolute;top:190px;left:80px;width:600px;height:2px;background:#8B7355;}
+
+/* Content area */
+.content-area{position:absolute;top:200px;left:830px;width:690px;height:640px;}
+.content-title{font-family:'Noto Serif SC',serif;font-size:36px;color:#1B3B6B;line-height:1.4;margin-bottom:8px;}
+.content-subtitle{font-size:13px;color:#8B7355;letter-spacing:3px;margin-bottom:35px;font-family:'Noto Serif SC',serif;}
+.content-divider{width:80px;height:2px;background:#1B3B6B;margin-bottom:30px;}
+
+.bullet-list{list-style:none;padding:0;margin:0;}
+.bullet-item{margin-bottom:22px;display:flex;align-items:flex-start;gap:18px;}
+.bullet-marker{flex-shrink:0;margin-top:6px;}
+.bullet-marker-square{width:10px;height:10px;background:#1B3B6B;}
+.bullet-marker-circle{width:10px;height:10px;border-radius:50%;background:#8B7355;}
+.bullet-marker-line{width:2px;height:18px;background:#1B3B6B;margin-top:3px;}
+.bullet-marker-triangle{width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:10px solid #1B3B6B;margin-top:9px;}
+.bullet-marker-diamond{width:8px;height:8px;background:#1B3B6B;transform:rotate(45deg);margin-top:7px;}
+.bullet-text{flex:1;font-size:16px;color:#1B3B6B;line-height:1.7;}
+.bullet-text .sub{display:block;font-size:13px;color:#555;margin-top:3px;line-height:1.6;}
+.bullet-text .accent{color:#8B7355;font-weight:500;}
+
+/* Footer */
+.footer-line{position:absolute;bottom:40px;left:80px;width:1440px;height:1px;background:#1B3B6B;opacity:0.3;}
+.footer-left{position:absolute;bottom:20px;left:80px;font-size:11px;color:#8B7355;letter-spacing:2px;}
+.footer-right{position:absolute;bottom:20px;right:80px;font-size:11px;color:#8B7355;letter-spacing:2px;}
+
+/* Bottom right decoration */
+.deco-circle-tr{position:absolute;bottom:70px;right:70px;width:50px;height:50px;border-radius:50%;border:2px solid #1B3B6B;background:transparent;}
+.deco-square-tr{position:absolute;bottom:80px;right:140px;width:20px;height:20px;background:#8B7355;}
+
+/* Big decorative circle left-bottom */
+.deco-big-circle{position:absolute;bottom:80px;left:100px;width:80px;height:80px;border-radius:50%;background:#1B3B6B;opacity:0.08;}
+</style></head><body>
+
+<!-- Header decorations -->
+<div class="deco-circle-1"></div>
+<div class="deco-square-1"></div>
+<div class="deco-line-1"></div>
+<div class="deco-line-vertical"></div>
+<div class="deco-number">06 / 12</div>
+<div class="deco-underline"></div>
+
+<!-- Left: Visual Metaphor -->
+<div class="metaphor-area">
+  <div class="boundary-tag-left">TANGIBLE</div>
+  <div class="boundary-tag-right">INTANGIBLE</div>
+  <div class="boundary-left"></div>
+  <div class="boundary-right"></div>
+  <div class="boundary-bridge"></div>
+
+  <div class="boardwalk"></div>
+  <div class="water-line"></div>
+  <div class="boardwalk-line" style="top:295px;"></div>
+  <div class="boardwalk-line" style="top:315px;"></div>
+  <div class="boardwalk-line" style="top:335px;"></div>
+
+  <!-- Ripples -->
+  <div class="ripple rip-1"></div>
+  <div class="ripple rip-2"></div>
+  <div class="ripple rip-3"></div>
+  <div class="ripple rip-4"></div>
+  <div class="ripple rip-5"></div>
+  <div class="ripple rip-6"></div>
+
+  <!-- Splashes -->
+  <div class="splash splash-1"></div>
+  <div class="splash splash-2"></div>
+  <div class="splash splash-3"></div>
+  <div class="splash splash-4"></div>
+  <div class="splash splash-5"></div>
+  <div class="splash splash-6"></div>
+  <div class="splash splash-7"></div>
+  <div class="splash splash-8"></div>
+  <div class="splash splash-9"></div>
+  <div class="splash splash-10"></div>
+  <div class="splash splash-11"></div>
+  <div class="splash splash-12"></div>
+  <div class="splash splash-13"></div>
+  <div class="splash splash-14"></div>
+  <div class="splash splash-15"></div>
+  <div class="splash splash-16"></div>
+
+  <!-- Footprints -->
+  <div class="footprint fp-1"></div>
+  <div class="footprint fp-2"></div>
+  <div class="footprint fp-3"></div>
+  <div class="footprint fp-4"></div>
+  <div class="footprint fp-5"></div>
+  <div class="footprint fp-6"></div>
+  <div class="footprint fp-7"></div>
+  <div class="footprint fp-8"></div>
+  <div class="footprint fp-9"></div>
+  <div class="footprint fp-10"></div>
+
+  <div class="metaphor-label">木栈道 · 水花 · 湿脚印</div>
+  <div class="metaphor-sublabel">跨越有形与无形财产的边界</div>
+</div>
+
+<!-- Right: Content -->
+<div class="content-area">
+  <div class="content-title">跨越边界：从有形到无形</div>
+  <div class="content-subtitle">CROSSING THE BOUNDARY</div>
+  <div class="content-divider"></div>
+
+  <ul class="bullet-list">
+    <li class="bullet-item">
+      <div class="bullet-marker bullet-marker-square"></div>
+      <div class="bullet-text">To B 与 To C 是人话吗？<span class="sub">——语言先于制度，术语塑造认知框架</span></div>
+    </li>
+    <li class="bullet-item">
+      <div class="bullet-marker bullet-marker-circle"></div>
+      <div class="bullet-text">合同与许可<span class="sub">——私人约定与标准化赋权的两种治理机制</span></div>
+    </li>
+    <li class="bullet-item">
+      <div class="bullet-marker bullet-marker-line"></div>
+      <div class="bullet-text">私人秩序与公共立法<span class="sub">——自发协作规范与正式法律体系的张力</span></div>
+    </li>
+    <li class="bullet-item">
+      <div class="bullet-marker bullet-marker-triangle"></div>
+      <div class="bullet-text">面向<span class="accent">特定的社会实体</span><span class="sub">公司 · 政府 · 学校 · 非营利——识别明确的交易对象</span></div>
+    </li>
+    <li class="bullet-item">
+      <div class="bullet-marker bullet-marker-diamond"></div>
+      <div class="bullet-text">面向<span class="accent">全体公民</span><span class="sub">尽可能的简化手续——降低公共领域的进入门槛</span></div>
+    </li>
+  </ul>
+</div>
+
+<!-- Footer -->
+<div class="deco-big-circle"></div>
+<div class="deco-square-tr"></div>
+<div class="deco-circle-tr"></div>
+<div class="footer-line"></div>
+<div class="footer-left">新制度经济学视角下的开源 · NEW INSTITUTIONAL ECONOMICS</div>
+<div class="footer-right">OPEN SOURCE × INSTITUTIONAL DESIGN</div>
+
+</body></html>

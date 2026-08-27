@@ -1,0 +1,207 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>协作的演化 — 整齐木林中唯红向左</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden}
+body{font-family:'Noto Sans SC','Source Han Sans SC','PingFang SC',sans-serif;background:#F5F0E8;color:#1B3B6B;position:relative}
+
+/* subtle parchment texture */
+body::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;background:repeating-linear-gradient(0deg,transparent 0,transparent 3px,rgba(139,115,85,0.015) 3px,rgba(139,115,85,0.015) 4px),repeating-linear-gradient(90deg,transparent 0,transparent 5px,rgba(27,59,107,0.008) 5px,rgba(27,59,107,0.008) 6px);pointer-events:none;z-index:0}
+
+/* top rule */
+.top-rule{position:absolute;top:60px;left:80px;right:80px;height:2px;background:#1B3B6B;z-index:2}
+.top-rule::after{content:"";position:absolute;right:0;top:-6px;width:14px;height:14px;background:#8B7355;border-radius:50%}
+
+.slide-meta{position:absolute;top:30px;left:80px;font-size:13px;letter-spacing:3px;color:#555;text-transform:uppercase;z-index:3}
+.slide-meta-right{position:absolute;top:30px;right:80px;font-size:13px;letter-spacing:3px;color:#555;z-index:3}
+
+/* main title */
+.main-title{position:absolute;top:100px;left:80px;font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:56px;font-weight:700;color:#1B3B6B;letter-spacing:4px;line-height:1.2;z-index:3}
+.main-subtitle{position:absolute;top:178px;left:82px;font-size:18px;color:#8B7355;letter-spacing:2px;z-index:3;font-style:italic}
+
+/* visual metaphor band */
+.metaphor-band{position:absolute;top:240px;left:80px;width:520px;height:340px;z-index:3}
+.metaphor-label{position:absolute;top:0;left:0;font-size:12px;letter-spacing:4px;color:#8B7355;text-transform:uppercase}
+
+/* forest ground line */
+.forest-ground{position:absolute;left:0;bottom:60px;width:520px;height:2px;background:#1B3B6B;opacity:0.6}
+
+.tree{position:absolute;bottom:62px}
+.tree-trunk{width:4px;background:#1B3B6B;opacity:0.75}
+.tree-canopy{background:#1B3B6B;border-radius:50%}
+.tree-canopy-square{background:#1B3B6B}
+
+/* the red maverick tree */
+.tree-maverick{position:absolute;bottom:62px}
+.tree-maverick .tree-trunk{width:4px;background:#C4391E;opacity:1}
+.tree-maverick .tree-canopy{background:#C4391E}
+
+/* forest elements positioning */
+.t1{left:20px}.t1 .tree-trunk{height:120px}.t1 .tree-canopy{width:42px;height:42px;top:-22px;left:-19px}
+.t2{left:60px}.t2 .tree-trunk{height:100px}.t2 .tree-canopy{width:38px;height:38px;top:-19px;left:-17px}
+.t3{left:100px}.t3 .tree-trunk{height:130px}.t3 .tree-canopy{width:44px;height:44px;top:-22px;left:-20px}
+.t4{left:140px}.t4 .tree-trunk{height:95px}.t4 .tree-canopy{width:36px;height:36px;top:-18px;left:-16px}
+.t5{left:180px}.t5 .tree-trunk{height:115px}.t5 .tree-canopy-square{width:40px;height:40px;top:-20px;left:-18px;transform:rotate(0deg)}
+.t6{left:220px}.t6 .tree-trunk{height:125px}.t6 .tree-canopy{width:44px;height:44px;top:-22px;left:-20px}
+.t7{left:260px}.t7 .tree-trunk{height:105px}.t7 .tree-canopy{width:38px;height:38px;top:-19px;left:-17px}
+.t8{left:300px}.t8 .tree-trunk{height:135px}.t8 .tree-canopy{width:46px;height:46px;top:-23px;left:-21px}
+.t9{left:340px}.t9 .tree-trunk{height:98px}.t9 .tree-canopy{width:36px;height:36px;top:-18px;left:-16px}
+.t10{left:380px}.t10 .tree-trunk{height:118px}.t10 .tree-canopy{width:42px;height:42px;top:-21px;left:-19px}
+.t11{left:420px}.t11 .tree-trunk{height:108px}.t11 .tree-canopy{width:40px;height:40px;top:-20px;left:-18px}
+.t12{left:460px}.t12 .tree-trunk{height:128px}.t12 .tree-canopy{width:44px;height:44px;top:-22px;left:-20px}
+
+/* the maverick — tilted left, red */
+.t-maverick{left:598px}
+.t-maverick .tree-trunk{height:110px;width:4px;background:#C4391E;opacity:1;transform:rotate(28deg);transform-origin:bottom center}
+.t-maverick .tree-canopy{width:44px;height:44px;top:-22px;left:-22px;background:#C4391E;transform:rotate(28deg);transform-origin:center}
+
+.metaphor-arrow{position:absolute;bottom:15px;left:560px;width:60px;height:2px;background:#C4391E}
+.metaphor-arrow::before{content:"";position:absolute;left:-8px;top:-5px;width:0;height:0;border-right:10px solid #C4391E;border-top:6px solid transparent;border-bottom:6px solid transparent}
+
+.metaphor-caption{position:absolute;bottom:0;left:0;font-family:'Noto Serif SC','Songti SC',serif;font-size:15px;color:#555;font-style:italic;line-height:1.5;max-width:500px}
+.metaphor-caption .accent{color:#C4391E;font-style:normal;font-weight:700}
+
+/* right content */
+.right-panel{position:absolute;top:240px;left:680px;width:840px;height:520px;z-index:3}
+.right-title{font-family:'Noto Serif SC','Songti SC',serif;font-size:22px;color:#1B3B6B;font-weight:700;letter-spacing:2px;margin-bottom:6px}
+
+.bullet-list{margin-top:14px}
+.bullet-item{display:flex;align-items:flex-start;margin-bottom:22px;position:relative;padding-left:36px}
+.bullet-geo{position:absolute;left:0;top:6px}
+.bullet-circle{width:16px;height:16px;border:2px solid #1B3B6B;border-radius:50%;background:transparent}
+.bullet-square{width:16px;height:16px;background:#8B7355}
+.bullet-line{width:22px;height:2px;background:#1B3B6B;margin-top:8px}
+.bullet-red-circle{width:16px;height:16px;background:#C4391E;border-radius:50%}
+.bullet-diamond{width:14px;height:14px;background:#1B3B6B;transform:rotate(45deg);top:7px}
+
+.bullet-text{font-size:16px;color:#1B3B6B;line-height:1.7;flex:1}
+.bullet-text .label{font-weight:700;color:#1B3B6B}
+.bullet-text .desc{color:#555;font-size:14px;margin-top:3px;display:block;line-height:1.6}
+.bullet-text .highlight{color:#C4391E;font-weight:700}
+.bullet-text .mono{font-family:'Noto Sans Mono',monospace;background:rgba(27,59,107,0.06);padding:1px 6px;border-radius:2px;font-size:13px}
+
+/* bottom area */
+.bottom-rule{position:absolute;bottom:60px;left:80px;right:80px;height:1px;background:#1B3B6B;opacity:0.4;z-index:2}
+.bottom-text{position:absolute;bottom:30px;left:80px;font-size:11px;color:#555;letter-spacing:3px;z-index:3}
+.bottom-page{position:absolute;bottom:30px;right:80px;font-size:11px;color:#555;letter-spacing:3px;z-index:3}
+
+/* bauhaus decorative elements */
+.deco-circle-large{position:absolute;top:600px;right:60px;width:80px;height:80px;border:2px solid #8B7355;border-radius:50%;opacity:0.3;z-index:1}
+.deco-square{position:absolute;top:580px;right:160px;width:36px;height:36px;background:#1B3B6B;opacity:0.08;z-index:1}
+.deco-line-v{position:absolute;top:600px;left:620px;width:2px;height:240px;background:#1B3B6B;opacity:0.15;z-index:1}
+.deco-dot{position:absolute;bottom:80px;left:50%;width:8px;height:8px;background:#8B7355;border-radius:50%;opacity:0.5;z-index:2}
+
+/* evolution timeline mini in right panel */
+.timeline-strip{display:flex;align-items:center;gap:8px;margin-top:6px;font-size:12px;color:#8B7355}
+.timeline-strip .dot{width:8px;height:8px;background:#1B3B6B;border-radius:50%}
+.timeline-strip .seg{width:30px;height:1px;background:#1B3B6B;opacity:0.5}
+.timeline-strip .lbl{color:#555;font-size:12px}
+
+/* small diagram: collaboration evolution arrows */
+.collab-diagram{margin-top:18px;padding:16px 20px;background:rgba(27,59,107,0.04);border-left:3px solid #1B3B6B;position:relative}
+.collab-diagram-title{font-size:11px;letter-spacing:3px;color:#8B7355;text-transform:uppercase;margin-bottom:10px}
+.collab-row{display:flex;align-items:center;gap:12px;font-size:13px;color:#1B3B6B}
+.collab-stage{font-family:'Noto Serif SC',serif;font-size:14px;font-weight:700}
+.collab-arrow{font-size:18px;color:#8B7355;font-weight:300}
+.collab-note{font-size:11px;color:#555;margin-top:8px;font-style:italic}
+</style></head>
+<body>
+
+<div class="slide-meta">OPEN-SOURCE ECONOMICS · LECTURE 04</div>
+<div class="slide-meta-right">协作的演化 / EVOLUTION OF COLLABORATION</div>
+<div class="top-rule"></div>
+
+<h1 class="main-title">协作的演化</h1>
+<div class="main-subtitle">From Standalone to Transcending Time &amp; Space</div>
+
+<!-- Bauhaus forest metaphor -->
+<div class="metaphor-band">
+    <div class="metaphor-label">VISUAL METAPHOR</div>
+    <div class="forest-ground"></div>
+
+    <div class="tree t1"><div class="tree-trunk"></div><div class="tree-canopy"></div></div>
+    <div class="tree t2"><div class="tree-trunk"></div><div class="tree-canopy"></div></div>
+    <div class="tree t3"><div class="tree-trunk"></div><div class="tree-canopy"></div></div>
+    <div class="tree t4"><div class="tree-trunk"></div><div class="tree-canopy"></div></div>
+    <div class="tree t5"><div class="tree-trunk"></div><div class="tree-canopy"></div></div>
+    <div class="tree t6"><div class="tree-trunk"></div><div class="tree-canopy"></div></div>
+    <div class="tree t7"><div class="tree-trunk"></div><div class="tree-canopy"></div></div>
+    <div class="tree t8"><div class="tree-trunk"></div><div class="tree-canopy"></div></div>
+    <div class="tree t9"><div class="tree-trunk"></div><div class="tree-canopy"></div></div>
+    <div class="tree t10"><div class="tree-trunk"></div><div class="tree-canopy"></div></div>
+    <div class="tree t11"><div class="tree-trunk"></div><div class="tree-canopy"></div></div>
+    <div class="tree t12"><div class="tree-trunk"></div><div class="tree-canopy"></div></div>
+
+    <div class="tree-maverick t-maverick"><div class="tree-trunk"></div><div class="tree-canopy"></div></div>
+    <div class="metaphor-arrow"></div>
+
+    <div class="metaphor-caption">
+        <span class="accent">整齐木林中唯红向左</span>——<br>
+        协作的逆向选择与特立独行
+    </div>
+</div>
+
+<!-- right panel -->
+<div class="right-panel">
+
+    <div class="collab-diagram">
+        <div class="collab-diagram-title">技术载体的跃迁</div>
+        <div class="collab-row">
+            <span class="collab-stage">单机</span>
+            <span class="collab-arrow">→</span>
+            <span class="collab-stage">联网</span>
+            <span class="collab-arrow">→</span>
+            <span class="collab-stage">Internet</span>
+            <span class="collab-arrow">→</span>
+            <span class="collab-stage">WWW</span>
+        </div>
+        <div class="collab-row" style="margin-top:8px">
+            <span class="collab-stage">面对面</span>
+            <span class="collab-arrow">→</span>
+            <span class="collab-stage">跨越地理</span>
+            <span class="collab-arrow">→</span>
+            <span class="collab-stage">超越时空</span>
+        </div>
+        <div class="collab-note">从物理共在到异步协作——协作半径的指数级扩张</div>
+    </div>
+
+    <div class="bullet-list">
+
+        <div class="bullet-item">
+            <div class="bullet-geo"><div class="bullet-square"></div></div>
+            <div class="bullet-text">
+                <span class="label">版本控制的范式迁移</span>
+                <span class="desc"><span class="mono">Diff/patch</span> → <span class="mono">CVS</span> → <span class="mono">SVN</span> → <span class="mono">Git</span> —— 从集中式到分布式，从串行到并行</span>
+            </div>
+        </div>
+
+        <div class="bullet-item">
+            <div class="bullet-geo"><div class="bullet-circle"></div></div>
+            <div class="bullet-text">
+                <span class="label">Web 2.0 的社交化转向</span>
+                <span class="desc">协作不再止于代码——<span class="highlight">star</span> 的本质是对注意力资源的公开投票，是参与感的符号经济学</span>
+            </div>
+        </div>
+
+        <div class="bullet-item">
+            <div class="bullet-geo"><div class="bullet-red-circle"></div></div>
+            <div class="bullet-text">
+                <span class="label">逆向选择与特立独行</span>
+                <span class="desc">木林中那棵向左的红树：协作系统容许异见的程度，决定了其创新的天花板</span>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- decorative elements -->
+<div class="deco-circle-large"></div>
+<div class="deco-square"></div>
+<div class="deco-line-v"></div>
+<div class="deco-dot"></div>
+
+<div class="bottom-rule"></div>
+<div class="bottom-text">新制度经济学视角下的开源 / NHIE × OPEN SOURCE</div>
+<div class="bottom-page">04 / 12</div>
+
+</body></html>

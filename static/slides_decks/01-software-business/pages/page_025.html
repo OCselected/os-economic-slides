@@ -1,0 +1,105 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>软件交付简史之云与市场</title><style>html,body{width:1600px;height:900px;overflow:hidden;margin:0;font-family:'Noto Sans SC','PingFang SC',sans-serif;color:#1B3B6B}body{background:#F5F0E8;position:relative}*{margin:0;padding:0}h1,h2,h3{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-weight:700}.parchment-texture{position:absolute;top:0;left:0;width:1600px;height:900px;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(139,115,85,0.02) 3px,rgba(139,115,85,0.02) 4px);pointer-events:none}.top-rule{position:absolute;top:60px;left:80px;right:80px;height:2px;background:#1B3B6B}.top-rule-thin{position:absolute;top:68px;left:80px;right:80px;height:1px;background:#8B7355}.bottom-rule{position:absolute;bottom:60px;left:80px;right:80px;height:2px;background:#1B3B6B}.slide-num{position:absolute;top:80px;left:80px;font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:3px}.slide-num-right{position:absolute;top:80px;right:80px;font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:3px}
+
+.title-block{position:absolute;top:110px;left:80px;width:880px}.eyebrow{font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;letter-spacing:8px;margin-bottom:16px}.main-title{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:46px;color:#1B3B6B;line-height:1.2;margin-bottom:10px}.sub-title{font-family:'Noto Serif SC',serif;font-size:18px;color:#555;line-height:1.6;margin-top:18px;letter-spacing:1px}
+
+.divider-v{position:absolute;top:110px;left:990px;width:1px;height:680px;background:#8B7355;opacity:0.5}
+
+.bullets{position:absolute;top:120px;left:1030px;width:490px}.bullet-item{display:flex;align-items:flex-start;margin-bottom:32px;gap:18px}.bullet-num{font-family:'Noto Serif SC',serif;font-size:18px;color:#8B7355;min-width:28px;padding-top:4px;letter-spacing:1px}.bullet-text{font-family:'Noto Sans SC',sans-serif;font-size:17px;color:#1B3B6B;line-height:1.65;flex:1}.bullet-text strong{font-weight:700;color:#1B3B6B}.bullet-text .dim{color:#555;font-size:14px;display:block;margin-top:4px}
+
+/* Chrome logo visual metaphor - left side decorative */
+.chrome-zone{position:absolute;top:360px;left:80px;width:880px;height:420px}
+.chrome-label{font-family:'Noto Serif SC',serif;font-size:12px;color:#8B7355;letter-spacing:4px;margin-bottom:20px}.chrome-pair{display:flex;align-items:center;gap:80px;justify-content:center;margin-bottom:30px}.chrome-color{position:relative;width:180px;height:180px}.chrome-mono{position:relative;width:180px;height:180px}.vs-text{font-family:'Noto Serif SC',serif;font-size:24px;color:#8B7355;letter-spacing:6px}.chrome-caption{position:absolute;bottom:-30px;left:50%;transform:translateX(-50%);font-family:'Noto Serif SC',serif;font-size:12px;color:#8B7355;letter-spacing:3px;white-space:nowrap}
+
+/* Chrome color version - simplified Bauhaus geometric */
+.chrome-color .circle-outer{position:absolute;top:0;left:0;width:180px;height:180px;border-radius:50%;border:8px solid #1B3B6B;background:#F5F0E8}.chrome-color .tri-r{position:absolute;top:8px;left:90px;width:0;height:0;border-left:82px solid #E85D47;border-top:72px solid transparent;border-bottom:72px solid transparent}.chrome-color .tri-bl{position:absolute;top:90px;left:30px;width:0;height:0;border-right:72px solid transparent;border-bottom:60px solid #F4B942;border-left:72px solid #1B7F1B}.chrome-color .tri-br{position:absolute;top:90px;left:90px;width:0;height:0;border-right:82px solid #1B7F1B;border-bottom:60px solid transparent;border-left:82px solid #1B7F1B}.chrome-color .center-circle{position:absolute;top:66px;left:66px;width:48px;height:48px;border-radius:50%;background:#1B3B6B;border:6px solid #F5F0E8}
+
+.chrome-mono .circle-outer{position:absolute;top:0;left:0;width:180px;height:180px;border-radius:50%;border:8px solid #1B3B6B;background:#F5F0E8}.chrome-mono .tri-r{position:absolute;top:8px;left:90px;width:0;height:0;border-left:82px solid #1B3B6B;border-top:72px solid transparent;border-bottom:72px solid transparent}.chrome-mono .tri-bl{position:absolute;top:90px;left:30px;width:0;height:0;border-right:72px solid transparent;border-bottom:60px solid #1B3B6B;border-left:72px solid #1B3B6B}.chrome-mono .tri-br{position:absolute;top:90px;left:90px;width:0;height:0;border-right:82px solid #1B3B6B;border-bottom:60px solid transparent;border-left:82px solid #1B3B6B}.chrome-mono .center-circle{position:absolute;top:66px;left:66px;width:48px;height:48px;border-radius:50%;background:#1B3B6B;border:6px solid #F5F0E8}
+
+.metaphor-text{position:absolute;top:230px;left:0;right:0;text-align:center;font-family:'Noto Serif SC',serif;font-size:15px;color:#555;letter-spacing:2px;line-height:1.8}.metaphor-text .accent{color:#1B3B6B;font-weight:700}
+
+/* Geometric decorations */
+.geo-circle{position:absolute;top:70px;right:200px;width:24px;height:24px;border-radius:50%;background:#1B3B6B;opacity:0.15}.geo-square{position:absolute;top:70px;right:240px;width:20px;height:20px;background:#8B7355;opacity:0.2}.geo-line{position:absolute;bottom:80px;left:80px;width:40px;height:1px;background:#1B3B6B}.geo-dot1{position:absolute;top:540px;left:280px;width:8px;height:8px;background:#8B7355;border-radius:50%;opacity:0.5}
+
+/* Cloud & server diagram bottom area */
+.cloud-diagram{position:absolute;bottom:95px;left:1200px;width:320px;height:110px;display:flex;align-items:center;justify-content:center;gap:10px}.cloud-block{width:14px;height:14px;background:#1B3B6B}.cloud-block.hollow{background:transparent;border:1.5px solid #1B3B6B}.cloud-line{width:20px;height:1px;background:#8B7355}
+
+.footer-left{position:absolute;bottom:80px;left:80px;font-family:'Noto Serif SC',serif;font-size:12px;color:#8B7355;letter-spacing:3px}.footer-right{position:absolute;bottom:80px;right:80px;font-family:'Noto Serif SC',serif;font-size:12px;color:#8B7355;letter-spacing:3px}
+</style></head><body>
+<div class="parchment-texture"></div>
+<div class="geo-circle"></div>
+<div class="geo-square"></div>
+
+<div class="top-rule"></div>
+<div class="top-rule-thin"></div>
+<div class="bottom-rule"></div>
+
+<div class="slide-num">NIE / OPEN SOURCE · 05</div>
+<div class="slide-num-right">软件交付简史</div>
+
+<div class="title-block">
+  <div class="eyebrow">CHAPTER · 云与市场</div>
+  <div class="main-title">软件交付简史之<br>云与市场</div>
+  <div class="sub-title">当计算成为可租用的公共基础设施，软件的形态从"产品"转向"服务"——<br>所有权的退场与许可的扩权，构成了数字时代最根本的制度转变。</div>
+</div>
+
+<div class="divider-v"></div>
+
+<div class="bullets">
+  <div class="bullet-item">
+    <div class="bullet-num">Ⅰ</div>
+    <div class="bullet-text"><strong>数据中心的规模化</strong><span class="dim">物理基础设施的集中化，重塑了软件的分发路径</span></div>
+  </div>
+  <div class="bullet-item">
+    <div class="bullet-num">Ⅱ</div>
+    <div class="bullet-text"><strong>计算、存储、网络可被租用与计费</strong><span class="dim">资源商品化——时间、带宽、容量成为可度量的贸易单元</span></div>
+  </div>
+  <div class="bullet-item">
+    <div class="bullet-num">Ⅲ</div>
+    <div class="bullet-text"><strong>软件围绕资源由用户做出选择</strong><span class="dim">用户从"安装者"变为"订阅者"与"调用者"</span></div>
+  </div>
+  <div class="bullet-item">
+    <div class="bullet-num">Ⅳ</div>
+    <div class="bullet-text"><strong>应用市场的形成</strong><span class="dim">分发渠道的平台化——App Store、AWS Marketplace 等成为新的看门人</span></div>
+  </div>
+  <div class="bullet-item">
+    <div class="bullet-num">Ⅴ</div>
+    <div class="bullet-text"><strong>所有权的消失，许可的无限权力形成</strong><span class="dim">没有所有权的用户，只能服从于不断续签的条款</span></div>
+  </div>
+</div>
+
+<div class="chrome-zone">
+  <div class="chrome-label">— 视觉隐喻 · VISUAL METAPHOR —</div>
+  <div class="chrome-pair">
+    <div style="position:relative">
+      <div class="chrome-color">
+        <div class="circle-outer"></div>
+        <div class="tri-r"></div>
+        <div class="tri-bl"></div>
+        <div class="tri-br"></div>
+        <div class="center-circle"></div>
+      </div>
+      <div class="chrome-caption">同源 · 开源</div>
+    </div>
+    <div class="vs-text">/</div>
+    <div style="position:relative">
+      <div class="chrome-mono">
+        <div class="circle-outer"></div>
+        <div class="tri-r"></div>
+        <div class="tri-bl"></div>
+        <div class="tri-br"></div>
+        <div class="center-circle"></div>
+      </div>
+      <div class="chrome-caption">分化 · 闭源</div>
+    </div>
+  </div>
+  <div class="metaphor-text">同一枚徽标，<span class="accent">彩色</span>与<span class="accent">单色</span>的分化——<br>开源与闭源，<span class="accent">同根而异途</span></div>
+</div>
+
+<div class="geo-dot1"></div>
+<div class="geo-line"></div>
+
+<div class="footer-left">OPEN SOURCE · A NEW INSTITUTIONAL ECONOMICS PERSPECTIVE</div>
+<div class="footer-right">开源之道 / 日常交流</div>
+</body></html>

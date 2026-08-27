@@ -1,0 +1,198 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>版权经济 — 白鹭展翅</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0}
+body{background:#F5F0E8;font-family:'Noto Sans SC','Source Han Serif SC','PingFang SC',sans-serif;color:#1B3B6B;position:relative}
+canvas-texture{position:absolute;top:0;left:0;width:1600px;height:900px;pointer-events:none;opacity:0.04;background-image:radial-gradient(circle at 20% 30%, #1B3B6B 1px, transparent 1px),radial-gradient(circle at 70% 60%, #1B3B6B 1px, transparent 1px);background-size:3px 3px}
+
+/* Top border bar */
+.top-bar{position:absolute;top:0;left:0;width:1600px;height:6px;background:#1B3B6B}
+
+/* Header */
+.header{position:absolute;top:38px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:flex-end}
+.deck-label{font-size:11px;letter-spacing:4px;color:#8B7355;text-transform:uppercase;font-weight:500}
+.page-num{font-size:11px;letter-spacing:2px;color:#8B7355;font-family:'Noto Serif SC',serif}
+
+/* Title area */
+.title-block{position:absolute;top:90px;left:80px;width:820px}
+.title-eyebrow{font-size:12px;letter-spacing:6px;color:#8B7355;margin-bottom:16px;font-weight:500}
+.main-title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:62px;font-weight:700;line-height:1.15;color:#1B3B6B;letter-spacing:2px}
+.subtitle{font-family:'Noto Serif SC',serif;font-size:18px;color:#555;margin-top:18px;line-height:1.8;letter-spacing:1px;font-style:italic}
+.title-rule{width:120px;height:3px;background:#1B3B6B;margin-top:26px}
+
+/* Egt illustration area (right) */
+.egret-area{position:absolute;top:80px;right:60px;width:560px;height:480px}
+.egret-frame{position:absolute;top:0;left:0;width:560px;height:480px;border:1px solid #1B3B6B}
+.egret-corner-tl{position:absolute;top:-4px;left:-4px;width:14px;height:14px;background:#1B3B6B}
+.egret-corner-tr{position:absolute;top:-4px;right:-4px;width:14px;height:14px;background:#1B3B6B}
+.egret-corner-bl{position:absolute;bottom:-4px;left:-4px;width:14px;height:14px;background:#1B3B6B}
+.egret-corner-br{position:absolute;bottom:-4px;right:-4px;width:14px;height:14px;background:#1B3B6B}
+
+/* SVG egret container */
+.egret-svg{position:absolute;top:20px;left:20px;width:520px;height:440px}
+
+.egret-caption{position:absolute;bottom:-38px;left:0;width:100%;text-align:center;font-size:11px;letter-spacing:4px;color:#8B7355;font-style:italic}
+
+/* Bullets area */
+.bullets{position:absolute;top:610px;left:80px;width:1440px;display:flex;flex-direction:column;gap:0}
+.bullet-row{display:flex;align-items:center;padding:11px 0;border-bottom:1px solid rgba(27,59,107,0.15)}
+.bullet-row:last-child{border-bottom:none}
+.bullet-num{font-family:'Noto Serif SC',serif;font-size:15px;color:#8B7355;width:44px;letter-spacing:1px;font-weight:600}
+.bullet-dot{width:8px;height:8px;background:#1B3B6B;margin-right:18px;flex-shrink:0}
+.bullet-text{font-size:16px;color:#1B3B6B;line-height:1.5;letter-spacing:0.5px;flex:1}
+.bullet-tag{font-size:11px;color:#8B7355;letter-spacing:2px;font-family:'Noto Serif SC',serif;margin-left:16px;white-space:nowrap}
+
+/* Decorative geometric elements */
+.deco-circle-1{position:absolute;top:540px;left:560px;width:26px;height:26px;border-radius:50%;background:#1B3B6B}
+.deco-circle-2{position:absolute;top:580px;left:596px;width:14px;height:14px;border-radius:50%;background:#8B7355}
+.deco-square{position:absolute;top:568px;left:620px;width:10px;height:10px;background:#1B3B6B;transform:rotate(45deg)}
+
+/* Bottom bar */
+.bottom-bar{position:absolute;bottom:0;left:0;width:1600px;height:4px;background:#8B7355}
+.bottom-label{position:absolute;bottom:14px;left:80px;font-size:10px;letter-spacing:3px;color:#8B7355}
+.bottom-right{position:absolute;bottom:14px;right:80px;font-size:10px;letter-spacing:3px;color:#8B7355;font-family:'Noto Serif SC',serif}
+
+/* Section divider label */
+.section-label{position:absolute;top:530px;left:80px;font-size:12px;letter-spacing:5px;color:#8B7355;font-weight:500}
+.section-line{position:absolute;top:538px;left:200px;width:800px;height:1px;background:#8B7355}
+
+/* Metaphor label */
+.metaphor-box{position:absolute;top:530px;right:80px;width:380px;display:flex;align-items:center;gap:12px}
+.metaphor-label{font-size:11px;letter-spacing:4px;color:#8B7355}
+.metaphor-text{font-family:'Noto Serif SC',serif;font-size:13px;color:#1B3B6B;font-style:italic;line-height:1.5}
+</style></head>
+<body>
+
+<div class="top-bar"></div>
+
+<div class="header">
+  <div class="deck-label">新制度经济学 · 开源之道</div>
+  <div class="page-num">III / 07</div>
+</div>
+
+<div class="title-block">
+  <div class="title-eyebrow">SECTION Ⅲ — COPYRIGHT</div>
+  <div class="main-title">围绕版权的经济</div>
+  <div class="subtitle">The Political Economy of Copyright：<br>从《安妮法案》到纸张与印刷术的制度奠基</div>
+  <div class="title-rule"></div>
+</div>
+
+<div class="egret-area">
+  <div class="egret-frame">
+    <div class="egret-corner-tl"></div>
+    <div class="egret-corner-tr"></div>
+    <div class="egret-corner-bl"></div>
+    <div class="egret-corner-br"></div>
+  </div>
+
+  <svg class="egret-svg" viewBox="0 0 520 440" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background geometric composition -->
+    <rect x="380" y="60" width="80" height="80" fill="none" stroke="#8B7355" stroke-width="1" opacity="0.5"/>
+    <circle cx="420" cy="100" r="22" fill="none" stroke="#8B7355" stroke-width="1" opacity="0.5"/>
+    <line x1="60" y1="380" x2="480" y2="380" stroke="#1B3B6B" stroke-width="1.5"/>
+    <line x1="60" y1="380" x2="60" y2="80" stroke="#1B3B6B" stroke-width="1" opacity="0.3"/>
+
+    <!-- Ground circle (water/horizon) -->
+    <circle cx="260" cy="380" r="140" fill="none" stroke="#1B3B6B" stroke-width="0.8" opacity="0.25"/>
+    <ellipse cx="260" cy="385" rx="120" ry="6" fill="none" stroke="#1B3B6B" stroke-width="0.8" opacity="0.3"/>
+
+    <!-- Egt body -->
+    <path d="M 260 380 L 250 300 Q 248 270 260 250 Q 272 240 288 244 Q 310 250 316 270 Q 320 290 314 310 Q 308 335 300 360 L 290 380" 
+          fill="none" stroke="#1B3B6B" stroke-width="2.2" stroke-linejoin="round"/>
+
+    <!-- Egt neck (S-curve, raised head) -->
+    <path d="M 275 248 Q 268 210 278 180 Q 288 150 270 128 Q 258 118 248 122" 
+          fill="none" stroke="#1B3B6B" stroke-width="2.2" stroke-linecap="round"/>
+
+    <!-- Egt head -->
+    <circle cx="245" cy="120" r="9" fill="#1B3B6B"/>
+
+    <!-- Beak -->
+    <path d="M 236 120 L 218 117" stroke="#1B3B6B" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M 236 122 L 222 122" stroke="#1B3B6B" stroke-width="1.5" stroke-linecap="round"/>
+
+    <!-- Eye -->
+    <circle cx="244" cy="118" r="1.5" fill="#F5F0E8"/>
+
+    <!-- Wing (spread, geometric) -->
+    <path d="M 295 260 Q 340 240 380 250 Q 410 258 420 278 Q 410 285 380 288 Q 340 290 305 295 Z" 
+          fill="none" stroke="#1B3B6B" stroke-width="2" stroke-linejoin="round"/>
+    <!-- Wing inner lines -->
+    <line x1="320" y1="258" x2="320" y2="293" stroke="#1B3B6B" stroke-width="0.8" opacity="0.6"/>
+    <line x1="350" y1="254" x2="352" y2="291" stroke="#1B3B6B" stroke-width="0.8" opacity="0.6"/>
+    <line x1="380" y1="253" x2="382" y2="288" stroke="#1B3B6B" stroke-width="0.8" opacity="0.6"/>
+    <line x1="405" y1="258" x2="402" y2="283" stroke="#1B3B6B" stroke-width="0.8" opacity="0.6"/>
+
+    <!-- Second wing (upper, behind) -->
+    <path d="M 290 248 Q 320 220 360 218 Q 390 220 400 238 Q 380 240 350 240 Q 320 240 298 252 Z"
+          fill="none" stroke="#1B3B6B" stroke-width="1.5" opacity="0.6" stroke-linejoin="round"/>
+
+    <!-- Legs -->
+    <line x1="278" y1="380" x2="272" y2="420" stroke="#1B3B6B" stroke-width="1.8"/>
+    <line x1="290" y1="380" x2="294" y2="420" stroke="#1B3B6B" stroke-width="1.8"/>
+    <line x1="268" y1="420" x2="276" y2="420" stroke="#1B3B6B" stroke-width="1.8"/>
+    <line x1="290" y1="420" x2="298" y2="420" stroke="#1B3B6B" stroke-width="1.8"/>
+
+    <!-- Decorative geometry around egret -->
+    <circle cx="140" cy="180" r="40" fill="none" stroke="#8B7355" stroke-width="0.8" opacity="0.4"/>
+    <circle cx="140" cy="180" r="15" fill="#8B7355" opacity="0.15"/>
+    <line x1="140" y1="130" x2="140" y2="230" stroke="#8B7355" stroke-width="0.5" opacity="0.4"/>
+    <line x1="90" y1="180" x2="190" y2="180" stroke="#8B7355" stroke-width="0.5" opacity="0.4"/>
+
+    <!-- Small accent circle top-left -->
+    <circle cx="90" cy="100" r="5" fill="#1B3B6B"/>
+
+    <!-- Geometric label -->
+    <text x="440" y="200" font-family="Noto Serif SC, serif" font-size="9" fill="#8B7355" letter-spacing="2">FIG. III-07</text>
+    <text x="60" y="430" font-family="Noto Serif SC, serif" font-size="9" fill="#8B7355" letter-spacing="2" font-style="italic">Egretta garzetta — 白鹭</text>
+  </svg>
+
+  <div class="egret-caption">鹭 · 高洁 · 自由</div>
+</div>
+
+<div class="section-label">核心论点</div>
+<div class="section-line"></div>
+<div class="metaphor-box">
+  <div class="metaphor-label">META →</div>
+  <div class="metaphor-text">"白鹭昂首展翅，<br>象征高洁志向与对自由的向往。"</div>
+</div>
+
+<div class="bullets">
+  <div class="bullet-row">
+    <span class="bullet-num">01</span>
+    <span class="bullet-dot"></span>
+    <span class="bullet-text">围绕版权的经济 — 产权界定是知识生产的制度基础</span>
+    <span class="bullet-tag">CORE FRAMEWORK</span>
+  </div>
+  <div class="bullet-row">
+    <span class="bullet-num">02</span>
+    <span class="bullet-dot"></span>
+    <span class="bullet-text">《安妮法案》特许经营权 — 1710年版权制度之原点</span>
+    <span class="bullet-tag">HISTORICAL ORIGIN</span>
+  </div>
+  <div class="bullet-row">
+    <span class="bullet-num">03</span>
+    <span class="bullet-dot"></span>
+    <span class="bullet-text">权利用尽原则与二手市场 — 首次销售后的流通自由</span>
+    <span class="bullet-tag">EXHAUSTION DOCTRINE</span>
+  </div>
+  <div class="bullet-row">
+    <span class="bullet-num">04</span>
+    <span class="bullet-dot"></span>
+    <span class="bullet-text">创作者、传播者、阅读者三方的均衡 — 制度设计的三角张力</span>
+    <span class="bullet-tag">TRIPARTITE BALANCE</span>
+  </div>
+  <div class="bullet-row">
+    <span class="bullet-num">05</span>
+    <span class="bullet-dot"></span>
+    <span class="bullet-text">纸张和印刷术保证了交付 — 物质载体构成制度可行性</span>
+    <span class="bullet-tag">MATERIAL BASIS</span>
+  </div>
+</div>
+
+<div class="bottom-bar"></div>
+<div class="bottom-label">OPEN SOURCE ECONOMICS — LECTURE DECK</div>
+<div class="bottom-right">版权经济 / The Political Economy of Copyright</div>
+
+</body></html>

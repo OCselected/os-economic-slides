@@ -1,0 +1,115 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>科斯的观察视角</title><style>
+html,body{width:1600px;height:900px;overflow:hidden;margin:0;background:#F5F0E8;font-family:'Noto Sans SC','Songti SC',sans-serif;color:#1B3B6B;}
+body{position:relative;}
+
+/* parchment texture */
+body::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;background:
+  radial-gradient(ellipse at 20% 30%, rgba(139,115,85,0.04) 0%, transparent 50%),
+  radial-gradient(ellipse at 80% 70%, rgba(27,59,107,0.03) 0%, transparent 50%),
+  radial-gradient(ellipse at 50% 90%, rgba(139,115,85,0.03) 0%, transparent 40%);
+  pointer-events:none;z-index:0;}
+
+/* border frame */
+.frame{position:absolute;top:40px;left:60px;width:1480px;height:820px;border:1px solid #1B3B6B;opacity:0.5;z-index:1;}
+.frame-inner{position:absolute;top:48px;left:68px;width:1464px;height:804px;border:1px solid #1B3B6B;opacity:0.25;z-index:1;}
+
+/* top-left geometric composition */
+.geo-circle-big{position:absolute;top:110px;left:100px;width:280px;height:280px;border-radius:50%;background:#1B3B6B;z-index:2;}
+.geo-circle-outer{position:absolute;top:90px;left:80px;width:320px;height:320px;border-radius:50%;border:2px solid #1B3B6B;z-index:2;}
+.geo-circle-accent{position:absolute;top:160px;left:200px;width:80px;height:80px;border-radius:50%;background:#F5F0E8;z-index:3;}
+.geo-circle-dot{position:absolute;top:195px;left:235px;width:10px;height:10px;border-radius:50%;background:#1B3B6B;z-index:4;}
+
+.geo-square{position:absolute;top:200px;left:340px;width:120px;height:120px;background:#8B7355;z-index:2;}
+.geo-square-outline{position:absolute;top:180px;left:320px;width:120px;height:120px;border:2px solid #1B3B6B;z-index:2;}
+
+/* horizontal bar */
+.bar-top{position:absolute;top:145px;left:500px;width:60px;height:6px;background:#1B3B6B;z-index:2;}
+.bar-mid{position:absolute;top:235px;left:500px;width:120px;height:3px;background:#1B3B6B;z-index:2;}
+.bar-bot{position:absolute;top:295px;left:500px;width:40px;height:3px;background:#8B7355;z-index:2;}
+
+/* triangle-ish via positioning */
+.geo-tri{position:absolute;top:340px;left:140px;width:0;height:0;border-left:60px solid transparent;border-right:60px solid transparent;border-bottom:104px solid #1B3B6B;z-index:2;}
+.geo-tri-out{position:absolute;top:340px;left:128px;width:0;height:0;border-left:72px solid transparent;border-right:72px solid transparent;border-bottom:128px solid #F5F0E8;border-bottom-style:hidden;z-index:2;}
+
+/* right side content */
+.section-label{position:absolute;top:130px;left:520px;font-size:14px;letter-spacing:8px;color:#8B7355;z-index:5;font-weight:500;}
+.section-line{position:absolute;top:160px;left:520px;width:60px;height:1px;background:#8B7355;z-index:5;}
+
+.quote-mark{position:absolute;top:210px;left:510px;font-family:'Noto Serif SC',serif;font-size:160px;line-height:0.8;color:#1B3B6B;opacity:0.15;z-index:3;font-weight:700;}
+
+.quote-text{position:absolute;top:270px;left:520px;width:960px;font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:34px;line-height:1.7;color:#1B3B6B;z-index:5;font-weight:400;letter-spacing:1px;}
+
+.quote-divider{position:absolute;top:490px;left:520px;width:80px;height:2px;background:#1B3B6B;z-index:5;}
+
+.attribution{position:absolute;top:520px;left:610px;font-family:'Noto Serif SC',serif;font-size:22px;color:#1B3B6B;z-index:5;font-weight:400;letter-spacing:2px;}
+.attribution-work{position:absolute;top:560px;left:610px;font-family:'Noto Sans SC',sans-serif;font-size:15px;color:#8B7355;z-index:5;letter-spacing:3px;font-style:italic;}
+
+/* bottom meta */
+.bottom-left{position:absolute;bottom:80px;left:100px;font-size:12px;color:#555;letter-spacing:4px;z-index:5;}
+.bottom-right{position:absolute;bottom:80px;right:100px;font-size:12px;color:#555;letter-spacing:4px;z-index:5;font-style:italic;}
+
+/* vertical decorative line */
+.v-line{position:absolute;top:120px;left:500px;width:1px;height:660px;background:#1B3B6B;opacity:0.3;z-index:2;}
+
+/* small decorative elements bottom-right geometric */
+.geo-mini-circle{position:absolute;bottom:200px;right:180px;width:60px;height:60px;border-radius:50%;border:2px solid #1B3B6B;z-index:2;}
+.geo-mini-circle-fill{position:absolute;bottom:205px;right:185px;width:50px;height:50px;border-radius:50%;background:#8B7355;opacity:0.4;z-index:3;}
+.geo-mini-square{position:absolute;bottom:220px;right:280px;width:40px;height:40px;background:#1B3B6B;opacity:0.15;z-index:2;}
+.geo-line-h{position:absolute;top:750px;left:100px;width:200px;height:1px;background:#1B3B6B;opacity:0.4;z-index:2;}
+.geo-line-h2{position:absolute;top:770px;left:100px;width:120px;height:1px;background:#8B7355;opacity:0.6;z-index:2;}
+
+/* title area */
+.title-en{position:absolute;top:78px;left:520px;font-size:13px;letter-spacing:6px;color:#555;z-index:5;}
+.title-zh{position:absolute;top:100px;left:520px;font-size:13px;letter-spacing:4px;color:#8B7355;z-index:5;}
+
+/* page number */
+.page-num{position:absolute;bottom:80px;left:500px;font-size:12px;color:#8B7355;letter-spacing:3px;z-index:5;font-family:'Noto Serif SC',serif;font-style:italic;}
+</style></head><body>
+<div class="frame"></div>
+<div class="frame-inner"></div>
+
+<!-- Left geometric composition -->
+<div class="geo-circle-outer"></div>
+<div class="geo-circle-big"></div>
+<div class="geo-circle-accent"></div>
+<div class="geo-circle-dot"></div>
+<div class="geo-square"></div>
+<div class="geo-square-outline"></div>
+<div class="bar-top"></div>
+<div class="bar-mid"></div>
+<div class="bar-bot"></div>
+<div class="geo-tri-out"></div>
+<div class="geo-tri"></div>
+
+<!-- Vertical divider -->
+<div class="v-line"></div>
+
+<!-- Title area -->
+<div class="title-en">ECONOMIC PERSPECTIVE</div>
+<div class="title-zh">经 济 学 视 角</div>
+
+<!-- Section -->
+<div class="section-label">ROSE — COASE</div>
+<div class="section-line"></div>
+
+<div class="quote-mark">"</div>
+
+<div class="quote-text">经济学家带给其他社会科学的主要优势，<br>仅仅是一种观察世界的方式。</div>
+
+<div class="quote-divider"></div>
+<div class="attribution">罗纳德·H·科斯</div>
+<div class="attribution-work">《Economics and Contiguous Disciplines》</div>
+
+<!-- Bottom decorations -->
+<div class="geo-mini-square"></div>
+<div class="geo-mini-circle"></div>
+<div class="geo-mini-circle-fill"></div>
+<div class="geo-line-h"></div>
+<div class="geo-line-h2"></div>
+
+<div class="bottom-left">OPEN SOURCE · INSTITUTIONAL ECONOMICS</div>
+<div class="bottom-right">Lectures on Open Source Economics</div>
+<div class="page-num">— 02 —</div>
+</body></html>

@@ -1,0 +1,208 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>第3期·商业模式：规则下的具体操作</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif}
+body{background:#F5F0E8;position:relative}
+
+/* Top bar */
+.top-bar{position:absolute;top:0;left:0;width:1600px;height:6px;background:#1B3B6B}
+.top-bar-accent{position:absolute;top:6px;left:0;width:400px;height:4px;background:#8B7355}
+
+/* Header */
+.header{position:absolute;top:40px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:flex-end}
+.eyebrow{font-size:14px;letter-spacing:8px;color:#8B7355;font-weight:400}
+.eyebrow-line{display:flex;align-items:center;gap:14px}
+.eyebrow-line span.line{width:60px;height:1px;background:#8B7355}
+.issue-tag{font-size:12px;letter-spacing:4px;color:#555}
+
+/* Main title */
+.main-title{position:absolute;top:90px;left:80px;width:900px}
+.main-title h1{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:52px;color:#1B3B6B;font-weight:700;line-height:1.15;letter-spacing:2px}
+.main-title .subtitle{margin-top:18px;font-size:16px;color:#555;line-height:1.8;letter-spacing:1px;font-weight:400}
+
+/* Decorative geometric block - visual metaphor */
+.viz-block{position:absolute;top:280px;left:80px;width:560px;height:420px;background:#1B3B6B;overflow:hidden}
+.viz-label{position:absolute;top:-22px;left:0;font-size:11px;letter-spacing:6px;color:#8B7355;font-weight:400}
+.viz-label-en{position:absolute;top:-22px;right:0;font-size:11px;letter-spacing:4px;color:#8B7355}
+
+/* Circles inside viz */
+.viz-circle-1{position:absolute;width:120px;height:120px;border:2px solid #8B7355;border-radius:50%;top:60px;left:60px;background:transparent}
+.viz-circle-2{position:absolute;width:80px;height:80px;background:#8B7355;border-radius:50%;top:230px;left:120px;opacity:0.85}
+.viz-circle-3{position:absolute;width:60px;height:60px;border:1.5px solid #F5F0E8;border-radius:50%;top:40px;left:380px}
+.viz-square-1{position:absolute;width:50px;height:50px;background:#F5F0E8;top:280px;left:400px;opacity:0.7}
+.viz-square-2{position:absolute;width:30px;height:30px;border:2px solid #8B7355;top:310px;left:470px}
+
+/* Roadmap lines */
+.road-line-1{position:absolute;height:1px;background:#8B7355;top:140px;left:180px;width:280px;opacity:0.7}
+.road-line-2{position:absolute;height:1px;background:#F5F0E8;top:200px;left:120px;width:340px;opacity:0.5}
+.road-line-3{position:absolute;height:1px;background:#8B7355;top:260px;left:200px;width:220px;opacity:0.6}
+.road-line-4{position:absolute;height:1px;background:#F5F0E8;top:320px;left:160px;width:300px;opacity:0.4}
+
+/* Currency symbols */
+.sym{position:absolute;font-family:'Noto Serif SC',serif;color:#F5F0E8;font-size:22px;font-weight:300;opacity:0.6}
+.sym-cny{top:90px;left:280px}
+.sym-usd{top:180px;left:340px;color:#8B7355;font-size:28px}
+.sym-eur{top:250px;left:400px}
+.sym-jpy{top:310px;left:320px;color:#8B7355}
+.sym-gbp{top:60px;left:480px;font-size:18px}
+.sym-eth{top:350px;left:220px;color:#8B7355;font-size:16px}
+
+/* Roadmap nodes */
+.node{position:absolute;width:8px;height:8px;background:#F5F0E8;border-radius:50%;top:140px;left:180px}
+.node-2{position:absolute;width:6px;height:6px;background:#8B7355;border-radius:50%;top:197px;left:340px}
+.node-3{position:absolute;width:6px;height:6px;background:#F5F0E8;border-radius:50%;top:257px;left:280px}
+.node-4{position:absolute;width:6px;height:6px;background:#8B7355;border-radius:50%;top:317px;left:220px}
+.node-5{position:absolute;width:6px;height:6px;background:#F5F0E8;border-radius:50%;top:317px;left:380px}
+
+.viz-caption{position:absolute;bottom:12px;left:16px;font-size:11px;color:#8B7355;letter-spacing:3px}
+
+/* Right side - readings */
+.readings{position:absolute;top:280px;right:80px;width:720px}
+.readings-header{display:flex;align-items:center;gap:16px;margin-bottom:28px}
+.readings-header .bar{width:48px;height:2px;background:#1B3B6B}
+.readings-header .label{font-family:'Noto Serif SC',serif;font-size:20px;color:#1B3B6B;letter-spacing:3px;font-weight:600}
+.readings-header .label-en{font-size:12px;color:#8B7355;letter-spacing:3px;margin-left:12px}
+
+.book-list{display:flex;flex-direction:column;gap:18px}
+.book-item{display:flex;align-items:flex-start;gap:18px;padding:16px 0;border-bottom:1px solid #D4CDBE}
+.book-item:last-child{border-bottom:none}
+.book-num{font-family:'Noto Serif SC',serif;font-size:26px;color:#8B7355;font-weight:400;line-height:1;flex-shrink:0;width:40px;padding-top:4px}
+.book-content{flex:1}
+.book-title{font-family:'Noto Serif SC',serif;font-size:16px;color:#1B3B6B;font-weight:600;line-height:1.4;margin-bottom:6px}
+.book-meta{font-size:13px;color:#555;line-height:1.6;letter-spacing:0.5px}
+.book-meta .author{color:#1B3B6B;font-weight:500}
+.book-meta .pub{color:#8B7355}
+.book-tag{display:inline-block;font-size:10px;letter-spacing:2px;color:#8B7355;border:1px solid #8B7355;padding:2px 8px;margin-top:6px}
+
+/* Bottom bar */
+.bottom-bar{position:absolute;bottom:0;left:0;width:1600px;height:40px;background:#1B3B6B;display:flex;align-items:center;justify-content:space-between;padding:0 80px}
+.bottom-bar .left-info{font-size:11px;letter-spacing:3px;color:#F5F0E8;opacity:0.7}
+.bottom-bar .right-info{font-size:11px;letter-spacing:3px;color:#F5F0E8;opacity:0.7}
+.bottom-bar .divider{color:#8B7355;margin:0 12px}
+
+/* Geometric accents */
+.deco-square-tl{position:absolute;top:60px;left:60px;width:8px;height:8px;background:#1B3B6B}
+.deco-circle-tr{position:absolute;top:70px;right:80px;width:14px;height:14px;border:1.5px solid #1B3B6B;border-radius:50%}
+.deco-line-left{position:absolute;top:500px;left:58px;width:1px;height:80px;background:#8B7355;opacity:0.6}
+.deco-square-br{position:absolute;bottom:60px;right:60px;width:12px;height:12px;background:#8B7355}
+
+/* Vertical accent */
+.v-accent{position:absolute;top:280px;left:670px;width:1px;height:420px;background:#D4CDBE}
+</style></head><body>
+
+<div class="top-bar"></div>
+<div class="top-bar-accent"></div>
+
+<div class="deco-square-tl"></div>
+<div class="deco-circle-tr"></div>
+
+<div class="header">
+  <div class="eyebrow-line">
+    <span class="line"></span>
+    <span class="eyebrow">OPEN SOURCE · NEW INSTITUTIONAL ECONOMICS</span>
+  </div>
+  <div class="issue-tag">EPISODE 03 / 07</div>
+</div>
+
+<div class="main-title">
+  <h1>第3期 · 商业模式<br>规则下的具体操作</h1>
+  <div class="subtitle">Business Models — Operational Practices Under Rules</div>
+</div>
+
+<div class="viz-block">
+  <div class="viz-label">—— 视觉隐喻</div>
+  <div class="viz-label-en">VISUAL METAPHOR ——</div>
+
+  <div class="viz-circle-1"></div>
+  <div class="viz-circle-2"></div>
+  <div class="viz-circle-3"></div>
+  <div class="viz-square-1"></div>
+  <div class="viz-square-2"></div>
+
+  <div class="road-line-1"></div>
+  <div class="road-line-2"></div>
+  <div class="road-line-3"></div>
+  <div class="road-line-4"></div>
+
+  <div class="node"></div>
+  <div class="node node-2"></div>
+  <div class="node node-3"></div>
+  <div class="node node-4"></div>
+  <div class="node node-5"></div>
+
+  <span class="sym sym-cny">¥</span>
+  <span class="sym sym-usd">$</span>
+  <span class="sym sym-eur">€</span>
+  <span class="sym sym-jpy">￥</span>
+  <span class="sym sym-gbp">£</span>
+  <span class="sym sym-eth">Ξ</span>
+
+  <div class="viz-caption">ROADMAP × CURRENCY — 多元商业路径</div>
+</div>
+
+<div class="readings">
+  <div class="readings-header">
+    <div class="bar"></div>
+    <span class="label">推荐阅读</span>
+    <span class="label-en">RECOMMENDED READING</span>
+  </div>
+
+  <div class="book-list">
+    <div class="book-item">
+      <div class="book-num">01</div>
+      <div class="book-content">
+        <div class="book-title">Linux, Under The Radar</div>
+        <div class="book-meta">
+          <span class="author">Robert Young / Rod Canion</span>　著　|　中国青年出版社，2000.11
+        </div>
+        <span class="book-tag">EARLY · RED HAT</span>
+      </div>
+    </div>
+
+    <div class="book-item">
+      <div class="book-num">02</div>
+      <div class="book-content">
+        <div class="book-title">Rebel Code: Linux and the Open Source Revolution</div>
+        <div class="book-meta">
+          <span class="author">Glyn Moody</span>　著　|　Perseus Books，2002.07
+        </div>
+        <span class="book-tag">HISTORY · REVOLUTION</span>
+      </div>
+    </div>
+
+    <div class="book-item">
+      <div class="book-num">03</div>
+      <div class="book-content">
+        <div class="book-title">Open Source Law, Policy and Practice</div>
+        <div class="book-meta">
+          <span class="author">Amanda Brock</span>　主编　|　Oxford University Press，2023.01
+        </div>
+        <span class="book-tag">LAW · POLICY</span>
+      </div>
+    </div>
+
+    <div class="book-item">
+      <div class="book-num">04</div>
+      <div class="book-content">
+        <div class="book-title">From Project to Profit: How to Build a Business Around Your Open Source Project</div>
+        <div class="book-meta">
+          <span class="author">Heather Meeker</span>　著　|　O'Reilly，2023.10
+        </div>
+        <span class="book-tag">PRACTICE · MONETIZATION</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="v-accent"></div>
+
+<div class="deco-line-left"></div>
+<div class="deco-square-br"></div>
+
+<div class="bottom-bar">
+  <div class="left-info">开源之道 <span class="divider">/</span> 新制度经济学视角 <span class="divider">/</span> OPEN SOURCE ROAD</div>
+  <div class="right-info">03 · 商业模式 <span class="divider">/</span> BUSINESS MODELS</div>
+</div>
+
+</body></html>

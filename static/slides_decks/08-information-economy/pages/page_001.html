@@ -1,0 +1,284 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>第 08 期 · 前情提要</title><style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html,body { width:1600px; height:900px; overflow:hidden; margin:0; }
+body {
+  background:#F5F0E8;
+  font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-serif;
+  color:#1B3B6B;
+  position:relative;
+  display:flex;
+}
+/* Bauhaus decorations */
+.deco-circle-1 {
+  position:absolute; top:60px; right:80px;
+  width:200px; height:200px; border-radius:50%;
+  border:2px solid #1B3B6B;
+}
+.deco-circle-2 {
+  position:absolute; top:130px; right:150px;
+  width:60px; height:60px; border-radius:50%;
+  background:#1B3B6B;
+}
+.deco-square-1 {
+  position:absolute; bottom:80px; left:70px;
+  width:80px; height:80px;
+  background:#8B7355;
+  opacity:0.85;
+}
+.deco-line-1 {
+  position:absolute; top:320px; left:60px;
+  width:2px; height:500px; background:#1B3B6B;
+}
+.deco-line-2 {
+  position:absolute; top:80px; left:60px;
+  width:600px; height:2px; background:#1B3B6B;
+}
+.deco-line-3 {
+  position:absolute; bottom:170px; left:60px;
+  width:1480px; height:2px; background:#8B7355;
+  opacity:0.5;
+}
+.deco-circle-3 {
+  position:absolute; bottom:60px; right:120px;
+  width:12px; height:12px; border-radius:50%;
+  background:#1B3B6B;
+}
+.deco-square-2 {
+  position:absolute; bottom:120px; right:60px;
+  width:30px; height:30px; border:2px solid #1B3B6B;
+}
+.deco-line-4 {
+  position:absolute; top:80px; left:680px;
+  width:2px; height:140px; background:#8B7355; opacity:0.4;
+}
+
+/* Header */
+.header {
+  position:absolute; top:100px; left:90px;
+  width:620px;
+}
+.issue-tag {
+  font-family:'Noto Sans SC',sans-serif;
+  font-size:13px; letter-spacing:4px;
+  color:#8B7355; font-weight:500;
+  margin-bottom:16px;
+}
+.main-title {
+  font-family:'Noto Serif SC','Songti SC',serif;
+  font-size:72px; font-weight:700;
+  color:#1B3B6B; line-height:1.1;
+  letter-spacing:2px;
+}
+.main-sub {
+  font-family:'Noto Serif SC',serif;
+  font-size:18px; font-weight:400;
+  color:#555; margin-top:18px;
+  letter-spacing:1px; line-height:1.8;
+}
+.main-sub em {
+  font-style:normal; color:#1B3B6B; font-weight:600;
+}
+
+/* Left column description */
+.left-desc {
+  position:absolute; top:400px; left:90px;
+  width:520px;
+}
+.left-desc .kicker {
+  font-size:14px; letter-spacing:3px;
+  color:#8B7355; font-weight:500;
+  margin-bottom:14px;
+  padding-bottom:14px;
+  border-bottom:1px solid #8B7355;
+  display:inline-block;
+}
+.left-desc p {
+  font-size:15px; line-height:2;
+  color:#555; font-family:'Noto Serif SC',serif;
+  font-weight:400;
+}
+.left-desc p .hl {
+  color:#1B3B6B; font-weight:600;
+}
+
+/* Right panel - scroll/timeline */
+.timeline-panel {
+  position:absolute; top:100px; right:60px;
+  width:680px; height:720px;
+  background:transparent;
+  border:1px solid #1B3B6B;
+  border-radius:4px;
+  padding:40px 44px 40px 44px;
+}
+.timeline-header {
+  display:flex; align-items:center;
+  gap:14px; margin-bottom:8px;
+  padding-bottom:18px;
+  border-bottom:2px solid #1B3B6B;
+}
+.timeline-header .num {
+  font-family:'Noto Serif SC',serif;
+  font-size:28px; font-weight:700;
+  color:#1B3B6B;
+}
+.timeline-header .label {
+  font-family:'Noto Serif SC',serif;
+  font-size:22px; font-weight:600;
+  color:#1B3B6B; letter-spacing:2px;
+}
+.timeline-header .meta {
+  font-size:12px; color:#8B7355;
+  letter-spacing:2px; margin-left:auto;
+}
+
+.timeline-list {
+  margin-top:18px;
+}
+.tl-item {
+  display:flex; align-items:flex-start;
+  gap:14px;
+  padding:7px 0;
+  border-bottom:1px dotted rgba(27,59,107,0.2);
+}
+.tl-item:last-child { border-bottom:none; }
+.tl-num {
+  font-family:'Noto Serif SC',serif;
+  font-size:15px; font-weight:700;
+  color:#1B3B6B;
+  width:44px; flex-shrink:0;
+  text-align:right;
+  padding-top:2px;
+}
+.tl-marker {
+  width:10px; height:10px; flex-shrink:0;
+  margin-top:6px;
+  border:2px solid #1B3B6B;
+  background:transparent;
+  position:relative;
+}
+.tl-marker.square { border-radius:0; }
+.tl-marker.circle { border-radius:50%; }
+.tl-marker.filled { background:#1B3B6B; }
+.tl-marker.copper { border-color:#8B7355; }
+.tl-marker.copper-filled { background:#8B7355; border-color:#8B7355; }
+
+.tl-text {
+  flex:1;
+  font-family:'Noto Serif SC',serif;
+  font-size:15px; line-height:1.5;
+  color:#1B3B6B; font-weight:400;
+}
+.tl-text.current {
+  color:#1B3B6B; font-weight:700;
+  font-size:16px;
+}
+.tl-text.current::before {
+  content:"▸ "; color:#8B7355; font-weight:700;
+}
+
+/* footer */
+.footer {
+  position:absolute; bottom:30px; left:90px;
+  font-size:11px; letter-spacing:2px;
+  color:#8B7355; font-family:'Noto Sans SC',sans-serif;
+}
+.footer-right {
+  position:absolute; bottom:30px; right:90px;
+  font-size:11px; letter-spacing:2px;
+  color:#8B7355; font-family:'Noto Sans SC',sans-serif;
+}
+</style></head><body>
+
+<!-- Bauhaus geometric decorations -->
+<div class="deco-circle-1"></div>
+<div class="deco-circle-2"></div>
+<div class="deco-square-1"></div>
+<div class="deco-line-1"></div>
+<div class="deco-line-2"></div>
+<div class="deco-line-3"></div>
+<div class="deco-line-4"></div>
+<div class="deco-circle-3"></div>
+<div class="deco-square-2"></div>
+
+<!-- Header -->
+<div class="header">
+  <div class="issue-tag">LECTURE REVIEW · 学术路线足迹</div>
+  <div class="main-title">前情提要</div>
+  <div class="main-sub">
+    深蓝色羊皮卷展开 · 标记<em> 前五期 </em>学术路线足迹<br>
+    A Review of the Academic Journey — 新制度经济学视角下的开源
+  </div>
+</div>
+
+<!-- Left description -->
+<div class="left-desc">
+  <div class="kicker">CONTEXT &amp; PATHWAY</div>
+  <p>
+    自第零期起，本讲座沿<span class="hl">"制度—协作—激励"</span>三轴展开，从开源生产的经济学基础出发，逐步深入到许可规则、商业模式、劳动力市场、交易成本、组织治理与文化政治等核心议题。<br><br>
+    本期将聚焦<span class="hl">商业价值与社会价值</span>之间的张力，回到<span class="hl">政治经济学</span>的分析框架，审视开源运动的内在逻辑与外部矛盾。
+  </p>
+</div>
+
+<!-- Right timeline panel -->
+<div class="timeline-panel">
+  <div class="timeline-header">
+    <span class="num">08</span>
+    <span class="label">学术路线</span>
+    <span class="meta">SERIES REVIEW</span>
+  </div>
+
+  <div class="timeline-list">
+    <div class="tl-item">
+      <span class="tl-num">第 0 期</span>
+      <span class="tl-marker square"></span>
+      <span class="tl-text">开源与经济学：问题的起点</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-num">第 1 期</span>
+      <span class="tl-marker circle"></span>
+      <span class="tl-text">软件的生产、分销和消费</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-num">第 2 期</span>
+      <span class="tl-marker square"></span>
+      <span class="tl-text">数字时代的知识财产法演变与开源许可</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-num">第 3 期</span>
+      <span class="tl-marker circle"></span>
+      <span class="tl-text">商业模式：规则下的具体操作</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-num">第 4 期</span>
+      <span class="tl-marker square copper"></span>
+      <span class="tl-text">软件开发劳动力市场</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-num">第 5 期</span>
+      <span class="tl-marker circle copper"></span>
+      <span class="tl-text">交易成本与路径依赖</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-num">第 6 期</span>
+      <span class="tl-marker square"></span>
+      <span class="tl-text">组织结构与治理</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-num">第 7 期</span>
+      <span class="tl-marker circle"></span>
+      <span class="tl-text">文化的重要作用</span>
+    </div>
+    <div class="tl-item">
+      <span class="tl-num">第 8 期</span>
+      <span class="tl-marker circle copper-filled"></span>
+      <span class="tl-text current">商业价值与社会价值：开源的政治经济学</span>
+    </div>
+  </div>
+</div>
+
+<div class="footer">第 08 期 · 信息规则与网络经济 / 开源之道</div>
+<div class="footer-right">新制度经济学视角 · 系列讲座</div>
+
+</body></html>

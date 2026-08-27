@@ -1,0 +1,169 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>软件许可的光谱</title><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0;background:#F5F0E8;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;color:#1B3B6B}
+h1,h2,h3{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif}
+
+/* Bauhaus geometric decorations */
+.deco-circle-1{position:absolute;top:60px;left:80px;width:60px;height:60px;border-radius:50%;border:3px solid #1B3B6B}
+.deco-circle-2{position:absolute;top:120px;left:80px;width:30px;height:30px;border-radius:50%;background:#8B7355}
+.deco-square-1{position:absolute;top:80px;left:160px;width:40px;height:40px;background:#1B3B6B}
+.deco-line-1{position:absolute;top:100px;left:220px;width:120px;height:2px;background:#1B3B6B}
+.deco-line-2{position:absolute;top:80px;left:220px;width:2px;height:40px;background:#8B7355}
+.deco-triangle{position:absolute;bottom:60px;right:80px;width:0;height:0;border-left:30px solid transparent;border-right:30px solid transparent;border-bottom:50px solid #8B7355;opacity:0.6}
+.deco-bar-bottom{position:absolute;bottom:40px;left:80px;width:60px;height:6px;background:#1B3B6B}
+.deco-bar-bottom2{position:absolute;bottom:40px;left:160px;width:120px;height:3px;background:#8B7355}
+.deco-square-2{position:absolute;bottom:30px;right:160px;width:25px;height:25px;background:#1B3B6B}
+
+/* Header */
+.header{position:absolute;top:70px;left:110px;right:110px}
+.chapter-num{font-size:14px;letter-spacing:6px;color:#8B7355;font-family:'Noto Sans SC',sans-serif;margin-bottom:12px}
+.main-title{font-size:56px;font-weight:700;color:#1B3B6B;line-height:1.15;margin-bottom:16px}
+.subtitle{font-size:20px;color:#555;letter-spacing:2px;font-family:'Noto Serif SC',serif;font-style:italic}
+
+.title-underline{position:absolute;top:245px;left:110px;width:200px;height:4px;background:#1B3B6B}
+
+/* Spectrum section */
+.spectrum-section{position:absolute;top:290px;left:110px;right:110px}
+.spectrum-label{font-size:16px;letter-spacing:4px;color:#8B7355;margin-bottom:20px;font-family:'Noto Sans SC',sans-serif}
+
+/* Pen tip */
+.pen-assembly{position:absolute;top:425px;left:480px;display:flex;flex-direction:column;align-items:center}
+.pen-shaft{width:14px;height:100px;background:#1B3B6B;position:relative}
+.pen-shaft::before{content:'';position:absolute;top:-8px;left:-4px;width:22px;height:20px;background:#8B7355;border-radius:3px}
+.pen-shaft::after{content:'';position:absolute;top:-24px;left:-8px;width:30px;height:18px;background:#1B3B6B;border-radius:5px}
+.pen-nib{width:0;height:0;border-left:12px solid transparent;border-right:12px solid transparent;border-top:35px solid #1B3B6B;position:relative}
+.pen-nib::after{content:'';position:absolute;top:-32px;left:-3px;width:6px;height:20px;background:#F5F0E8}
+.pen-tip-dot{position:absolute;top:205px;width:10px;height:10px;background:#1B3B6B;border-radius:50%}
+
+/* Spectrum bar */
+.spectrum-bar{position:absolute;top:460px;left:110px;width:1380px;height:18px;background:linear-gradient(to right,#1B3B6B 0%,#1B3B6B 30%,#8B7355 65%,#1B3B6B 100%);display:flex;align-items:center}
+.spectrum-bar-track{position:absolute;top:458px;left:110px;width:1380px;height:22px;background:transparent;border-top:2px solid #1B3B6B;border-bottom:2px solid #1B3B6B}
+
+.spectrum-tick{position:absolute;top:440px;width:2px;height:50px}
+
+.tick-free{left:250px;background:#1B3B6B}
+.tick-free-label{position:absolute;top:498px;left:195px;font-size:15px;color:#1B3B6B;font-weight:600;width:110px;text-align:center;font-family:'Noto Serif SC',serif}
+.tick-free-sub{position:absolute;top:520px;left:210px;font-size:12px;color:#8B7355;width:80px;text-align:center;letter-spacing:1px}
+
+.tick-spec{left:680px;background:#8B7355}
+.tick-spec-label{position:absolute;top:498px;left:625px;font-size:13px;color:#8B7355;width:110px;text-align:center;font-family:'Noto Serif SC',serif}
+.tick-spec-sub{position:absolute;top:520px;left:640px;font-size:11px;color:#555;width:80px;text-align:center;letter-spacing:1px}
+
+.tick-excl{left:1180px;background:#1B3B6B}
+.tick-excl-label{position:absolute;top:498px;left:1120px;font-size:15px;color:#1B3B6B;font-weight:600;width:120px;text-align:center;font-family:'Noto Serif SC',serif}
+.tick-excl-sub{position:absolute;top:520px;left:1140px;font-size:12px;color:#8B7355;width:80px;text-align:center;letter-spacing:1px}
+
+/* Marker dot where open source points */
+.marker-dot{position:absolute;top:468px;left:535px;width:18px;height:18px;border-radius:50%;background:#F5F0E8;border:3px solid #1B3B6B;z-index:5}
+.marker-label{position:absolute;top:410px;left:470px;width:140px;text-align:center;font-size:13px;color:#1B3B6B;font-family:'Noto Serif SC',serif;font-weight:600}
+.marker-sub{position:absolute;top:390px;left:485px;width:110px;text-align:center;font-size:11px;color:#8B7355;letter-spacing:1px}
+
+/* Right panel - bullets */
+.bullets{position:absolute;top:300px;right:110px;width:380px}
+.bullet-item{display:flex;align-items:flex-start;margin-bottom:28px}
+.bullet-num{font-family:'Noto Serif SC',serif;font-size:22px;color:#8B7355;width:42px;flex-shrink:0;font-weight:600}
+.bullet-text{font-size:16px;color:#1B3B6B;line-height:1.6;padding-top:3px}
+.bullet-text strong{font-family:'Noto Serif SC',serif;font-weight:700}
+.bullet-divider{width:40px;height:1px;background:#8B7355;margin-left:42px;margin-bottom:8px}
+
+/* Bottom quote */
+.bottom-quote{position:absolute;bottom:90px;left:110px;right:110px;font-size:14px;color:#555;font-family:'Noto Serif SC',serif;font-style:italic;text-align:center;letter-spacing:1px}
+
+/* K-line candlestick hints (visual metaphor) */
+.kline-group{position:absolute;top:340px;right:530px;display:flex;align-items:flex-end;gap:6px}
+.kline{width:8px;background:#1B3B6B;position:relative}
+.kline::before{content:'';position:absolute;left:3px;width:2px;background:#1B3B6B}
+.k1{height:25px}.k1::before{top:-10px;height:45px}
+.k2{height:40px}.k2::before{top:-15px;height:55px}
+.k3{height:15px;background:#8B7355}.k3::before{top:-8px;height:33px;background:#8B7355}
+.k4{height:55px}.k4::before{top:-20px;height:75px}
+.k5{height:20px;background:#8B7355}.k5::before{top:-8px;height:38px;background:#8B7355}
+.k6{height:35px}.k6::before{top:-12px;height:47px}
+.kline-base{position:absolute;bottom:-12px;width:14px;height:1px;background:#1B3B6B;left:-3px}
+</style></head>
+<body>
+
+<div class="deco-circle-1"></div>
+<div class="deco-circle-2"></div>
+<div class="deco-square-1"></div>
+<div class="deco-line-1"></div>
+<div class="deco-line-2"></div>
+<div class="deco-triangle"></div>
+<div class="deco-bar-bottom"></div>
+<div class="deco-bar-bottom2"></div>
+<div class="deco-square-2"></div>
+
+<div class="header">
+  <div class="chapter-num">CHAPTER · 许可制度</div>
+  <div class="main-title">软件许可的光谱</div>
+  <div class="subtitle">From Permissive to Prohibitive — A Spectrum of Licenses</div>
+</div>
+<div class="title-underline"></div>
+
+<div class="kline-group">
+  <div class="kline k1"><span class="kline-base"></span></div>
+  <div class="kline k2"><span class="kline-base"></span></div>
+  <div class="kline k3"><span class="kline-base"></span></div>
+  <div class="kline k4"><span class="kline-base"></span></div>
+  <div class="kline k5"><span class="kline-base"></span></div>
+  <div class="kline k6"><span class="kline-base"></span></div>
+</div>
+
+<div class="spectrum-section">
+  <div class="spectrum-label">— 许可制度坐标 —</div>
+
+  <div class="spectrum-bar-track"></div>
+  <div class="spectrum-bar"></div>
+
+  <div class="tick tick-free"></div>
+  <div class="tick-free-label">自由 · 容他</div>
+  <div class="tick-free-sub">PERMISSIVE</div>
+
+  <div class="tick tick-spec"></div>
+  <div class="tick-spec-label">特色许可</div>
+  <div class="tick-spec-sub">SPECIALTY</div>
+
+  <div class="tick tick-excl"></div>
+  <div class="tick-excl-label">排他 · 禁止</div>
+  <div class="tick-excl-sub">PROHIBITIVE</div>
+
+  <div class="marker-sub">开源所在</div>
+  <div class="marker-dot"></div>
+  <div class="pen-assembly">
+    <div class="pen-shaft"></div>
+    <div class="pen-nib"></div>
+  </div>
+</div>
+
+<div class="bullets">
+  <div class="bullet-item">
+    <div class="bullet-num">01</div>
+    <div class="bullet-text"><strong>光谱两端</strong>——一端自由容他，一端排他禁止，构成软件许可的制度坐标</div>
+  </div>
+  <div class="bullet-divider"></div>
+  <div class="bullet-item">
+    <div class="bullet-num">02</div>
+    <div class="bullet-text"><strong>自由与容他</strong>——MIT、BSD、Apache，许可宽松，给予使用者最大自由</div>
+  </div>
+  <div class="bullet-divider"></div>
+  <div class="bullet-item">
+    <div class="bullet-num">03</div>
+    <div class="bullet-text"><strong>排他与禁止</strong>——专有软件许可，保留权利，限制复制、修改与分发</div>
+  </div>
+  <div class="bullet-divider"></div>
+  <div class="bullet-item">
+    <div class="bullet-num">04</div>
+    <div class="bullet-text"><strong>光谱之间</strong>——无数的特色许可：Copyleft、弱 Copyleft、数据许可、商业友好型……</div>
+  </div>
+  <div class="bullet-divider"></div>
+  <div class="bullet-item">
+    <div class="bullet-num">05</div>
+    <div class="bullet-text"><strong>开源偏向容他</strong>——并非所有开源皆自由，但大体靠近光谱的容他一侧</div>
+  </div>
+</div>
+
+<div class="bottom-quote">「许可并非非黑即白，而是一条从自由到禁止的连续光谱，开源栖于容他的一端。」</div>
+
+</body></html>

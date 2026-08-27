@@ -1,0 +1,157 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>开源许可证的未来 · 排他权与容他权</title><style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;color:#F5F0E8;}
+.slide{position:relative;width:1600px;height:900px;background:#1B3B6B;overflow:hidden;}
+
+/* Grid overlay for the "unmapped territory" feel */
+.grid-overlay{position:absolute;top:0;left:0;width:1600px;height:900px;opacity:0.08;background-image:linear-gradient(#F5F0E8 1px,transparent 1px),linear-gradient(90deg,#F5F0E8 1px,transparent 1px);background-size:80px 80px;}
+
+/* Bauhaus geometric decorations */
+.circle-large{position:absolute;width:280px;height:280px;border-radius:50%;border:2px solid #8B7355;top:-80px;right:-60px;opacity:0.4;}
+.circle-medium{position:absolute;width:160px;height:160px;border-radius:50%;background:#8B7355;top:120px;right:180px;opacity:0.6;}
+.circle-small{position:absolute;width:60px;height:60px;border-radius:50%;border:2px solid #F5F0E8;bottom:120px;right:80px;opacity:0.5;}
+.square-deco{position:absolute;width:120px;height:120px;border:2px solid #8B7355;bottom:-40px;left:80px;opacity:0.4;transform:rotate(15deg);}
+.line-vertical{position:absolute;width:2px;height:200px;background:#8B7355;top:600px;left:300px;opacity:0.5;}
+.line-horizontal{position:absolute;width:200px;height:2px;background:#8B7355;top:780px;left:400px;opacity:0.3;}
+
+/* Compass rose element - "unmapped territory" */
+.compass{position:absolute;width:140px;height:140px;top:70px;left:70px;opacity:0.7;}
+.compass .cross-v{position:absolute;width:2px;height:100%;left:50%;margin-left:-1px;background:#8B7355;opacity:0.6;}
+.compass .cross-h{position:absolute;width:100%;height:2px;top:50%;margin-top:-1px;background:#8B7355;opacity:0.6;}
+.compass .ring{position:absolute;width:100px;height:100px;border-radius:50%;border:1px solid #8B7355;left:20px;top:20px;opacity:0.6;}
+.compass .inner{position:absolute;width:40px;height:40px;border-radius:50%;background:#F5F0E8;left:50px;top:50px;opacity:0.9;}
+.compass .diamond-n{position:absolute;width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:20px solid #8B7355;left:62px;top:10px;opacity:0.7;}
+
+/* Header area */
+.header{position:absolute;top:60px;left:280px;width:800px;}
+.period-tag{font-family:'Noto Serif SC',serif;font-size:14px;letter-spacing:6px;color:#8B7355;margin-bottom:16px;}
+.main-title{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:52px;font-weight:700;color:#F5F0E8;line-height:1.2;letter-spacing:2px;}
+.title-underline{width:120px;height:4px;background:#8B7355;margin-top:20px;margin-bottom:14px;}
+.subtitle{font-size:16px;color:#8B7355;letter-spacing:3px;line-height:1.6;}
+
+/* Map coordinate markers */
+.coord-tag{position:absolute;font-family:'Noto Serif SC',serif;font-size:11px;color:#8B7355;letter-spacing:2px;opacity:0.6;}
+.coord-1{top:280px;left:160px;}
+.coord-2{top:280px;left:1100px;}
+.coord-3{top:580px;left:160px;}
+.coord-4{top:580px;left:1100px;}
+
+/* Content area */
+.content{position:absolute;top:300px;left:280px;width:840px;}
+.content-title{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:28px;font-weight:700;color:#F5F0E8;margin-bottom:12px;letter-spacing:1px;}
+.content-divider{width:80px;height:3px;background:#8B7355;margin-bottom:30px;}
+.bullet-list{list-style:none;}
+.bullet-item{position:relative;padding-left:44px;margin-bottom:24px;}
+.bullet-num{position:absolute;left:0;top:2px;width:30px;height:30px;border:2px solid #8B7355;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;font-weight:700;}
+.bullet-text{font-size:20px;line-height:1.7;color:#F5F0E8;letter-spacing:0.5px;}
+.bullet-text .em{color:#8B7355;font-weight:700;}
+
+/* Right side - visual metaphor area */
+.metaphor-box{position:absolute;top:340px;right:80px;width:320px;height:360px;}
+.metaphor-box-inner{position:relative;width:100%;height:100%;border:1px solid #8B7355;padding:30px;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0.9;}
+.metaphor-icon{position:relative;width:120px;height:120px;margin-bottom:24px;}
+.metaphor-icon .square-outer{position:absolute;width:120px;height:120px;border:2px solid #F5F0E8;left:0;top:0;opacity:0.8;}
+.metaphor-icon .circle-inner{position:absolute;width:70px;height:70px;border-radius:50%;background:#8B7355;left:25px;top:25px;}
+.metaphor-icon .line-cross{position:absolute;width:100%;height:1px;background:#F5F0E8;left:10px;top:59px;opacity:0.6;}
+.metaphor-icon .line-cross-v{position:absolute;width:1px;height:100%;background:#F5F0E8;left:59px;top:10px;opacity:0.6;}
+.metaphor-label{font-family:'Noto Serif SC',serif;font-size:13px;letter-spacing:4px;color:#8B7355;margin-bottom:12px;}
+.metaphor-text{font-size:14px;line-height:1.8;color:#F5F0E8;text-align:center;letter-spacing:1px;opacity:0.85;}
+
+/* Footer */
+.footer{position:absolute;bottom:40px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:center;}
+.footer-left{font-size:12px;color:#8B7355;letter-spacing:3px;opacity:0.7;}
+.footer-right{font-size:12px;color:#8B7355;letter-spacing:3px;opacity:0.7;font-family:'Noto Serif SC',serif;}
+.footer-line{position:absolute;bottom:70px;left:80px;right:80px;height:1px;background:#8B7355;opacity:0.3;}
+
+/* Page number circle */
+.page-num{position:absolute;top:60px;right:80px;width:60px;height:60px;border-radius:50%;border:2px solid #8B7355;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif SC',serif;font-size:20px;color:#8B7355;font-weight:700;}
+
+/* Decorative corner marks */
+.corner-mark{position:absolute;width:30px;height:30px;border:2px solid #8B7355;opacity:0.4;}
+.cm-tl{top:30px;left:30px;border-right:none;border-bottom:none;}
+.cm-tr{top:30px;right:30px;border-left:none;border-bottom:none;}
+.cm-bl{bottom:30px;left:30px;border-right:none;border-top:none;}
+.cm-br{bottom:30px;right:30px;border-left:none;border-top:none;}
+</style></head><body>
+<div class="slide">
+  <div class="grid-overlay"></div>
+
+  <div class="corner-mark cm-tl"></div>
+  <div class="corner-mark cm-tr"></div>
+  <div class="corner-mark cm-bl"></div>
+  <div class="corner-mark cm-br"></div>
+
+  <div class="circle-large"></div>
+  <div class="circle-medium"></div>
+  <div class="circle-small"></div>
+  <div class="square-deco"></div>
+  <div class="line-vertical"></div>
+  <div class="line-horizontal"></div>
+
+  <div class="compass">
+    <div class="cross-v"></div>
+    <div class="cross-h"></div>
+    <div class="ring"></div>
+    <div class="inner"></div>
+    <div class="diamond-n"></div>
+  </div>
+
+  <div class="page-num">09</div>
+
+  <div class="coord-tag coord-1">N 31°14′ / E 121°28′</div>
+  <div class="coord-tag coord-2">TERRA INCOGNITA</div>
+  <div class="coord-tag coord-3">S 33°49′ / W 84°23′</div>
+  <div class="coord-tag coord-4">HIC SVNT DRACONES</div>
+
+  <div class="header">
+    <div class="period-tag">第 09 期 · OPEN SOURCE STUDIES</div>
+    <div class="main-title">开源许可证的未来</div>
+    <div class="title-underline"></div>
+    <div class="subtitle">排他权与容他权 · 比例原则与 Copyleft · 未绘之地的制度设计</div>
+  </div>
+
+  <div class="content">
+    <div class="content-title">新大陆的边界尚在绘制</div>
+    <div class="content-divider"></div>
+    <ul class="bullet-list">
+      <li class="bullet-item">
+        <span class="bullet-num">壹</span>
+        <span class="bullet-text">新的挑战：<span class="em">AI 训练与开源代码</span>——模型预训练是否构成"衍生作品"？</span>
+      </li>
+      <li class="bullet-item">
+        <span class="bullet-num">贰</span>
+        <span class="bullet-text">新的许可证：需要适应<span class="em">新的使用场景</span>——从编译到蒸馏，边界被重新定义</span>
+      </li>
+      <li class="bullet-item">
+        <span class="bullet-num">叁</span>
+        <span class="bullet-text">制度设计者面临新问题：<span class="em">如何保护贡献者</span>？劳动与价值分配的重新校准</span>
+      </li>
+      <li class="bullet-item">
+        <span class="bullet-num">肆</span>
+        <span class="bullet-text">容他权的演化<span class="em">不会停止</span>——每一次技术跃迁，都是制度创新的契机</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="metaphor-box">
+    <div class="metaphor-box-inner">
+      <div class="metaphor-icon">
+        <div class="square-outer"></div>
+        <div class="circle-inner"></div>
+        <div class="line-cross"></div>
+        <div class="line-cross-v"></div>
+      </div>
+      <div class="metaphor-label">HIC SVNT — 未绘之地</div>
+      <div class="metaphor-text">深普鲁士蓝之底<br>未绘地图之边缘<br>智能数据如新大陆<br>待规则界定其疆域</div>
+    </div>
+  </div>
+
+  <div class="footer-line"></div>
+  <div class="footer">
+    <div class="footer-left">第 09 期 · 排他权与容他权 · 比例原则与 COPILEFT</div>
+    <div class="footer-right">TERRA INCOGNITA · 28 / 28</div>
+  </div>
+</div>
+</body></html>

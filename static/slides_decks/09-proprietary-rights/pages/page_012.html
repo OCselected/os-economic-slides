@@ -1,0 +1,577 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>第 09 期 · 排他权与容他权、比例原则与 copyleft</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1600px; height: 900px; overflow: hidden; margin: 0; font-family: 'Noto Sans SC', 'Source Han Sans SC', sans-serif; }
+
+body {
+  background: #F5F0E8;
+  background-image: 
+    radial-gradient(ellipse at 20% 10%, rgba(139,115,85,0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 90%, rgba(27,59,107,0.03) 0%, transparent 50%);
+  color: #1B3B6B;
+}
+
+/* Top rule */
+.top-rule {
+  position: absolute;
+  top: 45px;
+  left: 60px;
+  width: 1480px;
+  height: 3px;
+  background: #1B3B6B;
+}
+
+/* Lecture number circle */
+.lecture-badge {
+  position: absolute;
+  top: 70px;
+  left: 60px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 3px solid #1B3B6B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Noto Serif SC', 'Songti SC', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1B3B6B;
+  letter-spacing: 0;
+}
+
+/* Title */
+.main-title {
+  position: absolute;
+  top: 78px;
+  left: 160px;
+  font-family: 'Noto Serif SC', 'Songti SC', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #1B3B6B;
+  letter-spacing: 2px;
+  line-height: 1.3;
+}
+
+.sub-title {
+  position: absolute;
+  top: 130px;
+  left: 160px;
+  font-size: 14px;
+  color: #8B7355;
+  letter-spacing: 4px;
+  font-weight: 400;
+}
+
+/* Bauhaus decorative elements */
+.deco-circle-1 {
+  position: absolute;
+  top: 80px;
+  right: 80px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #8B7355;
+}
+
+.deco-circle-2 {
+  position: absolute;
+  top: 65px;
+  right: 155px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #1B3B6B;
+}
+
+.deco-square-1 {
+  position: absolute;
+  top: 100px;
+  right: 210px;
+  width: 20px;
+  height: 20px;
+  background: #1B3B6B;
+}
+
+/* Left section: double door visual */
+.door-frame {
+  position: absolute;
+  top: 200px;
+  left: 80px;
+  width: 460px;
+  height: 560px;
+  border: 4px solid #1B3B6B;
+  background: transparent;
+}
+
+.floor-line {
+  position: absolute;
+  top: 755px;
+  left: 40px;
+  width: 560px;
+  height: 2px;
+  background: #1B3B6B;
+}
+
+/* Closed door (排他) */
+.door-closed {
+  position: absolute;
+  top: 220px;
+  left: 110px;
+  width: 200px;
+  height: 520px;
+  background: #1B3B6B;
+  border: 2px solid #1B3B6B;
+}
+
+.door-closed-window {
+  position: absolute;
+  top: 40px;
+  left: 60px;
+  width: 80px;
+  height: 80px;
+  border: 2px solid #8B7355;
+  background: rgba(139,115,85,0.15);
+}
+
+.door-closed-panel-top {
+  position: absolute;
+  top: 150px;
+  left: 20px;
+  width: 160px;
+  height: 180px;
+  border: 2px solid #8B7355;
+  background: rgba(245,240,232,0.05);
+}
+
+.door-closed-panel-bot {
+  position: absolute;
+  top: 360px;
+  left: 20px;
+  width: 160px;
+  height: 120px;
+  border: 2px solid #8B7355;
+  background: rgba(245,240,232,0.05);
+}
+
+.door-closed-handle {
+  position: absolute;
+  top: 430px;
+  left: 175px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #8B7355;
+  border: 2px solid #F5F0E8;
+}
+
+/* Open door (容他) */
+.door-open-frame {
+  position: absolute;
+  top: 220px;
+  left: 320px;
+  width: 200px;
+  height: 520px;
+  border: 2px solid #8B7355;
+  background: rgba(139,115,85,0.06);
+}
+
+.door-open-panel {
+  position: absolute;
+  top: 235px;
+  left: 420px;
+  width: 60px;
+  height: 490px;
+  background: rgba(139,115,85,0.35);
+  border: 2px solid #8B7355;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
+}
+
+.door-open-window {
+  position: absolute;
+  top: 265px;
+  left: 440px;
+  width: 45px;
+  height: 60px;
+  border: 1px solid #8B7355;
+  background: rgba(245,240,232,0.3);
+}
+
+/* Arrow through the open door */
+.arrow-through {
+  position: absolute;
+  top: 445px;
+  left: 310px;
+  width: 240px;
+  height: 3px;
+  background: #1B3B6B;
+}
+
+.arrow-head {
+  position: absolute;
+  top: 430px;
+  left: 540px;
+  width: 0;
+  height: 0;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 22px solid #1B3B6B;
+}
+
+/* Knowledge symbols passing through */
+.k-dot-1 {
+  position: absolute;
+  top: 430px;
+  left: 360px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #1B3B6B;
+}
+
+.k-dot-2 {
+  position: absolute;
+  top: 435px;
+  left: 390px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #8B7355;
+}
+
+.k-dot-3 {
+  position: absolute;
+  top: 440px;
+  left: 415px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #1B3B6B;
+}
+
+/* Labels for doors */
+.door-label-left {
+  position: absolute;
+  top: 765px;
+  left: 130px;
+  width: 160px;
+  text-align: center;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1B3B6B;
+  letter-spacing: 8px;
+}
+
+.door-label-left-sub {
+  position: absolute;
+  top: 795px;
+  left: 130px;
+  width: 160px;
+  text-align: center;
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 3px;
+}
+
+.door-label-right {
+  position: absolute;
+  top: 765px;
+  left: 350px;
+  width: 160px;
+  text-align: center;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #8B7355;
+  letter-spacing: 8px;
+}
+
+.door-label-right-sub {
+  position: absolute;
+  top: 795px;
+  left: 350px;
+  width: 160px;
+  text-align: center;
+  font-size: 11px;
+  color: #1B3B6B;
+  letter-spacing: 3px;
+}
+
+/* Arrow exit labels */
+.arrow-exit-label {
+  position: absolute;
+  top: 415px;
+  left: 560px;
+  width: 50px;
+  font-size: 10px;
+  color: #8B7355;
+  letter-spacing: 2px;
+  line-height: 1.4;
+}
+
+/* Right section: content */
+.section-divider {
+  position: absolute;
+  top: 200px;
+  left: 620px;
+  width: 3px;
+  height: 560px;
+  background: #1B3B6B;
+}
+
+.content-area {
+  position: absolute;
+  top: 210px;
+  left: 660px;
+  width: 880px;
+}
+
+.section-eyebrow {
+  font-size: 12px;
+  color: #8B7355;
+  letter-spacing: 6px;
+  margin-bottom: 14px;
+}
+
+.section-heading {
+  font-family: 'Noto Serif SC', 'Songti SC', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #1B3B6B;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+}
+
+.section-heading-en {
+  font-size: 12px;
+  color: #555;
+  letter-spacing: 4px;
+  margin-bottom: 32px;
+  font-style: italic;
+}
+
+.heading-rule {
+  width: 80px;
+  height: 2px;
+  background: #1B3B6B;
+  margin-bottom: 32px;
+}
+
+.bullet-list {
+  list-style: none;
+  padding: 0;
+}
+
+.bullet-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 22px;
+  padding-left: 0;
+}
+
+.bullet-num {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border: 2px solid #1B3B6B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1B3B6B;
+  margin-right: 18px;
+  margin-top: 2px;
+}
+
+.bullet-item:nth-child(even) .bullet-num {
+  background: #1B3B6B;
+  color: #F5F0E8;
+  border-color: #1B3B6B;
+}
+
+.bullet-text {
+  flex: 1;
+  font-size: 15px;
+  color: #1B3B6B;
+  line-height: 1.6;
+  letter-spacing: 1px;
+  padding-top: 6px;
+}
+
+.bullet-text .em {
+  color: #8B7355;
+  font-weight: 700;
+}
+
+.bullet-text .key {
+  background: rgba(139,115,85,0.12);
+  padding: 1px 6px;
+  font-weight: 700;
+  color: #1B3B6B;
+}
+
+/* Bottom rule */
+.bottom-rule {
+  position: absolute;
+  bottom: 40px;
+  left: 60px;
+  width: 1480px;
+  height: 1px;
+  background: #1B3B6B;
+}
+
+.footer-left {
+  position: absolute;
+  bottom: 18px;
+  left: 60px;
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 3px;
+}
+
+.footer-right {
+  position: absolute;
+  bottom: 18px;
+  right: 60px;
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 3px;
+}
+
+.footer-center {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  color: #555;
+  letter-spacing: 4px;
+}
+
+/* Geometric decorations */
+.geo-ring {
+  position: absolute;
+  top: 650px;
+  right: 70px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 2px solid #8B7355;
+}
+
+.geo-square-tl {
+  position: absolute;
+  top: 175px;
+  left: 570px;
+  width: 15px;
+  height: 15px;
+  background: #1B3B6B;
+}
+
+.geo-tri {
+  position: absolute;
+  top: 700px;
+  left: 660px;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 20px solid #8B7355;
+}
+</style>
+</head>
+<body>
+
+<div class="top-rule"></div>
+<div class="lecture-badge">09</div>
+<div class="main-title">排他权与容他权 · 比例原则与 Copyleft</div>
+<div class="sub-title">EXCLUSIONARY RIGHTS × PERMISSIVE RIGHTS</div>
+<div class="deco-circle-1"></div>
+<div class="deco-circle-2"></div>
+<div class="deco-square-1"></div>
+
+<!-- Double door visual -->
+<div class="door-frame"></div>
+<div class="floor-line"></div>
+
+<!-- Closed door (排他) -->
+<div class="door-closed">
+  <div class="door-closed-window"></div>
+  <div class="door-closed-panel-top"></div>
+  <div class="door-closed-panel-bot"></div>
+  <div class="door-closed-handle"></div>
+</div>
+
+<!-- Open door (容他) -->
+<div class="door-open-frame"></div>
+<div class="door-open-panel"></div>
+<div class="door-open-window"></div>
+
+<!-- Arrow through the opening -->
+<div class="arrow-through"></div>
+<div class="arrow-head"></div>
+<div class="k-dot-1"></div>
+<div class="k-dot-2"></div>
+<div class="k-dot-3"></div>
+<div class="arrow-exit-label">KNOW-<br>LEDGE →</div>
+
+<!-- Door labels -->
+<div class="door-label-left">排 他</div>
+<div class="door-label-left-sub">CLOSED</div>
+<div class="door-label-right">容 他</div>
+<div class="door-label-right-sub">OPEN</div>
+
+<!-- Divider -->
+<div class="section-divider"></div>
+<div class="geo-square-tl"></div>
+
+<!-- Content -->
+<div class="content-area">
+  <div class="section-eyebrow">CHAPTER · 09</div>
+  <div class="section-heading">双重门：排他与容他的制度设计</div>
+  <div class="section-heading-en">The Dual Door — Institutional Architecture of Exclusion & Permission</div>
+  <div class="heading-rule"></div>
+
+  <ul class="bullet-list">
+    <li class="bullet-item">
+      <div class="bullet-num">I</div>
+      <div class="bullet-text"><span class="em">容他权</span>的制度逻辑：在权利结构中嵌入许可通道，使排除与开放共存于同一产权框架之内。</div>
+    </li>
+    <li class="bullet-item">
+      <div class="bullet-num">II</div>
+      <div class="bullet-text">开源许可证的机制：<span class="key">保留版权</span>的同时<span class="key">授予发布权</span>——作者不弃权，而使用权被结构性地开放给共同体。</div>
+    </li>
+    <li class="bullet-item">
+      <div class="bullet-num">III</div>
+      <div class="bullet-text">「<span class="em">排他 + 容他</span>」的双重结构：不是权利的减损，而是权利的<span class="key">精确定价</span>——对行为类型进行差异化授权。</div>
+    </li>
+    <li class="bullet-item">
+      <div class="bullet-num">IV</div>
+      <div class="bullet-text">用排他权保障<span class="em">署名与归属</span>，用容他权保障<span class="em">扩散与再创造</span>——两种功能在同一权利上并行运作。</div>
+    </li>
+    <li class="bullet-item">
+      <div class="bullet-num">V</div>
+      <div class="bullet-text">这是知识财产法的<span class="key">制度创新</span>：并非废除排他权，而是重新定义排他权的<span class="em">使用方式</span>——从封闭独占走向有边界的开放。</div>
+    </li>
+  </ul>
+</div>
+
+<div class="geo-ring"></div>
+<div class="geo-tri"></div>
+
+<div class="bottom-rule"></div>
+<div class="footer-left">OPEN SOURCE ECONOMICS · LECTURE SERIES</div>
+<div class="footer-center">新制度经济学视角下的开源软件研究</div>
+<div class="footer-right">SLIDE 09 / 28</div>
+
+</body>
+</html>

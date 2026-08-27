@@ -1,0 +1,211 @@
+
+
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>狐猴冥想 · 开源的消费与贡献之平衡</title><style>*{margin:0;padding:0;box-sizing:border-box;}html,body{width:1600px;height:900px;overflow:hidden;margin:0;}body{background:#F5F0E8;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;color:#1B3B6B;position:relative;overflow:hidden;}h1,h2,h3{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;}
+
+/* subtle parchment texture */
+body::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;background:radial-gradient(ellipse at 30% 20%,rgba(139,115,85,0.04) 0%,transparent 50%),radial-gradient(ellipse at 70% 80%,rgba(27,59,107,0.03) 0%,transparent 50%);pointer-events:none;z-index:0;}
+
+.frame{position:absolute;top:0;left:0;width:1600px;height:900px;z-index:1;}
+
+/* top bar */
+.top-bar{position:absolute;top:60px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:center;z-index:5;}
+.section-label{font-family:'Noto Serif SC',serif;font-size:14px;letter-spacing:6px;color:#8B7355;font-weight:400;}
+.section-num{font-family:'Noto Serif SC',serif;font-size:14px;letter-spacing:4px;color:#8B7355;}
+
+/* left column - title area */
+.title-area{position:absolute;top:130px;left:80px;width:580px;z-index:5;}
+.main-title{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:52px;font-weight:700;line-height:1.25;color:#1B3B6B;letter-spacing:2px;}
+.title-en{font-family:'Noto Serif SC',serif;font-size:16px;color:#8B7355;letter-spacing:3px;margin-top:18px;font-style:italic;}
+.title-rule{width:60px;height:3px;background:#1B3B6B;margin-top:24px;}
+.subtitle{font-size:15px;color:#555;line-height:1.9;margin-top:22px;font-weight:400;}
+
+/* Bauhaus geometric composition - center right */
+.geo-canvas{position:absolute;top:130px;left:680px;width:840px;height:640px;z-index:3;}
+
+/* meditating lemur - abstract geometric */
+.lemur-head{position:absolute;top:60px;left:380px;width:110px;height:110px;border-radius:50%;background:#F5F0E8;border:3px solid #1B3B6B;z-index:4;}
+.lemur-eye-l{position:absolute;top:100px;left:410px;width:12px;height:12px;border-radius:50%;background:#1B3B6B;z-index:5;}
+.lemur-eye-r{position:absolute;top:100px;left:454px;width:12px;height:12px;border-radius:50%;background:#1B3B6B;z-index:5;}
+.lemur-nose{position:absolute;top:130px;left:437px;width:6px;height:10px;background:#8B7355;z-index:5;}
+.lemur-mouth{position:absolute;top:148px;left:425px;width:30px;height:2px;background:#1B3B6B;z-index:5;}
+
+.lemur-ear-l{position:absolute;top:52px;left:350px;width:24px;height:40px;border-radius:50% 50% 0 0;background:#F5F0E8;border:3px solid #1B3B6B;border-bottom:none;z-index:4;}
+.lemur-ear-r{position:absolute;top:52px;left:490px;width:24px;height:40px;border-radius:50% 50% 0 0;background:#F5F0E8;border:3px solid #1B3B6B;border-bottom:none;z-index:4;}
+
+/* body - seated/lotus position */
+.lemur-body{position:absolute;top:175px;left:340px;width:190px;height:180px;background:#1B3B6B;z-index:4;border-radius:0 0 40px 40px;}
+.lemur-torso{position:absolute;top:175px;left:370px;width:130px;height:100px;background:#1B3B6B;z-index:4;}
+
+/* legs crossed - lotus */
+.lemur-leg-l{position:absolute;top:300px;left:290px;width:180px;height:30px;background:#1B3B6B;border-radius:20px;z-index:3;}
+.lemur-leg-r{position:absolute;top:320px;left:290px;width:180px;height:25px;background:#8B7355;border-radius:20px;z-index:3;}
+
+/* tail - the characteristic ringed tail */
+.lemur-tail{position:absolute;top:340px;left:180px;width:180px;height:180px;z-index:2;}
+.tail-ring-1{position:absolute;top:340px;left:200px;width:80px;height:80px;border:4px solid #1B3B6B;border-radius:50%;border-right-color:transparent;border-bottom-color:transparent;z-index:2;}
+.tail-ring-2{position:absolute;top:320px;left:150px;width:100px;height:100px;border:4px solid #8B7355;border-radius:50%;border-right-color:transparent;border-bottom-color:transparent;z-index:2;}
+.tail-ring-3{position:absolute;top:300px;left:100px;width:130px;height:130px;border:3px solid #1B3B6B;border-radius:50%;border-right-color:transparent;border-bottom-color:transparent;z-index:2;opacity:0.7;}
+.tail-ring-4{position:absolute;top:290px;left:50px;width:160px;height:160px;border:3px solid #8B7355;border-radius:50%;border-right-color:transparent;border-bottom-color:transparent;z-index:2;opacity:0.5;}
+
+/* arms folded */
+.lemur-arm-l{position:absolute;top:200px;left:340px;width:40px;height:100px;background:#1B3B6B;border-radius:20px 20px 5px 5px;z-index:5;}
+.lemur-arm-r{position:absolute;top:200px;left:470px;width:40px;height:100px;background:#1B3B6B;border-radius:20px 20px 5px 5px;z-index:5;}
+.lemur-hand-l{position:absolute;top:290px;left:335px;width:50px;height:20px;background:#8B7355;border-radius:10px;z-index:5;}
+.lemur-hand-r{position:absolute;top:290px;left:470px;width:50px;height:20px;background:#8B7355;border-radius:10px;z-index:5;}
+
+/* meditation aura - concentric circles */
+.aura-1{position:absolute;top:140px;left:330px;width:260px;height:260px;border:2px solid #1B3B6B;border-radius:50%;z-index:1;opacity:0.3;}
+.aura-2{position:absolute;top:110px;left:310px;width:320px;height:320px;border:1px solid #8B7355;border-radius:50%;z-index:1;opacity:0.4;}
+.aura-3{position:absolute;top:80px;left:290px;width:380px;height:380px;border:1px solid #1B3B6B;border-radius:50%;z-index:1;opacity:0.2;}
+
+/* balance scale indicator - yin/yang like */
+.balance-circle{position:absolute;top:510px;left:220px;width:140px;height:140px;border-radius:50%;background:#F5F0E8;border:3px solid #1B3B6B;z-index:3;display:flex;align-items:center;justify-content:center;}
+.balance-inner-l{position:absolute;width:60px;height:134px;background:#1B3B6B;border-radius:60px 0 0 60px;left:0;top:3px;}
+.balance-inner-r{position:absolute;width:60px;height:134px;background:#8B7355;border-radius:0 60px 60px 0;right:0;top:3px;}
+.balance-dot-l{position:absolute;top:60px;left:50px;width:20px;height:20px;border-radius:50%;background:#8B7355;z-index:4;}
+.balance-dot-r{position:absolute;top:60px;left:70px;width:20px;height:20px;border-radius:50%;background:#1B3B6B;z-index:4;}
+
+.balance-label-l{position:absolute;top:665px;left:210px;width:160px;text-align:center;font-size:13px;color:#1B3B6B;letter-spacing:2px;font-family:'Noto Serif SC',serif;font-weight:600;}
+.balance-label-r{position:absolute;top:665px;left:390px;width:100px;text-align:center;font-size:13px;color:#8B7355;letter-spacing:2px;font-family:'Noto Serif SC',serif;font-weight:600;}
+
+/* geometric decorations */
+.deco-square-1{position:absolute;top:200px;left:140px;width:50px;height:50px;background:#1B3B6B;z-index:2;}
+.deco-line-1{position:absolute;top:280px;left:100px;width:200px;height:2px;background:#1B3B6B;z-index:2;}
+.deco-circle-tl{position:absolute;top:80px;left:60px;width:30px;height:30px;border:2px solid #8B7355;border-radius:50%;z-index:2;}
+
+/* right side bullet points */
+.bullets{position:absolute;top:170px;left:840px;width:680px;z-index:6;}
+.bullet-item{display:flex;align-items:flex-start;margin-bottom:20px;padding-left:0;}
+.bullet-marker{flex-shrink:0;margin-right:16px;margin-top:6px;}
+.bullet-marker-square{width:14px;height:14px;background:#1B3B6B;}
+.bullet-marker-circle{width:14px;height:14px;border:2px solid #8B7355;border-radius:50%;}
+.bullet-marker-line{width:22px;height:2px;background:#1B3B6B;margin-top:11px;}
+.bullet-marker-diamond{width:12px;height:12px;background:#8B7355;margin-top:7px;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);}
+.bullet-marker-cross{width:14px;height:14px;position:relative;margin-top:6px;}
+.bullet-marker-cross::before,.bullet-marker-cross::after{content:"";position:absolute;background:#1B3B6B;}
+.bullet-marker-cross::before{width:14px;height:2px;top:6px;left:0;}
+.bullet-marker-cross::after{width:2px;height:14px;top:0;left:6px;}
+.bullet-text{font-size:17px;line-height:1.55;color:#1B3B6B;font-weight:500;flex:1;}
+.bullet-text .sub{display:block;font-size:12px;color:#8B7355;margin-top:4px;letter-spacing:1px;font-weight:400;font-family:'Noto Serif SC',serif;font-style:italic;}
+
+/* bottom bar */
+.bottom-bar{position:absolute;bottom:50px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:center;z-index:5;}
+.bottom-left{font-family:'Noto Serif SC',serif;font-size:12px;color:#8B7355;letter-spacing:4px;}
+.bottom-right{font-family:'Noto Serif SC',serif;font-size:12px;color:#8B7355;letter-spacing:3px;}
+
+.bottom-rule{position:absolute;bottom:100px;left:80px;right:80px;height:1px;background:#8B7355;opacity:0.4;z-index:4;}
+
+/* footer quote */
+.footer-quote{position:absolute;bottom:50px;left:50%;transform:translateX(-50%);font-family:'Noto Serif SC',serif;font-size:12px;color:#555;letter-spacing:3px;font-style:italic;z-index:5;}
+
+/* left vertical label */
+.v-label{position:absolute;top:280px;left:40px;writing-mode:vertical-rl;font-family:'Noto Serif SC',serif;font-size:11px;color:#8B7355;letter-spacing:6px;z-index:5;}
+
+/* right vertical label */
+.v-label-r{position:absolute;top:130px;left:720px;width:2px;height:560px;background:#1B3B6B;opacity:0.2;z-index:2;}
+</style></head><body>
+
+<div class="frame">
+
+  <div class="top-bar">
+    <span class="section-label">新制度经济学视角 · 开源现象</span>
+    <span class="section-num">03 / 12</span>
+  </div>
+
+  <div class="title-area">
+    <h1 class="main-title">冥想之猴<br>消费与贡献<br>间的禅意平衡</h1>
+    <div class="title-en">The Meditating Lemur — Consumption & Contribution</div>
+    <div class="title-rule"></div>
+    <p class="subtitle">狐猴盘坐静思，环尾如轮——喻示开源世界<br>中参与者须在获取与付出之间寻得内在秩序。</p>
+  </div>
+
+  <div class="v-label">CH. III · 制度与行为的辩证</div>
+
+  <!-- Bauhaus geometric composition -->
+  <div class="geo-canvas">
+    <!-- aura circles -->
+    <div class="aura-3"></div>
+    <div class="aura-2"></div>
+    <div class="aura-1"></div>
+
+    <!-- tail rings -->
+    <div class="tail-ring-4"></div>
+    <div class="tail-ring-3"></div>
+    <div class="tail-ring-2"></div>
+    <div class="tail-ring-1"></div>
+
+    <!-- deco elements -->
+    <div class="deco-square-1"></div>
+    <div class="deco-line-1"></div>
+    <div class="deco-circle-tl"></div>
+
+    <!-- lemur figure -->
+    <div class="lemur-ear-l"></div>
+    <div class="lemur-ear-r"></div>
+    <div class="lemur-head"></div>
+    <div class="lemur-eye-l"></div>
+    <div class="lemur-eye-r"></div>
+    <div class="lemur-nose"></div>
+    <div class="lemur-mouth"></div>
+
+    <div class="lemur-body"></div>
+    <div class="lemur-torso"></div>
+    <div class="lemur-arm-l"></div>
+    <div class="lemur-arm-r"></div>
+    <div class="lemur-hand-l"></div>
+    <div class="lemur-hand-r"></div>
+    <div class="lemur-leg-l"></div>
+    <div class="lemur-leg-r"></div>
+
+    <!-- balance circle -->
+    <div class="balance-circle">
+      <div class="balance-inner-l"></div>
+      <div class="balance-inner-r"></div>
+      <div class="balance-dot-l"></div>
+      <div class="balance-dot-r"></div>
+    </div>
+    <div class="balance-label-l">消 费</div>
+    <div class="balance-label-r">贡 献</div>
+  </div>
+
+  <div class="v-label-r"></div>
+
+  <div class="bullets">
+    <div class="bullet-item">
+      <div class="bullet-marker"><div class="bullet-marker-square"></div></div>
+      <div class="bullet-text">法律、技术与经济增长<span class="sub">Law, Technology & Economic Growth</span></div>
+    </div>
+    <div class="bullet-item">
+      <div class="bullet-marker"><div class="bullet-marker-circle"></div></div>
+      <div class="bullet-text">技术发展与创新<span class="sub">Technological Advancement & Innovation</span></div>
+    </div>
+    <div class="bullet-item">
+      <div class="bullet-marker"><div class="bullet-marker-line"></div></div>
+      <div class="bullet-text">拓展边界，从地理到宇宙<span class="sub">Expanding Boundaries — From Geography to Cosmos</span></div>
+    </div>
+    <div class="bullet-item">
+      <div class="bullet-marker"><div class="bullet-marker-diamond"></div></div>
+      <div class="bullet-text">关于激励：欲望、好奇、财富与激情<span class="sub">On Incentives — Desire, Curiosity, Wealth & Passion</span></div>
+    </div>
+    <div class="bullet-item">
+      <div class="bullet-marker"><div class="bullet-marker-cross"></div></div>
+      <div class="bullet-text">力量的角逐与制衡：文化、习俗、制度的冲突与妥协<span class="sub">Struggle & Balance of Power — Culture, Custom, Institution</span></div>
+    </div>
+    <div class="bullet-item">
+      <div class="bullet-marker"><div class="bullet-marker-line" style="background:#8B7355;"></div></div>
+      <div class="bullet-text">法律的历史，就是规则的演变<span class="sub">The History of Law Is the Evolution of Rules</span></div>
+    </div>
+  </div>
+
+  <div class="bottom-rule"></div>
+
+  <div class="bottom-bar">
+    <span class="bottom-left">开源之道 · 日常交流</span>
+    <span class="bottom-right">NEW INSTITUTIONAL ECONOMICS × OPEN SOURCE</span>
+  </div>
+
+  <div class="footer-quote">「平衡不在中心，而在流动之中。」</div>
+
+</div>
+
+</body></html>

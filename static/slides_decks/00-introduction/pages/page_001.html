@@ -1,152 +1,209 @@
 
 
-<!DOCTYPE html><html><head><meta charset="UTF-8"><title>开源经济学 · 封面</title><style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1600px;height:900px;overflow:hidden;margin:0}
-body{background:#F5F0E8;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;color:#1B3B6B;position:relative}
-
-/* subtle parchment texture */
-body::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;background:repeating-linear-gradient(0deg,rgba(139,115,85,0.03) 0px,rgba(139,115,85,0.03) 1px,transparent 1px,transparent 4px);pointer-events:none}
-
-/* Top rule line */
-.top-rule{position:absolute;top:56px;left:80px;width:1440px;height:1px;background:#1B3B6B;opacity:0.7}
-
-/* Top-left serial number */
-.serial{position:absolute;top:32px;left:80px;font-size:12px;letter-spacing:4px;color:#1B3B6B;opacity:0.7;font-family:'Noto Sans SC',sans-serif}
-
-/* Top-right metadata */
-.meta-tr{position:absolute;top:32px;right:80px;font-size:12px;letter-spacing:3px;color:#8B7355;font-family:'Noto Sans SC',sans-serif}
-
-/* Bauhaus geometric decorations - top right circle */
-.deco-circle-tr{position:absolute;top:72px;right:80px;width:56px;height:56px;border-radius:50%;border:2px solid #1B3B6B}
-.deco-circle-tr-inner{position:absolute;top:82px;right:90px;width:36px;height:36px;border-radius:50%;background:#1B3B6B}
-
-/* Bottom rule line */
-.bot-rule{position:absolute;bottom:56px;left:80px;width:1440px;height:1px;background:#1B3B6B;opacity:0.7}
-
-/* Bottom footer */
-.footer-l{position:absolute;bottom:32px;left:80px;font-size:12px;letter-spacing:3px;color:#8B7355;font-family:'Noto Sans SC',sans-serif}
-.footer-r{position:absolute;bottom:32px;right:80px;font-size:12px;letter-spacing:3px;color:#555;font-family:'Noto Sans SC',sans-serif}
-
-/* Left vertical bar */
-.left-bar{position:absolute;top:120px;left:60px;width:4px;height:660px;background:#1B3B6B}
-
-/* Left square deco */
-.left-square{position:absolute;top:740px;left:44px;width:36px;height:36px;background:#1B3B6B}
-
-/* Right vertical bar */
-.right-bar{position:absolute;top:120px;right:60px;width:4px;height:660px;background:#1B3B6B}
-
-/* Right circle deco */
-.right-circle{position:absolute;top:120px;right:44px;width:36px;height:36px;border-radius:50%;border:3px solid #8B7355}
-
-/* Central Prussian blue block with white title */
-.title-block{position:absolute;top:170px;left:80px;width:1440px;height:460px;background:#1B3B6B;display:flex;align-items:center;justify-content:flex-start;padding:0 90px}
-
-.title-block-inner{display:flex;align-items:center;justify-content:space-between;width:100%;gap:60px}
-
-.title-left{display:flex;flex-direction:column;gap:24px}
-
-.title-eyebrow{font-size:14px;letter-spacing:8px;color:#F5F0E8;opacity:0.6;font-family:'Noto Sans SC',sans-serif}
-
-.title-main{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:120px;font-weight:700;color:#F5F0E8;letter-spacing:12px;line-height:1.1}
-
-.title-sub{display:flex;align-items:center;gap:24px;margin-top:12px}
-.title-sub-line{width:60px;height:1px;background:#F5F0E8;opacity:0.5}
-.title-sub-text{font-size:20px;letter-spacing:10px;color:#F5F0E8;opacity:0.85;font-family:'Noto Serif SC',serif}
-
-.title-right{display:flex;flex-direction:column;align-items:center;gap:16px}
-
-/* Bauhaus circle in the title block */
-.title-circle-outer{width:140px;height:140px;border-radius:50%;border:2px solid #F5F0E8;opacity:0.5;position:relative}
-.title-circle-outer::after{content:"";position:absolute;top:32px;left:32px;width:76px;height:76px;border-radius:50%;background:#F5F0E8;opacity:0.9}
-
-.title-square{width:140px;height:140px;background:#F5F0E8;position:relative}
-.title-square::after{content:"";position:absolute;top:30px;left:30px;width:80px;height:80px;background:#1B3B6B}
-
-/* Bottom content area */
-.bottom-area{position:absolute;top:660px;left:80px;width:1440px;height:180px;display:flex;align-items:flex-start;justify-content:space-between;gap:40px}
-
-.bottom-left{display:flex;flex-direction:column;gap:14px;width:780px}
-.bottom-eyebrow{font-size:13px;letter-spacing:6px;color:#8B7355;font-family:'Noto Sans SC',sans-serif}
-.bottom-line{width:48px;height:2px;background:#1B3B6B}
-.bottom-title{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:26px;color:#1B3B6B;letter-spacing:6px;font-weight:600}
-.bottom-desc{font-size:14px;color:#555;line-height:1.9;letter-spacing:1px;width:720px;margin-top:6px}
-
-.bottom-right{display:flex;flex-direction:column;align-items:flex-end;gap:10px;width:540px}
-.br-item{display:flex;align-items:center;gap:14px}
-.br-label{font-size:11px;letter-spacing:4px;color:#8B7355;width:80px;text-align:right;font-family:'Noto Sans SC',sans-serif}
-.br-dot{width:6px;height:6px;background:#1B3B6B;border-radius:50%}
-.br-value{font-size:15px;color:#1B3B6B;letter-spacing:2px;font-family:'Noto Sans SC',sans-serif}
-
-/* Horizontal accent line near bottom area */
-.accent-line{position:absolute;top:646px;left:80px;width:1440px;height:1px;background:#8B7355;opacity:0.4}
-
-/* Small bauhaus square near title block right */
-.mini-sq-1{position:absolute;top:184px;left:1436px;width:20px;height:20px;background:#8B7355}
-.mini-circ-1{position:absolute;top:184px;right:80px;width:30px;height:30px;border-radius:50%;background:#1B3B6B;border:2px solid #F5F0E8}
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>第 00 期 · 开源与经济学 — 封面</title><style>
+html,body{width:1600px;height:900px;overflow:hidden;margin:0;}
+body{
+  background:#1B3B6B;
+  color:#F5F0E8;
+  font-family:'Noto Sans SC','PingFang SC',sans-serif;
+  position:relative;
+}
+/* Bauhaus geometric decorations */
+.b-circle{
+  position:absolute;
+  border-radius:50%;
+}
+.b-circle-1{
+  width:420px;height:420px;
+  background:#F5F0E8;
+  left:-140px;top:-140px;
+}
+.b-circle-2{
+  width:180px;height:180px;
+  border:3px solid #F5F0E8;
+  right:120px;top:100px;
+  background:transparent;
+}
+.b-circle-3{
+  width:60px;height:60px;
+  background:#C9A96E;
+  right:200px;top:230px;
+}
+.b-square-1{
+  position:absolute;
+  width:160px;height:160px;
+  background:#C9A96E;
+  right:-60px;bottom:-60px;
+}
+.b-square-2{
+  position:absolute;
+  width:60px;height:60px;
+  background:#F5F0E8;
+  right:80px;bottom:80px;
+}
+.b-line-v{
+  position:absolute;
+  width:3px;height:380px;
+  background:#C9A96E;
+  left:80px;top:260px;
+}
+.b-line-h{
+  position:absolute;
+  width:520px;height:3px;
+  background:#F5F0E8;
+  left:80px;top:640px;
+}
+.b-line-h2{
+  position:absolute;
+  width:200px;height:3px;
+  background:#C9A96E;
+  left:80px;top:660px;
+}
+/* Content */
+.series-tag{
+  position:absolute;
+  left:120px;top:120px;
+  font-size:18px;
+  letter-spacing:6px;
+  color:#C9A96E;
+  font-weight:300;
+}
+.main-title{
+  position:absolute;
+  left:120px;top:200px;
+  font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;
+  font-size:112px;
+  font-weight:700;
+  letter-spacing:8px;
+  color:#F5F0E8;
+  line-height:1.1;
+}
+.main-subtitle{
+  position:absolute;
+  left:130px;top:360px;
+  font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;
+  font-size:38px;
+  font-weight:300;
+  letter-spacing:12px;
+  color:#F5F0E8;
+  opacity:0.85;
+}
+.divider{
+  position:absolute;
+  left:120px;top:450px;
+  width:80px;height:3px;
+  background:#C9A96E;
+}
+.meta-block{
+  position:absolute;
+  left:120px;top:520px;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+.meta-row{
+  display:flex;
+  align-items:baseline;
+  gap:20px;
+}
+.meta-label{
+  font-size:14px;
+  letter-spacing:4px;
+  color:#C9A96E;
+  min-width:80px;
+  font-weight:400;
+}
+.meta-value{
+  font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;
+  font-size:22px;
+  color:#F5F0E8;
+  letter-spacing:2px;
+  font-weight:400;
+}
+.footer-strip{
+  position:absolute;
+  left:0;bottom:0;width:1600px;height:6px;
+  background:#C9A96E;
+}
+.issue-badge{
+  position:absolute;
+  right:100px;top:100px;
+  width:180px;height:180px;
+  border:2px solid #C9A96E;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+}
+.issue-num{
+  font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;
+  font-size:52px;
+  color:#C9A96E;
+  font-weight:700;
+  line-height:1;
+}
+.issue-label{
+  font-size:11px;
+  letter-spacing:3px;
+  color:#F5F0E8;
+  margin-top:8px;
+}
+.triangle{
+  position:absolute;
+  width:0;height:0;
+  border-left:50px solid transparent;
+  border-right:50px solid transparent;
+  border-bottom:80px solid #C9A96E;
+  left:540px;top:480px;
+}
+.triangle-2{
+  position:absolute;
+  width:0;height:0;
+  border-left:30px solid transparent;
+  border-right:30px solid transparent;
+  border-bottom:48px solid #F5F0E8;
+  left:620px;top:500px;
+}
 </style></head><body>
 
-<div class="top-rule"></div>
-<div class="serial">NNO. 00 / OPEN-SOURCE ECONOMICS</div>
-<div class="meta-tr">EST. 2025 · 开源之道</div>
+<div class="b-circle b-circle-1"></div>
+<div class="b-circle b-circle-2"></div>
+<div class="b-circle b-circle-3"></div>
+<div class="b-square-1"></div>
+<div class="b-square-2"></div>
+<div class="b-line-v"></div>
+<div class="b-line-h"></div>
+<div class="b-line-h2"></div>
+<div class="triangle"></div>
+<div class="triangle-2"></div>
 
-<div class="left-bar"></div>
-<div class="right-bar"></div>
+<div class="issue-badge">
+  <div class="issue-num">00</div>
+  <div class="issue-label">VOL · 00</div>
+</div>
 
-<div class="title-block">
-  <div class="title-block-inner">
-    <div class="title-left">
-      <div class="title-eyebrow">OPEN-SOURCE ECONOMICS</div>
-      <div class="title-main">开源经济学</div>
-      <div class="title-sub">
-        <div class="title-sub-line"></div>
-        <div class="title-sub-text">启 开 对 话</div>
-      </div>
-    </div>
-    <div class="title-right">
-      <div class="title-circle-outer"></div>
-      <div class="title-square"></div>
-    </div>
+<div class="series-tag">OPEN SOURCE ECONOMICS</div>
+
+<div class="main-title">开源经济学</div>
+<div class="main-subtitle">开　启　对　话</div>
+<div class="divider"></div>
+
+<div class="meta-block">
+  <div class="meta-row">
+    <span class="meta-label">讲　座</span>
+    <span class="meta-value">「开源之道」· 开源的经济学 — 开源经济学 12 讲座</span>
+  </div>
+  <div class="meta-row">
+    <span class="meta-label">期　号</span>
+    <span class="meta-value">第 零 期</span>
+  </div>
+  <div class="meta-row">
+    <span class="meta-label">主讲人</span>
+    <span class="meta-value">「开源之道」· 适 兕</span>
   </div>
 </div>
 
-<div class="left-square"></div>
-<div class="right-circle"></div>
-
-<div class="deco-circle-tr"></div>
-<div class="deco-circle-tr-inner"></div>
-
-<div class="accent-line"></div>
-
-<div class="bottom-area">
-  <div class="bottom-left">
-    <div class="bottom-eyebrow">THEME</div>
-    <div class="bottom-line"></div>
-    <div class="bottom-title">开 源 与 经 济 学</div>
-    <div class="bottom-desc">以新制度经济学为视角，审视开源软件的生产、许可、商业模式、<br>劳动力市场、交易成本、组织治理、文化与政治经济学。</div>
-  </div>
-  <div class="bottom-right">
-    <div class="br-item">
-      <span class="br-label">SESSION</span>
-      <span class="br-dot"></span>
-      <span class="br-value">十二讲 · 第零期</span>
-    </div>
-    <div class="br-item">
-      <span class="br-label">SERIES</span>
-      <span class="br-dot"></span>
-      <span class="br-value">开源之道</span>
-    </div>
-    <div class="br-item">
-      <span class="br-label">SPEAKER</span>
-      <span class="br-dot"></span>
-      <span class="br-value">适 兕</span>
-    </div>
-  </div>
-</div>
-
-<div class="bot-rule"></div>
-<div class="footer-l">OPEN-SOURCE ECONOMICS · A NEW INSTITUTIONAL PERSPECTIVE</div>
-<div class="footer-r">第 零 期 / 引 言</div>
+<div class="footer-strip"></div>
 
 </body></html>

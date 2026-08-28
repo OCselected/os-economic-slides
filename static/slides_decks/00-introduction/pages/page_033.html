@@ -1,196 +1,451 @@
 
 
-<!DOCTYPE html><html><head><meta charset="UTF-8"><title>「开源之史」讲谈项目</title><style>html,body{width:1600px;height:900px;overflow:hidden;margin:0}body{background:#F5F0E8;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;color:#1B3B6B;position:relative}h1,h2,h3{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-weight:600}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>第 00 期 · 开源与经济学 — 背景知识声明</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
 
-.corner-mark{position:absolute;top:60px;left:80px;font-family:'Noto Serif SC',serif;font-size:14px;letter-spacing:6px;color:#8B7355}
-.corner-mark-r{position:absolute;top:60px;right:80px;font-family:'Noto Serif SC',serif;font-size:14px;letter-spacing:6px;color:#8B7355}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-.deco-circle-1{position:absolute;top:120px;left:60px;width:220px;height:220px;border:2px solid #1B3B6B;border-radius:50%}
-.deco-circle-2{position:absolute;top:160px;left:100px;width:140px;height:140px;background:#1B3B6B;border-radius:50%}
-.deco-square-1{position:absolute;top:380px;left:60px;width:110px;height:110px;background:#8B7355}
-.deco-line-1{position:absolute;top:540px;left:60px;width:200px;height:2px;background:#1B3B6B}
-.deco-line-2{position:absolute;top:570px;left:60px;width:130px;height:2px;background:#8B7355}
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
+  background: #F5F0E8;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: #1B3B6B;
+}
 
-.sparkle-canvas{position:absolute;top:80px;left:60px;width:400px;height:500px;overflow:visible;pointer-events:none}
-.sparkle{position:absolute;border-radius:50%}
-.sparkle-ring{position:absolute;border-radius:50%;border:1px solid rgba(107,65,156,0.4)}
+/* Parchment texture overlay */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 1600px; height: 900px;
+  background: 
+    radial-gradient(ellipse at 20% 30%, rgba(139, 115, 85, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(27, 59, 107, 0.02) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
+}
 
-.title-block{position:absolute;top:100px;left:540px;width:980px}
-.main-title{font-family:'Noto Serif SC',serif;font-size:68px;color:#1B3B6B;line-height:1.2;margin:0;letter-spacing:2px}
-.main-title .accent{color:#6B419C}
-.subtitle{font-family:'Noto Serif SC',serif;font-size:24px;color:#555;margin-top:20px;line-height:1.6;letter-spacing:1px}
+/* Bauhaus geometric decorations */
+.geo {
+  position: absolute;
+  z-index: 2;
+}
 
-.title-bar{position:absolute;top:305px;left:540px;width:80px;height:4px;background:#6B419C}
-.title-bar-2{position:absolute;top:315px;left:540px;width:40px;height:2px;background:#1B3B6B}
+/* Large circle - top right */
+.geo-circle-1 {
+  top: -80px;
+  right: -80px;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  border: 3px solid #1B3B6B;
+  opacity: 0.08;
+}
 
-.bullets{position:absolute;top:360px;left:540px;width:980px}
-.bullet{display:flex;align-items:flex-start;margin-bottom:18px;font-size:18px;color:#1B3B6B;line-height:1.6}
-.bullet-num{font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;width:36px;flex-shrink:0;padding-top:4px;letter-spacing:2px}
-.bullet-dot{width:8px;height:8px;background:#6B419C;border-radius:50%;margin-right:14px;margin-top:9px;flex-shrink:0}
-.bullet-text{flex:1;color:#1B3B6B}
-.bullet-text .highlight{color:#6B419C;font-family:'Noto Serif SC',serif;font-size:20px}
+/* Small filled circle */
+.geo-circle-2 {
+  top: 120px;
+  right: 200px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  opacity: 0.12;
+}
 
-.footer-block{position:absolute;bottom:60px;left:540px;width:980px}
-.footer-bar{width:200px;height:2px;background:#1B3B6B;margin-bottom:20px}
-.footer-text{font-family:'Noto Serif SC',serif;font-size:20px;color:#555;line-height:1.7;letter-spacing:1px}
-.footer-text .invite{color:#6B419C;font-size:22px}
+/* Circle - bottom left */
+.geo-circle-3 {
+  bottom: -60px;
+  left: -60px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: #8B7355;
+  opacity: 0.06;
+}
 
-.right-deco{position:absolute;bottom:100px;right:60px;width:120px;height:120px;border:2px solid #1B3B6B;border-radius:50%}
-.right-deco-inner{position:absolute;bottom:125px;right:85px;width:70px;height:70px;background:#6B419C;border-radius:50%}
-.right-deco-line{position:absolute;bottom:60px;right:120px;width:60px;height:2px;background:#1B3B6B}
+/* Square - rotated */
+.geo-square-1 {
+  top: 200px;
+  right: 80px;
+  width: 60px;
+  height: 60px;
+  background: #1B3B6B;
+  opacity: 0.07;
+  transform: rotate(45deg);
+}
 
-.star-particle{position:absolute;font-family:'Noto Serif SC',serif;font-size:10px;color:#6B419C;opacity:0.7}
+/* Thin square outline */
+.geo-square-2 {
+  bottom: 160px;
+  left: 120px;
+  width: 100px;
+  height: 100px;
+  border: 2px solid #1B3B6B;
+  opacity: 0.06;
+}
 
-.side-label{position:absolute;top:600px;left:60px;width:320px;font-family:'Noto Serif SC',serif;font-size:16px;color:#1B3B6B;line-height:1.8}
-.side-label .dim{color:#8B7355;font-size:13px;letter-spacing:3px;margin-bottom:8px}
+/* Horizontal line */
+.geo-line-1 {
+  top: 88px;
+  left: 100px;
+  width: 1400px;
+  height: 1px;
+  background: #1B3B6B;
+  opacity: 0.15;
+}
 
-.side-geo{position:absolute;top:750px;left:60px;width:60px;height:60px;background:#1B3B6B}
-.side-geo-2{position:absolute;top:770px;left:140px;width:40px;height:40px;border:2px solid #6B419C;border-radius:50%}
-</style></head><body>
+/* Vertical accent line */
+.geo-line-2 {
+  top: 250px;
+  left: 160px;
+  width: 1px;
+  height: 400px;
+  background: #8B7355;
+  opacity: 0.2;
+}
 
-<div class="corner-mark">NEW INSTITUTIONAL ECONOMICS × OPEN SOURCE</div>
-<div class="corner-mark-r">第 〇〇 页 / LECTURE</div>
+/* Small dot pattern */
+.geo-dot-1 {
+  top: 300px;
+  right: 140px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  opacity: 0.2;
+}
 
-<div class="deco-circle-1"></div>
-<div class="deco-circle-2"></div>
-<div class="deco-square-1"></div>
-<div class="deco-line-1"></div>
-<div class="deco-line-2"></div>
+.geo-dot-2 {
+  top: 330px;
+  right: 140px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  opacity: 0.15;
+}
 
-<svg class="sparkle-canvas" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" style="stop-color:#9B6DC9;stop-opacity:0.8"/>
-      <stop offset="100%" style="stop-color:#6B419C;stop-opacity:0"/>
-    </radialGradient>
-    <radialGradient id="glow2" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" style="stop-color:#B894DE;stop-opacity:0.6"/>
-      <stop offset="100%" style="stop-color:#6B419C;stop-opacity:0"/>
-    </radialGradient>
-  </defs>
+.geo-dot-3 {
+  top: 360px;
+  right: 140px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  opacity: 0.1;
+}
 
-  <circle cx="200" cy="120" r="60" fill="url(#glow1)"/>
-  <circle cx="280" cy="200" r="40" fill="url(#glow2)"/>
-  <circle cx="130" cy="180" r="35" fill="url(#glow2)"/>
+/* Purple stars - representing 开源之史 starlight */
+.star {
+  position: absolute;
+  border-radius: 50%;
+  z-index: 3;
+}
 
-  <g fill="#9B6DC9">
-    <circle cx="80" cy="80" r="3"/>
-    <circle cx="160" cy="60" r="2"/>
-    <circle cx="240" cy="90" r="3"/>
-    <circle cx="320" cy="70" r="2"/>
-    <circle cx="100" cy="140" r="2.5"/>
-    <circle cx="200" cy="160" r="4"/>
-    <circle cx="270" cy="130" r="2"/>
-    <circle cx="350" cy="150" r="3"/>
-    <circle cx="60" cy="220" r="2"/>
-    <circle cx="180" cy="240" r="3"/>
-    <circle cx="300" cy="260" r="2.5"/>
-    <circle cx="130" cy="300" r="3"/>
-    <circle cx="250" cy="320" r="2"/>
-    <circle cx="380" cy="290" r="2"/>
-    <circle cx="90" cy="360" r="2.5"/>
-    <circle cx="220" cy="380" r="3"/>
-    <circle cx="340" cy="400" r="2"/>
-    <circle cx="150" cy="420" r="2.5"/>
-    <circle cx="290" cy="440" r="3"/>
-    <circle cx="50" cy="440" r="2"/>
-    <circle cx="170" cy="350" r="2"/>
-    <circle cx="310" cy="380" r="2"/>
-    <circle cx="270" cy="460" r="2.5"/>
-    <circle cx="370" cy="380" r="2"/>
-    <circle cx="110" cy="380" r="2"/>
-    <circle cx="200" cy="470" r="3"/>
-    <circle cx="330" cy="120" r="2"/>
-    <circle cx="40" cy="300" r="2.5"/>
-  </g>
+.star-1 { top: 150px; left: 880px; width: 5px; height: 5px; background: #6B4C9A; opacity: 0.6; }
+.star-2 { top: 180px; left: 1050px; width: 3px; height: 3px; background: #8B6BB5; opacity: 0.5; }
+.star-3 { top: 210px; left: 960px; width: 4px; height: 4px; background: #7B5BA8; opacity: 0.45; }
+.star-4 { top: 140px; left: 1120px; width: 3px; height: 3px; background: #9B7BC5; opacity: 0.4; }
+.star-5 { top: 230px; left: 1150px; width: 5px; height: 5px; background: #6B4C9A; opacity: 0.5; }
+.star-6 { top: 165px; left: 1200px; width: 3px; height: 3px; background: #8B6BB5; opacity: 0.35; }
+.star-7 { top: 195px; left: 820px; width: 4px; height: 4px; background: #7B5BA8; opacity: 0.55; }
+.star-8 { top: 250px; left: 920px; width: 3px; height: 3px; background: #9B7BC5; opacity: 0.4; }
+.star-9 { top: 130px; left: 1280px; width: 4px; height: 4px; background: #6B4C9A; opacity: 0.45; }
+.star-10 { top: 270px; left: 1080px; width: 3px; height: 3px; background: #8B6BB5; opacity: 0.35; }
+.star-11 { top: 155px; left: 1350px; width: 5px; height: 5px; background: #7B5BA8; opacity: 0.5; }
+.star-12 { top: 240px; left: 1250px; width: 3px; height: 3px; background: #9B7BC5; opacity: 0.3; }
+.star-13 { top: 110px; left: 1000px; width: 4px; height: 4px; background: #6B4C9A; opacity: 0.5; }
+.star-14 { top: 285px; left: 870px; width: 3px; height: 3px; background: #8B6BB5; opacity: 0.4; }
+.star-15 { top: 175px; left: 1180px; width: 4px; height: 4px; background: #7B5BA8; opacity: 0.55; }
+.star-16 { top: 220px; left: 1320px; width: 3px; height: 3px; background: #6B4C9A; opacity: 0.35; }
+.star-17 { top: 145px; left: 1400px; width: 5px; height: 5px; background: #8B6BB5; opacity: 0.5; }
+.star-18 { top: 260px; left: 1100px; width: 3px; height: 3px; background: #9B7BC5; opacity: 0.3; }
+.star-19 { top: 190px; left: 1080px; width: 4px; height: 4px; background: #7B5BA8; opacity: 0.45; }
+.star-20 { top: 200px; left: 780px; width: 3px; height: 3px; background: #6B4C9A; opacity: 0.4; }
 
-  <g fill="#B894DE" opacity="0.8">
-    <circle cx="140" cy="110" r="1.5"/>
-    <circle cx="220" cy="180" r="1.5"/>
-    <circle cx="300" cy="220" r="1.5"/>
-    <circle cx="180" cy="280" r="1.5"/>
-    <circle cx="260" cy="160" r="1.5"/>
-    <circle cx="100" cy="260" r="1.5"/>
-    <circle cx="230" cy="340" r="1.5"/>
-    <circle cx="150" cy="200" r="1.5"/>
-    <circle cx="310" cy="300" r="1.5"/>
-    <circle cx="80" cy="320" r="1.5"/>
-    <circle cx="180" cy="400" r="1.5"/>
-    <circle cx="280" cy="360" r="1.5"/>
-    <circle cx="350" cy="220" r="1.5"/>
-    <circle cx="120" cy="440" r="1.5"/>
-    <circle cx="250" cy="410" r="1.5"/>
-    <circle cx="60" cy="180" r="1.5"/>
-    <circle cx="200" cy="100" r="1.5"/>
-    <circle cx="340" cy="340" r="1.5"/>
-  </g>
+/* Main content */
+.content {
+  position: absolute;
+  z-index: 10;
+  top: 120px;
+  left: 160px;
+  right: 160px;
+  bottom: 80px;
+  display: flex;
+  flex-direction: column;
+}
 
-  <g stroke="#6B419C" stroke-width="0.5" fill="none" opacity="0.4">
-    <circle cx="200" cy="180" r="120"/>
-    <circle cx="200" cy="180" r="80"/>
-  </g>
+/* Header */
+.header {
+  margin-bottom: 40px;
+}
 
-  <g stroke="#9B6DC9" stroke-width="0.3" fill="none" opacity="0.5">
-    <circle cx="200" cy="180" r="160"/>
-  </g>
+.header-label {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 6px;
+  color: #8B7355;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
 
-  <text x="80" y="480" font-family="Noto Serif SC, serif" font-size="12" fill="#6B419C" opacity="0.7" letter-spacing="4">PURPLE SEQUINS × OPEN SOURCE</text>
-</svg>
+.header-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: #1B3B6B;
+  line-height: 1.3;
+}
 
-<div class="side-label">
-  <div class="dim">VISUAL METAPHOR</div>
-  紫色亮片如梦幻星空<br>
-  「开源之史」讲谈项目的光芒与梦想
+.header-subtitle {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #555;
+  margin-top: 16px;
+  line-height: 1.8;
+}
+
+/* Divider */
+.divider {
+  width: 120px;
+  height: 2px;
+  background: #1B3B6B;
+  margin: 36px 0;
+  opacity: 0.4;
+}
+
+/* Main declaration */
+.declaration {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #1B3B6B;
+  line-height: 2;
+  max-width: 900px;
+}
+
+.declaration em {
+  font-style: normal;
+  color: #8B7355;
+  font-weight: 600;
+}
+
+/* Works section */
+.works-section {
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.works-label {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  color: #8B7355;
+  margin-bottom: 8px;
+}
+
+.work-item {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  padding-left: 20px;
+  border-left: 2px solid #1B3B6B;
+  opacity: 0.9;
+}
+
+.work-item:nth-child(2) {
+  border-left-color: #6B4C9A;
+  opacity: 0.85;
+}
+
+.work-item:nth-child(3) {
+  border-left-color: #8B7355;
+  opacity: 0.8;
+}
+
+.work-number {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #8B7355;
+  min-width: 20px;
+}
+
+.work-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: #1B3B6B;
+  letter-spacing: 2px;
+}
+
+.work-item:nth-child(2) .work-title {
+  color: #6B4C9A;
+}
+
+.work-item:nth-child(3) .work-title {
+  color: #8B7355;
+}
+
+.work-translation {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  color: #555;
+  margin-left: 8px;
+  opacity: 0.7;
+}
+
+/* Footer */
+.footer {
+  position: absolute;
+  bottom: 40px;
+  left: 160px;
+  right: 160px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  z-index: 10;
+}
+
+.footer-left {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  color: #8B7355;
+  letter-spacing: 2px;
+}
+
+.footer-right {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: #555;
+  opacity: 0.6;
+}
+
+/* Additional geometric elements */
+.geo-arc {
+  position: absolute;
+  top: 130px;
+  right: 180px;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 1px solid #1B3B6B;
+  opacity: 0.05;
+  z-index: 2;
+}
+
+.geo-triangle {
+  position: absolute;
+  bottom: 200px;
+  right: 200px;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 35px solid #1B3B6B;
+  opacity: 0.05;
+  z-index: 2;
+}
+</style>
+</head>
+<body>
+
+<!-- Bauhaus geometric decorations -->
+<div class="geo geo-circle-1"></div>
+<div class="geo geo-circle-2"></div>
+<div class="geo geo-circle-3"></div>
+<div class="geo geo-square-1"></div>
+<div class="geo geo-square-2"></div>
+<div class="geo geo-line-1"></div>
+<div class="geo geo-line-2"></div>
+<div class="geo geo-dot-1"></div>
+<div class="geo geo-dot-2"></div>
+<div class="geo geo-dot-3"></div>
+<div class="geo geo-arc"></div>
+<div class="geo geo-triangle"></div>
+
+<!-- Purple stars representing 开源之史 starlight -->
+<div class="star star-1"></div>
+<div class="star star-2"></div>
+<div class="star star-3"></div>
+<div class="star star-4"></div>
+<div class="star star-5"></div>
+<div class="star star-6"></div>
+<div class="star star-7"></div>
+<div class="star star-8"></div>
+<div class="star star-9"></div>
+<div class="star star-10"></div>
+<div class="star star-11"></div>
+<div class="star star-12"></div>
+<div class="star star-13"></div>
+<div class="star star-14"></div>
+<div class="star star-15"></div>
+<div class="star star-16"></div>
+<div class="star star-17"></div>
+<div class="star star-18"></div>
+<div class="star star-19"></div>
+<div class="star star-20"></div>
+
+<!-- Main content -->
+<div class="content">
+  <div class="header">
+    <div class="header-label">PRE-READING NOTICE</div>
+    <div class="header-title">背景知识声明</div>
+    <div class="header-subtitle">本讲座需要大量的前置背景知识，建议浏览之前先阅读以下作品</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="declaration">
+    新制度经济学视角下的开源现象，是<em>制度、协作与激励机制</em>的交织产物。若缺少对开源运动历史脉络与思想谱系的认知，本讲座中的理论框架将难以真正落地。以下三部作品构成了通往这一领域的<em>知识阶梯</em>。
+  </div>
+
+  <div class="works-section">
+    <div class="works-label">— 建议阅读 —</div>
+    <div class="work-item">
+      <span class="work-number">i.</span>
+      <span class="work-title">开源之史</span>
+      <span class="work-translation">The History of Open Source</span>
+    </div>
+    <div class="work-item">
+      <span class="work-number">ii.</span>
+      <span class="work-title">开源之迷</span>
+      <span class="work-translation">The Mystery of Open Source</span>
+    </div>
+    <div class="work-item">
+      <span class="work-number">iii.</span>
+      <span class="work-title">开源之道</span>
+      <span class="work-translation">The Way of Open Source</span>
+    </div>
+  </div>
 </div>
 
-<div class="side-geo"></div>
-<div class="side-geo-2"></div>
-
-<div class="title-block">
-  <h1 class="main-title">「<span class="accent">开源之史</span>」讲谈</h1>
-  <div class="subtitle">通识项目 · 每双周一次 · 以史为镜，以谈启思</div>
+<!-- Footer -->
+<div class="footer">
+  <div class="footer-left">第 00 期 · 开源与经济学 · 背景声明</div>
+  <div class="footer-right">新制度经济学视角</div>
 </div>
 
-<div class="title-bar"></div>
-<div class="title-bar-2"></div>
-
-<div class="bullets">
-  <div class="bullet">
-    <span class="bullet-num">01</span>
-    <span class="bullet-dot"></span>
-    <span class="bullet-text">同时启动通识项目：<span class="highlight">「开源之史」讲谈</span>，以历史视角梳理开源思想脉络</span>
-  </div>
-  <div class="bullet">
-    <span class="bullet-num">02</span>
-    <span class="bullet-dot"></span>
-    <span class="bullet-text">每双周一次讲谈，形成稳定的交流节奏与知识积累</span>
-  </div>
-  <div class="bullet">
-    <span class="bullet-num">03</span>
-    <span class="bullet-dot"></span>
-    <span class="bullet-text"><span class="highlight">东杰、海玲</span>为项目联合发起人，负责查史料、辅讲与讨论引导</span>
-  </div>
-  <div class="bullet">
-    <span class="bullet-num">04</span>
-    <span class="bullet-dot"></span>
-    <span class="bullet-text">如和开源经济学讲座时间冲突，则<span class="highlight">顺延</span>一次，两项目并行不悖</span>
-  </div>
-  <div class="bullet">
-    <span class="bullet-num">05</span>
-    <span class="bullet-dot"></span>
-    <span class="bullet-text"><span class="highlight">2024 年底</span>看效果，评估方向与节奏，决定下一阶段计划</span>
-  </div>
-</div>
-
-<div class="footer-block">
-  <div class="footer-bar"></div>
-  <div class="footer-text">
-    <span class="invite">诚邀加入</span>　一起学习、探讨、讲谈关于开源相关的历史！
-  </div>
-</div>
-
-<div class="right-deco"></div>
-<div class="right-deco-inner"></div>
-<div class="right-deco-line"></div>
-
-</body></html>
+</body>
+</html>

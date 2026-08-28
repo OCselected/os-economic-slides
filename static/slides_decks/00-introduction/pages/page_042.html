@@ -1,203 +1,246 @@
 
 
-<!DOCTYPE html><html><head><meta charset="UTF-8"><title>第3期：比例原则与 Copyleft 思想</title><style>*{margin:0;padding:0;box-sizing:border-box}html,body{width:1600px;height:900px;overflow:hidden;font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-serif;background:#F5F0E8}
-.slide{position:relative;width:1600px;height:900px;background:#F5F0E8;overflow:hidden}
-.bg-texture{position:absolute;top:0;left:0;width:1600px;height:900px;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(139,115,85,0.02) 3px,rgba(139,115,85,0.02) 4px);pointer-events:none;z-index:0}
-.geo-square{position:absolute;width:80px;height:80px;background:#1B3B6B;z-index:1}
-.geo-square.tl{top:50px;left:50px}
-.geo-circle{position:absolute;border-radius:50%;z-index:1}
-.geo-circle.tr{top:60px;right:70px;width:60px;height:60px;background:#8B7355}
-.geo-line{position:absolute;background:#1B3B6B;z-index:1}
-.geo-line.v1{top:50px;left:120px;width:2px;height:780px;opacity:0.3}
-.geo-line.h1{top:860px;left:50px;width:1500px;height:2px;opacity:0.3}
-.geo-rect{position:absolute;width:120px;height:12px;background:#A8442C;z-index:1;top:50px;left:200px}
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><title>第3期 · 比例原则与 Copyleft 思想</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden}
+body{background:#F5F0E8;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;color:#1B3B6B;position:relative;overflow:hidden}
+.serif{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif}
 
-.network-area{position:absolute;top:100px;left:80px;width:720px;height:720px;z-index:2}
-.network-area svg{width:720px;height:720px;display:block}
+/* 左侧文本区域 */
+.left-panel{position:absolute;top:0;left:0;width:820px;height:900px;padding:70px 60px 60px 80px}
 
-.text-area{position:absolute;top:120px;right:80px;width:680px;z-index:3}
-.episode-tag{font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:6px;margin-bottom:20px;font-weight:500}
-.main-title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:52px;color:#1B3B6B;line-height:1.25;font-weight:700;margin-bottom:14px}
-.title-accent{color:#A8442C}
-.sub-title{font-family:'Noto Serif SC',serif;font-size:24px;color:#555;line-height:1.5;font-weight:400;margin-bottom:32px;padding-bottom:20px;border-bottom:2px solid #1B3B6B;width:500px}
-.divider-thin{width:80px;height:3px;background:#8B7355;margin-bottom:28px}
-.meta-row{display:flex;gap:30px;margin-bottom:30px;align-items:center}
-.meta-item{font-family:'Noto Sans SC',sans-serif;font-size:12px;color:#555;letter-spacing:2px}
-.meta-item .num{font-family:'Noto Serif SC',serif;font-size:20px;color:#1B3B6B;display:block;margin-bottom:2px;font-weight:700;letter-spacing:0}
+/* 顶部标识 */
+.deck-id{font-size:13px;letter-spacing:6px;color:#8B7355;font-weight:500;margin-bottom:40px}
+.deck-id .sep{display:inline-block;width:40px;height:1px;background:#8B7355;vertical-align:middle;margin:0 12px}
 
-.bullet-section{margin-top:8px}
-.bullet-item{display:flex;align-items:flex-start;gap:14px;margin-bottom:14px;font-size:14px;color:#1B3B6B;line-height:1.6}
-.bullet-num{font-family:'Noto Serif SC',serif;font-size:13px;color:#A8442C;font-weight:700;min-width:24px;height:24px;background:#F5F0E8;border:1.5px solid #A8442C;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
-.bullet-text{flex:1}
-.bullet-text strong{font-family:'Noto Serif SC',serif;color:#1B3B6B;font-weight:700}
+.ep-label{font-size:15px;letter-spacing:4px;color:#8B7355;margin-bottom:20px;font-weight:500}
 
-.network-label{position:absolute;bottom:16px;left:80px;width:720px;text-align:center;font-family:'Noto Serif SC',serif;font-size:12px;color:#8B7355;letter-spacing:4px;z-index:3}
+h1{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:52px;font-weight:700;line-height:1.25;color:#1B3B6B;letter-spacing:2px;margin-bottom:18px}
+h1 .accent{color:#8B7355}
 
-.side-quote{position:absolute;bottom:60px;right:80px;width:600px;font-family:'Noto Serif SC',serif;font-style:italic;font-size:13px;color:#8B7355;text-align:right;line-height:1.7;z-index:3;border-right:3px solid #1B3B6B;padding-right:16px}
+.subtitle{font-family:'Noto Serif SC',serif;font-size:22px;color:#555;font-weight:400;letter-spacing:3px;margin-bottom:45px;line-height:1.5}
 
-.page-num{position:absolute;top:60px;right:60px;font-family:'Noto Serif SC',serif;font-size:11px;color:#8B7355;letter-spacing:3px;z-index:5}
-</style></head><body><div class="slide">
-<div class="bg-texture"></div>
+/* 分隔线 */
+.divider{display:flex;align-items:center;margin-bottom:35px}
+.divider .line{flex:1;height:1px;background:#1B3B6B;opacity:0.4}
+.divider .dot{width:8px;height:8px;background:#1B3B6B;border-radius:50%;margin:0 14px}
+.divider .square{width:8px;height:8px;background:#8B7355;margin:0 14px}
 
-<div class="geo-square tl"></div>
-<div class="geo-circle tr"></div>
-<div class="geo-rect"></div>
-<div class="geo-line v1"></div>
-<div class="geo-line h1"></div>
+.bullets{list-style:none;display:flex;flex-direction:column;gap:18px}
+.bullets li{display:flex;align-items:flex-start;gap:16px;font-size:17px;line-height:1.65;color:#1B3B6B;font-weight:400}
+.bullets li .num{font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;min-width:28px;padding-top:3px;letter-spacing:1px;font-weight:600}
+.bullets li .content{flex:1}
+.bullets li .content .key{font-weight:600;color:#1B3B6B}
+.bullets li .content .desc{color:#555;font-size:15px;margin-top:2px}
 
-<div class="page-num">№ 03 / 12</div>
+/* 底部信息 */
+.footer{position:absolute;bottom:40px;left:80px;font-size:12px;letter-spacing:3px;color:#8B7355}
+.footer .divider-line{display:inline-block;width:60px;height:1px;background:#8B7355;vertical-align:middle;margin-right:14px}
 
-<div class="network-area">
-<svg viewBox="0 0 720 720" xmlns="http://www.w3.org/2000/svg">
-<!-- Connection lines first (behind nodes) -->
-<g stroke="#1B3B6B" stroke-width="1.2" fill="none" opacity="0.5">
-<line x1="360" y1="360" x2="180" y2="140"/>
-<line x1="360" y1="360" x2="540" y2="160"/>
-<line x1="360" y1="360" x2="130" y2="380"/>
-<line x1="360" y1="360" x2="590" y2="400"/>
-<line x1="360" y1="360" x2="200" y2="600"/>
-<line x1="360" y1="360" x2="500" y2="620"/>
-<line x1="360" y1="360" x2="100" y2="240"/>
-<line x1="360" y1="360" x2="620" y2="260"/>
-<line x1="360" y1="360" x2="290" y2="100"/>
-<line x1="360" y1="360" x2="430" y2="110"/>
-<line x1="180" y1="140" x2="290" y2="100"/>
-<line x1="180" y1="140" x2="100" y2="240"/>
-<line x1="180" y1="140" x2="130" y2="380"/>
-<line x1="540" y1="160" x2="430" y2="110"/>
-<line x1="540" y1="160" x2="620" y2="260"/>
-<line x1="540" y1="160" x2="590" y2="400"/>
-<line x1="130" y1="380" x2="200" y2="600"/>
-<line x1="590" y1="400" x2="500" y2="620"/>
-<line x1="100" y1="240" x2="130" y2="380"/>
-<line x1="620" y1="260" x2="590" y2="400"/>
-<line x1="200" y1="600" x2="500" y2="620"/>
-<line x1="290" y1="100" x2="430" y2="110"/>
-<line x1="290" y1="100" x2="180" y2="140"/>
-<line x1="430" y1="110" x2="540" y2="160"/>
-</g>
+/* 右侧网络图 */
+.right-panel{position:absolute;top:0;right:0;width:780px;height:900px}
+.network-wrap{position:absolute;top:60px;right:30px;width:720px;height:780px}
 
-<!-- Central node (larger, Prussian blue) -->
-<g>
-<circle cx="360" cy="360" r="52" fill="#1B3B6B"/>
-<circle cx="360" cy="360" r="52" fill="none" stroke="#1B3B6B" stroke-width="2" opacity="0.3" transform="scale(1.1)" transform-origin="360 360"/>
-<text x="360" y="366" text-anchor="middle" fill="#F5F0E8" font-family="Noto Serif SC,serif" font-size="14" font-weight="700">开源</text>
-</g>
+.node{position:absolute;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.node-inner{width:70%;height:70%;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center}
 
-<!-- Surrounding nodes - diverse "heads" with different colors and sizes -->
-<!-- Top-left: copper -->
-<g>
-<circle cx="180" cy="140" r="34" fill="#8B7355"/>
-<circle cx="180" cy="140" r="34" fill="none" stroke="#F5F0E8" stroke-width="3"/>
-<text x="180" y="146" text-anchor="middle" fill="#F5F0E8" font-family="Noto Serif SC,serif" font-size="11">贡献者</text>
-</g>
+.node-1{width:110px;height:110px;background:#1B3B6B;top:110px;left:200px}
+.node-2{width:90px;height:90px;background:#8B7355;top:250px;left:40px}
+.node-3{width:120px;height:120px;background:#1B3B6B;top:60px;left:510px}
+.node-4{width:85px;height:85px;background:#8B7355;top:280px;left:580px}
+.node-5{width:100px;height:100px;background:#1B3B6B;top:430px;left:180px}
+.node-6{width:95px;height:95px;background:#8B7355;top:450px;left:380px}
+.node-7{width:80px;height:80px;background:#1B3B6B;top:500px;left:570px}
+.node-8{width:115px;height:115px;background:#8B7355;top:600px;left:250px}
 
-<!-- Top: terracotta -->
-<g>
-<circle cx="290" cy="100" r="26" fill="#A8442C"/>
-<text x="290" y="105" text-anchor="middle" fill="#F5F0E8" font-family="Noto Serif SC,serif" font-size="10">维护者</text>
-</g>
+/* 头部几何纹样 */
+.head-mark{display:flex;flex-direction:column;align-items:center;gap:5px}
+.head-mark .eyes{display:flex;gap:5px}
+.head-mark .eye{width:6px;height:6px;background:#F5F0E8;border-radius:50%}
+.head-mark .mouth{width:16px;height:1px;background:#F5F0E8}
+.node-1 .head-mark .eye{width:7px;height:7px}
+.node-3 .head-mark .eye{width:8px;height:8px}
+.node-8 .head-mark .eye{width:7px;height:7px}
+.node-5 .head-mark .eye{width:7px;height:7px}
+.node-2 .head-mark .eye{width:5px;height:5px}
+.node-4 .head-mark .eye{width:5px;height:5px}
+.node-6 .head-mark .eye{width:6px;height:6px}
+.node-7 .head-mark .eye{width:5px;height:5px}
 
-<!-- Top-right: deep green -->
-<g>
-<circle cx="540" cy="160" r="30" fill="#2D5A3D"/>
-<circle cx="540" cy="160" r="30" fill="none" stroke="#F5F0E8" stroke-width="2.5"/>
-<text x="540" y="165" text-anchor="middle" fill="#F5F0E8" font-family="Noto Serif SC,serif" font-size="10">使用者</text>
-</g>
+/* SVG 连接线 */
+.connections{position:absolute;top:0;left:0;width:720px;height:780px;pointer-events:none}
 
-<!-- Far top-right: ochre -->
-<g>
-<circle cx="430" cy="110" r="20" fill="#C4943A"/>
-<text x="430" y="115" text-anchor="middle" fill="#1B3B6B" font-family="Noto Serif SC,serif" font-size="9">开发者</text>
-</g>
+/* 装饰元素 */
+.deco-square-1{position:absolute;top:30px;right:30px;width:24px;height:24px;background:#1B3B6B;opacity:0.15}
+.deco-circle-1{position:absolute;top:30px;right:80px;width:12px;height:12px;border:2px solid #8B7355;border-radius:50%;opacity:0.5}
+.deco-line-1{position:absolute;top:48px;right:120px;width:50px;height:1px;background:#1B3B6B;opacity:0.4}
 
-<!-- Far top-left: muted gray -->
-<g>
-<circle cx="100" cy="240" r="24" fill="#555"/>
-<text x="100" y="245" text-anchor="middle" fill="#F5F0E8" font-family="Noto Serif SC,serif" font-size="10">学习者</text>
-</g>
+/* 右侧标签 */
+.net-label{position:absolute;bottom:20px;right:30px;font-size:11px;letter-spacing:3px;color:#8B7355;text-align:right}
+.net-label .sub{font-size:10px;color:#555;margin-top:4px;letter-spacing:2px}
 
-<!-- Left: deep blue accent -->
-<g>
-<circle cx="130" cy="380" r="28" fill="#1B3B6B"/>
-<circle cx="130" cy="380" r="28" fill="none" stroke="#8B7355" stroke-width="2"/>
-<text x="130" y="385" text-anchor="middle" fill="#F5F0E8" font-family="Noto Serif SC,serif" font-size="10">教育者</text>
-</g>
+.net-caption{position:absolute;top:15px;right:30px;font-size:12px;letter-spacing:3px;color:#8B7355}
+.net-caption .line-deco{display:inline-block;width:30px;height:1px;background:#8B7355;vertical-align:middle;margin-right:10px}
 
-<!-- Right: copper -->
-<g>
-<circle cx="590" cy="400" r="32" fill="#8B7355"/>
-<circle cx="590" cy="400" r="32" fill="none" stroke="#F5F0E8" stroke-width="2.5"/>
-<text x="590" y="405" text-anchor="middle" fill="#F5F0E8" font-family="Noto Serif SC,serif" font-size="10">企业</text>
-</g>
+/* 中央装饰大圆 */
+.center-circle{position:absolute;top:350px;left:280px;width:60px;height:60px;border:2px solid #1B3B6B;border-radius:50%;opacity:0.3}
+.center-square{position:absolute;top:365px;left:295px;width:30px;height:30px;background:#1B3B6B;opacity:0.1}
+</style>
+</head>
+<body>
 
-<!-- Far right: terracotta -->
-<g>
-<circle cx="620" cy="260" r="22" fill="#A8442C"/>
-<text x="620" y="265" text-anchor="middle" fill="#F5F0E8" font-family="Noto Serif SC,serif" font-size="9">设计师</text>
-</g>
+<!-- 左侧文本区 -->
+<div class="left-panel">
+  <div class="deck-id">第 00 期 <span class="sep"></span> 开源与经济学</div>
+  <div class="ep-label">Lecture 03 / Series I</div>
+  <h1>比例原则<br>与 <span class="accent">Copyleft</span> 思想</h1>
+  <div class="subtitle">知识财产正当性解释</div>
 
-<!-- Bottom-left: green -->
-<g>
-<circle cx="200" cy="600" r="28" fill="#2D5A3D"/>
-<circle cx="200" cy="600" r="28" fill="none" stroke="#F5F0E8" stroke-width="2.5"/>
-<text x="200" y="605" text-anchor="middle" fill="#F5F0E8" font-family="Noto Serif SC,serif" font-size="10">策展人</text>
-</g>
+  <div class="divider">
+    <span class="line"></span>
+    <span class="dot"></span>
+    <span class="square"></span>
+    <span class="line"></span>
+  </div>
 
-<!-- Bottom-right: ochre -->
-<g>
-<circle cx="500" cy="620" r="26" fill="#C4943A"/>
-<text x="500" y="625" text-anchor="middle" fill="#1B3B6B" font-family="Noto Serif SC,serif" font-size="10">投资者</text>
-</g>
+  <ul class="bullets">
+    <li>
+      <span class="num">01</span>
+      <span class="content">
+        <span class="key">贡献—获取的比例平衡</span>
+        <span class="desc">开源协作中，个体投入与社区回馈之间形成非货币化的比例正义</span>
+      </span>
+    </li>
+    <li>
+      <span class="num">02</span>
+      <span class="content">
+        <span class="key">Copyleft 的制度逻辑</span>
+        <span class="desc">以"共享为前提的再共享"构建递归性权利结构，对抗知识私有化</span>
+      </span>
+    </li>
+    <li>
+      <span class="num">03</span>
+      <span class="content">
+        <span class="key">知识财产正当性的三重来源</span>
+        <span class="desc">劳动价值论、信息公地产权、协作契约精神共同支撑开源的道德基础</span>
+      </span>
+    </li>
+    <li>
+      <span class="num">04</span>
+      <span class="content">
+        <span class="key">许可协议作为制度基础设施</span>
+        <span class="desc">GPL/AGPL 等许可将比例原则编码为可执行的程序性规则</span>
+      </span>
+    </li>
+  </ul>
 
-<!-- Decorative geometric marks -->
-<g>
-<rect x="50" y="580" width="16" height="16" fill="none" stroke="#1B3B6B" stroke-width="1.5"/>
-<line x1="60" y1="600" x2="640" y2="600" stroke="#8B7355" stroke-width="0.8" stroke-dasharray="4,4" opacity="0.4"/>
-</g>
-
-<!-- Outer ring decoration -->
-<circle cx="360" cy="360" r="330" fill="none" stroke="#1B3B6B" stroke-width="0.8" opacity="0.15"/>
-<circle cx="360" cy="360" r="300" fill="none" stroke="#8B7355" stroke-width="0.6" opacity="0.2" stroke-dasharray="2,6"/>
-</svg>
+  <div class="footer">
+    <span class="divider-line"></span>OPEN SOURCE × NEW INSTITUTIONAL ECONOMICS
+  </div>
 </div>
 
-<div class="network-label">人 群 · 联 结 · 协 作 · 共 生</div>
+<!-- 右侧网络图 -->
+<div class="right-panel">
+  <div class="net-caption"><span class="line-deco"></span>开源协作网络</div>
 
-<div class="text-area">
-<div class="episode-tag">第 三 期 &nbsp;·&nbsp; EPISTLE III</div>
-<div class="main-title">比例原则与<br><span class="title-accent">Copyleft</span> 思想</div>
-<div class="sub-title">知识财产正当性解释</div>
-<div class="divider-thin"></div>
+  <div class="network-wrap">
+    <svg class="connections" viewBox="0 0 720 780">
+      <g stroke="#1B3B6B" stroke-width="1" fill="none" opacity="0.45">
+        <line x1="255" y1="165" x2="85" y2="295"/>
+        <line x1="255" y1="165" x2="570" y2="120"/>
+        <line x1="570" y1="120" x2="622" y2="322"/>
+        <line x1="85" y1="295" x2="230" y2="480"/>
+        <line x1="255" y1="165" x2="230" y2="480"/>
+        <line x1="230" y1="480" x2="428" y2="497"/>
+        <line x1="428" y1="497" x2="610" y2="540"/>
+        <line x1="230" y1="480" x2="308" y2="658"/>
+        <line x1="428" y1="497" x2="308" y2="658"/>
+        <line x1="622" y1="322" x2="428" y2="497"/>
+        <line x1="610" y1="540" x2="308" y2="658"/>
+      </g>
+      <g stroke="#8B7355" stroke-width="0.8" fill="none" opacity="0.35">
+        <line x1="570" y1="120" x2="428" y2="497"/>
+        <line x1="85" y1="295" x2="230" y2="480"/>
+        <line x1="255" y1="165" x2="428" y2="497"/>
+      </g>
+    </svg>
 
-<div class="meta-row">
-<div class="meta-item"><span class="num">12</span>讲座总数</div>
-<div class="meta-item"><span class="num">3 / 12</span>当前进度</div>
-<div class="meta-item"><span class="num">§03</span>章节编号</div>
+    <div class="center-circle"></div>
+    <div class="center-square"></div>
+
+    <div class="node node-1">
+      <div class="node-inner">
+        <div class="head-mark">
+          <div class="eyes"><span class="eye"></span><span class="eye"></span></div>
+          <span class="mouth"></span>
+        </div>
+      </div>
+    </div>
+    <div class="node node-2">
+      <div class="node-inner">
+        <div class="head-mark">
+          <div class="eyes"><span class="eye"></span><span class="eye"></span></div>
+          <span class="mouth"></span>
+        </div>
+      </div>
+    </div>
+    <div class="node node-3">
+      <div class="node-inner">
+        <div class="head-mark">
+          <div class="eyes"><span class="eye"></span><span class="eye"></span></div>
+          <span class="mouth"></span>
+        </div>
+      </div>
+    </div>
+    <div class="node node-4">
+      <div class="node-inner">
+        <div class="head-mark">
+          <div class="eyes"><span class="eye"></span><span class="eye"></span></div>
+          <span class="mouth"></span>
+        </div>
+      </div>
+    </div>
+    <div class="node node-5">
+      <div class="node-inner">
+        <div class="head-mark">
+          <div class="eyes"><span class="eye"></span><span class="eye"></span></div>
+          <span class="mouth"></span>
+        </div>
+      </div>
+    </div>
+    <div class="node node-6">
+      <div class="node-inner">
+        <div class="head-mark">
+          <div class="eyes"><span class="eye"></span><span class="eye"></span></div>
+          <span class="mouth"></span>
+        </div>
+      </div>
+    </div>
+    <div class="node node-7">
+      <div class="node-inner">
+        <div class="head-mark">
+          <div class="eyes"><span class="eye"></span><span class="eye"></span></div>
+          <span class="mouth"></span>
+        </div>
+      </div>
+    </div>
+    <div class="node node-8">
+      <div class="node-inner">
+        <div class="head-mark">
+          <div class="eyes"><span class="eye"></span><span class="eye"></span></div>
+          <span class="mouth"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="net-label">
+    多元主体 · 去中心化协作
+    <div class="sub">MULTIVALENT COLLABORATION NETWORK</div>
+  </div>
 </div>
 
-<div class="bullet-section">
-<div class="bullet-item">
-<div class="bullet-num">1</div>
-<div class="bullet-text"><strong>比例原则</strong>——知识产出与回报之间的合理配比，构成产权制度的伦理基石</div>
-</div>
-<div class="bullet-item">
-<div class="bullet-num">2</div>
-<div class="bullet-text"><strong>Copyleft 机制</strong>——以再许可约束实现开放性的制度设计，对抗版权私有化</div>
-</div>
-<div class="bullet-item">
-<div class="bullet-num">3</div>
-<div class="bullet-text"><strong>多元协作网络</strong>——开源社区中异质主体的自发联结与治理秩序</div>
-</div>
-<div class="bullet-item">
-<div class="bullet-num">4</div>
-<div class="bullet-text"><strong>正当性追问</strong>——谁的知识、谁的财产、谁的自由？</div>
-</div>
-</div>
-</div>
-
-<div class="side-quote">
-「知识不应成为少数人的私有领地，<br>而应在比例与自由之间找到公正的平衡。」<br>—— 关于 Copyleft 的制度伦理
-</div>
-
-</div></body></html>
+</body>
+</html>

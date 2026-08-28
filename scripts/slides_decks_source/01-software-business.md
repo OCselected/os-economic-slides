@@ -136,7 +136,8 @@ dark academic tone, Intellectual Visual System, art taste.
 
 * 视觉隐喻：
   * Margaret Hamilton 扶着登月代码高塔——软件工程史的奠基时刻
-- 代码/程序/软件发展简史
+
+ ** 代码/程序/软件发展简史**
 
 ---
 
@@ -352,8 +353,8 @@ dark academic tone, Intellectual Visual System, art taste.
 - Chromium ：V8、ffmpeg
 - Chrome/Edge： Google/microsoft 加入闭源组件
 - 编译与分发：官网下载，应用市场
-- 意外： Google 不能被访问，脱离了“正常”渠道
-- 消费： 我们每天都在www频繁使用
+- 意外之旅： Google 不能被访问，脱离了“正常”渠道
+- 谁在消费？谁又在负担成本？： 我们每天都在www频繁使用
 
 ---
 
@@ -391,14 +392,13 @@ dark academic tone, Intellectual Visual System, art taste.
 - 三个时代：硬件 → 网络 → 云
 - 三种协作：大教堂 → 集市 → 平台
 - 三种交付：软盘 → 下载 → 订阅
-- 下一讲：制度变迁的法律维度——知识财产法如何塑造了开源与闭源的边界
+- Agentci AI 时代的软件形态变化：消失的软件界面，不是软件功能；
 
----
-
-## Slide 31
+## Slide 30
 * 视觉隐喻：
   * 深普鲁士蓝书架上排列的五本书——制度经济学视角下的软件工业阅读地图
-* 第1期·软件的生产、分销和消费 · 推荐阅读
+
+* 第1期·软件的生产、分销和消费、归档 · 推荐阅读
 * 《大教堂与集市》，Eric S. Raymond，机械工业出版社，2014.05
 * 《人月神话》，F. P. Brooks，清华大学出版社，2015.04
 * 《持续交付2.0》，乔梁，人民邮电出版社，2018.12
@@ -406,3 +406,9 @@ dark academic tone, Intellectual Visual System, art taste.
 * 《GO TO》，Steve Lohr，Basic Books，2001.10
 * 《构建之法（第四版）》，邹欣，人民邮电出版社，2026.04
 * Luanne Johnson, "Creating the Software Industry", IEEE Annals of History of Computing, 2002
+
+## Slide 31 
+* 视觉隐喻：
+  * 道格拉斯·诺斯的经典作品展
+
+*  下一讲：制度变迁的法律维度——知识财产法如何塑造了开源与闭源的边界

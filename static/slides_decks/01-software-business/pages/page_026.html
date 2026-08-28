@@ -1,220 +1,258 @@
 
 
-<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Chrome 的数字之旅 — 开源生态的协作与变异</title><style>*{margin:0;padding:0;box-sizing:border-box}html,body{width:1600px;height:900px;overflow:hidden;margin:0;font-family:'Noto Sans SC','Source Han Sans SC','PingFang SC',sans-serif;color:#1B3B6B;background:#F5F0E8}h1,h2,h3,.title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif}
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>第 01 期 · Chrome 的数字之旅</title><style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0;font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-serif;color:#1B3B6B;background:#F5F0E8;}
+.slide{position:relative;width:1600px;height:900px;background:#F5F0E8;overflow:hidden;}
+.bg-texture{position:absolute;top:0;left:0;width:1600px;height:900px;background:radial-gradient(ellipse at 20% 10%,rgba(255,255,255,0.3) 0%,transparent 40%),radial-gradient(ellipse at 80% 90%,rgba(139,115,85,0.06) 0%,transparent 50%);pointer-events:none;}
+.page-border{position:absolute;top:40px;left:60px;right:60px;bottom:40px;border:1px solid rgba(27,59,107,0.15);}
+.page-border-inner{position:absolute;top:52px;left:72px;right:72px;bottom:52px;border:1px solid rgba(27,59,107,0.08);}
 
-.slide{position:absolute;width:1600px;height:900px;background:#F5F0E8;padding:50px 70px 50px 70px}
+/* header */
+.header{position:absolute;top:72px;left:120px;right:120px;display:flex;justify-content:space-between;align-items:flex-start;}
+.header-left .lecture-tag{font-size:11px;letter-spacing:4px;color:#8B7355;font-weight:600;margin-bottom:8px;}
+.header-left .slide-title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:26px;font-weight:700;color:#1B3B6B;letter-spacing:1px;}
+.header-left .slide-subtitle{font-size:12px;color:#8B7355;margin-top:4px;letter-spacing:2px;}
+.header-right{text-align:right;}
+.header-right .deck-info{font-size:10px;letter-spacing:3px;color:#8B7355;margin-bottom:6px;}
+.header-right .page-num{font-family:'Noto Serif SC',serif;font-size:14px;color:#1B3B6B;}
 
-.slide::before{content:'';position:absolute;top:0;left:0;width:1600px;height:900px;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(139,115,85,0.02) 3px,rgba(139,115,85,0.02) 4px);pointer-events:none}
+/* main layout */
+.main{position:absolute;top:170px;left:120px;right:120px;bottom:120px;display:flex;gap:40px;}
+.left-panel{width:520px;position:relative;}
+.right-panel{flex:1;position:relative;}
 
-/* Top header */
-.header{position:absolute;top:50px;left:70px;right:70px;display:flex;align-items:flex-start;justify-content:space-between;z-index:10}
-.header-left{flex:1}
-.kicker{font-size:13px;letter-spacing:6px;color:#8B7355;font-weight:600;margin-bottom:14px}
-.main-title{font-size:38px;color:#1B3B6B;line-height:1.2;font-weight:700;letter-spacing:1px}
-.sub-title{font-size:15px;color:#555;margin-top:10px;letter-spacing:2px;font-weight:400}
-.header-right{width:180px;display:flex;flex-direction:column;align-items:flex-end;padding-top:8px}
-.header-num{font-size:13px;letter-spacing:4px;color:#8B7355;font-weight:600}
-.header-deco{width:180px;height:2px;background:#1B3B6B;margin-top:10px}
+/* section title */
+.section-label{font-size:10px;letter-spacing:4px;color:#8B7355;font-weight:600;margin-bottom:12px;}
+.section-title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:32px;font-weight:700;color:#1B3B6B;line-height:1.3;margin-bottom:8px;}
+.section-title-en{font-family:'Georgia',serif;font-size:13px;color:#8B7355;letter-spacing:2px;margin-bottom:20px;font-style:italic;}
 
-/* Divider line */
-.divider{position:absolute;top:170px;left:70px;right:70px;height:1px;background:#1B3B6B;opacity:0.3;z-index:5}
-.divider-thick{position:absolute;top:170px;left:70px;width:80px;height:3px;background:#1B3B6B;z-index:6}
+/* hexagonal atom structure */
+.atom-container{position:absolute;top:70px;left:-20px;width:560px;height:420px;}
+.hex-svg{width:100%;height:100%;overflow:visible;}
+.hex-node text{font-family:'Noto Sans SC',sans-serif;font-size:11px;fill:#1B3B6B;font-weight:600;}
+.hex-node small{font-size:9px;fill:#8B7355;font-weight:400;}
 
-/* Left content - hexagonal structure */
-.hex-area{position:absolute;top:210px;left:70px;width:520px;height:620px;z-index:5}
+/* vertical divider */
+.v-divider{position:absolute;top:80px;bottom:40px;left:380px;width:1px;background:linear-gradient(to bottom,transparent 0%,rgba(27,59,107,0.2) 20%,rgba(27,59,107,0.2) 80%,transparent 100%);}
 
-.hex-container{position:absolute;top:20px;left:30px;width:460px;height:460px}
+/* right content */
+.journey-title{font-family:'Noto Serif SC',serif;font-size:18px;font-weight:700;color:#1B3B6B;margin-bottom:24px;letter-spacing:1px;}
 
-.hex-label-top{position:absolute;top:0;left:200px;font-size:11px;letter-spacing:3px;color:#8B7355;font-weight:600}
-.hex-center-label{position:absolute;top:220px;left:0;width:460px;text-align:center;font-size:14px;font-weight:700;color:#1B3B6B;letter-spacing:2px}
-.hex-center-sub{position:absolute;top:250px;left:0;width:460px;text-align:center;font-size:11px;color:#8B7355;letter-spacing:4px}
+.journey-flow{display:flex;flex-direction:column;gap:18px;position:relative;}
+.flow-item{display:flex;align-items:flex-start;gap:18px;position:relative;}
+.flow-index{flex-shrink:0;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif SC',serif;font-size:14px;font-weight:700;color:#F5F0E8;background:#1B3B6B;border-radius:50%;}
+.flow-item.accident .flow-index{background:#8B7355;}
+.flow-item.consumption .flow-index{background:#555;}
+.flow-body{flex:1;padding-top:4px;}
+.flow-stage{font-size:10px;letter-spacing:3px;color:#8B7355;margin-bottom:3px;font-weight:600;}
+.flow-main{font-family:'Noto Serif SC',serif;font-size:15px;font-weight:700;color:#1B3B6B;line-height:1.4;margin-bottom:3px;}
+.flow-desc{font-size:11.5px;color:#555;line-height:1.55;}
+.flow-desc em{font-style:normal;color:#1B3B6B;font-weight:600;}
 
-.hex-caption{position:absolute;bottom:0;left:0;width:520px;text-align:center;font-size:12px;color:#555;letter-spacing:1px;line-height:1.8}
-.hex-caption strong{color:#1B3B6B;font-weight:700}
+/* connecting line */
+.flow-line{position:absolute;left:17px;top:42px;width:1px;bottom:24px;background:repeating-linear-gradient(to bottom,rgba(27,59,107,0.25) 0px,rgba(27,59,107,0.25) 4px,transparent 4px,transparent 8px);}
 
-/* Right content - journey stages */
-.journey-area{position:absolute;top:210px;left:640px;width:890px;height:640px;z-index:5}
+/* footer */
+.footer{position:absolute;bottom:60px;left:120px;right:120px;display:flex;justify-content:space-between;align-items:center;}
+.footer-left{font-size:10px;color:#8B7355;letter-spacing:2px;}
+.footer-center{font-family:'Noto Serif SC',serif;font-size:12px;color:#1B3B6B;letter-spacing:1px;font-style:italic;}
+.footer-right{font-size:10px;color:#8B7355;letter-spacing:2px;}
 
-.journey-title{font-size:18px;font-weight:700;color:#1B3B6B;margin-bottom:6px;letter-spacing:1px}
-.journey-sub{font-size:11px;letter-spacing:4px;color:#8B7355;margin-bottom:24px;font-weight:600}
+/* decorative geometric elements */
+.deco-circle-1{position:absolute;top:-60px;right:-60px;width:180px;height:180px;border-radius:50%;border:2px solid rgba(27,59,107,0.08);}
+.deco-square-1{position:absolute;bottom:120px;right:40px;width:50px;height:50px;background:#1B3B6B;opacity:0.06;}
+.deco-line-h{position:absolute;top:148px;left:120px;right:120px;height:1px;background:rgba(27,59,107,0.15);}
 
-.stage{position:relative;display:flex;align-items:flex-start;margin-bottom:20px;padding-left:60px}
-.stage-num{position:absolute;left:0;top:2px;width:40px;height:40px;background:#1B3B6B;color:#F5F0E8;font-family:'Noto Serif SC',serif;font-size:18px;font-weight:700;display:flex;align-items:center;justify-content:center;border-radius:0}
-.stage-num.square{border-radius:0}
-.stage-num.circle{border-radius:50%}
-.stage-num.triangle{width:0;height:0;background:transparent;border-left:20px solid transparent;border-right:20px solid transparent;border-bottom:34px solid #8B7355;position:absolute;left:3px;top:3px;color:transparent}
-.stage-num.triangle-label{position:absolute;left:0;top:12px;width:40px;text-align:center;font-size:13px;font-weight:700;color:#1B3B6B;font-family:'Noto Serif SC',serif}
+/* reflection box */
+.reflection-box{position:absolute;left:0;bottom:0;width:520px;padding:16px 20px;border-left:3px solid #1B3B6B;background:rgba(27,59,107,0.03);}
+.reflection-label{font-size:9px;letter-spacing:3px;color:#8B7355;margin-bottom:6px;font-weight:600;}
+.reflection-text{font-family:'Noto Serif SC',serif;font-size:13px;color:#1B3B6B;line-height:1.55;font-style:italic;}
 
-.stage-content{flex:1;padding-top:4px}
-.stage-heading{font-size:17px;font-weight:700;color:#1B3B6B;margin-bottom:5px;letter-spacing:0.5px}
-.stage-detail{font-size:13px;color:#555;line-height:1.7;letter-spacing:0.5px}
-.stage-detail .accent{color:#8B7355;font-weight:600}
-.stage-detail .key{color:#1B3B6B;font-weight:700}
+/* small dots decoration */
+.dots-row{display:flex;gap:4px;margin-bottom:10px;}
+.dot{width:4px;height:4px;background:#1B3B6B;border-radius:50%;opacity:0.4;}
+.dot.active{opacity:1;}
+</style></head><body>
+<div class="slide">
+<div class="bg-texture"></div>
+<div class="deco-circle-1"></div>
+<div class="deco-square-1"></div>
 
-.stage-tag{position:absolute;right:0;top:6px;font-size:10px;letter-spacing:3px;color:#8B7355;font-weight:600;padding:3px 10px;border:1px solid #8B7355;background:transparent}
+<div class="page-border"></div>
+<div class="page-border-inner"></div>
 
-/* Bottom footer */
-.footer{position:absolute;bottom:35px;left:70px;right:70px;display:flex;align-items:center;justify-content:space-between;z-index:10}
-.footer-left{font-size:11px;letter-spacing:3px;color:#8B7355;font-weight:600}
-.footer-right{font-size:11px;letter-spacing:3px;color:#8B7355;font-weight:600}
-.footer-line{flex:1;height:1px;background:#8B7355;opacity:0.3;margin:0 25px}
+<div class="deco-line-h"></div>
 
-/* Bauhaus decoration */
-.deco-square{position:absolute;top:175px;right:70px;width:12px;height:12px;background:#1B3B6B;z-index:7}
-.deco-circle{position:absolute;top:182px;right:95px;width:8px;height:8px;border-radius:50%;background:#8B7355;z-index:7}
-
-/* Left decorative lines */
-.left-deco-line{position:absolute;left:70px;top:210px;width:3px;height:60px;background:#1B3B6B;z-index:4}
-.left-deco-dot{position:absolute;left:70px;top:273px;width:9px;height:9px;border-radius:50%;background:#8B7355;z-index:5}
-</style></head><body><div class="slide">
-
-<div class="left-deco-line"></div>
-<div class="left-deco-dot"></div>
-<div class="deco-square"></div>
-<div class="deco-circle"></div>
-
+<!-- header -->
 <div class="header">
 <div class="header-left">
-<div class="kicker">CASE STUDY · 开源案例</div>
-<div class="main-title">Chrome 的数字之旅</div>
-<div class="sub-title">从开源内核到商业分发 — 开源生态的协作、变异与消费</div>
+<div class="lecture-tag">LECTURE · 01 / 30</div>
+<div class="slide-title">Chrome 的数字之旅：从开源内核到日常消费</div>
+<div class="slide-subtitle">FROM CHROMIUM TO CONSUMER — A DIGITAL JOURNEY</div>
 </div>
 <div class="header-right">
-<div class="header-num">N° 07</div>
-<div class="header-deco"></div>
+<div class="deck-info">SOFT-BIZ · VOL.01</div>
+<div class="page-num">01 / 30</div>
 </div>
 </div>
 
-<div class="divider"></div>
-<div class="divider-thick"></div>
+<!-- main content -->
+<div class="main">
 
-<!-- Left: Hexagonal atomic structure -->
-<div class="hex-area">
-<div class="hex-label-top">HEXATOMIC · 开源原子结构</div>
-<div class="hex-container">
-<svg viewBox="0 0 460 460" width="460" height="460">
-<!-- Outer hexagon -->
-<polygon points="230,30 410,130 410,330 230,430 50,330 50,130" fill="none" stroke="#1B3B6B" stroke-width="1.5" opacity="0.4"/>
+<!-- LEFT PANEL: Hexagonal atom -->
+<div class="left-panel">
+<div class="section-label">VISUAL METAPHOR · 视觉隐喻</div>
+<div class="section-title">openEuler 六边形<br>原子结构</div>
+<div class="section-title-en">Hexagonal Atomic Structure</div>
 
-<!-- 6 inner hexagons arranged around center -->
-<!-- Top -->
-<g>
-<polygon points="230,80 285,110 285,170 230,200 175,170 175,110" fill="#F5F0E8" stroke="#1B3B6B" stroke-width="1.8"/>
-<text x="230" y="145" text-anchor="middle" font-family="'Noto Serif SC',serif" font-size="13" font-weight="700" fill="#1B3B6B">V8</text>
-<text x="230" y="162" text-anchor="middle" font-family="'Noto Sans SC',sans-serif" font-size="9" fill="#8B7355" letter-spacing="2">ENGINE</text>
-</g>
+<div class="atom-container">
+<svg class="hex-svg" viewBox="0 0 560 420">
+<!-- outer hexagon ring -->
+<polygon points="280,20 460,125 460,325 280,420 100,325 100,125"
+  fill="none" stroke="#1B3B6B" stroke-width="1.5" opacity="0.6"/>
+<polygon points="280,50 430,137 430,297 280,385 130,297 130,137"
+  fill="none" stroke="#1B3B6B" stroke-width="0.8" opacity="0.25" stroke-dasharray="3,3"/>
 
-<!-- Top-right -->
-<g>
-<polygon points="335,140 390,170 390,230 335,260 280,230 280,170" fill="#F5F0E8" stroke="#1B3B6B" stroke-width="1.8"/>
-<text x="335" y="205" text-anchor="middle" font-family="'Noto Serif SC',serif" font-size="13" font-weight="700" fill="#1B3B6B">ffmpeg</text>
-<text x="335" y="222" text-anchor="middle" font-family="'Noto Sans SC',sans-serif" font-size="9" fill="#8B7355" letter-spacing="2">CODEC</text>
-</g>
+<!-- inner hexagon -->
+<polygon points="280,120 370,175 370,275 280,330 190,275 190,175"
+  fill="rgba(27,59,107,0.04)" stroke="#1B3B6B" stroke-width="1.2" opacity="0.7"/>
 
-<!-- Bottom-right -->
-<g>
-<polygon points="335,260 390,290 390,350 335,380 280,350 280,290" fill="#F5F0E8" stroke="#1B3B6B" stroke-width="1.8"/>
-<text x="335" y="325" text-anchor="middle" font-family="'Noto Serif SC',serif" font-size="12" font-weight="700" fill="#1B3B6B">Blink</text>
-<text x="335" y="342" text-anchor="middle" font-family="'Noto Sans SC',sans-serif" font-size="9" fill="#8B7355" letter-spacing="2">RENDER</text>
-</g>
+<!-- center node -->
+<circle cx="280" cy="230" r="42" fill="#1B3B6B" opacity="0.92"/>
+<text x="280" y="225" text-anchor="middle" font-size="13" font-weight="700" fill="#F5F0E8" font-family="Noto Serif SC,serif">开源</text>
+<text x="280" y="242" text-anchor="middle" font-size="9" fill="#8B7355" font-family="Noto Sans SC">OPEN SOURCE</text>
 
-<!-- Bottom -->
-<g>
-<polygon points="230,320 285,350 285,410 230,400 175,350 175,290" fill="#F5F0E8" stroke="#1B3B6B" stroke-width="1.8"/>
-<text x="230" y="355" text-anchor="middle" font-family="'Noto Serif SC',serif" font-size="12" font-weight="700" fill="#1B3B6B">Chromium</text>
-<text x="230" y="372" text-anchor="middle" font-family="'Noto Sans SC',sans-serif" font-size="9" fill="#8B7355" letter-spacing="2">CORE</text>
-</g>
+<!-- connecting lines from center to outer nodes -->
+<line x1="280" y1="230" x2="280" y2="20" stroke="#8B7355" stroke-width="0.8" opacity="0.5"/>
+<line x1="280" y1="230" x2="460" y2="125" stroke="#8B7355" stroke-width="0.8" opacity="0.5"/>
+<line x1="280" y1="230" x2="460" y2="325" stroke="#8B7355" stroke-width="0.8" opacity="0.5"/>
+<line x1="280" y1="230" x2="280" y2="420" stroke="#8B7355" stroke-width="0.8" opacity="0.5"/>
+<line x1="280" y1="230" x2="100" y2="325" stroke="#8B7355" stroke-width="0.8" opacity="0.5"/>
+<line x1="280" y1="230" x2="100" y2="125" stroke="#8B7355" stroke-width="0.8" opacity="0.5"/>
 
-<!-- Bottom-left -->
-<g>
-<polygon points="125,260 180,290 180,350 125,380 70,350 70,290" fill="#F5F0E8" stroke="#1B3B6B" stroke-width="1.8"/>
-<text x="125" y="325" text-anchor="middle" font-family="'Noto Serif SC',serif" font-size="12" font-weight="700" fill="#1B3B6B">WebRTC</text>
-<text x="125" y="342" text-anchor="middle" font-family="'Noto Sans SC',sans-serif" font-size="9" fill="#8B7355" letter-spacing="2">MEDIA</text>
-</g>
+<!-- 6 satellite nodes -->
+<!-- top -->
+<circle cx="280" cy="20" r="26" fill="#F5F0E8" stroke="#1B3B6B" stroke-width="1.5"/>
+<text class="hex-node" x="280" y="16" text-anchor="middle">上游</text>
+<small x="280" y="29" text-anchor="middle">Core</small>
 
-<!-- Top-left -->
-<g>
-<polygon points="125,140 180,170 180,230 125,260 70,230 70,170" fill="#F5F0E8" stroke="#1B3B6B" stroke-width="1.8"/>
-<text x="125" y="205" text-anchor="middle" font-family="'Noto Serif SC',serif" font-size="12" font-weight="700" fill="#1B3B6B">WebAssembly</text>
-<text x="125" y="222" text-anchor="middle" font-family="'Noto Sans SC',sans-serif" font-size="9" fill="#8B7355" letter-spacing="2">WASM</text>
-</g>
+<!-- top-right -->
+<circle cx="460" cy="125" r="26" fill="#F5F0E8" stroke="#1B3B6B" stroke-width="1.5"/>
+<text class="hex-node" x="460" y="121" text-anchor="middle">协作</text>
+<small x="460" y="134" text-anchor="middle">Collab</small>
 
-<!-- Center hexagon -->
-<polygon points="230,180 285,210 285,270 230,300 175,270 175,210" fill="#1B3B6B" stroke="#1B3B6B" stroke-width="1.5"/>
-<text x="230" y="235" text-anchor="middle" font-family="'Noto Serif SC',serif" font-size="12" font-weight="700" fill="#F5F0E8">Chrome</text>
-<text x="230" y="253" text-anchor="middle" font-family="'Noto Sans SC',sans-serif" font-size="9" fill="#8B7355" letter-spacing="2">BROWSER</text>
+<!-- bottom-right -->
+<circle cx="460" cy="325" r="26" fill="#F5F0E8" stroke="#1B3B6B" stroke-width="1.5"/>
+<text class="hex-node" x="460" y="321" text-anchor="middle">分发</text>
+<small x="460" y="334" text-anchor="middle">Dist</small>
 
-<!-- Connection lines -->
-<line x1="230" y1="200" x2="230" y2="170" stroke="#8B7355" stroke-width="1" stroke-dasharray="3,3"/>
-<line x1="285" y1="210" x2="280" y2="170" stroke="#8B7355" stroke-width="1" stroke-dasharray="3,3"/>
-<line x1="285" y1="270" x2="280" y2="290" stroke="#8B7355" stroke-width="1" stroke-dasharray="3,3"/>
-<line x1="230" y1="300" x2="230" y2="320" stroke="#8B7355" stroke-width="1" stroke-dasharray="3,3"/>
-<line x1="175" y1="270" x2="180" y2="290" stroke="#8B7355" stroke-width="1" stroke-dasharray="3,3"/>
-<line x1="175" y1="210" x2="180" y2="170" stroke="#8B7355" stroke-width="1" stroke-dasharray="3,3"/>
+<!-- bottom -->
+<circle cx="280" cy="420" r="26" fill="#F5F0E8" stroke="#1B3B6B" stroke-width="1.5"/>
+<text class="hex-node" x="280" y="416" text-anchor="middle">消费</text>
+<small x="280" y="429" text-anchor="middle">Use</small>
+
+<!-- bottom-left -->
+<circle cx="100" cy="325" r="26" fill="#F5F0E8" stroke="#1B3B6B" stroke-width="1.5"/>
+<text class="hex-node" x="100" y="321" text-anchor="middle">许可</text>
+<small x="100" y="334" text-anchor="middle">Lis.</small>
+
+<!-- top-left -->
+<circle cx="100" cy="125" r="26" fill="#F5F0E8" stroke="#1B3B6B" stroke-width="1.5"/>
+<text class="hex-node" x="100" y="121" text-anchor="middle">治理</text>
+<small x="100" y="134" text-anchor="middle">Gov.</small>
+
+<!-- inner connecting lines (hexagon edges) -->
+<line x1="190" y1="175" x2="280" y2="120" stroke="#1B3B6B" stroke-width="0.5" opacity="0.3"/>
+<line x1="370" y1="175" x2="280" y2="120" stroke="#1B3B6B" stroke-width="0.5" opacity="0.3"/>
+<line x1="370" y1="275" x2="280" y2="330" stroke="#1B3B6B" stroke-width="0.5" opacity="0.3"/>
+<line x1="190" y1="275" x2="280" y2="330" stroke="#1B3B6B" stroke-width="0.5" opacity="0.3"/>
+
+<!-- small decorative elements -->
+<circle cx="50" cy="20" r="3" fill="#8B7355" opacity="0.5"/>
+<circle cx="530" cy="60" r="3" fill="#8B7355" opacity="0.5"/>
+<rect x="490" y="380" width="8" height="8" fill="#1B3B6B" opacity="0.15"/>
 </svg>
 </div>
 
-<div class="hex-caption">
-<strong>六边形原子结构</strong><br>
-开源生态的连接与协作 — 每个模块独立演化，<br>中心通过协作协议聚合为完整产品
+<div class="reflection-box">
+<div class="reflection-label">REFLECTION · 反思</div>
+<div class="reflection-text">"六边形原子"象征开源生态的<br>连接性——每个节点既是贡献者，也是受益者。</div>
 </div>
 </div>
 
-<!-- Right: Journey stages -->
-<div class="journey-area">
-<div class="journey-title">Chrome 的数字化旅程</div>
-<div class="journey-sub">JOURNEY IN FIVE STAGES</div>
+<!-- RIGHT PANEL -->
+<div class="right-panel">
+<div class="section-label">CASE STUDY · 案例分析</div>
+<div class="journey-title">举个例子：Chrome 的数字之旅</div>
 
-<div class="stage">
-<div class="stage-num">1</div>
-<div class="stage-content">
-<div class="stage-heading">开源内核 · Chromium</div>
-<div class="stage-detail"><span class="key">Chromium</span> 作为开源基座，聚合 <span class="accent">V8</span>（JavaScript 引擎）与 <span class="accent">ffmpeg</span>（多媒体编解码）等开源组件，构成技术底座。</div>
-</div>
-<div class="stage-tag">ORIGIN</div>
-</div>
-
-<div class="stage">
-<div class="stage-num circle">2</div>
-<div class="stage-content">
-<div class="stage-heading">商业变异 · Chrome / Edge</div>
-<div class="stage-detail"><span class="key">Google</span> 与 <span class="key">Microsoft</span> 在 Chromium 基础上加入<span class="accent">闭源组件</span>（自动更新、遥测、DRM），形成差异化商业浏览器。</div>
-</div>
-<div class="stage-tag">DIVERGENCE</div>
+<div class="dots-row">
+<div class="dot active"></div>
+<div class="dot active"></div>
+<div class="dot active"></div>
+<div class="dot active"></div>
+<div class="dot active"></div>
+<div class="dot"></div>
 </div>
 
-<div class="stage">
-<div class="stage-num square">3</div>
-<div class="stage-content">
-<div class="stage-heading">编译与分发 · 官方渠道</div>
-<div class="stage-detail">产品经编译打包，通过<span class="accent">官网下载</span>与<span class="accent">应用市场</span>进行分发，构建标准获取路径。</div>
-</div>
-<div class="stage-tag">DISTRIBUTION</div>
-</div>
+<div class="journey-flow">
+<div class="flow-line"></div>
 
-<div class="stage">
-<div class="stage-num triangle"><span class="triangle-label">4</span></div>
-<div class="stage-content">
-<div class="stage-heading">意外 · 渠道断裂</div>
-<div class="stage-detail"><span class="accent">Google 服务在中国大陆不可直接访问</span>，用户脱离了"正常"获取渠道，被迫依赖第三方下载站、镜像与离线包 — 制度环境重塑了分发路径。</div>
-</div>
-<div class="stage-tag">DISRUPTION</div>
-</div>
-
-<div class="stage">
-<div class="stage-num" style="background:#8B7355">5</div>
-<div class="stage-content">
-<div class="stage-heading">消费 · 日常的不可见</div>
-<div class="stage-detail">尽管获取路径曲折，<span class="key">我们每天都在 www 中频繁使用</span> — 开源产品融入日常生活，消费者与生产端的关系已被深深中介化。</div>
-</div>
-<div class="stage-tag">CONSUMPTION</div>
+<div class="flow-item">
+<div class="flow-index">1</div>
+<div class="flow-body">
+<div class="flow-stage">OPEN SOURCE · 开源内核</div>
+<div class="flow-main">Chromium：V8 引擎、ffmpeg 解码器</div>
+<div class="flow-desc">Google 将浏览器内核开源，<em>V8</em> 提供 JavaScript 执行能力，<em>ffmpeg</em> 提供多媒体解码——大量社区贡献构成基础。</div>
 </div>
 </div>
 
+<div class="flow-item">
+<div class="flow-index">2</div>
+<div class="flow-body">
+<div class="flow-stage">FORK & ADD · 闭源封装</div>
+<div class="flow-main">Chrome / Edge：Google 与 Microsoft 加入闭源组件</div>
+<div class="flow-desc">基于 Chromium 添加私有付费版权组件、自动更新服务、数据收集——形成商业差异化，价值增值发生于此。</div>
+</div>
+</div>
+
+<div class="flow-item">
+<div class="flow-index">3</div>
+<div class="flow-body">
+<div class="flow-stage">DISTRIBUTION · 编译与分发</div>
+<div class="flow-main">官网下载、应用市场：标准化渠道分发</div>
+<div class="flow-desc">通过 Chrome Web Store、Windows Store 等渠道触达用户——分发基础设施由平台方控制。</div>
+</div>
+</div>
+
+<div class="flow-item accident">
+<div class="flow-index">4</div>
+<div class="flow-body">
+<div class="flow-stage">ACCIDENT · 意外之旅</div>
+<div class="flow-main">Google 不能被访问：脱离"正常"渠道</div>
+<div class="flow-desc">在中国大陆，Chrome 官网无法访问——用户不得不通过<em>第三方镜像、技术论坛、旧版离线包</em>获取，形成非正规分发网络。</div>
+</div>
+</div>
+
+<div class="flow-item consumption">
+<div class="flow-index">5</div>
+<div class="flow-body">
+<div class="flow-stage">CONSUMPTION · 消费与成本</div>
+<div class="flow-main">谁在消费？谁又在负担成本？</div>
+<div class="flow-desc">我们每天在 <em>www</em> 上频繁使用——享受开源带来的便利，却鲜少追问：V8 的开发成本、ffmpeg 的维护、分发的基建由谁承担？</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<!-- footer -->
 <div class="footer">
-<div class="footer-left">开源之道 · OPEN SOURCE ECONOMICS</div>
-<div class="footer-line"></div>
-<div class="footer-right">新制度经济学视角 / NEW INSTITUTIONAL ECONOMICS</div>
+<div class="footer-left">新制度经济学视角 · 开源软件</div>
+<div class="footer-center">— From Chromium to Consumer —</div>
+<div class="footer-right">2024 · 开源之道</div>
 </div>
 
-</div></body></html>
+</div>
+</body></html>

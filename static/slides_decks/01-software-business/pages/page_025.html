@@ -1,105 +1,619 @@
 
 
-<!DOCTYPE html><html><head><meta charset="UTF-8"><title>软件交付简史之云与市场</title><style>html,body{width:1600px;height:900px;overflow:hidden;margin:0;font-family:'Noto Sans SC','PingFang SC',sans-serif;color:#1B3B6B}body{background:#F5F0E8;position:relative}*{margin:0;padding:0}h1,h2,h3{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-weight:700}.parchment-texture{position:absolute;top:0;left:0;width:1600px;height:900px;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(139,115,85,0.02) 3px,rgba(139,115,85,0.02) 4px);pointer-events:none}.top-rule{position:absolute;top:60px;left:80px;right:80px;height:2px;background:#1B3B6B}.top-rule-thin{position:absolute;top:68px;left:80px;right:80px;height:1px;background:#8B7355}.bottom-rule{position:absolute;bottom:60px;left:80px;right:80px;height:2px;background:#1B3B6B}.slide-num{position:absolute;top:80px;left:80px;font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:3px}.slide-num-right{position:absolute;top:80px;right:80px;font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:3px}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>第 01 期 · 软件的生产、分销和消费 — 软件交付简史之云与市场</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1600px; height: 900px; overflow: hidden; margin: 0; }
+body {
+  background: #F5F0E8;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: #1B3B6B;
+  position: relative;
+}
 
-.title-block{position:absolute;top:110px;left:80px;width:880px}.eyebrow{font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;letter-spacing:8px;margin-bottom:16px}.main-title{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:46px;color:#1B3B6B;line-height:1.2;margin-bottom:10px}.sub-title{font-family:'Noto Serif SC',serif;font-size:18px;color:#555;line-height:1.6;margin-top:18px;letter-spacing:1px}
-
-.divider-v{position:absolute;top:110px;left:990px;width:1px;height:680px;background:#8B7355;opacity:0.5}
-
-.bullets{position:absolute;top:120px;left:1030px;width:490px}.bullet-item{display:flex;align-items:flex-start;margin-bottom:32px;gap:18px}.bullet-num{font-family:'Noto Serif SC',serif;font-size:18px;color:#8B7355;min-width:28px;padding-top:4px;letter-spacing:1px}.bullet-text{font-family:'Noto Sans SC',sans-serif;font-size:17px;color:#1B3B6B;line-height:1.65;flex:1}.bullet-text strong{font-weight:700;color:#1B3B6B}.bullet-text .dim{color:#555;font-size:14px;display:block;margin-top:4px}
-
-/* Chrome logo visual metaphor - left side decorative */
-.chrome-zone{position:absolute;top:360px;left:80px;width:880px;height:420px}
-.chrome-label{font-family:'Noto Serif SC',serif;font-size:12px;color:#8B7355;letter-spacing:4px;margin-bottom:20px}.chrome-pair{display:flex;align-items:center;gap:80px;justify-content:center;margin-bottom:30px}.chrome-color{position:relative;width:180px;height:180px}.chrome-mono{position:relative;width:180px;height:180px}.vs-text{font-family:'Noto Serif SC',serif;font-size:24px;color:#8B7355;letter-spacing:6px}.chrome-caption{position:absolute;bottom:-30px;left:50%;transform:translateX(-50%);font-family:'Noto Serif SC',serif;font-size:12px;color:#8B7355;letter-spacing:3px;white-space:nowrap}
-
-/* Chrome color version - simplified Bauhaus geometric */
-.chrome-color .circle-outer{position:absolute;top:0;left:0;width:180px;height:180px;border-radius:50%;border:8px solid #1B3B6B;background:#F5F0E8}.chrome-color .tri-r{position:absolute;top:8px;left:90px;width:0;height:0;border-left:82px solid #E85D47;border-top:72px solid transparent;border-bottom:72px solid transparent}.chrome-color .tri-bl{position:absolute;top:90px;left:30px;width:0;height:0;border-right:72px solid transparent;border-bottom:60px solid #F4B942;border-left:72px solid #1B7F1B}.chrome-color .tri-br{position:absolute;top:90px;left:90px;width:0;height:0;border-right:82px solid #1B7F1B;border-bottom:60px solid transparent;border-left:82px solid #1B7F1B}.chrome-color .center-circle{position:absolute;top:66px;left:66px;width:48px;height:48px;border-radius:50%;background:#1B3B6B;border:6px solid #F5F0E8}
-
-.chrome-mono .circle-outer{position:absolute;top:0;left:0;width:180px;height:180px;border-radius:50%;border:8px solid #1B3B6B;background:#F5F0E8}.chrome-mono .tri-r{position:absolute;top:8px;left:90px;width:0;height:0;border-left:82px solid #1B3B6B;border-top:72px solid transparent;border-bottom:72px solid transparent}.chrome-mono .tri-bl{position:absolute;top:90px;left:30px;width:0;height:0;border-right:72px solid transparent;border-bottom:60px solid #1B3B6B;border-left:72px solid #1B3B6B}.chrome-mono .tri-br{position:absolute;top:90px;left:90px;width:0;height:0;border-right:82px solid #1B3B6B;border-bottom:60px solid transparent;border-left:82px solid #1B3B6B}.chrome-mono .center-circle{position:absolute;top:66px;left:66px;width:48px;height:48px;border-radius:50%;background:#1B3B6B;border:6px solid #F5F0E8}
-
-.metaphor-text{position:absolute;top:230px;left:0;right:0;text-align:center;font-family:'Noto Serif SC',serif;font-size:15px;color:#555;letter-spacing:2px;line-height:1.8}.metaphor-text .accent{color:#1B3B6B;font-weight:700}
+/* Background texture */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: 
+    repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(27,59,107,0.01) 3px, rgba(27,59,107,0.01) 4px);
+  pointer-events: none;
+  z-index: 0;
+}
 
 /* Geometric decorations */
-.geo-circle{position:absolute;top:70px;right:200px;width:24px;height:24px;border-radius:50%;background:#1B3B6B;opacity:0.15}.geo-square{position:absolute;top:70px;right:240px;width:20px;height:20px;background:#8B7355;opacity:0.2}.geo-line{position:absolute;bottom:80px;left:80px;width:40px;height:1px;background:#1B3B6B}.geo-dot1{position:absolute;top:540px;left:280px;width:8px;height:8px;background:#8B7355;border-radius:50%;opacity:0.5}
+.deco-circle-1 {
+  position: absolute;
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  border: 2px solid #1B3B6B;
+  opacity: 0.06;
+  top: -40px; right: 200px;
+  z-index: 0;
+}
 
-/* Cloud & server diagram bottom area */
-.cloud-diagram{position:absolute;bottom:95px;left:1200px;width:320px;height:110px;display:flex;align-items:center;justify-content:center;gap:10px}.cloud-block{width:14px;height:14px;background:#1B3B6B}.cloud-block.hollow{background:transparent;border:1.5px solid #1B3B6B}.cloud-line{width:20px;height:1px;background:#8B7355}
+.deco-circle-2 {
+  position: absolute;
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  opacity: 0.04;
+  bottom: 60px; left: 80px;
+  z-index: 0;
+}
 
-.footer-left{position:absolute;bottom:80px;left:80px;font-family:'Noto Serif SC',serif;font-size:12px;color:#8B7355;letter-spacing:3px}.footer-right{position:absolute;bottom:80px;right:80px;font-family:'Noto Serif SC',serif;font-size:12px;color:#8B7355;letter-spacing:3px}
-</style></head><body>
-<div class="parchment-texture"></div>
-<div class="geo-circle"></div>
-<div class="geo-square"></div>
+.deco-square-1 {
+  position: absolute;
+  width: 60px; height: 60px;
+  background: #8B7355;
+  opacity: 0.05;
+  top: 120px; left: 60px;
+  transform: rotate(15deg);
+  z-index: 0;
+}
 
-<div class="top-rule"></div>
-<div class="top-rule-thin"></div>
-<div class="bottom-rule"></div>
+.deco-square-2 {
+  position: absolute;
+  width: 40px; height: 40px;
+  border: 2px solid #8B7355;
+  opacity: 0.08;
+  bottom: 180px; right: 80px;
+  z-index: 0;
+}
 
-<div class="slide-num">NIE / OPEN SOURCE · 05</div>
-<div class="slide-num-right">软件交付简史</div>
+.deco-line-1 {
+  position: absolute;
+  width: 200px; height: 1px;
+  background: #1B3B6B;
+  opacity: 0.12;
+  top: 95px; left: 80px;
+  z-index: 0;
+}
 
-<div class="title-block">
-  <div class="eyebrow">CHAPTER · 云与市场</div>
-  <div class="main-title">软件交付简史之<br>云与市场</div>
-  <div class="sub-title">当计算成为可租用的公共基础设施，软件的形态从"产品"转向"服务"——<br>所有权的退场与许可的扩权，构成了数字时代最根本的制度转变。</div>
+.deco-line-2 {
+  position: absolute;
+  width: 1px; height: 160px;
+  background: #1B3B6B;
+  opacity: 0.08;
+  top: 200px; right: 700px;
+  z-index: 0;
+}
+
+.deco-triangle {
+  position: absolute;
+  width: 0; height: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 52px solid #1B3B6B;
+  opacity: 0.03;
+  bottom: 40px; right: 120px;
+  z-index: 0;
+}
+
+/* Header */
+.header {
+  position: absolute;
+  top: 50px;
+  left: 80px;
+  right: 80px;
+  z-index: 10;
+}
+
+.slide-number {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 14px;
+  color: #8B7355;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.slide-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #1B3B6B;
+  line-height: 1.4;
+  letter-spacing: 1px;
+}
+
+.slide-subtitle {
+  font-size: 16px;
+  color: #555;
+  margin-top: 8px;
+  letter-spacing: 1px;
+  font-weight: 300;
+}
+
+.title-rule {
+  width: 80px;
+  height: 3px;
+  background: #1B3B6B;
+  margin-top: 18px;
+}
+
+/* Main content area */
+.content-area {
+  position: absolute;
+  top: 220px;
+  left: 80px;
+  width: 780px;
+  z-index: 10;
+}
+
+.section-label {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 13px;
+  color: #8B7355;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  font-weight: 400;
+}
+
+.bullet-group {
+  list-style: none;
+  padding: 0;
+}
+
+.bullet-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.bullet-marker {
+  width: 8px;
+  height: 8px;
+  background: #1B3B6B;
+  margin-top: 9px;
+  margin-right: 18px;
+  flex-shrink: 0;
+}
+
+.bullet-marker-circle {
+  width: 8px;
+  height: 8px;
+  border: 2px solid #1B3B6B;
+  border-radius: 50%;
+  margin-top: 8px;
+  margin-right: 18px;
+  flex-shrink: 0;
+  background: transparent;
+}
+
+.bullet-marker-square {
+  width: 8px;
+  height: 8px;
+  background: #8B7355;
+  margin-top: 9px;
+  margin-right: 18px;
+  flex-shrink: 0;
+}
+
+.bullet-text {
+  font-size: 17px;
+  line-height: 1.7;
+  color: #1B3B6B;
+  font-weight: 400;
+}
+
+.bullet-text .highlight {
+  font-weight: 600;
+  color: #1B3B6B;
+}
+
+.bullet-text .sub {
+  display: block;
+  font-size: 14px;
+  color: #555;
+  margin-top: 3px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+/* Visual metaphor area */
+.metaphor-area {
+  position: absolute;
+  top: 230px;
+  right: 80px;
+  width: 560px;
+  height: 520px;
+  z-index: 10;
+}
+
+.metaphor-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 12px;
+  color: #8B7355;
+  letter-spacing: 2px;
+  font-weight: 400;
+}
+
+.metaphor-circles {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  right: 0;
+  height: 420px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Colorful Chrome-like circle */
+.circle-colorful {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  left: -130px;
+  top: -20px;
+}
+
+.circle-colorful .ring-outer {
+  position: absolute;
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.seg-blue {
+  position: absolute;
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  background: #4285F4;
+  clip-path: polygon(0% 0%, 50% 0%, 50% 50%, 0% 50%);
+}
+
+.seg-red {
+  position: absolute;
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  background: #DB4437;
+  clip-path: polygon(50% 0%, 100% 0%, 100% 50%, 50% 50%);
+}
+
+.seg-yellow {
+  position: absolute;
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  background: #F4B400;
+  clip-path: polygon(50% 50%, 100% 50%, 100% 100%, 50% 100%);
+}
+
+.seg-green {
+  position: absolute;
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  background: #0F9D58;
+  clip-path: polygon(0% 50%, 50% 50%, 50% 100%, 0% 100%);
+}
+
+.circle-colorful .ring-center {
+  position: absolute;
+  width: 100px; height: 100px;
+  border-radius: 50%;
+  background: #F5F0E8;
+  top: 90px; left: 90px;
+  border: 4px solid #4285F4;
+  z-index: 5;
+}
+
+.circle-colorful .inner-dot {
+  position: absolute;
+  width: 50px; height: 50px;
+  border-radius: 50%;
+  background: #4285F4;
+  top: 115px; left: 115px;
+  z-index: 6;
+}
+
+/* Monochrome version */
+.circle-mono {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  left: 130px;
+  top: 120px;
+}
+
+.circle-mono .ring-outer {
+  position: absolute;
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.seg-mono-blue {
+  position: absolute;
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  clip-path: polygon(0% 0%, 50% 0%, 50% 50%, 0% 50%);
+}
+
+.seg-mono-dark {
+  position: absolute;
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  background: #0F2847;
+  clip-path: polygon(50% 0%, 100% 0%, 100% 50%, 50% 50%);
+}
+
+.seg-mono-light {
+  position: absolute;
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  background: #2D4F7F;
+  clip-path: polygon(50% 50%, 100% 50%, 100% 100%, 50% 100%);
+}
+
+.seg-mono-gray {
+  position: absolute;
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  background: #3D6A9E;
+  clip-path: polygon(0% 50%, 50% 50%, 50% 100%, 0% 100%);
+}
+
+.circle-mono .ring-center {
+  position: absolute;
+  width: 100px; height: 100px;
+  border-radius: 50%;
+  background: #F5F0E8;
+  top: 90px; left: 90px;
+  border: 4px solid #1B3B6B;
+  z-index: 5;
+}
+
+.circle-mono .inner-dot {
+  position: absolute;
+  width: 50px; height: 50px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  top: 115px; left: 115px;
+  z-index: 6;
+}
+
+/* Connection line between circles */
+.connect-line {
+  position: absolute;
+  top: 200px;
+  left: 50px;
+  width: 460px;
+  height: 2px;
+  z-index: 2;
+}
+
+.connect-line::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    #8B7355 0,
+    #8B7355 8px,
+    transparent 8px,
+    transparent 14px
+  );
+  opacity: 0.5;
+}
+
+/* Circle labels */
+.circle-label {
+  position: absolute;
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 1.5px;
+  font-weight: 400;
+}
+
+.label-closed {
+  bottom: -10px;
+  left: -10px;
+}
+
+.label-open {
+  bottom: -10px;
+  right: -10px;
+}
+
+/* Metaphor caption */
+.metaphor-caption {
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 13px;
+  color: #555;
+  font-style: italic;
+  letter-spacing: 1px;
+}
+
+/* Footer */
+.footer {
+  position: absolute;
+  bottom: 40px;
+  left: 80px;
+  right: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
+.footer-left {
+  font-size: 12px;
+  color: #8B7355;
+  letter-spacing: 1px;
+}
+
+.footer-right {
+  font-size: 12px;
+  color: #8B7355;
+  letter-spacing: 1px;
+}
+
+.footer-line {
+  position: absolute;
+  bottom: 72px;
+  left: 80px;
+  right: 80px;
+  height: 1px;
+  background: #1B3B6B;
+  opacity: 0.1;
+}
+
+/* Bauhaus decorative elements */
+.bauhaus-accent {
+  position: absolute;
+  top: 220px;
+  left: 760px;
+  width: 20px;
+  height: 20px;
+  background: #8B7355;
+  opacity: 0.15;
+  transform: rotate(45deg);
+  z-index: 0;
+}
+
+.bauhaus-ring {
+  position: absolute;
+  top: 140px;
+  right: 80px;
+  width: 50px;
+  height: 50px;
+  border: 2px solid #1B3B6B;
+  border-radius: 50%;
+  opacity: 0.1;
+  z-index: 0;
+}
+</style>
+</head>
+<body>
+
+<!-- Background geometric decorations -->
+<div class="deco-circle-1"></div>
+<div class="deco-circle-2"></div>
+<div class="deco-square-1"></div>
+<div class="deco-square-2"></div>
+<div class="deco-line-1"></div>
+<div class="deco-line-2"></div>
+<div class="deco-triangle"></div>
+<div class="bauhaus-accent"></div>
+<div class="bauhaus-ring"></div>
+
+<!-- Header -->
+<div class="header">
+  <div class="slide-number">第 01 期 · 软件的生产、分销和消费 — 第 05 页</div>
+  <div class="slide-title">软件交付简史：云与市场</div>
+  <div class="slide-subtitle">The Cloud and the Market — from infrastructure to application economy</div>
+  <div class="title-rule"></div>
 </div>
 
-<div class="divider-v"></div>
-
-<div class="bullets">
-  <div class="bullet-item">
-    <div class="bullet-num">Ⅰ</div>
-    <div class="bullet-text"><strong>数据中心的规模化</strong><span class="dim">物理基础设施的集中化，重塑了软件的分发路径</span></div>
-  </div>
-  <div class="bullet-item">
-    <div class="bullet-num">Ⅱ</div>
-    <div class="bullet-text"><strong>计算、存储、网络可被租用与计费</strong><span class="dim">资源商品化——时间、带宽、容量成为可度量的贸易单元</span></div>
-  </div>
-  <div class="bullet-item">
-    <div class="bullet-num">Ⅲ</div>
-    <div class="bullet-text"><strong>软件围绕资源由用户做出选择</strong><span class="dim">用户从"安装者"变为"订阅者"与"调用者"</span></div>
-  </div>
-  <div class="bullet-item">
-    <div class="bullet-num">Ⅳ</div>
-    <div class="bullet-text"><strong>应用市场的形成</strong><span class="dim">分发渠道的平台化——App Store、AWS Marketplace 等成为新的看门人</span></div>
-  </div>
-  <div class="bullet-item">
-    <div class="bullet-num">Ⅴ</div>
-    <div class="bullet-text"><strong>所有权的消失，许可的无限权力形成</strong><span class="dim">没有所有权的用户，只能服从于不断续签的条款</span></div>
-  </div>
-</div>
-
-<div class="chrome-zone">
-  <div class="chrome-label">— 视觉隐喻 · VISUAL METAPHOR —</div>
-  <div class="chrome-pair">
-    <div style="position:relative">
-      <div class="chrome-color">
-        <div class="circle-outer"></div>
-        <div class="tri-r"></div>
-        <div class="tri-bl"></div>
-        <div class="tri-br"></div>
-        <div class="center-circle"></div>
+<!-- Content -->
+<div class="content-area">
+  <div class="section-label">▸ 从基础设施到应用经济</div>
+  
+  <ul class="bullet-group">
+    <li class="bullet-item">
+      <div class="bullet-marker"></div>
+      <div class="bullet-text">
+        <span class="highlight">数据中心的规模化</span>
+        <span class="sub">集中化部署，规模经济与边际成本递减</span>
       </div>
-      <div class="chrome-caption">同源 · 开源</div>
-    </div>
-    <div class="vs-text">/</div>
-    <div style="position:relative">
-      <div class="chrome-mono">
-        <div class="circle-outer"></div>
-        <div class="tri-r"></div>
-        <div class="tri-bl"></div>
-        <div class="tri-br"></div>
-        <div class="center-circle"></div>
+    </li>
+    
+    <li class="bullet-item">
+      <div class="bullet-marker-circle"></div>
+      <div class="bullet-text">
+        <span class="highlight">计算、存储、网络可租用可计费</span>
+        <span class="sub">资源商品化——算力即服务，按量定价</span>
       </div>
-      <div class="chrome-caption">分化 · 闭源</div>
-    </div>
-  </div>
-  <div class="metaphor-text">同一枚徽标，<span class="accent">彩色</span>与<span class="accent">单色</span>的分化——<br>开源与闭源，<span class="accent">同根而异途</span></div>
+    </li>
+    
+    <li class="bullet-item">
+      <div class="bullet-marker-square"></div>
+      <div class="bullet-text">
+        <span class="highlight">软件围绕资源由用户做出选择</span>
+        <span class="sub">用户主权回归：按需组装，弹性伸缩</span>
+      </div>
+    </li>
+    
+    <li class="bullet-item">
+      <div class="bullet-marker"></div>
+      <div class="bullet-text">
+        <span class="highlight">应用市场的形成</span>
+        <span class="sub">分发渠道变革——应用商店、容器注册表、模型仓库</span>
+      </div>
+    </li>
+    
+    <li class="bullet-item">
+      <div class="bullet-marker-circle"></div>
+      <div class="bullet-text">
+        <span class="highlight">所有权的消失，许可的无限权力</span>
+        <span class="sub">从「拥有」到「授权」——知识产权制度重塑软件经济</span>
+      </div>
+    </li>
+  </ul>
 </div>
 
-<div class="geo-dot1"></div>
-<div class="geo-line"></div>
+<!-- Visual Metaphor -->
+<div class="metaphor-area">
+  <div class="metaphor-label">同根分化 · ONE ROOT, TWO PATHS</div>
+  
+  <div class="metaphor-circles">
+    <div class="connect-line"></div>
+    
+    <!-- Colorful version (closed source) -->
+    <div class="circle-colorful">
+      <div class="ring-outer">
+        <div class="seg-blue"></div>
+        <div class="seg-red"></div>
+        <div class="seg-yellow"></div>
+        <div class="seg-green"></div>
+      </div>
+      <div class="ring-center"></div>
+      <div class="inner-dot"></div>
+    </div>
+    
+    <!-- Monochrome version (open source) -->
+    <div class="circle-mono">
+      <div class="ring-outer">
+        <div class="seg-mono-blue"></div>
+        <div class="seg-mono-dark"></div>
+        <div class="seg-mono-light"></div>
+        <div class="seg-mono-gray"></div>
+      </div>
+      <div class="ring-center"></div>
+      <div class="inner-dot"></div>
+    </div>
+  </div>
+  
+  <div class="metaphor-caption">
+    色彩编码的垄断 ↔ 单色透明的协作<br>
+    <span style="font-size:11px; color:#8B7355;">Colorful enclosure vs. Monochrome openness</span>
+  </div>
+</div>
 
-<div class="footer-left">OPEN SOURCE · A NEW INSTITUTIONAL ECONOMICS PERSPECTIVE</div>
-<div class="footer-right">开源之道 / 日常交流</div>
-</body></html>
+<!-- Footer -->
+<div class="footer-line"></div>
+<div class="footer">
+  <div class="footer-left">「开源之道」· 新制度经济学视角</div>
+  <div class="footer-right">05 / 30</div>
+</div>
+
+</body>
+</html>

@@ -1,194 +1,787 @@
 
 
-<!DOCTYPE html><html><head><meta charset="UTF-8"><title>软件交付简史之介质时代</title><style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1600px;height:900px;overflow:hidden;margin:0}
-body{background:#F5F0E8;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;color:#1B3B6B;position:relative}
-.parchment{position:absolute;width:1600px;height:900px;background:radial-gradient(ellipse at 30% 20%, rgba(139,115,85,0.04) 0%, transparent 60%),radial-gradient(ellipse at 70% 80%, rgba(27,59,107,0.03) 0%, transparent 50%);pointer-events:none}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>软件交付简史之介质时代</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;500;700;900&display=swap');
 
-/* Header */
-.header{position:absolute;top:60px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:flex-start}
-.eyebrow{font-size:14px;letter-spacing:8px;color:#8B7355;font-weight:500}
-.chapter-num{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:18px;color:#8B7355;letter-spacing:4px}
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-.title-block{position:absolute;top:110px;left:80px;right:80px}
-.main-title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:64px;font-weight:700;color:#1B3B6B;letter-spacing:6px;line-height:1.2}
-.sub-title{font-family:'Noto Serif SC',serif;font-size:22px;color:#8B7355;letter-spacing:3px;margin-top:16px;font-style:italic}
+  html, body {
+    width: 1600px;
+    height: 900px;
+    overflow: hidden;
+    background: #F5F0E8;
+  }
 
-.divider{position:absolute;top:240px;left:80px;width:120px;height:3px;background:#1B3B6B}
-.divider-accent{position:absolute;top:240px;left:210px;width:60px;height:3px;background:#8B7355}
+  .slide {
+    position: relative;
+    width: 1600px;
+    height: 900px;
+    overflow: hidden;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #1B3B6B;
+  }
 
-/* Node network canvas area */
-.network-area{position:absolute;top:280px;left:80px;width:780px;height:400px}
-.node{position:absolute;border-radius:50%}
-.node-large{width:40px;height:40px;background:#1B3B6B}
-.node-medium{width:26px;height:26px;background:#1B3B6B;border:2px solid #F5F0E8}
-.node-small{width:14px;height:14px;background:#8B7355}
-.node-ring{width:30px;height:30px;border:2px solid #1B3B6B;background:transparent}
-.node-copper{width:22px;height:22px;background:#8B7355;border-radius:50%}
-.node-line{width:18px;height:18px;background:#1B3B6B;transform:rotate(45deg);border-radius:2px}
-.node-square{width:20px;height:20px;background:#8B7355}
-.node-hollow{width:20px;height:20px;border:2px solid #8B7355;border-radius:50%}
+  /* Subtle parchment texture */
+  .texture {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(139,115,85,0.012) 2px, rgba(139,115,85,0.012) 4px),
+      repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(139,115,85,0.01) 3px, rgba(139,115,85,0.01) 6px);
+    z-index: 1;
+    pointer-events: none;
+  }
 
-/* SVG network lines */
-.network-lines{position:absolute;top:0;left:0;width:780px;height:400px;pointer-events:none}
+  /* Bauhaus geometric decorations */
+  .deco-circle-lg {
+    position: absolute;
+    border: 2.5px solid #1B3B6B;
+    border-radius: 50%;
+    opacity: 0.08;
+    z-index: 1;
+  }
 
-/* Pipeline labels */
-.pipe-label{position:absolute;font-size:11px;color:#8B7355;letter-spacing:3px;font-weight:500}
+  .deco-circle-fill {
+    position: absolute;
+    border-radius: 50%;
+    z-index: 1;
+  }
 
-/* Right content area */
-.content-area{position:absolute;top:290px;left:920px;width:600px}
-.content-item{margin-bottom:28px;padding-left:0}
-.content-item:last-child{margin-bottom:0}
-.item-num{font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;letter-spacing:3px;margin-bottom:6px;font-weight:400}
-.item-title{font-family:'Noto Serif SC',serif;font-size:20px;color:#1B3B6B;font-weight:600;letter-spacing:1px;margin-bottom:6px;line-height:1.4}
-.item-desc{font-size:13px;color:#555;line-height:1.7;letter-spacing:0.5px}
+  .deco-square {
+    position: absolute;
+    background: #1B3B6B;
+    z-index: 1;
+  }
 
-/* Decorative geometric elements */
-.deco-square{position:absolute;width:80px;height:80px;border:2px solid #1B3B6B;top:780px;right:80px}
-.deco-circle{position:absolute;width:60px;height:60px;border-radius:50%;background:#1B3B6B;top:800px;right:170px;opacity:0.3}
-.deco-line-v{position:absolute;top:340px;right:60px;width:2px;height:280px;background:#8B7355;opacity:0.4}
+  .deco-line {
+    position: absolute;
+    background: #8B7355;
+    z-index: 1;
+  }
 
-/* Bottom bar */
-.footer{position:absolute;bottom:40px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:center}
-.footer-left{font-size:12px;color:#8B7355;letter-spacing:4px}
-.footer-right{font-family:'Noto Serif SC',serif;font-size:12px;color:#8B7355;letter-spacing:3px;font-style:italic}
+  .deco-square-outline {
+    position: absolute;
+    border: 1.5px solid #8B7355;
+    z-index: 1;
+  }
 
-/* Era tag */
-.era-tag{position:absolute;top:290px;left:900px;background:#1B3B6B;color:#F5F0E8;padding:8px 18px;font-size:12px;letter-spacing:4px;font-weight:500}
+  /* Header bar */
+  .header-bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: #1B3B6B;
+    z-index: 10;
+  }
 
-.pipeline-tag{position:absolute;font-family:'Noto Serif SC',serif;font-size:11px;color:#1B3B6B;letter-spacing:2px;background:#F5F0E8;padding:3px 8px;border:1px solid #1B3B6B;white-space:nowrap}
-</style></head><body>
-<div class="parchment"></div>
+  .header-bar-accent {
+    position: absolute;
+    top: 6px; left: 0;
+    width: 320px;
+    height: 3px;
+    background: #8B7355;
+    z-index: 10;
+  }
 
-<div class="header">
-  <div class="eyebrow">OPEN SOURCE ECONOMICS &nbsp;/&nbsp; CHAPTER III</div>
-  <div class="chapter-num">— 叁 —</div>
-</div>
+  /* Lecture number */
+  .lecture-badge {
+    position: absolute;
+    top: 36px;
+    left: 80px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
 
-<div class="title-block">
-  <div class="main-title">软件交付简史 &nbsp;·&nbsp; 介质时代</div>
-  <div class="sub-title">The Media Era — When Software Had Weight and Form</div>
-</div>
+  .lecture-num-box {
+    width: 48px;
+    height: 48px;
+    background: #1B3B6B;
+    color: #F5F0E8;
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 700;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0.02em;
+  }
 
-<div class="divider"></div>
-<div class="divider-accent"></div>
+  .lecture-label {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 13px;
+    color: #8B7355;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
 
-<div class="era-tag">E R A &nbsp; I I</div>
+  .lecture-label strong {
+    color: #1B3B6B;
+    font-weight: 700;
+    font-size: 14px;
+  }
 
-<!-- Node Network Visual -->
-<div class="network-area">
-  <svg class="network-lines" viewBox="0 0 780 400">
-    <defs>
-      <marker id="arrowhead" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto">
-        <polygon points="0 0, 6 2, 0 4" fill="#8B7355"/>
-      </marker>
-    </defs>
-    <!-- Pipeline connections -->
-    <line x1="60" y1="330" x2="200" y2="330" stroke="#1B3B6B" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-    <line x1="240" y1="330" x2="380" y2="330" stroke="#1B3B6B" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-    <line x1="420" y1="330" x2="560" y2="330" stroke="#1B3B6B" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-    <line x1="600" y1="330" x2="740" y2="330" stroke="#1B3B6B" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+  /* Main content area */
+  .content-area {
+    position: absolute;
+    top: 130px;
+    left: 80px;
+    width: 880px;
+    height: 710px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+  }
 
-    <line x1="140" y1="330" x2="140" y2="200" stroke="#8B7355" stroke-width="1" stroke-dasharray="4,3"/>
-    <line x1="310" y1="330" x2="310" y2="150" stroke="#8B7355" stroke-width="1" stroke-dasharray="4,3"/>
-    <line x1="490" y1="330" x2="490" y2="180" stroke="#8B7355" stroke-width="1" stroke-dasharray="4,3"/>
-    <line x1="670" y1="330" x2="670" y2="230" stroke="#8B7355" stroke-width="1" stroke-dasharray="4,3"/>
+  /* Section label */
+  .section-label {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #8B7355;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
 
-    <line x1="140" y1="200" x2="310" y2="150" stroke="#8B7355" stroke-width="1" stroke-dasharray="4,3"/>
-    <line x1="310" y1="150" x2="490" y2="180" stroke="#8B7355" stroke-width="1" stroke-dasharray="4,3"/>
-    <line x1="490" y1="180" x2="670" y2="230" stroke="#8B7355" stroke-width="1" stroke-dasharray="4,3"/>
+  .section-label-line {
+    width: 40px;
+    height: 1.5px;
+    background: #8B7355;
+  }
 
-    <line x1="140" y1="330" x2="140" y2="380" stroke="#8B7355" stroke-width="1" stroke-dasharray="4,3"/>
-    <line x1="310" y1="330" x2="310" y2="380" stroke="#8B7355" stroke-width="1" stroke-dasharray="4,3"/>
-    <line x1="490" y1="330" x2="490" y2="380" stroke="#8B7355" stroke-width="1" stroke-dasharray="4,3"/>
-    <line x1="670" y1="330" x2="670" y2="380" stroke="#8B7355" stroke-width="1" stroke-dasharray="4,3"/>
-    <line x1="140" y1="380" x2="670" y2="380" stroke="#8B7355" stroke-width="1" stroke-dasharray="4,3"/>
+  /* Main title */
+  .main-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 52px;
+    font-weight: 900;
+    color: #1B3B6B;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
 
-    <line x1="60" y1="100" x2="200" y2="100" stroke="#8B7355" stroke-width="0.8"/>
-    <line x1="250" y1="100" x2="400" y2="100" stroke="#8B7355" stroke-width="0.8"/>
-    <line x1="450" y1="100" x2="600" y2="100" stroke="#8B7355" stroke-width="0.8"/>
-  </svg>
+  .title-underline {
+    width: 90px;
+    height: 4px;
+    background: #1B3B6B;
+    margin: 14px 0 6px 0;
+  }
 
-  <!-- Main pipeline nodes -->
-  <div class="node node-large" style="left:40px;top:310px"></div>
-  <div class="node node-medium" style="left:180px;top:315px"></div>
-  <div class="node node-ring" style="left:360px;top:315px"></div>
-  <div class="node node-medium" style="left:540px;top:315px"></div>
-  <div class="node node-large" style="left:720px;top:310px"></div>
+  .title-underline-copper {
+    width: 45px;
+    height: 2px;
+    background: #8B7355;
+    margin-bottom: 28px;
+  }
 
-  <!-- Upper branch nodes -->
-  <div class="node node-small" style="left:130px;top:190px"></div>
-  <div class="node node-ring" style="left:300px;top:140px"></div>
-  <div class="node node-small" style="left:480px;top:170px"></div>
-  <div class="node node-hollow" style="left:660px;top:220px"></div>
+  .era-subtitle {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #8B7355;
+    letter-spacing: 0.08em;
+    margin-bottom: 40px;
+    font-style: italic;
+  }
 
-  <!-- Lower branch nodes -->
-  <div class="node node-copper" style="left:130px;top:370px"></div>
-  <div class="node node-copper" style="left:300px;top:370px"></div>
-  <div class="node node-copper" style="left:480px;top:370px"></div>
-  <div class="node node-copper" style="left:660px;top:370px"></div>
+  /* Content sections */
+  .content-columns {
+    display: flex;
+    gap: 44px;
+    flex: 1;
+  }
 
-  <!-- Extra scattered nodes -->
-  <div class="node node-small" style="left:80px;top:90px"></div>
-  <div class="node node-line" style="left:190px;top:90px"></div>
-  <div class="node node-square" style="left:380px;top:90px"></div>
-  <div class="node node-small" style="left:580px;top:90px"></div>
-  <div class="node node-hollow" style="left:20px;top:150px"></div>
-  <div class="node node-small" style="left:740px;top:150px"></div>
-  <div class="node node-ring" style="left:420px;top:60px"></div>
-  <div class="node node-small" style="left:100px;top:250px"></div>
-  <div class="node node-copper" style="left:430px;top:250px"></div>
-  <div class="node node-small" style="left:580px;top:250px"></div>
-  <div class="node node-hollow" style="left:700px;top:80px"></div>
-  <div class="node node-small" style="left:250px;top:270px"></div>
+  .col {
+    flex: 1;
+  }
 
-  <!-- Pipeline labels -->
-  <div class="pipeline-tag" style="left:20px;top:290px">SOURCE</div>
-  <div class="pipeline-tag" style="left:180px;top:350px">B U I L D</div>
-  <div class="pipeline-tag" style="left:360px;top:350px">M E D I A</div>
-  <div class="pipeline-tag" style="left:540px;top:350px">S H I P</div>
-  <div class="pipeline-tag" style="left:680px;top:290px">DEPLOY</div>
+  .col-label {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: #8B7355;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(139,115,85,0.3);
+  }
 
-  <div class="pipe-label" style="left:30px;top:60px">— DATA LAYER —</div>
-  <div class="pipe-label" style="left:30px;top:360px">— LOGISTICS LAYER —</div>
-</div>
+  .item-group {
+    margin-bottom: 20px;
+  }
 
-<!-- Right content -->
-<div class="content-area">
-  <div class="content-item">
-    <div class="item-num">§ 0 1</div>
-    <div class="item-title">软盘、光盘、U 盘</div>
-    <div class="item-desc">物理载体成为软件与用户之间的唯一中介，代码被封装进可触可握的物质形态</div>
+  .item-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #1B3B6B;
+    line-height: 1.4;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+
+  .item-marker {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: #1B3B6B;
+    flex-shrink: 0;
+    transform: translateY(-1px);
+  }
+
+  .item-desc {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13.5px;
+    font-weight: 400;
+    color: #555;
+    line-height: 1.7;
+    padding-left: 16px;
+  }
+
+  .item-desc-sub {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 12.5px;
+    font-weight: 400;
+    color: #8B7355;
+    line-height: 1.6;
+    padding-left: 16px;
+    margin-top: 2px;
+  }
+
+  /* Right panel - visual metaphor */
+  .visual-panel {
+    position: absolute;
+    top: 130px;
+    right: 80px;
+    width: 520px;
+    height: 710px;
+    z-index: 10;
+  }
+
+  /* Network node visualization */
+  .network-canvas {
+    position: relative;
+    width: 520px;
+    height: 420px;
+  }
+
+  /* Horizontal timeline strip */
+  .timeline-strip {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 180px;
+  }
+
+  .timeline-label {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: #8B7355;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .timeline-items {
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+
+  .timeline-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80px;
+  }
+
+  .timeline-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #1B3B6B;
+    margin-bottom: 8px;
+  }
+
+  .timeline-dot.hollow {
+    background: transparent;
+    border: 2px solid #1B3B6B;
+  }
+
+  .timeline-dot.copper {
+    background: #8B7355;
+  }
+
+  .timeline-year {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #1B3B6B;
+  }
+
+  .timeline-year-label {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 10px;
+    color: #8B7355;
+    letter-spacing: 0.05em;
+    text-align: center;
+    line-height: 1.3;
+    margin-top: 2px;
+  }
+
+  .timeline-connector {
+    width: 40px;
+    height: 1.5px;
+    background: linear-gradient(90deg, #1B3B6B, #8B7355);
+    margin-bottom: 22px;
+    opacity: 0.5;
+  }
+
+  .timeline-connector.dim {
+    background: #8B7355;
+    opacity: 0.3;
+  }
+
+  /* SVG network */
+  .network-svg {
+    width: 520px;
+    height: 420px;
+  }
+
+  /* Bottom accent */
+  .bottom-bar {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: #1B3B6B;
+    z-index: 10;
+  }
+
+  .bottom-bar-copper {
+    position: absolute;
+    bottom: 3px;
+    right: 0;
+    width: 280px;
+    height: 2px;
+    background: #8B7355;
+    z-index: 10;
+  }
+
+  /* Slide counter */
+  .slide-counter {
+    position: absolute;
+    bottom: 20px;
+    right: 80px;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 12px;
+    color: #8B7355;
+    letter-spacing: 0.1em;
+    z-index: 10;
+  }
+
+  .slide-counter .current {
+    color: #1B3B6B;
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  /* Footer left */
+  .footer-left {
+    position: absolute;
+    bottom: 20px;
+    left: 80px;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    color: #8B7355;
+    letter-spacing: 0.15em;
+    z-index: 10;
+  }
+
+  /* Large decorative circle behind content */
+  .bg-circle-1 {
+    position: absolute;
+    top: -100px;
+    right: -120px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    border: 2px solid rgba(27,59,107,0.06);
+    z-index: 1;
+  }
+
+  .bg-circle-2 {
+    position: absolute;
+    bottom: -180px;
+    left: -150px;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: rgba(27,59,107,0.025);
+    z-index: 1;
+  }
+
+  .bg-square-1 {
+    position: absolute;
+    top: 60px;
+    right: 60px;
+    width: 80px;
+    height: 80px;
+    background: rgba(27,59,107,0.04);
+    z-index: 1;
+  }
+
+  .bg-square-2 {
+    position: absolute;
+    bottom: 200px;
+    left: 480px;
+    width: 50px;
+    height: 50px;
+    border: 1.5px solid rgba(139,115,85,0.15);
+    z-index: 1;
+  }
+
+  /* Vertical divider */
+  .v-divider {
+    position: absolute;
+    top: 160px;
+    left: 1000px;
+    width: 1px;
+    height: 620px;
+    background: rgba(139,115,85,0.2);
+    z-index: 5;
+  }
+
+  /* Era timeline at bottom of visual panel */
+  .era-timeline {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    z-index: 12;
+  }
+
+  .era-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .era-num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: rgba(27,59,107,0.1);
+    line-height: 1;
+  }
+
+  .era-text {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: #8B7355;
+    letter-spacing: 0.05em;
+  }
+
+  /* Pipeline visualization */
+  .pipeline-viz {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 8px 0;
+  }
+
+  .pipe-node {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #F5F0E8;
+    border: 2px solid #1B3B6B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    color: #1B3B6B;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  .pipe-node.active {
+    background: #1B3B6B;
+    color: #F5F0E8;
+  }
+
+  .pipe-node.copper {
+    border-color: #8B7355;
+    color: #8B7355;
+  }
+
+  .pipe-node.filled-copper {
+    background: #8B7355;
+    color: #F5F0E8;
+    border-color: #8B7355;
+  }
+
+  .pipe-connector {
+    width: 36px;
+    height: 2px;
+    background: rgba(27,59,107,0.25);
+    flex-shrink: 0;
+  }
+
+  .pipe-connector.dim {
+    background: rgba(139,115,85,0.2);
+  }
+
+  /* Annotation box */
+  .annotation {
+    position: absolute;
+    padding: 10px 14px;
+    border-left: 3px solid #1B3B6B;
+    background: rgba(27,59,107,0.03);
+  }
+
+  .annotation-text {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    color: #555;
+    line-height: 1.5;
+  }
+
+  .annotation-text strong {
+    color: #1B3B6B;
+    font-weight: 700;
+  }
+</style>
+</head>
+<body>
+<div class="slide">
+
+  <!-- Background texture -->
+  <div class="texture"></div>
+
+  <!-- Background decorative shapes -->
+  <div class="bg-circle-1"></div>
+  <div class="bg-circle-2"></div>
+  <div class="bg-square-1"></div>
+  <div class="bg-square-2"></div>
+
+  <!-- Additional subtle decorations -->
+  <div class="deco-circle-lg" style="top: 380px; left: 1100px; width: 180px; height: 180px;"></div>
+  <div class="deco-circle-fill" style="top: 440px; right: 340px; width: 24px; height: 24px; background: rgba(27,59,107,0.06);"></div>
+  <div class="deco-circle-fill" style="top: 260px; right: 200px; width: 12px; height: 12px; background: rgba(139,115,85,0.15);"></div>
+  <div class="deco-square" style="top: 520px; right: 260px; width: 20px; height: 20px; opacity: 0.05;"></div>
+  <div class="deco-line" style="top: 180px; left: 920px; width: 60px; height: 1.5px; opacity: 0.3;"></div>
+
+  <!-- Header -->
+  <div class="header-bar"></div>
+  <div class="header-bar-accent"></div>
+
+  <!-- Vertical divider -->
+  <div class="v-divider"></div>
+
+  <!-- Lecture badge -->
+  <div class="lecture-badge">
+    <div class="lecture-num-box">01</div>
+    <div class="lecture-label">
+      <strong>LECTURE</strong><br>
+      开源经济学系列讲座
+    </div>
   </div>
-  <div class="content-item">
-    <div class="item-num">§ 0 2</div>
-    <div class="item-title">实体商店仍是主要分发渠道</div>
-    <div class="item-desc">微软商店、光盘专柜——软件在货架上占据与消费品等同的地位</div>
+
+  <!-- Main Content Area (Left) -->
+  <div class="content-area">
+
+    <div class="section-label">
+      <div class="section-label-line"></div>
+      <span>软件交付简史 · CHAPTER ONE</span>
+    </div>
+
+    <div class="main-title">介质时代</div>
+    <div class="title-underline"></div>
+    <div class="title-underline-copper"></div>
+    <div class="era-subtitle">The Age of Physical Media</div>
+
+    <div class="content-columns">
+      <!-- Left column: Media forms -->
+      <div class="col">
+        <div class="col-label">分发介质</div>
+
+        <div class="item-group">
+          <div class="item-title">
+            <span class="item-marker"></span>
+            实体介质
+          </div>
+          <div class="item-desc">软盘、光盘、U盘——软件以物理载体交付</div>
+          <div class="item-desc-sub">FlopPy · CD-ROM · USB Drive</div>
+        </div>
+
+        <div class="item-group">
+          <div class="item-title">
+            <span class="item-marker"></span>
+            零售渠道
+          </div>
+          <div class="item-desc">实体商店是主要分发渠道</div>
+          <div class="item-desc-sub">继承自上一个零售时代的邮寄模式</div>
+        </div>
+
+        <div class="item-group">
+          <div class="item-title">
+            <span class="item-marker"></span>
+            工业化的开端
+          </div>
+          <div class="item-desc">软件作为产品的标准化生产</div>
+          <div class="item-desc-sub">从手工业走向流水线</div>
+        </div>
+      </div>
+
+      <!-- Right column: EULA -->
+      <div class="col">
+        <div class="col-label">法律契约</div>
+
+        <div class="item-group">
+          <div class="item-title">
+            <span class="item-marker"></span>
+            EULA 的崛起
+          </div>
+          <div class="item-desc">终端用户许可协议的制度化</div>
+        </div>
+
+        <div class="item-group">
+          <div class="item-title">
+            <span class="item-marker"></span>
+            三种契约形式
+          </div>
+          <div class="item-desc">
+            <strong style="color:#1B3B6B">Shrink-wrap</strong> 缩膜协议<br>
+            <strong style="color:#1B3B6B">Click-wrap</strong> 点击协议<br>
+            <strong style="color:#1B3B6B">Browse-wrap</strong> 浏览协议
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="content-item">
-    <div class="item-num">§ 0 3</div>
-    <div class="item-title">邮寄继承自上一个零售的时代</div>
-    <div class="item-desc">订单、账单、快递单——软件交易的物流痕迹与百货商店别无二致</div>
+
+  <!-- Right Panel: Visual Metaphor -->
+  <div class="visual-panel">
+
+    <!-- Network SVG -->
+    <svg class="network-svg" viewBox="0 0 520 420" xmlns="http://www.w3.org/2000/svg">
+      <!-- Background subtle circles -->
+      <circle cx="260" cy="210" r="160" fill="none" stroke="rgba(27,59,107,0.04)" stroke-width="1.5"/>
+      <circle cx="260" cy="210" r="120" fill="none" stroke="rgba(27,59,107,0.03)" stroke-width="1"/>
+
+      <!-- Connection lines -->
+      <line x1="80" y1="80" x2="200" y2="140" stroke="rgba(27,59,107,0.2)" stroke-width="1.5"/>
+      <line x1="200" y1="140" x2="350" y2="100" stroke="rgba(27,59,107,0.2)" stroke-width="1.5"/>
+      <line x1="350" y1="100" x2="440" y2="180" stroke="rgba(27,59,107,0.2)" stroke-width="1.5"/>
+      <line x1="80" y1="80" x2="140" y2="220" stroke="rgba(27,59,107,0.2)" stroke-width="1.5"/>
+      <line x1="140" y1="220" x2="260" y2="210" stroke="rgba(27,59,107,0.25)" stroke-width="1.5"/>
+      <line x1="260" y1="210" x2="440" y2="180" stroke="rgba(27,59,107,0.25)" stroke-width="1.5"/>
+      <line x1="260" y1="210" x2="200" y2="140" stroke="rgba(27,59,107,0.2)" stroke-width="1.5"/>
+      <line x1="140" y1="220" x2="200" y2="340" stroke="rgba(139,115,85,0.2)" stroke-width="1.5"/>
+      <line x1="260" y1="210" x2="200" y2="340" stroke="rgba(139,115,85,0.2)" stroke-width="1.5"/>
+      <line x1="260" y1="210" x2="380" y2="320" stroke="rgba(27,59,107,0.2)" stroke-width="1.5"/>
+      <line x1="440" y1="180" x2="380" y2="320" stroke="rgba(27,59,107,0.2)" stroke-width="1.5"/>
+      <line x1="200" y1="340" x2="380" y2="320" stroke="rgba(139,115,85,0.15)" stroke-width="1.5"/>
+      <line x1="260" y1="210" x2="80" y2="300" stroke="rgba(139,115,85,0.15)" stroke-width="1"/>
+      <line x1="80" y1="300" x2="140" y2="220" stroke="rgba(139,115,85,0.15)" stroke-width="1"/>
+
+      <!-- Nodes -->
+      <!-- Outer nodes (smaller) -->
+      <circle cx="80" cy="80" r="8" fill="#F5F0E8" stroke="#1B3B6B" stroke-width="2"/>
+      <circle cx="350" cy="100" r="7" fill="#F5F0E8" stroke="#1B3B6B" stroke-width="2"/>
+      <circle cx="440" cy="180" r="9" fill="#F5F0E8" stroke="#1B3B6B" stroke-width="2"/>
+      <circle cx="80" cy="300" r="6" fill="#F5F0E8" stroke="#8B7355" stroke-width="1.5"/>
+      <circle cx="200" cy="340" r="7" fill="#F5F0E8" stroke="#8B7355" stroke-width="1.5"/>
+      <circle cx="380" cy="320" r="7" fill="#F5F0E8" stroke="#1B3B6B" stroke-width="2"/>
+
+      <!-- Middle nodes -->
+      <circle cx="200" cy="140" r="12" fill="#F5F0E8" stroke="#1B3B6B" stroke-width="2.5"/>
+      <circle cx="140" cy="220" r="10" fill="#F5F0E8" stroke="#1B3B6B" stroke-width="2"/>
+
+      <!-- Central hub -->
+      <circle cx="260" cy="210" r="22" fill="#1B3B6B" stroke="#1B3B6B" stroke-width="0"/>
+      <circle cx="260" cy="210" r="10" fill="#F5F0E8"/>
+
+      <!-- Small accent circles -->
+      <circle cx="310" cy="140" r="3" fill="#8B7355" opacity="0.4"/>
+      <circle cx="170" cy="280" r="3" fill="#1B3B6B" opacity="0.3"/>
+      <circle cx="400" cy="240" r="3" fill="#8B7355" opacity="0.4"/>
+      <circle cx="120" cy="150" r="2" fill="#1B3B6B" opacity="0.3"/>
+      <circle cx="350" cy="270" r="2" fill="#8B7355" opacity="0.3"/>
+
+      <!-- Node labels -->
+      <text x="260" y="214" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="8" fill="#1B3B6B" font-weight="700">CORE</text>
+      <text x="200" y="143" text-anchor="middle" font-family="'Noto Sans SC', sans-serif" font-size="7" fill="#1B3B6B">SRC</text>
+      <text x="140" y="223" text-anchor="middle" font-family="'Noto Sans SC', sans-serif" font-size="7" fill="#1B3B6B">BUIL</text>
+      <text x="440" y="183" text-anchor="middle" font-family="'Noto Sans SC', sans-serif" font-size="7" fill="#1B3B6B">DEL</text>
+      <text x="80" y="83" text-anchor="middle" font-family="'Noto Sans SC', sans-serif" font-size="7" fill="#8B7355">REQ</text>
+      <text x="200" y="343" text-anchor="middle" font-family="'Noto Sans SC', sans-serif" font-size="7" fill="#8B7355">TEST</text>
+    </svg>
+
+    <!-- Pipeline visualization below -->
+    <div style="position:absolute; top: 430px; left: 0; right: 0;">
+      <div class="timeline-label" style="margin-bottom: 14px;">交付流水线 · PIPELINE</div>
+      <div class="pipeline-viz">
+        <div class="pipe-node copper">①</div>
+        <div class="pipe-connector dim"></div>
+        <div class="pipe-node">②</div>
+        <div class="pipe-connector"></div>
+        <div class="pipe-node active">③</div>
+        <div class="pipe-connector"></div>
+        <div class="pipe-node">④</div>
+        <div class="pipe-connector dim"></div>
+        <div class="pipe-node copper">⑤</div>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; padding: 0 4px; margin-top: 8px;">
+        <span style="font-family:'Noto Sans SC',sans-serif; font-size:9px; color:#8B7355; letter-spacing:0.1em;">生产</span>
+        <span style="font-family:'Noto Sans SC',sans-serif; font-size:9px; color:#8B7355; letter-spacing:0.1em;">编码</span>
+        <span style="font-family:'Noto Sans SC',sans-serif; font-size:9px; color:#1B3B6B; font-weight:700; letter-spacing:0.1em;">构建</span>
+        <span style="font-family:'Noto Sans SC',sans-serif; font-size:9px; color:#8B7355; letter-spacing:0.1em;">分发</span>
+        <span style="font-family:'Noto Sans SC',sans-serif; font-size:9px; color:#8B7355; letter-spacing:0.1em;">部署</span>
+      </div>
+    </div>
+
+    <!-- Annotation -->
+    <div style="position:absolute; top: 560px; left: 0; right: 0;">
+      <div class="annotation" style="position:relative;">
+        <div class="annotation-text">
+          <strong>视觉隐喻：</strong>软件交付的自动化流水线<br>
+          <span style="font-size:10px; color:#8B7355;">需求 → 编码 → 构建 → 分发 → 部署</span>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="content-item">
-    <div class="item-num">§ 0 4</div>
-    <div class="item-title">EULA 的崛起与合约形态的发明</div>
-    <div class="item-desc">Click-wrap · Browse-wrap · Shrink wrap——法律开始追赶技术的速度</div>
-  </div>
-  <div class="content-item">
-    <div class="item-num">§ 0 5</div>
-    <div class="item-title">软件工业化的时代开启</div>
-    <div class="item-desc">从手工技艺到流水线生产，复制的边际成本趋于零，价值集中于分发与合约</div>
-  </div>
+
+  <!-- Bottom bars -->
+  <div class="bottom-bar"></div>
+  <div class="bottom-bar-copper"></div>
+
+  <!-- Footer -->
+  <div class="footer-left">软件的生产、分销和消费 · OPEN-SOURCE ECONOMICS</div>
+  <div class="slide-counter"><span class="current">04</span> / 30</div>
+
 </div>
-
-<!-- Decorative elements -->
-<div class="deco-line-v"></div>
-
-<div class="footer">
-  <div class="footer-left">新制度经济学视角 · 开源讲座</div>
-  <div class="footer-right">"The medium is the message" — McLuhan</div>
-</div>
-
-</body></html>
+</body>
+</html>

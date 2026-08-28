@@ -27,6 +27,12 @@ jobs:
           hugo-version: '0.164.0'
           extended: true
 
+      - name: Sync slide sources from book repo
+        run: |
+          git clone --depth 1 https://github.com/OCselected/open-source-economics-book.git /tmp/book
+          cp -f /tmp/book/src/slides/*.md scripts/slides_decks_source/
+          echo "Synced $(ls scripts/slides_decks_source/*.md | wc -l) files from book repo"
+
       - name: Build
         run: hugo build --minify
 

@@ -76,9 +76,36 @@ body{
   font-size:1.05rem;
   color:var(--muted);
   max-width:480px;
-  margin-bottom:2rem;
+  margin-bottom:1.5rem;
   font-weight:300;
 }
+.hero-prereq{
+  max-width:480px;
+  padding:1rem 1.2rem;
+  background:var(--paper);
+  border-left:3px solid var(--copper);
+  margin-bottom:2rem;
+  font-size:0.8rem;
+  color:var(--ink);
+  line-height:1.6;
+}
+.hero-prereq .prereq-label{
+  display:inline-block;
+  font-size:0.7rem;
+  font-weight:700;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--copper);
+  margin-bottom:0.5rem;
+}
+.hero-prereq p{margin:0 0 0.4rem 0}
+.hero-prereq .prereq-list{
+  list-style:none;padding:0;margin:0;
+  display:flex;flex-wrap:wrap;gap:0.5rem 1.2rem;
+  font-weight:600;color:var(--prussian);
+}
+.hero-prereq .prereq-list li{font-size:0.82rem}
+.hero-prereq .prereq-list li::before{content:"▸ ";color:var(--copper);font-size:0.7rem}
 .hero-meta{
   display:flex;
   gap:2rem;
@@ -383,6 +410,16 @@ body{
       从新制度经济学的视角，系统梳理开源软件的生产、许可、商业模式、劳动力市场、
       交易成本、组织治理、文化与政治经济学。
     </p>
+
+    <div class="hero-prereq">
+      <span class="prereq-label">Prerequisites · 阅读前建议</span>
+      <p>本讲座需要较多背景知识，建议先阅读：</p>
+      <ul class="prereq-list">
+        <li>「开源之史」</li>
+        <li>「开源之迷」</li>
+        <li>「开源之道」</li>
+      </ul>
+    </div>
 
   </div>
   <div class="hero-right">

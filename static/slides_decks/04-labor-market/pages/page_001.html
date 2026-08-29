@@ -1,124 +1,284 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: f6a16e204736068a --><head><meta charset="UTF-8"><title>开源与经济学·第五期</title><style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1600px;height:900px;overflow:hidden;margin:0}
-body{font-family:'Noto Sans SC','Source Han Sans SC','PingFang SC',sans-serif;background:#F5F0E8;color:#1B3B6B;position:relative}
+<!DOCTYPE html>
+<html><!-- source_hash: f6a16e204736068a -->
+<head>
+<meta charset="UTF-8">
+<title>开源与经济学 · 前情提要</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1600px; height: 900px; overflow: hidden; }
+body {
+  background: #F5F0E8;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: #1B3B6B;
+  position: relative;
+}
 
-/* parchment texture */
-body::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;background:repeating-linear-gradient(0deg,rgba(139,115,85,0.03) 0px,rgba(139,115,85,0.03) 1px,transparent 1px,transparent 3px),repeating-linear-gradient(90deg,rgba(27,59,107,0.02) 0px,rgba(27,59,107,0.02) 1px,transparent 1px,transparent 5px);pointer-events:none;z-index:0}
+/* Geometric decorations */
+.geo-circle-large {
+  position: absolute;
+  width: 420px; height: 420px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  top: 60px; left: 60px;
+}
+.geo-circle-inner {
+  position: absolute;
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  background: #F5F0E8;
+  top: 130px; left: 130px;
+}
+.geo-circle-accent {
+  position: absolute;
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  background: #8B7355;
+  top: 210px; left: 210px;
+}
+.geo-square {
+  position: absolute;
+  width: 90px; height: 90px;
+  background: #1B3B6B;
+  top: 380px; left: 60px;
+}
+.geo-line-v {
+  position: absolute;
+  width: 3px; height: 780px;
+  background: #1B3B6B;
+  left: 850px; top: 60px;
+}
+.geo-line-h {
+  position: absolute;
+  width: 660px; height: 2px;
+  background: #8B7355;
+  top: 460px; left: 880px;
+}
+.geo-square-small {
+  position: absolute;
+  width: 40px; height: 40px;
+  background: #8B7355;
+  top: 60px; left: 880px;
+}
+.geo-circle-tiny {
+  position: absolute;
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  top: 820px; left: 1510px;
+}
+.geo-triangle {
+  position: absolute;
+  width: 0; height: 0;
+  border-left: 35px solid transparent;
+  border-right: 35px solid transparent;
+  border-bottom: 60px solid #1B3B6B;
+  top: 500px; left: 60px;
+}
+.geo-rect-wide {
+  position: absolute;
+  width: 180px; height: 8px;
+  background: #1B3B6B;
+  top: 60px; left: 60px;
+}
 
-/* Bauhaus geometric elements */
-.geo-circle-blue{position:absolute;width:520px;height:520px;border-radius:50%;background:#1B3B6B;left:-120px;top:180px;z-index:1}
-.geo-circle-cream{position:absolute;width:340px;height:340px;border-radius:50%;background:#F5F0E8;left:0px;top:180px;z-index:2}
-.geo-circle-copper{position:absolute;width:60px;height:60px;border-radius:50%;background:#8B7355;left:380px;top:420px;z-index:3}
-.geo-square{position:absolute;width:120px;height:120px;background:#1B3B6B;left:540px;top:220px;z-index:1}
-.geo-square-outline{position:absolute;width:120px;height:120px;border:2px solid #1B3B6B;left:700px;top:380px;z-index:1;background:transparent}
-.geo-line-h{position:absolute;height:3px;background:#1B3B6B;z-index:1}
-.geo-line-v{position:absolute;width:3px;background:#1B3B6B;z-index:1}
+/* Content - Left panel */
+.panel-left {
+  position: absolute;
+  top: 160px; left: 220px;
+  width: 560px;
+}
+.series-label {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 22px;
+  color: #8B7355;
+  letter-spacing: 6px;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 2;
+}
+.main-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 52px;
+  font-weight: 700;
+  color: #F5F0E8;
+  letter-spacing: 2px;
+  line-height: 1.3;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 1px 3px rgba(27,59,107,0.3);
+}
+.period-number {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 18px;
+  color: rgba(245,240,232,0.85);
+  letter-spacing: 4px;
+  margin-top: 18px;
+  position: relative;
+  z-index: 2;
+}
 
-.line1{left:900px;top:120px;width:560px}
-.line2{left:900px;top:780px;width:560px}
-.line3{left:900px;top:780px;width:3px;height:0;background:#8B7355;height:0}
-.line4{left:1400px;top:120px;width:0;height:0;background:transparent}
+/* Content - Right panel */
+.panel-right {
+  position: absolute;
+  top: 160px; left: 910px;
+  width: 640px;
+}
+.recap-label {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1B3B6B;
+  letter-spacing: 3px;
+  margin-bottom: 8px;
+}
+.recap-sub {
+  font-size: 14px;
+  color: #555;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+  font-style: italic;
+}
+.lecture-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 28px;
+  position: relative;
+}
+.lecture-num {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #8B7355;
+  width: 80px;
+  flex-shrink: 0;
+  padding-top: 2px;
+  letter-spacing: 1px;
+}
+.lecture-content {
+  flex: 1;
+}
+.lecture-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: #1B3B6B;
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+}
+.lecture-item::before {
+  content: '';
+  position: absolute;
+  left: 76px;
+  top: 10px;
+  width: 12px;
+  height: 12px;
+  background: #1B3B6B;
+}
+.lecture-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 81px;
+  top: 24px;
+  width: 2px;
+  height: 34px;
+  background: #8B7355;
+}
 
-/* main text block */
-.main-block{position:absolute;right:0;top:0;width:700px;height:900px;z-index:10;padding:90px 80px 80px 60px;display:flex;flex-direction:column}
-.lecture-label{font-size:14px;letter-spacing:8px;color:#8B7355;font-weight:500;margin-bottom:18px}
-.main-title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:58px;line-height:1.25;color:#1B3B6B;font-weight:700;letter-spacing:2px;margin-bottom:8px}
-.main-title-en{font-family:'Noto Serif SC',serif;font-size:18px;color:#555;letter-spacing:4px;margin-bottom:36px;font-style:italic}
-.title-underline{width:100px;height:3px;background:#1B3B6B;margin-bottom:40px}
+/* Footer */
+.footer-bar {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 1600px; height: 48px;
+  background: #1B3B6B;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 60px;
+}
+.footer-left {
+  font-size: 12px;
+  color: rgba(245,240,232,0.7);
+  letter-spacing: 2px;
+}
+.footer-right {
+  font-size: 12px;
+  color: rgba(245,240,232,0.7);
+  letter-spacing: 2px;
+}
 
-/* recap section */
-.recap-title{font-family:'Noto Serif SC',serif;font-size:18px;color:#1B3B6B;font-weight:600;margin-bottom:24px;letter-spacing:3px;border-bottom:1px solid #1B3B6B;padding-bottom:10px;width:fit-content}
-.recap-title::after{content:"";position:absolute;left:calc(100% + 0px);bottom:-10px;height:1px;width:0}
-.recap-list{list-style:none;display:flex;flex-direction:column;gap:14px}
-.recap-list li{display:flex;align-items:flex-start;gap:16px;font-size:15px;line-height:1.6;color:#1B3B6B}
-.recap-num{font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;min-width:44px;font-weight:600;letter-spacing:1px;padding-top:2px}
-.recap-text{flex:1}
-.recap-text .lecture-num{font-family:'Noto Serif SC',serif;font-weight:600;color:#1B3B6B;margin-right:8px}
+/* Divider between lecture items */
+.lecture-divider {
+  width: 60px;
+  height: 1px;
+  background: #8B7355;
+  opacity: 0.4;
+  margin-top: 6px;
+  margin-left: 80px;
+}
+</style>
+</head>
+<body>
 
-/* bottom area */
-.bottom-area{position:absolute;left:80px;right:80px;bottom:70px;display:flex;justify-content:space-between;align-items:flex-end;z-index:10}
-.bottom-meta{font-size:12px;color:#555;letter-spacing:2px;line-height:1.8}
-.bottom-meta .label{color:#8B7355;font-weight:500}
-
-/* small geometric accents */
-.accent-triangle{position:absolute;width:0;height:0;border-left:20px solid transparent;border-right:20px solid transparent;border-bottom:34px solid #8B7355;left:1510px;top:130px;z-index:5}
-.accent-dot{position:absolute;width:8px;height:8px;border-radius:50%;background:#1B3B6B}
-
-/* side text */
-.side-text{position:absolute;left:240px;top:780px;font-size:11px;color:#555;letter-spacing:4px;z-index:5;writing-mode:vertical-rl}
-
-/* chapter mark */
-.chapter-mark{position:absolute;left:1090px;top:640px;font-family:'Noto Serif SC',serif;font-size:200px;color:#1B3B6B;opacity:0.06;font-weight:700;line-height:1;z-index:1;letter-spacing:-8px}
-
-/* vertical bar accent */
-.v-bar{position:absolute;left:770px;top:140px;width:1px;height:620px;background:linear-gradient(to bottom,transparent,#1B3B6B 20%,#1B3B6B 80%,transparent);z-index:2}
-</style></head><body>
-
-<!-- Bauhaus geometric composition -->
-<div class="geo-circle-blue"></div>
-<div class="geo-circle-cream"></div>
-<div class="geo-circle-copper"></div>
+<!-- Geometric compositions -->
+<div class="geo-circle-large"></div>
+<div class="geo-circle-inner"></div>
+<div class="geo-circle-accent"></div>
 <div class="geo-square"></div>
-<div class="geo-square-outline"></div>
-<div class="geo-line-h line1"></div>
-<div class="geo-line-h line2"></div>
+<div class="geo-triangle"></div>
+<div class="geo-rect-wide"></div>
+<div class="geo-line-v"></div>
+<div class="geo-line-h"></div>
+<div class="geo-square-small"></div>
+<div class="geo-circle-tiny"></div>
 
-<!-- chapter watermark -->
-<div class="chapter-mark">V</div>
-
-<!-- vertical separator -->
-<div class="v-bar"></div>
-
-<!-- side vertical text -->
-<div class="side-text">OPEN SOURCE · ECONOMICS · LECTURE V</div>
-
-<!-- main text block on right -->
-<div class="main-block">
-  <div class="lecture-label">第 五 讲</div>
-  <div class="main-title">劳动力的幽灵</div>
-  <div class="main-title-en">Ghosts of the Labor Market</div>
-  <div class="title-underline"></div>
-
-  <div class="recap-title">前 情 提 要</div>
-  <ul class="recap-list">
-    <li>
-      <span class="recap-num">— 00 —</span>
-      <span class="recap-text"><span class="lecture-num">第0讲</span>增长的开源经济：何以开源成为增长引擎？</span>
-    </li>
-    <li>
-      <span class="recap-num">— 01 —</span>
-      <span class="recap-text"><span class="lecture-num">第1讲</span>软件的生产、分销和消费：代码的价值链条</span>
-    </li>
-    <li>
-      <span class="recap-num">— 02 —</span>
-      <span class="recap-text"><span class="lecture-num">第2讲</span>数字时代的知识财产法演变与开源许可制度</span>
-    </li>
-    <li>
-      <span class="recap-num">— 03 —</span>
-      <span class="recap-text"><span class="lecture-num">第3讲</span>开源软件的商业模式：产权制度与案例分析</span>
-    </li>
-  </ul>
+<!-- Left panel: Series title -->
+<div class="panel-left">
+  <div class="series-label">OPEN SOURCE ECONOMICS</div>
+  <div class="main-title">开源与<br>经济学</div>
+  <div class="period-number">第五期 · 软件开发劳动力市场</div>
 </div>
 
-<!-- bottom meta -->
-<div class="bottom-area">
-  <div class="bottom-meta">
-    <div><span class="label">课 程</span> &nbsp; 开源之道 · 新制度经济学视角</div>
-    <div><span class="label">第 五 期</span> &nbsp; 劳动力市场与协作治理</div>
+<!-- Right panel: Previous recap -->
+<div class="panel-right">
+  <div class="recap-label">前情提要</div>
+  <div class="recap-sub">RECAP OF PREVIOUS LECTURES</div>
+
+  <div class="lecture-item">
+    <div class="lecture-num">第 0 讲</div>
+    <div class="lecture-content">
+      <div class="lecture-title">增长的开源经济</div>
+    </div>
   </div>
-  <div class="bottom-meta" style="text-align:right">
-    <div><span class="label">SESSION</span> &nbsp; V / VIII</div>
-    <div><span class="label">STATUS</span> &nbsp; 议题开启</div>
+
+  <div class="lecture-item">
+    <div class="lecture-num">第 1 讲</div>
+    <div class="lecture-content">
+      <div class="lecture-title">软件的生产、分销和消费</div>
+    </div>
+  </div>
+
+  <div class="lecture-item">
+    <div class="lecture-num">第 2 讲</div>
+    <div class="lecture-content">
+      <div class="lecture-title">数字时代的知识财产法演变与开源许可</div>
+    </div>
+  </div>
+
+  <div class="lecture-item">
+    <div class="lecture-num">第 3 讲</div>
+    <div class="lecture-content">
+      <div class="lecture-title">开源软件的商业模式：产权制度与案例分析</div>
+    </div>
   </div>
 </div>
 
-<!-- small accents -->
-<div class="accent-triangle"></div>
-<div class="accent-dot" style="left:960px;top:160px"></div>
-<div class="accent-dot" style="left:970px;top:160px"></div>
-<div class="accent-dot" style="left:980px;top:160px"></div>
+<!-- Footer -->
+<div class="footer-bar">
+  <div class="footer-left">「开源之道」· 新制度经济学视角下的开源讲座</div>
+  <div class="footer-right">04 · LABOR MARKET &nbsp;&nbsp;|&nbsp;&nbsp; 26 slides</div>
+</div>
 
-</body></html>
+</body>
+</html>

@@ -59,7 +59,7 @@ dark academic tone, Intellectual Visual System, art taste.
 
 * 视觉隐喻：深普鲁士蓝几何扉页与"第六期 组织结构与治理"并列，象征议题开启。
 
-- 开源与经济学
+- 「开源之道」·开源的经济学
 - 开源经济学12讲座     第六期  组织结构与治理
 - 「开源之道」·适兕
 
@@ -102,7 +102,7 @@ dark academic tone, Intellectual Visual System, art taste.
 - 宪章、章程、社会契约、行为准则
 - 许可与秩序
 - 纳税、无政府与集市旁边的教堂
-- Android 企业协会的联合，让事情更复杂
+- Android 企业协会的联合，让事情更复杂：正式、自治
 - 组织，不断演化的协作分工：法律、技术与政治经济学
 
 ---

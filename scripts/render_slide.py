@@ -179,30 +179,9 @@ def render(deck_name, slide_num=None, slide_range=None, force=False):
         force_reason = f'force range {lo}-{hi}'
         print(f'[force] Render slides {lo}-{hi}')
     else:
-        # Delta mode: seed legacy hashes, then render any slide whose hash differs
-        # 迁移：旧 HTML 无 source_hash 注释 → 嵌入当前 hash（不调 LLM）
-        seeded = 0
-        for s in slides:
-            page = out / f'page_{s["num"]:03d}.html'
-            if page.exists():
-                existing = page.read_text(errors='ignore')
-                if extract_embedded_hash(existing) is None:
-                    # 旧 HTML，嵌入当前 hash
-                    new_html = re.sub(
-                        r'(<html[^>]*>)',
-                        r'\1<!-- source_hash: ' + slide_source_hash(header, s) + ' -->',
-                        existing,
-                        count=1,
-                        flags=re.IGNORECASE,
-                    )
-                    if new_html == existing:  # 没有 <html> 标签，插到开头
-                        new_html = f'<!-- source_hash: {slide_source_hash(header, s)} -->\n' + existing
-                    page.write_text(new_html)
-                    seeded += 1
-        if seeded:
-            print(f'[migrate] Seeded {seeded} legacy slide(s) with source_hash')
-
-        # 现在检测 hash 不匹配的 slide
+        # Delta mode: render any slide whose embedded hash != expected hash.
+        # Legacy HTML (no hash comment) is treated as "needs render" by needs_render().
+        # Migration of legacy hashes is a one-time operation — see migrate_slides_hash.py.
         for s in slides:
             page = out / f'page_{s["num"]:03d}.html'
             expected_hash = slide_source_hash(header, s)

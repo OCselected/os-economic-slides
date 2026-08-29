@@ -27,7 +27,7 @@ Notes:
   - Does NOT touch .state.json (full-deck tool uses that for progress)
   - Skips any slide whose page_NNN.html already exists unless --slide/--range forces it
 """
-import re, sys, time, json
+import re, sys, time, json, hashlib
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[3] / '.hermes' / 'skills' / 'sn-ppt-standard' / 'lib'))
@@ -71,6 +71,46 @@ def parse_deck(path):
     return header, slides
 
 
+def slide_source_hash(header, slide):
+    """Compute a stable hash of the source content that determines the rendered HTML.
+
+    Includes both the deck-wide header (affects style) and this slide's content
+    (affects text + visual metaphor). This way, either changing the header or
+    changing the slide content will produce a different hash.
+    """
+    # Normalize whitespace to avoid accidental noise (trailing spaces, blank lines)
+    norm = re.sub(r'\s+', ' ', f"{header}|||{slide['content']}").strip()
+    return hashlib.sha256(norm.encode('utf-8')).hexdigest()[:16]
+
+
+def extract_embedded_hash(html_text):
+    """Extract the source_hash embedded in a previously rendered HTML file.
+
+    Format: <!-- source_hash: abc12345 -->  (injected right after <html> tag)
+    Returns None if no hash comment is found (legacy HTML rendered before this feature).
+    """
+    m = re.search(r'<!--\s*source_hash:\s*([0-9a-f]{16})\s*-->', html_text, re.IGNORECASE)
+    return m.group(1) if m else None
+
+
+def needs_render(page_path, expected_hash):
+    """Decide whether to (re)render a slide given its existing HTML.
+
+    Returns True (render) if:
+      - page file doesn't exist
+      - page file exists but has no embedded hash (legacy)
+      - page file exists but embedded hash != expected_hash (source changed)
+    Returns False (skip) only if the hash matches.
+    """
+    if not page_path.exists():
+        return True
+    embedded = extract_embedded_hash(page_path.read_text(errors='ignore'))
+    if embedded is None:
+        # Legacy HTML: no hash embedded. Be safe and re-render.
+        return True
+    return embedded != expected_hash
+
+
 def generate_slide(header, slide, retries=3):
     prompt = f"""Context (deck-wide style and theme):
 {header}
@@ -112,7 +152,7 @@ def list_slides(deck_name):
     print(f'\nTotal: {len(slides)} slides, {present} present')
 
 
-def render(deck_name, slide_num=None, slide_range=None):
+def render(deck_name, slide_num=None, slide_range=None, force=False):
     src = SOURCE_DIR / f'{deck_name}.md'
     if not src.exists():
         print(f'ERROR: {src} not found', file=sys.stderr)
@@ -124,8 +164,10 @@ def render(deck_name, slide_num=None, slide_range=None):
 
     # Determine which slides to render
     targets = set()
+    force_reason = ''
     if slide_num is not None:
         targets = {slide_num}
+        force_reason = f'force single slide {slide_num}'
         print(f'[force] Render slide {slide_num}')
     elif slide_range is not None:
         m = re.match(r'(\d+)-(\d+)', slide_range)
@@ -134,31 +176,75 @@ def render(deck_name, slide_num=None, slide_range=None):
             sys.exit(1)
         lo, hi = int(m.group(1)), int(m.group(2))
         targets = set(range(lo, hi + 1))
+        force_reason = f'force range {lo}-{hi}'
         print(f'[force] Render slides {lo}-{hi}')
     else:
-        # Delta mode: only missing slides
+        # Delta mode: seed legacy hashes, then render any slide whose hash differs
+        # 迁移：旧 HTML 无 source_hash 注释 → 嵌入当前 hash（不调 LLM）
+        seeded = 0
         for s in slides:
             page = out / f'page_{s["num"]:03d}.html'
-            if not page.exists():
+            if page.exists():
+                existing = page.read_text(errors='ignore')
+                if extract_embedded_hash(existing) is None:
+                    # 旧 HTML，嵌入当前 hash
+                    new_html = re.sub(
+                        r'(<html[^>]*>)',
+                        r'\1<!-- source_hash: ' + slide_source_hash(header, s) + ' -->',
+                        existing,
+                        count=1,
+                        flags=re.IGNORECASE,
+                    )
+                    if new_html == existing:  # 没有 <html> 标签，插到开头
+                        new_html = f'<!-- source_hash: {slide_source_hash(header, s)} -->\n' + existing
+                    page.write_text(new_html)
+                    seeded += 1
+        if seeded:
+            print(f'[migrate] Seeded {seeded} legacy slide(s) with source_hash')
+
+        # 现在检测 hash 不匹配的 slide
+        for s in slides:
+            page = out / f'page_{s["num"]:03d}.html'
+            expected_hash = slide_source_hash(header, s)
+            if needs_render(page, expected_hash):
                 targets.add(s["num"])
         if not targets:
-            print(f'Deck {deck_name}: all {len(slides)} slides already rendered. Nothing to do.')
+            print(f'Deck {deck_name}: all {len(slides)} slides match their source hashes. Nothing to do.')
             return
-        print(f'[delta] Rendering {len(targets)} missing slide(s): {sorted(targets)}')
+        print(f'[delta] Rendering {len(targets)} slide(s) with changed/missing hash: {sorted(targets)}')
+        force_reason = f'delta hash mismatch ({len(targets)} slide(s))'
 
     n_total = len(slides)
+    rendered_count = 0
+    skipped_count = 0
     for slide in slides:
         n = slide["num"]
-        if n not in targets:
-            continue
         page_path = out / f'page_{n:03d}.html'
-        print(f'  [{n:3d}/{n_total:3d}] generating slide {n}...', end=' ', flush=True)
+        expected_hash = slide_source_hash(header, slide)
+        if n not in targets:
+            skipped_count += 1
+            continue
+        print(f'  [{n:3d}/{n_total:3d}] generating slide {n} (hash={expected_hash})...', end=' ', flush=True)
         html = generate_slide(header, slide)
+        # Embed the source hash as a comment right after the <html ...> tag
+        # so future delta runs can detect whether the source has changed.
+        if '<html' in html.lower():
+            html = re.sub(
+                r'(<html[^>]*>)',
+                r'\1<!-- source_hash: ' + expected_hash + ' -->',
+                html,
+                count=1,
+                flags=re.IGNORECASE,
+            )
+        else:
+            # Fallback: prepend comment if <html> tag not found (shouldn't happen)
+            html = f'<!-- source_hash: {expected_hash} -->\n{html}'
         page_path.write_text(html)
+        rendered_count += 1
         print(f'OK ({len(html)} chars)')
         time.sleep(0.5)
 
-    print(f'\nDone. Rendered {len(targets)} slide(s) for deck {deck_name}.')
+    print(f'\nDone. Rendered {rendered_count}, skipped {skipped_count} for deck {deck_name} ({force_reason or "no reason set"}).')
 
 
 def main():

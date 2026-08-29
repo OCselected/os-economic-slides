@@ -131,7 +131,7 @@ Generate the HTML for this slide:
         except Exception as e:
             print(f'  retry {i+1}/{retries}: {e}', file=sys.stderr)
             time.sleep(2 ** i)
-    raise SystemExit(f'FAILED after {retries} retries')
+    return None  # caller handles: skip this slide, continue with next
 
 
 def list_slides(deck_name):
@@ -205,6 +205,10 @@ def render(deck_name, slide_num=None, slide_range=None, force=False):
             continue
         print(f'  [{n:3d}/{n_total:3d}] generating slide {n} (hash={expected_hash})...', end=' ', flush=True)
         html = generate_slide(header, slide)
+        if html is None:
+            print(f'SKIPPED (LLM failed after retries)')
+            skipped_count += 1
+            continue
         # Embed the source hash as a comment right after the <html ...> tag
         # so future delta runs can detect whether the source has changed.
         if '<html' in html.lower():

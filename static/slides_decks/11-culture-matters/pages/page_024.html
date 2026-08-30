@@ -1,424 +1,428 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: 4ba9d53b35244baf --><head><meta charset="UTF-8"><title>文化是开源的基石</title><style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html, body { width: 1600px; height: 900px; overflow: hidden; }
-body {
-  font-family: 'Noto Sans SC', 'Source Han Sans SC', sans-serif;
-  background: #F5F0E8;
-  color: #1B3B6B;
-  position: relative;
-}
+<!DOCTYPE html>
+<html lang="zh-CN"><!-- source_hash: 343831c08f58f0f8 -->
+<head>
+<meta charset="UTF-8">
+<title>文化的重要作用 — 第 11 期</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap');
 
-/* Left dark panel - data stream visualization */
-.left-panel {
-  position: absolute;
-  left: 0; top: 0;
-  width: 860px; height: 900px;
-  background: #0F2A4A;
-  overflow: hidden;
-}
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* Subtle texture overlay on parchment */
-.texture {
-  position: absolute;
-  left: 860px; top: 0;
-  width: 740px; height: 900px;
-  background: #F5F0E8;
-  overflow: hidden;
-}
+  html, body {
+    width: 1600px;
+    height: 900px;
+    overflow: hidden;
+    margin: 0;
+  }
 
-/* Data stream lines */
-.stream {
-  position: absolute;
-  height: 1px;
-  background: #3D6BA5;
-  opacity: 0.5;
-}
-.stream-1 { top: 120px; left: 60px; width: 500px; }
-.stream-2 { top: 160px; left: 60px; width: 380px; background: #2D5A8F; opacity: 0.4; }
-.stream-3 { top: 200px; left: 60px; width: 600px; }
-.stream-4 { top: 260px; left: 60px; width: 440px; background: #4A7BB8; opacity: 0.6; }
-.stream-5 { top: 310px; left: 60px; width: 520px; }
-.stream-6 { top: 370px; left: 60px; width: 680px; background: #2D5A8F; opacity: 0.35; }
-.stream-7 { top: 430px; left: 60px; width: 350px; }
-.stream-8 { top: 500px; left: 60px; width: 560px; background: #4A7BB8; opacity: 0.55; }
-.stream-9 { top: 560px; left: 60px; width: 420px; }
-.stream-10 { top: 630px; left: 60px; width: 600px; background: #3D6BA5; opacity: 0.4; }
-.stream-11 { top: 700px; left: 60px; width: 480px; }
-.stream-12 { top: 760px; left: 60px; width: 360px; background: #2D5A8F; opacity: 0.3; }
+  body {
+    background: #F5F0E8;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #1B3B6B;
+    position: relative;
+  }
 
-/* Vertical connector lines */
-.v-line {
-  position: absolute;
-  width: 1px;
-  background: #3D6BA5;
-  opacity: 0.35;
-}
-.v-line-1 { left: 200px; top: 120px; height: 660px; }
-.v-line-2 { left: 400px; top: 120px; height: 660px; background: #4A7BB8; opacity: 0.3; }
-.v-line-3 { left: 580px; top: 120px; height: 660px; }
-.v-line-4 { left: 700px; top: 120px; height: 660px; background: #2D5A8F; opacity: 0.25; }
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 1600px; height: 900px;
+    background:
+      repeating-linear-gradient(
+        90deg,
+        transparent, transparent 4px,
+        rgba(139,115,85,0.012) 4px, rgba(139,115,85,0.012) 8px
+      );
+    pointer-events: none;
+    z-index: 0;
+  }
 
-/* Geometric nodes - circles */
-.node {
-  position: absolute;
-  border-radius: 50%;
-}
-.node-1 { left: 192px; top: 112px; width: 18px; height: 18px; background: #8B7355; }
-.node-2 { left: 392px; top: 252px; width: 18px; height: 18px; background: #C4A265; }
-.node-3 { left: 572px; top: 112px; width: 18px; height: 18px; background: #8B7355; }
-.node-4 { left: 192px; top: 362px; width: 18px; height: 18px; background: #C4A265; }
-.node-5 { left: 572px; top: 492px; width: 24px; height: 24px; background: #D4B57A; }
-.node-6 { left: 702px; top: 252px; width: 14px; height: 14px; background: #8B7355; }
-.node-7 { left: 402px; top: 552px; width: 16px; height: 16px; background: #C4A265; }
-.node-8 { left: 202px; top: 632px; width: 12px; height: 12px; background: #D4B57A; }
-.node-9 { left: 582px; top: 702px; width: 14px; height: 14px; background: #8B7355; }
+  .bg-num {
+    position: absolute;
+    bottom: -50px;
+    right: 30px;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 300px;
+    font-weight: 700;
+    color: rgba(27, 59, 107, 0.02);
+    line-height: 0.85;
+    z-index: 1;
+    user-select: none;
+  }
 
-/* Hollow circles */
-.hollow-node {
-  position: absolute;
-  border-radius: 50%;
-  border: 2px solid #4A7BB8;
-  background: transparent;
-}
-.hollow-1 { left: 280px; top: 200px; width: 40px; height: 40px; }
-.hollow-2 { left: 480px; top: 420px; width: 34px; height: 34px; }
-.hollow-3 { left: 140px; top: 470px; width: 28px; height: 28px; }
-.hollow-4 { left: 620px; top: 340px; width: 24px; height: 24px; border-color: #C4A265; }
+  .header {
+    position: absolute;
+    top: 60px;
+    left: 80px;
+    z-index: 10;
+  }
 
-/* Squares */
-.geo-square {
-  position: absolute;
-  background: #8B7355;
-}
-.square-1 { left: 750px; top: 400px; width: 20px; height: 20px; }
-.square-2 { left: 750px; top: 530px; width: 14px; height: 14px; background: #C4A265; }
-.square-3 { left: 300px; top: 680px; width: 16px; height: 16px; background: #4A7BB8; }
+  .lecture-label {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #8B7355;
+    letter-spacing: 5px;
+    margin-bottom: 14px;
+  }
 
-/* Large central circle - main visual anchor */
-.main-circle {
-  position: absolute;
-  left: 260px; top: 100px;
-  width: 380px; height: 380px;
-  border-radius: 50%;
-  border: 1px solid #4A7BB8;
-  opacity: 0.4;
-}
-.main-circle-2 {
-  position: absolute;
-  left: 310px; top: 150px;
-  width: 280px; height: 280px;
-  border-radius: 50%;
-  border: 1px solid #3D6BA5;
-  opacity: 0.3;
-}
-.main-circle-3 {
-  position: absolute;
-  left: 200px; top: 500px;
-  width: 300px; height: 300px;
-  border-radius: 50%;
-  border: 1px solid #4A7BB8;
-  opacity: 0.25;
-}
+  .title {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 46px;
+    font-weight: 700;
+    color: #1B3B6B;
+    line-height: 1.2;
+    letter-spacing: 2px;
+  }
 
-/* Diagonal accent line */
-.diagonal {
-  position: absolute;
-  width: 2px;
-  background: #C4A265;
-  opacity: 0.5;
-  top: 0;
-}
+  .title-bar {
+    width: 80px;
+    height: 3px;
+    background: #8B7355;
+    margin-top: 20px;
+  }
 
-/* Right panel content */
-.right-content {
-  position: absolute;
-  left: 860px; top: 0;
-  width: 740px; height: 900px;
-}
+  .comp {
+    position: absolute;
+    top: 180px;
+    left: 40px;
+    width: 620px;
+    height: 640px;
+    z-index: 5;
+  }
 
-/* Top accent bar */
-.top-bar {
-  position: absolute;
-  left: 890px; top: 50px;
-  width: 60px; height: 4px;
-  background: #1B3B6B;
-}
-.top-bar-2 {
-  position: absolute;
-  left: 955px; top: 50px;
-  width: 30px; height: 4px;
-  background: #8B7355;
-}
+  .c-main {
+    position: absolute;
+    top: 60px;
+    left: 60px;
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    background: rgba(27,59,107,0.05);
+    border: 3px solid rgba(27,59,107,0.45);
+  }
 
-/* Category label */
-.category {
-  position: absolute;
-  left: 890px; top: 70px;
-  font-size: 13px;
-  letter-spacing: 6px;
-  color: #555;
-  font-weight: 400;
-}
+  .c-inner {
+    position: absolute;
+    top: 140px;
+    left: 140px;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: rgba(27,59,107,0.07);
+    border: 1.5px solid rgba(27,59,107,0.2);
+  }
 
-/* Main title */
-.main-title {
-  position: absolute;
-  left: 890px; top: 110px;
-  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-  font-size: 52px;
-  font-weight: 700;
-  color: #1B3B6B;
-  line-height: 1.3;
-  letter-spacing: 2px;
-}
+  .c-core {
+    position: absolute;
+    top: 210px;
+    left: 210px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(27,59,107,0.18);
+  }
 
-/* English subtitle */
-.eng-sub {
-  position: absolute;
-  left: 890px; top: 235px;
-  font-size: 14px;
-  letter-spacing: 3px;
-  color: #8B7355;
-  font-style: italic;
-  font-family: 'Noto Serif SC', serif;
-}
+  .c-accent {
+    position: absolute;
+    top: 40px;
+    left: 380px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid rgba(27,59,107,0.25);
+  }
 
-/* Divider */
-.divider {
-  position: absolute;
-  left: 890px; top: 280px;
-  width: 100px; height: 1px;
-  background: #1B3B6B;
-  opacity: 0.6;
-}
-.divider-2 {
-  position: absolute;
-  left: 995px; top: 280px;
-  width: 30px; height: 1px;
-  background: #8B7355;
-  opacity: 0.6;
-}
+  .c-small-2 {
+    position: absolute;
+    top: 500px;
+    left: 350px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid rgba(139,115,85,0.3);
+  }
 
-/* Bullet points */
-.bullet {
-  position: absolute;
-  left: 890px;
-  width: 620px;
-  display: flex;
-  align-items: flex-start;
-}
-.bullet-num {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 14px;
-  color: #8B7355;
-  width: 40px;
-  flex-shrink: 0;
-  padding-top: 4px;
-  letter-spacing: 1px;
-}
-.bullet-text {
-  font-size: 17px;
-  color: #1B3B6B;
-  line-height: 1.7;
-  font-weight: 400;
-  flex: 1;
-}
-.bullet-text .em {
-  font-family: 'Noto Serif SC', serif;
-  font-weight: 700;
-  color: #1B3B6B;
-}
-.bullet-text .muted {
-  color: #555;
-  font-size: 14px;
-}
+  .fl {
+    position: absolute;
+    height: 1.5px;
+    background: #1B3B6B;
+  }
 
-.b-1 { top: 320px; }
-.b-2 { top: 380px; }
-.b-3 { top: 445px; }
-.b-4 { top: 510px; }
-.b-5 { top: 575px; }
-.b-6 { top: 640px; }
-.b-7 { top: 705px; }
+  .fl-1 { top: 170px; left: 10px; width: 590px; opacity: 0.3; }
+  .fl-2 { top: 250px; left: 30px; width: 560px; opacity: 0.18; height: 1px; }
+  .fl-3 { top: 330px; left: 0; width: 610px; opacity: 0.42; height: 2px; }
+  .fl-4 { top: 410px; left: 40px; width: 540px; opacity: 0.25; }
+  .fl-5 { top: 490px; left: 20px; width: 580px; opacity: 0.15; height: 1px; }
+  .fl-6 { top: 560px; left: 60px; width: 500px; opacity: 0.12; height: 1px; }
 
-/* MEME highlight */
-.meme-box {
-  position: absolute;
-  left: 890px;
-  bottom: 50px;
-  width: 620px;
-  padding: 16px 22px;
-  border-left: 3px solid #1B3B6B;
-  background: rgba(27, 59, 107, 0.04);
-}
-.meme-label {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 22px;
-  font-weight: 700;
-  color: #1B3B6B;
-  letter-spacing: 6px;
-  margin-bottom: 4px;
-}
-.meme-desc {
-  font-size: 12px;
-  color: #555;
-  letter-spacing: 1px;
-}
+  .vl {
+    position: absolute;
+    width: 1px;
+    background: #1B3B6B;
+  }
 
-/* Page number */
-.page-num {
-  position: absolute;
-  left: 890px;
-  bottom: 18px;
-  font-size: 11px;
-  color: #555;
-  letter-spacing: 2px;
-}
-.page-num-right {
-  position: absolute;
-  right: 30px;
-  bottom: 18px;
-  font-size: 11px;
-  color: #8B7355;
-  letter-spacing: 2px;
-}
+  .vl-1 { top: 100px; left: 250px; height: 420px; opacity: 0.18; }
+  .vl-2 { top: 120px; left: 400px; height: 380px; opacity: 0.1; }
+  .vl-3 { top: 160px; left: 110px; height: 320px; opacity: 0.12; }
 
-/* Left panel labels */
-.panel-label {
-  position: absolute;
-  font-size: 10px;
-  letter-spacing: 3px;
-  color: #4A7BB8;
-  font-family: 'Noto Serif SC', serif;
-  opacity: 0.6;
-}
-.panel-label-1 { left: 60px; bottom: 40px; }
-.panel-label-2 { right: 30px; bottom: 40px; }
-.panel-label-3 { left: 60px; top: 60px; color: #C4A265; opacity: 0.5; }
+  .nd {
+    position: absolute;
+    border-radius: 50%;
+    background: #1B3B6B;
+  }
 
-/* Left panel title */
-.panel-title {
-  position: absolute;
-  left: 60px;
-  bottom: 80px;
-  font-family: 'Noto Serif SC', serif;
-  font-size: 15px;
-  color: #C4A265;
-  letter-spacing: 3px;
-  opacity: 0.7;
-}
+  .nd-1 { top: 168px; left: 80px; width: 10px; height: 10px; opacity: 0.55; }
+  .nd-2 { top: 328px; left: 160px; width: 13px; height: 13px; opacity: 0.7; }
+  .nd-3 { top: 248px; left: 370px; width: 9px; height: 9px; opacity: 0.5; }
+  .nd-4 { top: 408px; left: 290px; width: 10px; height: 10px; opacity: 0.6; }
+  .nd-5 { top: 172px; left: 420px; width: 7px; height: 7px; opacity: 0.4; }
+  .nd-6 { top: 488px; left: 130px; width: 8px; height: 8px; opacity: 0.45; }
+  .nd-7 { top: 332px; left: 460px; width: 11px; height: 11px; opacity: 0.55; }
+  .nd-8 { top: 252px; left: 60px; width: 7px; height: 7px; opacity: 0.4; }
+  .nd-9 { top: 562px; left: 280px; width: 6px; height: 6px; opacity: 0.35; }
 
-/* Corner geometric mark */
-.corner-mark {
-  position: absolute;
-  left: 30px; top: 30px;
-  width: 40px; height: 40px;
-  border-top: 2px solid #C4A265;
-  border-left: 2px solid #C4A265;
-  opacity: 0.6;
-}
-.corner-mark-b {
-  position: absolute;
-  left: 860px; top: 30px;
-  width: 20px; height: 20px;
-  border-top: 2px solid #1B3B6B;
-  border-right: 2px solid #1B3B6B;
-}
-</style></head><body>
+  .diamond {
+    position: absolute;
+    top: 380px;
+    left: 370px;
+    width: 44px;
+    height: 44px;
+    background: rgba(139,115,85,0.22);
+    transform: rotate(45deg);
+  }
 
-<div class="left-panel">
-  <div class="corner-mark"></div>
-  <div class="panel-label-3">CULTURAL TRANSMISSION</div>
+  .triangle {
+    position: absolute;
+    top: 80px;
+    left: 450px;
+    width: 0;
+    height: 0;
+    border-left: 18px solid transparent;
+    border-right: 18px solid transparent;
+    border-bottom: 32px solid rgba(27,59,107,0.15);
+  }
 
-  <div class="main-circle"></div>
-  <div class="main-circle-2"></div>
-  <div class="main-circle-3"></div>
+  .sq-outline {
+    position: absolute;
+    top: 530px;
+    left: 50px;
+    width: 60px;
+    height: 60px;
+    border: 2px solid rgba(139,115,85,0.2);
+  }
 
-  <div class="v-line v-line-1"></div>
-  <div class="v-line v-line-2"></div>
-  <div class="v-line v-line-3"></div>
-  <div class="v-line v-line-4"></div>
+  .sq-fill {
+    position: absolute;
+    top: 140px;
+    left: 520px;
+    width: 18px;
+    height: 18px;
+    background: rgba(27,59,107,0.12);
+  }
 
-  <div class="stream stream-1"></div>
-  <div class="stream stream-2"></div>
-  <div class="stream stream-3"></div>
-  <div class="stream stream-4"></div>
-  <div class="stream stream-5"></div>
-  <div class="stream stream-6"></div>
-  <div class="stream stream-7"></div>
-  <div class="stream stream-8"></div>
-  <div class="stream stream-9"></div>
-  <div class="stream stream-10"></div>
-  <div class="stream stream-11"></div>
-  <div class="stream stream-12"></div>
+  .content {
+    position: absolute;
+    top: 185px;
+    left: 720px;
+    width: 800px;
+    z-index: 10;
+  }
 
-  <div class="node node-1"></div>
-  <div class="node node-2"></div>
-  <div class="node node-3"></div>
-  <div class="node node-4"></div>
-  <div class="node node-5"></div>
-  <div class="node node-6"></div>
-  <div class="node node-7"></div>
-  <div class="node node-8"></div>
-  <div class="node node-9"></div>
+  .subtitle {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 17px;
+    font-weight: 400;
+    color: #8B7355;
+    letter-spacing: 2.5px;
+    margin-bottom: 42px;
+    line-height: 1.6;
+  }
 
-  <div class="hollow-node hollow-1"></div>
-  <div class="hollow-node hollow-2"></div>
-  <div class="hollow-node hollow-3"></div>
-  <div class="hollow-node hollow-4"></div>
+  .subtitle .sep {
+    margin: 0 8px;
+    opacity: 0.5;
+  }
 
-  <div class="geo-square square-1"></div>
-  <div class="geo-square square-2"></div>
-  <div class="geo-square square-3"></div>
+  .points {
+    list-style: none;
+  }
 
-  <div class="panel-label panel-label-1">DATA STREAM</div>
-  <div class="panel-label panel-label-2">INFRASTRUCTURE</div>
-  <div class="panel-title">文化传承的数字基础设施</div>
-</div>
+  .pt {
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 26px;
+  }
 
-<div class="texture"></div>
+  .pt-num {
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #8B7355;
+    opacity: 0.6;
+    letter-spacing: 1px;
+    line-height: 1.5;
+  }
 
-<div class="right-content">
-  <div class="corner-mark-b"></div>
-  <div class="top-bar"></div>
-  <div class="top-bar-2"></div>
-  <div class="category">SECTION Ⅳ / CULTURE</div>
+  .pt-bar {
+    position: absolute;
+    left: 0;
+    top: 28px;
+    width: 28px;
+    height: 1px;
+    background: #8B7355;
+    opacity: 0.25;
+  }
 
-  <div class="main-title">文化是开源的基石</div>
-  <div class="eng-sub">Culture as the Cornerstone of Open Source</div>
-  <div class="divider"></div>
-  <div class="divider-2"></div>
+  .pt-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1B3B6B;
+    line-height: 1.55;
+    margin-bottom: 3px;
+  }
 
-  <div class="bullet b-1">
-    <div class="bullet-num">01</div>
-    <div class="bullet-text"><span class="em">技术只有在文化的环境中</span>才能获得继承和发展</div>
-  </div>
-  <div class="bullet b-2">
-    <div class="bullet-num">02</div>
-    <div class="bullet-text"><span class="em">科学是一种文化</span><span class="muted"> &nbsp;·&nbsp; 开源世界亦然</span></div>
-  </div>
-  <div class="bullet b-3">
-    <div class="bullet-num">03</div>
-    <div class="bullet-text"><span class="em">不遵行文化，则无开源</span> <span class="muted">— 制度的隐性前提</span></div>
-  </div>
-  <div class="bullet b-4">
-    <div class="bullet-num">04</div>
-    <div class="bullet-text">文化是<span class="em">习得的</span></div>
-  </div>
-  <div class="bullet b-5">
-    <div class="bullet-num">05</div>
-    <div class="bullet-text">文化可以<span class="em">移植的、兼容的、工具性的</span></div>
+  .pt-en {
+    font-size: 12.5px;
+    font-weight: 300;
+    color: #888;
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 42px;
+    left: 80px;
+    width: 1440px;
+    display: flex;
+    align-items: center;
+    z-index: 10;
+  }
+
+  .ft-left {
+    font-size: 11px;
+    color: #8B7355;
+    letter-spacing: 3px;
+    opacity: 0.55;
+    white-space: nowrap;
+  }
+
+  .ft-line {
+    flex: 1;
+    height: 1px;
+    background: #8B7355;
+    opacity: 0.12;
+    margin: 0 22px;
+  }
+
+  .ft-right {
+    font-size: 11px;
+    color: #8B7355;
+    letter-spacing: 3px;
+    opacity: 0.55;
+    white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+  <div class="bg-num">11</div>
+
+  <div class="header">
+    <div class="lecture-label">LECTURE 11 · 第 十 一 期</div>
+    <h1 class="title">文化的重要作用</h1>
+    <div class="title-bar"></div>
   </div>
 
-  <div class="meme-box">
-    <div class="meme-label">M · E · M · E</div>
-    <div class="meme-desc">理查德 · 道金斯 &nbsp;·&nbsp; 1976 &nbsp;·&nbsp; 文化的基因单元 — 模因的传播即开源精神的微观机制</div>
+  <div class="comp">
+    <div class="c-main"></div>
+    <div class="c-inner"></div>
+    <div class="c-core"></div>
+    <div class="c-accent"></div>
+    <div class="c-small-2"></div>
+
+    <div class="fl fl-1"></div>
+    <div class="fl fl-2"></div>
+    <div class="fl fl-3"></div>
+    <div class="fl fl-4"></div>
+    <div class="fl fl-5"></div>
+    <div class="fl fl-6"></div>
+
+    <div class="vl vl-1"></div>
+    <div class="vl vl-2"></div>
+    <div class="vl vl-3"></div>
+
+    <div class="nd nd-1"></div>
+    <div class="nd nd-2"></div>
+    <div class="nd nd-3"></div>
+    <div class="nd nd-4"></div>
+    <div class="nd nd-5"></div>
+    <div class="nd nd-6"></div>
+    <div class="nd nd-7"></div>
+    <div class="nd nd-8"></div>
+    <div class="nd nd-9"></div>
+
+    <div class="diamond"></div>
+    <div class="triangle"></div>
+    <div class="sq-outline"></div>
+    <div class="sq-fill"></div>
   </div>
 
-  <div class="page-num">OPEN SOURCE ECONOMICS / NEW INSTITUTIONAL</div>
-  <div class="page-num-right">04 — 09</div>
-</div>
+  <div class="content">
+    <p class="subtitle">
+      文化传承的数字基础设施
+      <span class="sep">·</span>
+      Digital Infrastructure of Cultural Transmission
+    </p>
 
-</body></html>
+    <ul class="points">
+      <li class="pt">
+        <div class="pt-num">01</div>
+        <div class="pt-bar"></div>
+        <div class="pt-title">文化是开源的基石</div>
+        <div class="pt-en">Culture is the foundation of open source — 不遵行文化，则无开源</div>
+      </li>
+
+      <li class="pt">
+        <div class="pt-num">02</div>
+        <div class="pt-bar"></div>
+        <div class="pt-title">MEME — 文化的最小传播与复制单元</div>
+        <div class="pt-en">The smallest unit of cultural transmission and replication</div>
+      </li>
+
+      <li class="pt">
+        <div class="pt-num">03</div>
+        <div class="pt-bar"></div>
+        <div class="pt-title">技术只有在文化的环境中才能获得继承和发展</div>
+        <div class="pt-en">Technology is inherited and developed only within a cultural context</div>
+      </li>
+
+      <li class="pt">
+        <div class="pt-num">04</div>
+        <div class="pt-bar"></div>
+        <div class="pt-title">科学是一种文化</div>
+        <div class="pt-en">Science itself is a form of culture</div>
+      </li>
+
+      <li class="pt">
+        <div class="pt-num">05</div>
+        <div class="pt-bar"></div>
+        <div class="pt-title">文化是习得的、可移植的、兼容的、工具性的</div>
+        <div class="pt-en">Culture is learned, transplantable, compatible, and instrumental</div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    <span class="ft-left">开源之道 · The Open Source Way</span>
+    <div class="ft-line"></div>
+    <span class="ft-right">11 / 28</span>
+  </div>
+</body>
+</html>

@@ -1,144 +1,409 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: b1c375182670ccd8 --><head><meta charset="UTF-8"><title>文化制度的成本与收益</title><style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1600px;height:900px;overflow:hidden;margin:0}
-body{background:#F5F0E8;font-family:'Noto Sans SC','Source Han Sans SC','PingFang SC',sans-serif;color:#1B3B6B;position:relative}
-.title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif}
+<!DOCTYPE html>
+<html><!-- source_hash: 0d37d69d4c3e4e18 -->
+<head>
+<meta charset="UTF-8">
+<title>文化的重要作用 · 行动路径</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1600px; height: 900px; overflow: hidden; }
+body {
+  background: #F5F0E8;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: #1B3B6B;
+  position: relative;
+}
 
-/* Bauhaus top band */
-.band-top{position:absolute;top:0;left:0;width:1600px;height:8px;background:#1B3B6B}
-.band-bottom{position:absolute;bottom:0;left:0;width:1600px;height:8px;background:#1B3B6B}
-.band-left{position:absolute;top:0;left:0;width:8px;height:900px;background:#1B3B6B}
-.band-right{position:absolute;top:0;right:0;width:8px;height:900px;background:#1B3B6B}
+/* Background texture */
+.bg-texture {
+  position: absolute;
+  top: 0; left: 0;
+  width: 1600px; height: 900px;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(27,59,107,0.012) 2px, rgba(27,59,107,0.012) 4px),
+    repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(27,59,107,0.01) 2px, rgba(27,59,107,0.01) 4px);
+  pointer-events: none;
+}
 
-/* Section labels */
-.section-num{font-family:'Noto Serif SC',serif;font-size:14px;letter-spacing:6px;color:#8B7355}
+/* Decorative geometry - large circle */
+.deco-circle-1 {
+  position: absolute;
+  top: -80px;
+  right: -120px;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  border: 2px solid rgba(27,59,107,0.12);
+}
 
-/* Left content column */
-.left-col{position:absolute;top:100px;left:80px;width:720px}
+.deco-circle-2 {
+  position: absolute;
+  bottom: -60px;
+  left: -60px;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  border: 2px solid rgba(139,115,85,0.15);
+}
 
-.main-question{font-family:'Noto Serif SC',serif;font-size:48px;font-weight:700;color:#1B3B6B;line-height:1.2;margin-bottom:8px;letter-spacing:2px}
-.sub-question{font-family:'Noto Serif SC',serif;font-size:18px;color:#8B7355;letter-spacing:8px;margin-bottom:40px;font-weight:400}
+/* Central geometric composition */
+.center-comp {
+  position: absolute;
+  top: 310px;
+  left: 720px;
+  width: 160px;
+  height: 160px;
+}
 
-.points{margin-top:10px}
-.point{margin-bottom:32px;position:relative;padding-left:52px}
-.point-num{position:absolute;left:0;top:4px;width:36px;height:36px;background:#1B3B6B;color:#F5F0E8;font-family:'Noto Serif SC',serif;font-size:18px;font-weight:700;display:flex;align-items:center;justify-content:center}
-.point-num.circle{background:transparent;border:2px solid #1B3B6B;color:#1B3B6B}
-.point-num.copper{background:#8B7355;border:2px solid #8B7355;color:#F5F0E8}
-.point-title{font-family:'Noto Serif SC',serif;font-size:22px;font-weight:700;color:#1B3B6B;margin-bottom:8px;letter-spacing:1px}
-.point-desc{font-size:15px;color:#333;line-height:1.7;letter-spacing:0.5px}
-.point-desc .em{color:#1B3B6B;font-weight:600}
-.point-desc .sep{color:#8B7355;margin:0 10px;font-weight:300}
+.center-circle {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: #1B3B6B;
+}
 
-/* Right visual metaphor */
-.right-col{position:absolute;top:100px;right:80px;width:640px;height:640px}
+.center-square {
+  position: absolute;
+  top: 30px;
+  left: 40px;
+  width: 80px;
+  height: 80px;
+  background: rgba(139,115,85,0.7);
+  transform: rotate(45deg);
+}
 
-/* Geometric composition: interweaving gold and blue */
-.geo-circle-blue{position:absolute;top:60px;left:80px;width:220px;height:220px;border-radius:50%;background:#1B3B6B;opacity:0.85}
-.geo-circle-copper{position:absolute;top:120px;left:240px;width:220px;height:220px;border-radius:50%;background:#8B7355;opacity:0.85}
-.geo-square-blue{position:absolute;top:280px;left:160px;width:200px;height:200px;background:#1B3B6B;opacity:0.85}
-.geo-square-copper{position:absolute;top:280px;left:340px;width:200px;height:200px;background:#8B7355;opacity:0.75}
-.geo-line-v1{position:absolute;top:0;left:300px;width:4px;height:580px;background:#1B3B6B;opacity:0.4}
-.geo-line-v2{position:absolute;top:0;left:360px;width:2px;height:580px;background:#8B7355;opacity:0.4}
-.geo-line-h1{position:absolute;top:170px;left:40px;width:500px;height:4px;background:#1B3B6B;opacity:0.4}
-.geo-line-h2{position:absolute;top:230px;left:40px;width:500px;height:2px;background:#8B7355;opacity:0.4}
-.geo-ring{position:absolute;top:520px;left:60px;width:80px;height:80px;border:4px solid #1B3B6B;border-radius:50%;background:transparent}
-.geo-ring2{position:absolute;top:500px;left:100px;width:80px;height:80px;border:2px solid #8B7355;border-radius:50%;background:transparent}
-.geo-triangle{position:absolute;top:510px;left:220px;width:0;height:0;border-left:40px solid transparent;border-right:40px solid transparent;border-bottom:70px solid #1B3B6B;opacity:0.7}
-.geo-dot1{position:absolute;top:500px;left:330px;width:18px;height:18px;background:#8B7355;border-radius:50%}
-.geo-dot2{position:absolute;top:520px;left:370px;width:10px;height:10px;background:#1B3B6B;border-radius:50%}
-.geo-dot3{position:absolute;top:540px;left:330px;width:10px;height:10px;background:#1B3B6B;border-radius:50%}
+.center-line-h {
+  position: absolute;
+  top: 88px;
+  left: -40px;
+  width: 240px;
+  height: 2px;
+  background: #8B7355;
+}
 
-/* Interlace label */
-.interlace-label{position:absolute;bottom:20px;left:100px;width:440px;text-align:center;font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:8px}
+.center-line-v {
+  position: absolute;
+  top: -40px;
+  left: 88px;
+  width: 2px;
+  height: 240px;
+  background: rgba(27,59,107,0.4);
+}
 
-/* Quote bar */
-.quote-bar{position:absolute;bottom:60px;left:80px;width:1440px;height:72px;border-top:1px solid #1B3B6B;border-bottom:1px solid #1B3B6B;display:flex;align-items:center;justify-content:center;gap:24px}
-.quote-mark{font-family:'Noto Serif SC',serif;font-size:42px;color:#8B7355;line-height:1;font-weight:700}
-.quote-text{font-family:'Noto Serif SC',serif;font-size:20px;color:#1B3B6B;letter-spacing:6px;font-weight:400}
+/* Small decorative elements */
+.deco-square-1 {
+  position: absolute;
+  top: 80px;
+  left: 140px;
+  width: 18px;
+  height: 18px;
+  background: #1B3B6B;
+}
 
-/* Corner ornaments */
-.corner-tl{position:absolute;top:24px;left:24px;width:28px;height:28px;border-top:2px solid #1B3B6B;border-left:2px solid #1B3B6B}
-.corner-tr{position:absolute;top:24px;right:24px;width:28px;height:28px;border-top:2px solid #1B3B6B;border-right:2px solid #1B3B6B}
-.corner-bl{position:absolute;bottom:24px;left:24px;width:28px;height:28px;border-bottom:2px solid #1B3B6B;border-left:2px solid #1B3B6B}
-.corner-br{position:absolute;bottom:24px;right:24px;width:28px;height:28px;border-bottom:2px solid #1B3B6B;border-right:2px solid #1B3B6B}
+.deco-square-2 {
+  position: absolute;
+  bottom: 80px;
+  right: 160px;
+  width: 14px;
+  height: 14px;
+  background: #8B7355;
+}
 
-/* Page number */
-.page-num{position:absolute;top:24px;right:72px;font-family:'Noto Serif SC',serif;font-size:12px;color:#8B7355;letter-spacing:4px}
-.dept-label{position:absolute;top:24px;left:72px;font-family:'Noto Serif SC',serif;font-size:12px;color:#8B7355;letter-spacing:4px}
+.deco-dot-1 {
+  position: absolute;
+  top: 200px;
+  right: 280px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #1B3B6B;
+}
 
-/* Divider line */
-.divider{width:60px;height:2px;background:#1B3B6B;margin-bottom:20px}
-</style></head><body>
+.deco-dot-2 {
+  position: absolute;
+  bottom: 160px;
+  left: 320px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #8B7355;
+}
 
-<div class="band-top"></div>
-<div class="band-bottom"></div>
-<div class="band-left"></div>
-<div class="band-right"></div>
+.deco-line-1 {
+  position: absolute;
+  top: 450px;
+  left: 0;
+  width: 120px;
+  height: 1px;
+  background: rgba(27,59,107,0.2);
+}
 
-<div class="corner-tl"></div>
-<div class="corner-tr"></div>
-<div class="corner-bl"></div>
-<div class="corner-br"></div>
+.deco-line-2 {
+  position: absolute;
+  bottom: 450px;
+  right: 0;
+  width: 120px;
+  height: 1px;
+  background: rgba(139,115,85,0.25);
+}
 
-<div class="dept-label">新制度经济学 · 开源讲座</div>
-<div class="page-num">第 Ⅴ 章 / 制度建构</div>
+/* Title */
+.title-area {
+  position: absolute;
+  top: 50px;
+  left: 80px;
+  right: 80px;
+}
 
-<!-- Left content -->
-<div class="left-col">
-  <div class="main-question">我们该如何做？</div>
-  <div class="sub-question">HOW &nbsp;TO &nbsp;DO &nbsp;THIS</div>
-  <div class="divider"></div>
+.slide-number {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 14px;
+  color: #8B7355;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
 
-  <div class="points">
+.main-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: #1B3B6B;
+  line-height: 1.2;
+  letter-spacing: 1px;
+}
 
-    <div class="point">
-      <div class="point-num">01</div>
-      <div class="point-title">文化建构</div>
-      <div class="point-desc">
-        需要文化的<span class="em">塑造者</span>与<span class="em">传播者</span><span class="sep">|</span>需要环境的改造：<span class="em">法律</span>、<span class="em">经济</span>、<span class="em">社会</span>
-      </div>
+.title-rule {
+  width: 80px;
+  height: 3px;
+  background: #8B7355;
+  margin-top: 18px;
+}
+
+/* Content areas */
+.content-wrapper {
+  position: absolute;
+  top: 180px;
+  left: 80px;
+  right: 80px;
+  bottom: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.panel {
+  flex: 1;
+  padding: 36px 40px;
+  position: relative;
+}
+
+.panel-left {
+  border-left: 3px solid #1B3B6B;
+}
+
+.panel-right {
+  border-left: 3px solid #8B7355;
+}
+
+.panel-label {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 13px;
+  color: #8B7355;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.panel-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #1B3B6B;
+  margin-bottom: 28px;
+  line-height: 1.3;
+}
+
+.panel-title-right {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #1B3B6B;
+  margin-bottom: 28px;
+  line-height: 1.3;
+}
+
+.bullet-list {
+  list-style: none;
+}
+
+.bullet-list li {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #333;
+  padding-left: 24px;
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.bullet-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 13px;
+  width: 8px;
+  height: 8px;
+  background: #1B3B6B;
+}
+
+.panel-right .bullet-list li::before {
+  background: #8B7355;
+  border-radius: 50%;
+  width: 6px;
+  height: 6px;
+  top: 14px;
+}
+
+.key-phrase {
+  font-weight: 600;
+  color: #1B3B6B;
+}
+
+.closing-statement {
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(139,115,85,0.3);
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 17px;
+  color: #8B7355;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* Bottom decoration */
+.bottom-rule {
+  position: absolute;
+  bottom: 40px;
+  left: 80px;
+  right: 80px;
+  height: 1px;
+  background: rgba(27,59,107,0.1);
+}
+
+.footer-text {
+  position: absolute;
+  bottom: 20px;
+  left: 80px;
+  font-size: 11px;
+  color: rgba(27,59,107,0.4);
+  letter-spacing: 1px;
+}
+
+.footer-right {
+  position: absolute;
+  bottom: 20px;
+  right: 80px;
+  font-size: 11px;
+  color: rgba(27,59,107,0.4);
+  letter-spacing: 1px;
+}
+
+/* Additional geometry */
+.geo-arc {
+  position: absolute;
+  top: 620px;
+  left: 660px;
+  width: 80px;
+  height: 80px;
+  border: 2px solid rgba(139,115,85,0.2);
+  border-radius: 50%;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+  transform: rotate(-45deg);
+}
+
+.geo-tri-line {
+  position: absolute;
+  top: 740px;
+  right: 200px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 16px solid rgba(27,59,107,0.08);
+}
+</style>
+</head>
+<body>
+
+<div class="bg-texture"></div>
+
+<!-- Decorative elements -->
+<div class="deco-circle-1"></div>
+<div class="deco-circle-2"></div>
+<div class="deco-square-1"></div>
+<div class="deco-square-2"></div>
+<div class="deco-dot-1"></div>
+<div class="deco-dot-2"></div>
+<div class="deco-line-1"></div>
+<div class="deco-line-2"></div>
+<div class="geo-arc"></div>
+<div class="geo-tri-line"></div>
+
+<!-- Central composition -->
+<div class="center-comp">
+  <div class="center-line-v"></div>
+  <div class="center-line-h"></div>
+  <div class="center-circle"></div>
+  <div class="center-square"></div>
+</div>
+
+<!-- Title -->
+<div class="title-area">
+  <div class="slide-number">第 11 期 · 文化的重要作用</div>
+  <div class="main-title">行动路径 · 文化与制度的双向建构</div>
+  <div class="title-rule"></div>
+</div>
+
+<!-- Content -->
+<div class="content-wrapper">
+  <div class="panel panel-left">
+    <div class="panel-label">Ⅰ</div>
+    <div class="panel-title">我们该如何做？</div>
+    <ul class="bullet-list">
+      <li><span class="key-phrase">文化建构</span>——建立共识性的价值框架</li>
+      <li>需要文化的<span class="key-phrase">塑造者</span>与<span class="key-phrase">传播者</span></li>
+      <li>需要环境的改造：<span class="key-phrase">法律</span>、<span class="key-phrase">经济</span>、<span class="key-phrase">社会</span></li>
+    </ul>
+    <div class="closing-statement">
+      文化制度之成本与收益，<br>
+      非一日之功，亦非一人之智。
     </div>
+  </div>
 
-    <div class="point">
-      <div class="point-num circle">02</div>
-      <div class="point-title">个人该如何处置？</div>
-      <div class="point-desc">
-        <span class="em">认知</span><span class="sep">·</span><span class="em">理性</span><span class="sep">·</span><span class="em">制度</span>
-      </div>
+  <div class="panel panel-right">
+    <div class="panel-label">Ⅱ</div>
+    <div class="panel-title-right">个人该如何处置？</div>
+    <ul class="bullet-list">
+      <li><span class="key-phrase">认知</span>——理解制度对行为的塑造</li>
+      <li><span class="key-phrase">理性</span>——在约束中选择最优策略</li>
+      <li><span class="key-phrase">制度</span>——从规则中寻找行动的合法性</li>
+    </ul>
+    <div class="closing-statement">
+      如果是文明的一种形式，<br>
+      那么一切都值得。
     </div>
-
   </div>
 </div>
 
-<!-- Right visual metaphor -->
-<div class="right-col">
-  <div class="geo-line-v1"></div>
-  <div class="geo-line-v2"></div>
-  <div class="geo-line-h1"></div>
-  <div class="geo-line-h2"></div>
+<!-- Footer -->
+<div class="bottom-rule"></div>
+<div class="footer-text">开源之道 · 新制度经济学视角</div>
+<div class="footer-right">11 / 28</div>
 
-  <div class="geo-circle-blue"></div>
-  <div class="geo-circle-copper"></div>
-  <div class="geo-square-blue"></div>
-  <div class="geo-square-copper"></div>
-
-  <div class="geo-ring"></div>
-  <div class="geo-ring2"></div>
-  <div class="geo-triangle"></div>
-  <div class="geo-dot1"></div>
-  <div class="geo-dot2"></div>
-  <div class="geo-dot3"></div>
-
-  <div class="interlace-label">文化制度的成本与收益</div>
-</div>
-
-<!-- Bottom quote -->
-<div class="quote-bar">
-  <span class="quote-mark">「</span>
-  <span class="quote-text">如果是文明的一种形式，那么一切都值得</span>
-  <span class="quote-mark">」</span>
-</div>
-
-</body></html>
+</body>
+</html>

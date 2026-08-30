@@ -1,170 +1,461 @@
 
 
 <!DOCTYPE html>
-<html><!-- source_hash: bac9ca2eb87619b3 -->
+<html><!-- source_hash: f7f897fcc171c1c4 -->
 <head>
 <meta charset="UTF-8">
-<title>微软的开源蜕变——集市旁的教堂</title>
+<title>第 11 期 · 文化的重要作用 — Microsoft Love Linux</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1600px;height:900px;overflow:hidden;margin:0;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;color:#1B3B6B}
-.slide{width:1600px;height:900px;background:#F5F0E8;position:relative;overflow:hidden}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1600px; height: 900px; overflow: hidden; margin: 0; }
+body {
+  background: #F5F0E8;
+  font-family: 'Noto Sans SC', 'Source Han Sans SC', sans-serif;
+  color: #1B3B6B;
+  position: relative;
+}
 
-/* subtle parchment texture */
-.slide::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;background:radial-gradient(ellipse at 20% 10%, rgba(139,115,85,0.04) 0%, transparent 50%),radial-gradient(ellipse at 80% 90%, rgba(27,59,107,0.03) 0%, transparent 50%);pointer-events:none}
+/* Parchment texture overlay */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(139, 115, 85, 0.015) 2px,
+    rgba(139, 115, 85, 0.015) 4px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
 
-/* top decorative bar */
-.top-bar{position:absolute;top:40px;left:80px;width:60px;height:4px;background:#1B3B6B}
-.top-bar-thin{position:absolute;top:40px;left:150px;right:80px;height:1px;background:#1B3B6B;opacity:0.3}
+/* Header */
+.header {
+  position: absolute;
+  top: 40px;
+  left: 80px;
+  right: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  z-index: 10;
+}
 
-/* title area */
-.eyebrow{position:absolute;top:70px;left:80px;font-size:14px;letter-spacing:6px;color:#8B7355;font-weight:400;text-transform:uppercase}
-.main-title{position:absolute;top:98px;left:80px;font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:48px;font-weight:700;color:#1B3B6B;line-height:1.2;letter-spacing:2px}
-.sub-title{position:absolute;top:172px;left:80px;font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:22px;color:#555;font-weight:400;letter-spacing:1px}
-.title-underline{position:absolute;top:218px;left:80px;width:120px;height:3px;background:#1B3B6B}
-.title-underline-2{position:absolute;top:218px;left:200px;width:60px;height:1px;background:#8B7355}
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
 
-/* geometric corner marks */
-.corner-circle{position:absolute;top:60px;right:80px;width:36px;height:36px;border-radius:50%;background:#1B3B6B}
-.corner-square{position:absolute;top:104px;right:126px;width:12px;height:12px;background:#8B7355}
-.corner-line{position:absolute;top:78px;right:80px;width:60px;height:1px;background:#1B3B6B}
+.header-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #1B3B6B;
+}
 
-/* left: book cover visual metaphor */
-.book-area{position:absolute;left:60px;top:280px;width:480px;height:540px}
-.book-cover{position:absolute;left:20px;top:20px;width:340px;height:460px;background:#1B3B6B;box-shadow:8px 8px 0 0 rgba(27,59,107,0.15)}
-.book-spine{position:absolute;left:0;top:20px;width:14px;height:460px;background:#8B7355}
-.book-title{position:absolute;left:50px;top:40px;width:290px;font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:16px;color:#F5F0E8;letter-spacing:2px;line-height:1.6;font-weight:700}
-.book-subtitle{position:absolute;left:50px;top:110px;width:290px;font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:12px;color:#F5F0E8;opacity:0.7;letter-spacing:1px}
-.book-author{position:absolute;left:50px;bottom:30px;width:290px;font-size:11px;color:#F5F0E8;opacity:0.5;letter-spacing:3px}
-/* geometric elements on book cover */
-.book-circle{position:absolute;left:130px;top:180px;width:120px;height:120px;border-radius:50%;border:2px solid #F5F0E8}
-.book-square{position:absolute;left:170px;top:220px;width:40px;height:40px;background:#F5F0E8}
-.book-line1{position:absolute;left:50px;top:170px;width:140px;height:1px;background:#F5F0E8;opacity:0.4}
-.book-line2{position:absolute;left:50px;top:310px;width:140px;height:1px;background:#F5F0E8;opacity:0.4}
-.book-brace{position:absolute;left:50px;top:185px;font-family:'Noto Serif SC',serif;font-size:36px;color:#F5F0E8;opacity:0.5}
-.book-brace2{position:absolute;left:280px;top:185px;font-family:'Noto Serif SC',serif;font-size:36px;color:#F5F0E8;opacity:0.5}
-.book-code{position:absolute;left:50px;top:320px;width:290px;font-family:'Noto Serif SC',serif;font-size:11px;color:#F5F0E8;opacity:0.45;line-height:1.8;letter-spacing:1px}
+.header-text {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 14px;
+  color: #8B7355;
+  letter-spacing: 2px;
+}
 
-/* book label */
-.book-label{position:absolute;left:20px;top:500px;width:340px;font-size:12px;color:#8B7355;letter-spacing:2px;text-align:center;line-height:1.6}
+.slide-num {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 13px;
+  color: #555;
+  letter-spacing: 1px;
+}
 
-/* right side: content */
-.content-area{position:absolute;left:590px;top:280px;width:950px;height:540px}
+/* Main content area */
+.main-content {
+  position: absolute;
+  top: 110px;
+  left: 80px;
+  right: 80px;
+  bottom: 60px;
+  display: flex;
+  z-index: 10;
+}
 
-.section-label{position:absolute;top:0;left:0;font-size:12px;letter-spacing:4px;color:#8B7355;padding-bottom:10px;border-bottom:1px solid rgba(139,115,85,0.3);width:200px}
+/* Left panel - Book metaphor */
+.left-panel {
+  width: 440px;
+  padding-right: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+}
 
-.bullets{position:absolute;top:40px;left:0;width:950px;display:flex;flex-direction:column;gap:22px}
-.bullet{display:flex;align-items:flex-start;gap:20px}
-.bullet-num{flex-shrink:0;width:42px;height:42px;background:#1B3B6B;color:#F5F0E8;font-family:'Noto Serif SC',serif;font-size:16px;display:flex;align-items:center;justify-content:center;font-weight:700}
-.bullet-num.copper{background:#8B7355}
-.bullet-num.outline{background:transparent;border:2px solid #1B3B6B;color:#1B3B6B}
-.bullet-text{flex:1;padding-top:2px}
-.bullet-head{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:19px;font-weight:700;color:#1B3B6B;line-height:1.4;margin-bottom:4px;letter-spacing:1px}
-.bullet-desc{font-size:14px;color:#555;line-height:1.6;letter-spacing:0.5px}
+/* Book cover visual */
+.book-cover {
+  width: 300px;
+  height: 400px;
+  background: #1B3B6B;
+  position: relative;
+  margin-top: 20px;
+  box-shadow: 8px 8px 0 rgba(139, 115, 85, 0.2);
+}
 
-/* bottom area */
-.bottom-line{position:absolute;bottom:40px;left:80px;right:80px;height:1px;background:#1B3B6B;opacity:0.2}
-.page-num{position:absolute;bottom:55px;right:80px;font-size:12px;color:#8B7355;letter-spacing:3px}
-.footer-text{position:absolute;bottom:55px;left:80px;font-size:11px;color:#555;opacity:0.6;letter-spacing:2px}
+.book-cover::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px;
+  height: 100%;
+  background: #8B7355;
+}
 
-/* right side geometric decoration */
-.right-circle{position:absolute;top:640px;right:60px;width:60px;height:60px;border-radius:50%;background:#1B3B6B;opacity:0.9}
-.right-square{position:absolute;top:678px;right:130px;width:20px;height:20px;background:#8B7355}
-.right-line-v{position:absolute;top:280px;right:60px;width:1px;height:380px;background:#1B3B6B;opacity:0.15}
+.book-title-cn {
+  position: absolute;
+  top: 50px;
+  left: 35px;
+  right: 30px;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 32px;
+  color: #F5F0E8;
+  line-height: 1.4;
+  font-weight: bold;
+}
+
+.book-subtitle {
+  position: absolute;
+  top: 160px;
+  left: 35px;
+  right: 30px;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 13px;
+  color: rgba(245, 240, 232, 0.7);
+  line-height: 1.8;
+}
+
+.book-code {
+  position: absolute;
+  bottom: 40px;
+  left: 35px;
+  right: 30px;
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  color: rgba(245, 240, 232, 0.5);
+  line-height: 1.6;
+}
+
+.book-geometry-1 {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid rgba(245, 240, 232, 0.3);
+}
+
+.book-geometry-2 {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 20px;
+  height: 20px;
+  background: rgba(245, 240, 232, 0.2);
+}
+
+/* Vertical line separator */
+.separator {
+  position: absolute;
+  top: 110px;
+  left: 530px;
+  width: 1px;
+  height: 680px;
+  background: #8B7355;
+  opacity: 0.3;
+}
+
+/* Right panel */
+.right-panel {
+  flex: 1;
+  padding-left: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.slide-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 36px;
+  color: #1B3B6B;
+  line-height: 1.3;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.slide-subtitle {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 15px;
+  color: #8B7355;
+  margin-bottom: 36px;
+  letter-spacing: 1px;
+}
+
+/* Accent line under title */
+.title-underline {
+  width: 60px;
+  height: 3px;
+  background: #1B3B6B;
+  margin-bottom: 30px;
+}
+
+/* Content points */
+.content-points {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.point {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.point-marker {
+  width: 12px;
+  height: 12px;
+  background: #1B3B6B;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+.point-marker.circle {
+  border-radius: 50%;
+}
+
+.point-marker.line {
+  width: 16px;
+  height: 2px;
+  margin-top: 12px;
+}
+
+.point-marker.square-alt {
+  background: transparent;
+  border: 2px solid #8B7355;
+}
+
+.point-content {
+  flex: 1;
+}
+
+.point-label {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 16px;
+  color: #1B3B6B;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.point-detail {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.7;
+}
+
+/* Geometric decorations */
+.deco-circle-large {
+  position: absolute;
+  bottom: -60px;
+  right: -60px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 2px solid #1B3B6B;
+  opacity: 0.06;
+  z-index: 1;
+}
+
+.deco-square {
+  position: absolute;
+  top: 140px;
+  right: 120px;
+  width: 80px;
+  height: 80px;
+  background: #8B7355;
+  opacity: 0.04;
+  z-index: 1;
+}
+
+.deco-line-h {
+  position: absolute;
+  bottom: 40px;
+  left: 80px;
+  right: 80px;
+  height: 1px;
+  background: #8B7355;
+  opacity: 0.2;
+  z-index: 10;
+}
+
+.deco-diagonal {
+  position: absolute;
+  bottom: 80px;
+  right: 80px;
+  width: 60px;
+  height: 1px;
+  background: #1B3B6B;
+  opacity: 0.15;
+  transform: rotate(-45deg);
+  z-index: 10;
+}
+
+/* Bottom info */
+.bottom-info {
+  position: absolute;
+  bottom: 42px;
+  left: 80px;
+  font-size: 12px;
+  color: #8B7355;
+  letter-spacing: 1px;
+  z-index: 10;
+}
+
+/* Quote at bottom of left panel */
+.metaphor-note {
+  margin-top: 24px;
+  padding-left: 14px;
+  border-left: 3px solid #8B7355;
+}
+
+.metaphor-note p {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 13px;
+  color: #555;
+  line-height: 1.8;
+  font-style: italic;
+}
+
+/* Small geometric accents in right panel */
+.geo-accent {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 24px;
+}
+
+.geo-accent .g-circle {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #1B3B6B;
+}
+
+.geo-accent .g-square {
+  width: 8px;
+  height: 8px;
+  background: #8B7355;
+}
+
+.geo-accent .g-line {
+  width: 20px;
+  height: 1px;
+  background: #1B3B6B;
+  opacity: 0.4;
+}
 </style>
 </head>
 <body>
-<div class="slide">
-  <div class="top-bar"></div>
-  <div class="top-bar-thin"></div>
 
-  <div class="eyebrow">CHAPTER · 微软开源转型</div>
-  <div class="main-title">集市旁的教堂</div>
-  <div class="sub-title">微软的开源蜕变——当企业巨头拥抱共同体的逻辑</div>
-  <div class="title-underline"></div>
-  <div class="title-underline-2"></div>
+<!-- Geometric background decorations -->
+<div class="deco-circle-large"></div>
+<div class="deco-square"></div>
 
-  <div class="corner-circle"></div>
-  <div class="corner-square"></div>
-  <div class="corner-line"></div>
+<!-- Header -->
+<div class="header">
+  <div class="header-left">
+    <div class="header-circle"></div>
+    <span class="header-text">第 11 期 · 文化的重要作用</span>
+  </div>
+  <span class="slide-num">14 / 28</span>
+</div>
 
-  <!-- Left: Book Cover Visual Metaphor -->
-  <div class="book-area">
-    <div class="book-spine"></div>
+<!-- Main content -->
+<div class="main-content">
+  <!-- Left: Book cover metaphor -->
+  <div class="left-panel">
     <div class="book-cover">
-      <div class="book-title">成为人类学家</div>
-      <div class="book-subtitle">Becoming Anthropologists</div>
-      <div class="book-line1"></div>
-      <div class="book-circle"></div>
-      <div class="book-square"></div>
-      <div class="book-brace">{</div>
-      <div class="book-brace2">}</div>
-      <div class="book-line2"></div>
+      <div class="book-geometry-2"></div>
+      <div class="book-title-cn">成为<br>人类学家</div>
+      <div class="book-subtitle">C 语言代码即人类学<br>文化如程序运行</div>
       <div class="book-code">
         int main() {<br>
-        &nbsp;&nbsp;run(culture);<br>
-        &nbsp;&nbsp;return ritual;<br>
+        &nbsp;&nbsp;return CULTURE<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;executes();<br>
         }
       </div>
-      <div class="book-author">— C 语言即人类学 —</div>
+      <div class="book-geometry-1"></div>
     </div>
-    <div class="book-label">文化如程序运行&nbsp;·&nbsp;Code as Culture</div>
-  </div>
 
-  <!-- Right: Content -->
-  <div class="content-area">
-    <div class="section-label">关键脉络</div>
-
-    <div class="bullets">
-      <div class="bullet">
-        <div class="bullet-num">01</div>
-        <div class="bullet-text">
-          <div class="bullet-head">"Love Linux"——拥抱开源的公开宣示</div>
-          <div class="bullet-desc">微软从 Linux 的批评者转变为最重要的贡献者之一，标志着制度立场的根本转向。</div>
-        </div>
-      </div>
-
-      <div class="bullet">
-        <div class="bullet-num copper">02</div>
-        <div class="bullet-text">
-          <div class="bullet-head">资本的认可——商业与市值的终极背书</div>
-          <div class="bullet-desc">开源战略获得股东与资本市场最终认可，市值跃升验证开放路线的商业合理性。</div>
-        </div>
-      </div>
-
-      <div class="bullet">
-        <div class="bullet-num outline">03</div>
-        <div class="bullet-text">
-          <div class="bullet-head">技术潮流的推力——云计算与移动互联网</div>
-          <div class="bullet-desc">云原生与移动生态重塑竞争格局，封闭体系让位于开放协作成为生存之需。</div>
-        </div>
-      </div>
-
-      <div class="bullet">
-        <div class="bullet-num">04</div>
-        <div class="bullet-text">
-          <div class="bullet-head">萨提亚·纳德拉——"刷新"的掌舵人</div>
-          <div class="bullet-desc">文化变革的推动者，以同理心与开放重塑微软的组织基因与战略方向。</div>
-        </div>
-      </div>
-
-      <div class="bullet">
-        <div class="bullet-num copper">05</div>
-        <div class="bullet-text">
-          <div class="bullet-head">集市与教堂的合流——RedHat on Azure · SQL Server for Linux</div>
-          <div class="bullet-desc">RedHat 登陆 Azure、SQL Server 支持 RedHat 与 SuSE——大教堂与集市的边界正在消融。</div>
-        </div>
-      </div>
+    <div class="metaphor-note">
+      <p>「代码即文化，文化即制度——<br>当程序被运行，<br>一种协作的文明便已诞生。」</p>
     </div>
   </div>
 
-  <div class="right-circle"></div>
-  <div class="right-square"></div>
-  <div class="right-line-v"></div>
+  <!-- Right: Key content -->
+  <div class="right-panel">
+    <div class="geo-accent">
+      <div class="g-circle"></div>
+      <div class="g-square"></div>
+      <div class="g-line"></div>
+    </div>
 
-  <div class="bottom-line"></div>
-  <div class="footer-text">OPEN SOURCE · INSTITUTIONAL ECONOMICS</div>
-  <div class="page-num">08 / 20</div>
+    <div class="slide-title">商业与资本的最终认可</div>
+    <div class="slide-subtitle">Microsoft Love Linux</div>
+    <div class="title-underline"></div>
+
+    <div class="content-points">
+      <div class="point">
+        <div class="point-marker circle"></div>
+        <div class="point-content">
+          <div class="point-label">"刷新"的掌舵人：萨提亚 · 纳德拉</div>
+          <div class="point-detail">以开放文化重新定义微软的企业基因，让封闭巨头向开源世界转身。</div>
+        </div>
+      </div>
+
+      <div class="point">
+        <div class="point-marker"></div>
+        <div class="point-content">
+          <div class="point-label">技术的潮流：云计算与移动互联网</div>
+          <div class="point-detail">基础设施的范式转移，使开源从"选择"变为"必然"——联合集市旁边的教堂。</div>
+        </div>
+      </div>
+
+      <div class="point">
+        <div class="point-marker circle"></div>
+        <div class="point-content">
+          <div class="point-label">RedHat on Azure</div>
+          <div class="point-detail">微软将企业级 Linux 发行版托管于自家云平台——竞争者成为平台上的租户。</div>
+        </div>
+      </div>
+
+      <div class="point">
+        <div class="point-marker square-alt"></div>
+        <div class="point-content">
+          <div class="point-label">SQL Server for RedHat / SUSE</div>
+          <div class="point-detail">核心产品跨平台运行于对手的地基之上，文化边界被商业逻辑彻底溶解。</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- Separator -->
+<div class="separator"></div>
+
+<!-- Bottom -->
+<div class="deco-line-h"></div>
+<div class="bottom-info">开源之道 · 新制度经济学视角 · 文化的重要性</div>
+<div class="deco-diagonal"></div>
+
 </body>
 </html>

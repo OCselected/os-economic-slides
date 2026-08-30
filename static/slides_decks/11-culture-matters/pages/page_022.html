@@ -1,155 +1,435 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: d9b8ca9d3ab925ad --><head><meta charset="UTF-8"><title>开源文化在中国</title><style>*{margin:0;padding:0;box-sizing:border-box}html,body{width:1600px;height:900px;overflow:hidden;margin:0}body{background:#F5F0E8;font-family:'Noto Sans SC','PingFang SC',sans-serif;color:#1B3B6B;position:relative;overflow:hidden}.bg-texture{position:absolute;top:0;left:0;width:1600px;height:900px;background:radial-gradient(ellipse at 20% 30%, rgba(27,59,107,0.02) 0%, transparent 50%),radial-gradient(ellipse at 80% 70%, rgba(139,115,85,0.03) 0%, transparent 50%);pointer-events:none}.top-bar{position:absolute;top:0;left:0;width:1600px;height:6px;background:#1B3B6B}.top-bar-copper{position:absolute;top:6px;left:0;width:800px;height:3px;background:#8B7355}.corner-tl{position:absolute;top:20px;left:20px;font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;letter-spacing:4px}.corner-tr{position:absolute;top:20px;right:20px;font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;letter-spacing:3px}.page-num{position:absolute;bottom:24px;right:30px;font-family:'Noto Serif SC',serif;font-size:12px;color:#8B7355;letter-spacing:2px}.footer-line{position:absolute;bottom:46px;left:80px;width:300px;height:1px;background:#8B7355;opacity:0.5}.footer-text{position:absolute;bottom:24px;left:80px;font-family:'Noto Serif SC',serif;font-size:11px;color:#8B7355;letter-spacing:2px}
+<!DOCTYPE html>
+<html><!-- source_hash: e3dbeaffd6326853 -->
+<head>
+<meta charset="UTF-8">
+<title>扩展的文化与秩序 — 开源文化在中国</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap');
 
-/* Left panel: book cover visual */
-.book-cover{position:absolute;left:80px;top:100px;width:440px;height:700px;background:#1B3B6B;box-shadow:0 8px 30px rgba(27,59,107,0.25)}
-.book-spine{position:absolute;left:80px;top:100px;width:24px;height:700px;background:#0E2340}
-.book-right-shadow{position:absolute;left:520px;top:100px;width:12px;height:700px;background:linear-gradient(to right, rgba(27,59,107,0.3), transparent)}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-.book-inner{position:absolute;left:104px;top:100px;width:416px;height:700px;padding:50px 36px;color:#F5F0E8;overflow:hidden}
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
+}
 
-.book-label{font-family:'Noto Serif SC',serif;font-size:11px;letter-spacing:5px;color:#8B7355;margin-bottom:12px}
-.book-title-cn{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:34px;line-height:1.4;color:#F5F0E8;font-weight:700;margin-bottom:8px}
-.book-title-en{font-family:'Noto Serif SC',serif;font-size:12px;letter-spacing:3px;color:#8B7355;margin-bottom:40px}
+body {
+  background: #F5F0E8;
+  position: relative;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: #1B3B6B;
+}
 
-.code-symbol{font-family:'Courier New',monospace;font-size:14px;color:#F5F0E8;line-height:1.8;opacity:0.65;margin-bottom:20px}
-.code-symbol .dim{color:#8B7355;opacity:0.7}
+/* Parchment texture overlay */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(139,115,85,0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(139,115,85,0.02) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: 0;
+}
 
-/* Geometric elements on cover */
-.cover-circle{position:absolute;right:-30px;top:280px;width:140px;height:140px;border-radius:50%;background:#F5F0E8;opacity:0.08}
-.cover-square{position:absolute;left:-20px;bottom:120px;width:80px;height:80px;background:#8B7355;opacity:0.3}
-.cover-line{position:absolute;left:36px;top:200px;width:200px;height:2px;background:#8B7355;opacity:0.5}
+/* Bauhaus geometric decorations */
+.geo-circle-1 {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 3px solid #1B3B6B;
+  top: -60px;
+  right: -40px;
+  opacity: 0.15;
+  z-index: 0;
+}
 
-.binary-block{position:absolute;left:36px;bottom:80px;font-family:'Courier New',monospace;font-size:9px;line-height:1.6;color:#8B7355;opacity:0.5;letter-spacing:1px;width:344px}
+.geo-circle-2 {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  bottom: 60px;
+  right: 180px;
+  opacity: 0.08;
+  z-index: 0;
+}
 
-.book-at{position:absolute;right:40px;bottom:60px;font-family:'Courier New',monospace;font-size:72px;color:#F5F0E8;opacity:0.12;font-weight:700}
+.geo-square-1 {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border: 2px solid #8B7355;
+  bottom: -30px;
+  left: 60px;
+  transform: rotate(0deg);
+  opacity: 0.12;
+  z-index: 0;
+}
 
-/* Right panel: content */
-.right-panel{position:absolute;left:580px;top:100px;width:940px;height:700px}
+.geo-square-2 {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: #8B7355;
+  top: 120px;
+  right: 320px;
+  opacity: 0.06;
+  z-index: 0;
+}
 
-.main-title{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:44px;line-height:1.3;color:#1B3B6B;font-weight:700;margin-bottom:6px}
-.subtitle-en{font-family:'Noto Serif SC',serif;font-size:14px;letter-spacing:4px;color:#8B7355;margin-bottom:14px}
-.title-rule{width:120px;height:3px;background:#1B3B6B;margin-bottom:22px}
-.title-rule-2{width:60px;height:1px;background:#8B7355;margin-bottom:30px;margin-top:-8px}
+.geo-line-1 {
+  position: absolute;
+  width: 400px;
+  height: 1.5px;
+  background: #1B3B6B;
+  top: 200px;
+  left: 0;
+  opacity: 0.2;
+  z-index: 0;
+}
 
-.bullets{display:flex;flex-direction:column;gap:18px;margin-top:10px}
-.bullet{display:flex;align-items:flex-start;gap:16px;padding:12px 0;border-bottom:1px solid rgba(139,115,85,0.2)}
-.bullet:last-child{border-bottom:none}
-.bullet-num{font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;width:32px;flex-shrink:0;padding-top:4px;letter-spacing:1px}
-.bullet-text{font-family:'Noto Sans SC',sans-serif;font-size:15px;line-height:1.65;color:#1B3B6B;flex:1}
-.bullet-text .accent{color:#8B7355;font-weight:600}
-.bullet-text .key{font-family:'Noto Serif SC',serif;font-size:16px;color:#1B3B6B;font-weight:600}
+.geo-line-2 {
+  position: absolute;
+  width: 1.5px;
+  height: 300px;
+  background: #8B7355;
+  top: 0;
+  left: 520px;
+  opacity: 0.15;
+  z-index: 0;
+}
 
-/* Bauhaus decorative elements */
-.deco-circle-1{position:absolute;left:540px;top:130px;width:16px;height:16px;border-radius:50%;background:#1B3B6B}
-.deco-circle-2{position:absolute;left:540px;top:155px;width:10px;height:10px;border-radius:50%;background:#8B7355}
-.deco-circle-3{position:absolute;left:540px;top:180px;width:6px;height:6px;border-radius:50%;background:#1B3B6B}
+.geo-circle-3 {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  top: 192px;
+  left: 512px;
+  opacity: 0.3;
+  z-index: 0;
+}
 
-.deco-square{position:absolute;left:560px;top:770px;width:20px;height:20px;background:#8B7355}
-.deco-square-outline{position:absolute;left:590px;top:770px;width:20px;height:20px;border:2px solid #1B3B6B}
-.deco-line-h{position:absolute;left:580px;top:784px;width:80px;height:2px;background:#1B3B6B}
+/* Header */
+.header {
+  position: absolute;
+  top: 50px;
+  left: 80px;
+  z-index: 10;
+}
 
-.deco-triangle{position:absolute;right:0;top:110px;width:0;height:0;border-left:14px solid transparent;border-right:14px solid transparent;border-bottom:24px solid #1B3B6B;opacity:0.6}
+.lesson-tag {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  color: #8B7355;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
 
-.side-note{position:absolute;right:30px;top:200px;width:80px;font-family:'Noto Serif SC',serif;font-size:10px;letter-spacing:3px;color:#8B7355;line-height:2;writing-mode:vertical-rl;text-align:center}
+.main-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: #1B3B6B;
+  line-height: 1.3;
+  letter-spacing: 2px;
+}
 
-/* Small decorative frame */
-.frame-corner-tl{position:absolute;left:560px;top:90px;width:30px;height:1px;background:#1B3B6B}
-.frame-corner-tl-2{position:absolute;left:560px;top:90px;width:1px;height:30px;background:#1B3B6B}
-.frame-corner-br{position:absolute;left:1510px;top:800px;width:30px;height:1px;background:#1B3B6B}
-.frame-corner-br-2{position:absolute;left:1540px;top:770px;width:1px;height:30px;background:#1B3B6B}
-</style></head><body>
-<div class="bg-texture"></div>
-<div class="top-bar"></div>
-<div class="top-bar-copper"></div>
+.sub-line {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: #555;
+  margin-top: 14px;
+  letter-spacing: 1px;
+}
 
-<div class="corner-tl">OPEN SOURCE · 新制度经济学</div>
-<div class="corner-tr">CHAPTER Ⅶ</div>
+/* Book cover visual metaphor */
+.book-cover {
+  position: absolute;
+  top: 240px;
+  left: 80px;
+  width: 280px;
+  height: 400px;
+  border: 2px solid #1B3B6B;
+  z-index: 5;
+  padding: 30px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
-<!-- Left: Book Cover Visual -->
-<div class="book-spine"></div>
+.book-top-code {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: #8B7355;
+  opacity: 0.6;
+  line-height: 1.8;
+  letter-spacing: 1px;
+}
+
+.book-title-text {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #1B3B6B;
+  line-height: 1.5;
+  letter-spacing: 2px;
+}
+
+.book-subtitle-text {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  color: #555;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.book-symbol {
+  font-family: 'Courier New', monospace;
+  font-size: 90px;
+  color: #1B3B6B;
+  opacity: 0.12;
+  text-align: right;
+  line-height: 1;
+  margin-top: auto;
+}
+
+/* Content area */
+.content-area {
+  position: absolute;
+  top: 240px;
+  left: 440px;
+  right: 120px;
+  z-index: 10;
+}
+
+.content-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.content-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.item-marker {
+  width: 10px;
+  height: 10px;
+  background: #1B3B6B;
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+
+.item-marker.circle {
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid #1B3B6B;
+  width: 8px;
+  height: 8px;
+  margin-top: 8px;
+}
+
+.item-marker.diamond {
+  background: #8B7355;
+  width: 8px;
+  height: 8px;
+  transform: rotate(45deg);
+  margin-top: 8px;
+}
+
+.item-text {
+  flex: 1;
+}
+
+.item-heading {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 19px;
+  font-weight: 600;
+  color: #1B3B6B;
+  line-height: 1.5;
+  margin-bottom: 3px;
+}
+
+.item-desc {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13.5px;
+  font-weight: 300;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Footer */
+.footer {
+  position: absolute;
+  bottom: 40px;
+  left: 80px;
+  right: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
+.footer-left {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 2px;
+  font-weight: 400;
+}
+
+.footer-right {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 1px;
+  font-weight: 300;
+}
+
+.footer-line {
+  position: absolute;
+  bottom: 75px;
+  left: 80px;
+  right: 80px;
+  height: 1px;
+  background: #8B7355;
+  opacity: 0.2;
+  z-index: 10;
+}
+
+/* Extra geometric accent */
+.accent-bar {
+  position: absolute;
+  top: 200px;
+  left: 80px;
+  width: 50px;
+  height: 4px;
+  background: #1B3B6B;
+  z-index: 10;
+}
+
+/* Binary decoration */
+.binary-strip {
+  position: absolute;
+  top: 680px;
+  left: 440px;
+  right: 120px;
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  color: #8B7355;
+  opacity: 0.25;
+  letter-spacing: 3px;
+  line-height: 1.6;
+  z-index: 5;
+  overflow: hidden;
+  height: 60px;
+}
+</style>
+</head>
+<body>
+
+<!-- Bauhaus geometric decorations -->
+<div class="geo-circle-1"></div>
+<div class="geo-circle-2"></div>
+<div class="geo-square-1"></div>
+<div class="geo-square-2"></div>
+<div class="geo-line-1"></div>
+<div class="geo-line-2"></div>
+<div class="geo-circle-3"></div>
+
+<!-- Header -->
+<div class="header">
+  <div class="lesson-tag">第 11 期 · 文化的重要作用</div>
+  <div class="main-title">扩展的文化与秩序</div>
+  <div class="sub-line">开源文化在中国 — 数字技术的文化表达</div>
+</div>
+
+<!-- Accent bar -->
+<div class="accent-bar"></div>
+
+<!-- Book cover visual metaphor -->
 <div class="book-cover">
-  <div class="book-inner">
-    <div class="cover-circle"></div>
-    <div class="cover-square"></div>
-    <div class="cover-line"></div>
-    <div class="book-at">@</div>
-
-    <div class="book-label">CHAPTER · 文化</div>
-    <div class="book-title-cn">开源<br>文化<br>在中国</div>
-    <div class="book-title-en">OPEN SOURCE CULTURE IN CHINA</div>
-
-    <div class="code-symbol">
-      <span class="dim">if</span>(culture &amp;&amp; order){<br>
-      &nbsp;&nbsp;<span class="dim">return</span> expanded;<br>
-      } <span class="dim">else</span> {<br>
-      &nbsp;&nbsp;<span class="dim">return</span> utopia;<br>
+  <div>
+    <div class="book-top-code">
+      @&nbsp;&nbsp;&nbsp;&nbsp;01001000 01000101<br>
+      if (culture) {<br>
+      &nbsp;&nbsp;open_source();<br>
       }
     </div>
-
-    <div class="binary-block">
-      01101000 01100101 01101100 01101100 01101111<br>
-      01000001 01001110 01000100 01010200 00100000<br>
-      01000011 01010101 01001100 01010101 01001110<br>
-      01000101 00100001 01010100 01010000 01000010<br>
-      01110100 00100001 01010001 01010200 00100000<br>
-      01000000 01010200 00100000 01100001 01110011<br>
-      01100001 01100011 01100101 01101110 01110011<br>
-      01101001 01110101 01110100 01110011 00100001
-    </div>
   </div>
+  <div>
+    <div class="book-title-text">开源文化<br>在中国</div>
+    <div class="book-subtitle-text">Open Source Culture in China</div>
+  </div>
+  <div class="book-symbol">@</div>
 </div>
-<div class="book-right-shadow"></div>
 
-<!-- Bauhaus decorations -->
-<div class="deco-circle-1"></div>
-<div class="deco-circle-2"></div>
-<div class="deco-circle-3"></div>
-<div class="deco-square"></div>
-<div class="deco-square-outline"></div>
-<div class="deco-line-h"></div>
-<div class="deco-triangle"></div>
-
-<div class="frame-corner-tl"></div>
-<div class="frame-corner-tl-2"></div>
-<div class="frame-corner-br"></div>
-<div class="frame-corner-br-2"></div>
-
-<!-- Right: Content -->
-<div class="right-panel">
-  <div class="main-title">扩展的文化与秩序</div>
-  <div class="subtitle-en">EXPANDED CULTURE &amp; ORDER</div>
-  <div class="title-rule"></div>
-  <div class="title-rule-2"></div>
-
-  <div class="bullets">
-    <div class="bullet">
-      <div class="bullet-num">01</div>
-      <div class="bullet-text"><span class="key">拓展的 cyberspace</span>——数字空间作为新的社会场域，超越物理疆界的<b class="accent">协作秩序</b>正在形成</div>
+<!-- Content area -->
+<div class="content-area">
+  <div class="content-grid">
+    <div class="content-item">
+      <div class="item-marker"></div>
+      <div class="item-text">
+        <div class="item-heading">拓展的 Cyberspace</div>
+        <div class="item-desc">数字空间对文化边界的突破——从物理社群到虚拟共同体的延展</div>
+      </div>
     </div>
-    <div class="bullet">
-      <div class="bullet-num">02</div>
-      <div class="bullet-text"><span class="key">无政府主义 / 乌托邦的理想</span>——去中心化愿景与<span class="accent">理性建构</span>之间的张力，是开源的精神底色</div>
+    <div class="content-item">
+      <div class="item-marker circle"></div>
+      <div class="item-text">
+        <div class="item-heading">无政府主义 / 乌托邦的理想</div>
+        <div class="item-desc">新教伦理？黑客伦理？科学精神？多元价值体系的交汇与张力</div>
+      </div>
     </div>
-    <div class="bullet">
-      <div class="bullet-num">03</div>
-      <div class="bullet-text"><span class="key">新教伦理？黑客伦理？科学精神？</span>——多重思想谱系的<span class="accent">叠合与博弈</span>，塑造了数字时代的道德框架</div>
+    <div class="content-item">
+      <div class="item-marker diamond"></div>
+      <div class="item-text">
+        <div class="item-heading">分散的知识，基于兴趣的聚合</div>
+        <div class="item-desc">非层级化的知识生产模式——自组织社群与认知分工</div>
+      </div>
     </div>
-    <div class="bullet">
-      <div class="bullet-num">04</div>
-      <div class="bullet-text"><span class="key">分散的知识，基于兴趣的聚合</span>——科斯视角下的<b class="accent">低交易成本协作</b>，以志趣为纽带的自组织生产</div>
+    <div class="content-item">
+      <div class="item-marker"></div>
+      <div class="item-text">
+        <div class="item-heading">数字世界的行为准则、政治、法律</div>
+        <div class="item-desc">代码即法律？协议即制度？数字秩序的制度经济学问题</div>
+      </div>
     </div>
-    <div class="bullet">
-      <div class="bullet-num">05</div>
-      <div class="bullet-text"><span class="key">共同体的强势与微弱</span>——数字世界的<span class="accent">行为准则、政治与法律</span>，在自发秩序与制度设计之间寻求平衡</div>
+    <div class="content-item">
+      <div class="item-marker circle"></div>
+      <div class="item-text">
+        <div class="item-heading">共同体的强势与微弱</div>
+        <div class="item-desc">协作的内在动力与可持续性——社会资本如何维系数字共同体</div>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="side-note">数字技术 · 文化表达</div>
+<!-- Binary decoration -->
+<div class="binary-strip">
+  01001000 01000101 01001100 01010000 01010101 01001110 00100000 01000001 01010100 01010010 01000101 00100000 01001001 01001110 00100000 01000100 01010010 01000101 01000001 01001110 00101110 00100001 00100001 01010111 01000001 01010011 01010011
+</div>
 
+<!-- Footer -->
 <div class="footer-line"></div>
-<div class="footer-text">数字世界的行为准则 · 政治 · 法律</div>
-<div class="page-num">— 07 / 12 —</div>
-</body></html>
+<div class="footer">
+  <div class="footer-left">开源之道 · 新制度经济学视角</div>
+  <div class="footer-right">11-culture-matters · 文化的重要作用</div>
+</div>
+
+</body>
+</html>

@@ -1,187 +1,606 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: 245f54a372accdeb --><head><meta charset="UTF-8"><title>本土的突破——制度路径依赖</title><style>html,body{width:1600px;height:900px;overflow:hidden;margin:0;padding:0}body{background:#F5F0E8;font-family:'Noto Sans SC','Microsoft YaHei',sans-serif;color:#1B3B6B;position:relative}h1,h2,h3{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-weight:normal}
+<!DOCTYPE html>
+<html lang="zh-CN"><!-- source_hash: cb7a35c4a0248f02 -->
+<head>
+<meta charset="UTF-8">
+<title>第 11 期 · 文化的重要作用 — 本土接入与制度路径</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600&display=swap');
 
-/* Decorative geometric elements */
-.deco-circle-1{position:absolute;top:40px;left:40px;width:80px;height:80px;border:2px solid #1B3B6B;border-radius:50%}
-.deco-circle-2{position:absolute;top:50px;left:50px;width:60px;height:60px;background:#1B3B6B;border-radius:50%}
-.deco-square{position:absolute;top:60px;left:140px;width:40px;height:40px;background:#8B7355}
-.deco-line-top{position:absolute;top:90px;left:40px;width:220px;height:1px;background:#1B3B6B}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-.deco-corner{position:absolute;bottom:40px;right:40px;width:60px;height:60px;border-right:2px solid #1B3B6B;border-bottom:2px solid #1B3B6B}
-.deco-corner-dot{position:absolute;bottom:30px;right:30px;width:10px;height:10px;background:#1B3B6B;border-radius:50%}
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
+}
 
-.deco-line-bottom{position:absolute;bottom:90px;left:40px;width:180px;height:1px;background:#1B3B6B}
-.deco-line-bottom-2{position:absolute;bottom:75px;left:40px;width:80px;height:1px;background:#8B7355}
+body {
+  background: #F5F0E8;
+  position: relative;
+  font-family: 'Noto Sans SC', sans-serif;
+}
 
-/* Central visual - path dependence geometric structure */
-.visual-container{position:absolute;top:130px;left:80px;width:620px;height:640px}
-.visual-title{position:absolute;top:0;left:0;font-size:14px;letter-spacing:4px;color:#8B7355;font-family:'Noto Sans SC',sans-serif}
+/* Subtle parchment texture */
+.texture {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(139,115,85,0.018) 3px, rgba(139,115,85,0.018) 6px),
+    repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(139,115,85,0.012) 3px, rgba(139,115,85,0.012) 6px);
+  pointer-events: none;
+  z-index: 0;
+}
 
-/* Concentric institutional layers */
-.layer-outer{position:absolute;top:60px;left:50px;width:520px;height:520px;border:2px solid #1B3B6B}
-.layer-mid{position:absolute;top:110px;left:100px;width:420px;height:420px;border:1px solid #8B7355}
-.layer-inner{position:absolute;top:160px;left:150px;width:320px;height:320px;border:1px solid #1B3B6B;border-radius:50%}
-.layer-core{position:absolute;top:230px;left:220px;width:180px;height:180px;background:#1B3B6B;border-radius:50%;opacity:0.08}
+/* Top edge bar */
+.top-edge {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: #1B3B6B;
+  z-index: 10;
+}
 
-/* Cross lines representing blocked paths */
-.cross-v1{position:absolute;top:180px;left:310px;width:1px;height:280px;background:#1B3B6B;opacity:0.4}
-.cross-h1{position:absolute;top:320px;left:60px;width:500px;height:1px;background:#1B3B6B;opacity:0.4}
+/* Header */
+.header {
+  position: absolute;
+  top: 48px;
+  left: 80px;
+  z-index: 10;
+  width: 780px;
+}
 
-/* Nodes and barriers */
-.node-1{position:absolute;top:150px;left:60px;width:16px;height:16px;background:#1B3B6B;border-radius:50%}
-.node-2{position:absolute;top:150px;left:540px;width:16px;height:16px;background:#8B7355;border-radius:50%}
-.node-3{position:absolute;top:530px;left:60px;width:16px;height:16px;background:#8B7355;border-radius:50%}
-.node-4{position:absolute;top:530px;left:540px;width:16px;height:16px;background:#1B3B6B;border-radius:50%}
-.node-5{position:absolute;top:290px;left:302px;width:22px;height:22px;background:#1B3B6B;border-radius:50%}
-.node-6{position:absolute;top:320px;left:290px;width:12px;height:12px;background:#F5F0E8;border:2px solid #1B3B6B;border-radius:50%}
+.lecture-tag {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  color: #8B7355;
+  letter-spacing: 4px;
+  margin-bottom: 14px;
+  font-weight: 400;
+}
 
-/* Barrier lines */
-.barrier-1{position:absolute;top:220px;left:150px;width:60px;height:60px;background:#F5F0E8;border:2px solid #8B7355;transform:rotate(45deg)}
-.barrier-2{position:absolute;top:380px;left:390px;width:40px;height:40px;background:#F5F0E8;border:2px solid #8B7355}
+.main-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 44px;
+  color: #1B3B6B;
+  font-weight: 700;
+  letter-spacing: 3px;
+  line-height: 1.2;
+}
 
-/* Path lines - some solid, some dashed to show path dependence */
-.path-solid{position:absolute;top:320px;left:76px;width:80px;height:1px;background:#1B3B6B}
-.path-dashed{position:absolute;top:320px;left:170px;width:120px;height:1px;background:#1B3B6B;border-top:1px dashed #1B3B6B;background:transparent}
-.path-solid-2{position:absolute;top:320px;left:310px;width:80px;height:1px;background:#1B3B6B}
-.path-dashed-2{position:absolute;top:320px;left:400px;width:130px;height:1px;background:#1B3B6B;border-top:1px dashed #1B3B6B;background:transparent}
+.subtitle-en {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 15px;
+  color: #8B7355;
+  margin-top: 8px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  font-style: italic;
+}
 
-.path-v-solid{position:absolute;top:170px;left:310px;width:1px;height:60px;background:#1B3B6B}
-.path-v-dashed{position:absolute;top:240px;left:310px;width:1px;height:70px;border-left:1px dashed #1B3B6B}
-.path-v-solid-2{position:absolute;top:330px;left:310px;width:1px;height:70px;background:#1B3B6B}
-.path-v-dashed-2{position:absolute;top:410px;left:310px;width:1px;height:110px;border-left:1px dashed #1B3B6B}
+/* Title accent rule */
+.title-rule {
+  position: absolute;
+  top: 218px;
+  left: 80px;
+  width: 580px;
+  height: 1px;
+  background: rgba(139,115,85,0.25);
+  z-index: 10;
+}
 
-/* Labels on visual */
-.viz-label-1{position:absolute;top:135px;left:30px;font-size:11px;color:#8B7355;letter-spacing:1px}
-.viz-label-2{position:absolute;top:135px;left:490px;font-size:11px;color:#8B7355;letter-spacing:1px}
-.viz-label-3{position:absolute;top:550px;left:30px;font-size:11px;color:#8B7355;letter-spacing:1px}
-.viz-label-4{position:absolute;top:550px;left:490px;font-size:11px;color:#8B7355;letter-spacing:1px}
-.viz-center-label{position:absolute;top:305px;left:245px;font-size:11px;color:#1B3B6B;letter-spacing:2px;text-align:center;width:130px;line-height:1.6}
+.title-rule-accent {
+  position: absolute;
+  top: 216px;
+  left: 80px;
+  width: 50px;
+  height: 3px;
+  background: #1B3B6B;
+  z-index: 11;
+}
 
-.viz-caption{position:absolute;top:600px;left:50px;width:520px;font-size:12px;color:#555;line-height:1.8;letter-spacing:0.5px}
+/* Content */
+.content-left {
+  position: absolute;
+  top: 252px;
+  left: 80px;
+  width: 440px;
+  z-index: 10;
+}
 
-/* Right side content */
-.content-area{position:absolute;top:130px;left:760px;width:780px;height:640px}
-.section-tag{font-size:13px;color:#8B7355;letter-spacing:6px;margin-bottom:8px}
-.section-tag-line{display:inline-block;width:40px;height:1px;background:#8B7355;vertical-align:middle;margin-left:12px}
-.main-title{font-size:52px;color:#1B3B6B;line-height:1.2;margin:12px 0 6px 0;font-family:'Noto Serif SC',serif}
-.main-subtitle{font-size:20px;color:#555;margin-bottom:36px;line-height:1.6}
+.content-mid {
+  position: absolute;
+  top: 252px;
+  left: 580px;
+  width: 320px;
+  z-index: 10;
+}
 
-.title-rule{width:100px;height:3px;background:#1B3B6B;margin-bottom:30px}
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
 
-.bullet-list{list-style:none;padding:0;margin:0}
-.bullet-item{display:flex;align-items:flex-start;margin-bottom:22px}
-.bullet-num{font-family:'Noto Serif SC',serif;font-size:15px;color:#8B7355;width:36px;flex-shrink:0;padding-top:4px;letter-spacing:1px}
-.bullet-text{font-size:17px;color:#1B3B6B;line-height:1.5;flex:1;padding-left:0}
-.bullet-divider{width:100%;height:1px;background:#1B3B6B;opacity:0.15;margin-bottom:22px}
+.section-shape {
+  flex-shrink: 0;
+}
+
+.section-shape.circle {
+  width: 9px;
+  height: 9px;
+  background: #1B3B6B;
+  border-radius: 50%;
+}
+
+.section-shape.square {
+  width: 9px;
+  height: 9px;
+  border: 1.5px solid #8B7355;
+  background: transparent;
+}
+
+.section-shape.diamond {
+  width: 9px;
+  height: 9px;
+  border: 1.5px solid #1B3B6B;
+  background: transparent;
+  transform: rotate(45deg);
+}
+
+.section-label {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12px;
+  color: #1B3B6B;
+  letter-spacing: 3px;
+  font-weight: 600;
+}
+
+.item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.item-marker {
+  width: 3px;
+  height: 3px;
+  background: #8B7355;
+  margin-top: 10px;
+  margin-right: 14px;
+  flex-shrink: 0;
+}
+
+.item-text {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 15px;
+  color: #333;
+  line-height: 1.7;
+}
+
+.item-text .hl {
+  color: #1B3B6B;
+  font-weight: 500;
+}
+
+/* Pullout block */
+.pullout {
+  position: absolute;
+  top: 565px;
+  left: 80px;
+  width: 440px;
+  z-index: 10;
+  border-left: 3px solid #1B3B6B;
+  padding: 14px 0 14px 20px;
+}
+
+.pullout-text {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 19px;
+  color: #1B3B6B;
+  font-weight: 600;
+  letter-spacing: 1px;
+  line-height: 1.5;
+}
+
+.pullout-sub {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  color: #8B7355;
+  margin-top: 6px;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+}
+
+/* Geometric composition */
+.geo {
+  position: absolute;
+  right: 50px;
+  top: 160px;
+  width: 660px;
+  height: 620px;
+  z-index: 5;
+}
+
+/* Large outer ring - global network (dashed) */
+.geo-ring-global {
+  position: absolute;
+  width: 480px;
+  height: 480px;
+  border: 1.5px dashed rgba(27,59,107,0.2);
+  border-radius: 50%;
+  right: 40px;
+  top: 40px;
+}
+
+/* Solid arc - partial connection */
+.geo-arc {
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  border: 2px solid #1B3B6B;
+  border-radius: 50%;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  right: 110px;
+  top: 110px;
+  transform: rotate(20deg);
+}
+
+/* Institutional square */
+.geo-square {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border: 2px solid #1B3B6B;
+  right: 230px;
+  top: 180px;
+}
+
+/* Filled small square inside */
+.geo-square-fill {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: #1B3B6B;
+  right: 295px;
+  top: 240px;
+}
+
+/* Local circle */
+.geo-circle-local {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  border: 1.5px solid #8B7355;
+  border-radius: 50%;
+  right: 420px;
+  top: 250px;
+}
+
+/* Local filled dot */
+.geo-dot-local {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #8B7355;
+  border-radius: 50%;
+  right: 464px;
+  top: 292px;
+}
+
+/* Connection line 1 (from local to square) */
+.geo-line-1 {
+  position: absolute;
+  width: 100px;
+  height: 1.5px;
+  background: linear-gradient(to right, #8B7355, #1B3B6B);
+  right: 325px;
+  top: 293px;
+}
+
+/* Connection line 2 (from square to arc - broken path) */
+.geo-line-2 {
+  position: absolute;
+  width: 130px;
+  height: 1.5px;
+  background: #1B3B6B;
+  right: 190px;
+  top: 248px;
+  transform: rotate(-20deg);
+  transform-origin: right center;
+}
+
+/* Long diagonal accent */
+.geo-line-3 {
+  position: absolute;
+  width: 320px;
+  height: 1px;
+  background: linear-gradient(to right, rgba(27,59,107,0.15), rgba(27,59,107,0.5), rgba(27,59,107,0.15));
+  right: 60px;
+  top: 370px;
+  transform: rotate(12deg);
+  transform-origin: left center;
+}
+
+/* Vertical line */
+.geo-line-4 {
+  position: absolute;
+  width: 1px;
+  height: 220px;
+  background: rgba(139,115,85,0.3);
+  right: 40px;
+  top: 40px;
+}
+
+/* Small decorative dot */
+.geo-dot1 {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #1B3B6B;
+  border-radius: 50%;
+  right: 130px;
+  top: 170px;
+}
+
+/* Small decorative square */
+.geo-small-sq {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  background: #8B7355;
+  right: 350px;
+  top: 380px;
+}
+
+/* Second small circle */
+.geo-small-circle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid #1B3B6B;
+  border-radius: 50%;
+  right: 55px;
+  top: 440px;
+}
+
+/* Diagonal thin line */
+.geo-line-5 {
+  position: absolute;
+  width: 140px;
+  height: 1px;
+  background: rgba(27,59,107,0.25);
+  right: 150px;
+  top: 160px;
+  transform: rotate(-30deg);
+  transform-origin: right center;
+}
+
+/* Labels */
+.geo-label {
+  position: absolute;
+  font-family: 'Noto Serif SC', serif;
+  letter-spacing: 2px;
+}
+
+.geo-label-global {
+  right: 60px;
+  top: 95px;
+  font-size: 11px;
+  color: rgba(27,59,107,0.4);
+}
+
+.geo-label-inst {
+  right: 250px;
+  top: 218px;
+  font-size: 11px;
+  color: rgba(27,59,107,0.6);
+  font-weight: 600;
+}
+
+.geo-label-local {
+  right: 425px;
+  top: 280px;
+  font-size: 11px;
+  color: rgba(139,115,85,0.7);
+  font-weight: 600;
+}
+
+/* Path annotation */
+.geo-label-path {
+  right: 150px;
+  top: 278px;
+  font-size: 10px;
+  color: rgba(27,59,107,0.45);
+  letter-spacing: 1.5px;
+  font-style: italic;
+}
+
+/* Crosshair */
+.geo-cross-h {
+  position: absolute;
+  width: 40px;
+  height: 1px;
+  background: rgba(85,85,85,0.25);
+  right: 500px;
+  top: 350px;
+}
+
+.geo-cross-v {
+  position: absolute;
+  width: 1px;
+  height: 40px;
+  background: rgba(85,85,85,0.25);
+  right: 520px;
+  top: 330px;
+}
+
+/* Bottom accent bar */
+.bottom-accent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  display: flex;
+  z-index: 10;
+}
+
+.bottom-blue { width: 42%; background: #1B3B6B; }
+.bottom-copper { width: 34%; background: #8B7355; }
+.bottom-gray { width: 24%; background: #555; }
 
 /* Footer */
-.footer{position:absolute;bottom:40px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:center}
-.footer-left{font-size:11px;color:#8B7355;letter-spacing:3px}
-.footer-right{font-size:11px;color:#8B7355;letter-spacing:3px;font-family:'Noto Serif SC',serif}
-.footer-line{position:absolute;bottom:65px;left:80px;right:80px;height:1px;background:#1B3B6B;opacity:0.2}
+.footer-l {
+  position: absolute;
+  bottom: 22px;
+  left: 80px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 2px;
+  z-index: 10;
+}
 
-/* Small Bauhaus accent */
-.accent-circle{position:absolute;top:130px;right:60px;width:50px;height:50px;border-radius:50%;background:#1B3B6B;opacity:0.1}
-.accent-line{position:absolute;top:190px;right:85px;width:1px;height:200px;background:#8B7355;opacity:0.4}
-.accent-square{position:absolute;top:400px;right:70px;width:30px;height:30px;background:#8B7355;opacity:0.3}
-</style></head><body>
+.footer-r {
+  position: absolute;
+  bottom: 22px;
+  right: 80px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 2px;
+  z-index: 10;
+}
 
-<div class="deco-circle-1"></div>
-<div class="deco-circle-2"></div>
-<div class="deco-square"></div>
-<div class="deco-line-top"></div>
-<div class="deco-corner"></div>
-<div class="deco-corner-dot"></div>
-<div class="deco-line-bottom"></div>
-<div class="deco-line-bottom-2"></div>
+/* Large decorative half-circle bottom-left */
+.deco-half {
+  position: absolute;
+  width: 80px;
+  height: 40px;
+  border: 1.5px solid rgba(27,59,107,0.1);
+  border-bottom: none;
+  border-radius: 80px 80px 0 0;
+  bottom: 45px;
+  left: 25px;
+  z-index: 1;
+}
 
-<div class="accent-circle"></div>
-<div class="accent-line"></div>
-<div class="accent-square"></div>
+/* Large decorative circle bottom-right */
+.deco-circle2 {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border: 1px solid rgba(139,115,85,0.15);
+  border-radius: 50%;
+  bottom: 50px;
+  right: 100px;
+  z-index: 1;
+}
+</style>
+</head>
+<body>
+<div class="texture"></div>
+<div class="top-edge"></div>
 
-<div class="visual-container">
-  <div class="visual-title">FIG. 1 &nbsp;/&nbsp; INSTITUTIONAL PATH DEPENDENCE</div>
+<!-- Header -->
+<div class="header">
+  <div class="lecture-tag">第 11 期 · 文化的重要作用</div>
+  <div class="main-title">本土接入与制度路径</div>
+  <div class="subtitle-en">Institutional Path Dependence in Connecting to Open Source Culture</div>
+</div>
 
-  <div class="layer-outer"></div>
-  <div class="layer-mid"></div>
-  <div class="layer-inner"></div>
-  <div class="layer-core"></div>
+<div class="title-rule"></div>
+<div class="title-rule-accent"></div>
 
-  <div class="cross-v1"></div>
-  <div class="cross-h1"></div>
+<!-- Left content -->
+<div class="content-left">
+  <div class="section-header">
+    <div class="section-shape circle"></div>
+    <div class="section-label">历史路径的断裂</div>
+  </div>
+  <div class="item">
+    <div class="item-marker"></div>
+    <div class="item-text">接入互联网<span class="hl">较晚</span></div>
+  </div>
+  <div class="item">
+    <div class="item-marker"></div>
+    <div class="item-text">没有经历<span class="hl">低连接密度</span>的网络时代</div>
+  </div>
+  <div class="item">
+    <div class="item-marker"></div>
+    <div class="item-text">没有经历 e-mail 的<span class="hl">「网红」时代</span></div>
+  </div>
 
-  <div class="node-1"></div>
-  <div class="node-2"></div>
-  <div class="node-3"></div>
-  <div class="node-4"></div>
-  <div class="node-5"></div>
-  <div class="node-6"></div>
-
-  <div class="barrier-1"></div>
-  <div class="barrier-2"></div>
-
-  <div class="path-solid"></div>
-  <div class="path-dashed"></div>
-  <div class="path-solid-2"></div>
-  <div class="path-dashed-2"></div>
-
-  <div class="path-v-solid"></div>
-  <div class="path-v-dashed"></div>
-  <div class="path-v-solid-2"></div>
-  <div class="path-v-dashed-2"></div>
-
-  <div class="viz-label-1">EARLY</div>
-  <div class="viz-label-2">REMOTE</div>
-  <div class="viz-label-3">FILTERED</div>
-  <div class="viz-label-4">DIRECT</div>
-  <div class="viz-center-label">层<br>次<br>制<br>度</div>
-
-  <div class="viz-caption">
-    制度层次嵌套结构——<br>
-    实线表示直接路径，虚线表示<br>
-    受阻或绕行的协作路径。
+  <div style="margin-top: 26px;">
+    <div class="section-header">
+      <div class="section-shape square"></div>
+      <div class="section-label">制度环境与协作挑战</div>
+    </div>
+    <div class="item">
+      <div class="item-marker"></div>
+      <div class="item-text">严格的<span class="hl">管理与审查机制</span></div>
+    </div>
+    <div class="item">
+      <div class="item-marker"></div>
+      <div class="item-text">大国信任的另一面：<span class="hl">陌生的协作</span></div>
+    </div>
+    <div class="item">
+      <div class="item-marker"></div>
+      <div class="item-text">语言沟壑——<span class="hl">沟通的隐性成本</span></div>
+    </div>
   </div>
 </div>
 
-<div class="content-area">
-  <div class="section-tag">第 III 章 · 02 <span class="section-tag-line"></span></div>
-  <h1 class="main-title">本土的突破</h1>
-  <div class="main-subtitle">——接入开源文化的制度路径依赖</div>
-  <div class="title-rule"></div>
-
-  <ul class="bullet-list">
-    <li class="bullet-item">
-      <span class="bullet-num">01</span>
-      <span class="bullet-text">接入互联网较晚，未经历松散连接的早期网络形态</span>
-    </li>
-    <div class="bullet-divider"></div>
-    <li class="bullet-item">
-      <span class="bullet-num">02</span>
-      <span class="bullet-text">未曾经历 e-mail 的「网红」时代——缺失邮件列表协作传统</span>
-    </li>
-    <div class="bullet-divider"></div>
-    <li class="bullet-item">
-      <span class="bullet-num">03</span>
-      <span class="bullet-text">严格管理与审查体系，塑造了信息流通的独特制度环境</span>
-    </li>
-    <div class="bullet-divider"></div>
-    <li class="bullet-item">
-      <span class="bullet-num">04</span>
-      <span class="bullet-text">大国信任的另一面：缺乏陌生人协作的经验基础</span>
-    </li>
-    <div class="bullet-divider"></div>
-    <li class="bullet-item">
-      <span class="bullet-num">05</span>
-      <span class="bullet-text">语言沟壑——英语技术话语体系下的参与壁垒</span>
-    </li>
-  </ul>
+<!-- Pullout -->
+<div class="pullout">
+  <div class="pullout-text">「陌生的协作」</div>
+  <div class="pullout-sub">大国信任的另一面，是协作机制的陌生与代价</div>
 </div>
 
-<div class="footer-line"></div>
-<div class="footer">
-  <span class="footer-left">新制度经济学视角下的开源 · OPEN SOURCE ECONOMICS</span>
-  <span class="footer-right">03 / 18</span>
+<!-- Geometric composition -->
+<div class="geo">
+  <div class="geo-ring-global"></div>
+  <div class="geo-arc"></div>
+  <div class="geo-square"></div>
+  <div class="geo-square-fill"></div>
+  <div class="geo-circle-local"></div>
+  <div class="geo-dot-local"></div>
+  <div class="geo-line-1"></div>
+  <div class="geo-line-2"></div>
+  <div class="geo-line-3"></div>
+  <div class="geo-line-4"></div>
+  <div class="geo-line-5"></div>
+  <div class="geo-dot1"></div>
+  <div class="geo-small-sq"></div>
+  <div class="geo-small-circle"></div>
+  <div class="geo-cross-h"></div>
+  <div class="geo-cross-v"></div>
+
+  <div class="geo-label geo-label-global">GLOBAL NETWORK</div>
+  <div class="geo-label geo-label-inst">INSTITUTION</div>
+  <div class="geo-label geo-label-local">LOCAL</div>
+  <div class="geo-label geo-label-path">path dependence</div>
 </div>
 
-</body></html>
+<!-- Decorative elements -->
+<div class="deco-half"></div>
+<div class="deco-circle2"></div>
+
+<!-- Bottom bar -->
+<div class="bottom-accent">
+  <div class="bottom-blue"></div>
+  <div class="bottom-copper"></div>
+  <div class="bottom-gray"></div>
+</div>
+
+<!-- Footer -->
+<div class="footer-l">开源之道 · 新制度经济学视角</div>
+<div class="footer-r">11 / 28</div>
+
+</body>
+</html>

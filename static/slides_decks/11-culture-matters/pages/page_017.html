@@ -1,177 +1,515 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: f5b88e2e7083b237 --><head><meta charset="UTF-8"><title>开源运动的理论基础</title><style>
-*{margin:0;padding:0;box-sizing:border-box;}
-html,body{width:1600px;height:900px;overflow:hidden;margin:0;}
-body{background:#F5F0E8;font-family:'Noto Sans SC','Source Han Sans SC','PingFang SC',sans-serif;color:#1B3B6B;position:relative;overflow:hidden;}
-.hdr{position:absolute;top:46px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:flex-end;}
-.hdr-title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:22px;font-weight:600;letter-spacing:2px;color:#1B3B6B;}
-.hdr-num{font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:3px;}
-.title-block{position:absolute;top:120px;left:80px;width:520px;}
-.kicker{font-size:13px;color:#8B7355;letter-spacing:5px;margin-bottom:18px;font-weight:500;}
-.main-title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:44px;font-weight:700;line-height:1.3;color:#1B3B6B;letter-spacing:1px;}
-.subtitle{margin-top:18px;font-size:14px;color:#555;line-height:1.8;letter-spacing:1px;max-width:460px;}
-.divider{width:60px;height:2px;background:#1B3B6B;margin-top:22px;}
+<!DOCTYPE html>
+<html><!-- source_hash: c1ffb1f95c1f5fd3 -->
+<head>
+<meta charset="UTF-8">
+<title>第 11 期 · 文化的重要作用 — 开源运动的理论基础</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
 
-.metaphor{position:absolute;bottom:80px;left:80px;width:480px;padding:18px 22px;border-left:3px solid #1B3B6B;background:rgba(255,255,255,0.35);}
-.metaphor-label{font-size:11px;color:#8B7355;letter-spacing:4px;margin-bottom:8px;}
-.metaphor-text{font-family:'Noto Serif SC',serif;font-size:14px;color:#1B3B6B;line-height:1.6;}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* Central ring diagram */
-.ring-stage{position:absolute;top:90px;right:60px;width:860px;height:760px;}
-.ring-bg{position:absolute;top:60px;left:80px;width:700px;height:700px;}
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
+}
+
+body {
+  background: #F5F0E8;
+  position: relative;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: #1B3B6B;
+}
+
+/* Subtle parchment texture */
+.texture {
+  position: absolute;
+  top: 0; left: 0;
+  width: 1600px; height: 900px;
+  background: 
+    radial-gradient(ellipse at 20% 80%, rgba(139,115,85,0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(27,59,107,0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Header bar */
+.header {
+  position: absolute;
+  top: 0; left: 0;
+  width: 1600px; height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 80px;
+  border-bottom: 1px solid rgba(27,59,107,0.15);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-num {
+  width: 36px; height: 36px;
+  background: #1B3B6B;
+  color: #F5F0E8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.header-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #8B7355;
+  letter-spacing: 2px;
+}
+
+.header-right {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  color: #8B7355;
+  letter-spacing: 1px;
+}
+
+/* Slide number */
+.slide-indicator {
+  position: absolute;
+  bottom: 40px;
+  right: 80px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  color: #8B7355;
+  letter-spacing: 1px;
+}
+
+/* Main title area */
+.title-block {
+  position: absolute;
+  top: 110px;
+  left: 80px;
+}
+
+.slide-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 44px;
+  font-weight: 700;
+  color: #1B3B6B;
+  line-height: 1.3;
+  letter-spacing: 2px;
+}
+
+.slide-subtitle {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #8B7355;
+  margin-top: 14px;
+  letter-spacing: 3px;
+  line-height: 1.6;
+}
+
+.title-underline {
+  width: 80px;
+  height: 3px;
+  background: #1B3B6B;
+  margin-top: 20px;
+}
+
+/* Central geometric composition - Roundabout */
+.roundabout-container {
+  position: absolute;
+  top: 180px;
+  right: 100px;
+  width: 580px;
+  height: 580px;
+}
 
 /* Concentric circles */
-.circle-outer{position:absolute;top:60px;left:80px;width:700px;height:700px;border:1.5px solid #1B3B6B;border-radius:50%;}
-.circle-mid{position:absolute;top:120px;left:140px;width:580px;height:580px;border:1px solid #8B7355;border-radius:50%;}
-.circle-inner{position:absolute;top:220px;left:240px;width:380px;height:380px;border:1px dashed #1B3B6B;border-radius:50%;}
-.circle-core{position:absolute;top:340px;left:360px;width:140px;height:140px;border:2px solid #1B3B6B;border-radius:50%;background:#F5F0E8;display:flex;align-items:center;justify-content:center;}
-.core-text{font-family:'Noto Serif SC',serif;font-size:15px;color:#1B3B6B;text-align:center;line-height:1.4;letter-spacing:1px;}
-.core-text small{display:block;font-size:10px;color:#8B7355;letter-spacing:3px;margin-top:4px;}
+.ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(27,59,107,0.12);
+}
 
-/* Radiating light trails - lines from center outward */
-.rail{position:absolute;top:410px;left:430px;height:1px;background:#1B3B6B;transform-origin:0 50%;opacity:0.55;}
-.rail-copper{background:#8B7355;opacity:0.4;}
+.ring-1 {
+  width: 580px; height: 580px;
+  top: 0; left: 0;
+  border-width: 2px;
+  border-color: rgba(27,59,107,0.2);
+}
 
-/* Six sectors */
-.sector{position:absolute;width:130px;text-align:center;}
-.sector-num{font-family:'Noto Serif SC',serif;font-size:12px;color:#8B7355;letter-spacing:3px;margin-bottom:6px;}
-.sector-name{font-family:'Noto Serif SC',serif;font-size:19px;font-weight:700;color:#1B3B6B;letter-spacing:2px;margin-bottom:4px;}
-.sector-en{font-size:10px;color:#8B7355;letter-spacing:2px;}
-.sector-dot{width:10px;height:10px;background:#1B3B6B;border-radius:50%;margin:0 auto 8px;}
+.ring-2 {
+  width: 440px; height: 440px;
+  top: 70px; left: 70px;
+  border-width: 1px;
+}
 
-/* Positions for six items around ring */
-.s1{top:80px;left:375px;}
-.s2{top:180px;left:590px;}
-.s3{top:400px;left:650px;}
-.s4{top:600px;left:375px;}
-.s5{top:400px;left:100px;}
-.s6{top:180px;left:10px;}
+.ring-3 {
+  width: 300px; height: 300px;
+  top: 140px; left: 140px;
+  border-width: 1px;
+  border-color: rgba(139,115,85,0.2);
+}
 
-/* Radial lines connecting center to sectors */
-.r-line{position:absolute;height:1px;background:#1B3B6B;opacity:0.35;top:410px;left:430px;}
+.ring-4 {
+  width: 160px; height: 160px;
+  top: 210px; left: 210px;
+  border-width: 2px;
+  border-color: rgba(27,59,107,0.25);
+}
 
-/* Decorative squares */
-.deco-square{position:absolute;background:#1B3B6B;}
-.deco-square-1{top:15px;right:25px;width:14px;height:14px;}
-.deco-square-2{bottom:15px;left:25px;width:10px;height:10px;background:#8B7355;}
-.deco-circle{position:absolute;border:1.5px solid #1B3B6B;border-radius:50%;}
-.deco-circle-1{top:15px;left:80px;width:18px;height:18px;}
-.deco-circle-2{bottom:20px;right:30px;width:12px;height:12px;background:#1B3B6B;}
+/* Center core */
+.core {
+  position: absolute;
+  width: 80px; height: 80px;
+  top: 250px; left: 250px;
+  background: #1B3B6B;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-/* Bottom bar */
-.footer{position:absolute;bottom:28px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#8B7355;letter-spacing:2px;}
-.footer-line{flex:1;height:1px;background:#1B3B6B;opacity:0.3;margin:0 20px;}
+.core-inner {
+  width: 32px; height: 32px;
+  background: #F5F0E8;
+  border-radius: 50%;
+}
 
-/* Light trail dots on radiating lines */
-.trail-dot{position:absolute;width:5px;height:5px;background:#8B7355;border-radius:50%;}
-</style></head><body>
+/* Radial lines */
+.radial-line {
+  position: absolute;
+  top: 290px;
+  left: 290px;
+  width: 1px;
+  height: 220px;
+  background: rgba(27,59,107,0.15);
+  transform-origin: 0 0;
+}
 
-<div class="deco-square deco-square-1"></div>
-<div class="deco-square deco-square-2"></div>
-<div class="deco-circle deco-circle-1"></div>
-<div class="deco-circle deco-circle-2"></div>
+.rl-1 { transform: rotate(0deg); }
+.rl-2 { transform: rotate(51.4deg); }
+.rl-3 { transform: rotate(102.8deg); }
+.rl-4 { transform: rotate(154.3deg); }
+.rl-5 { transform: rotate(205.7deg); }
+.rl-6 { transform: rotate(257.1deg); }
+.rl-7 { transform: rotate(308.6deg); }
 
-<div class="hdr">
-  <div class="hdr-title">新制度经济学视角下的开源软件</div>
-  <div class="hdr-num">03 / 18</div>
+/* Orbit dots */
+.orbit-dot {
+  position: absolute;
+  border-radius: 50%;
+  background: #1B3B6B;
+}
+
+/* Domain labels positioned around the roundabout */
+.domain-label {
+  position: absolute;
+  width: 110px;
+  text-align: center;
+}
+
+.domain-dot {
+  width: 10px; height: 10px;
+  background: #1B3B6B;
+  border-radius: 50%;
+  margin: 0 auto 8px;
+}
+
+.domain-dot-copper {
+  background: #8B7355;
+}
+
+.domain-name {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1B3B6B;
+  letter-spacing: 3px;
+}
+
+.domain-en {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 10px;
+  color: #8B7355;
+  letter-spacing: 1px;
+  margin-top: 3px;
+}
+
+/* Bottom content - description */
+.bottom-content {
+  position: absolute;
+  bottom: 90px;
+  left: 80px;
+  width: 520px;
+}
+
+.bottom-label {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  color: #8B7355;
+  letter-spacing: 4px;
+  margin-bottom: 14px;
+  font-weight: 400;
+}
+
+.bottom-text {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 15px;
+  line-height: 2;
+  color: #1B3B6B;
+  font-weight: 300;
+}
+
+.bottom-text .highlight {
+  font-weight: 500;
+  color: #1B3B6B;
+}
+
+/* Decorative geometric elements */
+.deco-square {
+  position: absolute;
+  width: 12px; height: 12px;
+  background: #8B7355;
+}
+
+.deco-square-hollow {
+  position: absolute;
+  width: 14px; height: 14px;
+  border: 1.5px solid #1B3B6B;
+  background: transparent;
+}
+
+.deco-line-v {
+  position: absolute;
+  width: 1px;
+  background: rgba(27,59,107,0.1);
+}
+
+.deco-line-h {
+  position: absolute;
+  height: 1px;
+  background: rgba(139,115,85,0.12);
+}
+
+/* Arrow indicators on the ring */
+.flow-arrow {
+  position: absolute;
+  width: 0; height: 0;
+}
+
+/* Domain positioning - using the roundabout container coordinate system */
+/* Angles: each domain is spaced around 360/7 ≈ 51.4 degrees */
+/* Using trigonometry with center at 290,290 and radius ~265 */
+
+/* 0°: top (科研) */
+.dom-1 { top: 18px; right: 235px; }
+/* 51.4° */
+.dom-2 { top: 82px; right: 65px; }
+/* 102.8° */
+.dom-3 { top: 310px; right: 8px; }
+/* 154.3° */
+.dom-4 { bottom: 100px; right: 82px; }
+/* 205.7° */
+.dom-5 { bottom: 30px; left: 215px; }
+/* 257.1° */
+.dom-6 { top: 310px; left: 10px; }
+/* 308.6° */
+.dom-7 { top: 82px; left: 80px; }
+
+/* Light trail arcs - simulated with border */
+.light-arc {
+  position: absolute;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: transparent;
+}
+
+.arc-1 {
+  width: 500px; height: 500px;
+  top: 40px; left: 40px;
+  border-width: 2px;
+  border-top-color: rgba(27,59,107,0.25);
+  border-right-color: transparent;
+  transform: rotate(30deg);
+}
+
+.arc-2 {
+  width: 380px; height: 380px;
+  top: 100px; left: 100px;
+  border-width: 1.5px;
+  border-bottom-color: rgba(139,115,85,0.2);
+  border-left-color: transparent;
+  transform: rotate(150deg);
+}
+
+/* Left vertical accent line */
+.left-accent {
+  position: absolute;
+  top: 110px;
+  left: 60px;
+  width: 2px;
+  height: 640px;
+  background: linear-gradient(to bottom, transparent, rgba(27,59,107,0.2) 20%, rgba(27,59,107,0.2) 80%, transparent);
+}
+
+/* Bottom-left decorative element */
+.geo-cluster {
+  position: absolute;
+  bottom: 80px;
+  left: 640px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.geo-circle-sm {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #1B3B6B;
+}
+
+.geo-circle-md {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  border: 2px solid #8B7355;
+}
+
+.geo-bar {
+  width: 40px; height: 2px;
+  background: #1B3B6B;
+}
+</style>
+</head>
+<body>
+
+<div class="texture"></div>
+
+<!-- Header -->
+<div class="header">
+  <div class="header-left">
+    <div class="header-num">11</div>
+    <div class="header-title">第 11 期 · 文化的重要作用</div>
+  </div>
+  <div class="header-right">开源经济学 · 新制度视角</div>
 </div>
 
+<!-- Left accent line -->
+<div class="left-accent"></div>
+
+<!-- Title block -->
 <div class="title-block">
-  <div class="kicker">SECTION III &nbsp;—&nbsp; 理论图谱</div>
-  <div class="main-title">开源运动的<br>理论基础</div>
-  <div class="divider"></div>
-  <div class="subtitle">开源并非无源之水。它从科研协作、技术标准、学术共同体、技术文化、工程实践与商业模式六大母体中汲取养分，形成今日数字时代的分布式协作生态。</div>
+  <div class="slide-title">开源运动的<br>理论基础</div>
+  <div class="title-underline"></div>
+  <div class="slide-subtitle">Theoretical Foundations of the Open Source Movement</div>
 </div>
 
-<div class="metaphor">
-  <div class="metaphor-label">VISUAL METAPHOR</div>
-  <div class="metaphor-text">垂直俯视城市环岛与光轨——<br>开源生态的辐射与汇聚</div>
+<!-- Roundabout geometric composition -->
+<div class="roundabout-container">
+  
+  <!-- Concentric rings -->
+  <div class="ring ring-1"></div>
+  <div class="ring ring-2"></div>
+  <div class="ring ring-3"></div>
+  <div class="ring ring-4"></div>
+
+  <!-- Light trail arcs -->
+  <div class="light-arc arc-1"></div>
+  <div class="light-arc arc-2"></div>
+
+  <!-- Radial lines -->
+  <div class="radial-line rl-1"></div>
+  <div class="radial-line rl-2"></div>
+  <div class="radial-line rl-3"></div>
+  <div class="radial-line rl-4"></div>
+  <div class="radial-line rl-5"></div>
+  <div class="radial-line rl-6"></div>
+  <div class="radial-line rl-7"></div>
+
+  <!-- Center core -->
+  <div class="core">
+    <div class="core-inner"></div>
+  </div>
+
+  <!-- Domain labels around the circle -->
+  <div class="domain-label dom-1">
+    <div class="domain-dot"></div>
+    <div class="domain-name">科研</div>
+    <div class="domain-en">RESEARCH</div>
+  </div>
+
+  <div class="domain-label dom-2">
+    <div class="domain-dot"></div>
+    <div class="domain-name">标准</div>
+    <div class="domain-en">STANDARDS</div>
+  </div>
+
+  <div class="domain-label dom-3">
+    <div class="domain-dot"></div>
+    <div class="domain-name">学术</div>
+    <div class="domain-en">ACADEMIA</div>
+  </div>
+
+  <div class="domain-label dom-4">
+    <div class="domain-dot"></div>
+    <div class="domain-name">技术</div>
+    <div class="domain-en">TECHNOLOGY</div>
+  </div>
+
+  <div class="domain-label dom-5">
+    <div class="domain-dot"></div>
+    <div class="domain-name">工程</div>
+    <div class="domain-en">ENGINEERING</div>
+  </div>
+
+  <div class="domain-label dom-6">
+    <div class="domain-dot"></div>
+    <div class="domain-name">商业</div>
+    <div class="domain-en">BUSINESS</div>
+  </div>
+
+  <div class="domain-label dom-7">
+    <div class="domain-dot-copper"></div>
+    <div class="domain-name">文化</div>
+    <div class="domain-en">CULTURE</div>
+  </div>
+
 </div>
 
-<div class="ring-stage">
-  <div class="circle-outer"></div>
-  <div class="circle-mid"></div>
-  <div class="circle-inner"></div>
-  <div class="circle-core">
-    <div class="core-text">开源<br>生态<small>OPEN SOURCE</small></div>
-  </div>
-
-  <!-- Radial lines from center to each sector -->
-  <div class="r-line" style="width:270px;transform:rotate(265deg);"></div>
-  <div class="r-line" style="width:270px;transform:rotate(335deg);"></div>
-  <div class="r-line" style="width:270px;transform:rotate(35deg);"></div>
-  <div class="r-line" style="width:270px;transform:rotate(95deg);"></div>
-  <div class="r-line" style="width:270px;transform:rotate(155deg);"></div>
-  <div class="r-line" style="width:270px;transform:rotate(205deg);"></div>
-
-  <!-- Light trails (longer, copper) -->
-  <div class="rail" style="width:320px;transform:rotate(260deg);"></div>
-  <div class="rail rail-copper" style="width:300px;transform:rotate(340deg);"></div>
-  <div class="rail" style="width:320px;transform:rotate(40deg);"></div>
-  <div class="rail rail-copper" style="width:300px;transform:rotate(100deg);"></div>
-  <div class="rail" style="width:320px;transform:rotate(160deg);"></div>
-  <div class="rail rail-copper" style="width:300px;transform:rotate(210deg);"></div>
-
-  <!-- Trail dots -->
-  <div class="trail-dot" style="top:155px;left:420px;"></div>
-  <div class="trail-dot" style="top:130px;left:460px;"></div>
-  <div class="trail-dot" style="top:250px;left:670px;"></div>
-  <div class="trail-dot" style="top:540px;left:685px;"></div>
-  <div class="trail-dot" style="top:620px;left:445px;"></div>
-  <div class="trail-dot" style="top:550px;left:260px;"></div>
-  <div class="trail-dot" style="top:245px;left:255px;"></div>
-  <div class="trail-dot" style="top:395px;left:625px;"></div>
-  <div class="trail-dot" style="top:395px;left:235px;"></div>
-  <div class="trail-dot" style="top:200px;left:400px;"></div>
-  <div class="trail-dot" style="top:620px;left:410px;"></div>
-  <div class="trail-dot" style="top:430px;left:645px;"></div>
-
-  <!-- Six sectors -->
-  <div class="sector s1">
-    <div class="sector-dot"></div>
-    <div class="sector-num">Ⅰ</div>
-    <div class="sector-name">科　研</div>
-    <div class="sector-en">RESEARCH</div>
-  </div>
-  <div class="sector s2">
-    <div class="sector-dot"></div>
-    <div class="sector-num">Ⅱ</div>
-    <div class="sector-name">标　准</div>
-    <div class="sector-en">STANDARDS</div>
-  </div>
-  <div class="sector s3">
-    <div class="sector-dot"></div>
-    <div class="sector-num">Ⅲ</div>
-    <div class="sector-name">学　术</div>
-    <div class="sector-en">ACADEMIA</div>
-  </div>
-  <div class="sector s4">
-    <div class="sector-dot"></div>
-    <div class="sector-num">Ⅳ</div>
-    <div class="sector-name">技　术</div>
-    <div class="sector-en">TECHNOLOGY</div>
-  </div>
-  <div class="sector s5">
-    <div class="sector-dot"></div>
-    <div class="sector-num">Ⅴ</div>
-    <div class="sector-name">工　程</div>
-    <div class="sector-en">ENGINEERING</div>
-  </div>
-  <div class="sector s6">
-    <div class="sector-dot"></div>
-    <div class="sector-num">Ⅵ</div>
-    <div class="sector-name">商　业</div>
-    <div class="sector-en">BUSINESS</div>
+<!-- Bottom content -->
+<div class="bottom-content">
+  <div class="bottom-label">核心命题</div>
+  <div class="bottom-text">
+    开源并非单一逻辑的产物，而是<span class="highlight">多元知识体系</span>的交汇点。<br>
+    从科研范式到商业实践，从技术标准到文化认同，<br>
+    开源运动构成了一个<span class="highlight">辐射式制度生态</span>。
   </div>
 </div>
 
-<div class="footer">
-  <span>OPEN SOURCE ECONOMICS</span>
-  <div class="footer-line"></div>
-  <span>THEORETICAL FOUNDATIONS &nbsp;·&nbsp; 六大理论母体</span>
-  <div class="footer-line"></div>
-  <span>03 / 18</span>
+<!-- Decorative elements -->
+<div class="deco-square" style="bottom: 55px; right: 60px;"></div>
+<div class="deco-square-hollow" style="bottom: 50px; right: 40px;"></div>
+<div class="deco-line-h" style="top: 72px; left: 0; width: 1600px;"></div>
+
+<div class="geo-cluster">
+  <div class="geo-circle-sm"></div>
+  <div class="geo-bar"></div>
+  <div class="geo-circle-md"></div>
+  <div class="geo-bar"></div>
+  <div class="geo-circle-sm"></div>
 </div>
 
-</body></html>
+<!-- Slide indicator -->
+<div class="slide-indicator">— 04 / 28 —</div>
+
+</body>
+</html>

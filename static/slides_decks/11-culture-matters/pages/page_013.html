@@ -1,142 +1,619 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: 7df94a8d5ff9733f --><head><meta charset="UTF-8"><title>大教堂与集市 · Eric Raymond · 1997</title><style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1600px;height:900px;overflow:hidden;margin:0;font-family:'Noto Sans SC','PingFang SC',sans-serif;color:#1B3B6B}
-body{background:#F5F0E8;position:relative}
-/* subtle parchment texture */
-body::before{content:'';position:absolute;top:0;left:0;width:1600px;height:900px;background:
-  radial-gradient(ellipse at 20% 10%, rgba(139,115,85,0.04) 0%, transparent 50%),
-  radial-gradient(ellipse at 80% 90%, rgba(27,59,107,0.04) 0%, transparent 50%),
-  radial-gradient(ellipse at 50% 50%, rgba(139,115,85,0.02) 0%, transparent 70%);
-  pointer-events:none;z-index:0}
-/* Bauhaus geometric decorations */
-.deco-circle-1{position:absolute;top:-80px;right:-80px;width:300px;height:300px;border-radius:50%;border:3px solid #1B3B6B;z-index:1;opacity:0.6}
-.deco-circle-2{position:absolute;bottom:60px;left:-50px;width:160px;height:160px;border-radius:50%;background:#1B3B6B;z-index:1;opacity:0.9}
-.deco-square-1{position:absolute;top:120px;left:1480px;width:36px;height:36px;background:#8B7355;z-index:1}
-.deco-line-1{position:absolute;top:0;left:1180px;width:2px;height:900px;background:#8B7355;z-index:1;opacity:0.4}
-.deco-line-2{position:absolute;top:780px;left:0;width:900px;height:2px;background:#1B3B6B;z-index:1;opacity:0.3}
-.deco-triangle{position:absolute;bottom:120px;right:80px;width:0;height:0;border-left:30px solid transparent;border-right:30px solid transparent;border-bottom:52px solid #8B7355;z-index:1;opacity:0.7}
+<!DOCTYPE html>
+<html lang="zh-CN"><!-- source_hash: 0fe0fa70bf4a5661 -->
+<head>
+<meta charset="UTF-8">
+<title>第 11 期 · 文化的重要作用 — 大教堂与集市</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600&display=swap');
 
-/* Header bar */
-.header{position:absolute;top:60px;left:120px;right:120px;z-index:5;display:flex;align-items:flex-end;justify-content:space-between}
-.slide-num{font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:4px}
-.slide-meta{font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;letter-spacing:3px}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-/* Main content layout */
-.content{position:absolute;top:130px;left:120px;width:1040px;height:700px;z-index:5;display:flex;flex-direction:column}
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
+  background: #F5F0E8;
+}
 
-/* Title block */
-.title-block{margin-bottom:30px}
-.eyebrow{font-size:12px;color:#8B7355;letter-spacing:6px;margin-bottom:14px;font-weight:500}
-.main-title{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:56px;font-weight:700;color:#1B3B6B;line-height:1.15;letter-spacing:1px}
-.sub-title{font-family:'Noto Serif SC',serif;font-size:22px;color:#8B7355;margin-top:12px;letter-spacing:2px;font-weight:400}
-.title-rule{width:80px;height:3px;background:#1B3B6B;margin-top:20px}
+.slide {
+  width: 1600px;
+  height: 900px;
+  position: relative;
+  overflow: hidden;
+  background: #F5F0E8;
+}
 
-/* Left column - narrative */
-.narrative{margin-top:8px;display:flex;flex-direction:column;gap:14px}
-.narr-item{display:flex;align-items:flex-start;gap:16px}
-.narr-num{font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;width:36px;flex-shrink:0;padding-top:4px;letter-spacing:2px}
-.narr-text{font-size:16px;color:#1B3B6B;line-height:1.7;flex:1}
-.narr-text .em{color:#8B7355;font-weight:600}
-.narr-text .small{font-size:13px;color:#555;display:block;margin-top:2px}
+/* Subtle parchment texture */
+.slide::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1600px;
+  height: 900px;
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(139,115,85,0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 30%, rgba(27,59,107,0.02) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
 
-/* Right panel - Linus's Law */
-.right-panel{position:absolute;top:160px;right:120px;width:380px;z-index:5;display:flex;flex-direction:column;align-items:center}
-.law-frame{width:380px;border:2px solid #1B3B6B;padding:36px 30px;background:#F5F0E8;position:relative}
-.law-frame::before{content:'';position:absolute;top:8px;left:8px;right:-8px;bottom:-8px;border:1px solid #8B7355;z-index:-1}
-.law-label{font-size:11px;color:#8B7355;letter-spacing:5px;margin-bottom:16px;text-align:center;font-weight:600}
-.law-text{font-family:'Noto Serif SC',serif;font-size:19px;color:#1B3B6B;line-height:1.6;text-align:center;font-style:italic}
-.law-attr{margin-top:18px;font-size:13px;color:#8B7355;text-align:center;letter-spacing:2px}
-.law-divider{width:40px;height:1px;background:#8B7355;margin:14px auto}
-.law-21{margin-top:24px;padding-top:20px;border-top:1px solid rgba(139,115,85,0.4);text-align:center;width:380px}
-.law-21-num{font-family:'Noto Serif SC',serif;font-size:42px;color:#1B3B6B;font-weight:700;line-height:1}
-.law-21-label{font-size:12px;color:#8B7355;letter-spacing:4px;margin-top:6px}
+/* Header area */
+.header {
+  position: absolute;
+  top: 48px;
+  left: 72px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
 
-/* Bottom strip */
-.bottom-strip{position:absolute;bottom:40px;left:120px;right:120px;z-index:5;display:flex;justify-content:space-between;align-items:center}
-.bottom-left{font-size:11px;color:#8B7355;letter-spacing:3px}
-.bottom-right{font-family:'Noto Serif SC',serif;font-size:11px;color:#555;letter-spacing:2px}
+.lecture-badge {
+  width: 56px;
+  height: 56px;
+  background: #1B3B6B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
 
-/* photo placeholder - abstract geometric representation of 1997 photo */
-.photo-mock{position:absolute;top:680px;left:120px;width:520px;height:100px;z-index:4;display:flex;align-items:center;gap:8px}
-.photo-mock .pp{width:14px;height:36px;background:#1B3B6B;opacity:0.7}
-.photo-mock .pp:nth-child(even){background:#8B7355}
-.photo-mock .pp:nth-child(3){height:44px}
-.photo-mock .pp:nth-child(5){height:40px}
-.photo-mock .pp:nth-child(7){height:48px}
-.photo-mock .pp:nth-child(9){height:34px}
-.photo-mock .pp:nth-child(11){height:42px}
-.photo-mock .pp:nth-child(13){height:38px}
-.photo-mock .pp:nth-child(15){height:46px}
-.photo-mock-label{margin-left:14px;font-size:11px;color:#8B7355;letter-spacing:3px;line-height:1.6}
+.lecture-badge span {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #F5F0E8;
+  letter-spacing: -0.5px;
+}
 
-</style></head><body>
+.header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
 
-<div class="deco-circle-1"></div>
-<div class="deco-circle-2"></div>
-<div class="deco-square-1"></div>
-<div class="deco-line-1"></div>
-<div class="deco-line-2"></div>
-<div class="deco-triangle"></div>
+.header-text .section-label {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  color: #8B7355;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
 
-<div class="header">
-  <div class="slide-num">— 0 7 —</div>
-  <div class="slide-meta">新制度经济学视角下的开源 / NEOE · OS</div>
-</div>
+.header-text .section-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 20px;
+  color: #1B3B6B;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
 
-<div class="content">
-  <div class="title-block">
-    <div class="eyebrow">VI &nbsp;·&nbsp; CHAPTER</div>
-    <div class="main-title">大教堂与集市</div>
-    <div class="sub-title">The Cathedral and the Bazaar &nbsp;·&nbsp; Eric S. Raymond</div>
-    <div class="title-rule"></div>
+/* Main title */
+.main-title {
+  position: absolute;
+  top: 130px;
+  left: 72px;
+  z-index: 10;
+  max-width: 780px;
+}
+
+.main-title h1 {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 42px;
+  font-weight: 900;
+  color: #1B3B6B;
+  line-height: 1.3;
+  letter-spacing: 1px;
+}
+
+.main-title h2 {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: #8B7355;
+  margin-top: 12px;
+  font-style: italic;
+  letter-spacing: 0.5px;
+}
+
+/* Geometric visual metaphor - representing conference photo / ethnography */
+.visual-area {
+  position: absolute;
+  top: 280px;
+  left: 72px;
+  width: 700px;
+  height: 380px;
+  z-index: 5;
+}
+
+.v-circle {
+  position: absolute;
+  border-radius: 50%;
+}
+
+/* Abstract "people" circles representing conference attendees */
+.v-circle.c1 {
+  width: 70px;
+  height: 70px;
+  background: #1B3B6B;
+  top: 30px;
+  left: 40px;
+  opacity: 0.9;
+}
+
+.v-circle.c2 {
+  width: 52px;
+  height: 52px;
+  background: #1B3B6B;
+  top: 60px;
+  left: 130px;
+  opacity: 0.6;
+}
+
+.v-circle.c3 {
+  width: 64px;
+  height: 64px;
+  background: #8B7355;
+  top: 20px;
+  left: 210px;
+  opacity: 0.85;
+}
+
+.v-circle.c4 {
+  width: 44px;
+  height: 44px;
+  background: #1B3B6B;
+  top: 80px;
+  left: 290px;
+  opacity: 0.5;
+}
+
+.v-circle.c5 {
+  width: 58px;
+  height: 58px;
+  background: #1B3B6B;
+  top: 35px;
+  left: 360px;
+  opacity: 0.75;
+}
+
+.v-circle.c6 {
+  width: 48px;
+  height: 48px;
+  background: #8B7355;
+  top: 75px;
+  left: 440px;
+  opacity: 0.65;
+}
+
+.v-circle.c7 {
+  width: 56px;
+  height: 56px;
+  background: #1B3B6B;
+  top: 25px;
+  left: 510px;
+  opacity: 0.85;
+}
+
+.v-circle.c8 {
+  width: 40px;
+  height: 40px;
+  background: #8B7355;
+  top: 90px;
+  left: 590px;
+  opacity: 0.5;
+}
+
+/* Second row of circles */
+.v-circle.c9 {
+  width: 50px;
+  height: 50px;
+  background: #1B3B6B;
+  top: 130px;
+  left: 80px;
+  opacity: 0.55;
+}
+
+.v-circle.c10 {
+  width: 62px;
+  height: 62px;
+  background: #8B7355;
+  top: 120px;
+  left: 160px;
+  opacity: 0.8;
+}
+
+.v-circle.c11 {
+  width: 46px;
+  height: 46px;
+  background: #1B3B6B;
+  top: 150px;
+  left: 240px;
+  opacity: 0.45;
+}
+
+.v-circle.c12 {
+  width: 54px;
+  height: 54px;
+  background: #1B3B6B;
+  top: 125px;
+  left: 310px;
+  opacity: 0.7;
+}
+
+.v-circle.c13 {
+  width: 42px;
+  height: 42px;
+  background: #8B7355;
+  top: 160px;
+  left: 390px;
+  opacity: 0.55;
+}
+
+.v-circle.c14 {
+  width: 58px;
+  height: 58px;
+  background: #1B3B6B;
+  top: 130px;
+  left: 460px;
+  opacity: 0.8;
+}
+
+/* Horizontal line connecting groups */
+.v-line {
+  position: absolute;
+  height: 2px;
+  background: #1B3B6B;
+  top: 115px;
+  left: 40px;
+  width: 600px;
+  opacity: 0.2;
+}
+
+/* Observation frame - rectangle representing "ethnographic gaze" */
+.v-frame {
+  position: absolute;
+  top: 200px;
+  left: 20px;
+  width: 580px;
+  height: 150px;
+  border: 2px solid #1B3B6B;
+  opacity: 0.25;
+}
+
+.v-frame-label {
+  position: absolute;
+  top: 190px;
+  left: 28px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: #1B3B6B;
+  letter-spacing: 2px;
+  opacity: 0.5;
+  background: #F5F0E8;
+  padding: 0 8px;
+}
+
+/* Observation dots - representing notes */
+.v-dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #8B7355;
+}
+
+.v-dot.d1 { top: 370px; left: 50px; opacity: 0.7; }
+.v-dot.d2 { top: 370px; left: 70px; opacity: 0.5; }
+.v-dot.d3 { top: 370px; left: 90px; opacity: 0.3; }
+
+/* Square element - representing the book/publication */
+.v-square {
+  position: absolute;
+  width: 80px;
+  height: 100px;
+  background: #1B3B6B;
+  top: 255px;
+  left: 640px;
+  opacity: 0.85;
+}
+
+.v-square-inner {
+  position: absolute;
+  width: 60px;
+  height: 78px;
+  border: 1px solid #F5F0E8;
+  top: 11px;
+  left: 10px;
+  opacity: 0.4;
+}
+
+/* Bullet points area */
+.content-area {
+  position: absolute;
+  top: 260px;
+  left: 830px;
+  width: 700px;
+  z-index: 10;
+}
+
+.bullet-group {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.bullet-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.bullet-marker {
+  width: 12px;
+  height: 12px;
+  background: #1B3B6B;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+.bullet-marker.circle {
+  border-radius: 50%;
+}
+
+.bullet-marker.half {
+  width: 12px;
+  height: 12px;
+  background: transparent;
+  border: 2px solid #8B7355;
+}
+
+.bullet-text {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  color: #333;
+  font-weight: 400;
+}
+
+.bullet-text strong {
+  color: #1B3B6B;
+  font-weight: 600;
+}
+
+.bullet-text .highlight {
+  color: #8B7355;
+  font-weight: 500;
+}
+
+/* Quote section */
+.quote-section {
+  position: absolute;
+  bottom: 62px;
+  left: 72px;
+  width: 1456px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.quote-bar {
+  width: 4px;
+  height: 80px;
+  background: #1B3B6B;
+  flex-shrink: 0;
+}
+
+.quote-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.quote-en {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 22px;
+  font-style: italic;
+  color: #1B3B6B;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.quote-attrib {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  color: #8B7355;
+  letter-spacing: 1px;
+}
+
+/* Decorative geometric elements */
+.deco {
+  position: absolute;
+  z-index: 1;
+}
+
+/* Top-right corner square */
+.deco-square-tr {
+  position: absolute;
+  top: 40px;
+  right: 72px;
+  width: 40px;
+  height: 40px;
+  border: 2px solid #8B7355;
+  opacity: 0.4;
+}
+
+.deco-square-tr-inner {
+  position: absolute;
+  top: 52px;
+  right: 84px;
+  width: 16px;
+  height: 16px;
+  background: #1B3B6B;
+  opacity: 0.2;
+}
+
+/* Right side vertical line */
+.deco-vline {
+  position: absolute;
+  right: 72px;
+  top: 120px;
+  width: 1px;
+  height: 600px;
+  background: #1B3B6B;
+  opacity: 0.08;
+}
+
+/* Bottom left accent */
+.deco-bl-line {
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  width: 200px;
+  height: 1px;
+  background: #8B7355;
+  opacity: 0.3;
+}
+
+/* Year marker */
+.year-marker {
+  position: absolute;
+  top: 100px;
+  right: 72px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 80px;
+  font-weight: 900;
+  color: #1B3B6B;
+  opacity: 0.06;
+  letter-spacing: -2px;
+  z-index: 1;
+}
+
+/* Footer */
+.footer {
+  position: absolute;
+  bottom: 24px;
+  right: 72px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 2px;
+  opacity: 0.6;
+  z-index: 10;
+}
+</style>
+</head>
+<body>
+<div class="slide">
+
+  <!-- Background year watermark -->
+  <div class="year-marker">1997</div>
+
+  <!-- Decorative elements -->
+  <div class="deco-square-tr"></div>
+  <div class="deco-square-tr-inner"></div>
+  <div class="deco-vline"></div>
+  <div class="deco-bl-line"></div>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="lecture-badge"><span>11</span></div>
+    <div class="header-text">
+      <span class="section-label">CULTURE MATTERS</span>
+      <span class="section-title">文化的重要作用</span>
+    </div>
   </div>
 
-  <div class="narrative">
-    <div class="narr-item">
-      <div class="narr-num">01</div>
-      <div class="narr-text"><span class="em">1997年，德国，技术会议</span>——一张合影定格了 Linux 社区早期的人类学现场。<span class="small">A photograph from a German tech conference, 1997 — an anthropological tableau of the nascent Linux community.</span></div>
-    </div>
-    <div class="narr-item">
-      <div class="narr-num">02</div>
-      <div class="narr-text">业余人类学家 <span class="em">Eric Raymond</span> 观察 Linux 内核的协作生产，并以 <span class="em">fetchmail</span> 项目为实证样本。</div>
-    </div>
-    <div class="narr-item">
-      <div class="narr-num">03</div>
-      <div class="narr-text">他将两种开发模式并置：<span class="em">「大教堂式」</span>封闭、层级、版本节点驱动；<span class="em">「集市式」</span>开放、涌现、持续迭代。</div>
-    </div>
-    <div class="narr-item">
-      <div class="narr-num">04</div>
-      <div class="narr-text">总结为 <span class="em">21 条文化准则</span>，涵盖透明度、同行评审、快速发布、用户即贡献者等制度设计原理。</div>
+  <!-- Main title -->
+  <div class="main-title">
+    <h1>《大教堂与集市》</h1>
+    <h2>The Cathedral and the Bazaar, 1997</h2>
+  </div>
+
+  <!-- Visual metaphor: abstract conference photo / ethnographic scene -->
+  <div class="visual-area">
+    <!-- People as circles (conference attendees) -->
+    <div class="v-circle c1"></div>
+    <div class="v-circle c2"></div>
+    <div class="v-circle c3"></div>
+    <div class="v-circle c4"></div>
+    <div class="v-circle c5"></div>
+    <div class="v-circle c6"></div>
+    <div class="v-circle c7"></div>
+    <div class="v-circle c8"></div>
+    <div class="v-circle c9"></div>
+    <div class="v-circle c10"></div>
+    <div class="v-circle c11"></div>
+    <div class="v-circle c12"></div>
+    <div class="v-circle c13"></div>
+    <div class="v-circle c14"></div>
+
+    <!-- Connecting line -->
+    <div class="v-line"></div>
+
+    <!-- Ethnographic frame -->
+    <div class="v-frame"></div>
+    <div class="v-frame-label">ETHNOGRAPHIC OBSERVATION</div>
+
+    <!-- Observation dots -->
+    <div class="v-dot d1"></div>
+    <div class="v-dot d2"></div>
+    <div class="v-dot d3"></div>
+
+    <!-- Book square -->
+    <div class="v-square">
+      <div class="v-square-inner"></div>
     </div>
   </div>
-</div>
 
-<div class="photo-mock">
-  <div class="pp"></div><div class="pp"></div><div class="pp"></div><div class="pp"></div>
-  <div class="pp"></div><div class="pp"></div><div class="pp"></div><div class="pp"></div>
-  <div class="pp"></div><div class="pp"></div><div class="pp"></div><div class="pp"></div>
-  <div class="pp"></div><div class="pp"></div><div class="pp"></div>
-  <div class="photo-mock-label">FIG. 1997 &nbsp;/&nbsp; 德国技术会议<br>Linux 社区早期合影</div>
-</div>
-
-<div class="right-panel">
-  <div class="law-frame">
-    <div class="law-label">LINUS'S LAW</div>
-    <div class="law-text">"Given enough<br>eyeballs, all bugs<br>are shallow."</div>
-    <div class="law-divider"></div>
-    <div class="law-attr">— Eric S. Raymond</div>
+  <!-- Bullet points content -->
+  <div class="content-area">
+    <div class="bullet-group">
+      <div class="bullet-item">
+        <div class="bullet-marker"></div>
+        <div class="bullet-text"><strong>1997 年，德国</strong> — 技术会议现场，Linux 社区早期的人类学田野</div>
+      </div>
+      <div class="bullet-item">
+        <div class="bullet-marker circle"></div>
+        <div class="bullet-text">业余人类学家 <strong class="highlight">Eric Raymond</strong> 观察 Linux 与 Fetchmail 项目</div>
+      </div>
+      <div class="bullet-item">
+        <div class="bullet-marker"></div>
+        <div class="bullet-text">总结 <strong>21 条</strong>开放源文化准则，发表《大教堂与集市》</div>
+      </div>
+      <div class="bullet-item">
+        <div class="bullet-marker half"></div>
+        <div class="bullet-text">以实证方法论证：开源协作并非偶然，而是<strong>制度化的生产模式</strong></div>
+      </div>
+      <div class="bullet-item">
+        <div class="bullet-marker circle"></div>
+        <div class="bullet-text">将人类学观察引入软件工程，开创了开源文化的<span class="highlight">经验研究传统</span></div>
+      </div>
+    </div>
   </div>
-  <div class="law-21">
-    <div class="law-21-num">21</div>
-    <div class="law-21-label">CULTURAL PRINCIPLES</div>
+
+  <!-- Linus's Law quote -->
+  <div class="quote-section">
+    <div class="quote-bar"></div>
+    <div class="quote-content">
+      <div class="quote-en">"Given enough eyeballs, all bugs are shallow."</div>
+      <div class="quote-attrib">— Linus's Law / 林纳斯定律</div>
+    </div>
   </div>
-</div>
 
-<div class="bottom-strip">
-  <div class="bottom-left">CHAPTER VI &nbsp;/&nbsp; 制度演化 · 协作机制 · 文化准则</div>
-  <div class="bottom-right">— 开源之道 · Open Source Economics —</div>
-</div>
+  <!-- Footer -->
+  <div class="footer">11-CULTURE-MATTERS / 18</div>
 
-</body></html>
+</div>
+</body>
+</html>

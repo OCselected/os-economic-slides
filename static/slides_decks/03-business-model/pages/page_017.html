@@ -1,3 +1,512 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: 55de094679d3442f --><head><meta charset="UTF-8"><title>案例分析之：优化 — Cygnus</title><style>*{margin:0;padding:0;box-sizing:border-box}html,body{width:1600px;height:900px;overflow:hidden;margin:0}body{background:#F5F0E8;font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-serif;color:#1B3B6B;position:relative}h1,h2,h3{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif}.header-bar{position:absolute;top:0;left:0;width:1600px;height:6px;background:#1B3B6B}.accent-square{position:absolute;width:48px;height:48px;background:#1B3B6B;top:40px;left:60px}.accent-square2{position:absolute;width:24px;height:24px;background:#8B7355;top:40px;left:118px}.lecture-tag{position:absolute;top:46px;left:160px;font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:3px}.lecture-num{position:absolute;top:42px;right:60px;font-family:'Noto Serif SC',serif;font-size:22px;color:#1B3B6B;letter-spacing:2px}.top-rule{position:absolute;top:96px;left:60px;width:1480px;height:1px;background:#1B3B6B}.title-block{position:absolute;top:110px;left:60px;width:1480px}.case-label{font-family:'Noto Sans SC',sans-serif;font-size:13px;color:#555;letter-spacing:8px;margin-bottom:12px}.main-title{font-family:'Noto Serif SC',serif;font-size:56px;color:#1B3B6B;font-weight:700;letter-spacing:4px;line-height:1.1}.main-title .accent{color:#8B7355}.circle-deco{position:absolute;top:110px;right:120px;width:160px;height:160px;border:3px solid #1B3B6B;border-radius:50%}.circle-deco-inner{position:absolute;top:150px;right:160px;width:80px;height:80px;background:#8B7355;border-radius:50%}.circle-deco-line{position:absolute;top:190px;right:60px;width:140px;height:2px;background:#1B3B6B}.divider{position:absolute;top:320px;left:60px;width:1480px;height:1px;background:#1B3B6B;opacity:0.4}.content-area{position:absolute;top:345px;left:60px;width:1480px;height:490px;display:flex;gap:40px}.left-panel{width:720px;position:relative}.right-panel{width:720px;position:relative}.left-block{margin-bottom:28px}.left-block .block-num{font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:4px;margin-bottom:8px}.left-block .block-title{font-family:'Noto Serif SC',serif;font-size:26px;color:#1B3B6B;font-weight:700;margin-bottom:14px;letter-spacing:2px}.left-block .block-body{font-family:'Noto Sans SC',sans-serif;font-size:15px;color:#555;line-height:1.9;letter-spacing:1px}.left-block .block-body .highlight{color:#1B3B6B;font-weight:600}.block-square{display:inline-block;width:12px;height:12px;background:#1B3B6B;margin-right:10px;vertical-align:middle}.block-square-copper{display:inline-block;width:12px;height:12px;background:#8B7355;margin-right:10px;vertical-align:middle}.timeline-area{position:relative;width:720px;padding-left:30px}.timeline-line{position:absolute;left:10px;top:10px;width:2px;height:420px;background:#1B3B6B}.timeline-node{position:relative;padding-bottom:28px;padding-left:20px}.timeline-node .node-dot{position:absolute;left:-30px;top:8px;width:20px;height:20px;border:2px solid #1B3B6B;border-radius:50%;background:#F5F0E8}.timeline-node.accent .node-dot{background:#8B7355;border-color:#8B7355}.timeline-node .node-year{font-family:'Noto Serif SC',serif;font-size:20px;color:#1B3B6B;font-weight:700;letter-spacing:2px}.timeline-node .node-desc{font-family:'Noto Sans SC',sans-serif;font-size:14px;color:#555;line-height:1.7;margin-top:4px;letter-spacing:1px}.timeline-node .node-desc .em{color:#1B3B6B;font-weight:600}.big-circle{position:absolute;width:280px;height:280px;border:2px solid #1B3B6B;border-radius:50%;top:180px;right:-40px;opacity:0.15}.footer-rule{position:absolute;bottom:40px;left:60px;width:1480px;height:1px;background:#1B3B6B;opacity:0.3}.footer-text{position:absolute;bottom:14px;left:60px;font-size:11px;color:#8B7355;letter-spacing:3px}.footer-page{position:absolute;bottom:14px;right:60px;font-size:11px;color:#8B7355;letter-spacing:3px;font-family:'Noto Serif SC',serif}.tag-line{position:absolute;top:320px;left:60px;width:1480px;height:1px}.case-tag{position:absolute;top:298px;left:60px;background:#F5F0E8;padding-right:16px;font-family:'Noto Sans SC',sans-serif;font-size:11px;color:#8B7355;letter-spacing:4px}</style></head><body><div class="header-bar"></div><div class="accent-square"></div><div class="accent-square2"></div><div class="lecture-tag">第 03 期 · 商业模式</div><div class="lecture-num">03 / 30</div><div class="top-rule"></div><div class="title-block"><div class="case-label">CASE STUDY · 案例分析</div><div class="main-title">优化 <span class="accent">/</span> Cygnus Solutions</div><div class="circle-deco"></div><div class="circle-deco-inner"></div><div class="circle-deco-line"></div></div><div class="divider"></div><div class="case-tag">FROM FOSS TO PROFIT — 1989 → 1999</div><div class="content-area"><div class="left-panel"><div class="left-block"><div class="block-num">01 / 概述</div><div class="block-title">从开源到盈利的范式验证</div><div class="block-body"><span class="block-square"></span><span class="highlight">Cygnus Solutions</span> 成立于 <span class="highlight">1989 年</span>，由 <span class="highlight">Miguel Icaza</span> 与 <span class="highlight">Richard Stallman</span> 等推动，是全球最早以 FOSS 为核心产品的商业实体之一。<br><span class="block-square-copper"></span> 其存在本身即是对"<span class="highlight">软件免费 ≠ 企业无利可图</span>"这一命题的历史性回答。</div></div><div class="left-block"><div class="block-num">02 / 产品与项目</div><div class="block-title">The GNUPro Developers Kit</div><div class="block-body"><span class="block-square"></span> 商业产品：<span class="highlight">the GNUPro Developers Kit</span>——面向专业开发者的 GNU 工具链商业发行包<br><span class="block-square-copper"></span> 开源贡献：<span class="highlight">GCC</span>（GNU Compiler Collection）与 <span class="highlight">GDB</span>（GNU Debugger）<br><span class="block-square"></span> 商业模式本质：<span class="highlight">以开源代码建立技术声誉，以专业服务与集成套件实现变现</span></div></div><div class="left-block"><div class="block-num">03 / 关键论断</div><div class="block-title">优化的逻辑</div><div class="block-body"><span class="block-square"></span> 在制度经济学框架下，Cygnus 证明了 <span class="highlight">降低交易成本</span> 即可重构价值分配<br><span class="block-square-copper"></span> 其"优化"不在于代码本身，而在于 <span class="highlight">将公共物品转化为可交易的差异化服务</span></div></div></div><div class="right-panel"><div class="big-circle"></div><div class="timeline-area"><div class="timeline-line"></div><div class="timeline-node"><div class="node-dot"></div><div class="node-year">1989</div><div class="node-desc">公司成立，以 <span class="em">GNU 工具链商业支持</span> 为起点</div></div><div class="timeline-node"><div class="node-dot"></div><div class="node-year">1990s</div><div class="node-desc">发布 <span class="em">the GNUPro Developers Kit</span>，为 GCC / GDB 提供商业级集成与技术支持</div></div><div class="timeline-node accent"><div class="node-dot"></div><div class="node-year">1997</div><div class="node-desc">被列入 <span class="em">世界前 500 软件公司</span>——开源商业模式的首次主流验证</div></div><div class="timeline-node accent"><div class="node-dot"></div><div class="node-year">1999.11</div><div class="node-desc"><span class="em">Red Hat 以 $674 million</span> 完成收购，标志开源企业化的历史拐点</div></div></div></div></div><div class="footer-rule"></div><div class="footer-text">OPEN SOURCE ECONOMICS · LECTURE 03 · BUSINESS MODEL</div><div class="footer-page">第 03 / 30 页</div></body></html>
+<!DOCTYPE html>
+<html><!-- source_hash: d1718cd1dfc647e8 -->
+<head>
+<meta charset="UTF-8">
+<title>案例分析之：优化 — Cygnus</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 1600px;
+    height: 900px;
+    overflow: hidden;
+    margin: 0;
+    background: #F5F0E8;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #1B3B6B;
+    position: relative;
+  }
+  .parchment-texture {
+    position: absolute;
+    top: 0; left: 0;
+    width: 1600px;
+    height: 900px;
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(139,115,85,0.025) 39px, rgba(139,115,85,0.025) 40px),
+      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(139,115,85,0.02) 39px, rgba(139,115,85,0.02) 40px);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .frame {
+    position: absolute;
+    top: 48px; left: 48px;
+    width: 1504px;
+    height: 804px;
+    border: 1.5px solid #1B3B6B;
+    z-index: 1;
+  }
+  .frame-inner {
+    position: absolute;
+    top: 56px; left: 56px;
+    width: 1488px;
+    height: 788px;
+    border: 0.5px solid #8B7355;
+    z-index: 1;
+  }
+
+  /* Bauhaus geometric decorations */
+  .bauhaus-circle-lg {
+    position: absolute;
+    top: -120px;
+    right: -120px;
+    width: 480px;
+    height: 480px;
+    border-radius: 50%;
+    border: 2px solid #1B3B6B;
+    z-index: 2;
+    opacity: 0.18;
+  }
+  .bauhaus-circle-md {
+    position: absolute;
+    bottom: 60px;
+    left: -100px;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: #1B3B6B;
+    z-index: 2;
+    opacity: 0.08;
+  }
+  .bauhaus-circle-sm {
+    position: absolute;
+    top: 180px;
+    right: 180px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #8B7355;
+    z-index: 3;
+    opacity: 0.6;
+  }
+  .bauhaus-square {
+    position: absolute;
+    top: 420px;
+    left: 80px;
+    width: 72px;
+    height: 72px;
+    background: #1B3B6B;
+    z-index: 3;
+    opacity: 0.12;
+    transform: rotate(0deg);
+  }
+  .bauhaus-square-outline {
+    position: absolute;
+    bottom: 120px;
+    right: 200px;
+    width: 120px;
+    height: 120px;
+    border: 1.5px solid #8B7355;
+    z-index: 3;
+    opacity: 0.4;
+    transform: rotate(45deg);
+  }
+  .bauhaus-diagonal {
+    position: absolute;
+    top: 0;
+    left: 400px;
+    width: 1.5px;
+    height: 900px;
+    background: #1B3B6B;
+    z-index: 2;
+    opacity: 0.1;
+  }
+  .bauhaus-horizontal {
+    position: absolute;
+    top: 500px;
+    left: 0;
+    width: 1600px;
+    height: 1.5px;
+    background: #8B7355;
+    z-index: 2;
+    opacity: 0.15;
+  }
+  .bauhaus-triangle {
+    position: absolute;
+    top: 100px;
+    left: 380px;
+    width: 0;
+    height: 0;
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-bottom: 70px solid #1B3B6B;
+    z-index: 3;
+    opacity: 0.1;
+  }
+
+  /* Content layers */
+  .content {
+    position: absolute;
+    top: 48px;
+    left: 48px;
+    width: 1504px;
+    height: 804px;
+    padding: 72px 100px 72px 100px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .lecture-tag {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.4em;
+    color: #8B7355;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+  }
+  .lecture-tag .num {
+    display: inline-block;
+    background: #1B3B6B;
+    color: #F5F0E8;
+    padding: 3px 10px;
+    margin-right: 12px;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+  }
+
+  .title-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 32px;
+    margin-bottom: 8px;
+  }
+  .title-main {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 52px;
+    font-weight: 700;
+    color: #1B3B6B;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+  }
+  .title-dash {
+    width: 60px;
+    height: 4px;
+    background: #8B7355;
+    margin-bottom: 14px;
+  }
+  .subtitle {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 22px;
+    color: #555;
+    margin-bottom: 28px;
+    letter-spacing: 0.15em;
+  }
+  .subtitle .accent {
+    color: #8B7355;
+  }
+
+  .divider-line {
+    width: 120px;
+    height: 2px;
+    background: #1B3B6B;
+    margin-bottom: 28px;
+  }
+
+  .body-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 60px;
+    flex: 1;
+  }
+
+  .info-block {
+    position: relative;
+    padding-left: 20px;
+    border-left: 3px solid #1B3B6B;
+  }
+  .info-label {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.35em;
+    color: #8B7355;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+  .info-value {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 22px;
+    color: #1B3B6B;
+    line-height: 1.5;
+    font-weight: 500;
+  }
+  .info-value .em {
+    color: #8B7355;
+    font-weight: 700;
+  }
+  .info-value .mono {
+    font-family: 'Source Code Pro', 'Courier New', monospace;
+    font-size: 20px;
+    color: #1B3B6B;
+    letter-spacing: 0.02em;
+  }
+  .info-note {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 14px;
+    color: #555;
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+
+  .timeline-strip {
+    position: absolute;
+    bottom: 72px;
+    left: 148px;
+    right: 148px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 12;
+  }
+  .timeline-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .timeline-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #F5F0E8;
+    border: 2px solid #1B3B6B;
+  }
+  .timeline-dot.active {
+    background: #1B3B6B;
+  }
+  .timeline-dot.accent {
+    background: #8B7355;
+    border-color: #8B7355;
+  }
+  .timeline-year {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 13px;
+    color: #1B3B6B;
+    letter-spacing: 0.15em;
+    font-weight: 600;
+  }
+  .timeline-event {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    color: #555;
+    letter-spacing: 0.1em;
+  }
+  .timeline-connector {
+    flex: 1;
+    height: 1px;
+    background: #8B7355;
+    opacity: 0.5;
+    margin: 0 8px;
+    align-self: flex-start;
+    margin-top: 7px;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 24px;
+    left: 0;
+    width: 1600px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 60px;
+    z-index: 20;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    color: #8B7355;
+    letter-spacing: 0.3em;
+  }
+  .footer-left, .footer-right {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+  .footer-dot {
+    width: 5px;
+    height: 5px;
+    background: #8B7355;
+    border-radius: 50%;
+    opacity: 0.7;
+  }
+
+  /* corner ornaments */
+  .corner-tl, .corner-tr, .corner-bl, .corner-br {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    z-index: 11;
+  }
+  .corner-tl { top: 36px; left: 36px; border-top: 2px solid #1B3B6B; border-left: 2px solid #1B3B6B; }
+  .corner-tr { top: 36px; right: 36px; border-top: 2px solid #1B3B6B; border-right: 2px solid #1B3B6B; }
+  .corner-bl { bottom: 36px; left: 36px; border-bottom: 2px solid #1B3B6B; border-left: 2px solid #1B3B6B; }
+  .corner-br { bottom: 36px; right: 36px; border-bottom: 2px solid #1B3B6B; border-right: 2px solid #1B3B6B; }
+
+  .big-year {
+    position: absolute;
+    top: 120px;
+    right: 80px;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 200px;
+    font-weight: 900;
+    color: #1B3B6B;
+    opacity: 0.05;
+    line-height: 1;
+    z-index: 1;
+    letter-spacing: -0.05em;
+  }
+
+  .section-marker {
+    position: absolute;
+    top: 72px;
+    left: 100px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 10;
+  }
+  .section-marker .dot {
+    width: 10px;
+    height: 10px;
+    background: #1B3B6B;
+  }
+  .section-marker .label {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.4em;
+    color: #8B7355;
+    text-transform: uppercase;
+  }
+
+  .case-stamp {
+    position: absolute;
+    top: 100px;
+    right: 130px;
+    border: 1.5px solid #8B7355;
+    padding: 8px 20px;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 15px;
+    color: #8B7355;
+    letter-spacing: 0.3em;
+    z-index: 11;
+    transform: rotate(-3deg);
+    opacity: 0.85;
+  }
+</style>
+</head>
+<body>
+
+  <div class="parchment-texture"></div>
+
+  <!-- Corner ornaments -->
+  <div class="corner-tl"></div>
+  <div class="corner-tr"></div>
+  <div class="corner-bl"></div>
+  <div class="corner-br"></div>
+
+  <!-- Frame -->
+  <div class="frame"></div>
+  <div class="frame-inner"></div>
+
+  <!-- Bauhaus geometric decorations -->
+  <div class="bauhaus-circle-lg"></div>
+  <div class="bauhaus-circle-md"></div>
+  <div class="bauhaus-circle-sm"></div>
+  <div class="bauhaus-square"></div>
+  <div class="bauhaus-square-outline"></div>
+  <div class="bauhaus-diagonal"></div>
+  <div class="bauhaus-horizontal"></div>
+  <div class="bauhaus-triangle"></div>
+
+  <!-- Large year watermark -->
+  <div class="big-year">1989</div>
+
+  <div class="content">
+
+    <div class="section-marker">
+      <div class="dot"></div>
+      <div class="label">Case Study · 案例分析</div>
+    </div>
+
+    <div class="case-stamp">优化 · OPTIMIZED</div>
+
+    <div style="height: 40px;"></div>
+
+    <div class="title-row">
+      <div class="title-main">Cygnus</div>
+      <div class="title-dash"></div>
+      <div class="subtitle">开源商业化的<span class="accent">先驱实验</span></div>
+    </div>
+
+    <div class="divider-line"></div>
+
+    <div class="body-grid">
+
+      <div class="info-block">
+        <div class="info-label">Founding · 创立</div>
+        <div class="info-value"><span class="em">1989</span> 年</div>
+        <div class="info-note">Richard Stallman 参与支持，成为首个以开源软件为核心业务的商业实体。</div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-label">Product · 产品</div>
+        <div class="info-value"><span class="mono">GNUPro Developers Kit</span></div>
+        <div class="info-note">GNU 工具链的官方商业发行版，面向企业与开发者提供技术支撑。</div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-label">FOSS Projects · 核心贡献</div>
+        <div class="info-value"><span class="mono">GCC</span> &nbsp;·&nbsp; <span class="mono">GDB</span></div>
+        <div class="info-note">为自由软件基金会维护 GNU 编译器集合与调试器。</div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-label">Milestone · 里程碑</div>
+        <div class="info-value"><span class="em">1997</span> · 世界 500 强软件企业</div>
+        <div class="info-note">在开源商业化早期便取得行业认可。</div>
+      </div>
+
+    </div>
+
+    <!-- Timeline -->
+    <div class="timeline-strip">
+      <div class="timeline-node">
+        <div class="timeline-dot active"></div>
+        <div class="timeline-year">1989</div>
+        <div class="timeline-event">成立</div>
+      </div>
+      <div class="timeline-connector"></div>
+      <div class="timeline-node">
+        <div class="timeline-dot active"></div>
+        <div class="timeline-year">1997</div>
+        <div class="timeline-event">TOP 500</div>
+      </div>
+      <div class="timeline-connector"></div>
+      <div class="timeline-node">
+        <div class="timeline-dot accent"></div>
+        <div class="timeline-year">1999</div>
+        <div class="timeline-event">被 RedHat 收购</div>
+      </div>
+      <div class="timeline-connector"></div>
+      <div class="timeline-node">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">1999.11</div>
+        <div class="timeline-event" style="color:#8B7355; font-weight:600;">$674 M</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div class="footer-left">
+      <span>开源之道 · 新制度经济学视角</span>
+      <span class="footer-dot"></span>
+      <span>第 03 期</span>
+    </div>
+    <div class="footer-right">
+      <span>商业模式 · 规则下的具体操作</span>
+      <span class="footer-dot"></span>
+      <span>07 / 30</span>
+    </div>
+  </div>
+
+</body>
+</html>

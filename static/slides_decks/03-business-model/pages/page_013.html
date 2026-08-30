@@ -1,255 +1,616 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: 6b2db5bfe318aa48 --><head><meta charset="UTF-8"><title>开源软件的性质</title><style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1600px;height:900px;overflow:hidden;margin:0;font-family:'Noto Sans SC','Source Han Sans SC','PingFang SC',sans-serif}
-body{background:#F5F0E8;position:relative;color:#1B3B6B}
+<!DOCTYPE html>
+<html><!-- source_hash: f4c2e82bc3ac52cf -->
+<head>
+<meta charset="UTF-8">
+<title>第 03 期 · 开源软件的性质</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
 
-/* subtle parchment texture */
-body::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;background:
-  radial-gradient(ellipse at 20% 10%, rgba(139,115,85,0.04) 0%, transparent 50%),
-  radial-gradient(ellipse at 80% 90%, rgba(27,59,107,0.03) 0%, transparent 50%);
-pointer-events:none;z-index:0}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* header rule */
-.top-rule{position:absolute;top:50px;left:80px;width:1440px;height:1px;background:#1B3B6B;z-index:2}
-.top-rule-thin{position:absolute;top:56px;left:80px;width:1440px;height:1px;background:#1B3B6B;opacity:0.3;z-index:2}
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
+  background: #F5F0E8;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: #1B3B6B;
+}
 
-/* section label */
-.section-label{position:absolute;top:24px;left:80px;font-size:11px;letter-spacing:4px;color:#8B7355;z-index:3;font-weight:500}
-.section-label-right{position:absolute;top:24px;right:80px;font-size:11px;letter-spacing:4px;color:#8B7355;z-index:3;font-weight:500}
+.slide {
+  position: relative;
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  background: #F5F0E8;
+}
 
-/* main title */
-.main-title{position:absolute;top:78px;left:80px;font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:52px;font-weight:700;color:#1B3B6B;letter-spacing:2px;z-index:3;line-height:1.1}
-.main-title-sub{position:absolute;top:148px;left:84px;font-size:14px;letter-spacing:6px;color:#8B7355;z-index:3;font-weight:400}
+/* Subtle parchment texture via radial gradient */
+.slide::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background:
+    radial-gradient(ellipse at 20% 80%, rgba(27,59,107,0.015) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(139,115,85,0.02) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
 
-/* vertical accent bar */
-.accent-bar{position:absolute;top:78px;left:580px;width:3px;height:74px;background:#1B3B6B;z-index:3}
-.accent-square{position:absolute;top:78px;left:700px;width:12px;height:12px;background:#1B3B6B;z-index:3}
-.accent-circle{position:absolute;top:134px;left:700px;width:12px;height:12px;border:2px solid #1B3B6B;border-radius:50%;z-index:3}
+/* Top decorative line */
+.top-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: #1B3B6B;
+  z-index: 2;
+}
 
-/* shopping cart perspective illustration area */
-.illust-area{position:absolute;top:200px;left:50px;width:750px;height:620px;z-index:2;overflow:hidden}
+.top-line-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 320px;
+  height: 6px;
+  background: #8B7355;
+  z-index: 3;
+}
 
-.floor-line{position:absolute;bottom:0;left:0;width:750px;height:1px;background:#1B3B6B;opacity:0.2}
-.floor-line2{position:absolute;top:50%;left:0;width:750px;height:1px;background:#1B3B6B;opacity:0.12}
+/* Header area */
+.header {
+  position: absolute;
+  top: 30px;
+  left: 80px;
+  z-index: 5;
+}
 
-/* cart row container */
-.cart-row{position:absolute;display:flex;align-items:flex-end;justify-content:center;gap:0}
+.header-meta {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  color: #8B7355;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
 
-/* individual cart - geometric construction */
-.cart{position:relative;display:inline-block}
-.cart .basket{background:transparent;border:2px solid #1B3B6B;position:relative}
-.cart .basket-inner{position:absolute;top:6px;left:6px;right:6px;bottom:6px;border:1px solid #1B3B6B;opacity:0.4}
-.cart .handle{position:absolute;width:2px;background:#1B3B6B}
-.cart .handle-bar{position:absolute;height:2px;background:#1B3B6B}
-.cart .wheel{width:14px;height:14px;border:2px solid #1B3B6B;border-radius:50%;position:absolute;bottom:-7px}
-.cart .axle{position:absolute;width:2px;background:#1B3B6B;opacity:0.5}
+.header-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #555;
+  letter-spacing: 1px;
+}
 
-/* row labels */
-.row-label{position:absolute;font-size:10px;letter-spacing:3px;color:#8B7355;font-weight:400}
-.row-label-l{left:10px}
-.row-label-r{right:10px}
+/* Main content area */
+.content-area {
+  position: absolute;
+  top: 90px;
+  left: 80px;
+  width: 720px;
+  z-index: 5;
+}
 
-/* perspective lines */
-.perspective-line{position:absolute;background:#1B3B6B;opacity:0.15}
+.slide-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 42px;
+  font-weight: 900;
+  color: #1B3B6B;
+  line-height: 1.25;
+  margin-bottom: 12px;
+  letter-spacing: -0.5px;
+}
 
-/* right panel */
-.right-panel{position:absolute;top:200px;left:850px;width:670px;z-index:3}
+.slide-subtitle {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #8B7355;
+  margin-bottom: 36px;
+  letter-spacing: 0.5px;
+}
 
-.bullet-num{font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:2px;font-weight:600;margin-bottom:6px;display:flex;align-items:center;gap:10px}
-.bullet-num .num-circle{width:22px;height:22px;border:1.5px solid #1B3B6B;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:11px;color:#1B3B6B;letter-spacing:0}
-.bullet-text{font-family:'Noto Serif SC',serif;font-size:20px;font-weight:500;color:#1B3B6B;line-height:1.5;padding-bottom:18px;border-bottom:1px solid rgba(27,59,107,0.15);padding-left:32px}
-.bullet-text .key{color:#1B3B6B;font-weight:700}
-.bullet-text .em{color:#8B7355;font-weight:600}
+/* Divider */
+.divider {
+  width: 60px;
+  height: 3px;
+  background: #1B3B6B;
+  margin-bottom: 28px;
+}
 
-/* bottom decorative elements */
-.bottom-rule{position:absolute;bottom:40px;left:80px;width:1440px;height:1px;background:#1B3B6B;opacity:0.4;z-index:3}
-.bottom-meta-l{position:absolute;bottom:18px;left:80px;font-size:10px;letter-spacing:3px;color:#8B7355;z-index:3}
-.bottom-meta-r{position:absolute;bottom:18px;right:80px;font-size:10px;letter-spacing:3px;color:#8B7355;z-index:3}
+/* Bullet points */
+.bullets {
+  list-style: none;
+  padding: 0;
+}
 
-/* vanishing point marker */
-.vanishing-point{position:absolute;top:0px;left:375px;width:6px;height:6px;background:#1B3B6B;border-radius:50%;transform:translate(-50%,-50%);z-index:3}
-.vp-label{position:absolute;top:14px;left:375px;font-size:9px;letter-spacing:2px;color:#8B7355;z-index:3;transform:translateX(-50%)}
+.bullets li {
+  position: relative;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  color: #1B3B6B;
+  line-height: 1.6;
+  padding-left: 28px;
+  margin-bottom: 16px;
+}
 
-/* caption for illustration */
-.illust-caption{position:absolute;bottom:8px;left:0;width:750px;text-align:center;font-size:11px;letter-spacing:4px;color:#555;z-index:3;font-style:italic}
+.bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 10px;
+  height: 10px;
+  background: #1B3B6B;
+}
 
-/* geometric decorations */
-.deco-square-tl{position:absolute;top:160px;left:700px;width:8px;height:8px;background:#8B7355;z-index:3}
-.deco-line-vert{position:absolute;top:200px;left:830px;width:1px;height:580px;background:#1B3B6B;opacity:0.2;z-index:2}
-</style></head><body>
+.bullets li.emphasis {
+  font-weight: 600;
+  font-size: 18px;
+}
 
-<div class="section-label">NEW INSTITUTIONAL ECONOMICS × OPEN SOURCE</div>
-<div class="section-label-right">LECTURE · 04 / 12</div>
+.bullets li.emphasis::before {
+  background: #8B7355;
+}
 
-<div class="top-rule"></div>
-<div class="top-rule-thin"></div>
+.bullets li .sub {
+  display: block;
+  font-size: 14px;
+  color: #555;
+  font-weight: 300;
+  margin-top: 4px;
+  line-height: 1.5;
+}
 
-<div class="main-title">开源软件的性质</div>
-<div class="main-title-sub">THE NATURE OF OPEN SOURCE SOFTWARE</div>
+/* Right side - Visual metaphor area */
+.visual-area {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 720px;
+  height: 900px;
+  z-index: 2;
+  overflow: hidden;
+}
 
-<div class="accent-bar"></div>
-<div class="accent-square"></div>
-<div class="accent-circle"></div>
+/* Perspective vanishing point lines */
+.vp-line {
+  position: absolute;
+  height: 1px;
+  background: rgba(27,59,107,0.08);
+}
 
-<!-- Illustration: shopping carts in perspective -->
-<div class="illust-area">
-  <div class="floor-line"></div>
-  <div class="floor-line2"></div>
+.vp-line-1 { top: 100px; right: 0; width: 720px; }
+.vp-line-2 { top: 250px; right: 0; width: 680px; }
+.vp-line-3 { top: 400px; right: 0; width: 640px; }
+.vp-line-4 { top: 550px; right: 0; width: 600px; }
+.vp-line-5 { top: 700px; right: 0; width: 560px; }
+.vp-line-6 { top: 850px; right: 0; width: 520px; }
 
-  <!-- perspective converging lines -->
-  <div class="perspective-line" style="top:0;left:80px;height:620px;width:1px;"></div>
-  <div class="perspective-line" style="top:0;left:670px;height:620px;width:1px;"></div>
-  <div class="perspective-line" style="top:0;left:100px;height:620px;width:1px;"></div>
-  <div class="perspective-line" style="top:0;left:650px;height:620px;width:1px;"></div>
-  <div class="perspective-line" style="top:0;left:200px;height:620px;width:1px;opacity:0.08;"></div>
-  <div class="perspective-line" style="top:0;left:550px;height:620px;width:1px;opacity:0.08;"></div>
-  <div class="perspective-line" style="top:0;left:300px;height:620px;width:1px;opacity:0.06;"></div>
-  <div class="perspective-line" style="top:0;left:450px;height:620px;width:1px;opacity:0.06;"></div>
+/* Shopping cart shapes - receding into distance */
+.cart-row {
+  position: absolute;
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+}
 
-  <div class="vanishing-point"></div>
-  <div class="vp-label">VANISHING POINT · 秩序之极</div>
+.cart {
+  position: relative;
+}
 
-  <!-- Row 4: farthest, smallest -->
-  <div class="cart-row" style="top:30px;left:320px;">
-    <div class="cart">
-      <div class="basket" style="width:32px;height:22px;">
-        <div class="basket-inner"></div>
-        <div class="wheel" style="left:2px;"></div>
-        <div class="wheel" style="right:2px;"></div>
-        <div class="handle" style="left:28px;top:-12px;height:14px;"></div>
-        <div class="handle-bar" style="left:26px;top:-12px;width:10px;"></div>
+/* Cart body - square */
+.cart-body {
+  position: relative;
+  background: #1B3B6B;
+}
+
+/* Cart wheels */
+.cart-wheel {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid #1B3B6B;
+  background: #F5F0E8;
+}
+
+/* Cart handle */
+.cart-handle {
+  position: absolute;
+  width: 2px;
+  background: #1B3B6B;
+}
+
+/* Row 1 - nearest, largest */
+.cart-row-1 {
+  top: 420px;
+  right: 100px;
+  transform: perspective(800px) rotateX(0deg);
+}
+
+.cart-row-1 .cart { width: 120px; }
+.cart-row-1 .cart-body { width: 100px; height: 80px; }
+.cart-row-1 .cart-wheel { width: 18px; height: 18px; bottom: -9px; }
+.cart-row-1 .cart-wheel:nth-child(2) { left: 10px; }
+.cart-row-1 .cart-wheel:nth-child(3) { right: 10px; }
+.cart-row-1 .cart-handle { height: 35px; top: -35px; right: 15px; transform: rotate(-20deg); transform-origin: bottom right; }
+
+/* Row 2 - slightly further */
+.cart-row-2 {
+  top: 300px;
+  right: 130px;
+}
+
+.cart-row-2 .cart { width: 100px; }
+.cart-row-2 .cart-body { width: 82px; height: 66px; }
+.cart-row-2 .cart-wheel { width: 15px; height: 15px; bottom: -7px; }
+.cart-row-2 .cart-wheel:nth-child(2) { left: 8px; }
+.cart-row-2 .cart-wheel:nth-child(3) { right: 8px; }
+.cart-row-2 .cart-handle { height: 28px; top: -28px; right: 12px; transform: rotate(-20deg); transform-origin: bottom right; }
+
+/* Row 3 */
+.cart-row-3 {
+  top: 210px;
+  right: 155px;
+}
+
+.cart-row-3 .cart { width: 85px; }
+.cart-row-3 .cart-body { width: 68px; height: 55px; }
+.cart-row-3 .cart-wheel { width: 12px; height: 12px; bottom: -6px; }
+.cart-row-3 .cart-wheel:nth-child(2) { left: 7px; }
+.cart-row-3 .cart-wheel:nth-child(3) { right: 7px; }
+.cart-row-3 .cart-handle { height: 23px; top: -23px; right: 10px; transform: rotate(-20deg); transform-origin: bottom right; }
+
+/* Row 4 */
+.cart-row-4 {
+  top: 145px;
+  right: 175px;
+}
+
+.cart-row-4 .cart { width: 72px; }
+.cart-row-4 .cart-body { width: 56px; height: 44px; }
+.cart-row-4 .cart-wheel { width: 10px; height: 10px; bottom: -5px; }
+.cart-row-4 .cart-wheel:nth-child(2) { left: 6px; }
+.cart-row-4 .cart-wheel:nth-child(3) { right: 6px; }
+.cart-row-4 .cart-handle { height: 18px; top: -18px; right: 8px; transform: rotate(-20deg); transform-origin: bottom right; }
+
+/* Row 5 - farthest */
+.cart-row-5 {
+  top: 100px;
+  right: 190px;
+}
+
+.cart-row-5 .cart { width: 62px; }
+.cart-row-5 .cart-body { width: 46px; height: 36px; }
+.cart-row-5 .cart-wheel { width: 8px; height: 8px; bottom: -4px; }
+.cart-row-5 .cart-wheel:nth-child(2) { left: 5px; }
+.cart-row-5 .cart-wheel:nth-child(3) { right: 5px; }
+.cart-row-5 .cart-handle { height: 14px; top: -14px; right: 7px; transform: rotate(-20deg); transform-origin: bottom right; }
+
+/* Cart opacity fade for depth */
+.cart-row-1 .cart { opacity: 1; }
+.cart-row-2 .cart { opacity: 0.85; }
+.cart-row-3 .cart { opacity: 0.7; }
+.cart-row-4 .cart { opacity: 0.55; }
+.cart-row-5 .cart { opacity: 0.4; }
+
+/* Big circle - Bauhaus element */
+.bauhaus-circle {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.circle-main {
+  width: 260px;
+  height: 260px;
+  border: 3px solid rgba(27,59,107,0.12);
+  top: 480px;
+  right: -60px;
+}
+
+.circle-small {
+  width: 80px;
+  height: 80px;
+  background: rgba(139,115,85,0.08);
+  top: 540px;
+  right: 20px;
+}
+
+/* Vertical line - Bauhaus element */
+.bauhaus-vline {
+  position: absolute;
+  width: 2px;
+  background: rgba(27,59,107,0.1);
+}
+
+.vline-1 { top: 80px; right: 80px; height: 180px; }
+.vline-2 { top: 620px; right: 60px; height: 200px; }
+
+/* Horizontal accent line */
+.bauhaus-hline {
+  position: absolute;
+  height: 2px;
+  background: #8B7355;
+  opacity: 0.3;
+}
+
+.hline-1 { top: 700px; right: 40px; width: 180px; }
+.hline-2 { top: 760px; right: 40px; width: 120px; }
+
+/* Square accent */
+.bauhaus-square {
+  position: absolute;
+  background: rgba(27,59,107,0.06);
+}
+
+.square-1 { top: 60px; right: 180px; width: 40px; height: 40px; }
+.square-2 { top: 820px; right: 100px; width: 60px; height: 60px; background: rgba(139,115,85,0.1); }
+
+/* Bottom bar */
+.bottom-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #1B3B6B;
+  z-index: 2;
+}
+
+.bottom-bar-accent {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 200px;
+  height: 4px;
+  background: #8B7355;
+  z-index: 3;
+}
+
+/* Footer info */
+.footer {
+  position: absolute;
+  bottom: 20px;
+  left: 80px;
+  right: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 5;
+}
+
+.footer-left {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 1.5px;
+}
+
+.footer-right {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: #555;
+  letter-spacing: 1px;
+}
+
+/* Key concept highlight box */
+.concept-box {
+  position: absolute;
+  bottom: 80px;
+  left: 80px;
+  width: 400px;
+  border-left: 4px solid #1B3B6B;
+  padding: 16px 0 16px 20px;
+  z-index: 5;
+}
+
+.concept-box-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1B3B6B;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.concept-box-text {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  color: #555;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* Diagonal perspective lines from vanishing point */
+.diag-line {
+  position: absolute;
+  height: 1px;
+  background: rgba(27,59,107,0.06);
+  transform-origin: right center;
+}
+
+/* Ground line for carts */
+.ground-line {
+  position: absolute;
+  height: 1px;
+  background: rgba(27,59,107,0.15);
+}
+
+.ground-1 { bottom: 260px; right: 80px; width: 500px; }
+.ground-2 { bottom: 255px; right: 80px; width: 480px; }
+
+/* Number indicator */
+.num-indicator {
+  position: absolute;
+  top: 90px;
+  right: 80px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #8B7355;
+  letter-spacing: 2px;
+  z-index: 5;
+}
+
+/* Dot pattern */
+.dots {
+  position: absolute;
+  display: grid;
+  gap: 8px;
+}
+
+.dot {
+  width: 4px;
+  height: 4px;
+  background: rgba(139,115,85,0.3);
+  border-radius: 50%;
+}
+
+</style>
+</head>
+<body>
+<div class="slide">
+  <!-- Top decorative bar -->
+  <div class="top-line"></div>
+  <div class="top-line-accent"></div>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-meta">第 03 期 · 商业模式：规则下的具体操作</div>
+    <div class="header-num">§ 3.01 &nbsp;—&nbsp; 开源软件的性质</div>
+  </div>
+
+  <!-- Number indicator -->
+  <div class="num-indicator">03</div>
+
+  <!-- Main content -->
+  <div class="content-area">
+    <h1 class="slide-title">开源软件<br>仍然是软件</h1>
+    <div class="slide-subtitle">It is still software — defined by law, not by price.</div>
+
+    <div class="divider"></div>
+
+    <ul class="bullets">
+      <li class="emphasis">
+        开源软件的性质
+      </li>
+      <li>
+        人为的定义：法律和许可
+        <span class="sub">而非物理属性或经济形式</span>
+      </li>
+      <li>
+        源代码公开、复制、修改和再分发
+        <span class="sub">——四项核心自由，构成开源的制度基础</span>
+      </li>
+      <li>
+        放弃了收取许可费用
+        <span class="sub">——将排他性使用权从价值创造中剥离</span>
+      </li>
+      <li class="emphasis">
+        和排他权选择完全不同的道路
+      </li>
+    </ul>
+  </div>
+
+  <!-- Concept highlight box -->
+  <div class="concept-box">
+    <div class="concept-box-title">关键洞见</div>
+    <div class="concept-box-text">
+      开源不是"免费软件"的同义词。它是一种通过法律许可重构软件生产与分配关系的制度安排——放弃的是排他性收费权，而非产品本身的价值。
+    </div>
+  </div>
+
+  <!-- Visual area: Shopping carts in perspective -->
+  <div class="visual-area">
+    <!-- Ground lines -->
+    <div class="ground-line ground-1"></div>
+    <div class="ground-line ground-2"></div>
+
+    <!-- Horizontal perspective lines -->
+    <div class="vp-line vp-line-1"></div>
+    <div class="vp-line vp-line-2"></div>
+    <div class="vp-line vp-line-3"></div>
+    <div class="vp-line vp-line-4"></div>
+    <div class="vp-line vp-line-5"></div>
+    <div class="vp-line vp-line-6"></div>
+
+    <!-- Bauhaus geometric elements -->
+    <div class="bauhaus-circle circle-main"></div>
+    <div class="bauhaus-circle circle-small"></div>
+    <div class="bauhaus-vline vline-1"></div>
+    <div class="bauhaus-vline vline-2"></div>
+    <div class="bauhaus-hline hline-1"></div>
+    <div class="bauhaus-hline hline-2"></div>
+    <div class="bauhaus-square square-1"></div>
+    <div class="bauhaus-square square-2"></div>
+
+    <!-- Cart Row 5 - farthest (back) -->
+    <div class="cart-row cart-row-5">
+      <div class="cart">
+        <div class="cart-body"></div>
+        <div class="cart-wheel"></div>
+        <div class="cart-wheel"></div>
+        <div class="cart-handle"></div>
       </div>
     </div>
-    <div class="cart" style="margin-left:14px;">
-      <div class="basket" style="width:30px;height:20px;">
-        <div class="basket-inner"></div>
-        <div class="wheel" style="left:2px;width:10px;height:10px;bottom:-5px;"></div>
-        <div class="wheel" style="right:2px;width:10px;height:10px;bottom:-5px;"></div>
-        <div class="handle" style="left:26px;top:-10px;height:12px;"></div>
-        <div class="handle-bar" style="left:24px;top:-10px;width:8px;"></div>
+
+    <!-- Cart Row 4 -->
+    <div class="cart-row cart-row-4">
+      <div class="cart">
+        <div class="cart-body"></div>
+        <div class="cart-wheel"></div>
+        <div class="cart-wheel"></div>
+        <div class="cart-handle"></div>
       </div>
     </div>
-    <div class="cart" style="margin-left:12px;">
-      <div class="basket" style="width:28px;height:18px;">
-        <div class="basket-inner"></div>
-        <div class="wheel" style="left:2px;width:10px;height:10px;bottom:-5px;"></div>
-        <div class="wheel" style="right:2px;width:10px;height:10px;bottom:-5px;"></div>
-        <div class="handle" style="left:24px;top:-10px;height:12px;"></div>
-        <div class="handle-bar" style="left:22px;top:-10px;width:8px;"></div>
+
+    <!-- Cart Row 3 -->
+    <div class="cart-row cart-row-3">
+      <div class="cart">
+        <div class="cart-body"></div>
+        <div class="cart-wheel"></div>
+        <div class="cart-wheel"></div>
+        <div class="cart-handle"></div>
       </div>
     </div>
-    <div class="cart" style="margin-left:10px;">
-      <div class="basket" style="width:26px;height:16px;">
-        <div class="basket-inner"></div>
-        <div class="wheel" style="left:2px;width:8px;height:8px;bottom:-4px;"></div>
-        <div class="wheel" style="right:2px;width:8px;height:8px;bottom:-4px;"></div>
+
+    <!-- Cart Row 2 -->
+    <div class="cart-row cart-row-2">
+      <div class="cart">
+        <div class="cart-body"></div>
+        <div class="cart-wheel"></div>
+        <div class="cart-wheel"></div>
+        <div class="cart-handle"></div>
+      </div>
+    </div>
+
+    <!-- Cart Row 1 - nearest (front) -->
+    <div class="cart-row cart-row-1">
+      <div class="cart">
+        <div class="cart-body"></div>
+        <div class="cart-wheel"></div>
+        <div class="cart-wheel"></div>
+        <div class="cart-handle"></div>
       </div>
     </div>
   </div>
 
-  <!-- Row 3 -->
-  <div class="cart-row" style="top:110px;left:240px;">
-    <div class="cart">
-      <div class="basket" style="width:52px;height:36px;">
-        <div class="basket-inner"></div>
-        <div class="wheel" style="left:4px;"></div>
-        <div class="wheel" style="right:4px;"></div>
-        <div class="handle" style="left:44px;top:-18px;height:20px;"></div>
-        <div class="handle-bar" style="left:42px;top:-18px;width:14px;"></div>
-      </div>
-    </div>
-    <div class="cart" style="margin-left:20px;">
-      <div class="basket" style="width:48px;height:32px;">
-        <div class="basket-inner"></div>
-        <div class="wheel" style="left:4px;"></div>
-        <div class="wheel" style="right:4px;"></div>
-        <div class="handle" style="left:40px;top:-16px;height:18px;"></div>
-        <div class="handle-bar" style="left:38px;top:-16px;width:12px;"></div>
-      </div>
-    </div>
-    <div class="cart" style="margin-left:18px;">
-      <div class="basket" style="width:44px;height:30px;">
-        <div class="basket-inner"></div>
-        <div class="wheel" style="left:4px;"></div>
-        <div class="wheel" style="right:4px;"></div>
-      </div>
-    </div>
-  </div>
+  <!-- Bottom bar -->
+  <div class="bottom-bar"></div>
+  <div class="bottom-bar-accent"></div>
 
-  <!-- Row 2 -->
-  <div class="cart-row" style="top:240px;left:140px;">
-    <div class="cart">
-      <div class="basket" style="width:80px;height:56px;">
-        <div class="basket-inner"></div>
-        <div class="wheel" style="left:6px;"></div>
-        <div class="wheel" style="right:6px;"></div>
-        <div class="handle" style="left:68px;top:-26px;height:28px;"></div>
-        <div class="handle-bar" style="left:64px;top:-26px;width:20px;"></div>
-      </div>
-    </div>
-    <div class="cart" style="margin-left:32px;">
-      <div class="basket" style="width:74px;height:50px;">
-        <div class="basket-inner"></div>
-        <div class="wheel" style="left:6px;"></div>
-        <div class="wheel" style="right:6px;"></div>
-        <div class="handle" style="left:62px;top:-22px;height:24px;"></div>
-        <div class="handle-bar" style="left:58px;top:-22px;width:18px;"></div>
-      </div>
-    </div>
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-left">「开源之道」 · 新制度经济学视角</div>
+    <div class="footer-right">16 / 30</div>
   </div>
-
-  <!-- Row 1: closest, largest -->
-  <div class="cart-row" style="top:430px;left:80px;">
-    <div class="cart">
-      <div class="basket" style="width:120px;height:82px;">
-        <div class="basket-inner"></div>
-        <div class="wheel" style="left:10px;"></div>
-        <div class="wheel" style="right:10px;"></div>
-        <div class="handle" style="left:104px;top:-38px;height:40px;"></div>
-        <div class="handle-bar" style="left:98px;top:-38px;width:26px;"></div>
-      </div>
-    </div>
-    <div class="cart" style="margin-left:48px;">
-      <div class="basket" style="width:110px;height:74px;">
-        <div class="basket-inner"></div>
-        <div class="wheel" style="left:8px;"></div>
-        <div class="wheel" style="right:8px;"></div>
-        <div class="handle" style="left:94px;top:-34px;height:36px;"></div>
-        <div class="handle-bar" style="left:88px;top:-34px;width:22px;"></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="illust-caption">— 消费社会的秩序与待满足的欲望 —</div>
 </div>
-
-<!-- vertical separator -->
-<div class="deco-line-vert"></div>
-
-<!-- Right panel: bullet points -->
-<div class="right-panel">
-
-  <div class="bullet-num"><span class="num-circle">1</span> 基本命题</div>
-  <div class="bullet-text">开源软件<span class="key">仍然是软件</span></div>
-
-  <div class="bullet-num" style="margin-top:22px;"><span class="num-circle">2</span> 制度的介入</div>
-  <div class="bullet-text">人为的定义：<span class="key">法律</span>与<span class="key">许可</span></div>
-
-  <div class="bullet-num" style="margin-top:22px;"><span class="num-circle">3</span> 权利的让渡</div>
-  <div class="bullet-text">源代码<span class="em">公开、复制、修改与再分发</span></div>
-
-  <div class="bullet-num" style="margin-top:22px;"><span class="num-circle">4</span> 定价的放弃</div>
-  <div class="bullet-text">放弃了<span class="key">收取许可费用</span>的传统路径</div>
-
-  <div class="bullet-num" style="margin-top:22px;"><span class="num-circle">5</span> 范式之异</div>
-  <div class="bullet-text" style="border-bottom:none;">和<span class="em">排他权</span>选择完全不同的道路</div>
-
-</div>
-
-<div class="bottom-rule"></div>
-<div class="bottom-meta-l">开源之道 · 新制度经济学视角</div>
-<div class="bottom-meta-r">04 / 12 · NATURE OF OSS</div>
-
-</body></html>
+</body>
+</html>

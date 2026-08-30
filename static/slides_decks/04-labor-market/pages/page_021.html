@@ -1,235 +1,487 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: dd049f8f92831d71 --><head><meta charset="UTF-8"><title>思维互联 — 开源的价值网络</title><style>
-*{margin:0;padding:0;box-sizing:border-box;}
-html,body{width:1600px;height:900px;overflow:hidden;margin:0;font-family:'Noto Sans SC','Source Han Sans SC','PingFang SC',sans-serif;color:#1B3B6B;background:#F5F0E8;}
-.slide{position:relative;width:1600px;height:900px;overflow:hidden;}
+<!DOCTYPE html>
+<html><!-- source_hash: 3c3c51af158c904c -->
+<head>
+<meta charset="UTF-8">
+<title>开源的学习路径与价值</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1600px; height: 900px; overflow: hidden; margin: 0; }
+body {
+  background: #F5F0E8;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: #1B3B6B;
+  position: relative;
+}
 
-/* subtle parchment texture */
-.slide::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;background:radial-gradient(ellipse at 20% 15%, rgba(139,115,85,0.06) 0%, transparent 50%),radial-gradient(ellipse at 85% 90%, rgba(27,59,107,0.05) 0%, transparent 50%),radial-gradient(ellipse at 50% 50%, rgba(245,240,232,0) 0%, rgba(139,115,85,0.03) 100%);pointer-events:none;z-index:0;}
+/* Parchment texture overlay */
+.parchment {
+  position: absolute;
+  top: 0; left: 0;
+  width: 1600px; height: 900px;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(139, 115, 85, 0.015) 2px,
+    rgba(139, 115, 85, 0.015) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
 
-/* header bar */
-.header-bar{position:absolute;top:0;left:0;width:1600px;height:6px;background:#1B3B6B;z-index:2;}
-.header-bar-accent{position:absolute;top:0;left:0;width:520px;height:6px;background:#8B7355;z-index:2;}
+/* Top header bar */
+.header-bar {
+  position: absolute;
+  top: 0; left: 0;
+  width: 1600px; height: 4px;
+  background: #1B3B6B;
+  z-index: 10;
+}
 
-/* page number / meta */
-.meta-left{position:absolute;top:28px;left:60px;font-family:'Noto Serif SC',serif;font-size:13px;letter-spacing:4px;color:#8B7355;z-index:3;}
-.meta-right{position:absolute;top:28px;right:60px;font-family:'Noto Serif SC',serif;font-size:13px;letter-spacing:3px;color:#8B7355;z-index:3;}
+.slide-number {
+  position: absolute;
+  top: 30px; right: 48px;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 14px;
+  color: #8B7355;
+  letter-spacing: 2px;
+  z-index: 10;
+}
 
-/* vertical rule left */
-.v-rule{position:absolute;top:80px;left:60px;width:1px;height:740px;background:#1B3B6B;opacity:0.15;z-index:2;}
+.section-label {
+  position: absolute;
+  top: 30px; left: 48px;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 13px;
+  color: #8B7355;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  z-index: 10;
+}
 
-/* title block */
-.title-block{position:absolute;top:70px;left:100px;z-index:3;}
-.title-num{font-family:'Noto Serif SC',serif;font-size:14px;letter-spacing:6px;color:#8B7355;margin-bottom:18px;}
-.title-main{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:52px;font-weight:700;line-height:1.15;color:#1B3B6B;letter-spacing:2px;}
-.title-sub{font-family:'Noto Serif SC',serif;font-size:20px;font-weight:400;color:#555;margin-top:22px;letter-spacing:3px;line-height:1.6;}
-.title-line{width:120px;height:2px;background:#1B3B6B;margin-top:28px;}
-.title-line-copper{width:60px;height:2px;background:#8B7355;margin-top:8px;}
+/* Visual metaphor - interconnected circles */
+.network-container {
+  position: absolute;
+  top: 80px;
+  left: 48px;
+  width: 380px;
+  height: 320px;
+  z-index: 5;
+}
 
-/* LEFT: geometric network composition */
-.geo-area{position:absolute;top:340px;left:70px;width:620px;height:460px;z-index:2;}
+.node {
+  position: absolute;
+  border-radius: 50%;
+  background: #1B3B6B;
+}
 
-/* connecting lines */
-.conn-line{position:absolute;background:#1B3B6B;opacity:0.25;}
-.cl1{top:90px;left:50px;width:280px;height:1px;transform:rotate(28deg);transform-origin:left center;}
-.cl2{top:140px;left:150px;width:220px;height:1px;transform:rotate(-15deg);transform-origin:left center;}
-.cl3{top:250px;left:80px;width:260px;height:1px;transform:rotate(40deg);transform-origin:left center;}
-.cl4{top:310px;left:160px;width:300px;height:1px;opacity:0.2;}
-.cl5{top:180px;left:200px;width:200px;height:1px;transform:rotate(55deg);transform-origin:left center;}
-.cl6{top:80px;left:350px;width:180px;height:1px;transform:rotate(60deg);transform-origin:left center;}
-.cl7{top:380px;left:60px;width:400px;height:1px;opacity:0.18;}
+.node-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1.5px solid #1B3B6B;
+  background: transparent;
+}
 
-/* nodes (circles) */
-.node{position:absolute;border-radius:50%;}
-.node-solid{background:#1B3B6B;}
-.node-ring{border:2px solid #1B3B6B;background:transparent;}
-.node-copper{background:#8B7355;}
-.node-copper-ring{border:2px solid #8B7355;background:transparent;}
+.node-fill-light {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(27, 59, 107, 0.08);
+}
 
-.n1{top:60px;left:30px;width:48px;height:48px;}
-.n2{top:180px;left:180px;width:34px;height:34px;}
-.n3{top:270px;left:80px;width:58px;height:58px;}
-.n4{top:130px;left:400px;width:28px;height:28px;}
-.n5{top:320px;left:200px;width:22px;height:22px;}
-.n6{top:200px;left:350px;width:44px;height:44px;}
-.n7{top:380px;left:120px;width:38px;height:38px;}
-.n8{top:70px;left:440px;width:20px;height:20px;}
-.n9{top:350px;left:380px;width:30px;height:30px;}
-.n10{top:280px;left:450px;width:16px;height:16px;}
+.connection-line {
+  position: absolute;
+  background: #1B3B6B;
+  z-index: 3;
+}
 
-/* central square */
-.cen-square{position:absolute;top:200px;left:290px;width:60px;height:60px;background:#F5F0E8;border:2px solid #1B3B6B;}
-.cen-square-inner{position:absolute;top:215px;left:305px;width:30px;height:30px;background:#1B3B6B;}
+/* Title area */
+.title-area {
+  position: absolute;
+  top: 90px;
+  left: 480px;
+  width: 1080px;
+  z-index: 10;
+}
 
-/* geo label */
-.geo-label{position:absolute;top:440px;left:70px;font-family:'Noto Serif SC',serif;font-size:15px;letter-spacing:3px;color:#8B7355;z-index:3;line-height:1.8;}
-.geo-label em{font-style:normal;color:#1B3B6B;}
+.main-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: #1B3B6B;
+  line-height: 1.25;
+  margin-bottom: 14px;
+}
 
-/* RIGHT: content */
-.right-panel{position:absolute;top:210px;left:750px;width:800px;z-index:3;}
+.subtitle {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 16px;
+  color: #8B7355;
+  letter-spacing: 1px;
+  line-height: 1.7;
+}
 
-.content-section{margin-bottom:0;}
-.section-label{font-family:'Noto Serif SC',serif;font-size:12px;letter-spacing:5px;color:#8B7355;margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid rgba(27,59,107,0.2);}
-.section-label-cn{font-family:'Noto Serif SC',serif;font-size:15px;color:#1B3B6B;letter-spacing:3px;margin-bottom:24px;}
+.subtitle-italic {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-style: italic;
+  font-size: 15px;
+  color: #555;
+  margin-top: 6px;
+}
 
-.bullets{list-style:none;padding:0;margin:0;}
-.bullet{display:flex;align-items:flex-start;margin-bottom:22px;padding-left:0;}
-.bullet-num{flex-shrink:0;width:38px;height:38px;border:1.5px solid #1B3B6B;background:#F5F0E8;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif SC',serif;font-size:14px;color:#1B3B6B;letter-spacing:1px;margin-right:20px;border-radius:50%;}
-.bullet-num.copper{border-color:#8B7355;color:#8B7355;}
-.bullet-num.solid{background:#1B3B6B;color:#F5F0E8;border-color:#1B3B6B;}
-.bullet-num.copper-solid{background:#8B7355;color:#F5F0E8;border-color:#8B7355;}
+/* Divider line */
+.divider {
+  position: absolute;
+  top: 255px;
+  left: 480px;
+  width: 1080px;
+  height: 1px;
+  background: #1B3B6B;
+  opacity: 0.3;
+  z-index: 10;
+}
 
-.bullet-text{flex:1;padding-top:7px;}
-.bullet-title{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:18px;font-weight:600;color:#1B3B6B;line-height:1.4;letter-spacing:1px;}
-.bullet-title .en{font-family:'Noto Sans SC',sans-serif;font-size:13px;color:#8B7355;font-weight:400;letter-spacing:2px;margin-left:8px;}
-.bullet-desc{font-family:'Noto Sans SC',sans-serif;font-size:13px;color:#555;line-height:1.6;margin-top:4px;letter-spacing:0.5px;}
+/* Content section */
+.content-area {
+  position: absolute;
+  top: 290px;
+  left: 48px;
+  width: 1504px;
+  height: 570px;
+  z-index: 10;
+}
 
-/* footer */
-.footer-bar{position:absolute;bottom:0;left:0;width:1600px;height:4px;background:#1B3B6B;z-index:2;}
-.footer-accent{position:absolute;bottom:4px;left:0;width:320px;height:4px;background:#8B7355;z-index:3;}
+/* Left column - visual description */
+.visual-desc {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 380px;
+  height: 200px;
+}
 
-/* decorative corner elements */
-.corner-tl{position:absolute;top:60px;left:60px;width:20px;height:20px;border-top:2px solid #1B3B6B;border-left:2px solid #1B3B6B;z-index:3;}
-.corner-tr{position:absolute;top:60px;right:60px;width:20px;height:20px;border-top:2px solid #1B3B6B;border-right:2px solid #1B3B6B;z-index:3;}
-.corner-bl{position:absolute;bottom:50px;left:60px;width:20px;height:20px;border-bottom:2px solid #1B3B6B;border-left:2px solid #1B3B6B;z-index:3;}
-.corner-br{position:absolute;bottom:50px;right:60px;width:20px;height:20px;border-bottom:2px solid #1B3B6B;border-right:2px solid #1B3B6B;z-index:3;}
+.visual-desc-text {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 14px;
+  color: #555;
+  line-height: 1.9;
+  padding-left: 16px;
+  border-left: 2px solid #8B7355;
+}
 
-/* right side decorative */
-.right-deco{position:absolute;top:90px;left:750px;width:800px;height:100px;z-index:2;}
-.deco-circle{position:absolute;border:1.5px solid #1B3B6B;border-radius:50%;opacity:0.3;}
-.dc1{top:0;left:0;width:80px;height:80px;}
-.dc2{top:20px;left:100px;width:40px;height:40px;background:#8B7355;border-color:#8B7355;opacity:0.8;}
-.deco-line-h{position:absolute;top:50px;left:170px;width:500px;height:1px;background:#1B3B6B;opacity:0.2;}
-.deco-square{position:absolute;top:5px;left:680px;width:30px;height:30px;background:#1B3B6B;}
-.deco-square2{position:absolute;top:40px;left:730px;width:14px;height:14px;background:#8B7355;}
-.deco-dot{position:absolute;top:55px;left:800px;width:6px;height:6px;background:#1B3B6B;border-radius:50%;}
+.visual-desc-label {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  padding-left: 16px;
+  text-transform: uppercase;
+}
 
-</style></head><body>
-<div class="slide">
-  <div class="header-bar"></div>
-  <div class="header-bar-accent"></div>
+/* Right column - content points */
+.points-column {
+  position: absolute;
+  top: 0;
+  left: 432px;
+  width: 1072px;
+  height: 570px;
+}
 
-  <div class="corner-tl"></div>
-  <div class="corner-tr"></div>
-  <div class="corner-bl"></div>
-  <div class="corner-br"></div>
+.points-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 32px;
+}
 
-  <div class="meta-left">05 / OPEN SOURCE ECONOMICS</div>
-  <div class="meta-right">新制度经济学视角</div>
+.point-item {
+  position: relative;
+  padding: 18px 20px 18px 22px;
+  border-left: 3px solid #1B3B6B;
+  background: rgba(27, 59, 107, 0.03);
+}
 
-  <div class="v-rule"></div>
+.point-item.accent {
+  border-left-color: #8B7355;
+  background: rgba(139, 115, 85, 0.04);
+}
 
-  <!-- title -->
-  <div class="title-block">
-    <div class="title-num">CHAPTER · 05</div>
-    <div class="title-main">思维互联</div>
-    <div class="title-sub">共享内心记忆与生活万象 —— 开源的价值网络</div>
-    <div class="title-line"></div>
-    <div class="title-line-copper"></div>
-  </div>
+.point-index {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 12px;
+  color: #8B7355;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
 
-  <!-- LEFT: geometric network -->
-  <div class="geo-area">
-    <div class="conn-line cl1"></div>
-    <div class="conn-line cl2"></div>
-    <div class="conn-line cl3"></div>
-    <div class="conn-line cl4"></div>
-    <div class="conn-line cl5"></div>
-    <div class="conn-line cl6"></div>
-    <div class="conn-line cl7"></div>
+.point-text {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+  color: #1B3B6B;
+  line-height: 1.5;
+}
 
-    <div class="node node-solid n1"></div>
-    <div class="node node-ring n2"></div>
-    <div class="node node-solid n3"></div>
-    <div class="node node-copper n4"></div>
-    <div class="node node-ring n5"></div>
-    <div class="node node-copper-ring n6"></div>
-    <div class="node node-solid n7"></div>
-    <div class="node node-copper n8"></div>
-    <div class="node node-ring n9"></div>
-    <div class="node node-solid n10"></div>
+.point-text.small {
+  font-size: 15px;
+  font-weight: 400;
+  color: #555;
+  line-height: 1.6;
+}
 
-    <div class="cen-square"></div>
-    <div class="cen-square-inner"></div>
-  </div>
+.point-emphasis {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 15px;
+  color: #8B7355;
+  margin-top: 4px;
+  font-style: italic;
+}
 
-  <div class="geo-label">
-    <em>NODE</em> · 节点 &nbsp;&nbsp; <em>LINK</em> · 连接 &nbsp;&nbsp; <em>CORE</em> · 核心<br>
-    <span style="font-size:12px;opacity:0.7;">每一个贡献者都是网络中的一个节点，知识在此交汇。</span>
-  </div>
+/* Large number emphasis */
+.key-quote {
+  position: relative;
+  padding: 18px 20px;
+  border-left: 3px solid #1B3B6B;
+  background: rgba(27, 59, 107, 0.05);
+}
 
-  <!-- RIGHT decorative -->
-  <div class="right-deco">
-    <div class="deco-circle dc1"></div>
-    <div class="deco-circle dc2"></div>
-    <div class="deco-line-h"></div>
-    <div class="deco-square"></div>
-    <div class="deco-square2"></div>
-    <div class="deco-dot"></div>
-  </div>
+.key-quote-text {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 16px;
+  color: #1B3B6B;
+  font-weight: 600;
+  line-height: 1.5;
+}
 
-  <!-- RIGHT: content -->
-  <div class="right-panel">
-    <div class="content-section">
-      <div class="section-label">VALUE OF OPEN SOURCE</div>
-      <div class="section-label-cn">参与开源的七个价值维度</div>
+.key-quote-sub {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  color: #8B7355;
+  margin-top: 4px;
+}
 
-      <ul class="bullets">
-        <li class="bullet">
-          <span class="bullet-num solid">01</span>
-          <div class="bullet-text">
-            <div class="bullet-title">开源的学习路径 <span class="en">Learning by contributing</span></div>
-            <div class="bullet-desc">在真实项目中贡献代码，在实践中习得工程与协作</div>
-          </div>
-        </li>
-        <li class="bullet">
-          <span class="bullet-num">02</span>
-          <div class="bullet-text">
-            <div class="bullet-title">个体参与开源的价值</div>
-            <div class="bullet-desc">技能积累、声誉建构、社群归属——个人人力资本的复利增长</div>
-          </div>
-        </li>
-        <li class="bullet">
-          <span class="bullet-num copper">03</span>
-          <div class="bullet-text">
-            <div class="bullet-title">企业参与开源项目的价值</div>
-            <div class="bullet-desc">降低研发成本、锁定人才、构建生态话语权</div>
-          </div>
-        </li>
-        <li class="bullet">
-          <span class="bullet-num">04</span>
-          <div class="bullet-text">
-            <div class="bullet-title">GPL 提供的公平竞争平台</div>
-            <div class="bullet-desc">以许可制度保障协作红利不被私有攫取，维护公共池</div>
-          </div>
-        </li>
-        <li class="bullet">
-          <span class="bullet-num copper-solid">05</span>
-          <div class="bullet-text">
-            <div class="bullet-title">项目本身即价值体现</div>
-            <div class="bullet-desc">代码仓库、文档、社区共识——制度化的知识资产</div>
-          </div>
-        </li>
-        <li class="bullet">
-          <span class="bullet-num solid">06</span>
-          <div class="bullet-text">
-            <div class="bullet-title">影响力即未来</div>
-            <div class="bullet-desc">开源贡献塑造个人品牌，影响力转化为长期议价能力</div>
-          </div>
-        </li>
-        <li class="bullet">
-          <span class="bullet-num copper">07</span>
-          <div class="bullet-text">
-            <div class="bullet-title">工作时间在开源共同体中是划算的</div>
-            <div class="bullet-desc">投入产出的复利曲线：协作网络放大每一份心智劳动</div>
-          </div>
-        </li>
-      </ul>
+/* Bottom bar */
+.bottom-bar {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 1600px; height: 3px;
+  background: #1B3B6B;
+  z-index: 10;
+}
+
+/* Decorative geometric elements */
+.deco-square {
+  position: absolute;
+  background: #1B3B6B;
+  z-index: 2;
+}
+
+.deco-square-outline {
+  position: absolute;
+  border: 1.5px solid #1B3B6B;
+  background: transparent;
+  z-index: 2;
+}
+
+.deco-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: #1B3B6B;
+  z-index: 2;
+}
+
+.deco-circle-outline {
+  position: absolute;
+  border-radius: 50%;
+  border: 1.5px solid #1B3B6B;
+  background: transparent;
+  z-index: 2;
+}
+
+.deco-line-v {
+  position: absolute;
+  width: 1px;
+  background: #1B3B6B;
+  opacity: 0.2;
+  z-index: 2;
+}
+
+.deco-line-h {
+  position: absolute;
+  height: 1px;
+  background: #1B3B6B;
+  opacity: 0.2;
+  z-index: 2;
+}
+
+.deco-square-copper {
+  position: absolute;
+  background: #8B7355;
+  z-index: 2;
+}
+
+/* Bottom left info */
+.bottom-info {
+  position: absolute;
+  bottom: 20px;
+  left: 48px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 1px;
+  z-index: 10;
+}
+
+.bottom-right-info {
+  position: absolute;
+  bottom: 20px;
+  right: 48px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 1px;
+  z-index: 10;
+}
+</style>
+</head>
+<body>
+
+<div class="parchment"></div>
+
+<!-- Header and bottom bars -->
+<div class="header-bar"></div>
+<div class="bottom-bar"></div>
+
+<!-- Top labels -->
+<div class="section-label">第 04 期 · 软件开发劳动力市场</div>
+<div class="slide-number">21 / 26</div>
+
+<!-- Decorative geometric elements - background -->
+<div class="deco-square" style="top: 620px; left: 20px; width: 12px; height: 12px;"></div>
+<div class="deco-circle-outline" style="top: 645px; left: 42px; width: 24px; height: 24px;"></div>
+<div class="deco-square-outline" style="top: 100px; right: 220px; width: 16px; height: 16px;"></div>
+<div class="deco-circle" style="top: 60px; left: 395px; width: 8px; height: 8px;"></div>
+<div class="deco-line-v" style="top: 255px; left: 424px; height: 570px;"></div>
+<div class="deco-square-copper" style="bottom: 60px; right: 40px; width: 6px; height: 6px;"></div>
+
+<!-- Network visual metaphor: interconnected circles -->
+<div class="network-container">
+  <!-- Connection lines between nodes -->
+  <div class="connection-line" style="top: 60px; left: 40px; width: 130px; height: 1px; transform: rotate(22deg); transform-origin: left center;"></div>
+  <div class="connection-line" style="top: 130px; left: 50px; width: 100px; height: 1px; transform: rotate(-15deg); transform-origin: left center;"></div>
+  <div class="connection-line" style="top: 150px; left: 130px; width: 90px; height: 1px; transform: rotate(28deg); transform-origin: left center;"></div>
+  <div class="connection-line" style="top: 60px; left: 170px; width: 80px; height: 1px; transform: rotate(45deg); transform-origin: left center;"></div>
+  <div class="connection-line" style="top: 100px; left: 140px; width: 120px; height: 1px; transform: rotate(-30deg); transform-origin: left center;"></div>
+  <div class="connection-line" style="top: 180px; left: 70px; width: 160px; height: 1px; transform: rotate(-5deg); transform-origin: left center;"></div>
+  <div class="connection-line" style="top: 200px; left: 180px; width: 70px; height: 1px; transform: rotate(35deg); transform-origin: left center;"></div>
+  <div class="connection-line" style="top: 140px; left: 220px; width: 90px; height: 1px; transform: rotate(20deg); transform-origin: left center;"></div>
+  <div class="connection-line" style="top: 250px; left: 40px; width: 100px; height: 1px; transform: rotate(-12deg); transform-origin: left center;"></div>
+  <div class="connection-line" style="top: 220px; left: 100px; width: 110px; height: 1px; transform: rotate(10deg); transform-origin: left center;"></div>
+
+  <!-- Large ring node -->
+  <div class="node-ring" style="top: 30px; left: 20px; width: 80px; height: 80px;"></div>
+  <!-- Filled small node -->
+  <div class="node" style="top: 55px; left: 45px; width: 30px; height: 30px;"></div>
+  <!-- Ring node -->
+  <div class="node-ring" style="top: 120px; left: 10px; width: 56px; height: 56px;"></div>
+  <!-- Filled node -->
+  <div class="node" style="top: 135px; left: 25px; width: 26px; height: 26px;"></div>
+  <!-- Large ring -->
+  <div class="node-ring" style="top: 100px; left: 160px; width: 72px; height: 72px;"></div>
+  <div class="node" style="top: 120px; left: 180px; width: 32px; height: 32px;"></div>
+  <!-- Small filled -->
+  <div class="node" style="top: 180px; left: 60px; width: 18px; height: 18px;"></div>
+  <!-- Ring -->
+  <div class="node-ring" style="top: 230px; left: 20px; width: 50px; height: 50px;"></div>
+  <!-- Small node -->
+  <div class="node" style="top: 248px; left: 36px; width: 16px; height: 16px;"></div>
+  <!-- Medium ring -->
+  <div class="node-ring" style="top: 190px; left: 170px; width: 44px; height: 44px;"></div>
+  <!-- Node -->
+  <div class="node" style="top: 202px; left: 182px; width: 20px; height: 20px;"></div>
+  <!-- Small ring -->
+  <div class="node-ring" style="top: 260px; left: 150px; width: 36px; height: 36px;"></div>
+  <!-- Tiny node -->
+  <div class="node" style="top: 270px; left: 160px; width: 14px; height: 14px;"></div>
+  <!-- Light fill circle -->
+  <div class="node-fill-light" style="top: 40px; left: 230px; width: 60px; height: 60px;"></div>
+  <!-- Copper accent small square -->
+  <div class="deco-square-copper" style="top: 88px; left: 248px; width: 10px; height: 10px;"></div>
+  <div class="deco-square-copper" style="top: 265px; left: 230px; width: 8px; height: 8px;"></div>
+  <!-- Extra decoration -->
+  <div class="deco-circle-outline" style="top: 175px; left: 250px; width: 20px; height: 20px; border-color: #8B7355;"></div>
+  <div class="deco-square-outline" style="top: 15px; left: 270px; width: 12px; height: 12px; border-color: #8B7355;"></div>
+</div>
+
+<!-- Title area -->
+<div class="title-area">
+  <div class="main-title">开源的学习路径与参与价值</div>
+  <div class="subtitle">Learning by Contributing &mdash; 思维互联，共享内心记忆与生活万象</div>
+  <div class="subtitle-italic">在开源共同体中，时间投入即是一种富有回报的投资</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- Content points -->
+<div class="content-area">
+  <div class="points-column">
+    <div class="points-grid">
+
+      <div class="point-item">
+        <div class="point-index">I</div>
+        <div class="point-text">开源的学习路径</div>
+        <div class="point-emphasis">Learning by contributing &mdash; 在实践中习得</div>
+      </div>
+
+      <div class="point-item">
+        <div class="point-index">II</div>
+        <div class="point-text">个体参与开源的价值</div>
+        <div class="point-emphasis">技能积累、社区认同与职业资本</div>
+      </div>
+
+      <div class="point-item">
+        <div class="point-index">III</div>
+        <div class="point-text">企业参与开源项目的价值</div>
+        <div class="point-emphasis">技术品牌、人才管道与生态绑定</div>
+      </div>
+
+      <div class="point-item">
+        <div class="point-index">IV</div>
+        <div class="point-text">GPL 提供的公平竞争平台</div>
+        <div class="point-emphasis">Copyleft 确保贡献者共享成果</div>
+      </div>
+
+      <div class="key-quote">
+        <div class="key-quote-text">项目本身即价值体现 &mdash; 影响力即未来</div>
+        <div class="key-quote-sub">代码仓库是能力与贡献的最直接证明</div>
+      </div>
+
+      <div class="point-item accent">
+        <div class="point-index">VI</div>
+        <div class="point-text">工作时间在开源共同体中是划算的</div>
+        <div class="point-emphasis">边际成本趋零，学习回报递增</div>
+      </div>
+
     </div>
   </div>
 
-  <div class="footer-bar"></div>
-  <div class="footer-accent"></div>
+  <!-- Visual description below network -->
+  <div class="visual-desc">
+    <div class="visual-desc-label">视觉隐喻</div>
+    <div class="visual-desc-text">
+      节点与连线构成一张思维之网。<br>
+      每个节点是一颗独立的思想，<br>
+      连线是协作的契约与共享的意愿。<br>
+      开源即是将内心的记忆与生活万象<br>
+      编织为共同的智识版图。
+    </div>
+  </div>
 </div>
-</body></html>
+
+<!-- Bottom info -->
+<div class="bottom-info">「开源之道」日常交流</div>
+<div class="bottom-right-info">新制度经济学视角下的开源讲座</div>
+
+</body>
+</html>

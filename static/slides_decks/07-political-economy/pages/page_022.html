@@ -1,128 +1,471 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: 25ac2f9d782e5e4e --><head><meta charset="UTF-8"><title>第 07 期 · 商业价值与社会价值：开源的政治经济学</title><style>html,body{width:1600px;height:900px;overflow:hidden;margin:0;padding:0}body{background:#F5F0E8;font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;color:#1B3B6B;position:relative}h1,h2,h3{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;margin:0}
+<!DOCTYPE html>
+<html lang="zh-CN"><!-- source_hash: ff888b605d845bcc -->
+<head>
+<meta charset="UTF-8">
+<title>理查德·泰勒 · 人性与搭便车</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1600px; height: 900px; overflow: hidden; margin: 0; }
+  body {
+    background: #F5F0E8;
+    position: relative;
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    color: #1B3B6B;
+  }
 
-.slide-frame{position:absolute;top:60px;left:80px;width:1440px;height:780px}
+  /* Subtle parchment texture overlay */
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 1600px; height: 900px;
+    background:
+      radial-gradient(ellipse at 20% 30%, rgba(139,115,85,0.03) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 70%, rgba(139,115,85,0.02) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
 
-/* Header */
-.header{position:absolute;top:0;left:0;width:1440px;height:60px;display:flex;align-items:center;justify-content:space-between}
-.header-left{display:flex;align-items:center;gap:16px}
-.header-num{font-family:'Noto Serif SC',serif;font-size:22px;font-weight:700;color:#1B3B6B;letter-spacing:2px}
-.header-divider{width:40px;height:1.5px;background:#1B3B6B}
-.header-title{font-size:14px;color:#555;letter-spacing:3px;font-weight:400}
-.header-right{font-size:12px;color:#8B7355;letter-spacing:4px;font-family:'Noto Serif SC',serif}
+  /* Bauhaus geometric composition - left panel */
+  .geometric-panel {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 560px;
+    height: 900px;
+    z-index: 1;
+  }
 
-/* Left geometric composition */
-.geo-composition{position:absolute;top:110px;left:0;width:600px;height:620px}
-.geo-square-large{position:absolute;top:60px;left:80px;width:260px;height:260px;background:#1B3B6B}
-.geo-circle-large{position:absolute;top:180px;left:240px;width:220px;height:220px;border-radius:50%;background:#8B7355;opacity:0.9}
-.geo-circle-ring{position:absolute;top:340px;left:120px;width:180px;height:180px;border-radius:50%;border:3px solid #1B3B6B;background:transparent}
-.geo-triangle{position:absolute;top:200px;left:380px;width:0;height:0;border-left:80px solid transparent;border-right:80px solid transparent;border-bottom:140px solid #F5F0E8;outline:3px solid #1B3B6B}
-.geo-line-vertical{position:absolute;top:0;left:80px;width:2px;height:620px;background:#1B3B6B}
-.geo-line-horizontal{position:absolute;top:440px;left:0;width:600px;height:2px;background:#1B3B6B}
-.geo-square-small{position:absolute;top:0;left:520px;width:40px;height:40px;background:#8B7355}
-.geo-dot{position:absolute;top:560px;left:320px;width:16px;height:16px;border-radius:50%;background:#1B3B6B}
-.geo-semi-circle{position:absolute;top:540px;left:80px;width:100px;height:50px;border-radius:100px 100px 0 0;background:#1B3B6B;opacity:0.15}
+  /* Main circle - large Prussian blue circle */
+  .geo-circle-main {
+    position: absolute;
+    left: 40px;
+    top: 100px;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    background: #1B3B6B;
+    z-index: 2;
+  }
 
-.geo-caption{position:absolute;bottom:0;left:0;width:600px;text-align:center;font-size:11px;color:#8B7355;letter-spacing:5px;font-family:'Noto Serif SC',serif;padding-top:20px}
+  /* Overlapping copper square */
+  .geo-square-copper {
+    position: absolute;
+    left: 220px;
+    top: 280px;
+    width: 240px;
+    height: 240px;
+    background: #8B7355;
+    z-index: 3;
+    opacity: 0.85;
+  }
 
-/* Right content area */
-.right-panel{position:absolute;top:110px;left:660px;width:780px;height:620px;display:flex;flex-direction:column}
+  /* Small light circle overlapping */
+  .geo-circle-light {
+    position: absolute;
+    left: 340px;
+    top: 160px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #F5F0E8;
+    z-index: 4;
+  }
 
-.section-label{font-size:12px;color:#8B7355;letter-spacing:6px;font-family:'Noto Serif SC',serif;margin-bottom:24px;display:flex;align-items:center;gap:16px}
-.section-label-line{width:60px;height:1.5px;background:#8B7355;flex-shrink:0}
+  /* Small Prussian blue square accent */
+  .geo-square-small {
+    position: absolute;
+    left: 60px;
+    top: 480px;
+    width: 80px;
+    height: 80px;
+    background: #1B3B6B;
+    z-index: 3;
+  }
 
-.section-title{font-family:'Noto Serif SC',serif;font-size:40px;font-weight:700;color:#1B3B6B;line-height:1.4;margin-bottom:12px;letter-spacing:2px}
-.section-subtitle{font-size:14px;color:#555;letter-spacing:3px;margin-bottom:40px}
+  /* Thin diagonal line */
+  .geo-line-diagonal {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 560px;
+    height: 900px;
+    z-index: 1;
+  }
+  .geo-line-diagonal::after {
+    content: '';
+    position: absolute;
+    left: -50px;
+    top: 400px;
+    width: 700px;
+    height: 2px;
+    background: #1B3B6B;
+    transform-origin: 0% 50%;
+    transform: rotate(-25deg);
+    opacity: 0.3;
+  }
 
-.quote-block{position:relative;padding:36px 44px 36px 56px;background:rgba(27,59,107,0.04);border-left:4px solid #1B3B6B}
-.quote-mark{position:absolute;top:-12px;left:18px;font-family:'Noto Serif SC',serif;font-size:80px;color:#1B3B6B;font-weight:700;line-height:1;opacity:0.3}
-.quote-text{font-family:'Noto Serif SC',serif;font-size:19px;line-height:2.0;color:#1B3B6B;letter-spacing:1px;font-weight:400}
-.quote-text .emphasis{color:#8B7355;font-weight:600}
+  /* Thin horizontal line */
+  .geo-line-h {
+    position: absolute;
+    left: 0;
+    top: 700px;
+    width: 560px;
+    height: 1px;
+    background: #8B7355;
+    z-index: 1;
+  }
 
-/* Attribution */
-.attribution{margin-top:36px;display:flex;align-items:flex-start;gap:24px;padding-top:24px;border-top:1px solid rgba(27,59,107,0.2)}
-.attr-bar{width:50px;height:2px;background:#8B7355;margin-top:16px;flex-shrink:0}
-.attr-content{display:flex;flex-direction:column;gap:4px}
-.attr-name{font-family:'Noto Serif SC',serif;font-size:18px;color:#1B3B6B;font-weight:600;letter-spacing:1px}
-.attr-detail{font-size:13px;color:#555;letter-spacing:2px}
+  /* Small circle accent top right of panel */
+  .geo-circle-accent {
+    position: absolute;
+    left: 440px;
+    top: 60px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #8B7355;
+    z-index: 4;
+    opacity: 0.6;
+  }
 
-/* Footer */
-.footer{position:absolute;bottom:30px;left:80px;width:1440px;display:flex;align-items:center;justify-content:space-between;font-size:11px;color:#8B7355;letter-spacing:3px}
-.footer-left{display:flex;align-items:center;gap:12px}
-.footer-dot{width:6px;height:6px;background:#1B3B6B;border-radius:50%}
-.footer-center{font-family:'Noto Serif SC',serif;letter-spacing:5px;color:#555}
+  /* Tiny square at bottom */
+  .geo-square-tiny {
+    position: absolute;
+    left: 460px;
+    top: 760px;
+    width: 20px;
+    height: 20px;
+    background: #1B3B6B;
+    z-index: 3;
+    opacity: 0.4;
+  }
 
-/* Decorative corner marks */
-.corner-tl{position:absolute;top:0;left:0;width:30px;height:30px;border-top:2px solid #1B3B6B;border-left:2px solid #1B3B6B}
-.corner-tr{position:absolute;top:0;right:0;width:30px;height:30px;border-top:2px solid #1B3B6B;border-right:2px solid #1B3B6B}
-.corner-bl{position:absolute;bottom:0;left:0;width:30px;height:30px;border-bottom:2px solid #1B3B6B;border-left:2px solid #1B3B6B}
-.corner-br{position:absolute;bottom:0;right:0;width:30px;height:30px;border-bottom:2px solid #1B3B6B;border-right:2px solid #1B3B6B}
-</style></head><body>
-<div class="slide-frame">
+  /* Vertical line accent */
+  .geo-line-v {
+    position: absolute;
+    left: 300px;
+    top: 60px;
+    width: 1px;
+    height: 600px;
+    background: #1B3B6B;
+    opacity: 0.12;
+    z-index: 1;
+  }
 
-<div class="corner-tl"></div>
-<div class="corner-tr"></div>
-<div class="corner-bl"></div>
-<div class="corner-br"></div>
+  /* Right panel - quote area */
+  .quote-panel {
+    position: absolute;
+    left: 600px;
+    top: 0;
+    width: 960px;
+    height: 900px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 80px 0 60px;
+  }
 
-<div class="header">
-<div class="header-left">
-<span class="header-num">07 / 26</span>
-<span class="header-divider"></span>
-<span class="header-title">商 业 价 值 与 社 会 价 值 · 开 源 的 政 治 经 济 学</span>
-</div>
-<div class="header-right">LECTURE 07</div>
-</div>
+  /* Section label at top */
+  .section-label {
+    position: absolute;
+    top: 70px;
+    left: 600px;
+    width: 960px;
+    padding: 0 80px 0 60px;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .section-label .line {
+    width: 60px;
+    height: 2px;
+    background: #1B3B6B;
+  }
+  .section-label .text {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13px;
+    color: #8B7355;
+    letter-spacing: 6px;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
 
-<div class="geo-composition">
-<div class="geo-square-large"></div>
-<div class="geo-circle-large"></div>
-<div class="geo-circle-ring"></div>
-<div class="geo-triangle"></div>
-<div class="geo-line-vertical"></div>
-<div class="geo-line-horizontal"></div>
-<div class="geo-square-small"></div>
-<div class="geo-dot"></div>
-<div class="geo-semi-circle"></div>
-<div class="geo-caption">BAUHAUS &nbsp;·&nbsp; GEOMETRIC &nbsp;·&nbsp; COMPOSITION</div>
-</div>
+  /* The large quotation mark */
+  .quote-mark {
+    position: absolute;
+    top: 150px;
+    left: 590px;
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 220px;
+    color: #1B3B6B;
+    opacity: 0.07;
+    line-height: 0.8;
+    z-index: 1;
+    font-weight: 700;
+  }
 
-<div class="right-panel">
-<div class="section-label">
-<span class="section-label-line"></span>
-<span>智 者 箴 言 &nbsp;/&nbsp; A NOBEL LAUREATE'S REMARK</span>
-</div>
+  /* Quote body */
+  .quote-body {
+    position: relative;
+    z-index: 5;
+    max-width: 780px;
+  }
 
-<div class="section-title">经济学家的<br>农夫之心</div>
-<div class="section-subtitle">经济学家审视人性 · 需如农夫之于土地</div>
+  .quote-text {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 28px;
+    line-height: 1.85;
+    color: #1B3B6B;
+    font-weight: 400;
+    letter-spacing: 1px;
+  }
 
-<div class="quote-block">
-<span class="quote-mark">"</span>
-<p class="quote-text">经济学家看待人性时，需要抱持和<span class="emphasis">农民</span>一样<span class="emphasis">细致入微</span>的态度。并非所有人都在搭便车，但如果你不当心，总有些人会<span class="emphasis">把手伸向你的腰包</span>。</p>
-</div>
+  .quote-text .emph {
+    color: #8B7355;
+    font-weight: 600;
+  }
 
-<div class="attribution">
-<div class="attr-bar"></div>
-<div class="attr-content">
-<span class="attr-name">Richard H. Thaler &nbsp;/&nbsp; 理查德 · 泰勒</span>
-<span class="attr-detail">2017 年 诺 贝 尔 经 济 学 奖 得 主</span>
-<span class="attr-detail">BEHAVIORAL ECONOMICS &nbsp;·&nbsp; THOUGHTS ON HUMAN NATURE</span>
-</div>
-</div>
-</div>
+  .quote-divider {
+    width: 80px;
+    height: 2px;
+    background: #1B3B6B;
+    margin: 36px 0 24px 0;
+    opacity: 0.6;
+  }
 
-<div class="footer">
-<div class="footer-left">
-<span class="footer-dot"></span>
-<span>OPEN SOURCE &nbsp;·&nbsp; POLITICAL ECONOMY &nbsp;·&nbsp; NEW INSTITUTIONAL PERSPECTIVE</span>
-</div>
-<div class="footer-center">第 07 期 &nbsp;/&nbsp; 共 26 讲</div>
-<div class="footer-left">
-<span>「开 源 之 道」</span>
-<span class="footer-dot"></span>
-</div>
-</div>
+  .quote-attribution {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 16px;
+    color: #555;
+    line-height: 1.7;
+    letter-spacing: 1px;
+  }
 
-</div>
-</body></html>
+  .quote-attribution .name {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 20px;
+    color: #1B3B6B;
+    font-weight: 600;
+    letter-spacing: 2px;
+  }
+
+  .quote-attribution .title {
+    font-size: 14px;
+    color: #8B7355;
+    letter-spacing: 1.5px;
+    margin-top: 4px;
+  }
+
+  /* Bottom decorative strip */
+  .bottom-strip {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 1600px;
+    height: 6px;
+    z-index: 10;
+    display: flex;
+  }
+  .bottom-strip .seg {
+    height: 6px;
+  }
+  .bottom-strip .seg-blue { background: #1B3B6B; width: 400px; }
+  .bottom-strip .seg-copper { background: #8B7355; width: 300px; }
+  .bottom-strip .seg-gray { background: #555; width: 200px; }
+  .bottom-strip .seg-light { background: #F5F0E8; width: 700px; }
+
+  /* Footer info */
+  .footer-info {
+    position: absolute;
+    bottom: 30px;
+    right: 80px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    color: #8B7355;
+    letter-spacing: 3px;
+  }
+  .footer-info .dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #8B7355;
+    opacity: 0.6;
+  }
+
+  /* Footer left */
+  .footer-left {
+    position: absolute;
+    bottom: 30px;
+    left: 80px;
+    z-index: 10;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    color: #8B7355;
+    letter-spacing: 3px;
+  }
+
+  /* Small decorative elements in quote area */
+  .deco-circle-1 {
+    position: absolute;
+    right: 80px;
+    top: 120px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid #1B3B6B;
+    z-index: 5;
+    opacity: 0.3;
+  }
+  .deco-square-1 {
+    position: absolute;
+    right: 120px;
+    top: 150px;
+    width: 10px;
+    height: 10px;
+    background: #8B7355;
+    z-index: 5;
+    opacity: 0.4;
+  }
+  .deco-circle-2 {
+    position: absolute;
+    right: 100px;
+    bottom: 140px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #1B3B6B;
+    z-index: 5;
+    opacity: 0.15;
+  }
+
+  /* Year badge */
+  .year-badge {
+    position: absolute;
+    right: 80px;
+    top: 200px;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+  }
+  .year-badge .year-text {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 14px;
+    color: #8B7355;
+    letter-spacing: 3px;
+  }
+  .year-badge .badge-line {
+    width: 40px;
+    height: 1px;
+    background: #8B7355;
+    opacity: 0.4;
+  }
+
+  /* Parallel theme reference - small annotation */
+  .theme-annotation {
+    position: absolute;
+    bottom: 90px;
+    left: 600px;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    color: #8B7355;
+    letter-spacing: 2px;
+    opacity: 0.7;
+  }
+  .theme-annotation .anno-line {
+    width: 30px;
+    height: 1px;
+    background: #8B7355;
+  }
+</style>
+</head>
+<body>
+
+  <!-- Bauhaus Geometric Composition - Left Panel -->
+  <div class="geometric-panel">
+    <div class="geo-line-v"></div>
+    <div class="geo-line-diagonal"></div>
+    <div class="geo-line-h"></div>
+    <div class="geo-circle-main"></div>
+    <div class="geo-square-copper"></div>
+    <div class="geo-circle-light"></div>
+    <div class="geo-square-small"></div>
+    <div class="geo-circle-accent"></div>
+    <div class="geo-square-tiny"></div>
+  </div>
+
+  <!-- Section Label -->
+  <div class="section-label">
+    <div class="line"></div>
+    <div class="text">第 07 期 · 引文</div>
+  </div>
+
+  <!-- Large watermark quote mark -->
+  <div class="quote-mark">"</div>
+
+  <!-- Quote Panel -->
+  <div class="quote-panel">
+    <div class="quote-body">
+      <div class="quote-text">
+        经济学家看待人性时需要抱持<span class="emph">和农民一样细致入微</span>的态度。并非所有人都在搭便车，但如果你不当心，<span class="emph">总有些人会把手伸向你的腰包</span>。
+      </div>
+      <div class="quote-divider"></div>
+      <div class="quote-attribution">
+        <div class="name">理查德·泰勒</div>
+        <div class="title">2017 年诺贝尔经济学奖得主 · 行为经济学</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Decorative elements in quote area -->
+  <div class="deco-circle-1"></div>
+  <div class="deco-square-1"></div>
+  <div class="deco-circle-2"></div>
+
+  <!-- Year badge -->
+  <div class="year-badge">
+    <div class="year-text">EST. 2017</div>
+    <div class="badge-line"></div>
+  </div>
+
+  <!-- Theme annotation - parallel to post-third-period -->
+  <div class="theme-annotation">
+    <div class="anno-line"></div>
+    <div>后三期主题 · 开源政治经济学</div>
+  </div>
+
+  <!-- Bottom decorative strip -->
+  <div class="bottom-strip">
+    <div class="seg seg-blue"></div>
+    <div class="seg seg-copper"></div>
+    <div class="seg seg-gray"></div>
+    <div class="seg seg-light"></div>
+  </div>
+
+  <!-- Footer info -->
+  <div class="footer-info">
+    <span>07-POLITICAL-ECONOMY</span>
+    <div class="dot"></div>
+    <span>引文 · 人性与搭便车</span>
+  </div>
+
+  <div class="footer-left">
+    开源之道 · 日常交流
+  </div>
+
+</body>
+</html>

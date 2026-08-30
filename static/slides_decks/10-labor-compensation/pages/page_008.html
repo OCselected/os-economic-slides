@@ -1,263 +1,751 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: 1c85c78fb2bae7a9 --><head><meta charset="UTF-8"><title>第 10 期 · 劳动报酬与财产分配</title><style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1600px;height:900px;overflow:hidden;margin:0}
-body{font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-serif;background:#F5F0E8;color:#1B3B6B;position:relative}
+<!DOCTYPE html>
+<html><!-- source_hash: 752ceebdc53cfdb1 -->
+<head>
+<meta charset="UTF-8">
+<title>第10期 · 劳动报酬与财产分配 — 为什么需要讨论劳动报酬？</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 1600px;
+    height: 900px;
+    overflow: hidden;
+    background: #F5F0E8;
+    font-family: 'Noto Sans SC', 'Source Han Sans SC', sans-serif;
+    color: #1B3B6B;
+  }
 
-.page{width:1600px;height:900px;position:relative;overflow:hidden}
+  /* subtle parchment texture via layered radial gradients */
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(ellipse at 20% 30%, rgba(139,115,85,0.04) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 70%, rgba(27,59,107,0.03) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0.015) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
 
-/* Parchment texture overlay */
-.page::before{content:'';position:absolute;top:0;left:0;width:1600px;height:900px;background:repeating-linear-gradient(0deg,transparent 0,transparent 3px,rgba(139,115,85,0.015) 3px,rgba(139,115,85,0.015) 4px);pointer-events:none;z-index:0}
+  .canvas {
+    position: relative;
+    width: 1600px;
+    height: 900px;
+    overflow: hidden;
+  }
 
-/* Header band */
-.header{position:absolute;top:0;left:0;width:1600px;height:70px;display:flex;align-items:center;padding:0 60px;z-index:5}
-.header .num-badge{width:48px;height:48px;background:#1B3B6B;color:#F5F0E8;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif SC',serif;font-size:20px;font-weight:700}
-.header .lecture-title{margin-left:24px;font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:18px;color:#1B3B6B;letter-spacing:2px}
-.header .meta{margin-left:auto;font-size:12px;color:#555;letter-spacing:3px}
+  /* ===== Header ===== */
+  .header {
+    position: absolute;
+    top: 48px;
+    left: 60px;
+    right: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    z-index: 10;
+  }
 
-/* Main layout */
-.main{position:absolute;top:70px;left:0;width:1600px;height:830px;display:flex;z-index:2}
+  .lecture-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
 
-/* Left content column */
-.left-col{width:680px;height:830px;padding:60px 50px 40px 60px;display:flex;flex-direction:column;position:relative;z-index:3}
+  .lecture-num {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 64px;
+    font-weight: 900;
+    color: #1B3B6B;
+    line-height: 1;
+    letter-spacing: -2px;
+  }
 
-.eyebrow{font-size:12px;letter-spacing:4px;color:#8B7355;margin-bottom:20px}
+  .lecture-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
 
-.main-title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:42px;font-weight:700;color:#1B3B6B;line-height:1.25;letter-spacing:2px;margin-bottom:16px}
-.main-title .accent{color:#8B7355}
+  .lecture-title {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 18px;
+    color: #8B7355;
+    letter-spacing: 1px;
+  }
 
-.subtitle-line{width:80px;height:3px;background:#1B3B6B;margin-bottom:30px}
+  .lecture-sub {
+    font-size: 11px;
+    color: #555;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
 
-.bullets{list-style:none;display:flex;flex-direction:column;gap:16px}
-.bullets li{font-size:15px;line-height:1.6;color:#1B3B6B;position:relative;padding-left:28px}
-.bullets li::before{content:'';position:absolute;left:0;top:9px;width:14px;height:14px;background:#1B3B6B}
-.bullets li:nth-child(2)::before{background:#8B7355;width:14px;height:14px;border-radius:50%}
-.bullets li:nth-child(3)::before{background:transparent;border:2px solid #1B3B6B;width:14px;height:14px}
-.bullets li:nth-child(4)::before{background:#1B3B6B;width:14px;height:2px;top:13px}
-.bullets li:nth-child(5)::before{background:#8B7355;width:0;height:0;border-left:14px solid transparent;border-right:14px solid transparent;border-bottom:14px solid #8B7355}
-.bullets li strong{font-weight:700;color:#1B3B6B}
-.bullets li .warn{color:#8B7355;font-weight:700}
+  .page-num {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 13px;
+    color: #8B7355;
+    letter-spacing: 2px;
+  }
 
-/* Right visual composition */
-.right-col{width:920px;height:830px;position:relative;overflow:hidden}
+  /* horizontal rule under header */
+  .header-rule {
+    position: absolute;
+    top: 132px;
+    left: 60px;
+    width: 1480px;
+    height: 1px;
+    background: #1B3B6B;
+    z-index: 10;
+  }
 
-/* Dried riverbed geometric composition */
-.riverbed{position:absolute;top:100px;left:60px;width:800px;height:620px}
+  .header-rule-copper {
+    position: absolute;
+    top: 136px;
+    left: 60px;
+    width: 180px;
+    height: 1px;
+    background: #8B7355;
+    z-index: 10;
+  }
 
-/* Dried riverbed floor - horizontal cracks */
-.river-floor{position:absolute;bottom:0;left:0;width:800px;height:180px;background:#E8E0D2;border-top:2px solid #8B7355}
-.river-cracks{position:absolute;bottom:0;left:0;width:800px;height:180px;pointer-events:none}
-.river-cracks .crack{position:absolute;background:#8B7355}
-.crack1{left:40px;top:30px;width:180px;height:1px}
-.crack2{left:60px;top:30px;width:1px;height:40px}
-.crack3{left:120px;top:60px;width:200px;height:1px}
-.crack4{left:320px;top:40px;width:1px;height:30px}
-.crack5{left:350px;top:90px;width:160px;height:1px}
-.crack6{left:500px;top:60px;width:1px;height:50px}
-.crack7{left:540px;top:120px;width:220px;height:1px}
-.crack8{left:700px;top:50px;width:1px;height:60px}
-.crack9{left:80px;top:130px;width:140px;height:1px}
-.crack10{left:250px;top:140px;width:1px;height:30px}
-.crack11{left:400px;top:150px;width:120px;height:1px}
-.crack12{left:620px;top:150px;width:1px;height:30px}
+  /* ===== Main title ===== */
+  .main-title {
+    position: absolute;
+    top: 170px;
+    left: 60px;
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #1B3B6B;
+    letter-spacing: 2px;
+    line-height: 1.3;
+    z-index: 10;
+  }
 
-/* Large circle (sun/disc) */
-.sun-disc{position:absolute;top:40px;left:520px;width:180px;height:180px;border-radius:50%;background:#1B3B6B;z-index:2}
-.sun-inner{position:absolute;top:70px;left:550px;width:120px;height:120px;border-radius:50%;background:#F5F0E8;display:flex;align-items:center;justify-content:center;z-index:3}
-.sun-inner span{font-family:'Noto Serif SC',serif;font-size:14px;color:#1B3B6B;letter-spacing:3px;text-align:center;line-height:1.4}
+  .main-title .accent {
+    color: #8B7355;
+    font-weight: 400;
+    font-size: 20px;
+    letter-spacing: 1px;
+  }
 
-/* Half circle accent */
-.half-circle{position:absolute;top:60px;left:360px;width:120px;height:60px;background:#8B7355;border-radius:60px 60px 0 0;z-index:2}
+  /* ===== Visual Metaphor: Dry Riverbed + Broken Flag ===== */
+  .metaphor-area {
+    position: absolute;
+    top: 270px;
+    left: 60px;
+    width: 700px;
+    height: 560px;
+    z-index: 5;
+  }
 
-/* Vertical line accent */
-.v-line{position:absolute;top:200px;left:360px;width:3px;height:280px;background:#1B3B6B;z-index:2}
+  /* cracked / dry riverbed lines */
+  .riverbed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 700px;
+    height: 560px;
+  }
 
-/* Breaking flags - geometric torn rectangles */
-.flag-group{position:absolute;top:180px;left:80px;display:flex;flex-direction:column;gap:20px;z-index:4}
+  /* The flag pole */
+  .flag-pole {
+    position: absolute;
+    left: 300px;
+    top: 60px;
+    width: 3px;
+    height: 400px;
+    background: #1B3B6B;
+  }
 
-.flag{display:flex;align-items:center;gap:0;width:280px;position:relative}
-.flag-pole{width:3px;height:60px;background:#1B3B6B;flex-shrink:0}
+  /* Broken flag pieces */
+  .flag-piece-1 {
+    position: absolute;
+    left: 303px;
+    top: 60px;
+    width: 160px;
+    height: 85px;
+    background: #1B3B6B;
+    clip-path: polygon(0 0, 100% 0, 92% 35%, 78% 25%, 62% 50%, 45% 40%, 28% 65%, 12% 55%, 0 80%);
+    opacity: 0.85;
+  }
 
-.flag-cloth{position:relative;height:50px;display:flex;align-items:center;padding-left:16px;font-family:'Noto Serif SC',serif;font-size:16px;font-weight:700;color:#F5F0E8;letter-spacing:3px;clip-path:polygon(0 0, 80% 0, 88% 20%, 75% 40%, 92% 60%, 78% 80%, 85% 100%, 0 100%)}
-.flag-cloth.intact{background:#1B3B6B;width:200px}
-.flag-cloth.partial{background:#8B7355;width:150px}
-.flag-cloth.torn{background:#1B3B6B;width:110px;clip-path:polygon(0 0, 60% 0, 70% 25%, 55% 50%, 75% 75%, 60% 100%, 0 100%)}
-.flag-cloth.shredded{background:#8B7355;width:70px;clip-path:polygon(0 0, 70% 0, 80% 30%, 50% 50%, 75% 70%, 55% 100%, 0 100%)}
+  .flag-piece-2 {
+    position: absolute;
+    left: 468px;
+    top: 100px;
+    width: 70px;
+    height: 55px;
+    background: #8B7355;
+    clip-path: polygon(10% 0, 100% 15%, 85% 60%, 95% 100%, 20% 85%, 0 50%);
+    opacity: 0.7;
+  }
 
-/* Debris fragments flying away */
-.debris{position:absolute;top:200px;left:380px;z-index:4}
-.debris-pc{position:absolute;background:#1B3B6B}
-.debris-pc.d1{width:20px;height:3px;top:0;left:0}
-.debris-pc.d2{width:14px;height:2px;top:12px;left:20px;background:#8B7355}
-.debris-pc.d3{width:25px;height:3px;top:24px;left:5px}
-.debris-pc.d4{width:10px;height:2px;top:36px;left:30px;background:#8B7355}
-.debris-pc.d5{width:18px;height:3px;top:48px;left:10px}
-.debris-pc.d6{width:12px;height:2px;top:60px;left:35px;background:#8B7355}
-.debris-pc.d7{width:22px;height:3px;top:72px;left:0}
-.debris-pc.d8{width:8px;height:2px;top:84px;left:40px;background:#8B7355}
+  .flag-piece-3 {
+    position: absolute;
+    left: 420px;
+    top: 165px;
+    width: 55px;
+    height: 40px;
+    background: #1B3B6B;
+    clip-path: polygon(0 0, 100% 20%, 80% 70%, 60% 100%, 15% 60%, 0 40%);
+    opacity: 0.5;
+  }
 
-/* Wind lines */
-.wind{position:absolute;z-index:3;pointer-events:none}
-.wind::before,.wind::after{content:'';position:absolute;background:#8B7355;height:1px}
-.wind1{top:150px;left:300px;width:280px}
-.wind1::before{top:0;left:0;width:200px}
-.wind1::after{top:12px;left:20px;width:160px}
-.wind2{top:175px;left:320px;width:240px}
-.wind2::before{top:0;left:0;width:180px;background:#555}
-.wind2::after{top:10px;left:10px;width:140px;background:#555}
+  .flag-piece-4 {
+    position: absolute;
+    left: 490px;
+    top: 180px;
+    width: 40px;
+    height: 30px;
+    background: #8B7355;
+    clip-path: polygon(5% 0, 100% 10%, 90% 65%, 50% 100%, 0 45%);
+    opacity: 0.45;
+  }
 
-/* Large square frame - Bauhaus element */
-.bauhaus-square{position:absolute;top:200px;left:60px;width:60px;height:60px;background:#1B3B6B;z-index:1}
-.bauhaus-square-inner{position:absolute;top:212px;left:72px;width:36px;height:36px;background:#F5F0E8;border:2px solid #1B3B6B;z-index:2}
+  .flag-piece-5 {
+    position: absolute;
+    left: 535px;
+    top: 220px;
+    width: 30px;
+    height: 25px;
+    background: #1B3B6B;
+    clip-path: polygon(0 10%, 100% 0, 85% 80%, 20% 100%);
+    opacity: 0.35;
+  }
 
-/* Triangle element */
-.bauhaus-tri{position:absolute;top:490px;left:60px;width:0;height:0;border-left:30px solid transparent;border-right:30px solid transparent;border-bottom:50px solid #8B7355;z-index:2}
+  /* "无偿" text on flag */
+  .flag-text {
+    position: absolute;
+    left: 310px;
+    top: 78px;
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: #F5F0E8;
+    letter-spacing: 6px;
+    transform: skewX(-5deg);
+    z-index: 2;
+  }
 
-/* Concentric circles bottom right */
-.concentric{position:absolute;bottom:60px;right:80px;z-index:2}
-.concentric .c1{position:absolute;width:120px;height:120px;border-radius:50%;border:2px solid #1B3B6B}
-.concentric .c2{position:absolute;top:20px;left:20px;width:80px;height:80px;border-radius:50%;border:2px solid #8B7355}
-.concentric .c3{position:absolute;top:40px;left:40px;width:40px;height:40px;border-radius:50%;background:#1B3B6B}
-.concentric .c-label{position:absolute;top:130px;left:0;width:120px;text-align:center;font-size:10px;color:#8B7355;letter-spacing:3px}
+  /* Tattered lines (wind effect) */
+  .tatter-line-1 {
+    position: absolute;
+    left: 303px;
+    top: 145px;
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(to right, #1B3B6B 0%, transparent 100%);
+    opacity: 0.3;
+  }
 
-/* Wind direction arrow */
-.wind-arrow{position:absolute;top:100px;left:380px;width:120px;height:30px;z-index:3}
-.wind-arrow .wa-line{position:absolute;top:14px;left:0;width:90px;height:2px;background:#555}
-.wind-arrow .wa-head{position:absolute;top:8px;left:85px;width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:14px solid #555}
-.wind-arrow .wa-label{position:absolute;top:-14px;left:0;font-size:10px;color:#555;letter-spacing:2px}
+  .tatter-line-2 {
+    position: absolute;
+    left: 350px;
+    top: 175px;
+    width: 160px;
+    height: 1px;
+    background: linear-gradient(to right, #8B7355 0%, transparent 100%);
+    opacity: 0.25;
+  }
 
-/* Footer band */
-.footer{position:absolute;bottom:0;left:0;width:1600px;height:46px;display:flex;align-items:center;padding:0 60px;background:#1B3B6B;z-index:5}
-.footer .ft-left{color:#F5F0E8;font-size:11px;letter-spacing:3px}
-.footer .ft-center{margin-left:auto;color:rgba(245,240,232,0.6);font-size:11px;letter-spacing:2px}
-.footer .ft-right{color:rgba(245,240,232,0.6);font-size:11px;letter-spacing:2px;margin-left:40px}
+  .tatter-line-3 {
+    position: absolute;
+    left: 380px;
+    top: 205px;
+    width: 120px;
+    height: 1px;
+    background: linear-gradient(to right, #1B3B6B 0%, transparent 100%);
+    opacity: 0.2;
+  }
 
-/* Section divider within right area */
-.section-tag{position:absolute;top:60px;left:60px;font-size:11px;color:#8B7355;letter-spacing:4px;z-index:5}
-.section-tag-2{position:absolute;top:750px;left:60px;font-size:11px;color:#8B7355;letter-spacing:4px;z-index:5}
-.section-tag-2 .st-line{display:inline-block;width:40px;height:1px;background:#8B7355;vertical-align:middle;margin-right:12px}
+  /* Dry riverbed cracks */
+  .crack-1 {
+    position: absolute;
+    left: 60px;
+    top: 480px;
+    width: 580px;
+    height: 80px;
+  }
 
-/* Quote box bottom-left */
-.quote-box{position:absolute;bottom:60px;left:60px;width:500px;padding:16px 20px;border-left:3px solid #1B3B6B;background:rgba(245,240,232,0.7);z-index:4}
-.quote-box .qt{font-family:'Noto Serif SC',serif;font-size:13px;color:#1B3B6B;line-height:1.6;font-style:italic}
-.quote-box .qa{margin-top:6px;font-size:10px;color:#8B7355;letter-spacing:2px}
-</style></head><body><div class="page">
+  .crack-line {
+    position: absolute;
+    background: #8B7355;
+    opacity: 0.25;
+  }
 
+  /* Circular dry spots */
+  .dry-spot-1 {
+    position: absolute;
+    left: 100px;
+    top: 500px;
+    width: 60px;
+    height: 60px;
+    border: 1px solid #8B7355;
+    border-radius: 50%;
+    opacity: 0.2;
+  }
+
+  .dry-spot-2 {
+    position: absolute;
+    left: 200px;
+    top: 530px;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #1B3B6B;
+    border-radius: 50%;
+    opacity: 0.15;
+  }
+
+  .dry-spot-3 {
+    position: absolute;
+    left: 500px;
+    top: 510px;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #8B7355;
+    border-radius: 50%;
+    opacity: 0.18;
+  }
+
+  /* Bauhaus geometric accents in metaphor area */
+  .geo-circle-1 {
+    position: absolute;
+    left: 550px;
+    top: 20px;
+    width: 90px;
+    height: 90px;
+    border: 2px solid #1B3B6B;
+    border-radius: 50%;
+    opacity: 0.08;
+  }
+
+  .geo-square-1 {
+    position: absolute;
+    left: 80px;
+    top: 350px;
+    width: 45px;
+    height: 45px;
+    background: #1B3B6B;
+    opacity: 0.06;
+  }
+
+  .geo-tri-1 {
+    position: absolute;
+    left: 580px;
+    top: 320px;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 35px solid #8B7355;
+    opacity: 0.1;
+  }
+
+  /* Wind direction arrows (abstract) */
+  .wind-arrow-1 {
+    position: absolute;
+    left: 160px;
+    top: 140px;
+    width: 80px;
+    height: 1px;
+    background: #1B3B6B;
+    opacity: 0.15;
+  }
+
+  .wind-arrow-1::after {
+    content: '';
+    position: absolute;
+    right: -1px;
+    top: -3px;
+    width: 0;
+    height: 0;
+    border-left: 6px solid #1B3B6B;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    opacity: 0.4;
+  }
+
+  .wind-arrow-2 {
+    position: absolute;
+    left: 140px;
+    top: 180px;
+    width: 60px;
+    height: 1px;
+    background: #8B7355;
+    opacity: 0.12;
+  }
+
+  .wind-arrow-2::after {
+    content: '';
+    position: absolute;
+    right: -1px;
+    top: -3px;
+    width: 0;
+    height: 0;
+    border-left: 6px solid #8B7355;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    opacity: 0.3;
+  }
+
+  /* ===== Right Panel: Bullet Points ===== */
+  .content-panel {
+    position: absolute;
+    top: 270px;
+    left: 820px;
+    right: 60px;
+    bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 10;
+  }
+
+  .question-label {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 14px;
+    color: #8B7355;
+    letter-spacing: 3px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  .bullet-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .bullet-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .bullet-marker {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+
+  .bullet-marker .square {
+    width: 12px;
+    height: 12px;
+    background: #1B3B6B;
+  }
+
+  .bullet-marker .circle {
+    width: 14px;
+    height: 14px;
+    background: #1B3B6B;
+    border-radius: 50%;
+  }
+
+  .bullet-marker .ring {
+    width: 14px;
+    height: 14px;
+    border: 2px solid #1B3B6B;
+    border-radius: 50%;
+  }
+
+  .bullet-marker .diamond {
+    width: 12px;
+    height: 12px;
+    background: #8B7355;
+    transform: rotate(45deg);
+  }
+
+  .bullet-marker .line-v {
+    width: 2px;
+    height: 18px;
+    background: #1B3B6B;
+  }
+
+  .bullet-text {
+    font-size: 18px;
+    line-height: 1.65;
+    color: #1B3B6B;
+  }
+
+  .bullet-text .highlight {
+    font-weight: 700;
+    color: #1B3B6B;
+    position: relative;
+  }
+
+  .bullet-text .emphasis {
+    color: #8B7355;
+    font-weight: 600;
+  }
+
+  .bullet-text .strikethrough {
+    text-decoration: line-through;
+    text-decoration-color: #8B7355;
+    text-decoration-thickness: 2px;
+    color: #555;
+    opacity: 0.7;
+  }
+
+  /* ===== Bottom footer ===== */
+  .footer {
+    position: absolute;
+    bottom: 36px;
+    left: 60px;
+    right: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+  }
+
+  .footer-left {
+    font-size: 11px;
+    color: #8B7355;
+    letter-spacing: 2px;
+  }
+
+  .footer-right {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 11px;
+    color: #8B7355;
+    letter-spacing: 1px;
+  }
+
+  .footer-rule {
+    position: absolute;
+    bottom: 68px;
+    left: 60px;
+    right: 60px;
+    height: 1px;
+    background: #8B7355;
+    opacity: 0.2;
+    z-index: 10;
+  }
+
+  /* ===== Decorative Bauhaus elements ===== */
+  .deco-circle-large {
+    position: absolute;
+    right: -120px;
+    top: -120px;
+    width: 400px;
+    height: 400px;
+    border: 2px solid #1B3B6B;
+    border-radius: 50%;
+    opacity: 0.04;
+    z-index: 1;
+  }
+
+  .deco-square-large {
+    position: absolute;
+    left: -60px;
+    bottom: -60px;
+    width: 200px;
+    height: 200px;
+    background: #1B3B6B;
+    opacity: 0.03;
+    z-index: 1;
+  }
+
+  .deco-line-diag {
+    position: absolute;
+    left: 780px;
+    top: 240px;
+    width: 1px;
+    height: 580px;
+    background: #1B3B6B;
+    opacity: 0.06;
+    z-index: 1;
+  }
+
+  /* Quote emphasis box */
+  .quote-box {
+    position: absolute;
+    top: 270px;
+    left: 820px;
+    width: 2px;
+    height: 520px;
+    background: linear-gradient(to bottom, #1B3B6B 0%, #8B7355 50%, transparent 100%);
+    opacity: 0.15;
+    z-index: 9;
+  }
+
+  /* Subtle wind particles */
+  .particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #8B7355;
+    border-radius: 50%;
+    opacity: 0.3;
+  }
+
+  /* Numbered section indicator */
+  .section-num {
+    position: absolute;
+    top: 170px;
+    right: 60px;
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 100px;
+    font-weight: 900;
+    color: #1B3B6B;
+    opacity: 0.04;
+    line-height: 1;
+    z-index: 1;
+  }
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <!-- Decorative Bauhaus background elements -->
+  <div class="deco-circle-large"></div>
+  <div class="deco-square-large"></div>
+  <div class="deco-line-diag"></div>
+  <div class="section-num">§5</div>
+
+  <!-- Header -->
   <div class="header">
-    <div class="num-badge">10</div>
-    <div class="lecture-title">劳动报酬与财产分配 · 第 10 期</div>
-    <div class="meta">OPEN SOURCE · NEW INSTITUTIONAL ECONOMICS</div>
+    <div class="lecture-badge">
+      <div class="lecture-num">10</div>
+      <div class="lecture-meta">
+        <div class="lecture-title">劳动报酬与财产分配</div>
+        <div class="lecture-sub">Open Source · New Institutional Economics</div>
+      </div>
+    </div>
+    <div class="page-num">§ 5 / 29</div>
+  </div>
+  <div class="header-rule"></div>
+  <div class="header-rule-copper"></div>
+
+  <!-- Main title -->
+  <div class="main-title">
+    为什么需要讨论劳动报酬？<br>
+    <span class="accent">Why labor compensation matters in open source</span>
   </div>
 
-  <div class="main">
+  <!-- Left: Visual Metaphor — Dry Riverbed with Broken "无偿" Flag -->
+  <div class="metaphor-area">
+    <div class="riverbed">
 
-    <div class="left-col">
-      <div class="eyebrow">§ 10.1 &nbsp;WHY LABOR COMPENSATION MATTERS</div>
-      <div class="main-title">为什么需要<br><span class="accent">讨论劳动报酬？</span></div>
-      <div class="subtitle-line"></div>
+      <!-- Bauhaus geometric accents -->
+      <div class="geo-circle-1"></div>
+      <div class="geo-square-1"></div>
+      <div class="geo-tri-1"></div>
 
-      <ul class="bullets">
-        <li>开源经常被贴上「<strong>无偿劳动</strong>」的标签</li>
-        <li>但这是一种<span class="warn">严重的误解</span>，需要制度层面的澄清</li>
-        <li>没有回报的工作，是<span class="warn">现代文明社会</span>无法接受的</li>
-        <li>开源的<span class="warn">可持续性</span>，取决于劳动报酬的制度安排</li>
-        <li>劳动报酬不只是工资，更是<strong>产权确认</strong>与<strong>协作秩序</strong>的基石</li>
-      </ul>
-    </div>
+      <!-- Wind arrows -->
+      <div class="wind-arrow-1"></div>
+      <div class="wind-arrow-2"></div>
 
-    <div class="right-col">
+      <!-- Flag pole -->
+      <div class="flag-pole"></div>
 
-      <div class="section-tag">— 视觉隐喻 · VISUAL METAPHOR —</div>
+      <!-- Broken flag pieces (shattered, trailing off) -->
+      <div class="flag-piece-1"></div>
+      <div class="flag-piece-2"></div>
+      <div class="flag-piece-3"></div>
+      <div class="flag-piece-4"></div>
+      <div class="flag-piece-5"></div>
 
-      <div class="riverbed">
-        <div class="sun-disc"></div>
-        <div class="sun-inner"><span>无&nbsp;偿</span></div>
-        <div class="half-circle"></div>
-        <div class="v-line"></div>
+      <!-- "无偿" text on main flag piece -->
+      <div class="flag-text">无偿</div>
 
-        <div class="bauhaus-square"></div>
-        <div class="bauhaus-square-inner"></div>
-        <div class="bauhaus-tri"></div>
+      <!-- Tattered trailing lines (wind effect) -->
+      <div class="tatter-line-1"></div>
+      <div class="tatter-line-2"></div>
+      <div class="tatter-line-3"></div>
 
-        <div class="wind-arrow">
-          <span class="wa-label">WIND ↗</span>
-          <div class="wa-line"></div>
-          <div class="wa-head"></div>
-        </div>
+      <!-- Wind particles scattered -->
+      <div class="particle" style="left: 500px; top: 90px;"></div>
+      <div class="particle" style="left: 530px; top: 130px;"></div>
+      <div class="particle" style="left: 560px; top: 170px;"></div>
+      <div class="particle" style="left: 480px; top: 210px;"></div>
+      <div class="particle" style="left: 545px; top: 250px;"></div>
+      <div class="particle" style="left: 580px; top: 195px;"></div>
 
-        <div class="wind wind1"></div>
-        <div class="wind wind2"></div>
-
-        <div class="flag-group">
-          <div class="flag">
-            <div class="flag-pole"></div>
-            <div class="flag-cloth intact">无偿劳动</div>
-          </div>
-          <div class="flag">
-            <div class="flag-pole"></div>
-            <div class="flag-cloth partial">无 · 偿</div>
-          </div>
-          <div class="flag">
-            <div class="flag-pole"></div>
-            <div class="flag-cloth torn">无偿</div>
-          </div>
-          <div class="flag">
-            <div class="flag-pole"></div>
-            <div class="flag-cloth shredded">无</div>
-          </div>
-        </div>
-
-        <div class="debris">
-          <div class="debris-pc d1"></div>
-          <div class="debris-pc d2"></div>
-          <div class="debris-pc d3"></div>
-          <div class="debris-pc d4"></div>
-          <div class="debris-pc d5"></div>
-          <div class="debris-pc d6"></div>
-          <div class="debris-pc d7"></div>
-          <div class="debris-pc d8"></div>
-        </div>
-
-        <div class="river-floor"></div>
-        <div class="river-cracks">
-          <div class="crack crack1"></div>
-          <div class="crack crack2"></div>
-          <div class="crack crack3"></div>
-          <div class="crack crack4"></div>
-          <div class="crack crack5"></div>
-          <div class="crack crack6"></div>
-          <div class="crack crack7"></div>
-          <div class="crack crack8"></div>
-          <div class="crack crack9"></div>
-          <div class="crack crack10"></div>
-          <div class="crack crack11"></div>
-          <div class="crack crack12"></div>
-        </div>
-
-        <div class="concentric">
-          <div class="c1"></div>
-          <div class="c2"></div>
-          <div class="c3"></div>
-          <div class="c-label">DRIED RIVERBED</div>
-        </div>
+      <!-- Dry riverbed crack lines -->
+      <div class="crack-1">
+        <!-- Jagged horizontal cracks -->
+        <svg width="580" height="80" viewBox="0 0 580 80" style="position:absolute;top:0;left:0;">
+          <path d="M 0 40 L 40 38 L 70 45 L 110 40 L 150 48 L 200 42 L 240 50 L 280 44 L 330 52 L 370 46 L 420 54 L 460 48 L 500 56 L 540 50 L 580 58" 
+                stroke="#8B7355" stroke-width="1" fill="none" opacity="0.2"/>
+          <path d="M 20 20 L 60 22 L 100 18 L 140 24 L 180 20 L 220 26" 
+                stroke="#1B3B6B" stroke-width="0.5" fill="none" opacity="0.12"/>
+          <path d="M 350 65 L 400 62 L 450 68 L 500 64 L 550 70" 
+                stroke="#8B7355" stroke-width="0.5" fill="none" opacity="0.15"/>
+          <path d="M 100 55 L 140 58 L 180 53" 
+                stroke="#1B3B6B" stroke-width="0.5" fill="none" opacity="0.1"/>
+        </svg>
       </div>
 
-      <div class="section-tag-2"><span class="st-line"></span>干涸的河道边，标有「无偿」的旗帜随风破碎</div>
-
-      <div class="quote-box">
-        <div class="qt">「当劳动被剥夺回报之名，协作的河床便开始龟裂。」</div>
-        <div class="qa">— 第 10 期 · 劳动报酬与财产分配</div>
-      </div>
+      <!-- Dry spots (circular cracks) -->
+      <div class="dry-spot-1"></div>
+      <div class="dry-spot-2"></div>
+      <div class="dry-spot-3"></div>
 
     </div>
-
   </div>
 
+  <!-- Quote left border -->
+  <div class="quote-box"></div>
+
+  <!-- Right: Bullet Points -->
+  <div class="content-panel">
+    <div class="question-label">核心论点 · Core Argument</div>
+
+    <ul class="bullet-list">
+      <li class="bullet-item">
+        <div class="bullet-marker"><div class="square"></div></div>
+        <div class="bullet-text">
+          为什么需要讨论<span class="highlight">劳动报酬</span>？
+        </div>
+      </li>
+
+      <li class="bullet-item">
+        <div class="bullet-marker"><div class="circle"></div></div>
+        <div class="bullet-text">
+          开源经常被贴上<span class="strikethrough">「无偿劳动」</span>的标签
+        </div>
+      </li>
+
+      <li class="bullet-item">
+        <div class="bullet-marker"><div class="ring"></div></div>
+        <div class="bullet-text">
+          但这是一种<span class="highlight">严重的误解</span>
+        </div>
+      </li>
+
+      <li class="bullet-item">
+        <div class="bullet-marker"><div class="diamond"></div></div>
+        <div class="bullet-text">
+          没有回报的工作，是<span class="emphasis">现代文明社会无法接受的</span>
+        </div>
+      </li>
+
+      <li class="bullet-item">
+        <div class="bullet-marker"><div class="line-v"></div></div>
+        <div class="bullet-text">
+          开源的<span class="highlight">可持续性</span>，取决于劳动报酬的<span class="emphasis">制度安排</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer-rule"></div>
   <div class="footer">
-    <span class="ft-left">OPEN SOURCE · NEW INSTITUTIONAL ECONOMICS LECTURE SERIES</span>
-    <span class="ft-center">第 10 期 / 29</span>
-    <span class="ft-right">BAUHAUS · DARK ACADEMIC</span>
+    <div class="footer-left">开源之道 · 新制度经济学视角</div>
+    <div class="footer-right">劳动报酬与财产分配 — 第 10 期</div>
   </div>
 
-</div></body></html>
+</div>
+</body>
+</html>

@@ -1,112 +1,465 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: 6f66709426c4f10e --><head><meta charset="UTF-8"><title>开源基础设施的制度建构</title><style>*{margin:0;padding:0;box-sizing:border-box}html,body{width:1600px;height:900px;overflow:hidden;margin:0;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;color:#1B3B6B;background:#F5F0E8}body{position:relative}.parchment{position:absolute;top:0;left:0;width:1600px;height:900px;background:#F5F0E8;background-image:radial-gradient(ellipse at 20% 50%,rgba(139,115,85,0.04) 0%,transparent 60%),radial-gradient(ellipse at 80% 30%,rgba(27,59,107,0.03) 0%,transparent 50%),radial-gradient(ellipse at 60% 80%,rgba(139,115,85,0.03) 0%,transparent 55%)}/* top frame */.top-bar{position:absolute;top:48px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:center;padding-bottom:18px;border-bottom:2px solid #1B3B6B}.top-bar .label{font-size:13px;letter-spacing:6px;color:#8B7355;font-weight:500}.top-bar .section-num{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:22px;color:#1B3B6B;letter-spacing:2px}.title-area{position:absolute;top:110px;left:80px;width:720px}.main-title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:52px;font-weight:700;color:#1B3B6B;line-height:1.2;letter-spacing:1px}.subtitle{margin-top:18px;font-size:16px;color:#555;line-height:1.8;letter-spacing:1px;width:620px}.divider-line{margin-top:24px;width:80px;height:3px;background:#1B3B6B}.copper-accent{position:absolute;top:110px;right:80px;width:380px;height:200px}.copper-rect{position:absolute;top:0;right:0;width:280px;height:280px;border:3px solid #8B7355}.copper-inner{position:absolute;top:24px;right:24px;width:232px;height:232px;border:1px solid #8B7355}.copper-label{position:absolute;top:8px;right:12px;font-size:11px;letter-spacing:4px;color:#8B7355}.copper-num{position:absolute;bottom:14px;right:14px;font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355}.copper-circle{position:absolute;bottom:0;right:200px;width:70px;height:70px;border-radius:50%;background:#1B3B6B}.copper-dot{position:absolute;top:0;right:380px;width:22px;height:22px;border-radius:50%;background:#8B7355}/* circuit board */.circuit-area{position:absolute;top:340px;left:80px;width:1440px;height:360px}.circuit-board{position:absolute;top:0;left:0;width:1440px;height:360px;overflow:hidden}.circuit-line{position:absolute;background:#1B3B6B;opacity:0.85}.circuit-line.copper{background:#8B7355;opacity:0.7}.circuit-node{position:absolute;border-radius:50%;background:#F5F0E8;border:2px solid #1B3B6B;box-shadow:0 0 0 3px rgba(27,59,107,0.15)}.circuit-node.copper{border-color:#8B7355;box-shadow:0 0 0 3px rgba(139,115,85,0.12)}.circuit-node.solid{background:#1B3B6B;border-color:#1B3B6B;box-shadow:0 0 8px rgba(27,59,107,0.4),0 0 16px rgba(27,59,107,0.2)}.circuit-node.solid.copper{background:#8B7355;border-color:#8B7355;box-shadow:0 0 8px rgba(139,115,85,0.4),0 0 16px rgba(139,115,85,0.2)}.circuit-label{position:absolute;font-size:11px;letter-spacing:2px;color:#8B7355;font-weight:500}.circuit-square{position:absolute;border:2px solid #1B3B6B;opacity:0.6}.circuit-square.copper{border-color:#8B7355}.glow-node{position:absolute;border-radius:50%;background:#1B3B6B;box-shadow:0 0 12px rgba(27,59,107,0.6),0 0 24px rgba(27,59,107,0.3),0 0 40px rgba(27,59,107,0.15)}/* bullets */.bullets{position:absolute;bottom:60px;left:80px;right:80px;display:flex;justify-content:space-between;gap:24px}.bullet{flex:1;position:relative;padding-left:28px}.bullet-num{position:absolute;top:0;left:0;font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:24px;color:#1B3B6B;font-weight:700;line-height:1}.bullet-num.copper{color:#8B7355}.bullet-text{margin-top:14px;font-size:13px;color:#1B3B6B;line-height:1.6;font-weight:500;letter-spacing:0.5px}.bullet-desc{margin-top:8px;font-size:11px;color:#555;line-height:1.7;letter-spacing:0.3px}.bullet-top{position:absolute;top:12px;left:38px;width:calc(100% - 38px);height:1px;background:rgba(27,59,107,0.2)}.bottom-bar{position:absolute;bottom:18px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:center;padding-top:12px;border-top:1px solid rgba(27,59,107,0.15)}.bottom-bar .meta{font-size:11px;color:#8B7355;letter-spacing:3px}.bottom-bar .page{font-family:'Noto Serif SC',serif;font-size:14px;color:#1B3B6B}</style></head><body><div class="parchment"></div><div class="top-bar"><span class="label">INSTITUTIONAL FOUNDATIONS</span><span class="section-num">— 04 / 12 —</span></div><div class="title-area"><div class="main-title">开源基础设施的<br>制度建构</div><div class="subtitle">从技术脉络到社会契约——开源社区如何在代码之外，<br>构建信任、伦理与协作的持久架构。</div><div class="divider-line"></div></div><div class="copper-accent"><div class="copper-rect"></div><div class="copper-inner"></div><div class="copper-label">SIGNAL · 04</div><div class="copper-num">§ IV</div><div class="copper-circle"></div><div class="copper-dot"></div></div><div class="circuit-area"><div class="circuit-board"><!-- horizontal lines -->
-<div class="circuit-line" style="top:60px;left:0;width:280px;height:2px"></div>
-<div class="circuit-line" style="top:60px;left:280px;width:60px;height:1px"></div>
-<div class="circuit-line" style="top:60px;left:340px;width:180px;height:2px"></div>
-<div class="circuit-line" style="top:60px;left:520px;width:80px;height:1px"></div>
-<div class="circuit-line" style="top:60px;left:600px;width:140px;height:2px"></div>
-<div class="circuit-line" style="top:60px;left:740px;width:200px;height:1px"></div>
-<div class="circuit-line" style="top:60px;left:940px;width:120px;height:2px"></div>
-<div class="circuit-line" style="top:60px;left:1060px;width:100px;height:1px"></div>
-<div class="circuit-line" style="top:60px;left:1160px;width:280px;height:2px"></div>
+<!DOCTYPE html>
+<html lang="zh-CN"><!-- source_hash: 3dcca3abba0961e3 -->
+<head>
+<meta charset="UTF-8">
+<title>第 11 期 · 文化的重要作用</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1600px; height: 900px; overflow: hidden; margin: 0; background: #F5F0E8; }
+body {
+  font-family: 'Noto Sans SC', sans-serif;
+  color: #1B3B6B;
+  position: relative;
+}
 
-<div class="circuit-line copper" style="top:140px;left:0;width:100px;height:2px"></div>
-<div class="circuit-line copper" style="top:140px;left:100px;width:40px;height:1px"></div>
-<div class="circuit-line copper" style="top:140px;left:140px;width:200px;height:2px"></div>
-<div class="circuit-line copper" style="top:140px;left:340px;width:60px;height:1px"></div>
-<div class="circuit-line copper" style="top:140px;left:400px;width:120px;height:2px"></div>
-<div class="circuit-line copper" style="top:140px;left:520px;width:80px;height:1px"></div>
-<div class="circuit-line copper" style="top:140px;left:600px;width:160px;height:2px"></div>
-<div class="circuit-line copper" style="top:140px;left:760px;width:100px;height:1px"></div>
-<div class="circuit-line copper" style="top:140px;left:860px;width:200px;height:2px"></div>
-<div class="circuit-line copper" style="top:140px;left:1060px;width:80px;height:1px"></div>
-<div class="circuit-line copper" style="top:140px;left:1140px;width:300px;height:2px"></div>
+/* Background texture overlay */
+.bg-texture {
+  position: absolute;
+  top: 0; left: 0; width: 1600px; height: 900px;
+  background: radial-gradient(ellipse at 30% 20%, rgba(27,59,107,0.02) 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 70%, rgba(139,115,85,0.03) 0%, transparent 40%);
+  pointer-events: none;
+}
 
-<div class="circuit-line" style="top:220px;left:0;width:160px;height:2px"></div>
-<div class="circuit-line" style="top:220px;left:160px;width:40px;height:1px"></div>
-<div class="circuit-line" style="top:220px;left:200px;width:100px;height:2px"></div>
-<div class="circuit-line" style="top:220px;left:300px;width:120px;height:1px"></div>
-<div class="circuit-line" style="top:220px;left:420px;width:180px;height:2px"></div>
-<div class="circuit-line" style="top:220px;left:600px;width:60px;height:1px"></div>
-<div class="circuit-line" style="top:220px;left:660px;width:140px;height:2px"></div>
-<div class="circuit-line" style="top:220px;left:800px;width:80px;height:1px"></div>
-<div class="circuit-line" style="top:220px;left:880px;width:120px;height:2px"></div>
-<div class="circuit-line" style="top:220px;left:1000px;width:60px;height:1px"></div>
-<div class="circuit-line" style="top:220px;left:1060px;width:180px;height:2px"></div>
-<div class="circuit-line" style="top:220px;left:1240px;width:200px;height:1px"></div>
+/* Header area */
+.header {
+  position: absolute;
+  top: 40px;
+  left: 60px;
+  width: 1480px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+.header-left {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+}
+.lecture-badge {
+  width: 48px;
+  height: 48px;
+  background: #1B3B6B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 20px;
+  color: #F5F0E8;
+  font-weight: bold;
+}
+.lecture-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 28px;
+  color: #1B3B6B;
+  letter-spacing: 2px;
+}
+.header-meta {
+  font-size: 12px;
+  color: #555;
+  letter-spacing: 1px;
+}
 
-<div class="circuit-line copper" style="top:300px;left:0;width:220px;height:2px"></div>
-<div class="circuit-line copper" style="top:300px;left:220px;width:40px;height:1px"></div>
-<div class="circuit-line copper" style="top:300px;left:260px;width:140px;height:2px"></div>
-<div class="circuit-line copper" style="top:300px;left:400px;width:80px;height:1px"></div>
-<div class="circuit-line copper" style="top:300px;left:480px;width:100px;height:2px"></div>
-<div class="circuit-line copper" style="top:300px;left:580px;width:120px;height:1px"></div>
-<div class="circuit-line copper" style="top:300px;left:700px;width:180px;height:2px"></div>
-<div class="circuit-line copper" style="top:300px;left:880px;width:60px;height:1px"></div>
-<div class="circuit-line copper" style="top:300px;left:940px;width:160px;height:2px"></div>
-<div class="circuit-line copper" style="top:300px;left:1100px;width:100px;height:1px"></div>
-<div class="circuit-line copper" style="top:300px;left:1200px;width:240px;height:2px"></div>
+/* Main content area */
+.main-content {
+  position: absolute;
+  top: 120px;
+  left: 60px;
+  width: 1480px;
+  height: 740px;
+  display: flex;
+  gap: 40px;
+}
 
-<!-- vertical connectors -->
-<div class="circuit-line" style="top:60px;left:160px;width:2px;height:40px"></div>
-<div class="circuit-line" style="top:100px;left:160px;width:2px;height:40px"></div>
-<div class="circuit-line copper" style="top:80px;left:280px;width:1px;height:60px"></div>
-<div class="circuit-line" style="top:120px;left:520px;width:2px;height:20px"></div>
-<div class="circuit-line copper" style="top:140px;left:220px;width:1px;height:80px"></div>
-<div class="circuit-line" style="top:160px;left:600px;width:2px;height:60px"></div>
-<div class="circuit-line" style="top:140px;left:740px;width:2px;height:80px"></div>
-<div class="circuit-line copper" style="top:140px;left:940px;width:1px;height:80px"></div>
-<div class="circuit-line" style="top:60px;left:1160px;width:2px;height:60px"></div>
-<div class="circuit-line copper" style="top:140px;left:1060px;width:1px;height:60px"></div>
-<div class="circuit-line" style="top:140px;left:340px;width:2px;height:80px"></div>
-<div class="circuit-line" style="top:220px;left:160px;width:2px;height:80px"></div>
-<div class="circuit-line copper" style="top:220px;left:420px;width:1px;height:80px"></div>
-<div class="circuit-line" style="top:220px;left:660px;width:2px;height:80px"></div>
-<div class="circuit-line copper" style="top:300px;left:220px;width:1px;height:0px"></div>
-<div class="circuit-line" style="top:300px;left:1060px;width:2px;height:0px"></div>
-<div class="circuit-line copper" style="top:220px;left:800px;width:1px;height:80px"></div>
-<div class="circuit-line" style="top:220px;left:1000px;width:2px;height:80px"></div>
+/* Left panel - circuit board visual */
+.visual-panel {
+  width: 620px;
+  height: 740px;
+  position: relative;
+  border-left: 2px solid #1B3B6B;
+  padding-left: 30px;
+}
 
-<!-- nodes -->
-<div class="circuit-node" style="top:56px;left:155px;width:12px;height:12px"></div>
-<div class="circuit-node copper" style="top:56px;left:335px;width:12px;height:12px"></div>
-<div class="circuit-node solid" style="top:54px;left:515px;width:14px;height:14px"></div>
-<div class="glow-node" style="top:50px;left:1155px;width:22px;height:22px"></div>
-<div class="circuit-node solid copper" style="top:136px;left:135px;width:14px;height:14px"></div>
-<div class="circuit-node" style="top:136px;left:395px;width:12px;height:12px"></div>
-<div class="circuit-node solid" style="top:134px;left:595px;width:14px;height:14px"></div>
-<div class="circuit-node copper" style="top:136px;left:855px;width:12px;height:12px"></div>
-<div class="glow-node" style="top:132px;left:1135px;width:22px;height:22px"></div>
-<div class="circuit-node solid copper" style="top:130px;left:1135px;width:26px;height:26px;border-color:#8B7355"></div>
-<div class="circuit-node" style="top:216px;left:155px;width:12px;height:12px"></div>
-<div class="circuit-node solid" style="top:214px;left:415px;width:14px;height:14px"></div>
-<div class="circuit-node copper" style="top:216px;left:655px;width:12px;height:12px"></div>
-<div class="circuit-node solid" style="top:214px;left:875px;width:14px;height:14px"></div>
-<div class="circuit-node" style="top:216px;left:1055px;width:12px;height:12px"></div>
-<div class="circuit-node solid copper" style="top:212px;left:1235px;width:16px;height:16px"></div>
-<div class="circuit-node copper" style="top:296px;left:215px;width:12px;height:12px"></div>
-<div class="circuit-node solid" style="top:294px;left:475px;width:14px;height:14px"></div>
-<div class="circuit-node" style="top:296px;left:695px;width:12px;height:12px"></div>
-<div class="circuit-node solid copper" style="top:292px;left:935px;width:16px;height:16px"></div>
-<div class="glow-node" style="top:288px;left:1195px;width:24px;height:24px"></div>
+.circuit-board {
+  position: relative;
+  width: 580px;
+  height: 620px;
+  margin-top: 40px;
+}
 
-<!-- squares -->
-<div class="circuit-square" style="top:30px;left:70px;width:40px;height:40px"></div>
-<div class="circuit-square copper" style="top:20px;left:280px;width:30px;height:30px"></div>
-<div class="circuit-square" style="top:30px;left:560px;width:36px;height:36px"></div>
-<div class="circuit-square copper" style="top:200px;left:460px;width:40px;height:40px"></div>
-<div class="circuit-square" style="top:100px;left:840px;width:36px;height:36px"></div>
-<div class="circuit-square copper" style="top:260px;left:1060px;width:34px;height:34px"></div>
-<div class="circuit-square" style="top:280px;left:580px;width:32px;height:32px"></div>
-<div class="circuit-square copper" style="top:180px;left:1240px;width:36px;height:36px"></div>
+/* Circuit traces */
+.trace {
+  position: absolute;
+  background: #1B3B6B;
+}
+.trace-h { height: 1px; }
+.trace-v { width: 1px; }
 
-<!-- labels -->
-<div class="circuit-label" style="top:22px;left:286px">TRUST</div>
-<div class="circuit-label" style="top:92px;left:846px">ETHICS</div>
-<div class="circuit-label" style="top:240px;left:1066px">GPL</div>
-<div class="circuit-label" style="top:286px;left:586px">NETWORK</div>
-<div class="circuit-label" style="top:240px;left:1246px">NPO</div>
-<div class="circuit-label" style="top:30px;left:76px">SYS</div>
-<div class="circuit-label" style="top:298px;left:1230px">INST.</div>
-</div></div><div class="bullets"><div class="bullet"><div class="bullet-num">01</div><div class="bullet-top"></div><div class="bullet-text">信任的构建与维护</div><div class="bullet-desc">代码之外的声誉机制、贡献者信用与<br>开源社区的隐性契约体系</div></div><div class="bullet"><div class="bullet-num">02</div><div class="bullet-top"></div><div class="bullet-text">科学伦理的继承与发扬</div><div class="bullet-desc">从学术共同体到开发者社群——<br>知识共享传统的制度延续</div></div><div class="bullet"><div class="bullet-num copper">03</div><div class="bullet-top"></div><div class="bullet-text">强互惠的声明：GPL 的诞生</div><div class="bullet-desc">Copyleft 机制与制度性约束——<br>Stallman 的哲学与其法理表达</div></div><div class="bullet"><div class="bullet-num">04</div><div class="bullet-top"></div><div class="bullet-text">网络社会与共同体的巩固</div><div class="bullet-desc">从松散协作到有组织的社区治理——<br>数字公地的制度化进程</div></div><div class="bullet"><div class="bullet-num copper">05</div><div class="bullet-top"></div><div class="bullet-text">非营利募捐与品牌建立</div><div class="bullet-desc">基金会模式、企业赞助与开源项目<br>与现实经济的制度性连接</div></div><div class="bullet"><div class="bullet-num">06</div><div class="bullet-top"></div><div class="bullet-text">制度化与风格化</div><div class="bullet-desc">编码规范、发布流程与社区仪式——<br>开源文化的形式沉淀</div></div></div><div class="bottom-bar"><span class="meta">OPEN SOURCE · INSTITUTIONAL ECONOMICS</span><span class="page">— 04 —</span></div></body></html>
+/* Circuit nodes */
+.node {
+  position: absolute;
+  border-radius: 50%;
+  background: #1B3B6B;
+}
+
+/* Central chip */
+.chip {
+  position: absolute;
+  top: 240px;
+  left: 200px;
+  width: 120px;
+  height: 120px;
+  background: #1B3B6B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.chip-inner {
+  width: 80px;
+  height: 80px;
+  border: 1px solid rgba(245,240,232,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.chip-core {
+  width: 40px;
+  height: 40px;
+  background: rgba(245,240,232,0.15);
+}
+
+/* Glowing effects */
+.glow {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(27,59,107,0.2);
+}
+
+/* Decorative squares on circuit */
+.pad {
+  position: absolute;
+  background: #1B3B6B;
+}
+
+/* Visual label */
+.visual-label {
+  position: absolute;
+  bottom: 10px;
+  left: 30px;
+  font-size: 11px;
+  color: #555;
+  letter-spacing: 2px;
+  font-style: italic;
+}
+
+/* Right panel - content */
+.content-panel {
+  width: 780px;
+  height: 740px;
+  padding-top: 10px;
+  padding-right: 30px;
+}
+
+.section-label {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 14px;
+  color: #8B7355;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(139,115,85,0.3);
+}
+
+.content-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 34px;
+  color: #1B3B6B;
+  line-height: 1.4;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+}
+
+.content-items {
+  list-style: none;
+  padding: 0;
+}
+.content-items li {
+  position: relative;
+  padding: 16px 0 16px 36px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #1B3B6B;
+  border-bottom: 1px solid rgba(27,59,107,0.08);
+}
+.content-items li:last-child {
+  border-bottom: none;
+}
+
+.content-items li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 22px;
+  width: 10px;
+  height: 10px;
+  background: #1B3B6B;
+}
+.content-items li:nth-child(2)::before {
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid #1B3B6B;
+}
+.content-items li:nth-child(3)::before {
+  width: 10px;
+  height: 10px;
+  background: transparent;
+  border: 2px solid #8B7355;
+}
+.content-items li:nth-child(4)::before {
+  width: 0;
+  height: 0;
+  background: transparent;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 10px solid #1B3B6B;
+  top: 22px;
+}
+.content-items li:nth-child(5)::before {
+  width: 14px;
+  height: 10px;
+  background: #8B7355;
+  border-radius: 50%;
+}
+.content-items li:nth-child(6)::before {
+  width: 10px;
+  height: 10px;
+  background: #1B3B6B;
+  transform: rotate(45deg);
+}
+
+.item-title {
+  font-weight: 600;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+}
+.item-desc {
+  font-size: 13px;
+  color: #555;
+  margin-top: 3px;
+}
+
+/* Geometric decoration - top right */
+.deco-circle {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  width: 80px;
+  height: 80px;
+  border: 2px solid #1B3B6B;
+  border-radius: 50%;
+  opacity: 0.15;
+}
+.deco-square {
+  position: absolute;
+  top: 50px;
+  right: 70px;
+  width: 30px;
+  height: 30px;
+  background: #1B3B6B;
+  opacity: 0.08;
+}
+
+/* Bottom decoration */
+.bottom-line {
+  position: absolute;
+  bottom: 30px;
+  left: 60px;
+  width: 1480px;
+  height: 1px;
+  background: #1B3B6B;
+  opacity: 0.2;
+}
+.page-number {
+  position: absolute;
+  bottom: 40px;
+  right: 60px;
+  font-size: 11px;
+  color: #555;
+  letter-spacing: 1px;
+}
+.page-number span {
+  color: #1B3B6B;
+  font-weight: bold;
+}
+
+/* Accent decorations */
+.accent-dot {
+  position: absolute;
+  bottom: 50px;
+  left: 60px;
+  width: 8px;
+  height: 8px;
+  background: #1B3B6B;
+  border-radius: 50%;
+}
+.accent-square {
+  position: absolute;
+  bottom: 48px;
+  left: 80px;
+  width: 8px;
+  height: 8px;
+  background: #8B7355;
+}
+.accent-line {
+  position: absolute;
+  bottom: 51px;
+  left: 100px;
+  width: 40px;
+  height: 2px;
+  background: #1B3B6B;
+}
+</style>
+</head>
+<body>
+<div class="bg-texture"></div>
+
+<!-- Decorative elements -->
+<div class="deco-circle"></div>
+<div class="deco-square"></div>
+
+<!-- Header -->
+<div class="header">
+  <div class="header-left">
+    <div class="lecture-badge">11</div>
+    <div class="lecture-title">文化的重要作用</div>
+  </div>
+  <div class="header-meta">包豪斯几何构成 · 新制度经济学视角</div>
+</div>
+
+<!-- Main Content -->
+<div class="main-content">
+  <!-- Left: Circuit Board Visual -->
+  <div class="visual-panel">
+    <div class="circuit-board">
+      <!-- Circuit traces - horizontal -->
+      <div class="trace trace-h" style="top: 60px; left: 20px; width: 220px;"></div>
+      <div class="trace trace-h" style="top: 120px; left: 60px; width: 180px;"></div>
+      <div class="trace trace-h" style="top: 300px; left: 320px; width: 200px;"></div>
+      <div class="trace trace-h" style="top: 380px; left: 400px; width: 140px;"></div>
+      <div class="trace trace-h" style="top: 440px; left: 320px; width: 220px;"></div>
+      <div class="trace trace-h" style="top: 500px; left: 20px; width: 160px;"></div>
+      <div class="trace trace-h" style="top: 560px; left: 80px; width: 200px;"></div>
+      <div class="trace trace-h" style="top: 180px; left: 340px; width: 180px;"></div>
+      <div class="trace trace-h" style="top: 60px; left: 360px; width: 180px;"></div>
+      <div class="trace trace-h" style="top: 20px; left: 280px; width: 120px;"></div>
+
+      <!-- Circuit traces - vertical -->
+      <div class="trace trace-v" style="top: 60px; left: 240px; height: 180px;"></div>
+      <div class="trace trace-v" style="top: 120px; left: 240px; height: 100px;"></div>
+      <div class="trace trace-v" style="top: 300px; left: 340px; height: 80px;"></div>
+      <div class="trace trace-v" style="top: 380px; left: 420px; height: 60px;"></div>
+      <div class="trace trace-v" style="top: 500px; left: 180px; height: 60px;"></div>
+      <div class="trace trace-v" style="top: 240px; left: 280px; height: 60px;"></div>
+      <div class="trace trace-v" style="top: 180px; left: 520px; height: 120px;"></div>
+      <div class="trace trace-v" style="top: 20px; left: 400px; height: 40px;"></div>
+
+      <!-- Central chip -->
+      <div class="chip">
+        <div class="chip-inner">
+          <div class="chip-core"></div>
+        </div>
+      </div>
+
+      <!-- Chip pins -->
+      <div class="pad" style="top: 260px; left: 180px; width: 20px; height: 4px;"></div>
+      <div class="pad" style="top: 280px; left: 180px; width: 20px; height: 4px;"></div>
+      <div class="pad" style="top: 310px; left: 180px; width: 20px; height: 4px;"></div>
+      <div class="pad" style="top: 330px; left: 180px; width: 20px; height: 4px;"></div>
+      <div class="pad" style="top: 260px; left: 320px; width: 20px; height: 4px;"></div>
+      <div class="pad" style="top: 280px; left: 320px; width: 20px; height: 4px;"></div>
+      <div class="pad" style="top: 310px; left: 320px; width: 20px; height: 4px;"></div>
+      <div class="pad" style="top: 330px; left: 320px; width: 20px; height: 4px;"></div>
+
+      <!-- Nodes -->
+      <div class="node" style="top: 55px; left: 235px; width: 10px; height: 10px;"></div>
+      <div class="node" style="top: 55px; left: 395px; width: 8px; height: 8px;"></div>
+      <div class="node" style="top: 115px; left: 235px; width: 10px; height: 10px;"></div>
+      <div class="node" style="top: 115px; left: 235px; width: 8px; height: 8px;"></div>
+      <div class="node" style="top: 175px; left: 515px; width: 10px; height: 10px;"></div>
+      <div class="node" style="top: 295px; left: 335px; width: 8px; height: 8px;"></div>
+      <div class="node" style="top: 375px; left: 415px; width: 8px; height: 8px;"></div>
+      <div class="node" style="top: 435px; left: 335px; width: 10px; height: 10px;"></div>
+      <div class="node" style="top: 495px; left: 175px; width: 8px; height: 8px;"></div>
+      <div class="node" style="top: 555px; left: 275px; width: 10px; height: 10px;"></div>
+      <div class="node" style="top: 595px; left: 40px; width: 8px; height: 8px;"></div>
+      <div class="node" style="top: 15px; left: 395px; width: 8px; height: 8px;"></div>
+      <div class="node" style="top: 235px; left: 275px; width: 8px; height: 8px;"></div>
+
+      <!-- Glow circles -->
+      <div class="glow" style="top: 230px; left: 190px; width: 140px; height: 140px;"></div>
+      <div class="glow" style="top: 210px; left: 170px; width: 180px; height: 180px; opacity: 0.5;"></div>
+      <div class="glow" style="top: 50px; left: 220px; width: 40px; height: 40px; opacity: 0.3;"></div>
+      <div class="glow" style="top: 420px; left: 320px; width: 30px; height: 30px; opacity: 0.3;"></div>
+
+      <!-- Additional scattered nodes -->
+      <div class="node" style="top: 350px; left: 50px; width: 6px; height: 6px; opacity: 0.6;"></div>
+      <div class="node" style="top: 450px; left: 480px; width: 6px; height: 6px; opacity: 0.6;"></div>
+      <div class="node" style="top: 100px; left: 500px; width: 6px; height: 6px; opacity: 0.6;"></div>
+      <div class="node" style="top: 580px; left: 350px; width: 6px; height: 6px; opacity: 0.6;"></div>
+
+      <!-- Additional traces -->
+      <div class="trace trace-v" style="top: 350px; left: 55px; height: 150px;"></div>
+      <div class="trace trace-h" style="top: 500px; left: 55px; width: 125px;"></div>
+      <div class="trace trace-h" style="top: 450px; left: 485px; width: 60px;"></div>
+      <div class="trace trace-v" style="top: 100px; left: 505px; height: 60px;"></div>
+      <div class="trace trace-h" style="top: 580px; left: 355px; width: 60px;"></div>
+      <div class="trace trace-v" style="top: 380px; left: 530px; height: 70px;"></div>
+    </div>
+
+    <div class="visual-label">电子电路板发光线路 —— 开源基础设施的技术脉络</div>
+  </div>
+
+  <!-- Right: Content -->
+  <div class="content-panel">
+    <div class="section-label">INSTITUTIONAL CULTURE & TRUST</div>
+    <div class="content-title">开源文化的<br>制度化演进</div>
+
+    <ul class="content-items">
+      <li>
+        <div class="item-title">信任的构建与维护</div>
+        <div class="item-desc">从个体声誉到制度性信任机制的演进路径</div>
+      </li>
+      <li>
+        <div class="item-title">科学伦理的继承与发扬</div>
+        <div class="item-desc">知识共享传统与开放科学的制度延续</div>
+      </li>
+      <li>
+        <div class="item-title">强互惠的声明：GPL 的诞生与发展</div>
+        <div class="item-desc">Copyleft 机制对自由软件运动的法律保障</div>
+      </li>
+      <li>
+        <div class="item-title">网络社会 / 共同体的建立、发展与巩固</div>
+        <div class="item-desc">分布式协作中的组织形态与认同构建</div>
+      </li>
+      <li>
+        <div class="item-title">与现实的结合：非营利募捐与品牌建立</div>
+        <div class="item-desc">基金会模式、赞助体系与可持续运营</div>
+      </li>
+      <li>
+        <div class="item-title">制度化、风格化</div>
+        <div class="item-desc">从实践惯例到成文规范的文化固化过程</div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- Bottom decorations -->
+<div class="bottom-line"></div>
+<div class="accent-dot"></div>
+<div class="accent-square"></div>
+<div class="accent-line"></div>
+<div class="page-number">第 <span>11</span> 期 / 共 28 页</div>
+
+</body>
+</html>

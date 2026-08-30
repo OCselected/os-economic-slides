@@ -1,252 +1,569 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: 09b7f17381350b29 --><head><meta charset="UTF-8"><title>技术的本质与路径依赖</title><style>
-*{margin:0;padding:0;box-sizing:border-box;}
-html,body{width:1600px;height:900px;overflow:hidden;margin:0;}
-body{font-family:'Noto Sans SC','Source Han Serif SC','Songti SC',serif;background:#F5F0E8;color:#1B3B6B;position:relative;overflow:hidden;}
+<!DOCTYPE html>
+<html><!-- source_hash: 9e10459f4fa4e7cd -->
+<head>
+<meta charset="UTF-8">
+<title>技术的本质与路径依赖</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
+  background: #F5F0E8;
+}
+body {
+  font-family: 'Noto Sans SC', 'Source Han Sans SC', 'PingFang SC', sans-serif;
+  color: #1B3B6B;
+  position: relative;
+}
 
-/* subtle parchment texture */
-body::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;background:repeating-linear-gradient(0deg,rgba(139,115,85,0.02) 0px,rgba(139,115,85,0.02) 1px,transparent 1px,transparent 4px);pointer-events:none;z-index:0;}
+/* Parchment texture overlay */
+.texture {
+  position: absolute;
+  top: 0; left: 0;
+  width: 1600px; height: 900px;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(139,115,85,0.015) 3px, rgba(139,115,85,0.015) 4px),
+    repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(139,115,85,0.01) 3px, rgba(139,115,85,0.01) 4px);
+  pointer-events: none;
+  z-index: 1;
+}
 
-/* Bauhaus geometric decorations */
-.deco-circle-1{position:absolute;top:60px;right:120px;width:80px;height:80px;border-radius:50%;background:#1B3B6B;z-index:1;}
-.deco-circle-2{position:absolute;top:140px;right:60px;width:36px;height:36px;border-radius:50%;background:#8B7355;z-index:1;}
-.deco-square-1{position:absolute;bottom:50px;left:60px;width:48px;height:48px;background:#1B3B6B;z-index:1;}
-.deco-line-1{position:absolute;top:40px;left:0;width:600px;height:3px;background:#1B3B6B;z-index:1;}
-.deco-line-2{position:absolute;top:43px;left:0;width:120px;height:1px;background:#8B7355;z-index:1;}
-.deco-line-bottom{position:absolute;bottom:0;left:0;width:1600px;height:4px;background:#1B3B6B;z-index:1;}
-.deco-line-v{position:absolute;top:120px;left:740px;width:2px;height:680px;background:#1B3B6B;z-index:1;opacity:0.6;}
-.deco-triangle{position:absolute;top:80px;left:80px;width:0;height:0;border-left:18px solid transparent;border-right:18px solid transparent;border-bottom:30px solid #8B7355;z-index:1;}
-.deco-circle-outline{position:absolute;bottom:80px;right:80px;width:60px;height:60px;border-radius:50%;border:3px solid #1B3B6B;z-index:1;}
+/* Decorative Bauhaus elements */
+.deco-circle-large {
+  position: absolute;
+  top: -120px;
+  right: -80px;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  border: 2px solid rgba(27,59,107,0.08);
+  z-index: 0;
+}
+.deco-square-corner {
+  position: absolute;
+  bottom: 60px;
+  left: 60px;
+  width: 80px;
+  height: 80px;
+  border: 2px solid rgba(139,115,85,0.12);
+  z-index: 0;
+}
+.deco-line-top {
+  position: absolute;
+  top: 95px;
+  left: 100px;
+  width: 580px;
+  height: 2px;
+  background: #1B3B6B;
+  z-index: 2;
+}
+.deco-line-bottom {
+  position: absolute;
+  bottom: 80px;
+  left: 100px;
+  width: 1400px;
+  height: 1px;
+  background: rgba(139,115,85,0.3);
+  z-index: 2;
+}
 
-/* Title section */
-.title-area{position:absolute;top:100px;left:80px;width:620px;z-index:2;}
-.title-num{font-family:'Noto Sans SC',sans-serif;font-size:14px;color:#8B7355;letter-spacing:6px;margin-bottom:18px;font-weight:400;}
-.title-main{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:48px;color:#1B3B6B;line-height:1.2;font-weight:700;letter-spacing:2px;}
-.title-sub{font-family:'Noto Serif SC',serif;font-size:20px;color:#8B7355;margin-top:16px;font-weight:400;letter-spacing:1px;line-height:1.6;}
-.title-underline{width:120px;height:2px;background:#1B3B6B;margin-top:24px;}
+/* Header */
+.header {
+  position: absolute;
+  top: 50px;
+  left: 100px;
+  z-index: 3;
+}
+.slide-number {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 13px;
+  color: #8B7355;
+  letter-spacing: 4px;
+  margin-bottom: 12px;
+}
+.main-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 44px;
+  font-weight: 700;
+  color: #1B3B6B;
+  line-height: 1.2;
+  letter-spacing: 2px;
+}
+.subtitle-underline {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.subtitle-dot {
+  width: 8px;
+  height: 8px;
+  background: #8B7355;
+  border-radius: 50%;
+}
+.subtitle-text {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 14px;
+  color: #8B7355;
+  letter-spacing: 2px;
+}
 
-/* Bullet points */
-.bullets{position:absolute;top:340px;left:80px;width:620px;z-index:2;}
-.bullet-item{display:flex;align-items:flex-start;margin-bottom:14px;}
-.bullet-num{font-family:'Noto Serif SC',serif;font-size:16px;color:#8B7355;width:32px;flex-shrink:0;line-height:1.7;font-weight:700;}
-.bullet-text{font-family:'Noto Sans SC',sans-serif;font-size:17px;color:#1B3B6B;line-height:1.7;font-weight:400;}
-.bullet-dot{width:6px;height:6px;background:#1B3B6B;border-radius:50%;margin-top:12px;margin-right:12px;flex-shrink:0;}
+/* Content area */
+.content-area {
+  position: absolute;
+  top: 200px;
+  left: 100px;
+  width: 620px;
+  z-index: 3;
+}
+.quote-block {
+  border-left: 3px solid #1B3B6B;
+  padding-left: 24px;
+  margin-bottom: 40px;
+}
+.quote-main {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #1B3B6B;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+.quote-sub {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 15px;
+  color: #555;
+  line-height: 1.9;
+}
 
-/* Typewriter visual metaphor */
-.typewriter-area{position:absolute;top:80px;right:240px;width:760px;height:520px;z-index:2;}
+.content-points {
+  list-style: none;
+}
+.content-points li {
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: 18px;
+  font-size: 16px;
+  color: #333;
+  line-height: 1.7;
+}
+.content-points li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 10px;
+  height: 10px;
+  border: 2px solid #8B7355;
+}
+.content-points li.highlight::before {
+  background: #1B3B6B;
+  border-color: #1B3B6B;
+}
 
-/* Typewriter body */
-.tw-body{position:absolute;top:20px;left:20px;width:720px;height:280px;background:#2a2a2a;border-radius:8px;box-shadow:inset 0 -4px 8px rgba(0,0,0,0.3),inset 0 2px 4px rgba(255,255,255,0.05);}
-.tw-paper{position:absolute;top:-20px;left:180px;width:360px;height:200px;background:#F5F0E8;border-radius:2px;box-shadow:0 2px 4px rgba(0,0,0,0.2);}
-.tw-paper-text{position:absolute;top:20px;left:30px;width:300px;font-family:'Noto Serif SC',serif;font-size:11px;color:#555;line-height:1.6;letter-spacing:1px;}
-.tw-paper-cursor{position:absolute;top:100px;left:180px;width:2px;height:14px;background:#1B3B6B;}
+/* Typewriter visual */
+.typewriter-area {
+  position: absolute;
+  top: 180px;
+  right: 80px;
+  width: 720px;
+  height: 560px;
+  z-index: 3;
+}
 
-/* QWERTY key grid */
-.key-row{display:flex;justify-content:center;margin-bottom:6px;}
-.key{width:38px;height:32px;background:#F5F0E8;border:1.5px solid #3a3a3a;border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif SC',serif;font-size:11px;color:#1B3B6B;font-weight:600;margin:0 3px;box-shadow:inset 0 -2px 0 #666;}
-.key.active{background:#1B3B6B;color:#F5F0E8;border-color:#1B3B6B;box-shadow:inset 0 -2px 0 #0d1f3a;}
-.key.accent{background:#8B7355;color:#F5F0E8;border-color:#8B7355;box-shadow:inset 0 -2px 0 #6b5a42;}
-.key-space{width:240px;height:32px;}
-.key-tab{width:54px;}
-.key-shift{width:90px;}
-.key-enter{width:72px;}
-.key-back{width:60px;}
-.key-cap{width:66px;}
-.key-ctrl{width:54px;}
+/* Keyboard rows */
+.kbd-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+  justify-content: center;
+}
+.key {
+  width: 52px;
+  height: 52px;
+  border-radius: 6px;
+  background: #E8E2D8;
+  border: 2px solid rgba(27,59,107,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: rgba(27,59,107,0.5);
+  box-shadow: 0 3px 0 rgba(27,59,107,0.1);
+  position: relative;
+}
+.key.pressed {
+  background: #1B3B6B;
+  color: #F5F0E8;
+  border-color: #1B3B6B;
+  box-shadow: 0 1px 0 rgba(27,59,107,0.3);
+  transform: translateY(2px);
+}
+.key.pressed-copper {
+  background: #8B7355;
+  color: #F5F0E8;
+  border-color: #8B7355;
+  box-shadow: 0 1px 0 rgba(139,115,85,0.3);
+  transform: translateY(2px);
+}
 
-.key-area{position:absolute;top:200px;left:20px;width:720px;}
+/* Connection lines between keys */
+.path-label {
+  position: absolute;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 2px;
+  letter-spacing: 3px;
+  text-align: center;
+}
 
-/* Typewriter decorative elements */
-.tw-label{position:absolute;top:180px;left:30px;font-family:'Noto Serif SC',serif;font-size:11px;color:#8B7355;letter-spacing:4px;}
-.tw-rollers{position:absolute;top:0px;left:160px;width:400px;height:20px;background:#5a5a5a;border-radius:10px;}
-.tw-roller-side{width:20px;height:20px;background:#4a4a4a;border-radius:50%;position:absolute;top:0;}
-.tw-roller-side.l{left:-10px;}
-.tw-roller-side.r{right:-10px;}
+/* Arrow/path indicator */
+.path-arrows {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.arrow-text {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 2px;
+}
 
-/* Path dependency flow diagram below typewriter */
-.flow-area{position:absolute;top:380px;left:20px;width:720px;height:160px;}
-.flow-node{width:80px;height:80px;border-radius:50%;border:2px solid #1B3B6B;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif SC',serif;font-size:13px;color:#1B3B6B;background:#F5F0E8;text-align:center;line-height:1.3;padding:8px;position:absolute;}
-.flow-node.filled{background:#1B3B6B;color:#F5F0E8;border-color:#1B3B6B;}
-.flow-node.copper{border-color:#8B7355;color:#8B7355;}
-.flow-arrow{position:absolute;height:2px;background:#1B3B6B;}
-.flow-arrow-tip{width:0;height:0;border-left:8px solid #1B3B6B;border-top:5px solid transparent;border-bottom:5px solid transparent;position:absolute;}
-.flow-label{position:absolute;font-family:'Noto Sans SC',sans-serif;font-size:10px;color:#8B7355;letter-spacing:1px;}
+/* Typewriter body decoration */
+.tw-body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(27,59,107,0.06);
+  background: rgba(232,226,216,0.3);
+  border-radius: 4px;
+}
+.tw-brand {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 12px;
+  color: rgba(139,115,85,0.5);
+  letter-spacing: 6px;
+  text-transform: uppercase;
+}
+.tw-line {
+  position: absolute;
+  top: 42px;
+  left: 40px;
+  right: 40px;
+  height: 1px;
+  background: rgba(139,115,85,0.2);
+}
 
-/* Image source */
-.source{position:absolute;bottom:30px;left:80px;width:1440px;font-family:'Noto Sans SC',sans-serif;font-size:11px;color:#8B7355;letter-spacing:1px;line-height:1.6;z-index:2;}
-.source-line{width:60px;height:1px;background:#8B7355;margin-bottom:8px;}
+/* Recursive structure diagram */
+.recursive-box {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.rec-box {
+  width: 30px;
+  height: 30px;
+  border: 1.5px solid #1B3B6B;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rec-box-inner {
+  width: 18px;
+  height: 18px;
+  border: 1px solid #8B7355;
+  border-radius: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rec-box-dot {
+  width: 8px;
+  height: 8px;
+  background: #1B3B6B;
+  border-radius: 1px;
+}
+.rec-arrow {
+  font-size: 14px;
+  color: #8B7355;
+}
+.rec-label {
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
 
-/* Right column text block */
-.right-text{position:absolute;top:600px;right:80px;width:700px;z-index:2;}
-.right-quote{font-family:'Noto Serif SC',serif;font-size:18px;color:#1B3B6B;line-height:1.8;font-weight:400;font-style:italic;letter-spacing:1px;}
-.right-quote-mark{font-size:36px;color:#8B7355;font-weight:700;line-height:0;position:relative;top:12px;}
-.right-divider{width:80px;height:1px;background:#8B7355;margin:14px 0;}
-.right-meta{font-family:'Noto Sans SC',sans-serif;font-size:12px;color:#8B7355;letter-spacing:3px;}
+/* Bottom info */
+.bottom-info {
+  position: absolute;
+  bottom: 38px;
+  left: 100px;
+  right: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 3;
+}
+.source-note {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 1px;
+}
+.footer-deco {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.footer-square {
+  width: 6px;
+  height: 6px;
+  background: #1B3B6B;
+}
+.footer-line-h {
+  width: 40px;
+  height: 1px;
+  background: rgba(139,115,85,0.4);
+}
+.footer-circle {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #8B7355;
+}
+.lecture-mark {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 12px;
+  color: #8B7355;
+  letter-spacing: 3px;
+}
 
-/* Page footer mark */
-.page-mark{position:absolute;bottom:30px;right:80px;font-family:'Noto Sans SC',sans-serif;font-size:11px;color:#8B7355;letter-spacing:4px;z-index:2;}
-</style></head><body>
+/* Large decorative circle behind keyboard */
+.deco-circle-mid {
+  position: absolute;
+  top: 220px;
+  right: 180px;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(139,115,85,0.08);
+  z-index: 2;
+}
 
-<div class="deco-line-1"></div>
-<div class="deco-line-2"></div>
-<div class="deco-circle-1"></div>
-<div class="deco-circle-2"></div>
-<div class="deco-triangle"></div>
-<div class="deco-square-1"></div>
-<div class="deco-circle-outline"></div>
+/* QWERTY path annotation */
+.qwerty-path {
+  position: absolute;
+  top: 100px;
+  right: 80px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 4;
+}
+.path-tag {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 3px;
+  background: rgba(139,115,85,0.06);
+  padding: 5px 14px;
+  border: 1px solid rgba(139,115,85,0.15);
+}
+
+/* Bauhaus geometric accents */
+.bh-square-big {
+  position: absolute;
+  top: 140px;
+  right: -40px;
+  width: 120px;
+  height: 120px;
+  background: rgba(27,59,107,0.03);
+  z-index: 0;
+}
+.bh-triangle {
+  position: absolute;
+  bottom: 150px;
+  right: 30px;
+  width: 0;
+  height: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 50px solid rgba(139,115,85,0.05);
+  z-index: 0;
+}
+</style>
+</head>
+<body>
+
+<!-- Background texture -->
+<div class="texture"></div>
+
+<!-- Bauhaus decorative elements -->
+<div class="deco-circle-large"></div>
+<div class="deco-square-corner"></div>
+<div class="deco-line-top"></div>
 <div class="deco-line-bottom"></div>
-<div class="deco-line-v"></div>
+<div class="bh-square-big"></div>
+<div class="bh-triangle"></div>
+<div class="deco-circle-mid"></div>
 
-<!-- Title -->
-<div class="title-area">
-<div class="title-num">CHAPTER · 04</div>
-<div class="title-main">技术的本质<br>与路径依赖</div>
-<div class="title-sub">Technological Essence &amp; Path Dependency</div>
-<div class="title-underline"></div>
-</div>
-
-<!-- Bullets -->
-<div class="bullets">
-<div class="bullet-item">
-<div class="bullet-num">01</div>
-<div class="bullet-text">技术不是无中生有被发明出来的</div>
-</div>
-<div class="bullet-item">
-<div class="bullet-num">02</div>
-<div class="bullet-text">总是在一种新形式出现之前，就有前置条件</div>
-</div>
-<div class="bullet-item">
-<div class="bullet-num">03</div>
-<div class="bullet-text">被建构、被聚集、被集成——非自然涌现</div>
-</div>
-<div class="bullet-item">
-<div class="bullet-num">04</div>
-<div class="bullet-text">由部件和零件构成：集成件与次级集成件的层叠</div>
-</div>
-<div class="bullet-item">
-<div class="bullet-num">05</div>
-<div class="bullet-text">技术有一个递归性的结构</div>
-</div>
+<!-- Header -->
+<div class="header">
+  <div class="slide-number">SECTION 05 · 03</div>
+  <div class="main-title">技术的本质与路径依赖</div>
+  <div class="subtitle-underline">
+    <div class="subtitle-dot"></div>
+    <div class="subtitle-text">The Essence of Technology &amp; Path Dependency</div>
+  </div>
 </div>
 
-<!-- Typewriter visual -->
+<!-- QWERTY path tag -->
+<div class="qwerty-path">
+  <div class="path-tag">QWERTY · 路径依赖的书写痕迹</div>
+</div>
+
+<!-- Content Area -->
+<div class="content-area">
+  <div class="quote-block">
+    <div class="quote-main">科学是技术的姊姊</div>
+    <div class="quote-sub">技术从来不是无中生有被发明出来的——<br>总是在一种新的出现之前，就有前置。</div>
+  </div>
+
+  <ul class="content-points">
+    <li class="highlight">技术是被建构、被聚集、被集成的产物</li>
+    <li>由部件和零件构成——集成件与次级集成件的递归组合</li>
+    <li class="highlight">技术具有递归性的结构</li>
+    <li>每一种新工具的诞生，都嵌套在旧工具的遗产之中</li>
+    <li>QWERTY 键盘：一个被锁定（locked-in）的经典案例</li>
+  </ul>
+</div>
+
+<!-- Typewriter Visual -->
 <div class="typewriter-area">
-<div class="tw-body">
-<div class="tw-rollers">
-<div class="tw-roller-side l"></div>
-<div class="tw-roller-side r"></div>
-</div>
-<div class="tw-paper">
-<div class="tw-paper-text">
-Q W E R T Y  —  路径的<br>
-刻印，是不可逆的<br>
-书写痕迹。每一按键<br>
-都是一次历史的<br>
-决定。<span class="tw-paper-cursor"></span>
-</div>
-</div>
-<div class="tw-label">REMINGTON · TYPEWRITER</div>
+  <div class="tw-body">
+    <div class="tw-brand">Bauhaus Typewriter · Model 1878</div>
+    <div class="tw-line"></div>
+  </div>
+
+  <!-- Keyboard Row 1 -->
+  <div style="position:relative; top:70px;">
+    <div class="kbd-row">
+      <div class="key">Q</div>
+      <div class="key">W</div>
+      <div class="key">E</div>
+      <div class="key">R</div>
+      <div class="key">T</div>
+      <div class="key">Y</div>
+      <div class="key">U</div>
+      <div class="key">I</div>
+      <div class="key">O</div>
+      <div class="key">P</div>
+    </div>
+    <!-- Row 2 -->
+    <div class="kbd-row">
+      <div class="key">A</div>
+      <div class="key">S</div>
+      <div class="key">D</div>
+      <div class="key">F</div>
+      <div class="key">G</div>
+      <div class="key">H</div>
+      <div class="key">J</div>
+      <div class="key">K</div>
+      <div class="key">L</div>
+    </div>
+    <!-- Row 3 -->
+    <div class="kbd-row">
+      <div class="key">Z</div>
+      <div class="key">X</div>
+      <div class="key">C</div>
+      <div class="key">V</div>
+      <div class="key">B</div>
+      <div class="key">N</div>
+      <div class="key">M</div>
+    </div>
+  </div>
+
+  <!-- Highlighted path overlay -->
+  <div style="position:absolute; top:82px; left:50%; transform:translateX(-50%); display:flex; gap:10px; pointer-events:none;">
+    <div class="key pressed" style="width:52px; height:52px;">Q</div>
+    <div style="display:flex; align-items:center; width:0;"></div>
+  </div>
+
+  <!-- Path annotation arrows -->
+  <div style="position:absolute; top:78px; right:120px; display:flex; flex-direction:column; align-items:center; gap:4px;">
+    <div style="font-size:20px; color:#1B3B6B; font-weight:700;">→</div>
+    <div style="font-family:'Noto Sans SC',sans-serif; font-size:10px; color:#8B7355; letter-spacing:1px;">PATH</div>
+  </div>
+
+  <!-- Recursive structure -->
+  <div class="recursive-box">
+    <div class="rec-box">
+      <div class="rec-box-inner">
+        <div class="rec-box-dot"></div>
+      </div>
+    </div>
+    <div class="rec-arrow">+</div>
+    <div class="rec-box">
+      <div class="rec-box-inner">
+        <div class="rec-box-dot"></div>
+      </div>
+    </div>
+    <div class="rec-arrow">+</div>
+    <div class="rec-box">
+      <div class="rec-box-inner">
+        <div class="rec-box-dot"></div>
+      </div>
+    </div>
+    <div class="rec-arrow">=</div>
+    <div class="rec-box" style="background:rgba(27,59,107,0.05); width:36px; height:36px;">
+      <div class="rec-box-inner" style="width:22px; height:22px;">
+        <div class="rec-box-dot" style="background:#8B7355;"></div>
+      </div>
+    </div>
+    <div class="rec-label">集成件 + 次级集成件 → 技术系统</div>
+  </div>
 </div>
 
-<div class="key-area">
-<div class="key-row">
-<div class="key accent">Q</div>
-<div class="key accent">W</div>
-<div class="key accent">E</div>
-<div class="key active">R</div>
-<div class="key active">T</div>
-<div class="key active">Y</div>
-<div class="key accent">U</div>
-<div class="key accent">I</div>
-<div class="key accent">O</div>
-<div class="key accent">P</div>
-<div class="key">[</div>
-<div class="key">]</div>
-</div>
-<div class="key-row">
-<div class="key shift">SHIFT</div>
-<div class="key">A</div>
-<div class="key">S</div>
-<div class="key">D</div>
-<div class="key">F</div>
-<div class="key">G</div>
-<div class="key">H</div>
-<div class="key">J</div>
-<div class="key">K</div>
-<div class="key">L</div>
-<div class="key">;</div>
-<div class="key enter">ENT</div>
-</div>
-<div class="key-row">
-<div class="key ctrl">CTRL</div>
-<div class="key">Z</div>
-<div class="key">X</div>
-<div class="key">C</div>
-<div class="key">V</div>
-<div class="key">B</div>
-<div class="key">N</div>
-<div class="key">M</div>
-<div class="key">,</div>
-<div class="key">.</div>
-<div class="key back">←</div>
-<div class="key enter">↵</div>
-</div>
-<div class="key-row">
-<div class="key ctrl">FN</div>
-<div class="key ctrl">ALT</div>
-<div class="key space">SPACE</div>
-<div class="key ctrl">ALT</div>
-<div class="key ctrl">CTRL</div>
-</div>
+<!-- Bottom info -->
+<div class="bottom-info">
+  <div class="source-note">图源：ASU News · 2024 · Science &amp; Technology as Cumulative Culture</div>
+  <div class="footer-deco">
+    <div class="footer-line-h"></div>
+    <div class="footer-square"></div>
+    <div class="footer-circle"></div>
+    <div class="footer-line-h"></div>
+    <span class="lecture-mark">Lecture 05</span>
+  </div>
 </div>
 
-<!-- Flow diagram -->
-<div class="flow-area">
-<div class="flow-node filled" style="left:0;top:10px;">部件<br>Parts</div>
-<div class="flow-arrow" style="left:90px;top:52px;width:50px;"></div>
-<div class="flow-arrow-tip" style="left:138px;top:49px;"></div>
-
-<div class="flow-node copper" style="left:150px;top:10px;">集成件<br>Assemblies</div>
-<div class="flow-arrow" style="left:240px;top:52px;width:50px;"></div>
-<div class="flow-arrow-tip" style="left:288px;top:49px;"></div>
-
-<div class="flow-node" style="left:300px;top:10px;">次级<br>集成件</div>
-<div class="flow-arrow" style="left:390px;top:52px;width:50px;"></div>
-<div class="flow-arrow-tip" style="left:438px;top:49px;"></div>
-
-<div class="flow-node filled" style="left:450px;top:10px;">技术<br>Technique</div>
-<div class="flow-arrow" style="left:540px;top:52px;width:50px;"></div>
-<div class="flow-arrow-tip" style="left:588px;top:49px;"></div>
-
-<div class="flow-node copper" style="left:600px;top:10px;">递归<br>Recursion</div>
-
-<div class="flow-label" style="left:100px;top:100px;">→ 层叠</div>
-<div class="flow-label" style="left:250px;top:100px;">→ 聚合</div>
-<div class="flow-label" style="left:400px;top:100px;">→ 涌现</div>
-<div class="flow-label" style="left:550px;top:100px;">→ 自指</div>
-</div>
-</div>
-
-<!-- Right quote -->
-<div class="right-text">
-<div class="right-quote">
-<span class="right-quote-mark">「</span>科学是技术的姊姊——<br>
-前者观察规律，后者固化选择；<br>
-每一次按键，都是对另一种可能的<br>
-永久放弃。<span class="right-quote-mark">」</span>
-</div>
-<div class="right-divider"></div>
-<div class="right-meta">PATH DEPENDENCY · CUMULATIVE CULTURE</div>
-</div>
-
-<!-- Source -->
-<div class="source">
-<div class="source-line"></div>
-图片来源：ASU 研究 — "Science and technology: ASU study points to origin of cumulative culture in human evolution" (2024)<br>
-https://news.asu.edu/20240617-science-and-technology-asu-study-points-origin-cumulative-culture-human-evolution
-</div>
-
-<div class="page-mark">OPEN SOURCE · NEO-INSTITUTIONAL ECONOMICS · 04 / 16</div>
-
-</body></html>
+</body>
+</html>

@@ -1,255 +1,626 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: 795c7077b92adf3e --><head><meta charset="UTF-8"><title>GitHub——协作的简化与问题</title><style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1600px;height:900px;overflow:hidden;font-family:'Noto Sans SC',sans-serif}
-body{background:#F5F0E8;color:#1B3B6B;position:relative}
+<!DOCTYPE html>
+<html><!-- source_hash: 2b901b1dc0eadc98 -->
+<head>
+<meta charset="UTF-8">
+<title>GitHub——协作的简化与问题</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600&display=swap');
 
-/* parchment texture overlay */
-body::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;
-  background:repeating-linear-gradient(0deg,transparent 0px,transparent 3px,rgba(139,115,85,0.015) 3px,rgba(139,115,85,0.015) 4px),
-  repeating-linear-gradient(90deg,transparent 0px,transparent 5px,rgba(27,59,107,0.008) 5px,rgba(27,59,107,0.008) 6px);
-  pointer-events:none;z-index:1}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-.header{position:absolute;top:50px;left:80px;right:80px;display:flex;align-items:flex-start;justify-content:space-between;z-index:10}
-.title-block{flex:1}
-.title-main{font-family:'Noto Serif SC',serif;font-size:36px;font-weight:600;color:#1B3B6B;letter-spacing:1px;line-height:1.2}
-.title-sub{font-size:13px;color:#8B7355;margin-top:8px;letter-spacing:3px;font-weight:400}
-.slide-num{font-family:'Noto Serif SC',serif;font-size:48px;color:#1B3B6B;font-weight:300;opacity:0.6;line-height:1}
-.slide-num-label{font-size:11px;color:#555;letter-spacing:3px;margin-top:4px;text-align:right}
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
+}
 
-.divider-top{position:absolute;top:135px;left:80px;right:80px;height:1px;background:#1B3B6B;opacity:0.3;z-index:10}
+body {
+  background: #F5F0E8;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: #1B3B6B;
+  position: relative;
+}
 
-.main-area{position:absolute;top:160px;left:80px;right:80px;bottom:80px;display:flex;z-index:5;gap:40px}
+/* Parchment texture overlay */
+.parchment-texture {
+  position: absolute;
+  top: 0; left: 0;
+  width: 1600px; height: 900px;
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(139,115,85,0.015) 2px,
+      rgba(139,115,85,0.015) 4px
+    );
+  pointer-events: none;
+  z-index: 0;
+}
 
-/* LEFT: Visual metaphor area */
-.visual-area{width:660px;height:580px;position:relative;background:#F5F0E8;border:1px solid rgba(27,59,107,0.15);flex-shrink:0}
+/* Top border line */
+.top-rule {
+  position: absolute;
+  top: 48px;
+  left: 80px;
+  width: 1440px;
+  height: 2px;
+  background: #1B3B6B;
+  z-index: 2;
+}
 
-.viz-label{position:absolute;top:14px;left:16px;font-size:10px;color:#8B7355;letter-spacing:3px;font-weight:500}
-.viz-label-right{position:absolute;top:14px;right:16px;font-size:10px;color:#8B7355;letter-spacing:2px}
+/* Bottom border line */
+.bottom-rule {
+  position: absolute;
+  bottom: 48px;
+  left: 80px;
+  width: 1440px;
+  height: 2px;
+  background: #1B3B6B;
+  z-index: 2;
+}
 
-/* Dam structure */
-.dam-body{position:absolute;left:230px;top:50px;width:140px;height:380px;background:#1B3B6B}
-.dam-top{position:absolute;left:210px;top:38px;width:180px;height:14px;background:#1B3B6B}
+/* Lecture number badge */
+.lecture-badge {
+  position: absolute;
+  top: 24px;
+  left: 80px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14px;
+  letter-spacing: 3px;
+  color: #8B7355;
+  z-index: 2;
+}
 
-/* Gate wheel circle */
-.gate-wheel{position:absolute;left:265px;top:150px;width:70px;height:70px;border-radius:50%;border:3px solid #8B7355;background:#F5F0E8}
-.gate-wheel-inner{position:absolute;left:285px;top:170px;width:30px;height:30px;border-radius:50%;background:#8B7355}
-.gate-spoke{position:absolute;left:278px;top:185px;width:44px;height:2px;background:#8B7355}
-.gate-spoke-vert{position:absolute;left:301px;top:163px;width:2px;height:44px;background:#8B7355}
-.gate-spoke-d1{position:absolute;left:283px;top:170px;width:40px;height:2px;background:#8B7355;transform:rotate(45deg);transform-origin:left center}
-.gate-spoke-d2{position:absolute;left:283px;top:200px;width:40px;height:2px;background:#8B7355;transform:rotate(-45deg);transform-origin:left center}
+.slide-count {
+  position: absolute;
+  top: 24px;
+  right: 80px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: #8B7355;
+  z-index: 2;
+}
 
-/* Upper water / code reservoir (left of dam, upstream) */
-.upstream{position:absolute;left:50px;top:80px;width:170px;height:330px;background:rgba(27,59,107,0.08);border:1px solid rgba(27,59,107,0.2)}
-.upstream-label{position:absolute;left:60px;top:60px;font-size:11px;color:#1B3B6B;letter-spacing:2px}
+/* Main title area */
+.title-section {
+  position: absolute;
+  top: 80px;
+  left: 80px;
+  width: 780px;
+  z-index: 5;
+}
 
-/* Repository squares on upstream side */
-.repo{position:absolute;width:22px;height:22px;background:#1B3B6B}
-.repo-light{position:absolute;width:22px;height:22px;background:transparent;border:1.5px solid #1B3B6B}
-.repo-copper{position:absolute;width:22px;height:22px;background:#8B7355}
+.title-main {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: #1B3B6B;
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
 
-/* Water lines flowing through gate */
-.flow-line{position:absolute;height:1px;background:#1B3B6B}
+.title-sub {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  color: #8B7355;
+  letter-spacing: 1px;
+  margin-bottom: 36px;
+}
 
-/* Downstream area */
-.downstream{position:absolute;left:390px;top:80px;width:220px;height:330px;background:rgba(27,59,107,0.03);border:1px solid rgba(27,59,107,0.15)}
-.downstream-label{position:absolute;left:400px;top:60px;font-size:11px;color:#1B3B6B;letter-spacing:2px}
+/* Content bullets */
+.content-area {
+  position: absolute;
+  top: 220px;
+  left: 80px;
+  width: 720px;
+  z-index: 5;
+}
 
-/* Platform manager circle (hub position) */
-.manager-zone{position:absolute;left:155px;top:130px;width:70px;height:70px;border-radius:50%;border:2px solid #8B7355;background:#8B7355;opacity:0.9}
-.manager-label{position:absolute;left:115px;top:205px;font-size:9px;color:#8B7355;letter-spacing:2px;width:110px;text-align:center;line-height:1.4}
+.bullet-item {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 18px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  color: #1B3B6B;
+}
 
-/* Gate lever */
-.lever-base{position:absolute;left:360px;top:185px;width:14px;height:14px;background:#1B3B6B}
-.lever-arm{position:absolute;left:365px;top:190px;width:50px;height:2px;background:#1B3B6B}
+.bullet-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 11px;
+  width: 10px;
+  height: 10px;
+  background: #1B3B6B;
+}
 
-/* Small flow indicators downstream */
-.flow-sq{position:absolute;width:8px;height:8px;background:#1B3B6B}
-.flow-sq-c{position:absolute;width:8px;height:8px;border-radius:50%;background:#8B7355}
+.bullet-item:nth-child(2)::before {
+  background: #8B7355;
+  border-radius: 50%;
+}
 
-/* Dam foundation */
-.dam-foundation{position:absolute;left:200px;top:430px;width:200px;height:20px;background:#1B3B6B;opacity:0.4}
+.bullet-item:nth-child(3)::before {
+  background: #1B3B6B;
+  width: 10px;
+  height: 10px;
+  transform: rotate(45deg);
+}
 
-/* Right side: content */
-.content-area{flex:1;height:580px;display:flex;flex-direction:column;position:relative}
+.bullet-item:nth-child(4)::before {
+  background: #8B7355;
+}
 
-.content-title{font-family:'Noto Serif SC',serif;font-size:26px;font-weight:600;color:#1B3B6B;line-height:1.3;margin-bottom:6px}
-.content-underline{width:60px;height:3px;background:#1B3B6B;margin-bottom:22px}
-.content-underline-2{width:60px;height:1px;background:#8B7355;margin-bottom:22px}
+.bullet-item:nth-child(5)::before {
+  background: #1B3B6B;
+  border-radius: 50%;
+}
 
-.bullets{display:flex;flex-direction:column;gap:14px}
-.bullet{display:flex;align-items:flex-start;gap:14px}
-.bullet-marker{flex-shrink:0;width:18px;height:18px;margin-top:3px}
-.bullet-marker-sq{background:#1B3B6B}
-.bullet-marker-cir{border-radius:50%;border:2px solid #1B3B6B}
-.bullet-marker-cir-fill{border-radius:50%;background:#8B7355}
-.bullet-marker-line{background:transparent;border-top:2px solid #8B7355;width:18px;height:0;margin-top:10px}
+.bullet-item:nth-child(6)::before {
+  background: #8B7355;
+  border-radius: 50%;
+}
 
-.bullet-text{font-size:14px;line-height:1.65;color:#1B3B6B;flex:1}
-.bullet-text .em{color:#8B7355;font-weight:500}
-.bullet-text .key{color:#1B3B6B;font-weight:600}
-.bullet-text .ref{font-size:12px;color:#555;font-style:italic}
+/* Emphasis text */
+.emphasis {
+  font-weight: 600;
+  color: #1B3B6B;
+}
 
-/* Footer */
-.footer{position:absolute;bottom:30px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:center;z-index:10}
-.footer-left{font-size:11px;color:#555;letter-spacing:2px}
-.footer-right{font-size:11px;color:#555;letter-spacing:2px}
-.footer-line{position:absolute;bottom:55px;left:80px;right:80px;height:1px;background:#1B3B6B;opacity:0.2}
+/* Visual metaphor area - Dam/Gate composition */
+.visual-area {
+  position: absolute;
+  top: 80px;
+  right: 80px;
+  width: 700px;
+  height: 760px;
+  z-index: 3;
+}
 
-/* Side geometric decorations */
-.side-bar-left{position:absolute;left:55px;top:160px;bottom:80px;width:1px;background:#1B3B6B;opacity:0.2;z-index:5}
-.side-bar-right{position:absolute;right:55px;top:160px;bottom:80px;width:1px;background:#1B3B6B;opacity:0.2;z-index:5}
+/* Dam structure - main vertical pillar */
+.dam-pillar {
+  position: absolute;
+  left: 280px;
+  top: 80px;
+  width: 60px;
+  height: 600px;
+  background: #1B3B6B;
+}
 
-.geo-circle-bg{position:absolute;right:-30px;bottom:-30px;width:100px;height:100px;border-radius:50%;background:#1B3B6B;opacity:0.05;z-index:2}
-</style></head><body>
+.dam-pillar-2 {
+  position: absolute;
+  left: 380px;
+  top: 120px;
+  width: 40px;
+  height: 520px;
+  background: #8B7355;
+}
 
-<!-- Header -->
-<div class="header">
-  <div class="title-block">
-    <div class="title-main">GitHub——协作的简化与问题</div>
-    <div class="title-sub">CODE AS FLOW · PLATFORM AS GATEKEEPER</div>
-  </div>
-  <div>
-    <div class="slide-num">10 / 29</div>
-    <div class="slide-num-label">SLIDE NUMBER</div>
+/* Gate elements - horizontal bars */
+.gate-bar-1 {
+  position: absolute;
+  left: 260px;
+  top: 180px;
+  width: 200px;
+  height: 8px;
+  background: #1B3B6B;
+}
+
+.gate-bar-2 {
+  position: absolute;
+  left: 260px;
+  top: 260px;
+  width: 220px;
+  height: 6px;
+  background: #8B7355;
+}
+
+.gate-bar-3 {
+  position: absolute;
+  left: 260px;
+  top: 340px;
+  width: 180px;
+  height: 10px;
+  background: #1B3B6B;
+}
+
+.gate-bar-4 {
+  position: absolute;
+  left: 260px;
+  top: 420px;
+  width: 210px;
+  height: 6px;
+  background: #8B7355;
+}
+
+.gate-bar-5 {
+  position: absolute;
+  left: 260px;
+  top: 500px;
+  width: 160px;
+  height: 8px;
+  background: #1B3B6B;
+}
+
+/* Flow indicators - left side (incoming code) */
+.flow-arrow-1 {
+  position: absolute;
+  left: 60px;
+  top: 200px;
+  width: 180px;
+  height: 4px;
+  background: #555;
+  opacity: 0.6;
+}
+
+.flow-arrow-2 {
+  position: absolute;
+  left: 80px;
+  top: 320px;
+  width: 160px;
+  height: 4px;
+  background: #555;
+  opacity: 0.5;
+}
+
+.flow-arrow-3 {
+  position: absolute;
+  left: 40px;
+  top: 440px;
+  width: 200px;
+  height: 4px;
+  background: #555;
+  opacity: 0.7;
+}
+
+.flow-arrow-4 {
+  position: absolute;
+  left: 100px;
+  top: 560px;
+  width: 140px;
+  height: 4px;
+  background: #555;
+  opacity: 0.4;
+}
+
+/* Flow indicators - right side (controlled output) */
+.flow-out-1 {
+  position: absolute;
+  right: 40px;
+  top: 240px;
+  width: 140px;
+  height: 3px;
+  background: #1B3B6B;
+  opacity: 0.5;
+}
+
+.flow-out-2 {
+  position: absolute;
+  right: 60px;
+  top: 380px;
+  width: 120px;
+  height: 3px;
+  background: #1B3B6B;
+  opacity: 0.4;
+}
+
+.flow-out-3 {
+  position: absolute;
+  right: 30px;
+  top: 520px;
+  width: 150px;
+  height: 3px;
+  background: #1B3B6B;
+  opacity: 0.6;
+}
+
+/* Circle - central hub node */
+.hub-circle {
+  position: absolute;
+  left: 310px;
+  top: 300px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid #1B3B6B;
+  background: #F5F0E8;
+}
+
+.hub-inner {
+  position: absolute;
+  left: 335px;
+  top: 325px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #1B3B6B;
+}
+
+.hub-label {
+  position: absolute;
+  left: 342px;
+  top: 350px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #F5F0E8;
+  letter-spacing: 1px;
+  width: 56px;
+  text-align: center;
+}
+
+/* Small decorative circles */
+.deco-circle-1 {
+  position: absolute;
+  left: 150px;
+  top: 140px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #8B7355;
+  opacity: 0.6;
+}
+
+.deco-circle-2 {
+  position: absolute;
+  left: 200px;
+  top: 600px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 3px solid #1B3B6B;
+}
+
+.deco-circle-3 {
+  position: absolute;
+  right: 100px;
+  top: 150px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  opacity: 0.3;
+}
+
+/* Large background circle */
+.deco-large-circle {
+  position: absolute;
+  left: 250px;
+  top: 200px;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  border: 2px solid #8B7355;
+  opacity: 0.25;
+}
+
+/* Diagonal accent lines */
+.diag-line-1 {
+  position: absolute;
+  left: 500px;
+  top: 100px;
+  width: 160px;
+  height: 2px;
+  background: #8B7355;
+  transform: rotate(35deg);
+  transform-origin: left center;
+  opacity: 0.5;
+}
+
+.diag-line-2 {
+  position: absolute;
+  left: 120px;
+  top: 680px;
+  width: 200px;
+  height: 2px;
+  background: #1B3B6B;
+  transform: rotate(-20deg);
+  transform-origin: left center;
+  opacity: 0.4;
+}
+
+/* Square decorative elements */
+.deco-square-1 {
+  position: absolute;
+  right: 80px;
+  bottom: 100px;
+  width: 50px;
+  height: 50px;
+  background: #1B3B6B;
+  opacity: 0.15;
+}
+
+.deco-square-2 {
+  position: absolute;
+  left: 40px;
+  top: 650px;
+  width: 30px;
+  height: 30px;
+  border: 2px solid #8B7355;
+  opacity: 0.5;
+}
+
+/* Labels for the visual */
+.label-input {
+  position: absolute;
+  left: 30px;
+  top: 170px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  color: #555;
+  letter-spacing: 1px;
+  writing-mode: vertical-rl;
+}
+
+.label-gate {
+  position: absolute;
+  left: 295px;
+  top: 55px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1B3B6B;
+  letter-spacing: 2px;
+}
+
+.label-output {
+  position: absolute;
+  right: 20px;
+  top: 450px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  color: #555;
+  letter-spacing: 1px;
+  writing-mode: vertical-rl;
+}
+
+/* Bottom annotation */
+.annotation {
+  position: absolute;
+  left: 80px;
+  bottom: 65px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  color: #8B7355;
+  letter-spacing: 2px;
+  font-style: italic;
+  z-index: 5;
+}
+
+/* Right vertical divider */
+.right-divider {
+  position: absolute;
+  left: 820px;
+  top: 80px;
+  width: 1px;
+  height: 760px;
+  background: #8B7355;
+  opacity: 0.3;
+  z-index: 2;
+}
+
+/* Fork/PR keywords */
+.keyword-tag {
+  display: inline-block;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  padding: 2px 8px;
+  border: 1px solid #8B7355;
+  color: #8B7355;
+  margin-right: 6px;
+  letter-spacing: 1px;
+}
+</style>
+</head>
+<body>
+
+<div class="parchment-texture"></div>
+
+<!-- Top and bottom rules -->
+<div class="top-rule"></div>
+<div class="bottom-rule"></div>
+
+<!-- Header info -->
+<div class="lecture-badge">第 10 期 · 劳动报酬与财产分配</div>
+<div class="slide-count">— 29 中之一 —</div>
+
+<!-- Title Section -->
+<div class="title-section">
+  <div class="title-main">GitHub——协作的简化与问题</div>
+  <div class="title-sub">
+    <span class="keyword-tag">fork</span>
+    <span class="keyword-tag">PR</span>
+    <span class="keyword-tag">review</span>
+    <span class="keyword-tag">infrastructure</span>
   </div>
 </div>
-<div class="divider-top"></div>
 
-<div class="side-bar-left"></div>
-<div class="side-bar-right"></div>
-<div class="geo-circle-bg"></div>
-
-<!-- Main area -->
-<div class="main-area">
-
-  <!-- LEFT: Visual metaphor -->
-  <div class="visual-area">
-    <div class="viz-label">VISUAL METAPHOR · 水坝闸门</div>
-    <div class="viz-label-right">GATE CONTROL</div>
-
-    <!-- Upstream label -->
-    <div class="upstream-label">上游 · 代码仓库</div>
-    <div class="upstream">
-      <div class="repo" style="left:20px;top:30px"></div>
-      <div class="repo-light" style="left:50px;top:30px"></div>
-      <div class="repo-copper" style="left:80px;top:30px"></div>
-      <div class="repo-light" style="left:110px;top:30px"></div>
-      <div class="repo" style="left:20px;top:65px"></div>
-      <div class="repo-copper" style="left:50px;top:65px"></div>
-      <div class="repo-light" style="left:80px;top:65px"></div>
-      <div class="repo" style="left:110px;top:65px"></div>
-      <div class="repo-light" style="left:20px;top:100px"></div>
-      <div class="repo" style="left:50px;top:100px"></div>
-      <div class="repo-light" style="left:80px;top:100px"></div>
-      <div class="repo-copper" style="left:110px;top:100px"></div>
-      <div class="repo-copper" style="left:20px;top:135px"></div>
-      <div class="repo-light" style="left:50px;top:135px"></div>
-      <div class="repo" style="left:80px;top:135px"></div>
-      <div class="repo-light" style="left:110px;top:135px"></div>
-      <div class="repo" style="left:20px;top:170px"></div>
-      <div class="repo-light" style="left:50px;top:170px"></div>
-      <div class="repo-copper" style="left:80px;top:170px"></div>
-      <div class="repo" style="left:110px;top:170px"></div>
-      <div class="repo-light" style="left:20px;top:205px"></div>
-      <div class="repo" style="left:50px;top:205px"></div>
-      <div class="repo" style="left:80px;top:205px"></div>
-      <div class="repo-copper" style="left:110px;top:205px"></div>
-    </div>
-
-    <!-- Dam structure -->
-    <div class="dam-top"></div>
-    <div class="dam-body"></div>
-
-    <!-- Gate wheel -->
-    <div class="gate-wheel"></div>
-    <div class="gate-wheel-inner"></div>
-    <div class="gate-spoke"></div>
-    <div class="gate-spoke-vert"></div>
-
-    <!-- Platform manager zone -->
-    <div class="manager-zone"></div>
-    <div class="lever-base"></div>
-    <div class="lever-arm"></div>
-
-    <!-- Downstream -->
-    <div class="downstream-label">下游 · 分发与控制</div>
-    <div class="downstream"></div>
-
-    <!-- Flow lines through gate -->
-    <div class="flow-line" style="left:400px;top:175px;width:210px;opacity:0.6"></div>
-    <div class="flow-line" style="left:400px;top:200px;width:210px;opacity:0.4"></div>
-    <div class="flow-line" style="left:400px;top:225px;width:210px;opacity:0.6"></div>
-    <div class="flow-line" style="left:400px;top:250px;width:210px;opacity:0.35"></div>
-    <div class="flow-line" style="left:400px;top:275px;width:210px;opacity:0.55"></div>
-    <div class="flow-line" style="left:400px;top:300px;width:210px;opacity:0.4"></div>
-    <div class="flow-line" style="left:400px;top:325px;width:210px;opacity:0.6"></div>
-    <div class="flow-line" style="left:400px;top:350px;width:210px;opacity:0.45"></div>
-    <div class="flow-line" style="left:400px;top:375px;width:210px;opacity:0.35"></div>
-
-    <!-- Flow indicators downstream -->
-    <div class="flow-sq" style="left:420px;top:190px"></div>
-    <div class="flow-sq-c" style="left:450px;top:230px"></div>
-    <div class="flow-sq" style="left:480px;top:270px"></div>
-    <div class="flow-sq-c" style="left:510px;top:310px"></div>
-    <div class="flow-sq" style="left:440px;top:350px"></div>
-    <div class="flow-sq-c" style="left:470px;top:385px"></div>
-    <div class="flow-sq" style="left:500px;top:205px"></div>
-    <div class="flow-sq-c" style="left:530px;top:245px"></div>
-    <div class="flow-sq" style="left:460px;top:280px"></div>
-    <div class="flow-sq" style="left:540px;top:335px"></div>
-
-    <!-- Dam foundation -->
-    <div class="dam-foundation"></div>
-
-    <!-- Bottom annotation -->
-    <div style="position:absolute;bottom:14px;left:50px;font-size:9px;color:#8B7355;letter-spacing:2px;width:170px;line-height:1.5">
-      FORK / PR / REVIEW<br>
-      生产资料 · 代码仓库
-    </div>
-    <div style="position:absolute;bottom:14px;left:400px;font-size:9px;color:#8B7355;letter-spacing:2px;width:220px;line-height:1.5">
-      平台控制 · 分配权<br>
-      PLATFORM CONTROL
-    </div>
+<!-- Content bullets -->
+<div class="content-area">
+  <div class="bullet-item">
+    GitHub 让开源协作变得前所未有的简单：fork、PR、review 一键完成
   </div>
-
-  <!-- RIGHT: Content -->
-  <div class="content-area">
-    <div class="content-title">平台管理者占据枢纽位置</div>
-    <div class="content-underline"></div>
-    <div class="content-underline-2"></div>
-
-    <div class="bullets">
-      <div class="bullet">
-        <div class="bullet-marker bullet-marker-sq"></div>
-        <div class="bullet-text">GitHub 让开源协作变得<span class="key">前所未有的简单</span>：fork、PR、review 一键完成，协作门槛降至历史最低。</div>
-      </div>
-      <div class="bullet">
-        <div class="bullet-marker bullet-marker-cir"></div>
-        <div class="bullet-text">但平台的<span class="em">"便利性"背后是对生产资料的控制</span>——代码仓库平台在开源世界中占据了"基础设施管理者"的位置。</div>
-      </div>
-      <div class="bullet">
-        <div class="bullet-marker bullet-marker-sq"></div>
-        <div class="bullet-text">这与云厂商的问题<span class="key">同构</span>：<span class="em">谁拥有生产资料，谁就拥有分配权</span>。</div>
-      </div>
-      <div class="bullet">
-        <div class="bullet-marker bullet-marker-cir-fill"></div>
-        <div class="bullet-text">与第6期的 Williamson <span class="key">OLR 框架</span>呼应：GitHub 是 <span class="em">R（规则）</span>层面的制度装置，规定着协作如何发生。</div>
-      </div>
-      <div class="bullet">
-        <div class="bullet-marker bullet-marker-line"></div>
-        <div class="bullet-text">同时也是 <span class="em">O（组织）</span>层面的<span class="key">权力集中</span>——平台取代了部分社区治理的功能。<span class="ref">谁关闭 issue，谁合并 PR，谁冻结仓库？</span></div>
-      </div>
-    </div>
+  <div class="bullet-item">
+    但平台的<span class="emphasis">"便利性"</span>背后是对生产资料的控制
+  </div>
+  <div class="bullet-item">
+    代码仓库平台在开源世界中占据了<span class="emphasis">"基础设施管理者"</span>的位置
+  </div>
+  <div class="bullet-item">
+    与云厂商的问题同构：谁拥有生产资料，谁就拥有分配权
+  </div>
+  <div class="bullet-item">
+    与第6期的 Williamson OLR 框架呼应：GitHub 是 R（规则）层面的制度装置
+  </div>
+  <div class="bullet-item">
+    但同时也是 O（组织）层面的权力集中——平台取代了部分社区治理的功能
   </div>
 </div>
 
-<!-- Footer -->
-<div class="footer-line"></div>
-<div class="footer">
-  <div class="footer-left">第 10 期 · 劳动报酬与财产分配</div>
-  <div class="footer-right">新制度经济学视角下的开源讲座</div>
+<!-- Right divider -->
+<div class="right-divider"></div>
+
+<!-- Visual Metaphor Area: Dam/Gate controlling flow -->
+<div class="visual-area">
+
+  <!-- Large background circle -->
+  <div class="deco-large-circle"></div>
+
+  <!-- Gate label -->
+  <div class="label-gate">闸 门 · GATE</div>
+
+  <!-- Flow labels -->
+  <div class="label-input">CODE IN</div>
+  <div class="label-output">CONTROLLED OUT</div>
+
+  <!-- Incoming flows (left) -->
+  <div class="flow-arrow-1"></div>
+  <div class="flow-arrow-2"></div>
+  <div class="flow-arrow-3"></div>
+  <div class="flow-arrow-4"></div>
+
+  <!-- Dam structure -->
+  <div class="dam-pillar"></div>
+  <div class="dam-pillar-2"></div>
+
+  <!-- Gate bars -->
+  <div class="gate-bar-1"></div>
+  <div class="gate-bar-2"></div>
+  <div class="gate-bar-3"></div>
+  <div class="gate-bar-4"></div>
+  <div class="gate-bar-5"></div>
+
+  <!-- Central hub circle -->
+  <div class="hub-circle"></div>
+  <div class="hub-inner"></div>
+  <div class="hub-label">GITHUB</div>
+
+  <!-- Outgoing flows (right) -->
+  <div class="flow-out-1"></div>
+  <div class="flow-out-2"></div>
+  <div class="flow-out-3"></div>
+
+  <!-- Decorative elements -->
+  <div class="deco-circle-1"></div>
+  <div class="deco-circle-2"></div>
+  <div class="deco-circle-3"></div>
+  <div class="deco-square-1"></div>
+  <div class="deco-square-2"></div>
+
+  <!-- Diagonal lines -->
+  <div class="diag-line-1"></div>
+  <div class="diag-line-2"></div>
 </div>
 
-</body></html>
+<!-- Bottom annotation -->
+<div class="annotation">谁拥有生产资料，谁就拥有分配权</div>
+
+</body>
+</html>

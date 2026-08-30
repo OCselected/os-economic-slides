@@ -1,23 +1,19 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN"><!-- source_hash: 447986906c165b22 -->
+<html><!-- source_hash: dcf0b251d007c2e3 -->
 <head>
 <meta charset="UTF-8">
 <title>第 11 期 · 文化的重要作用</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600&display=swap');
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
 html, body {
   width: 1600px;
   height: 900px;
   overflow: hidden;
   margin: 0;
-  background: #1B3B6B;
+  padding: 0;
+  background: #F5F0E8;
   font-family: 'Noto Sans SC', sans-serif;
-  color: #F5F0E8;
 }
 
 .slide {
@@ -25,344 +21,327 @@ html, body {
   width: 1600px;
   height: 900px;
   overflow: hidden;
+}
+
+/* Geometric decorations */
+.circle-blue {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
   background: #1B3B6B;
+  top: -80px;
+  right: -60px;
+  opacity: 0.92;
 }
 
-/* Bauhaus geometric decorations */
-.geo-circle-1 {
-  position: absolute;
-  width: 520px;
-  height: 520px;
-  border-radius: 50%;
-  border: 2px solid #8B7355;
-  opacity: 0.12;
-  top: -120px;
-  right: -80px;
-}
-
-.geo-circle-2 {
-  position: absolute;
-  width: 320px;
-  height: 320px;
-  border-radius: 50%;
-  border: 2px solid #F5F0E8;
-  opacity: 0.06;
-  bottom: -60px;
-  left: 120px;
-}
-
-.geo-square-1 {
+.square-copper {
   position: absolute;
   width: 180px;
   height: 180px;
-  border: 2px solid #8B7355;
-  opacity: 0.10;
-  top: 60px;
+  background: #8B7355;
+  bottom: 60px;
   left: 60px;
-  transform: rotate(15deg);
+  opacity: 0.85;
 }
 
-.geo-square-2 {
+.line-vertical {
   position: absolute;
-  width: 90px;
-  height: 90px;
-  background: #8B7355;
-  opacity: 0.07;
-  bottom: 200px;
-  right: 180px;
-}
-
-.geo-line-1 {
-  position: absolute;
-  top: 0;
-  left: 520px;
-  width: 1px;
+  width: 3px;
   height: 900px;
-  background: #8B7355;
+  background: #1B3B6B;
+  left: 780px;
   opacity: 0.15;
 }
 
-.geo-line-2 {
+.circle-small {
   position: absolute;
-  bottom: 160px;
-  left: 0;
-  width: 1600px;
-  height: 1px;
-  background: #8B7355;
-  opacity: 0.10;
-}
-
-.geo-line-3 {
-  position: absolute;
-  top: 100px;
-  left: 0;
-  width: 1600px;
-  height: 1px;
-  background: #F5F0E8;
-  opacity: 0.06;
-}
-
-/* Filled circle accent */
-.geo-dot-1 {
-  position: absolute;
-  width: 12px;
-  height: 12px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
+  border: 3px solid #8B7355;
+  top: 520px;
+  right: 520px;
+  opacity: 0.6;
+}
+
+.square-small-blue {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: #1B3B6B;
+  top: 120px;
+  left: 580px;
+  opacity: 0.7;
+}
+
+.line-horizontal {
+  position: absolute;
+  width: 200px;
+  height: 3px;
   background: #8B7355;
+  top: 850px;
+  right: 400px;
   opacity: 0.5;
-  top: 100px;
-  left: 520px;
 }
 
-.geo-dot-2 {
+.circle-inner {
   position: absolute;
-  width: 8px;
-  height: 8px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
-  background: #F5F0E8;
+  border: 2px solid #F5F0E8;
+  top: 30px;
+  right: 80px;
   opacity: 0.3;
-  top: 170px;
-  left: 518px;
 }
 
-.geo-dot-3 {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #8B7355;
-  opacity: 0.4;
-  bottom: 160px;
-  left: 520px;
-}
-
-/* Header area */
+/* Header section */
 .header {
   position: absolute;
-  top: 50px;
+  top: 60px;
   left: 80px;
-  right: 80px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
-.deck-label {
+.header-line {
+  width: 60px;
+  height: 3px;
+  background: #1B3B6B;
+}
+
+.header-text {
   font-family: 'Noto Sans SC', sans-serif;
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 14px;
   letter-spacing: 3px;
-  color: #8B7355;
+  color: #555;
   text-transform: uppercase;
-  margin-bottom: 8px;
 }
 
 /* Main title area */
-.main-area {
+.title-area {
   position: absolute;
-  top: 100px;
-  right: 80px;
-  width: 950px;
+  top: 120px;
+  left: 80px;
+  width: 650px;
 }
 
-.lecture-number {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 200px;
-  font-weight: 900;
-  line-height: 0.9;
-  color: #F5F0E8;
-  opacity: 0.08;
-  position: absolute;
-  top: -30px;
-  right: -20px;
-  letter-spacing: -10px;
-}
-
-.period-badge {
-  display: inline-block;
-  border: 2px solid #8B7355;
-  padding: 6px 20px;
+.lecture-label {
   font-family: 'Noto Sans SC', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 16px;
   letter-spacing: 2px;
   color: #8B7355;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
+  font-weight: 500;
 }
 
 .main-title {
-  font-family: 'Noto Serif SC', serif;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
   font-size: 72px;
-  font-weight: 900;
+  font-weight: 700;
+  color: #1B3B6B;
   line-height: 1.2;
-  color: #F5F0E8;
-  margin-bottom: 16px;
-  letter-spacing: 2px;
+  margin-bottom: 24px;
 }
 
-.subtitle-line {
-  font-family: 'Noto Serif SC', serif;
+.subtitle {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
   font-size: 22px;
   font-weight: 400;
-  color: #8B7355;
-  letter-spacing: 1px;
+  color: #555;
+  line-height: 1.6;
   margin-bottom: 40px;
 }
 
-.current-topic {
-  display: inline-block;
+.divider {
+  width: 80px;
+  height: 3px;
   background: #8B7355;
-  color: #1B3B6B;
-  font-family: 'Noto Serif SC', serif;
-  font-size: 18px;
-  font-weight: 700;
-  padding: 10px 24px;
-  letter-spacing: 1px;
+  margin-bottom: 28px;
 }
 
-/* Recap list */
+/* Recap section */
 .recap {
   position: absolute;
-  top: 130px;
+  bottom: 80px;
   left: 80px;
-  width: 380px;
+  width: 640px;
 }
 
 .recap-title {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 16px;
-  font-weight: 700;
-  color: #8B7355;
-  letter-spacing: 4px;
-  margin-bottom: 20px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid #8B7355;
-  border-color: rgba(139, 115, 85, 0.4);
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1B3B6B;
+  margin-bottom: 16px;
+  letter-spacing: 1px;
 }
 
 .recap-list {
   list-style: none;
   padding: 0;
+  margin: 0;
+  columns: 2;
+  column-gap: 24px;
 }
 
 .recap-list li {
   font-family: 'Noto Sans SC', sans-serif;
   font-size: 13px;
-  font-weight: 400;
-  color: #F5F0E8;
-  opacity: 0.6;
-  padding: 5px 0;
-  line-height: 1.5;
-  border-left: 2px solid transparent;
+  color: #555;
+  line-height: 1.8;
   padding-left: 14px;
-  margin-bottom: 2px;
+  position: relative;
+  break-inside: avoid;
 }
 
-.recap-list li .num {
-  font-weight: 600;
-  color: #8B7355;
-  opacity: 0.8;
-  margin-right: 6px;
+.recap-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 5px;
+  height: 5px;
+  background: #8B7355;
 }
 
 .recap-list li.current {
-  opacity: 1;
-  border-left-color: #8B7355;
-  font-weight: 500;
-  color: #F5F0E8;
+  color: #1B3B6B;
+  font-weight: 600;
+}
+
+.recap-list li.current::before {
+  background: #1B3B6B;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  top: 8px;
+}
+
+/* Right panel */
+.right-panel {
+  position: absolute;
+  top: 200px;
+  right: 80px;
+  width: 400px;
+  text-align: right;
+}
+
+.deck-meta {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 14px;
+  color: #8B7355;
+  line-height: 2;
+}
+
+.deck-meta .meta-label {
+  color: #555;
+  letter-spacing: 1px;
+}
+
+.theme-label {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 28px;
+  color: #1B3B6B;
+  margin-top: 40px;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.theme-en {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  color: #8B7355;
+  letter-spacing: 2px;
+  margin-top: 8px;
 }
 
 /* Footer */
 .footer {
   position: absolute;
-  bottom: 50px;
-  left: 80px;
+  bottom: 30px;
   right: 80px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.footer-left {
   font-family: 'Noto Sans SC', sans-serif;
   font-size: 12px;
   color: #8B7355;
-  opacity: 0.7;
   letter-spacing: 1px;
 }
 
-.footer-right {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 12px;
-  color: #8B7355;
-  opacity: 0.6;
-  letter-spacing: 2px;
-}
-
-/* Geometric accent at bottom right */
-.geo-triangle {
+/* Large number decoration */
+.bignum {
   position: absolute;
-  bottom: 80px;
-  right: 80px;
-  width: 0;
-  height: 0;
-  border-left: 40px solid transparent;
-  border-right: 40px solid transparent;
-  border-bottom: 70px solid #8B7355;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 280px;
+  font-weight: 700;
+  color: #1B3B6B;
   opacity: 0.06;
+  right: 100px;
+  bottom: -60px;
+  line-height: 1;
 }
 </style>
 </head>
 <body>
 <div class="slide">
   <!-- Geometric decorations -->
-  <div class="geo-circle-1"></div>
-  <div class="geo-circle-2"></div>
-  <div class="geo-square-1"></div>
-  <div class="geo-square-2"></div>
-  <div class="geo-line-1"></div>
-  <div class="geo-line-2"></div>
-  <div class="geo-line-3"></div>
-  <div class="geo-dot-1"></div>
-  <div class="geo-dot-2"></div>
-  <div class="geo-dot-3"></div>
-  <div class="geo-triangle"></div>
+  <div class="circle-blue"></div>
+  <div class="circle-inner"></div>
+  <div class="square-copper"></div>
+  <div class="line-vertical"></div>
+  <div class="circle-small"></div>
+  <div class="square-small-blue"></div>
+  <div class="line-horizontal"></div>
+
+  <!-- Large background number -->
+  <div class="bignum">11</div>
 
   <!-- Header -->
   <div class="header">
-    <div class="deck-label">开源经济学 · OPEN SOURCE ECONOMICS</div>
+    <div class="header-line"></div>
+    <div class="header-text">开源经济学 · 新制度经济学视角</div>
   </div>
 
-  <!-- Main content area -->
-  <div class="main-area">
-    <div class="lecture-number">11</div>
-    <div class="period-badge">第 11 期</div>
-    <h1 class="main-title">文化的重要作用</h1>
-    <div class="subtitle-line">Culture as the Invisible Architecture of Open Source</div>
-    <div class="current-topic">制度、劳动与财产分配</div>
+  <!-- Title Area -->
+  <div class="title-area">
+    <div class="lecture-label">第 11 期 / Lecture 11</div>
+    <div class="main-title">文化的重要<br>作用</div>
+    <div class="divider"></div>
+    <div class="subtitle">Culture Matters —<br>制度、劳动与财产分配的<br>文化维度</div>
   </div>
 
-  <!-- Recap list -->
+  <!-- Right Panel -->
+  <div class="right-panel">
+    <div class="deck-meta">
+      <div><span class="meta-label">主题</span>：包豪斯几何构成</div>
+      <div><span class="meta-label">共</span>：28 张幻灯片</div>
+    </div>
+    <div class="theme-label">Intellectual<br>Visual System</div>
+    <div class="theme-en">BAUHAUS GEOMETRIC COMPOSITION</div>
+  </div>
+
+  <!-- Recap Section -->
   <div class="recap">
-    <div class="recap-title">前情提要</div>
+    <div class="recap-title">前情提要 · PREVIOUS LECTURES</div>
     <ul class="recap-list">
-      <li><span class="num">0</span>增长的开源经济</li>
-      <li><span class="num">1</span>软件的生产、分销和消费</li>
-      <li><span class="num">2</span>知识财产法演变与开源许可</li>
-      <li><span class="num">3</span>商业模式：产权制度与案例</li>
-      <li><span class="num">4</span>开源的劳动力市场</li>
-      <li><span class="num">5</span>交易成本与路径依赖</li>
-      <li><span class="num">6</span>组织结构与治理</li>
-      <li><span class="num">7</span>开源的政治经济学</li>
-      <li><span class="num">8</span>商业价值与社会价值</li>
-      <li><span class="num">9</span>信息规则与网络经济</li>
-      <li><span class="num">10</span>排他权与容他权 · Copyleft</li>
-      <li class="current"><span class="num">11</span>制度、劳动与财产分配</li>
+      <li>第0讲 增长的开源经济</li>
+      <li>第1讲 软件的生产、分销和消费</li>
+      <li>第2讲 知识财产法与开源许可</li>
+      <li>第3讲 商业模式：产权制度与案例分析</li>
+      <li>第4讲 开源的劳动力市场</li>
+      <li>第5讲 交易成本与路径依赖</li>
+      <li>第6讲 组织结构与治理</li>
+      <li>第7讲 开源的政治经济学</li>
+      <li>第8讲 商业价值与社会价值</li>
+      <li>第9讲 信息规则与网络经济</li>
+      <li>第10讲 排他权与 Copyleft</li>
+      <li class="current">第11讲 制度、劳动与财产分配</li>
     </ul>
   </div>
 
   <!-- Footer -->
-  <div class="footer">
-    <div class="footer-left">「开源之道」日常交流 / 新制度经济学视角</div>
-    <div class="footer-right">28 slides</div>
-  </div>
+  <div class="footer">「开源之道」 · 2024</div>
 </div>
 </body>
 </html>

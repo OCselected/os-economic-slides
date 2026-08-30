@@ -1,594 +1,386 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: c6be936184ac2656 --><head><meta charset="UTF-8"><title>第 10 期 · 公共水道的隐喻</title><style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html, body { width: 1600px; height: 900px; overflow: hidden; margin: 0; }
-body {
-  font-family: 'Noto Sans SC', 'Source Han Sans SC', sans-serif;
-  background: #F5F0E8;
-  color: #1B3B6B;
-  position: relative;
+<!DOCTYPE html>
+<html><!-- source_hash: c62c321e266277e4 -->
+<head>
+<meta charset="UTF-8">
+<title>分配正义与回流的缺失</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
   width: 1600px;
   height: 900px;
   overflow: hidden;
+  margin: 0;
 }
 
-/* subtle parchment texture */
-body::before {
-  content: '';
+body {
+  background: #F5F0E8;
+  font-family: 'Noto Sans SC', sans-serif;
+  position: relative;
+}
+
+.texture {
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   background:
-    radial-gradient(ellipse at 20% 30%, rgba(139,115,85,0.04) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 70%, rgba(27,59,107,0.03) 0%, transparent 50%);
+    radial-gradient(ellipse at 20% 30%, rgba(139,115,85,0.025) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(27,59,107,0.015) 0%, transparent 50%);
   pointer-events: none;
   z-index: 0;
 }
 
-/* Top bar */
-.top-bar {
+.deco-circle-lg {
   position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 8px;
-  background: #1B3B6B;
-  z-index: 5;
+  top: -90px; right: -90px;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  border: 1.5px solid #1B3B6B;
+  opacity: 0.05;
+  z-index: 1;
 }
 
-/* Lecture number badge - top left */
-.lecture-badge {
+.deco-circle-sm {
   position: absolute;
-  top: 40px;
-  left: 60px;
-  width: 100px;
-  height: 100px;
-  z-index: 4;
+  top: 140px; right: 60px;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: #8B7355;
+  opacity: 0.06;
+  z-index: 1;
 }
-.lecture-badge .num {
-  font-family: 'Noto Serif SC', 'Songti SC', serif;
-  font-size: 56px;
-  font-weight: 700;
-  color: #1B3B6B;
-  line-height: 1;
+
+.deco-square-1 {
+  position: absolute;
+  bottom: 50px; left: 35px;
+  width: 55px; height: 55px;
+  background: #1B3B6B;
+  opacity: 0.03;
+  z-index: 1;
 }
-.lecture-badge .lbl {
-  font-size: 11px;
+
+.deco-square-2 {
+  position: absolute;
+  top: 200px; left: -28px;
+  width: 56px; height: 56px;
+  background: #8B7355;
+  opacity: 0.04;
+  z-index: 1;
+}
+
+.deco-line-v {
+  position: absolute;
+  top: 0; right: 80px;
+  width: 1px; height: 100%;
+  background: #8B7355;
+  opacity: 0.06;
+  z-index: 1;
+}
+
+.deco-line-h {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 65%; height: 1px;
+  background: #1B3B6B;
+  opacity: 0.06;
+  z-index: 1;
+}
+
+.deco-line-h2 {
+  position: absolute;
+  top: 0; left: 80px;
+  width: 35%; height: 1px;
+  background: #1B3B6B;
+  opacity: 0.08;
+  z-index: 1;
+}
+
+.deco-triangle {
+  position: absolute;
+  bottom: -28px; right: 220px;
+  width: 0; height: 0;
+  border-left: 24px solid transparent;
+  border-right: 24px solid transparent;
+  border-bottom: 42px solid #1B3B6B;
+  opacity: 0.03;
+  z-index: 1;
+}
+
+.header {
+  position: absolute;
+  top: 50px; left: 80px; right: 80px;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lecture-info {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 13px;
   color: #8B7355;
   letter-spacing: 3px;
-  margin-top: 6px;
-  text-transform: uppercase;
 }
 
-/* Title */
-.title-block {
-  position: absolute;
-  top: 50px;
-  left: 200px;
-  right: 60px;
-  z-index: 4;
-}
-.main-title {
-  font-family: 'Noto Serif SC', 'Songti SC', serif;
-  font-size: 42px;
-  font-weight: 700;
-  color: #1B3B6B;
-  letter-spacing: 2px;
-  line-height: 1.2;
-}
-.sub-title {
-  font-size: 15px;
-  color: #8B7355;
-  margin-top: 12px;
-  letter-spacing: 1px;
-  border-left: 3px solid #8B7355;
-  padding-left: 12px;
-}
-
-/* Divider line */
-.title-divider {
-  position: absolute;
-  top: 175px;
-  left: 200px;
-  right: 60px;
-  height: 1px;
-  background: #1B3B6B;
-  opacity: 0.3;
-  z-index: 3;
-}
-
-/* Left column - visual metaphor */
-.viz-area {
-  position: absolute;
-  top: 220px;
-  left: 60px;
-  width: 640px;
-  height: 580px;
-  z-index: 2;
-}
-
-/* Bauhaus geometric water channel */
-.channel-line {
-  position: absolute;
-  top: 200px;
-  left: 0;
-  width: 640px;
-  height: 4px;
-  background: #1B3B6B;
-}
-
-/* Flow arrows - downstream only */
-.flow-arrow-right {
-  position: absolute;
-  top: 194px;
-  left: 560px;
-  width: 0;
-  height: 0;
-  border-left: 14px solid #1B3B6B;
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
-}
-
-/* The "taking" circle */
-.taking-circle {
-  position: absolute;
-  top: 140px;
-  left: 200px;
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background: #1B3B6B;
-}
-.taking-circle-inner {
-  position: absolute;
-  top: 170px;
-  left: 230px;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: #F5F0E8;
-}
-
-/* The square - representing cloud vendor box */
-.vendor-square {
-  position: absolute;
-  top: 380px;
-  left: 120px;
-  width: 100px;
-  height: 100px;
-  background: #8B7355;
-}
-.vendor-square-inner {
-  position: absolute;
-  top: 410px;
-  left: 150px;
-  width: 40px;
-  height: 40px;
-  background: #F5F0E8;
-}
-
-/* Downward pipe from circle to square */
-.down-pipe {
-  position: absolute;
-  top: 260px;
-  left: 257px;
-  width: 4px;
-  height: 120px;
-  background: #1B3B6B;
-}
-
-/* Return flow - dashed/missing */
-.return-pipe {
-  position: absolute;
-  top: 300px;
-  left: 257px;
-  width: 4px;
-  height: 100px;
-  border-left: 4px dashed #8B7355;
-  opacity: 0.4;
-}
-
-/* Broken return arrow */
-.broken-return {
-  position: absolute;
-  top: 290px;
-  left: 250px;
-  width: 18px;
-  height: 18px;
-  border-top: 3px solid #8B7355;
-  border-right: 3px solid #8B7355;
-  opacity: 0.3;
-}
-
-/* No return marker */
-.no-return-text {
-  position: absolute;
-  top: 340px;
-  left: 290px;
-  font-size: 12px;
-  color: #8B7355;
-  letter-spacing: 2px;
-  font-style: italic;
-}
-
-/* Triangle decorative */
-.triangle-deco {
-  position: absolute;
-  top: 350px;
-  left: 480px;
-  width: 0;
-  height: 0;
-  border-left: 35px solid transparent;
-  border-right: 35px solid transparent;
-  border-bottom: 60px solid #1B3B6B;
-  opacity: 0.85;
-}
-
-/* Small circle decorative */
-.small-circle-1 {
-  position: absolute;
-  top: 380px;
-  left: 460px;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  border: 3px solid #8B7355;
-}
-
-/* Half circle */
-.half-circle {
-  position: absolute;
-  top: 520px;
-  left: 340px;
-  width: 80px;
-  height: 40px;
-  border-radius: 80px 80px 0 0;
-  background: #1B3B6B;
-  opacity: 0.7;
-}
-
-/* Source label */
-.source-label {
-  position: absolute;
-  top: 220px;
-  left: 20px;
-  font-size: 12px;
-  color: #1B3B6B;
-  letter-spacing: 2px;
-  writing-mode: horizontal-tb;
-}
-
-.vendor-label {
-  position: absolute;
-  top: 490px;
-  left: 95px;
+.slide-num {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
   font-size: 13px;
   color: #8B7355;
   letter-spacing: 2px;
-  font-weight: 600;
 }
 
-.vendor-sub-label {
+.title-block {
   position: absolute;
-  top: 512px;
-  left: 80px;
-  font-size: 11px;
-  color: #555;
-  letter-spacing: 1px;
+  top: 100px; left: 80px; right: 80px;
+  z-index: 10;
 }
 
-.viz-caption {
-  position: absolute;
-  top: 570px;
-  left: 0;
-  width: 640px;
-  font-family: 'Noto Serif SC', 'Songti SC', serif;
-  font-size: 16px;
+.main-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 44px;
   color: #1B3B6B;
-  letter-spacing: 1px;
-  line-height: 1.6;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.title-sub {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 16px;
+  color: #8B7355;
+  letter-spacing: 3px;
   font-style: italic;
 }
 
-/* Right column - content */
-.content-area {
+.title-line {
   position: absolute;
-  top: 220px;
-  left: 740px;
-  width: 800px;
-  height: 580px;
-  z-index: 3;
+  top: 188px; left: 80px;
+  width: 80px; height: 3px;
+  background: #1B3B6B;
+  z-index: 10;
 }
 
-.section-label {
+.visual-block {
+  position: absolute;
+  top: 235px; left: 80px;
+  width: 570px; height: 490px;
+  z-index: 5;
+}
+
+.vertical-sep {
+  position: absolute;
+  top: 235px; left: 670px;
+  width: 1px; height: 490px;
+  background: #8B7355;
+  opacity: 0.1;
+  z-index: 2;
+}
+
+.content-block {
+  position: absolute;
+  top: 235px; left: 710px;
+  width: 810px; height: 490px;
+  z-index: 10;
+}
+
+.content-label {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
   font-size: 12px;
   color: #8B7355;
-  letter-spacing: 4px;
-  margin-bottom: 8px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #1B3B6B;
-  display: inline-block;
+  letter-spacing: 5px;
+  margin-bottom: 24px;
 }
 
-.bullet-list {
-  margin-top: 24px;
+.content-line {
+  width: 40px;
+  height: 2px;
+  background: #8B7355;
+  opacity: 0.3;
+  margin-bottom: 30px;
 }
 
-.bullet-item {
+.bullet {
   display: flex;
   align-items: flex-start;
-  margin-bottom: 22px;
+  margin-bottom: 24px;
 }
 
 .bullet-marker {
-  flex-shrink: 0;
-  width: 32px;
-  height: 32px;
-  margin-right: 18px;
-  position: relative;
-  top: 2px;
-}
-
-.bullet-marker-square {
-  width: 18px;
-  height: 18px;
+  width: 8px;
+  height: 8px;
   background: #1B3B6B;
-  margin-top: 7px;
+  margin-top: 10px;
+  margin-right: 18px;
+  flex-shrink: 0;
 }
 
-.bullet-marker-circle {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: #8B7355;
-  margin-top: 7px;
-}
-
-.bullet-marker-triangle {
-  width: 0;
-  height: 0;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-bottom: 16px solid #1B3B6B;
+.bullet-marker.diamond {
+  transform: rotate(45deg);
   margin-top: 10px;
 }
 
-.bullet-marker-hollow-circle {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  border: 3px solid #1B3B6B;
-  margin-top: 7px;
-}
-
 .bullet-text {
+  font-family: 'Noto Sans SC', sans-serif;
   font-size: 17px;
-  line-height: 1.65;
-  color: #1B3B6B;
-  letter-spacing: 0.5px;
-  padding-top: 2px;
+  color: #333;
+  line-height: 1.75;
 }
 
-.bullet-text strong {
-  font-family: 'Noto Serif SC', 'Songti SC', serif;
-  font-weight: 700;
+.bullet-text .blue {
   color: #1B3B6B;
-}
-
-.bullet-text .accent {
-  color: #8B7355;
   font-weight: 600;
 }
 
-.highlight-box {
-  margin-top: 30px;
-  padding: 20px 24px;
-  border-left: 5px solid #1B3B6B;
-  background: rgba(27,59,107,0.04);
-  position: relative;
+.bullet-text .copper {
+  color: #8B7355;
+  font-weight: 500;
 }
 
-.highlight-box::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 12px;
-  height: 12px;
-  background: #8B7355;
-}
-
-.highlight-text {
-  font-family: 'Noto Serif SC', 'Songti SC', serif;
-  font-size: 17px;
-  color: #1B3B6B;
-  line-height: 1.7;
-  letter-spacing: 1px;
-}
-
-.highlight-text .em {
-  font-size: 20px;
-  font-weight: 700;
-}
-
-/* Footer */
 .footer {
   position: absolute;
-  bottom: 24px;
-  left: 60px;
-  right: 60px;
-  height: 40px;
+  bottom: 40px; left: 80px; right: 80px;
+  z-index: 10;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  z-index: 5;
+  align-items: center;
 }
 
-.footer-left {
+.footer-text {
+  font-family: 'Noto Sans SC', sans-serif;
   font-size: 11px;
-  color: #555;
+  color: #8B7355;
   letter-spacing: 2px;
+  opacity: 0.5;
 }
+</style>
+</head>
+<body>
 
-.footer-right {
-  font-size: 11px;
-  color: #555;
-  letter-spacing: 2px;
-}
+<div class="texture"></div>
+<div class="deco-circle-lg"></div>
+<div class="deco-circle-sm"></div>
+<div class="deco-square-1"></div>
+<div class="deco-square-2"></div>
+<div class="deco-line-v"></div>
+<div class="deco-line-h"></div>
+<div class="deco-line-h2"></div>
+<div class="deco-triangle"></div>
 
-.footer-divider {
-  position: absolute;
-  bottom: 66px;
-  left: 60px;
-  right: 60px;
-  height: 1px;
-  background: #8B7355;
-  opacity: 0.4;
-}
-
-/* Decorative corner elements */
-.corner-tl {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  width: 8px;
-  height: 8px;
-  background: #8B7355;
-  z-index: 5;
-}
-
-.corner-tr {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 8px;
-  height: 8px;
-  background: #8B7355;
-  z-index: 5;
-}
-
-.corner-bl {
-  position: absolute;
-  bottom: 10px;
-  left: 20px;
-  width: 8px;
-  height: 8px;
-  background: #8B7355;
-  z-index: 5;
-}
-
-.corner-br {
-  position: absolute;
-  bottom: 10px;
-  right: 20px;
-  width: 8px;
-  height: 8px;
-  background: #8B7355;
-  z-index: 5;
-}
-
-/* Bottom bar */
-.bottom-bar {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 4px;
-  background: #8B7355;
-  z-index: 5;
-}
-</style></head><body>
-
-<div class="top-bar"></div>
-<div class="bottom-bar"></div>
-<div class="corner-tl"></div>
-<div class="corner-tr"></div>
-<div class="corner-bl"></div>
-<div class="corner-br"></div>
-
-<div class="lecture-badge">
-  <div class="num">10</div>
-  <div class="lbl">LECTURE</div>
+<div class="header">
+  <div class="lecture-info">第 10 期 · 劳动报酬与财产分配</div>
+  <div class="slide-num">10 / 29</div>
 </div>
 
 <div class="title-block">
-  <div class="main-title">公共水道的隐喻</div>
-  <div class="sub-title">仅取水而不回馈 —— 云厂商受益与贡献回报的失衡</div>
+  <h1 class="main-title">分配正义与回流的缺失</h1>
+  <p class="title-sub">公共水道只取水不回馈 —— 云厂商受益与贡献回报失衡</p>
+</div>
+<div class="title-line"></div>
+
+<div class="visual-block">
+  <svg width="570" height="470" viewBox="0 0 570 470">
+    <!-- Channel outline -->
+    <rect x="40" y="130" width="490" height="100" fill="none" stroke="#1B3B6B" stroke-width="1.5" opacity="0.1" rx="2"/>
+
+    <!-- Source: Open Source Community -->
+    <circle cx="100" cy="180" r="55" fill="none" stroke="#1B3B6B" stroke-width="3" opacity="0.22"/>
+    <circle cx="100" cy="180" r="38" fill="#1B3B6B" opacity="0.05"/>
+    <circle cx="100" cy="180" r="20" fill="#1B3B6B" opacity="0.1"/>
+    <circle cx="100" cy="180" r="8" fill="#1B3B6B" opacity="0.18"/>
+
+    <!-- Outflow: Benefits flowing to cloud vendors -->
+    <line x1="155" y1="160" x2="395" y2="160" stroke="#1B3B6B" stroke-width="3" opacity="0.35"/>
+    <line x1="155" y1="180" x2="395" y2="180" stroke="#1B3B6B" stroke-width="4" opacity="0.5"/>
+    <line x1="155" y1="200" x2="395" y2="200" stroke="#1B3B6B" stroke-width="3" opacity="0.35"/>
+
+    <!-- Arrowheads for outflow -->
+    <polygon points="390,153 402,160 390,167" fill="#1B3B6B" opacity="0.35"/>
+    <polygon points="390,173 405,180 390,187" fill="#1B3B6B" opacity="0.5"/>
+    <polygon points="390,193 402,200 390,207" fill="#1B3B6B" opacity="0.35"/>
+
+    <!-- Destination: Cloud Vendors (accumulating benefits) -->
+    <rect x="410" y="140" width="100" height="80" fill="none" stroke="#8B7355" stroke-width="2" opacity="0.28"/>
+    <rect x="410" y="140" width="100" height="80" fill="#8B7355" opacity="0.04"/>
+    <rect x="420" y="150" width="80" height="20" fill="#8B7355" opacity="0.08"/>
+    <rect x="420" y="175" width="80" height="20" fill="#8B7355" opacity="0.11"/>
+    <rect x="420" y="200" width="80" height="10" fill="#8B7355" opacity="0.14"/>
+
+    <!-- Return flow (absent - dashed, faded) -->
+    <line x1="410" y1="280" x2="160" y2="280" stroke="#8B7355" stroke-width="1" stroke-dasharray="8,8" opacity="0.12"/>
+    <polygon points="165,273 155,280 165,287" fill="#8B7355" opacity="0.08"/>
+
+    <!-- Absence marker (subtle X on return flow) -->
+    <line x1="275" y1="270" x2="300" y2="290" stroke="#8B7355" stroke-width="0.8" opacity="0.08"/>
+    <line x1="300" y1="270" x2="275" y2="290" stroke="#8B7355" stroke-width="0.8" opacity="0.08"/>
+
+    <!-- Labels -->
+    <text x="100" y="262" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="13" fill="#1B3B6B" opacity="0.7" letter-spacing="2">开源社区</text>
+    <text x="460" y="262" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="13" fill="#8B7355" opacity="0.7" letter-spacing="2">云厂商</text>
+
+    <!-- Flow direction labels -->
+    <text x="275" y="146" text-anchor="middle" font-family="'Noto Sans SC', sans-serif" font-size="10" fill="#1B3B6B" opacity="0.3" letter-spacing="2">受益流向</text>
+    <text x="275" y="310" text-anchor="middle" font-family="'Noto Sans SC', sans-serif" font-size="10" fill="#8B7355" opacity="0.22" letter-spacing="2">回馈缺失</text>
+
+    <!-- Bottom caption -->
+    <text x="285" y="372" text-anchor="middle" font-family="'Noto Serif SC', serif" font-size="16" fill="#555" opacity="0.5" letter-spacing="5">公共水道 · 只取水 · 不回馈</text>
+
+    <!-- Decorative elements -->
+    <rect x="440" y="392" width="14" height="14" fill="#1B3B6B" opacity="0.04"/>
+    <circle cx="80" cy="392" r="6" fill="none" stroke="#1B3B6B" stroke-width="1" opacity="0.08"/>
+    <line x1="320" y1="392" x2="390" y2="392" stroke="#555" stroke-width="0.5" opacity="0.05"/>
+  </svg>
 </div>
 
-<div class="title-divider"></div>
+<div class="vertical-sep"></div>
 
-<!-- LEFT: Visual Metaphor -->
-<div class="viz-area">
-  <div class="source-label">SOURCE / 公共水道</div>
+<div class="content-block">
+  <div class="content-label">核心论断</div>
+  <div class="content-line"></div>
 
-  <div class="channel-line"></div>
-  <div class="flow-arrow-right"></div>
-
-  <div class="taking-circle"></div>
-  <div class="taking-circle-inner"></div>
-
-  <div class="down-pipe"></div>
-
-  <div class="return-pipe"></div>
-  <div class="broken-return"></div>
-  <div class="no-return-text">NO RETURN</div>
-
-  <div class="vendor-square"></div>
-  <div class="vendor-square-inner"></div>
-  <div class="vendor-label">CLOUD VENDOR</div>
-  <div class="vendor-sub-label">云厂商 · 受益方</div>
-
-  <div class="triangle-deco"></div>
-  <div class="small-circle-1"></div>
-  <div class="half-circle"></div>
-
-  <div class="viz-caption">「取之甚多，还之甚寡」<br>
-  公共水道只取水不回馈，喻指云厂商在开源生态中的单向索取</div>
-</div>
-
-<!-- RIGHT: Content -->
-<div class="content-area">
-  <span class="section-label">跨期对话 · DIALOGUE ACROSS LECTURES</span>
-
-  <div class="bullet-list">
-    <div class="bullet-item">
-      <div class="bullet-marker"><div class="bullet-marker-square"></div></div>
-      <div class="bullet-text">
-        <strong>第 8 期</strong> · 政治经济学视角：云厂商<span class="accent">受益却不投入</span>，在开源协作中占据结构性优势
-      </div>
-    </div>
-
-    <div class="bullet-item">
-      <div class="bullet-marker"><div class="bullet-marker-circle"></div></div>
-      <div class="bullet-text">
-        <strong>第 10 期（本期）</strong> · 劳动报酬与财产分配：追问贡献者应得之所得
-      </div>
-    </div>
-
-    <div class="bullet-item">
-      <div class="bullet-marker"><div class="bullet-marker-triangle"></div></div>
-      <div class="bullet-text">
-        <strong>第 11 期</strong> · 进一步揭示：<span class="accent">分配不匹配</span>的制度根源与组织后果
-      </div>
-    </div>
-
-    <div class="bullet-item">
-      <div class="bullet-marker"><div class="bullet-marker-hollow-circle"></div></div>
-      <div class="bullet-text">
-        三者共同指向：<strong>开源的分配正义问题</strong> —— 谁劳动？谁获益？谁回馈？
-      </div>
+  <div class="bullet">
+    <div class="bullet-marker"></div>
+    <div class="bullet-text">
+      <span class="blue">第 8 期 · 政治经济学视角</span><br>
+      云厂商享受开源成果，却未以相称比例回馈社区
     </div>
   </div>
 
-  <div class="highlight-box">
-    <div class="highlight-text">
-      制度设计之要义，在于 <span class="em">让贡献者获得应有的回报</span> ——<br>
-      而非令水道只出不得入，令劳者劳而食于他人之口。
+  <div class="bullet">
+    <div class="bullet-marker"></div>
+    <div class="bullet-text">
+      <span class="blue">第 11 期 · 分配不匹配的揭示</span><br>
+      贡献与回报之间的结构性错位，在制度层面被固化
+    </div>
+  </div>
+
+  <div class="bullet">
+    <div class="bullet-marker"></div>
+    <div class="bullet-text">
+      <span class="blue">两者共同指向</span>
+      <span class="copper">：开源运动的分配正义问题</span> —— 公共品属性下的私有收益提取
+    </div>
+  </div>
+
+  <div class="bullet">
+    <div class="bullet-marker diamond"></div>
+    <div class="bullet-text">
+      <span class="blue">制度设计的目标</span><br>
+      构建回馈机制，让贡献者获得与其投入相称的回报
     </div>
   </div>
 </div>
 
-<div class="footer-divider"></div>
 <div class="footer">
-  <div class="footer-left">第 10 期 · 劳动报酬与财产分配 &nbsp;|&nbsp; 开源之道 · 新制度经济学视角</div>
-  <div class="footer-right">Bauhaus Geometric Composition</div>
+  <div class="footer-text">开源之道 · 新制度经济学视角</div>
+  <div class="footer-text">包豪斯几何构成 · Bauhaus Geometric Composition</div>
 </div>
 
-</body></html>
+</body>
+</html>

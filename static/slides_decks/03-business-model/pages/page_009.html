@@ -1,319 +1,475 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN"><!-- source_hash: 20a9c137cae33377 -->
+<html><!-- source_hash: 1842d2962571fcfa -->
 <head>
 <meta charset="UTF-8">
-<title>无形财产 · 规则下的获取</title>
+<title>第 03 期 · 商业模式：无形财产与交易秩序</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body {
-    width: 1600px;
-    height: 900px;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-  }
-  body {
-    background: #F5F0E8;
-    font-family: 'Noto Sans SC', sans-serif;
-    position: relative;
-  }
-  .bg-grid {
-    position: absolute;
-    top: 0; left: 0;
-    width: 1600px; height: 900px;
-    background: repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent 120px,
-      rgba(27,59,107,0.012) 120px,
-      rgba(27,59,107,0.012) 121px
-    );
-  }
-  .deco-circle-lg {
-    position: absolute;
-    top: 35px; right: 45px;
-    width: 280px; height: 280px;
-    border: 2px solid rgba(139,115,85,0.07);
-    border-radius: 50%;
-  }
-  .deco-circle-sm {
-    position: absolute;
-    top: 248px; right: 318px;
-    width: 55px; height: 55px;
-    background: rgba(27,59,107,0.035);
-    border-radius: 50%;
-  }
-  .deco-square {
-    position: absolute;
-    bottom: 68px; left: 22px;
-    width: 85px; height: 85px;
-    border: 2px solid rgba(27,59,107,0.05);
-  }
-  .deco-line {
-    position: absolute;
-    top: 380px; left: 560px;
-    width: 140px; height: 1px;
-    background: rgba(139,115,85,0.1);
-  }
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600&display=swap');
 
-  /* Header */
-  .header {
-    position: absolute;
-    top: 45px; left: 70px; right: 70px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .lecture-tag {
-    font-family: 'Noto Serif SC','Source Han Serif SC','Songti SC',serif;
-    font-size: 13px;
-    color: #8B7355;
-    letter-spacing: 3px;
-    border: 1px solid rgba(139,115,85,0.45);
-    padding: 7px 18px;
-  }
-  .slide-number {
-    font-family: 'Noto Serif SC','Source Han Serif SC','Songti SC',serif;
-    font-size: 13px;
-    color: #aaa;
-    letter-spacing: 2px;
-  }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-  /* Left Panel */
-  .left-panel {
-    position: absolute;
-    top: 115px; left: 70px;
-    width: 600px; bottom: 60px;
-    display: flex;
-    flex-direction: column;
-  }
-  .visual-title {
-    font-family: 'Noto Serif SC','Source Han Serif SC','Songti SC',serif;
-    font-size: 38px;
-    color: #1B3B6B;
-    font-weight: 700;
-    line-height: 1.3;
-    margin-bottom: 4px;
-  }
-  .visual-subtitle {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 13px;
-    color: #888;
-    letter-spacing: 1px;
-    margin-bottom: 20px;
-    line-height: 1.5;
-  }
-  .cart-wrap {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
+}
 
-  /* Right Panel */
-  .right-panel {
-    position: absolute;
-    top: 115px; right: 70px;
-    width: 800px; bottom: 60px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .section-label {
-    font-family: 'Noto Serif SC','Source Han Serif SC','Songti SC',serif;
-    font-size: 11px;
-    color: #8B7355;
-    letter-spacing: 6px;
-    margin-bottom: 28px;
-    font-weight: 600;
-  }
-  .content-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  .content-item {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 18px;
-    color: #1B3B6B;
-    line-height: 1.5;
-    padding: 17px 0;
-    border-bottom: 1px solid rgba(27,59,107,0.07);
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-  .content-item:last-child {
-    border-bottom: none;
-  }
-  .marker {
-    flex-shrink: 0;
-    width: 10px;
-    height: 10px;
-  }
-  .m-solid { background: #1B3B6B; }
-  .m-outline { border: 2px solid #8B7355; background: transparent; }
-  .m-circle { border: 2px solid #1B3B6B; border-radius: 50%; background: transparent; }
-  .m-tri {
-    width: 0; height: 0;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-bottom: 10px solid #8B7355;
-    margin: 0 2px 0 2px;
-  }
+body {
+  background: #F5F0E8;
+  position: relative;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: #1B3B6B;
+}
 
-  /* Footer */
-  .footer-line {
-    position: absolute;
-    bottom: 35px; left: 70px; right: 70px;
-    height: 1px;
-    background: rgba(27,59,107,0.1);
-  }
-  .footer-left {
-    position: absolute;
-    bottom: 45px; left: 70px;
-    font-family: 'Noto Serif SC','Source Han Serif SC','Songti SC',serif;
-    font-size: 11px;
-    color: #aaa;
-    letter-spacing: 2px;
-  }
-  .footer-right {
-    position: absolute;
-    bottom: 45px; right: 70px;
-    font-family: 'Noto Serif SC','Source Han Serif SC','Songti SC',serif;
-    font-size: 11px;
-    color: #aaa;
-    letter-spacing: 2px;
-  }
+/* Subtle parchment texture */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 1600px; height: 900px;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(139, 115, 85, 0.015) 3px,
+    rgba(139, 115, 85, 0.015) 4px
+  ),
+  repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 5px,
+    rgba(139, 115, 85, 0.01) 5px,
+    rgba(139, 115, 85, 0.01) 6px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Header */
+.header {
+  position: absolute;
+  top: 50px;
+  left: 80px;
+  right: 80px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  z-index: 10;
+}
+
+.header-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #8B7355;
+  letter-spacing: 2px;
+}
+
+.header-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  color: #8B7355;
+  letter-spacing: 1px;
+}
+
+/* Main geometric composition area */
+.composition {
+  position: absolute;
+  top: 110px;
+  left: 80px;
+  width: 620px;
+  height: 700px;
+  z-index: 5;
+}
+
+/* Perspective lines - suggesting supermarket aisle */
+.aisle-line {
+  position: absolute;
+  background: #1B3B6B;
+  opacity: 0.15;
+}
+
+.line-1 { top: 700px; left: 50px; width: 520px; height: 1.5px; transform-origin: left center; transform: rotate(-12deg); }
+.line-2 { top: 720px; left: 50px; width: 520px; height: 1px; transform-origin: left center; transform: rotate(-14deg); }
+.line-3 { top: 680px; left: 50px; width: 520px; height: 1px; transform-origin: left center; transform: rotate(-10deg); }
+
+/* Vanishing point dot */
+.vanishing-dot {
+  position: absolute;
+  top: 300px;
+  left: 295px;
+  width: 8px;
+  height: 8px;
+  background: #1B3B6B;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+/* Cart handle - first person perspective arc */
+.cart-arc {
+  position: absolute;
+  bottom: 60px;
+  left: 150px;
+  width: 320px;
+  height: 160px;
+  border: 3px solid #1B3B6B;
+  border-bottom: none;
+  border-radius: 50% 50% 0 0;
+  opacity: 0.5;
+}
+
+/* Cart basket - trapezoid shape */
+.cart-basket {
+  position: absolute;
+  bottom: 20px;
+  left: 130px;
+  width: 360px;
+  height: 120px;
+  border: 3px solid #1B3B6B;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  opacity: 0.4;
+}
+
+/* Cart wheels */
+.cart-wheel {
+  position: absolute;
+  bottom: 0px;
+  width: 30px;
+  height: 30px;
+  border: 3px solid #1B3B6B;
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+.wheel-left { left: 145px; }
+.wheel-right { right: 145px; }
+
+/* Shelf blocks - rectangular elements suggesting goods */
+.shelf-block {
+  position: absolute;
+  background: #1B3B6B;
+  opacity: 0.08;
+}
+
+.shelf-1 { top: 200px; left: 80px; width: 100px; height: 180px; }
+.shelf-2 { top: 180px; left: 210px; width: 80px; height: 200px; }
+.shelf-3 { top: 220px; left: 320px; width: 90px; height: 160px; }
+.shelf-4 { top: 250px; left: 440px; width: 110px; height: 130px; }
+
+/* Floating circles - products/goods */
+.product-circle {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid #8B7355;
+  opacity: 0.4;
+}
+
+.pc-1 { top: 180px; left: 350px; width: 50px; height: 50px; }
+.pc-2 { top: 320px; left: 420px; width: 35px; height: 35px; }
+.pc-3 { top: 400px; left: 180px; width: 60px; height: 60px; }
+.pc-4 { top: 280px; left: 500px; width: 40px; height: 40px; }
+
+/* Small filled circles - accents */
+.dot-accent {
+  position: absolute;
+  border-radius: 50%;
+  background: #1B3B6B;
+}
+
+.dot-1 { top: 150px; left: 450px; width: 12px; height: 12px; opacity: 0.7; }
+.dot-2 { top: 450px; left: 380px; width: 18px; height: 18px; opacity: 0.5; }
+.dot-3 { top: 500px; left: 200px; width: 10px; height: 10px; opacity: 0.6; }
+
+/* Diagonal line accent */
+.diagonal-accent {
+  position: absolute;
+  background: #8B7355;
+  opacity: 0.3;
+}
+
+.diag-1 { top: 50px; left: 550px; width: 200px; height: 1.5px; transform: rotate(35deg); transform-origin: left center; }
+.diag-2 { top: 580px; left: 50px; width: 120px; height: 2px; transform: rotate(-25deg); transform-origin: left center; }
+
+/* Large square - background element */
+.bg-square {
+  position: absolute;
+  top: 100px;
+  right: 40px;
+  width: 200px;
+  height: 200px;
+  border: 2px solid #1B3B6B;
+  opacity: 0.06;
+}
+
+/* Right side content */
+.content-area {
+  position: absolute;
+  top: 130px;
+  right: 80px;
+  width: 780px;
+  z-index: 10;
+}
+
+.slide-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: #1B3B6B;
+  line-height: 1.4;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+.slide-subtitle {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 16px;
+  color: #8B7355;
+  margin-bottom: 40px;
+  letter-spacing: 2px;
+  font-weight: 400;
+}
+
+/* Divider line */
+.divider {
+  width: 60px;
+  height: 3px;
+  background: #1B3B6B;
+  margin-bottom: 35px;
+  opacity: 0.7;
+}
+
+/* Content points */
+.points {
+  list-style: none;
+  padding: 0;
+}
+
+.points li {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 19px;
+  color: #1B3B6B;
+  line-height: 2.2;
+  padding-left: 30px;
+  position: relative;
+  font-weight: 400;
+}
+
+.points li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background: #8B7355;
+  opacity: 0.6;
+}
+
+.points li.highlight {
+  font-weight: 600;
+  color: #1B3B6B;
+}
+
+.points li.highlight::before {
+  background: #1B3B6B;
+  opacity: 1;
+  border-radius: 50%;
+}
+
+/* Footnote / context */
+.footnote {
+  position: absolute;
+  bottom: 45px;
+  left: 80px;
+  right: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
+.footnote-left {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  color: #8B7355;
+  letter-spacing: 1px;
+}
+
+.footnote-right {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12px;
+  color: #8B7355;
+  letter-spacing: 1px;
+}
+
+/* Bottom border accent */
+.bottom-accent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #1B3B6B;
+  opacity: 0.1;
+  z-index: 2;
+}
+
+/* Left vertical line */
+.left-line {
+  position: absolute;
+  top: 110px;
+  left: 60px;
+  width: 1.5px;
+  height: 700px;
+  background: #1B3B6B;
+  opacity: 0.12;
+}
+
+/* Category label */
+.category-label {
+  position: absolute;
+  top: 130px;
+  right: 80px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  opacity: 0.7;
+  z-index: 11;
+}
+
+/* Perspective triangle suggesting floor/ground */
+.floor-triangle {
+  position: absolute;
+  bottom: 20px;
+  left: 80px;
+  width: 0;
+  height: 0;
+  border-left: 310px solid transparent;
+  border-right: 310px solid transparent;
+  border-bottom: 60px solid rgba(27, 59, 107, 0.04);
+}
+
+/* Grid dots pattern */
+.grid-pattern {
+  position: absolute;
+  top: 550px;
+  left: 80px;
+  display: grid;
+  grid-template-columns: repeat(5, 8px);
+  gap: 15px;
+  z-index: 3;
+}
+
+.grid-dot {
+  width: 4px;
+  height: 4px;
+  background: #8B7355;
+  border-radius: 50%;
+  opacity: 0.3;
+}
+
 </style>
 </head>
 <body>
-  <div class="bg-grid"></div>
-  <div class="deco-circle-lg"></div>
-  <div class="deco-circle-sm"></div>
-  <div class="deco-square"></div>
-  <div class="deco-line"></div>
 
-  <div class="header">
-    <span class="lecture-tag">第 03 期 · 商业模式</span>
-    <span class="slide-number">12 / 30</span>
-  </div>
+<!-- Header -->
+<div class="header">
+  <div class="header-title">第 03 期 · 商业模式：规则下的具体操作</div>
+  <div class="header-num">04 / 30</div>
+</div>
 
-  <!-- Left: Visual Metaphor -->
-  <div class="left-panel">
-    <div class="visual-title">无形财产</div>
-    <div class="visual-subtitle">第一人称视角的购物车——消费选择与获取的旅程</div>
+<!-- Left vertical guide line -->
+<div class="left-line"></div>
 
-    <div class="cart-wrap">
-      <svg width="520" height="450" viewBox="0 0 520 450" xmlns="http://www.w3.org/2000/svg">
-        <!-- Ground -->
-        <line x1="10" y1="428" x2="510" y2="428" stroke="#1B3B6B" stroke-width="0.5" opacity="0.1"/>
-        <ellipse cx="260" cy="434" rx="175" ry="5" fill="#1B3B6B" opacity="0.03"/>
+<!-- Geometric Composition - Abstract Shopping Cart / Aisle -->
+<div class="composition">
+  <!-- Background square -->
+  <div class="bg-square"></div>
+  
+  <!-- Perspective aisle lines -->
+  <div class="aisle-line line-1"></div>
+  <div class="aisle-line line-2"></div>
+  <div class="aisle-line line-3"></div>
+  
+  <!-- Vanishing point -->
+  <div class="vanishing-dot"></div>
+  
+  <!-- Shelf blocks -->
+  <div class="shelf-block shelf-1"></div>
+  <div class="shelf-block shelf-2"></div>
+  <div class="shelf-block shelf-3"></div>
+  <div class="shelf-block shelf-4"></div>
+  
+  <!-- Product circles -->
+  <div class="product-circle pc-1"></div>
+  <div class="product-circle pc-2"></div>
+  <div class="product-circle pc-3"></div>
+  <div class="product-circle pc-4"></div>
+  
+  <!-- Accent dots -->
+  <div class="dot-accent dot-1"></div>
+  <div class="dot-accent dot-2"></div>
+  <div class="dot-accent dot-3"></div>
+  
+  <!-- Diagonal accents -->
+  <div class="diagonal-accent diag-1"></div>
+  <div class="diagonal-accent diag-2"></div>
+  
+  <!-- Floor triangle -->
+  <div class="floor-triangle"></div>
+  
+  <!-- Cart handle arc -->
+  <div class="cart-arc"></div>
+  
+  <!-- Cart basket -->
+  <div class="cart-basket"></div>
+  
+  <!-- Cart wheels -->
+  <div class="cart-wheel wheel-left"></div>
+  <div class="cart-wheel wheel-right"></div>
+</div>
 
-        <!-- Cart handle (closest to viewer) -->
-        <line x1="95" y1="415" x2="95" y2="365" stroke="#1B3B6B" stroke-width="3.5"/>
-        <line x1="425" y1="415" x2="425" y2="365" stroke="#1B3B6B" stroke-width="3.5"/>
-        <line x1="95" y1="365" x2="425" y2="365" stroke="#1B3B6B" stroke-width="3.5"/>
-        <rect x="87" y="360" width="16" height="10" rx="2" fill="#8B7355" opacity="0.5"/>
-        <rect x="417" y="360" width="16" height="10" rx="2" fill="#8B7355" opacity="0.5"/>
+<!-- Category label -->
+<div class="category-label">INTANGIBLE PROPERTY &amp; COMMERCIAL ORDER</div>
 
-        <!-- Basket (trapezoid: wider near, narrower far) -->
-        <polygon points="115,365 405,365 385,160 135,160" fill="none" stroke="#1B3B6B" stroke-width="2.5"/>
+<!-- Right Content Area -->
+<div class="content-area">
+  <div class="slide-title">无形财产与<br>交易秩序</div>
+  <div class="slide-subtitle">第一人称视角 — 作为消费者的选择路径</div>
+  <div class="divider"></div>
+  
+  <ul class="points">
+    <li class="highlight">无形财产及其交易</li>
+    <li>人为制定法律</li>
+    <li>未经允许，不得侵犯</li>
+    <li>合同、商业秘密与私人秩序</li>
+    <li>公法：版权、专利</li>
+    <li>书籍、音乐、电影与媒介</li>
+  </ul>
+</div>
 
-        <!-- Vertical grid -->
-        <line x1="160" y1="160" x2="142" y2="365" stroke="#1B3B6B" stroke-width="0.8" opacity="0.18"/>
-        <line x1="200" y1="160" x2="190" y2="365" stroke="#1B3B6B" stroke-width="0.8" opacity="0.18"/>
-        <line x1="240" y1="160" x2="238" y2="365" stroke="#1B3B6B" stroke-width="0.8" opacity="0.18"/>
-        <line x1="280" y1="160" x2="285" y2="365" stroke="#1B3B6B" stroke-width="0.8" opacity="0.18"/>
-        <line x1="320" y1="160" x2="340" y2="365" stroke="#1B3B6B" stroke-width="0.8" opacity="0.18"/>
-        <line x1="360" y1="160" x2="385" y2="365" stroke="#1B3B6B" stroke-width="0.8" opacity="0.18"/>
-        <!-- Horizontal grid -->
-        <line x1="140" y1="205" x2="392" y2="205" stroke="#1B3B6B" stroke-width="0.6" opacity="0.12"/>
-        <line x1="138" y1="250" x2="394" y2="250" stroke="#1B3B6B" stroke-width="0.6" opacity="0.12"/>
-        <line x1="135" y1="295" x2="396" y2="295" stroke="#1B3B6B" stroke-width="0.6" opacity="0.12"/>
-        <line x1="130" y1="340" x2="400" y2="340" stroke="#1B3B6B" stroke-width="0.6" opacity="0.12"/>
+<!-- Grid pattern accent -->
+<div class="grid-pattern">
+  <div class="grid-dot"></div><div class="grid-dot"></div><div class="grid-dot"></div><div class="grid-dot"></div><div class="grid-dot"></div>
+  <div class="grid-dot"></div><div class="grid-dot"></div><div class="grid-dot"></div><div class="grid-dot"></div><div class="grid-dot"></div>
+  <div class="grid-dot"></div><div class="grid-dot"></div><div class="grid-dot"></div><div class="grid-dot"></div><div class="grid-dot"></div>
+</div>
 
-        <!-- Wheels -->
-        <circle cx="125" cy="423" r="14" fill="none" stroke="#8B7355" stroke-width="2.5"/>
-        <circle cx="395" cy="423" r="14" fill="none" stroke="#8B7355" stroke-width="2.5"/>
-        <circle cx="125" cy="423" r="4" fill="#8B7355" opacity="0.7"/>
-        <circle cx="395" cy="423" r="4" fill="#8B7355" opacity="0.7"/>
+<!-- Footnote -->
+<div class="footnote">
+  <div class="footnote-left">包豪斯几何构成 · 消费选择与获取商品的旅程</div>
+  <div class="footnote-right">开源之道 · 新制度经济学视角</div>
+</div>
 
-        <!-- Book -->
-        <rect x="168" y="220" width="60" height="78" fill="#1B3B6B" opacity="0.06" stroke="#1B3B6B" stroke-width="1.5"/>
-        <line x1="176" y1="234" x2="220" y2="234" stroke="#1B3B6B" stroke-width="0.7" opacity="0.3"/>
-        <line x1="176" y1="246" x2="214" y2="246" stroke="#1B3B6B" stroke-width="0.7" opacity="0.3"/>
-        <line x1="176" y1="258" x2="218" y2="258" stroke="#1B3B6B" stroke-width="0.7" opacity="0.3"/>
-        <line x1="176" y1="270" x2="210" y2="270" stroke="#1B3B6B" stroke-width="0.7" opacity="0.3"/>
-        <line x1="176" y1="282" x2="216" y2="282" stroke="#1B3B6B" stroke-width="0.7" opacity="0.3"/>
-        <line x1="176" y1="294" x2="220" y2="294" stroke="#1B3B6B" stroke-width="0.7" opacity="0.3"/>
+<!-- Bottom accent bar -->
+<div class="bottom-accent"></div>
 
-        <!-- CD / Music -->
-        <circle cx="278" cy="265" r="30" fill="#8B7355" opacity="0.05" stroke="#8B7355" stroke-width="2"/>
-        <circle cx="278" cy="265" r="10" fill="none" stroke="#8B7355" stroke-width="1.5"/>
-        <circle cx="278" cy="265" r="3.5" fill="#8B7355" opacity="0.5"/>
-        <path d="M 262 255 Q 278 243 294 255" fill="none" stroke="#8B7355" stroke-width="1" opacity="0.35"/>
-        <path d="M 260 269 Q 278 251 296 269" fill="none" stroke="#8B7355" stroke-width="1" opacity="0.25"/>
-
-        <!-- Film / Video -->
-        <rect x="322" y="195" width="50" height="80" fill="#8B7355" opacity="0.04" stroke="#8B7355" stroke-width="1.5"/>
-        <rect x="328" y="201" width="38" height="22" fill="#8B7355" opacity="0.1"/>
-        <rect x="328" y="228" width="38" height="22" fill="#8B7355" opacity="0.1"/>
-        <rect x="328" y="255" width="38" height="15" fill="#8B7355" opacity="0.06"/>
-
-        <!-- Price tag -->
-        <line x1="248" y1="108" x2="258" y2="140" stroke="#8B7355" stroke-width="0.8" stroke-dasharray="3,2" opacity="0.35"/>
-        <g transform="translate(210,80)" opacity="0.6">
-          <rect x="0" y="0" width="85" height="36" fill="none" stroke="#1B3B6B" stroke-width="1.5"/>
-          <circle cx="11" cy="18" r="4" fill="#1B3B6B" opacity="0.45"/>
-          <line x1="24" y1="11" x2="72" y2="11" stroke="#1B3B6B" stroke-width="0.7" opacity="0.4"/>
-          <line x1="24" y1="19" x2="66" y2="19" stroke="#1B3B6B" stroke-width="0.7" opacity="0.4"/>
-          <line x1="24" y1="27" x2="60" y2="27" stroke="#1B3B6B" stroke-width="0.7" opacity="0.4"/>
-        </g>
-
-        <!-- Forward arrow -->
-        <line x1="450" y1="283" x2="505" y2="283" stroke="#8B7355" stroke-width="1" opacity="0.22"/>
-        <polyline points="496,276 506,283 496,290" fill="none" stroke="#8B7355" stroke-width="1" opacity="0.22"/>
-      </svg>
-    </div>
-  </div>
-
-  <!-- Right: Content -->
-  <div class="right-panel">
-    <div class="section-label">INTELLECTUAL PROPERTY · 无形财产权</div>
-    <ul class="content-list">
-      <li class="content-item">
-        <span class="marker m-solid"></span>
-        无形财产及其交易
-      </li>
-      <li class="content-item">
-        <span class="marker m-outline"></span>
-        人为制定法律
-      </li>
-      <li class="content-item">
-        <span class="marker m-circle"></span>
-        未经允许，不得 ××
-      </li>
-      <li class="content-item">
-        <span class="marker m-tri"></span>
-        合同、商业秘密与私人秩序
-      </li>
-      <li class="content-item">
-        <span class="marker m-solid"></span>
-        公法：版权、专利
-      </li>
-      <li class="content-item">
-        <span class="marker m-outline"></span>
-        书籍、音乐、电影与媒介
-      </li>
-    </ul>
-  </div>
-
-  <!-- Footer -->
-  <div class="footer-line"></div>
-  <div class="footer-left">开源经济学 · 第 03 期</div>
-  <div class="footer-right">规则下的具体操作</div>
 </body>
 </html>

@@ -1,251 +1,712 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: 5aeb594361f63846 --><head><meta charset="UTF-8"><title>边缘与非主流文化——数字技术构建乌托邦</title><style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1600px;height:900px;overflow:hidden;font-family:'Noto Sans SC','PingFang SC',sans-serif;color:#1B3B6B}
-body{background:#F5F0E8;position:relative}
+<!DOCTYPE html>
+<html lang="zh-CN"><!-- source_hash: a8d1204f830b9be5 -->
+<head>
+<meta charset="UTF-8">
+<title>第 11 期 · 文化的重要作用 — 非主流文化的深远影响</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600&display=swap');
 
-.matrix-bg{position:absolute;top:0;left:0;width:1600px;height:900px;overflow:hidden;opacity:0.07;font-family:'Courier New',monospace;font-size:13px;line-height:16px;color:#1B3B6B;letter-spacing:1px;padding:20px 30px;word-break:break-all;white-space:pre;pointer-events:none}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-.deck-frame{position:absolute;top:0;left:0;width:1600px;height:900px;padding:50px 70px;display:flex;flex-direction:column}
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
+}
 
-/* Top decorative bar */
-.top-bar{display:flex;align-items:center;gap:0;margin-bottom:20px}
-.top-bar .line{flex:1;height:2px;background:#1B3B6B}
-.top-bar .dot{width:10px;height:10px;background:#1B3B6B;border-radius:50%;margin:0 14px}
-.top-bar .square{width:14px;height:14px;background:#8B7355;margin:0 14px}
-.top-bar .circle-outline{width:16px;height:16px;border:2px solid #1B3B6B;border-radius:50%;margin:0 14px}
+body {
+  background: #F5F0E8;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: #1B3B6B;
+  position: relative;
+}
+
+/* Parchment texture overlay */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1600px;
+  height: 900px;
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(139, 115, 85, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(27, 59, 107, 0.02) 0%, transparent 40%),
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(139, 115, 85, 0.008) 2px, rgba(139, 115, 85, 0.008) 4px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Bauhaus geometric decorations */
+.deco-circle-large {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  border: 3px solid #1B3B6B;
+  opacity: 0.12;
+  right: -80px;
+  top: -60px;
+  z-index: 1;
+}
+
+.deco-circle-medium {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  opacity: 0.06;
+  left: -60px;
+  bottom: 60px;
+  z-index: 1;
+}
+
+.deco-square-1 {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  background: #8B7355;
+  opacity: 0.1;
+  right: 120px;
+  bottom: 80px;
+  z-index: 1;
+  transform: rotate(15deg);
+}
+
+.deco-square-2 {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  border: 2px solid #1B3B6B;
+  opacity: 0.15;
+  left: 480px;
+  top: 30px;
+  z-index: 1;
+  transform: rotate(45deg);
+}
+
+.deco-line-1 {
+  position: absolute;
+  width: 200px;
+  height: 2px;
+  background: #1B3B6B;
+  opacity: 0.15;
+  left: 60px;
+  top: 280px;
+  z-index: 1;
+}
+
+.deco-line-2 {
+  position: absolute;
+  width: 2px;
+  height: 150px;
+  background: #8B7355;
+  opacity: 0.15;
+  right: 200px;
+  top: 100px;
+  z-index: 1;
+}
+
+.deco-line-3 {
+  position: absolute;
+  width: 120px;
+  height: 2px;
+  background: #8B7355;
+  opacity: 0.2;
+  left: 950px;
+  bottom: 200px;
+  z-index: 1;
+  transform: rotate(-30deg);
+}
+
+.deco-circle-small-1 {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  opacity: 0.2;
+  left: 1050px;
+  top: 150px;
+  z-index: 1;
+}
+
+.deco-circle-small-2 {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #8B7355;
+  opacity: 0.3;
+  left: 1080px;
+  top: 158px;
+  z-index: 1;
+}
+
+.deco-circle-small-3 {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  opacity: 0.25;
+  left: 1072px;
+  top: 140px;
+  z-index: 1;
+}
 
 /* Header */
-.header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:30px}
-.title-block{max-width:1050px}
-.eyebrow{font-size:13px;letter-spacing:6px;color:#8B7355;margin-bottom:14px;font-weight:500}
-.main-title{font-family:'Noto Serif SC','Songti SC',serif;font-size:46px;font-weight:700;line-height:1.15;color:#1B3B6B;letter-spacing:1px}
-.subtitle{font-size:15px;color:#555;margin-top:14px;line-height:1.7;max-width:900px;font-weight:400}
-
-/* Geometric decoration top-right */
-.geo-cluster{position:relative;width:200px;height:80px;flex-shrink:0}
-.geo-cluster .g-circle{position:absolute;width:60px;height:60px;border:2px solid #1B3B6B;border-radius:50%;right:0;top:10px}
-.geo-cluster .g-square{position:absolute;width:36px;height:36px;background:#8B7355;right:70px;top:22px;opacity:0.85}
-.geo-cluster .g-half{position:absolute;width:30px;height:15px;background:#1B3B6B;border-radius:30px 30px 0 0;right:110px;top:32px}
-
-/* Body grid */
-.body-grid{display:grid;grid-template-columns:340px 1fr;gap:50px;flex:1;margin-top:10px}
-
-/* Left panel */
-.left-panel{display:flex;flex-direction:column;gap:24px}
-.visual-card{position:relative;background:#FFFFFF;border:2px solid #1B3B6B;padding:24px 22px;height:340px;overflow:hidden}
-.visual-card-label{position:absolute;top:-1px;left:-1px;background:#1B3B6B;color:#F5F0E8;font-size:11px;padding:6px 12px;letter-spacing:3px;font-weight:600}
-.visual-card-code{font-family:'Courier New',monospace;font-size:11px;line-height:1.85;color:#1B3B6B;opacity:0.55;letter-spacing:0.5px}
-.visual-card-code .hl{color:#8B7355;font-weight:700;opacity:1}
-.visual-card-code .acc{background:#1B3B6B;color:#F5F0E8;padding:0 4px;opacity:1}
-.visual-card-metaphor{margin-top:16px;font-family:'Noto Serif SC',serif;font-size:13px;line-height:1.7;color:#1B3B6B;border-top:1px solid #1B3B6B;padding-top:14px;font-style:italic}
-
-.left-quote{font-family:'Noto Serif SC',serif;font-size:15px;line-height:1.75;color:#1B3B6B;padding-left:18px;border-left:3px solid #8B7355;font-style:italic}
-.left-quote-author{font-size:11px;color:#8B7355;margin-top:10px;letter-spacing:2px;font-style:normal;font-weight:600}
-
-/* Right panel */
-.right-panel{display:flex;flex-direction:column;gap:16px}
-.right-eyebrow{font-size:11px;letter-spacing:4px;color:#8B7355;font-weight:600;margin-bottom:4px}
-
-.bullet-list{display:flex;flex-direction:column;gap:14px}
-.bullet{display:flex;align-items:flex-start;gap:18px;padding:12px 18px 12px 0;border-bottom:1px solid rgba(27,59,107,0.12)}
-.bullet:last-child{border-bottom:none}
-.bullet-num{flex-shrink:0;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif SC',serif;font-size:14px;font-weight:700;color:#1B3B6B}
-.bullet-num.circle{border:2px solid #1B3B6B;border-radius:50%}
-.bullet-num.sq{background:#1B3B6B;color:#F5F0E8}
-.bullet-num.half{width:36px;height:18px;border-radius:18px 18px 0 0;background:#8B7355;color:#F5F0E8;margin-top:9px}
-.bullet-num.dia{background:transparent;color:#1B3B6B;border:2px solid #8B7355;transform:none;width:28px;height:28px;margin-top:4px;font-size:12px}
-.bullet-text{flex:1;padding-top:6px}
-.bullet-title{font-family:'Noto Serif SC',serif;font-size:16px;font-weight:700;color:#1B3B6B;line-height:1.4;margin-bottom:4px}
-.bullet-desc{font-size:12.5px;color:#555;line-height:1.6}
-
-/* Footer */
-.footer{display:flex;align-items:center;justify-content:space-between;margin-top:24px;padding-top:18px;border-top:2px solid #1B3B6B}
-.footer-left{display:flex;align-items:center;gap:14px}
-.footer-square{width:12px;height:12px;background:#1B3B6B}
-.footer-circle{width:12px;height:12px;border:2px solid #8B7355;border-radius:50%}
-.footer-text{font-size:11px;letter-spacing:3px;color:#8B7355;font-weight:600}
-.footer-page{font-family:'Noto Serif SC',serif;font-size:13px;color:#1B3B6B;font-weight:700;letter-spacing:1px}
-.footer-divider{display:flex;align-items:center;gap:10px}
-.footer-divider .line-s{width:80px;height:1px;background:#8B7355}
-
-</style></head><body>
-
-<div class="matrix-bg">&lt;!DOCTYPE html&gt;
-&lt;html lang="zh-CN"&gt;
-&lt;head&gt;&lt;meta charset="UTF-8"&gt;&lt;/head&gt;
-&lt;body&gt;
-&lt;div id="utopia"&gt;
-&lt;script&gt;
-  function hackThePlanet() {
-    const freedom = new Protocol({
-      open: true,
-      shared: true,
-      decentralized: true,
-      copyleft: 'GPLv3'
-    });
-    freedom.distribute();
-    freedom.mutate().evolve();
-    return &lt;!-- liberation --&gt;;
-  }
-&lt;/script&gt;
-&lt;div class="manifesto"&gt;
-&lt;p&gt;This is the people's technology&lt;/p&gt;
-&lt;p&gt;Code is speech. Speech is free.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/body&gt;&lt;/html&gt;
-&lt;!--
-  &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;
-  <h1>We build with code</h1>
-  <p>Open source is a movement,</p>
-  <p>not merely a methodology.</p>
-  <ul>
-    <li>GNU General Public License</li>
-    <li>Free Software Foundation</li>
-    <li>Electronic Frontier Foundation</li>
-    <li>Open Source Initiative</li>
-  </ul>
-  &lt;div class="code"&gt;
-  while(world.notFree()){
-    redistribute();
-    liberate();
-  }
-  &lt;/div&gt;
-  &lt;/body&gt;&lt;/html&gt;
---&gt;</div>
-
-<div class="deck-frame">
-
-  <div class="top-bar">
-    <div class="line"></div>
-    <div class="dot"></div>
-    <div class="square"></div>
-    <div class="line"></div>
-    <div class="circle-outline"></div>
-    <div class="line"></div>
-  </div>
-
-  <div class="header">
-    <div class="title-block">
-      <div class="eyebrow">CHAPTER · V · 文化语境</div>
-      <div class="main-title">边缘与非主流文化<br/>数字技术构建乌托邦</div>
-      <div class="subtitle">HTML 代码覆盖《黑客帝国》背景——在主流视野之外，一群人用代码重写社会契约；他们相信互联网将扩展地理边疆，重塑权力结构，让自由成为一种可编译的协议。</div>
-    </div>
-    <div class="geo-cluster">
-      <div class="g-circle"></div>
-      <div class="g-square"></div>
-      <div class="g-half"></div>
-    </div>
-  </div>
-
-  <div class="body-grid">
-
-    <div class="left-panel">
-      <div class="visual-card">
-        <div class="visual-card-label">VISUAL METAPHOR</div>
-        <div class="visual-card-code">
-<span class="hl">&lt;!DOCTYPE html&gt;</span>
-<span class="hl">&lt;html</span> lang="zh-CN"<span class="hl">&gt;</span>
-<span class="hl">&lt;head&gt;</span>
-  <span class="hl">&lt;meta</span> charset="UTF-8"<span class="hl">&gt;</span>
-<span class="hl">&lt;/head&gt;</span>
-<span class="hl">&lt;body&gt;</span>
-  <span class="acc">&lt;div class="utopia"&gt;</span>
-    <span class="hl">&lt;p&gt;</span>自由即协议<span class="hl">&lt;/p&gt;</span>
-    <span class="hl">&lt;p&gt;</span>代码即表达<span class="hl">&lt;/p&gt;</span>
-    <span class="hl">&lt;p&gt;</span>协作即革命<span class="hl">&lt;/p&gt;</span>
-    <span class="acc">&lt;pre&gt;</span>
-while(world.caged()){
-  fork(git);
-  commit(hope);
-  push(freedom);
+.header {
+  position: absolute;
+  top: 50px;
+  left: 70px;
+  right: 70px;
+  z-index: 10;
 }
-    <span class="acc">&lt;/pre&gt;</span>
-  <span class="acc">&lt;/div&gt;</span>
-<span class="hl">&lt;/body&gt;</span>
-<span class="hl">&lt;/html&gt;</span>
-<span class="hl">&lt;!-- 乌托邦在编译中 --&gt;</span>
-        </div>
-        <div class="visual-card-metaphor">"代码即法典，协议即制度"<br/>—— 边缘文化以技术文本为宣言，<br/>在主流经济体系之外构建替代秩序</div>
-      </div>
-      <div class="left-quote">
-        "We're not anarchists. We're just the future."
-        <div class="left-quote-author">— 开源文化观察者</div>
-      </div>
-    </div>
 
-    <div class="right-panel">
-      <div class="right-eyebrow">CORE ARGUMENTS · 六点观察</div>
-      <div class="bullet-list">
+.lecture-tag {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  color: #8B7355;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
 
-        <div class="bullet">
-          <div class="bullet-num circle">01</div>
-          <div class="bullet-text">
-            <div class="bullet-title">HTML 代码覆盖《黑客帝国》背景</div>
-            <div class="bullet-desc">数字技术构建乌托邦——代码不仅是工具，更是一种世界观：世界由可读、可改写的文本构成，秩序可以被重新编译。</div>
-          </div>
-        </div>
+.main-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 38px;
+  font-weight: 700;
+  color: #1B3B6B;
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
 
-        <div class="bullet">
-          <div class="bullet-num sq">02</div>
-          <div class="bullet-text">
-            <div class="bullet-title">边缘与非主流文化</div>
-            <div class="bullet-desc">开源起源于反主流的技术共同体，他们拒绝闭源的商业逻辑，以共享与协作对抗私有与垄断。</div>
-          </div>
-        </div>
+.subtitle {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #555;
+  letter-spacing: 1px;
+}
 
-        <div class="bullet">
-          <div class="bullet-num half">03</div>
-          <div class="bullet-text">
-            <div class="bullet-title">世界很大，人很多，选择迥异</div>
-            <div class="bullet-desc">互联网扩展了地理边疆，让分布式协作成为可能——不同制度偏好、不同协作模式在同一平台上并存竞合。</div>
-          </div>
-        </div>
+/* Divider */
+.header-divider {
+  position: absolute;
+  top: 185px;
+  left: 70px;
+  width: 80px;
+  height: 3px;
+  background: #1B3B6B;
+  z-index: 10;
+}
 
-        <div class="bullet">
-          <div class="bullet-num dia">04</div>
-          <div class="bullet-text">
-            <div class="bullet-title">电子前沿基金会（EFF）：自由的捍卫者</div>
-            <div class="bullet-desc">致力于保护网络空间的言论自由、隐私权与技术创新自由，以法律与工程为武器，对抗过度监控与技术垄断。</div>
-          </div>
-        </div>
+.header-divider-2 {
+  position: absolute;
+  top: 185px;
+  left: 160px;
+  width: 40px;
+  height: 3px;
+  background: #8B7355;
+  z-index: 10;
+}
 
-        <div class="bullet">
-          <div class="bullet-num circle">05</div>
-          <div class="bullet-text">
-            <div class="bullet-title">两场文化运动：GNU 与开源</div>
-            <div class="bullet-desc">GNU 运动以"自由软件"为旗帜，强调用户对软件的控制权；开源运动以实践为导向，将协作模式制度化、工业化。</div>
-          </div>
-        </div>
+/* Main content area */
+.content {
+  position: absolute;
+  top: 220px;
+  left: 70px;
+  right: 70px;
+  bottom: 70px;
+  display: flex;
+  gap: 50px;
+  z-index: 10;
+}
 
-        <div class="bullet">
-          <div class="bullet-num sq">06</div>
-          <div class="bullet-text">
-            <div class="bullet-title">改变世界与深远意义</div>
-            <div class="bullet-desc">开源改变了世界的技术基础设施、生产关系与知识传播方式——尽管它仍然是非主流的制度选择，但其深远意义正在被重新评估。</div>
-          </div>
-        </div>
+/* Left column */
+.col-left {
+  width: 420px;
+  flex-shrink: 0;
+}
 
-      </div>
-    </div>
+.section-label {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  color: #8B7355;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(139, 115, 85, 0.2);
+}
 
-  </div>
+.quote-block {
+  margin-bottom: 28px;
+  padding-left: 16px;
+  border-left: 3px solid #1B3B6B;
+}
 
-  <div class="footer">
-    <div class="footer-left">
-      <div class="footer-square"></div>
-      <div class="footer-text">OPEN SOURCE · NEW INSTITUTIONAL ECONOMICS</div>
-      <div class="footer-circle"></div>
-    </div>
-    <div class="footer-divider">
-      <div class="line-s"></div>
-      <div class="footer-page">V / IX</div>
-      <div class="line-s"></div>
-    </div>
-  </div>
+.quote-text {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1B3B6B;
+  line-height: 1.5;
+  margin-bottom: 6px;
+}
 
+.quote-attrib {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  color: #8B7355;
+  font-weight: 400;
+}
+
+.context-text {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 14px;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.context-text strong {
+  color: #1B3B6B;
+  font-weight: 600;
+}
+
+/* Right column */
+.col-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.point-group {
+  display: flex;
+  gap: 24px;
+}
+
+.point-item {
+  flex: 1;
+  padding: 20px;
+  background: rgba(27, 59, 107, 0.04);
+  border-left: 3px solid #1B3B6B;
+  position: relative;
+}
+
+.point-number {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #8B7355;
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+}
+
+.point-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1B3B6B;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+.point-desc {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  color: #555;
+  line-height: 1.7;
+}
+
+/* Bottom section */
+.bottom-section {
+  position: absolute;
+  bottom: 70px;
+  left: 70px;
+  right: 70px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.bottom-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, #1B3B6B, #8B7355);
+  opacity: 0.3;
+}
+
+.bottom-text {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #8B7355;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+/* Matrix-style code background pattern (subtle) */
+.code-pattern {
+  position: absolute;
+  right: 70px;
+  top: 220px;
+  width: 350px;
+  height: 380px;
+  z-index: 2;
+  overflow: hidden;
+  opacity: 0.04;
+}
+
+.code-pattern pre {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: #1B3B6B;
+  line-height: 1.6;
+  white-space: pre;
+}
+
+/* Timeline indicator */
+.timeline {
+  position: absolute;
+  top: 580px;
+  left: 70px;
+  width: 420px;
+  z-index: 10;
+}
+
+.timeline-track {
+  position: relative;
+  height: 2px;
+  background: rgba(27, 59, 107, 0.2);
+  margin-top: 20px;
+}
+
+.timeline-dot {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  top: -6px;
+}
+
+.timeline-dot-1 { left: 10%; }
+.timeline-dot-2 { left: 45%; }
+.timeline-dot-3 { left: 80%; }
+
+.timeline-label {
+  position: absolute;
+  top: 20px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: #8B7355;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.timeline-label-1 { left: 0%; }
+.timeline-label-2 { left: 38%; }
+.timeline-label-3 { left: 72%; }
+
+.timeline-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1B3B6B;
+  margin-bottom: 4px;
+}
+
+.timeline-subtitle {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 0;
+}
+
+/* Geometric Bauhaus accent - large quarter circle */
+.deco-quarter-circle {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: #8B7355;
+  opacity: 0.05;
+  left: 450px;
+  bottom: -100px;
+  z-index: 1;
+}
+
+/* Page number */
+.page-number {
+  position: absolute;
+  bottom: 25px;
+  right: 70px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 2px;
+  z-index: 10;
+  opacity: 0.6;
+}
+
+/* Additional geometric element */
+.deco-triangle {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 40px solid #1B3B6B;
+  opacity: 0.06;
+  top: 650px;
+  left: 540px;
+  z-index: 1;
+}
+
+/* Movement cards */
+.movements-row {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.movement-card {
+  flex: 1;
+  padding: 14px 16px;
+  border: 1px solid rgba(27, 59, 107, 0.15);
+  background: rgba(245, 240, 232, 0.8);
+}
+
+.movement-year {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #8B7355;
+  margin-bottom: 4px;
+}
+
+.movement-name {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1B3B6B;
+  margin-bottom: 4px;
+}
+
+.movement-desc {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* EFF badge */
+.eff-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border: 1px solid #1B3B6B;
+  margin-top: 12px;
+}
+
+.eff-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #1B3B6B;
+}
+
+.eff-text {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: #1B3B6B;
+  letter-spacing: 1px;
+}
+
+/* Conclusion box */
+.conclusion-box {
+  margin-top: 20px;
+  padding: 16px 20px;
+  background: #1B3B6B;
+  color: #F5F0E8;
+  position: relative;
+}
+
+.conclusion-box::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 20px;
+  width: 30px;
+  height: 3px;
+  background: #8B7355;
+}
+
+.conclusion-text {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+}
+
+.conclusion-sub {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(245, 240, 232, 0.7);
+  margin-top: 4px;
+}
+</style>
+</head>
+<body>
+
+<!-- Bauhaus Geometric Decorations -->
+<div class="deco-circle-large"></div>
+<div class="deco-circle-medium"></div>
+<div class="deco-square-1"></div>
+<div class="deco-square-2"></div>
+<div class="deco-line-1"></div>
+<div class="deco-line-2"></div>
+<div class="deco-line-3"></div>
+<div class="deco-circle-small-1"></div>
+<div class="deco-circle-small-2"></div>
+<div class="deco-circle-small-3"></div>
+<div class="deco-quarter-circle"></div>
+<div class="deco-triangle"></div>
+
+<!-- Subtle code pattern suggesting digital/Matrix theme -->
+<div class="code-pattern">
+<pre>&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;utopia&lt;/title&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot;
+      href=&quot;freedom.css&quot;&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div class=&quot;culture&quot;&gt;
+      &lt;span&gt;open&lt;/span&gt;
+      &lt;span&gt;source&lt;/span&gt;
+      &lt;span&gt;culture&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;frontier&quot;&gt;
+      &lt;span&gt;EFF&lt;/span>
+      &lt;span&gt;since 1990&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;script src=&quot;gnu.js&quot;&gt;
+      // two movements
+      // changed the world
+      // still mainstream
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
 </div>
 
-</body></html>
+<!-- Header -->
+<div class="header">
+  <div class="lecture-tag">LECTURE 11 · CULTURE MATTERS</div>
+  <h1 class="main-title">非主流文化的深远影响</h1>
+  <div class="subtitle">边缘、运动与世界——开源如何从角落走向世界</div>
+</div>
+
+<div class="header-divider"></div>
+<div class="header-divider-2"></div>
+
+<!-- Main Content -->
+<div class="content">
+  <!-- Left Column -->
+  <div class="col-left">
+    <div class="section-label">文化背景 · Context</div>
+
+    <div class="quote-block">
+      <div class="quote-text">"世界很大，人很多，选择迥异。"</div>
+      <div class="quote-attrib">—— 边缘与非主流文化的生存哲学</div>
+    </div>
+
+    <div class="context-text">
+      互联网扩展了地理边疆，使开源文化从少数人的爱好变为全球性的社会运动。正如《黑客帝国》中数字代码构建的乌托邦——<strong>HTML代码覆盖现实</strong>，技术正在重塑人类协作的基本方式。
+    </div>
+
+    <div class="section-label" style="margin-top: 16px;">数字边疆 · Digital Frontier</div>
+
+    <div class="context-text">
+      互联网打破了物理边界，让思想得以跨越国境自由流动。<strong>电子前沿基金会</strong>（EFF）自1990年创立以来，始终致力于捍卫数字空间中的自由与权利。
+    </div>
+
+    <div class="eff-badge">
+      <div class="eff-dot"></div>
+      <span class="eff-text">EFF · Defenders of Digital Freedom · Est. 1990</span>
+    </div>
+  </div>
+
+  <!-- Right Column -->
+  <div class="col-right">
+    <div class="section-label">两场文化运动 · Two Cultural Movements</div>
+
+    <div class="movements-row">
+      <div class="movement-card">
+        <div class="movement-year">1983</div>
+        <div class="movement-name">GNU 运动</div>
+        <div class="movement-desc">理查德·斯托曼发起，理念先驱。倡导自由软件的意识形态，奠定了"自由即自由"的精神基础。</div>
+      </div>
+      <div class="movement-card">
+        <div class="movement-year">1998</div>
+        <div class="movement-name">开源运动</div>
+        <div class="movement-desc">Eric S. Raymond 等人发起，商业导向。将协作哲学包装为实用主义口号，赢得工业界认可。</div>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top: 8px;">影响与意义 · Impact</div>
+
+    <div class="point-group">
+      <div class="point-item">
+        <div class="point-number">01</div>
+        <div class="point-title">改变世界</div>
+        <div class="point-desc">Linux、Apache、Mozilla、Python——现代数字基础设施的基石均由开源贡献。</div>
+      </div>
+      <div class="point-item">
+        <div class="point-number">02</div>
+        <div class="point-title">深远意义</div>
+        <div class="point-desc">不仅是技术范式，更是一种社会实验：证明自愿协作可以替代市场与命令。</div>
+      </div>
+      <div class="point-item">
+        <div class="point-number">03</div>
+        <div class="point-title">仍未主流</div>
+        <div class="point-desc">尽管改变了世界，开源在商业与政策层面仍属非主流——其文化基因尚未完全制度化。</div>
+      </div>
+    </div>
+
+    <div class="conclusion-box">
+      <div class="conclusion-text">开源改变了世界，尽管仍然是非主流。</div>
+      <div class="conclusion-sub">Open source has changed the world — yet remains a counterculture.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Bottom -->
+<div class="bottom-section">
+  <div class="bottom-text">世界很大，人很多 · 选择迥异</div>
+  <div class="bottom-line"></div>
+</div>
+
+<div class="page-number">11-CULTURE-MATTERS · 15 / 28</div>
+
+</body>
+</html>

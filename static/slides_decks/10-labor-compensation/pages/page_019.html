@@ -1,220 +1,344 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: 56304e390e46f2d5 --><head><meta charset="UTF-8"><title>关键基础设施的报酬问题 · 第10期</title><style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1600px;height:900px;overflow:hidden;margin:0;font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-serif;color:#1B3B6B;background:#F5F0E8}
-.slide{position:relative;width:1600px;height:900px;background:#F5F0E8;overflow:hidden}
-/* parchment texture */
-.slide::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;background:radial-gradient(ellipse at 20% 15%,rgba(139,115,85,0.05) 0%,transparent 50%),radial-gradient(ellipse at 80% 85%,rgba(27,59,107,0.04) 0%,transparent 50%);pointer-events:none}
+<!DOCTYPE html>
+<html><!-- source_hash: ac5f93a49b373061 -->
+<head>
+<meta charset="UTF-8">
+<title>关键基础设施的报酬问题 · 第 10 期</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1600px; height: 900px; overflow: hidden;
+    background: #F5F0E8;
+    font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+    color: #1B3B6B;
+    position: relative;
+  }
+  body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(90deg, rgba(139,115,85,0.018) 0 1px, transparent 1px 3px),
+      repeating-linear-gradient(0deg, rgba(139,115,85,0.014) 0 1px, transparent 1px 3px);
+    pointer-events: none;
+  }
 
-/* header bar */
-.header{position:absolute;top:48px;left:80px;right:80px;display:flex;align-items:center;justify-content:space-between}
-.lecture-num{display:flex;align-items:center;gap:16px}
-.lecture-num .circle{width:52px;height:52px;background:#1B3B6B;border-radius:50%;color:#F5F0E8;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif SC',serif;font-size:24px;font-weight:700}
-.lecture-num .meta{font-size:13px;color:#555;letter-spacing:2px;line-height:1.6}
-.lecture-num .meta strong{color:#1B3B6B;font-weight:700;font-size:15px;letter-spacing:3px}
-.header-right{text-align:right;font-size:12px;color:#555;letter-spacing:2px;line-height:1.8}
-.header-right .subtitle{font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:1px}
+  /* corner ornaments */
+  .corner {
+    position: absolute;
+    width: 60px; height: 60px;
+    border-color: #1B3B6B;
+    opacity: 0.7;
+  }
+  .corner.tl { top: 30px; left: 30px; border-top: 1.5px solid; border-left: 1.5px solid; }
+  .corner.tr { top: 30px; right: 30px; border-top: 1.5px solid; border-right: 1.5px solid; }
+  .corner.bl { bottom: 30px; left: 30px; border-bottom: 1.5px solid; border-left: 1.5px solid; }
+  .corner.br { bottom: 30px; right: 30px; border-bottom: 1.5px solid; border-right: 1.5px solid; }
 
-/* decorative top line */
-.top-line{position:absolute;top:130px;left:80px;right:80px;height:1px;background:#1B3B6B;opacity:0.3}
+  .header {
+    position: absolute;
+    top: 62px; left: 80px; right: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: #8B7355;
+    letter-spacing: 4px;
+    font-family: 'Noto Serif SC', serif;
+  }
+  .header .rule {
+    flex: 1;
+    height: 1px;
+    background: #8B7355;
+    opacity: 0.35;
+    margin: 0 24px;
+  }
 
-/* main content area */
-.main{position:absolute;top:170px;left:80px;right:80px;bottom:80px;display:flex;gap:50px}
+  .main {
+    position: absolute;
+    top: 118px;
+    left: 80px;
+    right: 80px;
+    bottom: 72px;
+    display: flex;
+    gap: 56px;
+  }
 
-/* left visual area */
-.visual{position:relative;width:780px;height:640px}
+  .visual {
+    width: 610px;
+    height: 100%;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .visual svg {
+    width: 100%;
+    height: calc(100% - 44px);
+  }
+  .caption {
+    position: absolute;
+    bottom: 0;
+    left: 0; right: 0;
+    text-align: center;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 13px;
+    color: #8B7355;
+    letter-spacing: 3px;
+    font-style: italic;
+  }
+  .caption .fig {
+    color: #1B3B6B;
+    font-style: normal;
+    letter-spacing: 4px;
+    margin-right: 12px;
+  }
 
-/* title on left */
-.section-title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:38px;font-weight:700;color:#1B3B6B;line-height:1.4;letter-spacing:1px;margin-bottom:12px}
-.section-title .en{display:block;font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:3px;font-weight:400;margin-top:8px}
+  .content {
+    flex: 1;
+    padding-top: 8px;
+    display: flex;
+    flex-direction: column;
+  }
 
-.title-underline{width:60px;height:3px;background:#1B3B6B;margin-bottom:30px}
+  .eyebrow {
+    font-size: 12px;
+    letter-spacing: 8px;
+    color: #8B7355;
+    margin-bottom: 20px;
+    font-family: 'Noto Serif SC', serif;
+  }
 
-/* bauhaus temple composition */
-.temple-scene{position:absolute;top:170px;left:20px;width:500px;height:420px}
+  h1 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 46px;
+    line-height: 1.22;
+    color: #1B3B6B;
+    font-weight: 700;
+    margin-bottom: 14px;
+    letter-spacing: 1px;
+  }
 
-/* the massive temple block */
-.temple-block{position:absolute;top:0;left:30px;width:440px;height:110px;background:#1B3B6B}
-.temple-block-inner{position:absolute;top:15px;left:15px;width:410px;height:80px;border:2px solid #F5F0E8}
-.temple-block-label{position:absolute;top:48px;left:30px;width:440px;text-align:center;color:#F5F0E8;font-family:'Noto Serif SC',serif;font-size:16px;letter-spacing:8px;font-weight:400}
+  .sub {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 17px;
+    color: #8B7355;
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 26px;
+  }
 
-/* entablature decorative line */
-.entablature{position:absolute;top:110px;left:30px;width:440px;height:6px;background:#8B7355}
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .divider .bar {
+    width: 60px;
+    height: 3px;
+    background: #1B3B6B;
+  }
+  .divider .sq {
+    width: 8px; height: 8px;
+    background: #8B7355;
+  }
+  .divider .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #1B3B6B;
+  }
 
-/* columns - few and slender */
-.column{position:absolute;top:116px;width:36px;height:260px;background:#1B3B6B;opacity:0.88}
-.column .cap{position:absolute;top:-8px;left:-6px;width:48px;height:8px;background:#1B3B6B}
-.column .base{position:absolute;bottom:-8px;left:-6px;width:48px;height:8px;background:#1B3B6B}
-.column-1{left:70px}
-.column-2{left:237px}
-.column-3{left:404px}
+  ul.points {
+    list-style: none;
+    padding: 0;
+  }
+  ul.points li {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 11px 0;
+    border-bottom: 1px solid rgba(139,115,85,0.28);
+    font-size: 15.5px;
+    line-height: 1.55;
+    color: #2a2a2a;
+  }
+  ul.points li:last-child {
+    border-bottom: none;
+  }
+  ul.points li .marker {
+    font-family: 'Noto Serif SC', serif;
+    color: #8B7355;
+    font-size: 15px;
+    min-width: 30px;
+    padding-top: 2px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  ul.points li strong {
+    color: #1B3B6B;
+    font-weight: 700;
+  }
+  ul.points li em {
+    color: #8B2A2A;
+    font-style: normal;
+    font-weight: 600;
+  }
 
-/* ground line */
-.ground-line{position:absolute;bottom:0;left:0;width:500px;height:1px;background:#1B3B6B;opacity:0.4}
-.ground-hatch{position:absolute;bottom:-12px;left:0;width:500px;height:12px;background:repeating-linear-gradient(45deg,transparent,transparent 8px,rgba(27,59,107,0.15) 8px,rgba(27,59,107,0.15) 9px)}
+  .footer {
+    position: absolute;
+    bottom: 34px;
+    left: 80px;
+    right: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: #8B7355;
+    letter-spacing: 3px;
+    font-family: 'Noto Serif SC', serif;
+  }
+  .footer .line {
+    flex: 1;
+    height: 1px;
+    background: #8B7355;
+    opacity: 0.3;
+    margin: 0 20px;
+  }
+</style>
+</head>
+<body>
 
-/* imbalance indicator */
-.imbalance-tag{position:absolute;top:150px;right:-10px;width:160px;height:80px;background:#F5F0E8;border:1.5px solid #8B7355;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px}
-.imbalance-tag .num{font-family:'Noto Serif SC',serif;font-size:28px;color:#8B7355;font-weight:700;line-height:1}
-.imbalance-tag .lbl{font-size:10px;color:#555;letter-spacing:1px;margin-top:4px}
+<div class="corner tl"></div>
+<div class="corner tr"></div>
+<div class="corner bl"></div>
+<div class="corner br"></div>
 
-.imbalance-tag-2{position:absolute;top:420px;right:-10px;width:160px;height:80px;background:#F5F0E8;border:1.5px solid #1B3B6B;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px}
-.imbalance-tag-2 .num{font-family:'Noto Serif SC',serif;font-size:28px;color:#1B3B6B;font-weight:700;line-height:1}
-.imbalance-tag-2 .lbl{font-size:10px;color:#555;letter-spacing:1px;margin-top:4px}
-
-/* decorative geometry elements */
-.deco-circle{position:absolute;top:50px;right:30px;width:60px;height:60px;border:2px solid #1B3B6B;border-radius:50%;opacity:0.5}
-.deco-square{position:absolute;bottom:60px;left:0;width:40px;height:40px;background:#8B7355;opacity:0.35}
-.deco-line-v{position:absolute;top:170px;right:10px;width:1px;height:200px;background:#1B3B6B;opacity:0.2}
-.deco-triangle{position:absolute;top:190px;right:60px;width:0;height:0;border-left:18px solid transparent;border-right:18px solid transparent;border-bottom:30px solid #8B7355;opacity:0.4}
-
-/* column label */
-.col-label{position:absolute;bottom:-30px;left:-10px;width:56px;text-align:center;font-size:9px;color:#555;letter-spacing:1px}
-
-/* right text area */
-.text-area{flex:1;display:flex;flex-direction:column;padding-top:20px}
-
-.bullets{display:flex;flex-direction:column;gap:18px}
-.bullet{display:flex;align-items:flex-start;gap:16px;padding:14px 16px;background:rgba(27,59,107,0.03);border-left:3px solid #1B3B6B}
-.bullet .idx{font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;font-weight:700;min-width:24px;letter-spacing:1px;line-height:1.5}
-.bullet .content{flex:1}
-.bullet .content .main-text{font-size:15px;color:#1B3B6B;line-height:1.6;font-weight:500}
-.bullet .content .sub-text{font-size:12px;color:#555;line-height:1.5;margin-top:4px}
-
-/* bottom bar */
-.footer{position:absolute;bottom:36px;left:80px;right:80px;display:flex;align-items:center;justify-content:space-between}
-.footer-line{flex:1;height:1px;background:#1B3B6B;opacity:0.2;margin:0 24px}
-.footer-text{font-size:11px;color:#555;letter-spacing:3px}
-.footer-page{font-family:'Noto Serif SC',serif;font-size:12px;color:#1B3B6B;letter-spacing:2px}
-.footer-page .total{color:#8B7355}
-
-/* visual caption */
-.visual-caption{position:absolute;top:130px;left:20px;width:500px;font-size:11px;color:#8B7355;letter-spacing:2px;font-style:italic;font-family:'Noto Serif SC',serif}
-</style></head><body>
-<div class="slide">
-
-  <div class="header">
-    <div class="lecture-num">
-      <div class="circle">10</div>
-      <div class="meta">
-        <strong>第 10 期</strong><br>
-        劳动报酬与财产分配
-      </div>
-    </div>
-    <div class="header-right">
-      <div class="subtitle">Critical Infrastructure &amp; Compensation</div>
-      <div>开源之道 · 新制度经济学视角</div>
-    </div>
-  </div>
-
-  <div class="top-line"></div>
-
-  <div class="main">
-
-    <!-- LEFT: Bauhaus visual -->
-    <div class="visual">
-      <div class="section-title">
-        关键基础设施的报酬问题
-        <span class="en">THE COMPENSATION CRISIS OF CRITICAL INFRASTRUCTURE</span>
-      </div>
-      <div class="title-underline"></div>
-
-      <div class="visual-caption">少数石柱支撑庞大殿宇 · 关键维护者的报酬失衡</div>
-
-      <div class="temple-scene">
-
-        <div class="deco-circle"></div>
-        <div class="deco-triangle"></div>
-        <div class="deco-line-v"></div>
-
-        <div class="temple-block">
-          <div class="temple-block-inner"></div>
-          <div class="temple-block-label">数 字 基 础 设 施</div>
-        </div>
-        <div class="entablature"></div>
-
-        <div class="column column-1">
-          <div class="cap"></div>
-          <div class="base"></div>
-          <div class="col-label">OpenSSL</div>
-        </div>
-        <div class="column column-2">
-          <div class="cap"></div>
-          <div class="base"></div>
-          <div class="col-label">Linux Kernel</div>
-        </div>
-        <div class="column column-3">
-          <div class="cap"></div>
-          <div class="base"></div>
-          <div class="col-label">OpenSSH</div>
-        </div>
-
-        <div class="ground-line"></div>
-        <div class="ground-hatch"></div>
-
-        <div class="deco-square"></div>
-
-        <div class="imbalance-tag">
-          <div class="num">3</div>
-          <div class="lbl">少数维护者</div>
-        </div>
-        <div class="imbalance-tag-2">
-          <div class="num">∞</div>
-          <div class="lbl">巨大影响面</div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- RIGHT: text -->
-    <div class="text-area">
-      <div class="bullets">
-        <div class="bullet">
-          <div class="idx">01</div>
-          <div class="content">
-            <div class="main-text">少数项目，支撑全局</div>
-            <div class="sub-text">OpenSSL · Linux Kernel · OpenSSH — 关键基础设施的维护者数量极少</div>
-          </div>
-        </div>
-        <div class="bullet">
-          <div class="idx">02</div>
-          <div class="content">
-            <div class="main-text">影响面极大</div>
-            <div class="sub-text">这些项目一旦被攻击或停摆，全球数字系统将承受系统性风险</div>
-          </div>
-        </div>
-        <div class="bullet">
-          <div class="idx">03</div>
-          <div class="content">
-            <div class="main-text">报酬严重不匹配</div>
-            <div class="sub-text">维护者多为志愿者，其贡献的经济价值与所获回报之间存在巨大鸿沟</div>
-          </div>
-        </div>
-        <div class="bullet">
-          <div class="idx">04</div>
-          <div class="content">
-            <div class="main-text">制度设计的责任</div>
-            <div class="sub-text">让关键基础设施维护者获得合理回报，是数字时代制度建设的核心议题</div>
-          </div>
-        </div>
-        <div class="bullet">
-          <div class="idx">05</div>
-          <div class="content">
-            <div class="main-text">脆弱性将无限放大</div>
-            <div class="sub-text">若报酬机制不改革，数字基础设施的脆弱性将在下一次危机中彻底暴露</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="footer">
-    <div class="footer-text">开源之道 · 新制度经济学</div>
-    <div class="footer-line"></div>
-    <div class="footer-page">SLIDE 03 / <span class="total">29</span></div>
-  </div>
-
+<div class="header">
+  <span>第 10 期 · 开源经济学</span>
+  <span class="rule"></span>
+  <span>关键基础设施 · 报酬问题</span>
 </div>
-</body></html>
+
+<div class="main">
+  <div class="visual">
+    <svg viewBox="0 0 610 620" xmlns="http://www.w3.org/2000/svg">
+      <!-- concentric backdrop circles -->
+      <circle cx="305" cy="215" r="265" fill="none" stroke="#8B7355" stroke-width="0.6" opacity="0.18"/>
+      <circle cx="305" cy="215" r="200" fill="none" stroke="#8B7355" stroke-width="0.6" opacity="0.28"/>
+      <circle cx="305" cy="215" r="140" fill="none" stroke="#8B7355" stroke-width="0.5" opacity="0.4"/>
+
+      <!-- top finial -->
+      <circle cx="305" cy="72" r="6" fill="#8B7355"/>
+      <line x1="305" y1="78" x2="305" y2="118" stroke="#1B3B6B" stroke-width="1.2"/>
+
+      <!-- massive dome (heavy top) -->
+      <path d="M 120 218 Q 305 100 490 218 Z" fill="#1B3B6B" opacity="0.85"/>
+      <path d="M 155 218 Q 305 130 455 218" fill="none" stroke="#F5F0E8" stroke-width="0.8" opacity="0.35"/>
+      <line x1="305" y1="118" x2="305" y2="218" stroke="#F5F0E8" stroke-width="0.8" opacity="0.4"/>
+
+      <!-- massive entablature rectangle -->
+      <rect x="70" y="218" width="470" height="88" fill="#1B3B6B"/>
+      <rect x="70" y="218" width="470" height="6" fill="#8B7355"/>
+      <line x1="70" y1="248" x2="540" y2="248" stroke="#F5F0E8" stroke-width="0.6" opacity="0.35"/>
+      <line x1="70" y1="278" x2="540" y2="278" stroke="#F5F0E8" stroke-width="0.6" opacity="0.35"/>
+
+      <!-- inscription on entablature -->
+      <text x="305" y="273" font-family="Noto Serif SC, serif" font-size="20" fill="#F5F0E8" text-anchor="middle" opacity="0.92" letter-spacing="8" font-weight="600">庞 大 之 宇</text>
+
+      <!-- ground -->
+      <line x1="20" y1="540" x2="590" y2="540" stroke="#1B3B6B" stroke-width="1.6"/>
+      <line x1="20" y1="546" x2="590" y2="546" stroke="#8B7355" stroke-width="0.6" opacity="0.55"/>
+      <line x1="20" y1="552" x2="590" y2="552" stroke="#8B7355" stroke-width="0.4" opacity="0.3"/>
+
+      <!-- three slender pillars (few) -->
+      <!-- pillar 1 -->
+      <rect x="140" y="306" width="16" height="228" fill="#8B7355"/>
+      <rect x="130" y="306" width="36" height="10" fill="#8B7355"/>
+      <rect x="130" y="524" width="36" height="10" fill="#8B7355"/>
+      <line x1="148" y1="316" x2="148" y2="524" stroke="#F5F0E8" stroke-width="0.4" opacity="0.3"/>
+      <line x1="150" y1="316" x2="150" y2="524" stroke="#F5F0E8" stroke-width="0.4" opacity="0.3"/>
+
+      <!-- pillar 2 -->
+      <rect x="297" y="306" width="16" height="228" fill="#8B7355"/>
+      <rect x="287" y="306" width="36" height="10" fill="#8B7355"/>
+      <rect x="287" y="524" width="36" height="10" fill="#8B7355"/>
+      <line x1="305" y1="316" x2="305" y2="524" stroke="#F5F0E8" stroke-width="0.4" opacity="0.3"/>
+
+      <!-- pillar 3 -->
+      <rect x="454" y="306" width="16" height="228" fill="#8B7355"/>
+      <rect x="444" y="306" width="36" height="10" fill="#8B7355"/>
+      <rect x="444" y="524" width="36" height="10" fill="#8B7355"/>
+      <line x1="462" y1="316" x2="462" y2="524" stroke="#F5F0E8" stroke-width="0.4" opacity="0.3"/>
+
+      <!-- tension cracks -->
+      <path d="M 224 360 L 220 388 L 228 412" fill="none" stroke="#8B2A2A" stroke-width="1.2" opacity="0.7"/>
+      <path d="M 386 400 L 388 426 L 382 452" fill="none" stroke="#8B2A2A" stroke-width="1.2" opacity="0.7"/>
+      <path d="M 528 340 L 532 360" fill="none" stroke="#8B2A2A" stroke-width="1" opacity="0.6"/>
+
+      <!-- annotations -->
+      <line x1="540" y1="180" x2="568" y2="180" stroke="#1B3B6B" stroke-width="0.8"/>
+      <text x="574" y="184" font-family="Noto Serif SC, serif" font-size="11" fill="#1B3B6B" letter-spacing="2" font-weight="600">MASS</text>
+      <text x="574" y="200" font-family="Noto Sans SC, sans-serif" font-size="9" fill="#8B7355" letter-spacing="1">影响面</text>
+
+      <line x1="120" y1="420" x2="90" y2="420" stroke="#1B3B6B" stroke-width="0.8"/>
+      <text x="86" y="424" font-family="Noto Serif SC, serif" font-size="11" fill="#1B3B6B" text-anchor="end" letter-spacing="2" font-weight="600">FEW</text>
+      <text x="86" y="440" font-family="Noto Sans SC, sans-serif" font-size="9" fill="#8B7355" text-anchor="end">维护者</text>
+
+      <!-- ground labels -->
+      <text x="148" y="562" font-family="Noto Sans SC, sans-serif" font-size="10" fill="#8B7355" text-anchor="middle" letter-spacing="1">OpenSSL</text>
+      <text x="305" y="562" font-family="Noto Sans SC, sans-serif" font-size="10" fill="#8B7355" text-anchor="middle" letter-spacing="1">Linux Kernel</text>
+      <text x="462" y="562" font-family="Noto Sans SC, sans-serif" font-size="10" fill="#8B7355" text-anchor="middle" letter-spacing="1">OpenSSH</text>
+
+      <!-- bottom small squares -->
+      <rect x="20" y="580" width="6" height="6" fill="#8B7355" opacity="0.5"/>
+      <rect x="30" y="580" width="6" height="6" fill="#1B3B6B" opacity="0.35"/>
+      <rect x="40" y="580" width="6" height="6" fill="#8B7355" opacity="0.5"/>
+      <circle cx="590" cy="583" r="3" fill="#1B3B6B" opacity="0.4"/>
+    </svg>
+    <div class="caption"><span class="fig">FIG. I</span>少数之柱与庞大之宇</div>
+  </div>
+
+  <div class="content">
+    <div class="eyebrow">C R I T I C A L &nbsp;·&nbsp; I N F R A S S T R U C T U R E</div>
+    <h1>关键基础设施<br>的报酬失衡</h1>
+    <div class="sub">—— 少数之柱支撑着整个数字世界的殿宇 ——</div>
+
+    <div class="divider">
+      <div class="bar"></div>
+      <div class="sq"></div>
+      <div class="dot"></div>
+    </div>
+
+    <ul class="points">
+      <li>
+        <span class="marker">Ⅰ</span>
+        <span><strong>OpenSSL</strong>、<strong>Linux Kernel</strong>、<strong>OpenSSH</strong> 等项目的维护者数量极少，却支撑起整个互联网的安全与运行。</span>
+      </li>
+      <li>
+        <span class="marker">Ⅱ</span>
+        <span>影响面极大而维护者寥寥——<strong>个体付出</strong>与<strong>全球收益</strong>之间的鸿沟持续扩大。</span>
+      </li>
+      <li>
+        <span class="marker">Ⅲ</span>
+        <span>报酬严重不匹配：无偿与象征性资助之下，关键人物的<em>可持续性</em>正被侵蚀。</span>
+      </li>
+      <li>
+        <span class="marker">Ⅳ</span>
+        <span>制度设计的责任：建立让维护者<strong>获得合理回报</strong>的机制、契约与共识。</span>
+      </li>
+      <li>
+        <span class="marker">Ⅴ</span>
+        <span>否则，数字基础设施的<em>脆弱性</em>将沿这些细柱无限放大。</span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="footer">
+  <span>开 源 之 道 &nbsp;·&nbsp; Lecture 10</span>
+  <span class="line"></span>
+  <span>10 / 29</span>
+</div>
+
+</body>
+</html>

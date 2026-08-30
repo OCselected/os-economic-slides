@@ -1,155 +1,388 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: b3c9be675644d969 --><head><meta charset="UTF-8"><title>赛博酋长与开源治理</title><style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1600px;height:900px;overflow:hidden}
-body{background:#F5F0E8;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;color:#1B3B6B;position:relative}
-h1,h2,h3{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif}
+<!DOCTYPE html>
+<html lang="zh-CN"><!-- source_hash: 76294e25b3a50e90 -->
+<head>
+<meta charset="UTF-8">
+<title>第 11 期 · 文化的重要作用 — 开源文化价值谱</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 1600px;
+    height: 900px;
+    overflow: hidden;
+    margin: 0;
+    background: #F5F0E8;
+    font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+    color: #1B3B6B;
+    position: relative;
+  }
 
-/* 顶部细线装饰 */
-.top-bar{position:absolute;top:0;left:0;width:1600px;height:6px;background:#1B3B6B}
-.bottom-bar{position:absolute;bottom:0;left:0;width:1600px;height:6px;background:#1B3B6B}
-.side-bar{position:absolute;top:6px;left:0;width:6px;height:894px;background:#1B3B6B}
-.right-bar{position:absolute;top:6px;right:0;width:6px;height:894px;background:#1B3B6B}
+  /* subtle parchment grain */
+  body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(139,115,85,0.04) 0, transparent 40%),
+      radial-gradient(circle at 75% 65%, rgba(27,59,107,0.03) 0, transparent 45%);
+    pointer-events: none;
+  }
 
-/* 主标题区 */
-.header-zone{position:absolute;top:60px;left:80px;width:720px}
-.eyebrow{font-size:14px;letter-spacing:8px;color:#8B7355;margin-bottom:20px;font-weight:500}
-.main-title{font-size:56px;line-height:1.15;color:#1B3B6B;font-weight:700;letter-spacing:2px}
-.sub-title{font-size:20px;color:#555;margin-top:18px;line-height:1.6;font-family:'Noto Serif SC','Source Han Serif SC',serif;font-style:italic;letter-spacing:1px}
+  /* ---------- Header band ---------- */
+  .header {
+    position: absolute;
+    top: 56px;
+    left: 88px;
+    right: 88px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(27,59,107,0.25);
+    padding-bottom: 18px;
+  }
+  .deck-title {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 15px;
+    letter-spacing: 0.22em;
+    color: #8B7355;
+    text-transform: uppercase;
+  }
+  .slide-meta {
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    color: #8B7355;
+    font-family: 'Noto Serif SC', serif;
+  }
+  .slide-meta .num {
+    color: #1B3B6B;
+    font-weight: 700;
+    font-size: 14px;
+  }
 
-/* 左侧视觉隐喻区 */
-.visual-zone{position:absolute;top:60px;left:80px;width:440px;height:520px}
+  /* ---------- Main grid ---------- */
+  .main {
+    position: absolute;
+    top: 140px;
+    left: 88px;
+    right: 88px;
+    bottom: 80px;
+    display: grid;
+    grid-template-columns: 700px 1fr;
+    gap: 60px;
+  }
 
-/* 右侧内容区 */
-.content-zone{position:absolute;top:60px;left:600px;width:920px;height:780px}
+  /* ---------- Left: visual metaphor panel ---------- */
+  .visual {
+    position: relative;
+    width: 700px;
+    height: 680px;
+  }
 
-/* 几何构成：赛博酋长——红色椭圆压黑线 */
-.geo-stage{position:absolute;width:440px;height:520px}
-.blk-line{position:absolute;background:#1B3B6B}
-.blk-line.h1{top:80px;left:0;width:440px;height:3px}
-.blk-line.h2{top:160px;left:0;width:440px;height:2px}
-.blk-line.h3{top:240px;left:0;width:440px;height:3px}
-.blk-line.h4{top:320px;left:0;width:440px;height:2px}
-.blk-line.h5{top:400px;left:0;width:440px;height:3px}
-.blk-line.h6{top:460px;left:0;width:440px;height:2px}
-.blk-line.v1{top:0;left:110px;width:2px;height:520px}
-.blk-line.v2{top:0;left:330px;width:2px;height:520px}
+  .canvas-frame {
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(27,59,107,0.35);
+    background: #EFE8DA;
+    overflow: hidden;
+  }
 
-/* 红色椭圆——核心视觉 */
-.red-ellipse{position:absolute;top:130px;left:60px;width:320px;height:220px;border-radius:50%;border:5px solid #B33A2A;background:transparent;z-index:10}
-.red-ellipse-inner{position:absolute;top:170px;left:100px;width:240px;height:140px;border-radius:50%;border:2px solid #B33A2A;z-index:10}
-.red-dot{position:absolute;top:230px;left:200px;width:30px;height:30px;border-radius:50%;background:#B33A2A;z-index:11}
+  /* corner marks */
+  .corner {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #1B3B6B;
+  }
+  .corner.tl { top: 14px; left: 14px; border-right: none; border-bottom: none; }
+  .corner.tr { top: 14px; right: 14px; border-left: none; border-bottom: none; }
+  .corner.bl { bottom: 14px; left: 14px; border-right: none; border-top: none; }
+  .corner.br { bottom: 14px; right: 14px; border-left: none; border-top: none; }
 
-/* 小几何点缀 */
-.small-square{position:absolute;top:30px;left:20px;width:30px;height:30px;background:#1B3B6B;z-index:5}
-.small-circle{position:absolute;top:460px;left:380px;width:22px;height:22px;border-radius:50%;background:#8B7355;z-index:5}
-.small-triangle{position:absolute;top:60px;left:390px;width:0;height:0;border-left:14px solid transparent;border-right:14px solid transparent;border-bottom:24px solid #1B3B6B;z-index:5}
+  /* vertical authority lines */
+  .vline {
+    position: absolute;
+    width: 2px;
+    background: #0E0E0E;
+    opacity: 0.85;
+  }
+  .v1 { left: 130px; top: 40px; height: 600px; }
+  .v2 { left: 250px; top: 70px; height: 560px; }
+  .v3 { left: 390px; top: 30px; height: 620px; }
+  .v4 { left: 530px; top: 90px; height: 520px; }
 
-/* 视觉标签 */
-.visual-label{position:absolute;bottom:-40px;left:0;width:440px;text-align:center;font-size:12px;color:#8B7355;letter-spacing:3px;font-family:'Noto Serif SC',serif;font-style:italic}
+  /* horizontal chaos dashes */
+  .hline {
+    position: absolute;
+    height: 1.5px;
+    background: #0E0E0E;
+    opacity: 0.55;
+  }
+  .h1 { left: 30px; top: 180px; width: 260px; }
+  .h2 { left: 100px; top: 340px; width: 380px; }
+  .h3 { left: 60px; top: 480px; width: 300px; }
+  .h4 { left: 200px; top: 600px; width: 220px; }
 
-/* 要点列表 */
-.points{position:absolute;top:290px;left:0;width:900px}
-.point-item{display:flex;align-items:flex-start;margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid rgba(27,59,107,0.15)}
-.point-num{font-family:'Noto Serif SC',serif;font-size:28px;color:#B33A2A;font-weight:700;width:60px;flex-shrink:0;line-height:1.2;padding-top:4px}
-.point-text{flex:1;padding-left:16px}
-.point-title{font-size:22px;color:#1B3B6B;font-weight:700;font-family:'Noto Serif SC','Source Han Serif SC',serif;margin-bottom:6px;letter-spacing:1px}
-.point-desc{font-size:14px;color:#555;line-height:1.7;letter-spacing:0.5px}
+  /* THE red ellipse */
+  .red-ellipse {
+    position: absolute;
+    left: 180px;
+    top: 220px;
+    width: 380px;
+    height: 260px;
+    background: #C8332E;
+    border-radius: 50%;
+    transform: rotate(-8deg);
+    box-shadow: 0 4px 18px rgba(180,40,30,0.25);
+    z-index: 3;
+  }
 
-/* 右下角装饰 */
-.corner-geo{position:absolute;bottom:40px;right:60px;width:200px;height:120px}
-.corner-square{position:absolute;bottom:40px;right:60px;width:80px;height:80px;border:2px solid #1B3B6B}
-.corner-circle-r{position:absolute;bottom:70px;right:180px;width:50px;height:50px;border-radius:50%;border:2px solid #8B7355}
-.corner-line{position:absolute;bottom:60px;right:150px;width:60px;height:2px;background:#1B3B6B}
+  /* inner black bar pressing the ellipse */
+  .press-bar {
+    position: absolute;
+    left: 150px;
+    top: 345px;
+    width: 440px;
+    height: 14px;
+    background: #0A0A0A;
+    transform: rotate(-8deg);
+    z-index: 4;
+  }
 
-/* 页脚信息 */
-.footer-info{position:absolute;bottom:20px;left:40px;font-size:11px;color:#8B7355;letter-spacing:3px;font-family:'Noto Serif SC',serif}
-.footer-page{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);font-size:11px;color:#555;letter-spacing:5px;font-family:'Noto Serif SC',serif}
-.footer-right{position:absolute;bottom:20px;right:40px;font-size:11px;color:#8B7355;letter-spacing:3px;font-family:'Noto Serif SC',serif}
+  /* small bauhaus dots */
+  .dot {
+    position: absolute;
+    border-radius: 50%;
+    z-index: 5;
+  }
+  .d1 { left: 80px; top: 110px; width: 16px; height: 16px; background: #1B3B6B; }
+  .d2 { left: 590px; top: 520px; width: 22px; height: 22px; background: #1B3B6B; }
+  .d3 { left: 560px; top: 90px; width: 10px; height: 10px; background: #8B7355; }
 
-/* 引文区 */
-.quote-zone{position:absolute;top:200px;left:600px;width:900px;padding:20px 30px;border-left:4px solid #B33A2A;background:rgba(27,59,107,0.04)}
-.quote-text{font-size:18px;color:#1B3B6B;line-height:1.7;font-family:'Noto Serif SC','Source Han Serif SC',serif;letter-spacing:1px}
-.quote-attr{font-size:12px;color:#8B7355;margin-top:10px;letter-spacing:3px;font-family:'Noto Serif SC',serif;font-style:italic}
-</style></head><body>
+  /* caption */
+  .visual-caption {
+    position: absolute;
+    left: 24px;
+    bottom: 26px;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 13px;
+    color: #1B3B6B;
+    letter-spacing: 0.08em;
+    z-index: 6;
+    line-height: 1.6;
+  }
+  .visual-caption .ref {
+    color: #8B7355;
+    font-style: italic;
+    font-size: 11px;
+  }
 
-<div class="top-bar"></div>
-<div class="bottom-bar"></div>
-<div class="side-bar"></div>
-<div class="right-bar"></div>
+  /* ---------- Right: content ---------- */
+  .content {
+    position: relative;
+    padding-top: 6px;
+  }
 
-<!-- 左侧视觉隐喻 -->
-<div class="visual-zone">
-  <div class="geo-stage">
-    <div class="blk-line h1"></div>
-    <div class="blk-line h2"></div>
-    <div class="blk-line h3"></div>
-    <div class="blk-line h4"></div>
-    <div class="blk-line h5"></div>
-    <div class="blk-line h6"></div>
-    <div class="blk-line v1"></div>
-    <div class="blk-line v2"></div>
-    <div class="red-ellipse"></div>
-    <div class="red-ellipse-inner"></div>
-    <div class="red-dot"></div>
-    <div class="small-square"></div>
-    <div class="small-circle"></div>
-    <div class="small-triangle"></div>
+  .eyebrow {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 12px;
+    letter-spacing: 0.4em;
+    color: #8B7355;
+    margin-bottom: 10px;
+  }
+
+  .title {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: #1B3B6B;
+    line-height: 1.15;
+    margin-bottom: 12px;
+    letter-spacing: 0.02em;
+  }
+
+  .subtitle-en {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+    color: #8B7355;
+    letter-spacing: 0.15em;
+    font-style: italic;
+    margin-bottom: 28px;
+  }
+
+  .rule {
+    width: 80px;
+    height: 3px;
+    background: #C8332E;
+    margin-bottom: 28px;
+  }
+
+  .points {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .points li {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    column-gap: 18px;
+    margin-bottom: 18px;
+    align-items: baseline;
+  }
+  .points .idx {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 13px;
+    color: #8B7355;
+    letter-spacing: 0.1em;
+    border-top: 1px solid rgba(27,59,107,0.35);
+    padding-top: 8px;
+  }
+  .points .body {
+    padding-top: 8px;
+    border-top: 1px solid rgba(27,59,107,0.08);
+  }
+  .points .k {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #1B3B6B;
+    letter-spacing: 0.02em;
+    margin-bottom: 3px;
+    line-height: 1.4;
+  }
+  .points .d {
+    font-size: 13px;
+    color: #444;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+  }
+
+  .last-item .idx {
+    color: #C8332E;
+    border-top-color: rgba(200,51,46,0.5);
+  }
+  .last-item .k {
+    color: #C8332E;
+  }
+
+  /* ---------- Footer ---------- */
+  .footer {
+    position: absolute;
+    bottom: 28px;
+    left: 88px;
+    right: 88px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: #8B7355;
+    letter-spacing: 0.25em;
+    font-family: 'Noto Serif SC', serif;
+  }
+  .footer .line-mark {
+    flex: 1;
+    height: 1px;
+    background: rgba(27,59,107,0.2);
+    margin: 0 22px;
+  }
+</style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="deck-title">第 11 期 · 文化的重要作用</div>
+    <div class="slide-meta"><span class="num">13</span> / 28 &nbsp;·&nbsp; CULTURE</div>
   </div>
-  <div class="visual-label">CYBER CHIEFS — 权威与混乱的拓扑</div>
-</div>
 
-<!-- 右侧内容 -->
-<div class="content-zone">
-  <div class="eyebrow">CHAPTER V · GOVERNANCE</div>
-  <div class="main-title">赛博酋长<br>与开源治理的灰度</div>
-  <div class="sub-title">Authority &amp; Chaos — 在线部落中的权力几何</div>
+  <!-- Main -->
+  <div class="main">
 
-  <div class="quote-zone">
-    <div class="quote-text">"谁来决定代码的走向？在开源的部落里，没有王座，只有 git 记录下的每一次 push 与 merge。"</div>
-    <div class="quote-attr">— 新制度经济学 · 开源治理谱系</div>
+    <!-- Visual metaphor panel -->
+    <div class="visual">
+      <div class="canvas-frame">
+        <span class="corner tl"></span>
+        <span class="corner tr"></span>
+        <span class="corner bl"></span>
+        <span class="corner br"></span>
+
+        <div class="vline v1"></div>
+        <div class="vline v2"></div>
+        <div class="vline v3"></div>
+        <div class="vline v4"></div>
+
+        <div class="hline h1"></div>
+        <div class="hline h2"></div>
+        <div class="hline h3"></div>
+        <div class="hline h4"></div>
+
+        <div class="red-ellipse"></div>
+        <div class="press-bar"></div>
+
+        <span class="dot d1"></span>
+        <span class="dot d2"></span>
+        <span class="dot d3"></span>
+
+        <div class="visual-caption">
+          红色椭圆压黑线 —— 在线部落中权威与混乱的对照<br>
+          <span class="ref">Visual metaphor after K. Williams · <em>Cyber Chiefs</em></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+      <div class="eyebrow">OPEN SOURCE VALUES &nbsp;·&nbsp; VALUE SPECTRUM</div>
+      <h1 class="title">让代码自己说话</h1>
+      <div class="subtitle-en">Let the code decide — on values of the open-source culture</div>
+      <div class="rule"></div>
+
+      <ul class="points">
+        <li>
+          <div class="idx">01</div>
+          <div class="body">
+            <div class="k">技术实用主义至上</div>
+            <div class="d">代码质量与可运行性高于任何立场；最好的设计往往由使用场景自然选出。</div>
+          </div>
+        </li>
+        <li>
+          <div class="idx">02</div>
+          <div class="body">
+            <div class="k">工程文化的自律</div>
+            <div class="d">同行评审、可复现、可追溯——把"信任"替换为"可验证"。</div>
+          </div>
+        </li>
+        <li>
+          <div class="idx">03</div>
+          <div class="body">
+            <div class="k">不反对商业化</div>
+            <div class="d">许可与变现并存，商业可持续是社区健康的必要条件而非反面。</div>
+          </div>
+        </li>
+        <li>
+          <div class="idx">04</div>
+          <div class="body">
+            <div class="k">知识财产权的平衡</div>
+            <div class="d">在开放与作者权利之间寻找动态均衡，避免"自由"滑向"无主"。</div>
+          </div>
+        </li>
+        <li class="last-item">
+          <div class="idx">05</div>
+          <div class="body">
+            <div class="k">无限的游戏 · 可持续发展</div>
+            <div class="d">目的不是赢，而是让游戏继续下去——社区的生命力优先于一次性胜利。</div>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 
-  <div class="points">
-    <div class="point-item">
-      <div class="point-num">Ⅰ</div>
-      <div class="point-text">
-        <div class="point-title">让代码决定</div>
-        <div class="point-desc">技术实用主义至上——代码本身即为最高权威，逻辑的正确性优先于人的意志</div>
-      </div>
-    </div>
-    <div class="point-item">
-      <div class="point-num">Ⅱ</div>
-      <div class="point-text">
-        <div class="point-title">工程文化 · 不拒商业化</div>
-        <div class="point-desc">以工程效率为信仰，商业化为开源生态注入可持续血液，但拒绝资本凌驾于社区之上</div>
-      </div>
-    </div>
-    <div class="point-item">
-      <div class="point-num">Ⅲ</div>
-      <div class="point-text">
-        <div class="point-title">知识财产权的平衡</div>
-        <div class="point-desc">在自由与归属之间寻找制度均衡——许可协议是开源世界的宪法，划定权利的边界</div>
-      </div>
-    </div>
-    <div class="point-item">
-      <div class="point-num">Ⅳ</div>
-      <div class="point-text">
-        <div class="point-title">无限的游戏：可持续发展</div>
-        <div class="point-desc">重要的不是谁赢了，而是游戏能否继续——开源的本质是一场没有终点的协作实践</div>
-      </div>
-    </div>
+  <!-- Footer -->
+  <div class="footer">
+    <div>开源经济学 · 新制度视角</div>
+    <div class="line-mark"></div>
+    <div>CYBER CHIEFS · K. WILLIAMS, 2009</div>
   </div>
-</div>
 
-<!-- 右下角装饰 -->
-<div class="corner-square"></div>
-<div class="corner-circle-r"></div>
-<div class="corner-line"></div>
-
-<div class="footer-info">开源之道 · 新制度经济学视角</div>
-<div class="footer-page">V / Ⅷ</div>
-<div class="footer-right">OPEN SOURCE ECONOMICS</div>
-
-</body></html>
+</body>
+</html>

@@ -1,357 +1,379 @@
 
 
 <!DOCTYPE html>
-<html><!-- source_hash: 1883e9b0aae1fc44 -->
+<html><!-- source_hash: b8e7d2da6e56de88 -->
 <head>
 <meta charset="UTF-8">
-<title>议程 - 基于互联网/万维网的虚拟共同体</title>
+<title>议程 · 第06期 组织结构与治理</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html, body {
-    width: 1600px;
-    height: 900px;
-    overflow: hidden;
-    margin: 0;
-}
-body {
-    background: #F5F0E8;
-    font-family: 'Noto Sans SC', sans-serif;
-    color: #1B3B6B;
-    position: relative;
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  background: #F5F0E8;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: #1B3B6B;
+  position: relative;
 }
 
-/* Header rule */
-.rule-top {
-    position: absolute;
-    top: 56px;
-    left: 80px;
-    width: 1440px;
-    height: 2px;
-    background: #1B3B6B;
+/* Subtle parchment texture overlay */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 1600px; height: 900px;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(139, 115, 85, 0.015) 2px,
+    rgba(139, 115, 85, 0.015) 3px
+  ),
+  repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 2px,
+    rgba(139, 115, 85, 0.01) 2px,
+    rgba(139, 115, 85, 0.01) 3px
+  );
+  pointer-events: none;
+  z-index: 0;
 }
 
-.rule-top-thin {
-    position: absolute;
-    top: 64px;
-    left: 80px;
-    width: 1440px;
-    height: 1px;
-    background: #1B3B6B;
-    opacity: 0.3;
+/* Header section */
+.header {
+  position: absolute;
+  top: 52px;
+  left: 80px;
+  z-index: 10;
 }
 
-/* Header labels */
-.header-left {
-    position: absolute;
-    top: 28px;
-    left: 80px;
-    font-size: 13px;
-    letter-spacing: 4px;
-    color: #8B7355;
-    font-weight: 600;
-}
-.header-right {
-    position: absolute;
-    top: 28px;
-    right: 80px;
-    font-size: 13px;
-    letter-spacing: 3px;
-    color: #555;
-    font-weight: 400;
+.lecture-tag {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: #8B7355;
+  text-transform: uppercase;
+  margin-bottom: 8px;
 }
 
-/* Title area */
-.title-block {
-    position: absolute;
-    top: 100px;
-    left: 80px;
-}
-.title-main {
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-    font-size: 96px;
-    font-weight: 700;
-    color: #1B3B6B;
-    letter-spacing: 12px;
-    line-height: 1;
-}
-.title-en {
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
-    font-size: 18px;
-    color: #8B7355;
-    letter-spacing: 6px;
-    margin-top: 16px;
-    font-style: italic;
+.header-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 20px;
+  color: #1B3B6B;
+  font-weight: 400;
+  letter-spacing: 1px;
 }
 
-/* Geometric composition - right side */
-.geo-circle {
-    position: absolute;
-    top: 100px;
-    right: 120px;
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
-    background: #1B3B6B;
+/* Divider line under header */
+.header-line {
+  position: absolute;
+  top: 118px;
+  left: 80px;
+  width: 480px;
+  height: 1px;
+  background: #8B7355;
+  opacity: 0.4;
+  z-index: 10;
 }
+
+/* Left geometric composition */
+.geo-composition {
+  position: absolute;
+  top: 160px;
+  left: 60px;
+  width: 420px;
+  height: 680px;
+  z-index: 5;
+}
+
+.geo-circle-large {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  top: 60px;
+  left: 40px;
+  opacity: 0.92;
+}
+
 .geo-square {
-    position: absolute;
-    top: 220px;
-    right: 280px;
-    width: 100px;
-    height: 100px;
-    background: #8B7355;
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  background: #8B7355;
+  top: 280px;
+  left: 200px;
+  opacity: 0.85;
+  transform: rotate(12deg);
 }
-.geo-square-outline {
-    position: absolute;
-    top: 80px;
-    right: 320px;
-    width: 70px;
-    height: 70px;
-    border: 2px solid #1B3B6B;
-    background: transparent;
+
+.geo-circle-small {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid #1B3B6B;
+  top: 30px;
+  left: 280px;
+  opacity: 0.7;
 }
-.geo-dot {
-    position: absolute;
-    top: 140px;
-    right: 380px;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: #1B3B6B;
+
+.geo-circle-hollow {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid #8B7355;
+  top: 380px;
+  left: 60px;
+  opacity: 0.6;
 }
+
+.geo-line-h {
+  position: absolute;
+  top: 480px;
+  left: 0;
+  width: 400px;
+  height: 3px;
+  background: #1B3B6B;
+  opacity: 0.8;
+}
+
 .geo-line-v {
-    position: absolute;
-    top: 100px;
-    right: 80px;
-    width: 2px;
-    height: 280px;
-    background: #1B3B6B;
-    opacity: 0.4;
-}
-.geo-arc {
-    position: absolute;
-    top: 300px;
-    right: 120px;
-    width: 80px;
-    height: 80px;
-    border: 3px solid #8B7355;
-    border-radius: 50%;
-    border-top-color: transparent;
-    border-left-color: transparent;
-    border-right-color: transparent;
-    background: transparent;
+  position: absolute;
+  top: 40px;
+  left: 360px;
+  width: 3px;
+  height: 560px;
+  background: #8B7355;
+  opacity: 0.5;
 }
 
-/* Separator below title */
-.title-sep {
-    position: absolute;
-    top: 290px;
-    left: 80px;
-    width: 1440px;
-    height: 1px;
-    background: #1B3B6B;
-    opacity: 0.25;
+.geo-square-small {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: #1B3B6B;
+  top: 520px;
+  left: 300px;
+  opacity: 0.6;
 }
 
-/* Agenda list */
-.agenda-list {
-    position: absolute;
-    top: 330px;
-    left: 80px;
-    width: 1440px;
+.geo-triangle {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+  border-bottom: 70px solid #1B3B6B;
+  top: 550px;
+  left: 100px;
+  opacity: 0.5;
+  transform: rotate(200deg);
 }
+
+/* Right content area */
+.content-area {
+  position: absolute;
+  top: 160px;
+  left: 560px;
+  width: 960px;
+  height: 680px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+}
+
+.agenda-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 56px;
+  color: #1B3B6B;
+  font-weight: 700;
+  margin-bottom: 48px;
+  letter-spacing: 4px;
+  position: relative;
+}
+
+.agenda-title::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 0;
+  width: 80px;
+  height: 4px;
+  background: #8B7355;
+}
+
+.agenda-items {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
 .agenda-item {
-    display: flex;
-    align-items: center;
-    height: 68px;
-    border-bottom: 1px solid #1B3B6B;
-    border-bottom-opacity: 0.08;
-    border-bottom-color: rgba(27, 59, 107, 0.08);
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
 }
-.agenda-num {
-    width: 120px;
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
-    font-size: 28px;
-    font-weight: 600;
-    color: #8B7355;
-    letter-spacing: 2px;
+
+.item-number {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 18px;
+  color: #8B7355;
+  font-weight: 600;
+  min-width: 36px;
+  padding-top: 3px;
+  letter-spacing: 1px;
 }
-.agenda-mark {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+.item-text {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 19px;
+  color: #1B3B6B;
+  line-height: 1.7;
+  font-weight: 400;
 }
-.mark-circle {
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: #1B3B6B;
-}
-.mark-square {
-    width: 14px;
-    height: 14px;
-    background: #8B7355;
-}
-.mark-line {
-    width: 20px;
-    height: 2px;
-    background: #1B3B6B;
-}
-.mark-diamond {
-    width: 12px;
-    height: 12px;
-    background: #1B3B6B;
-    transform: rotate(45deg);
-}
-.mark-ring {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    border: 2px solid #1B3B6B;
-    background: transparent;
-}
-.mark-triangle {
-    width: 0;
-    height: 0;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-bottom: 14px solid #8B7355;
-}
-.agenda-text {
-    flex: 1;
-    font-size: 22px;
-    color: #1B3B6B;
-    letter-spacing: 1.5px;
-    line-height: 1.4;
-    font-weight: 400;
-}
-.agenda-page {
-    width: 80px;
-    font-family: 'Noto Serif SC', serif;
-    font-size: 16px;
-    color: #8B7355;
-    text-align: right;
-    letter-spacing: 2px;
+
+.item-text .highlight {
+  color: #8B7355;
+  font-weight: 500;
 }
 
 /* Footer */
-.footer-rule {
-    position: absolute;
-    bottom: 40px;
-    left: 80px;
-    width: 1440px;
-    height: 1px;
-    background: #1B3B6B;
-    opacity: 0.2;
-}
-.footer-left {
-    position: absolute;
-    bottom: 18px;
-    left: 80px;
-    font-size: 12px;
-    letter-spacing: 3px;
-    color: #555;
-}
-.footer-right {
-    position: absolute;
-    bottom: 18px;
-    right: 80px;
-    font-size: 12px;
-    letter-spacing: 3px;
-    color: #555;
-    font-style: italic;
+.footer {
+  position: absolute;
+  bottom: 42px;
+  left: 80px;
+  right: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
 }
 
-/* Bottom geometric accents */
-.geo-bottom-sq {
-    position: absolute;
-    bottom: 60px;
-    left: 480px;
-    width: 8px;
-    height: 8px;
-    background: #8B7355;
+.footer-left {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  color: #8B7355;
+  letter-spacing: 2px;
 }
-.geo-bottom-line {
-    position: absolute;
-    bottom: 62px;
-    left: 500px;
-    width: 60px;
-    height: 2px;
-    background: #1B3B6B;
-    opacity: 0.5;
+
+.footer-right {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  color: #8B7355;
+  letter-spacing: 2px;
+}
+
+.footer-line {
+  position: absolute;
+  bottom: 76px;
+  left: 80px;
+  width: 1440px;
+  height: 1px;
+  background: #8B7355;
+  opacity: 0.2;
+  z-index: 10;
+}
+
+/* Decorative corner element */
+.corner-decor {
+  position: absolute;
+  top: 40px;
+  right: 60px;
+  width: 100px;
+  height: 100px;
+  z-index: 10;
+}
+
+.corner-square {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  border: 2px solid #1B3B6B;
+  opacity: 0.3;
+}
+
+.corner-circle {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #8B7355;
+  opacity: 0.4;
 }
 </style>
 </head>
 <body>
 
-<div class="rule-top"></div>
-<div class="rule-top-thin"></div>
+<!-- Header -->
+<div class="header">
+  <div class="lecture-tag">Lecture 06 · Organization & Governance</div>
+  <div class="header-title">第 06 期 · 组织结构与治理</div>
+</div>
+<div class="header-line"></div>
 
-<div class="header-left">新制度经济学视角 · 开源之道</div>
-<div class="header-right">SECTION / 议程</div>
-
-<div class="title-block">
-    <div class="title-main">议 程</div>
-    <div class="title-en">A G E N D A &nbsp;&nbsp;— &nbsp;&nbsp;V I R T U A L &nbsp; C O M M U N I T I E S</div>
+<!-- Bauhaus geometric composition -->
+<div class="geo-composition">
+  <div class="geo-circle-large"></div>
+  <div class="geo-square"></div>
+  <div class="geo-circle-small"></div>
+  <div class="geo-circle-hollow"></div>
+  <div class="geo-line-h"></div>
+  <div class="geo-line-v"></div>
+  <div class="geo-square-small"></div>
+  <div class="geo-triangle"></div>
 </div>
 
-<!-- Geometric composition -->
-<div class="geo-line-v"></div>
-<div class="geo-circle"></div>
-<div class="geo-square"></div>
-<div class="geo-square-outline"></div>
-<div class="geo-dot"></div>
-<div class="geo-arc"></div>
-
-<div class="title-sep"></div>
-
-<div class="agenda-list">
+<!-- Right content area -->
+<div class="content-area">
+  <div class="agenda-title">议 程</div>
+  <div class="agenda-items">
     <div class="agenda-item">
-        <div class="agenda-num">01</div>
-        <div class="agenda-mark"><div class="mark-circle"></div></div>
-        <div class="agenda-text">基于互联网 / 万维网的虚拟共同体</div>
-        <div class="agenda-page">§ 01</div>
+      <div class="item-number">01</div>
+      <div class="item-text">基于互联网 / 万维网的<span class="highlight">虚拟共同体</span></div>
     </div>
     <div class="agenda-item">
-        <div class="agenda-num">02</div>
-        <div class="agenda-mark"><div class="mark-square"></div></div>
-        <div class="agenda-text">宪章、章程、社会契约、行为准则</div>
-        <div class="agenda-page">§ 02</div>
+      <div class="item-number">02</div>
+      <div class="item-text">宪章、章程、社会契约、<span class="highlight">行为准则</span></div>
     </div>
     <div class="agenda-item">
-        <div class="agenda-num">03</div>
-        <div class="agenda-mark"><div class="mark-line"></div></div>
-        <div class="agenda-text">许可与秩序</div>
-        <div class="agenda-page">§ 03</div>
+      <div class="item-number">03</div>
+      <div class="item-text">许可与<span class="highlight">秩序</span></div>
     </div>
     <div class="agenda-item">
-        <div class="agenda-num">04</div>
-        <div class="agenda-mark"><div class="mark-diamond"></div></div>
-        <div class="agenda-text">纳税、无政府与集市旁边的教堂</div>
-        <div class="agenda-page">§ 04</div>
+      <div class="item-number">04</div>
+      <div class="item-text">纳税、无政府与<span class="highlight">集市旁边的教堂</span></div>
     </div>
     <div class="agenda-item">
-        <div class="agenda-num">05</div>
-        <div class="agenda-mark"><div class="mark-ring"></div></div>
-        <div class="agenda-text">Android 企业协会的联合，让事情更复杂</div>
-        <div class="agenda-page">§ 05</div>
+      <div class="item-number">05</div>
+      <div class="item-text">Android 企业协会联合——正式化与<span class="highlight">自治</span>的张力</div>
     </div>
     <div class="agenda-item">
-        <div class="agenda-num">06</div>
-        <div class="agenda-mark"><div class="mark-triangle"></div></div>
-        <div class="agenda-text">组织，不断演化的协作分工：法律、技术与政治经济学</div>
-        <div class="agenda-page">§ 06</div>
+      <div class="item-number">06</div>
+      <div class="item-text">不断演化的协作分工：<span class="highlight">法律 · 技术 · 政治经济学</span></div>
     </div>
+  </div>
 </div>
 
-<div class="geo-bottom-sq"></div>
-<div class="geo-bottom-line"></div>
+<!-- Corner decoration -->
+<div class="corner-decor">
+  <div class="corner-square"></div>
+  <div class="corner-circle"></div>
+</div>
 
-<div class="footer-rule"></div>
-<div class="footer-left">新制度经济学 · 开源讲座</div>
-<div class="footer-right">— Agenda / 议程 —</div>
+<!-- Footer -->
+<div class="footer-line"></div>
+<div class="footer">
+  <div class="footer-left">开源之道 · Open Source as Institution</div>
+  <div class="footer-right">02 / 38</div>
+</div>
 
 </body>
 </html>

@@ -1,272 +1,585 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: 76ee13e85f1dbe96 --><head><meta charset="UTF-8"><title>第 10 期 · 劳动报酬与财产分配 · 议程</title><style>*{margin:0;padding:0;box-sizing:border-box}html,body{width:1600px;height:900px;overflow:hidden;margin:0;background:#F5F0E8;font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-serif;color:#1B3B6B}
-.page{position:relative;width:1600px;height:900px;background:#F5F0E8}
-.parchment{position:absolute;top:0;left:0;width:1600px;height:900px;background:radial-gradient(ellipse at 30% 20%,rgba(255,250,240,0.6) 0%,rgba(245,240,232,0) 60%),radial-gradient(ellipse at 70% 80%,rgba(200,180,150,0.15) 0%,rgba(245,240,232,0) 50%);pointer-events:none}
-/* Header */
-.header{position:absolute;top:48px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:flex-start}
-.lecture-tag{font-size:13px;letter-spacing:4px;color:#8B7355;font-weight:500}
-.lecture-tag .dot{display:inline-block;width:8px;height:8px;background:#1B3B6B;border-radius:50%;margin-right:10px;vertical-align:middle}
-.header-right{text-align:right;font-size:12px;color:#555;letter-spacing:2px;line-height:1.8}
-.header-right .num{font-size:14px;color:#8B7355}
-.main-title{position:absolute;top:100px;left:80px;font-family:'Noto Serif SC','Songti SC',serif;font-size:42px;font-weight:700;color:#1B3B6B;letter-spacing:2px}
-.subtitle{position:absolute;top:160px;left:82px;font-size:14px;color:#8B7355;letter-spacing:6px}
-.title-underline{position:absolute;top:188px;left:80px;width:120px;height:2px;background:#1B3B6B}
-.title-underline2{position:absolute;top:192px;left:80px;width:40px;height:2px;background:#8B7355}
-/* Bauhaus decoration top-right */
-.deco-circle{position:absolute;top:60px;right:80px;width:90px;height:90px;border:2px solid #1B3B6B;border-radius:50%}
-.deco-circle-fill{position:absolute;top:75px;right:95px;width:60px;height:60px;background:#1B3B6B;border-radius:50%}
-.deco-square{position:absolute;top:62px;right:82px;width:30px;height:30px;background:#8B7355}
-.deco-line-v{position:absolute;top:55px;right:55px;width:2px;height:100px;background:#1B3B6B}
-.deco-line-h{position:absolute;top:150px;right:55px;width:100px;height:2px;background:#1B3B6B}
+<!DOCTYPE html>
+<html><!-- source_hash: 12b37894aa5dc1fd -->
+<head>
+<meta charset="UTF-8">
+<title>第10期 · 劳动报酬与财产分配 — 议程</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1600px; height: 900px; overflow: hidden; margin: 0; }
+  body {
+    background: #F5F0E8;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #1B3B6B;
+    position: relative;
+  }
 
-/* Main content area */
-.content{position:absolute;top:240px;left:80px;right:80px;bottom:60px;display:flex;gap:50px}
+  /* Background texture - subtle lines */
+  .bg-lines {
+    position: absolute;
+    top: 0; left: 0; width: 1600px; height: 900px;
+    pointer-events: none;
+    opacity: 0.04;
+  }
 
-/* Left: Building cross-section */
-.building-area{width:380px;position:relative;flex-shrink:0}
-.building-label{font-size:11px;letter-spacing:3px;color:#8B7355;margin-bottom:14px}
-.building{position:relative;width:380px;height:560px}
-/* Ground base */
-.ground{position:absolute;bottom:0;left:0;width:380px;height:8px;background:#1B3B6B}
-.ground-line{position:absolute;bottom:10px;left:-10px;width:400px;height:1px;background:#8B7355}
-/* Building body - cross section */
-.bldg-body{position:absolute;bottom:14px;left:60px;width:260px;display:flex;flex-direction:column-reverse;gap:3px}
-.floor{position:relative;width:260px;height:70px;background:#F5F0E8;border:1.5px solid #1B3B6B;display:flex;align-items:center;padding:0 16px;overflow:hidden}
-.floor-num{font-family:'Noto Serif SC',serif;font-size:20px;font-weight:700;color:#1B3B6B;width:36px;flex-shrink:0}
-.floor-label{font-size:12px;color:#1B3B6B;letter-spacing:1px;line-height:1.4}
-/* Floor variations - Bauhaus geometric fills */
-.floor-1{background:#1B3B6B}
-.floor-1 .floor-num,.floor-1 .floor-label{color:#F5F0E8}
-.floor-2{background:#F5F0E8}
-.floor-3{background:#8B7355}
-.floor-3 .floor-num,.floor-3 .floor-label{color:#F5F0E8}
-.floor-4{background:#F5F0E8}
-.floor-5{background:#1B3B6B;position:relative}
-.floor-5 .floor-num,.floor-5 .floor-label{color:#F5F0E8}
-.floor-6{background:#F5F0E8}
-.floor-7{background:#8B7355;position:relative}
-.floor-7 .floor-num,.floor-7 .floor-label{color:#F5F0E8}
-/* Cross-section detail lines inside floors */
-.cross-line{position:absolute;top:0;bottom:0;width:1px;background:rgba(27,59,107,0.2)}
-.cross-hline{position:absolute;left:0;right:0;height:1px;background:rgba(27,59,107,0.15)}
-/* Roof element */
-.roof{position:absolute;bottom:512px;left:40px;width:300px;height:14px;background:#1B3B6B}
-.roof-triangle{position:absolute;bottom:512px;left:150px;width:0;height:0;border-left:50px solid transparent;border-right:50px solid transparent;border-bottom:20px solid #8B7355}
-/* Floor number markers on left */
-.floor-markers{position:absolute;bottom:14px;left:0;width:50px;display:flex;flex-direction:column-reverse;gap:3px}
-.floor-marker{height:70px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:9px;color:#555;letter-spacing:1px}
-.floor-marker .m-line{width:20px;height:1px;background:#555;margin-bottom:4px}
+  /* Header */
+  .header {
+    position: absolute;
+    top: 48px;
+    left: 80px;
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+  }
+  .lecture-num {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 14px;
+    color: #8B7355;
+    letter-spacing: 2px;
+    border-bottom: 1px solid #8B7355;
+    padding-bottom: 2px;
+  }
+  .header-title {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #1B3B6B;
+    letter-spacing: 1px;
+  }
 
-/* Staircase / ramp decoration */
-.stairs{position:absolute;bottom:14px;right:-20px;width:120px;height:560px;display:flex;flex-direction:column-reverse}
-.step{width:120px;height:73px;border-left:1px dashed rgba(139,115,85,0.5)}
-.step-label{position:absolute;right:-40px;font-size:9px;color:#8B7355;letter-spacing:1px}
+  /* Building cross-section - left side */
+  .building {
+    position: absolute;
+    top: 130px;
+    left: 120px;
+    width: 420px;
+    height: 700px;
+  }
+  .building-label {
+    position: absolute;
+    top: -20px;
+    left: 0;
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 11px;
+    color: #555;
+    letter-spacing: 1.5px;
+  }
 
-/* Building arrows (left side - upward arrow indicating hierarchy) */
-.arrow-up{position:absolute;bottom:14px;left:-30px;width:20px;height:560px;display:flex;flex-direction:column;align-items:center}
-.arrow-line{width:1px;height:540px;background:#1B3B6B;position:absolute;top:0}
-.arrow-head{width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:10px solid #1B3B6B;position:absolute;top:-4px}
-.arrow-label{position:absolute;top:555px;font-size:9px;color:#8B7355;letter-spacing:2px;white-space:nowrap}
+  /* Building layers - each is a floor */
+  .floor {
+    position: absolute;
+    left: 0;
+    width: 380px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .floor-marker {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .floor-desc {
+    font-size: 11px;
+    color: #555;
+    font-style: italic;
+    line-height: 1.4;
+    flex: 1;
+  }
 
-/* Right: Agenda list */
-.agenda{flex:1;display:flex;flex-direction:column;gap:12px;padding-top:6px}
-.agenda-item{display:flex;align-items:center;gap:20px;padding:12px 18px;border-bottom:1px solid rgba(27,59,107,0.12);position:relative}
-.agenda-item:first-child{border-top:1px solid rgba(27,59,107,0.12)}
-.ag-num{font-family:'Noto Serif SC','Songti SC',serif;font-size:22px;font-weight:700;color:#1B3B6B;width:50px;flex-shrink:0}
-.ag-text{font-family:'Noto Serif SC','Songti SC',serif;font-size:17px;color:#1B3B6B;font-weight:500;letter-spacing:1px;flex:1}
-.ag-en{font-size:10px;color:#8B7355;letter-spacing:2px;text-align:right;flex-shrink:0;width:200px;line-height:1.5}
-/* Geometric accent on agenda items */
-.ag-accent{position:absolute;left:-18px;top:50%;width:8px;height:8px;transform:translateY(-50%)}
-.accent-circle{border-radius:50%;background:#1B3B6B}
-.accent-square{background:#8B7355}
-.accent-line{width:14px;height:1px;background:#1B3B6B}
+  /* Layer 7 - top: political economy */
+  .floor-7 { top: 10px; }
+  .floor-7 .floor-marker {
+    border: 2px solid #1B3B6B;
+  }
+  .floor-7 .circle-deco {
+    width: 50px; height: 50px;
+    border: 2px solid #1B3B6B;
+    border-radius: 50%;
+    position: absolute;
+    top: 5px; left: 5px;
+  }
+  .floor-7 .circle-inner {
+    width: 18px; height: 18px;
+    background: #1B3B6B;
+    border-radius: 50%;
+    position: absolute;
+    top: 22px; left: 22px;
+  }
 
-/* Section divider in agenda */
-.agenda-divider{display:flex;align-items:center;gap:12px;margin:4px 0}
-.agenda-divider .line{flex:1;height:1px;background:#8B7355;opacity:0.4}
-.agenda-divider .label{font-size:10px;color:#8B7355;letter-spacing:3px;font-weight:500}
+  /* Layer 6: code as capital */
+  .floor-6 { top: 95px; }
+  .floor-6 .floor-marker {
+    background: #1B3B6B;
+  }
+  .floor-6 .square-deco {
+    width: 24px; height: 24px;
+    background: #F5F0E8;
+    position: absolute;
+    top: 18px; left: 18px;
+    transform: rotate(45deg);
+  }
 
-/* Footer */
-.footer{position:absolute;bottom:24px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#8B7355;letter-spacing:2px}
-.footer-left{display:flex;align-items:center;gap:12px}
-.footer-left .bar{width:30px;height:2px;background:#1B3B6B}
-.footer-right{display:flex;align-items:center;gap:8px}
+  /* Layer 5: cloud vendor conflict */
+  .floor-5 { top: 185px; }
+  .floor-5 .floor-marker {
+    border: 2px solid #8B7355;
+    background: rgba(139, 115, 85, 0.08);
+  }
+  .floor-5 .split-line {
+    position: absolute;
+    width: 36px;
+    height: 2px;
+    background: #8B7355;
+    top: 29px; left: 12px;
+  }
+  .floor-5 .split-line2 {
+    position: absolute;
+    width: 2px;
+    height: 36px;
+    background: #8B7355;
+    top: 12px; left: 29px;
+  }
 
-/* Cross section annotation lines */
-.annotation{position:absolute;font-size:9px;color:#555;letter-spacing:1px}
-.ann-line{position:absolute;height:1px;background:#555}
-.ann-dot{position:absolute;width:4px;height:4px;background:#555;border-radius:50%;transform:translate(-50%,-50%)}
-</style></head><body><div class="page"><div class="parchment"></div>
+  /* Layer 4: rights and property */
+  .floor-4 { top: 275px; }
+  .floor-4 .floor-marker {
+    border: 2px solid #1B3B6B;
+  }
+  .floor-4 .square-deco {
+    width: 28px; height: 28px;
+    border: 2px solid #1B3B6B;
+    position: absolute;
+    top: 16px; left: 16px;
+  }
+  .floor-4 .dot {
+    width: 8px; height: 8px;
+    background: #1B3B6B;
+    border-radius: 50%;
+    position: absolute;
+    top: 26px; left: 26px;
+  }
 
-<!-- Header -->
-<div class="header">
-  <div>
-    <div class="lecture-tag"><span class="dot"></span>LECTURE 10 · 2025</div>
+  /* Layer 3: contributor economy */
+  .floor-3 { top: 365px; }
+  .floor-3 .floor-marker {
+    background: rgba(27, 59, 107, 0.1);
+    border: 1.5px solid #1B3B6B;
+  }
+  .floor-3 .grid-deco {
+    position: absolute;
+    top: 16px; left: 16px;
+    width: 30px; height: 30px;
+  }
+  .floor-3 .grid-deco::before,
+  .floor-3 .grid-deco::after {
+    content: '';
+    position: absolute;
+  }
+  .floor-3 .grid-deco::before {
+    width: 10px; height: 10px;
+    border: 1.5px solid #1B3B6B;
+    top: 0; left: 0;
+  }
+  .floor-3 .grid-deco::after {
+    width: 10px; height: 10px;
+    border: 1.5px solid #1B3B6B;
+    top: 0; left: 20px;
+  }
+  .floor-3 .grid-deco-extra {
+    position: absolute;
+    width: 10px; height: 10px;
+    border: 1.5px solid #1B3B6B;
+    top: 36px; left: 16px;
+  }
+  .floor-3 .grid-deco-extra2 {
+    position: absolute;
+    width: 10px; height: 10px;
+    border: 1.5px solid #1B3B6B;
+    top: 36px; left: 36px;
+  }
+
+  /* Layer 2: unpaid labor */
+  .floor-2 { top: 460px; }
+  .floor-2 .floor-marker {
+    background: #8B7355;
+  }
+  .floor-2 .line-deco {
+    position: absolute;
+    width: 30px; height: 2px;
+    background: #F5F0E8;
+    top: 29px; left: 15px;
+  }
+  .floor-2 .line-deco2 {
+    position: absolute;
+    width: 2px; height: 30px;
+    background: #F5F0E8;
+    top: 15px; left: 29px;
+  }
+
+  /* Layer 1: individual */
+  .floor-1 { top: 555px; }
+  .floor-1 .floor-marker {
+    border: 2px solid #1B3B6B;
+    border-radius: 50%;
+  }
+  .floor-1 .inner-dot {
+    width: 22px; height: 22px;
+    background: #1B3B6B;
+    border-radius: 50%;
+    position: absolute;
+    top: 19px; left: 19px;
+  }
+
+  /* Ground line */
+  .ground-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 420px;
+    height: 3px;
+    background: #1B3B6B;
+  }
+  .ground-label {
+    position: absolute;
+    bottom: 12px;
+    left: 0;
+    font-size: 10px;
+    color: #555;
+    letter-spacing: 1px;
+  }
+
+  /* Vertical connecting line */
+  .vert-line {
+    position: absolute;
+    left: 30px;
+    top: 30px;
+    width: 1px;
+    height: 595px;
+    background: #8B7355;
+    opacity: 0.3;
+  }
+
+  /* Right side - agenda */
+  .agenda {
+    position: absolute;
+    top: 130px;
+    left: 620px;
+    width: 880px;
+    height: 700px;
+  }
+
+  .agenda-title {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #1B3B6B;
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+  }
+  .agenda-subtitle {
+    font-size: 13px;
+    color: #8B7355;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+  }
+  .agenda-divider {
+    width: 80px;
+    height: 3px;
+    background: #1B3B6B;
+    margin-bottom: 36px;
+  }
+
+  .agenda-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .agenda-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 22px;
+    gap: 18px;
+  }
+  .agenda-num {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 14px;
+    color: #8B7355;
+    width: 28px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .agenda-bar {
+    width: 12px;
+    height: 12px;
+    background: #1B3B6B;
+    flex-shrink: 0;
+  }
+  .agenda-bar.circle {
+    border-radius: 50%;
+  }
+  .agenda-bar.diamond {
+    transform: rotate(45deg);
+  }
+  .agenda-bar.hollow {
+    background: transparent;
+    border: 2px solid #1B3B6B;
+  }
+  .agenda-bar.hollow-circle {
+    background: transparent;
+    border: 2px solid #1B3B6B;
+    border-radius: 50%;
+  }
+  .agenda-text {
+    font-size: 16px;
+    color: #1B3B6B;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+  .agenda-text .note {
+    font-size: 12px;
+    color: #555;
+    font-weight: 400;
+    margin-left: 12px;
+  }
+
+  /* Footer */
+  .footer {
+    position: absolute;
+    bottom: 36px;
+    left: 80px;
+    right: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-left {
+    font-size: 11px;
+    color: #8B7355;
+    letter-spacing: 1px;
+  }
+  .footer-right {
+    font-size: 11px;
+    color: #555;
+    letter-spacing: 1px;
+  }
+  .footer-line {
+    position: absolute;
+    bottom: 60px;
+    left: 80px;
+    width: 1440px;
+    height: 1px;
+    background: #8B7355;
+    opacity: 0.3;
+  }
+
+  /* Decorative geometric elements */
+  .deco-circle-top {
+    position: absolute;
+    top: 50px;
+    right: 100px;
+    width: 60px;
+    height: 60px;
+    border: 2px solid #1B3B6B;
+    border-radius: 50%;
+    opacity: 0.12;
+  }
+  .deco-square-top {
+    position: absolute;
+    top: 65px;
+    right: 90px;
+    width: 30px;
+    height: 30px;
+    background: #1B3B6B;
+    opacity: 0.06;
+  }
+  .deco-line-tr {
+    position: absolute;
+    top: 120px;
+    right: 80px;
+    width: 100px;
+    height: 1px;
+    background: #8B7355;
+    opacity: 0.3;
+  }
+
+  /* Direction indicator */
+  .direction-label {
+    position: absolute;
+    left: 120px;
+    bottom: 100px;
+    font-size: 10px;
+    color: #8B7355;
+    letter-spacing: 1.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .direction-arrow {
+    width: 40px;
+    height: 1px;
+    background: #8B7355;
+    position: relative;
+  }
+  .direction-arrow::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -3px;
+    width: 6px;
+    height: 6px;
+    border-right: 1px solid #8B7355;
+    border-top: 1px solid #8B7355;
+    transform: rotate(45deg);
+  }
+</style>
+</head>
+<body>
+
+  <!-- Background geometric decoration -->
+  <div class="deco-circle-top"></div>
+  <div class="deco-square-top"></div>
+  <div class="deco-line-tr"></div>
+
+  <!-- Header -->
+  <div class="header">
+    <span class="lecture-num">LECTURE 10</span>
+    <span class="header-title">劳动报酬与财产分配</span>
   </div>
-  <div class="header-right">
-    <div class="num">10 / 29</div>
-    <div>OPEN SOURCE ECONOMICS</div>
-  </div>
-</div>
 
-<!-- Title -->
-<div class="main-title">议 程 · 七层建筑</div>
-<div class="subtitle">A G E N D A &nbsp;·&nbsp; SEVEN-LAYER ARCHITECTURE</div>
-<div class="title-underline"></div>
-<div class="title-underline2"></div>
+  <!-- Building Cross-Section (Left) -->
+  <div class="building">
+    <div class="building-label">STRUCTURAL ANALYSIS · 剖面图</div>
+    <div class="vert-line"></div>
 
-<!-- Bauhaus decorations -->
-<div class="deco-circle"></div>
-<div class="deco-circle-fill"></div>
-<div class="deco-square"></div>
-<div class="deco-line-v"></div>
-<div class="deco-line-h"></div>
-
-<!-- Main content -->
-<div class="content">
-
-  <!-- Left: Building cross-section -->
-  <div class="building-area">
-    <div class="building-label">建 筑 剖 面 · SECTION A-A</div>
-    <div class="building">
-      <!-- Roof -->
-      <div class="roof"></div>
-      <div class="roof-triangle"></div>
-
-      <!-- Upward arrow -->
-      <div class="arrow-up">
-        <div class="arrow-line"></div>
-        <div class="arrow-head"></div>
-        <div class="arrow-label">HIERARCHY ↑</div>
+    <!-- Floor 7: Top -->
+    <div class="floor floor-7">
+      <div class="floor-marker">
+        <div class="circle-deco"></div>
+        <div class="circle-inner"></div>
       </div>
-
-      <!-- Floor markers -->
-      <div class="floor-markers">
-        <div class="floor-marker"><span class="m-line"></span>F7</div>
-        <div class="floor-marker"><span class="m-line"></span>F6</div>
-        <div class="floor-marker"><span class="m-line"></span>F5</div>
-        <div class="floor-marker"><span class="m-line"></span>F4</div>
-        <div class="floor-marker"><span class="m-line"></span>F3</div>
-        <div class="floor-marker"><span class="m-line"></span>F2</div>
-        <div class="floor-marker"><span class="m-line"></span>F1</div>
-      </div>
-
-      <!-- Building body -->
-      <div class="bldg-body">
-        <div class="floor floor-1">
-          <span class="floor-num">01</span>
-          <span class="floor-label">基础层 · 个体激励</span>
-          <span class="cross-line" style="left:50%"></span>
-          <span class="cross-hline" style="top:50%"></span>
-        </div>
-        <div class="floor floor-2">
-          <span class="floor-num">02</span>
-          <span class="floor-label">劳动 → 贡献</span>
-          <span class="cross-line" style="left:33%"></span>
-          <span class="cross-line" style="left:66%"></span>
-        </div>
-        <div class="floor floor-3">
-          <span class="floor-num">03</span>
-          <span class="floor-label">贡献者经济</span>
-          <span class="cross-line" style="left:50%"></span>
-        </div>
-        <div class="floor floor-4">
-          <span class="floor-num">04</span>
-          <span class="floor-label">发布权与财产</span>
-          <span class="cross-hline" style="top:33%"></span>
-          <span class="cross-hline" style="top:66%"></span>
-        </div>
-        <div class="floor floor-5">
-          <span class="floor-num">05</span>
-          <span class="floor-label">云厂商冲突</span>
-          <span class="cross-line" style="left:50%"></span>
-        </div>
-        <div class="floor floor-6">
-          <span class="floor-num">06</span>
-          <span class="floor-label">代码即资本</span>
-          <span class="cross-line" style="left:33%"></span>
-          <span class="cross-line" style="left:66%"></span>
-        </div>
-        <div class="floor floor-7">
-          <span class="floor-num">07</span>
-          <span class="floor-label">政治经济学展望</span>
-          <span class="cross-hline" style="top:50%"></span>
-        </div>
-      </div>
-
-      <!-- Ground -->
-      <div class="ground-line"></div>
-      <div class="ground"></div>
+      <div class="floor-desc">宏观结构<br>政治经济学的总体框架</div>
     </div>
+
+    <!-- Floor 6 -->
+    <div class="floor floor-6">
+      <div class="floor-marker">
+        <div class="square-deco"></div>
+      </div>
+      <div class="floor-desc">代码积累<br>劳动对象的资本化</div>
+    </div>
+
+    <!-- Floor 5 -->
+    <div class="floor floor-5">
+      <div class="floor-marker">
+        <div class="split-line"></div>
+        <div class="split-line2"></div>
+      </div>
+      <div class="floor-desc">分配冲突<br>开源与云厂商的张力</div>
+    </div>
+
+    <!-- Floor 4 -->
+    <div class="floor floor-4">
+      <div class="floor-marker">
+        <div class="square-deco"></div>
+        <div class="dot"></div>
+      </div>
+      <div class="floor-desc">产权与治理<br>发布权即分配权</div>
+    </div>
+
+    <!-- Floor 3 -->
+    <div class="floor floor-3">
+      <div class="floor-marker">
+        <div class="grid-deco"></div>
+        <div class="grid-deco-extra"></div>
+        <div class="grid-deco-extra2"></div>
+      </div>
+      <div class="floor-desc">制度结构<br>贡献者经济的基础设施</div>
+    </div>
+
+    <!-- Floor 2 -->
+    <div class="floor floor-2">
+      <div class="floor-marker">
+        <div class="line-deco"></div>
+        <div class="line-deco2"></div>
+      </div>
+      <div class="floor-desc">概念转化<br>从劳动到贡献的语义位移</div>
+    </div>
+
+    <!-- Floor 1: Base -->
+    <div class="floor floor-1">
+      <div class="floor-marker">
+        <div class="inner-dot"></div>
+      </div>
+      <div class="floor-desc">个体激励<br>报酬的认知起点</div>
+    </div>
+
+    <div class="ground-line"></div>
+    <div class="ground-label">GROUND · 个体</div>
   </div>
 
-  <!-- Right: Agenda -->
+  <!-- Direction indicator -->
+  <div class="direction-label">
+    <span>FROM INDIVIDUAL →</span>
+    <span class="direction-arrow"></span>
+  </div>
+
+  <!-- Agenda (Right) -->
   <div class="agenda">
+    <div class="agenda-title">议程</div>
+    <div class="agenda-subtitle">AGENDA · 本期讨论路径</div>
+    <div class="agenda-divider"></div>
 
-    <div class="agenda-item">
-      <div class="ag-accent accent-circle"></div>
-      <div class="ag-num">01</div>
-      <div class="ag-text">个体角度如何思考「报酬」</div>
-      <div class="ag-en">INDIVIDUAL<br>COMPENSATION</div>
-    </div>
-
-    <div class="agenda-item">
-      <div class="ag-accent accent-square"></div>
-      <div class="ag-num">02</div>
-      <div class="ag-text">从「无偿劳动」到「无偿贡献」</div>
-      <div class="ag-en">UNPAID LABOR<br>TO CONTRIBUTION</div>
-    </div>
-
-    <div class="agenda-item">
-      <div class="ag-accent accent-circle"></div>
-      <div class="ag-num">03</div>
-      <div class="ag-text">贡献者经济的制度结构</div>
-      <div class="ag-en">CONTRIBUTOR<br>ECONOMY</div>
-    </div>
-
-    <div class="agenda-divider"><div class="line"></div><div class="label">M I D D L E</div><div class="line"></div></div>
-
-    <div class="agenda-item">
-      <div class="ag-accent accent-square"></div>
-      <div class="ag-num">04</div>
-      <div class="ag-text">发布权与财产分配</div>
-      <div class="ag-en">PUBLISHING RIGHT<br>&amp; DISTRIBUTION</div>
-    </div>
-
-    <div class="agenda-item">
-      <div class="ag-accent accent-circle"></div>
-      <div class="ag-num">05</div>
-      <div class="ag-text">开源劳动者与云厂商的分配冲突</div>
-      <div class="ag-en">LABOR VS.<br>CLOUD VENDOR</div>
-    </div>
-
-    <div class="agenda-item">
-      <div class="ag-accent accent-square"></div>
-      <div class="ag-num">06</div>
-      <div class="ag-text">代码即资本</div>
-      <div class="ag-en">CODE AS CAPITAL</div>
-    </div>
-
-    <div class="agenda-item">
-      <div class="ag-accent accent-line"></div>
-      <div class="ag-num">07</div>
-      <div class="ag-text">开源的政治经济学展望</div>
-      <div class="ag-en">POLITICAL<br>ECONOMY</div>
-    </div>
-
+    <ul class="agenda-list">
+      <li class="agenda-item">
+        <span class="agenda-num">01</span>
+        <span class="agenda-bar circle"></span>
+        <span class="agenda-text">个体角度如何思考「报酬」</span>
+      </li>
+      <li class="agenda-item">
+        <span class="agenda-num">02</span>
+        <span class="agenda-bar hollow-circle"></span>
+        <span class="agenda-text">从「无偿劳动」到「无偿贡献」</span>
+      </li>
+      <li class="agenda-item">
+        <span class="agenda-num">03</span>
+        <span class="agenda-bar"></span>
+        <span class="agenda-text">贡献者经济的制度结构</span>
+      </li>
+      <li class="agenda-item">
+        <span class="agenda-num">04</span>
+        <span class="agenda-bar hollow"></span>
+        <span class="agenda-text">发布权与财产分配</span>
+      </li>
+      <li class="agenda-item">
+        <span class="agenda-num">05</span>
+        <span class="agenda-bar diamond"></span>
+        <span class="agenda-text">开源劳动者与云厂商的分配冲突</span>
+      </li>
+      <li class="agenda-item">
+        <span class="agenda-num">06</span>
+        <span class="agenda-bar"></span>
+        <span class="agenda-text">代码即资本</span>
+      </li>
+      <li class="agenda-item">
+        <span class="agenda-num">07</span>
+        <span class="agenda-bar circle"></span>
+        <span class="agenda-text">开源的政治经济学展望</span>
+      </li>
+    </ul>
   </div>
-</div>
 
-<!-- Footer -->
-<div class="footer">
-  <div class="footer-left">
-    <div class="bar"></div>
-    <span>第 10 期 · 劳动报酬与财产分配</span>
+  <!-- Footer -->
+  <div class="footer-line"></div>
+  <div class="footer">
+    <span class="footer-left">「开源之道」 · 新制度经济学视角下的开源讲座</span>
+    <span class="footer-right">第 10 期 · 03 / 29</span>
   </div>
-  <div class="footer-right">
-    <span>NEW INSTITUTIONAL ECONOMICS OF OPEN SOURCE</span>
-  </div>
-</div>
 
-</div></body></html>
+</body>
+</html>

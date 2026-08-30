@@ -1,70 +1,470 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: 4c1ffb486da8439b --><head><meta charset="UTF-8"><title>更大范围的路径依赖</title><style>*{margin:0;padding:0;box-sizing:border-box}html,body{width:1600px;height:900px;overflow:hidden;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;color:#1B3B6B}body{background:#F5F0E8;position:relative}h1,h2{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-weight:600}.title-zone{position:absolute;top:60px;left:72px;width:640px}.kicker{font-size:14px;letter-spacing:6px;color:#8B7355;margin-bottom:18px;text-transform:uppercase}.main-title{font-size:48px;line-height:1.25;color:#1B3B6B;margin-bottom:16px}.subtitle{font-size:17px;line-height:1.7;color:#555;font-family:'Noto Sans SC',sans-serif;border-left:3px solid #1B3B6B;padding-left:16px}.bullets-zone{position:absolute;top:370px;left:72px;width:640px}.bullet{display:flex;align-items:flex-start;margin-bottom:14px;font-size:16px;line-height:1.6;color:#1B3B6B}.bullet-num{font-family:'Noto Serif SC',serif;font-size:15px;color:#8B7355;min-width:36px;font-weight:600}.bullet-text{flex:1}.visual-zone{position:absolute;top:80px;right:60px;width:760px;height:740px}.patchwork{position:absolute;top:40px;right:20px;width:620px;height:540px}.patch{position:absolute;opacity:0.85}.patch-1{width:200px;height:200px;background:#1B3B6B;left:0;top:0}.patch-2{width:180px;height:180px;background:#8B7355;left:220px;top:10px}.patch-3{width:220px;height:180px;background:#2C4A7A;left:410px;top:0}.patch-4{width:180px;height:200px;background:#A08466;left:0;top:210px}.patch-5{width:200px;height:160px;background:#1B3B6B;left:200px;top:200px;border-radius:100px 0 0 100px}.patch-6{width:200px;height:160px;background:#5C7AA6;left:410px;top:200px}.patch-7{width:220px;height:180px;background:#8B7355;left:0;top:370px;border-radius:0 100px 0 0}.patch-8{width:200px;height:180px;background:#2C4A7A;left:230px;top:370px}.patch-9{width:200px;height:180px;background:#6B5B45;left:440px;top:370px;border-radius:0 0 100px 0}.circle-deco{position:absolute;width:90px;height:90px;border-radius:50%;border:2px solid #1B3B6B;left:120px;top:260px;background:transparent}.circle-deco-inner{position:absolute;width:36px;height:36px;border-radius:50%;background:#8B7355;left:147px;top:287px}.line-deco{position:absolute;height:2px;background:#1B3B6B}.line-1{left:20px;top:620px;width:620px}.line-2{left:20px;top:640px;width:200px;background:#8B7355}.line-3{left:440px;top:640px;width:200px;background:#8B7355}.path{position:absolute;left:0;top:0;width:620px;height:540px;pointer-events:none}.road{position:absolute;height:4px;background:#F5F0E8;border-top:1px solid rgba(27,59,107,0.3);border-bottom:1px solid rgba(27,59,107,0.3)}.road-1{left:0;top:100px;width:200px;transform-origin:left center}.road-2{left:160px;top:120px;width:180px}.road-3{left:280px;top:80px;width:240px}.road-4{left:200px;top:220px;width:220px}.road-5{left:60px;top:300px;width:280px}.road-6{left:300px;top:340px;width:240px}.road-7{left:40px;top:420px;width:340px}.road-8{left:300px;top:460px;width:220px}.square-mark{position:absolute;width:12px;height:12px;background:#F5F0E8;border:1.5px solid #1B3B6B}.vision-caption{position:absolute;bottom:30px;right:60px;font-size:13px;color:#8B7355;font-style:italic;font-family:'Noto Serif SC',serif;letter-spacing:2px}.footer-bar{position:absolute;bottom:40px;left:72px;display:flex;align-items:center;gap:14px}.footer-dot{width:8px;height:8px;background:#1B3B6B;border-radius:50%}.footer-line{width:60px;height:1px;background:#8B7355}.footer-text{font-size:12px;color:#8B7355;letter-spacing:3px}.num-big{position:absolute;font-family:'Noto Serif SC',serif;font-size:180px;color:#1B3B6B;opacity:0.06;line-height:1;font-weight:700;bottom:0;right:0}
-</style></head><body>
+<!DOCTYPE html>
+<html lang="zh-CN"><!-- source_hash: 21993ac413e78da9 -->
+<head>
+<meta charset="UTF-8">
+<title>更大范围的路径依赖 · 开源经济学 · 第05期</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body {
+    width: 1600px;
+    height: 900px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #F5F0E8;
+    font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+    color: #1B3B6B;
+    -webkit-font-smoothing: antialiased;
+  }
+  .canvas {
+    position: relative;
+    width: 1600px;
+    height: 900px;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse 900px 600px at 20% 10%, rgba(139,115,85,0.06), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 90% 90%, rgba(27,59,107,0.05), transparent 60%),
+      #F5F0E8;
+  }
+  /* 羊皮纸微噪点纹理 */
+  .canvas::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 10% 20%, rgba(85,85,85,0.03) 0, transparent 1px),
+      radial-gradient(circle at 60% 70%, rgba(85,85,85,0.03) 0, transparent 1px),
+      radial-gradient(circle at 30% 90%, rgba(85,85,85,0.025) 0, transparent 1px),
+      radial-gradient(circle at 80% 40%, rgba(85,85,85,0.025) 0, transparent 1px);
+    background-size: 220px 220px, 300px 300px, 180px 180px, 260px 260px;
+    pointer-events: none;
+  }
 
-<div class="title-zone">
-  <div class="kicker">PATH DEPENDENCE · 路径依赖</div>
-  <div class="main-title">更大范围的路径<br/>依赖</div>
-  <div class="subtitle">技术只是路径之一；软实力——文化、制度、法律——<br/>同样塑造着不可逆的演进轨迹。</div>
-</div>
+  /* 顶部编号条 */
+  .header-bar {
+    position: absolute;
+    top: 46px;
+    left: 90px;
+    right: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Noto Serif SC', 'Songti SC', serif;
+    font-size: 13px;
+    letter-spacing: 0.32em;
+    color: #8B7355;
+    text-transform: uppercase;
+    z-index: 5;
+  }
+  .header-bar .dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    background: #1B3B6B;
+    margin-right: 14px;
+    vertical-align: middle;
+    transform: translateY(-2px);
+  }
+  .header-bar .rule {
+    flex: 1;
+    height: 1px;
+    background: rgba(139,115,85,0.35);
+    margin: 0 22px;
+  }
 
-<div class="bullets-zone">
-  <div class="bullet"><span class="bullet-num">01</span><span class="bullet-text">更大范围的路径依赖</span></div>
-  <div class="bullet"><span class="bullet-num">02</span><span class="bullet-text">技术只是其中的一部分</span></div>
-  <div class="bullet"><span class="bullet-num">03</span><span class="bullet-text">软实力也是很大的路径依赖：文化、制度</span></div>
-  <div class="bullet"><span class="bullet-num">04</span><span class="bullet-text">知识财产权法在本土的产生与发展</span></div>
-  <div class="bullet"><span class="bullet-num">05</span><span class="bullet-text">儒家的分层法，伟大的革命都无法根治</span></div>
-  <div class="bullet"><span class="bullet-num">06</span><span class="bullet-text">开源世界的平等观念，接受绝非一日之功</span></div>
-</div>
+  /* 左侧内容区 */
+  .content {
+    position: absolute;
+    top: 150px;
+    left: 90px;
+    width: 720px;
+    z-index: 4;
+  }
+  .chapter-mark {
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+    margin-bottom: 26px;
+  }
+  .chapter-num {
+    font-family: 'Noto Serif SC', 'Songti SC', serif;
+    font-size: 72px;
+    line-height: 0.9;
+    color: #1B3B6B;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+  .chapter-num .slash {
+    color: #8B7355;
+    margin: 0 4px;
+  }
+  .chapter-label {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 15px;
+    letter-spacing: 0.4em;
+    color: #8B7355;
+    padding-bottom: 8px;
+  }
+  .title {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 54px;
+    line-height: 1.15;
+    color: #1B3B6B;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    margin: 0 0 18px 0;
+  }
+  .title em {
+    font-style: normal;
+    color: #8B7355;
+    position: relative;
+  }
+  .title em::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0;
+    bottom: -6px;
+    height: 3px;
+    background: #1B3B6B;
+    width: 60%;
+  }
+  .subtitle {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 16px;
+    line-height: 1.75;
+    color: #555;
+    letter-spacing: 0.04em;
+    margin-bottom: 40px;
+    max-width: 620px;
+  }
+  .subtitle .sep {
+    display: inline-block;
+    width: 18px;
+    height: 1px;
+    background: #8B7355;
+    vertical-align: middle;
+    margin: 0 12px;
+  }
 
-<div class="visual-zone">
-  <div class="patchwork">
-    <div class="patch patch-1"></div>
-    <div class="patch patch-2"></div>
-    <div class="patch patch-3"></div>
-    <div class="patch patch-4"></div>
-    <div class="patch patch-5"></div>
-    <div class="patch patch-6"></div>
-    <div class="patch patch-7"></div>
-    <div class="patch patch-8"></div>
-    <div class="patch patch-9"></div>
+  .points {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .points li {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(139,115,85,0.22);
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 17px;
+    line-height: 1.55;
+    color: #1B3B6B;
+  }
+  .points li:last-child { border-bottom: none; }
+  .points .idx {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+    color: #8B7355;
+    letter-spacing: 0.1em;
+    min-width: 34px;
+    padding-top: 4px;
+    font-weight: 500;
+  }
+  .points .body {
+    flex: 1;
+  }
+  .points .body strong {
+    color: #1B3B6B;
+    font-weight: 600;
+  }
+  .points .body .dim {
+    color: #555;
+    font-size: 14px;
+    display: block;
+    margin-top: 3px;
+    letter-spacing: 0.02em;
+  }
 
-    <div class="path">
-      <div class="road road-1"></div>
-      <div class="road road-2"></div>
-      <div class="road road-3"></div>
-      <div class="road road-4"></div>
-      <div class="road road-5"></div>
-      <div class="road road-6"></div>
-      <div class="road road-7"></div>
-      <div class="road road-8"></div>
+  /* 右侧几何构成 */
+  .composition {
+    position: absolute;
+    top: 150px;
+    right: 90px;
+    width: 620px;
+    height: 620px;
+    z-index: 3;
+  }
+  .patch-grid {
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    width: 500px;
+    height: 500px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 6px;
+  }
+  .patch {
+    position: relative;
+    background: transparent;
+  }
+  .patch.p1 { background: rgba(27,59,107,0.85); }
+  .patch.p2 { background: rgba(139,115,85,0.55); }
+  .patch.p3 { background: rgba(27,59,107,0.28); }
+  .patch.p4 { background: transparent; border: 1.5px solid rgba(27,59,107,0.5); }
+  .patch.p5 { background: rgba(139,115,85,0.2); }
+  .patch.p6 { background: rgba(85,85,85,0.18); }
+  .patch.p7 { background: rgba(27,59,107,0.12); }
+  .patch.p8 { background: transparent; border: 1px dashed rgba(139,115,85,0.6); }
 
-      <div class="square-mark" style="left:196px;top:97px"></div>
-      <div class="square-mark" style="left:454px;top:77px"></div>
-      <div class="square-mark" style="left:416px;top:217px"></div>
-      <div class="square-mark" style="left:340px;top:337px"></div>
-      <div class="square-mark" style="left:378px;top:417px"></div>
-      <div class="square-mark" style="left:516px;top:457px"></div>
-    </div>
+  /* 银线道路 - 蜿蜒路径 */
+  .roads {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 620px;
+    height: 620px;
+    pointer-events: none;
+  }
 
-    <div class="circle-deco"></div>
-    <div class="circle-deco-inner"></div>
+  /* 圆形装饰 */
+  .deco-circle-1 {
+    position: absolute;
+    top: -20px;
+    right: 40px;
+    width: 140px;
+    height: 140px;
+    border: 2px solid #1B3B6B;
+    border-radius: 50%;
+  }
+  .deco-circle-2 {
+    position: absolute;
+    top: 20px;
+    right: 60px;
+    width: 60px;
+    height: 60px;
+    background: #1B3B6B;
+    border-radius: 50%;
+  }
+  .deco-square {
+    position: absolute;
+    bottom: 20px;
+    left: -10px;
+    width: 80px;
+    height: 80px;
+    background: #8B7355;
+    opacity: 0.85;
+  }
+  .deco-line-v {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    width: 2px;
+    height: 180px;
+    background: #1B3B6B;
+  }
 
-    <div class="line-deco line-1"></div>
-    <div class="line-deco line-2"></div>
-    <div class="line-deco line-3"></div>
+  /* 右下角图例 */
+  .legend {
+    position: absolute;
+    bottom: 40px;
+    right: 90px;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    color: #8B7355;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 5;
+  }
+  .legend .swatch {
+    width: 10px;
+    height: 10px;
+    background: #1B3B6B;
+  }
+
+  /* 底部页脚 */
+  .footer {
+    position: absolute;
+    bottom: 46px;
+    left: 90px;
+    right: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 12px;
+    letter-spacing: 0.32em;
+    color: #8B7355;
+    z-index: 5;
+  }
+  .footer .rule {
+    flex: 1;
+    height: 1px;
+    background: rgba(139,115,85,0.35);
+    margin: 0 22px;
+  }
+
+  /* 左侧装饰方框 */
+  .corner-mark {
+    position: absolute;
+    top: 90px;
+    left: 60px;
+    width: 4px;
+    height: 46px;
+    background: #1B3B6B;
+    z-index: 6;
+  }
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <div class="corner-mark"></div>
+
+  <div class="header-bar">
+    <span><span class="dot"></span>OPEN SOURCE · NEW INSTITUTIONAL ECONOMICS</span>
+    <span class="rule"></span>
+    <span>LECTURE 05 · PATH DEPENDENCE</span>
   </div>
 
-  <div class="vision-caption">大地如斑斓拼布，蜿蜒道路似银线穿梭其间</div>
+  <div class="content">
+    <div class="chapter-mark">
+      <div class="chapter-num">05<span class="slash">/</span>27</div>
+      <div class="chapter-label">CH.Ⅴ · 交易成本与路径依赖</div>
+    </div>
+
+    <h1 class="title">更大范围的<em>路径依赖</em></h1>
+
+    <div class="subtitle">
+      大地如斑斓拼布<span class="sep"></span>蜿蜒道路似银线穿梭其间<span class="sep"></span>隐喻路径依赖的多元与不可逆
+    </div>
+
+    <ul class="points">
+      <li>
+        <span class="idx">Ⅰ</span>
+        <span class="body">
+          <strong>更大范围的路径依赖</strong>
+          <span class="dim">超越具体技术选择，延伸至制度、文化、法律层面</span>
+        </span>
+      </li>
+      <li>
+        <span class="idx">Ⅱ</span>
+        <span class="body">
+          <strong>技术是其中的一部分</strong>
+          <span class="dim">编码规范、接口协议、生态位——都是历史的选择</span>
+        </span>
+      </li>
+      <li>
+        <span class="idx">Ⅲ</span>
+        <span class="body">
+          <strong>软实力也是很大的路径依赖</strong>
+          <span class="dim">文化、制度、话语方式——无形的锁定更为深刻</span>
+        </span>
+      </li>
+      <li>
+        <span class="idx">Ⅳ</span>
+        <span class="body">
+          <strong>知识财产权法在本土的产生与发展</strong>
+          <span class="dim">制度移植与本土化之间的张力</span>
+        </span>
+      </li>
+      <li>
+        <span class="idx">Ⅴ</span>
+        <span class="body">
+          <strong>儒家的分层法，伟大的革命都无法根治</strong>
+          <span class="dim">观念的路径依赖比制度更顽固</span>
+        </span>
+      </li>
+      <li>
+        <span class="idx">Ⅵ</span>
+        <span class="body">
+          <strong>开源世界的平等观念，接受绝非一日之功</strong>
+          <span class="dim">从等级秩序到水平协作的认知跨越</span>
+        </span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="composition">
+    <div class="deco-line-v"></div>
+    <div class="deco-circle-1"></div>
+    <div class="deco-circle-2"></div>
+
+    <div class="patch-grid">
+      <div class="patch p1"></div>
+      <div class="patch p3"></div>
+      <div class="patch p2"></div>
+      <div class="patch p6"></div>
+      <div class="patch p4"></div>
+
+      <div class="patch p5"></div>
+      <div class="patch p1"></div>
+      <div class="patch p7"></div>
+      <div class="patch p3"></div>
+      <div class="patch p8"></div>
+
+      <div class="patch p4"></div>
+      <div class="patch p2"></div>
+      <div class="patch p1"></div>
+      <div class="patch p5"></div>
+      <div class="patch p3"></div>
+
+      <div class="patch p8"></div>
+      <div class="patch p6"></div>
+      <div class="patch p4"></div>
+      <div class="patch p1"></div>
+      <div class="patch p2"></div>
+
+      <div class="patch p3"></div>
+      <div class="patch p7"></div>
+      <div class="patch p2"></div>
+      <div class="patch p8"></div>
+      <div class="patch p1"></div>
+    </div>
+
+    <svg class="roads" viewBox="0 0 620 620" xmlns="http://www.w3.org/2000/svg">
+      <!-- 主蜿蜒路径 -->
+      <path d="M -10 500 Q 80 420, 160 470 T 320 380 T 480 300 T 620 220"
+            stroke="#C8C8C8" stroke-width="4.5" fill="none" stroke-linecap="round" opacity="0.85"/>
+      <!-- 次级银线 -->
+      <path d="M 20 580 Q 120 520, 220 540 T 400 460 T 620 380"
+            stroke="#B0B0B0" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-dasharray="8 6" opacity="0.7"/>
+      <!-- 另一条支线 -->
+      <path d="M 60 60 Q 160 140, 260 100 T 440 180 T 620 120"
+            stroke="#A8A8A8" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.6"/>
+
+      <!-- 路径节点 -->
+      <circle cx="160" cy="470" r="6" fill="#1B3B6B"/>
+      <circle cx="320" cy="380" r="5" fill="#8B7355"/>
+      <circle cx="480" cy="300" r="6" fill="#1B3B6B"/>
+      <circle cx="220" cy="540" r="4" fill="#8B7355"/>
+      <circle cx="260" cy="100" r="5" fill="#1B3B6B"/>
+
+      <!-- 标注 -->
+      <text x="486" y="290" font-family="'Noto Serif SC', serif" font-size="11" fill="#555" letter-spacing="0.15em">路径 · PATH</text>
+      <text x="166" y="462" font-family="'Noto Serif SC', serif" font-size="10" fill="#555" letter-spacing="0.12em">节点</text>
+    </svg>
+
+    <div class="deco-square"></div>
+  </div>
+
+  <div class="legend">
+    <span>FIG.05 · PATH DEPENDENCE &nbsp;/&nbsp; 制度与文化的路径依赖</span>
+  </div>
+
+  <div class="footer">
+    <span>「开源之道」· 新制度经济学视角</span>
+    <span class="rule"></span>
+    <span>SLIDE 05 / 27</span>
+  </div>
+
 </div>
-
-<div class="num-big">07</div>
-
-<div class="footer-bar">
-  <div class="footer-dot"></div>
-  <div class="footer-line"></div>
-  <div class="footer-text">OPEN SOURCE · NEW INSTITUTIONAL ECONOMICS</div>
-</div>
-
-</body></html>
+</body>
+</html>

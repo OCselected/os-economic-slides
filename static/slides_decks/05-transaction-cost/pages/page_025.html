@@ -1,0 +1,350 @@
+
+
+<!DOCTYPE html>
+<html><!-- source_hash: 6b9b1093d0a04e8b -->
+<head>
+<meta charset="UTF-8">
+<title>第05期 · 交易成本与路径依赖 — 科斯引语</title>
+<style>
+  html, body {
+    width: 1600px;
+    height: 900px;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background: #F5F0E8;
+    font-family: 'Noto Sans SC', sans-serif;
+  }
+
+  .canvas {
+    position: relative;
+    width: 1600px;
+    height: 900px;
+    overflow: hidden;
+  }
+
+  /* Geometric decorations */
+  .geo-circle-large {
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    border: 3px solid #1B3B6B;
+    top: -80px;
+    right: -100px;
+    opacity: 0.08;
+  }
+
+  .geo-circle-medium {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: #1B3B6B;
+    opacity: 0.06;
+    bottom: 60px;
+    left: 80px;
+  }
+
+  .geo-square-1 {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: #1B3B6B;
+    opacity: 0.9;
+    top: 60px;
+    left: 80px;
+  }
+
+  .geo-square-2 {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: #8B7355;
+    opacity: 0.7;
+    top: 60px;
+    left: 160px;
+  }
+
+  .geo-square-3 {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: #1B3B6B;
+    opacity: 0.5;
+    top: 60px;
+    left: 210px;
+  }
+
+  .geo-line-h1 {
+    position: absolute;
+    width: 120px;
+    height: 3px;
+    background: #1B3B6B;
+    top: 120px;
+    left: 80px;
+    opacity: 0.6;
+  }
+
+  .geo-line-h2 {
+    position: absolute;
+    width: 60px;
+    height: 2px;
+    background: #8B7355;
+    top: 120px;
+    left: 220px;
+    opacity: 0.5;
+  }
+
+  .geo-circle-small {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #8B7355;
+    top: 160px;
+    left: 80px;
+    opacity: 0.4;
+  }
+
+  /* Large decorative circle - right side composition */
+  .geo-deco-ring {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    border: 2px solid #1B3B6B;
+    opacity: 0.07;
+    top: 280px;
+    right: 120px;
+  }
+
+  .geo-deco-fill {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: #1B3B6B;
+    opacity: 0.05;
+    top: 360px;
+    right: 200px;
+  }
+
+  .geo-deco-square-large {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: #1B3B6B;
+    opacity: 0.04;
+    bottom: 40px;
+    right: 60px;
+  }
+
+  /* Vertical accent lines */
+  .geo-line-v1 {
+    position: absolute;
+    width: 2px;
+    height: 120px;
+    background: #1B3B6B;
+    opacity: 0.1;
+    top: 200px;
+    left: 400px;
+  }
+
+  .geo-line-v2 {
+    position: absolute;
+    width: 1px;
+    height: 80px;
+    background: #8B7355;
+    opacity: 0.15;
+    top: 240px;
+    left: 420px;
+  }
+
+  /* Content area */
+  .content-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1600px;
+    height: 900px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 140px;
+  }
+
+  .lecture-header {
+    position: absolute;
+    top: 40px;
+    left: 140px;
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 13px;
+    color: #8B7355;
+    letter-spacing: 2px;
+    font-weight: 400;
+  }
+
+  .lecture-header-right {
+    position: absolute;
+    top: 40px;
+    right: 140px;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 12px;
+    color: #8B7355;
+    letter-spacing: 1px;
+    opacity: 0.7;
+  }
+
+  .quote-mark {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 80px;
+    color: #1B3B6B;
+    opacity: 0.12;
+    line-height: 1;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+
+  .quote-text {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 42px;
+    color: #1B3B6B;
+    line-height: 1.75;
+    font-weight: 500;
+    max-width: 1050px;
+    letter-spacing: 0.5px;
+  }
+
+  .quote-underline {
+    width: 60px;
+    height: 2px;
+    background: #8B7355;
+    margin: 40px 0 24px 0;
+  }
+
+  .attribution {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 18px;
+    color: #8B7355;
+    line-height: 1.6;
+    letter-spacing: 1px;
+  }
+
+  .attribution .name {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-weight: 600;
+    color: #1B3B6B;
+    opacity: 0.7;
+  }
+
+  .attribution .source {
+    font-style: italic;
+    font-size: 16px;
+    color: #8B7355;
+    opacity: 0.7;
+  }
+
+  /* Bottom page indicator */
+  .page-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 140px;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    color: #8B7355;
+    opacity: 0.5;
+    letter-spacing: 1px;
+  }
+
+  .page-indicator-right {
+    position: absolute;
+    bottom: 40px;
+    right: 140px;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    color: #8B7355;
+    opacity: 0.5;
+    letter-spacing: 1px;
+  }
+
+  /* Additional geometric accents */
+  .geo-dot-1 {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #1B3B6B;
+    opacity: 0.15;
+    bottom: 180px;
+    right: 380px;
+  }
+
+  .geo-dot-2 {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #8B7355;
+    opacity: 0.2;
+    bottom: 200px;
+    right: 400px;
+  }
+
+  .geo-triangle {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 26px solid #1B3B6B;
+    opacity: 0.06;
+    top: 450px;
+    right: 180px;
+  }
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <!-- Geometric decorations -->
+  <div class="geo-circle-large"></div>
+  <div class="geo-circle-medium"></div>
+  <div class="geo-square-1"></div>
+  <div class="geo-square-2"></div>
+  <div class="geo-square-3"></div>
+  <div class="geo-line-h1"></div>
+  <div class="geo-line-h2"></div>
+  <div class="geo-circle-small"></div>
+  <div class="geo-deco-ring"></div>
+  <div class="geo-deco-fill"></div>
+  <div class="geo-deco-square-large"></div>
+  <div class="geo-line-v1"></div>
+  <div class="geo-line-v2"></div>
+  <div class="geo-dot-1"></div>
+  <div class="geo-dot-2"></div>
+  <div class="geo-triangle"></div>
+
+  <!-- Header -->
+  <div class="lecture-header">第 05 期 · 交易成本与路径依赖</div>
+  <div class="lecture-header-right">包豪斯几何构成</div>
+
+  <!-- Main content -->
+  <div class="content-wrapper">
+    <div class="quote-mark">"</div>
+    <div class="quote-text">经济学家带给其他社会科学的主要优势仅仅是一种观察世界的方式。</div>
+    <div class="quote-underline"></div>
+    <div class="attribution">
+      <div class="name">罗纳德·H·科斯</div>
+      <div class="source">《Economics and Contiguous Disciplines》</div>
+    </div>
+  </div>
+
+  <!-- Page indicators -->
+  <div class="page-indicator">05-transaction-cost</div>
+  <div class="page-indicator-right">Slide</div>
+
+</div>
+</body>
+</html>

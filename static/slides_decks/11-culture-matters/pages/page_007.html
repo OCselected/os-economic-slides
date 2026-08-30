@@ -1,202 +1,596 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: 66e33c355a6b9e8b --><head><meta charset="UTF-8"><title>文化作为社会事实——Yochai Benkler</title><style>
-* { margin:0; padding:0; box-sizing:border-box; }
-html, body { width:1600px; height:900px; overflow:hidden; margin:0; font-family:'Noto Sans SC','Source Han Sans SC',sans-serif; }
-body { background:#F5F0E8; color:#1B3B6B; position:relative; }
+<!DOCTYPE html>
+<html><!-- source_hash: 8d87459b3daf5adf -->
+<head>
+<meta charset="UTF-8">
+<title>第 11 期 · 文化的重要作用</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 1600px;
+    height: 900px;
+    overflow: hidden;
+    margin: 0;
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  }
+  body {
+    background: #F5F0E8;
+    position: relative;
+  }
 
-/* Subtle parchment texture */
-body::before {
-  content:''; position:absolute; top:0; left:0; width:1600px; height:900px;
-  background:
-    radial-gradient(ellipse at 20% 30%, rgba(139,115,85,0.04) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 70%, rgba(27,59,107,0.03) 0%, transparent 50%);
-  pointer-events:none;
-}
+  /* Subtle parchment texture overlay */
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: 
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(139, 115, 85, 0.015) 2px,
+        rgba(139, 115, 85, 0.015) 4px
+      );
+    pointer-events: none;
+    z-index: 1;
+  }
 
-/* Top header bar */
-.header-bar { position:absolute; top:50px; left:80px; right:80px; height:48px; display:flex; align-items:center; justify-content:space-between; }
-.header-left { display:flex; align-items:center; gap:20px; }
-.header-dot { width:12px; height:12px; background:#1B3B6B; border-radius:50%; }
-.header-square { width:12px; height:12px; background:#8B7355; }
-.header-line { width:120px; height:2px; background:#1B3B6B; }
-.header-title { font-family:'Noto Serif SC',serif; font-size:18px; letter-spacing:4px; color:#1B3B6B; }
-.header-right { font-size:14px; color:#555; letter-spacing:2px; }
+  /* Bauhaus decorative elements */
+  .deco-circle-top-right {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 3px solid #1B3B6B;
+    top: -60px;
+    right: -60px;
+    opacity: 0.3;
+  }
 
-/* Left composition area - spoon with caramel ice cream */
-.composition { position:absolute; top:160px; left:80px; width:560px; height:600px; }
+  .deco-square-top-left {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: #1B3B6B;
+    top: 60px;
+    left: -40px;
+    opacity: 0.15;
+  }
 
-/* Spoon handle */
-.spoon-handle { position:absolute; top:160px; left:320px; width:8px; height:360px; background:#1B3B6B; }
-.spoon-handle-end { position:absolute; top:500px; left:310px; width:28px; height:8px; background:#1B3B6B; }
+  .deco-line-h {
+    position: absolute;
+    width: 1200px;
+    height: 1px;
+    background: #8B7355;
+    opacity: 0.3;
+    bottom: 80px;
+    left: 200px;
+  }
 
-/* Spoon bowl (the cup part) */
-.spoon-bowl { position:absolute; top:30px; left:260px; width:120px; height:160px; background:#1B3B6B; border-radius:0 0 60px 60px; }
-.spoon-bowl-inner { position:absolute; top:30px; left:272px; width:96px; height:140px; background:#F5F0E8; border-radius:0 0 50px 50px; }
-.spoon-bowl-border { position:absolute; top:30px; left:260px; width:120px; height:160px; border:2px solid #1B3B6B; border-top:none; border-radius:0 0 60px 60px; }
+  .deco-line-v {
+    position: absolute;
+    width: 1px;
+    height: 600px;
+    background: #1B3B6B;
+    opacity: 0.1;
+    top: 150px;
+    left: 780px;
+  }
 
-/* Ice cream scoops - large circles */
-.scoop-1 { position:absolute; top:30px; left:230px; width:170px; height:170px; background:#8B7355; border-radius:50%; border:2px solid #1B3B6B; }
-.scoop-2 { position:absolute; top:0px; left:270px; width:130px; height:130px; background:#C4A07A; border-radius:50%; border:2px solid #1B3B6B; }
-.scoop-3 { position:absolute; top:10px; left:200px; width:110px; height:110px; background:#A0845E; border-radius:50%; border:2px solid #1B3B6B; }
+  /* Lecture header */
+  .header {
+    position: absolute;
+    top: 40px;
+    left: 60px;
+    z-index: 10;
+  }
 
-/* Ice cream texture marks */
-.texture-1 { position:absolute; top:50px; left:260px; width:30px; height:3px; background:#1B3B6B; border-radius:2px; }
-.texture-2 { position:absolute; top:80px; left:280px; width:20px; height:3px; background:#1B3B6B; border-radius:2px; }
-.texture-3 { position:absolute; top:110px; left:245px; width:25px; height:3px; background:#1B3B6B; border-radius:2px; }
-.texture-4 { position:absolute; top:65px; left:310px; width:15px; height:3px; background:#1B3B6B; border-radius:2px; }
-.texture-5 { position:absolute; top:95px; left:270px; width:18px; height:3px; background:#1B3B6B; border-radius:2px; }
+  .lecture-num {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #8B7355;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
 
-/* Caramel splash droplets */
-.drip-1 { position:absolute; top:185px; left:270px; width:30px; height:55px; background:#C4A07A; border-radius:50%; border:2px solid #1B3B6B; }
-.drip-2 { position:absolute; top:180px; left:310px; width:22px; height:45px; background:#A0845E; border-radius:50%; border:2px solid #1B3B6B; }
-.drip-3 { position:absolute; top:190px; left:345px; width:16px; height:35px; background:#C4A07A; border-radius:50%; border:2px solid #1B3B6B; }
+  .lecture-title {
+    font-size: 14px;
+    color: #555;
+    letter-spacing: 1px;
+  }
 
-/* Splash droplets - scattered */
-.splash-1 { position:absolute; top:0px; left:160px; width:18px; height:18px; background:#C4A07A; border-radius:50%; border:2px solid #1B3B6B; }
-.splash-2 { position:absolute; top:15px; left:130px; width:12px; height:12px; background:#8B7355; border-radius:50%; border:2px solid #1B3B6B; }
-.splash-3 { position:absolute; top:40px; left:105px; width:8px; height:8px; background:#C4A07A; border-radius:50%; }
-.splash-4 { position:absolute; top:-10px; left:200px; width:14px; height:14px; background:#A0845E; border-radius:50%; border:2px solid #1B3B6B; }
-.splash-5 { position:absolute; top:20px; left:380px; width:16px; height:16px; background:#C4A07A; border-radius:50%; border:2px solid #1B3B6B; }
-.splash-6 { position:absolute; top:5px; left:410px; width:10px; height:10px; background:#8B7355; border-radius:50%; border:2px solid #1B3B6B; }
-.splash-7 { position:absolute; top:45px; left:430px; width:6px; height:6px; background:#C4A07A; border-radius:50%; }
-.splash-8 { position:absolute; top:120px; left:60px; width:10px; height:10px; background:#8B7355; border-radius:50%; border:2px solid #1B3B6B; }
-.splash-9 { position:absolute; top:155px; left:30px; width:7px; height:7px; background:#C4A07A; border-radius:50%; }
-.splash-10 { position:absolute; top:220px; left:20px; width:5px; height:5px; background:#8B7355; border-radius:50%; }
+  /* Main visual area - abstract spoon and caramel */
+  .visual-container {
+    position: absolute;
+    top: 160px;
+    left: 80px;
+    width: 660px;
+    height: 580px;
+    z-index: 5;
+  }
 
-/* Splash arc lines */
-.arc-1 { position:absolute; top:180px; left:220px; width:80px; height:80px; border:2px solid #8B7355; border-radius:50%; border-top:none; border-left:none; border-right:none; }
-.arc-2 { position:absolute; top:195px; left:200px; width:100px; height:100px; border:1px solid #C4A07A; border-radius:50%; border-top:none; border-left:none; }
+  /* Spoon bowl - large circle */
+  .spoon-bowl {
+    position: absolute;
+    width: 280px;
+    height: 180px;
+    border-radius: 140px 140px 90px 90px;
+    border: 3px solid #1B3B6B;
+    background: rgba(27, 59, 107, 0.04);
+    top: 180px;
+    left: 120px;
+  }
 
-/* Bauhaus decorative elements near composition */
-.deco-circle-outer { position:absolute; top:140px; left:60px; width:60px; height:60px; border:2px solid #1B3B6B; border-radius:50%; }
-.deco-circle-inner { position:absolute; top:155px; left:75px; width:30px; height:30px; background:#1B3B6B; border-radius:50%; }
+  /* Spoon handle */
+  .spoon-handle {
+    position: absolute;
+    width: 180px;
+    height: 8px;
+    background: #1B3B6B;
+    top: 308px;
+    left: 400px;
+    transform: rotate(25deg);
+    border-radius: 4px;
+    opacity: 0.7;
+  }
 
-.deco-square { position:absolute; top:560px; left:60px; width:50px; height:50px; background:#8B7355; }
-.deco-square-small { position:absolute; top:575px; left:80px; width:20px; height:20px; background:#F5F0E8; }
+  /* Caramel scoop inside spoon */
+  .caramel-scoop {
+    position: absolute;
+    width: 180px;
+    height: 110px;
+    border-radius: 90px 90px 50px 50px;
+    background: #C49A6C;
+    top: 195px;
+    left: 170px;
+    opacity: 0.85;
+  }
 
-.deco-triangle { position:absolute; top:580px; left:140px; width:0; height:0; border-left:25px solid transparent; border-right:25px solid transparent; border-bottom:45px solid #1B3B6B; }
+  /* Caramel scoop highlight */
+  .caramel-highlight {
+    position: absolute;
+    width: 60px;
+    height: 35px;
+    border-radius: 50%;
+    background: rgba(245, 240, 232, 0.4);
+    top: 210px;
+    left: 220px;
+  }
 
-/* Right side - quote area */
-.quote-area { position:absolute; top:170px; left:720px; right:80px; height:600px; display:flex; flex-direction:column; }
+  /* Splash droplets */
+  .droplet-1 {
+    position: absolute;
+    width: 42px;
+    height: 55px;
+    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+    background: #B8875A;
+    top: 80px;
+    left: 280px;
+    opacity: 0.9;
+  }
 
-.section-label { font-size:13px; letter-spacing:5px; color:#8B7355; margin-bottom:24px; display:flex; align-items:center; gap:14px; }
-.section-label-bar { width:40px; height:2px; background:#8B7355; }
+  .droplet-2 {
+    position: absolute;
+    width: 28px;
+    height: 38px;
+    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+    background: #C49A6C;
+    top: 130px;
+    left: 140px;
+    opacity: 0.8;
+  }
 
-.quote-text { font-family:'Noto Serif SC','Source Han Serif SC',serif; font-size:28px; line-height:1.7; color:#1B3B6B; letter-spacing:1px; font-weight:400; }
-.quote-text .highlight { color:#8B7355; }
-.quote-text .em { font-style:italic; }
+  .droplet-3 {
+    position: absolute;
+    width: 35px;
+    height: 45px;
+    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+    background: #A67B4A;
+    top: 60px;
+    left: 380px;
+    opacity: 0.85;
+  }
 
-.quote-mark { font-family:'Noto Serif SC',serif; font-size:80px; color:#1B3B6B; line-height:0.8; margin-bottom:10px; opacity:0.3; }
+  .droplet-4 {
+    position: absolute;
+    width: 22px;
+    height: 30px;
+    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+    background: #C49A6C;
+    top: 110px;
+    left: 450px;
+    opacity: 0.75;
+  }
 
-.attribution { margin-top:40px; padding-top:24px; border-top:1px solid rgba(27,59,107,0.3); display:flex; align-items:flex-start; gap:16px; }
-.attr-line { width:4px; height:48px; background:#1B3B6B; flex-shrink:0; margin-top:4px; }
-.attr-text { font-size:15px; line-height:1.8; color:#555; letter-spacing:1px; }
-.attr-author { color:#1B3B6B; font-family:'Noto Serif SC',serif; font-size:17px; font-weight:400; }
-.attr-work { font-style:italic; }
+  .droplet-5 {
+    position: absolute;
+    width: 50px;
+    height: 30px;
+    border-radius: 25px;
+    background: #8B6E45;
+    top: 160px;
+    left: 40px;
+    opacity: 0.7;
+    transform: rotate(-30deg);
+  }
 
-/* Bottom bar */
-.bottom-bar { position:absolute; bottom:40px; left:80px; right:80px; display:flex; align-items:center; justify-content:space-between; }
-.bottom-line { position:absolute; bottom:38px; left:80px; right:80px; height:1px; background:rgba(27,59,107,0.2); }
-.bottom-left { display:flex; align-items:center; gap:12px; font-size:12px; color:#555; letter-spacing:2px; }
-.bottom-dot { width:8px; height:8px; background:#1B3B6B; border-radius:50%; }
-.bottom-center { font-family:'Noto Serif SC',serif; font-size:13px; color:#8B7355; letter-spacing:3px; }
-.bottom-right { font-size:12px; color:#555; letter-spacing:2px; }
+  .droplet-6 {
+    position: absolute;
+    width: 18px;
+    height: 25px;
+    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+    background: #B8875A;
+    top: 40px;
+    left: 200px;
+    opacity: 0.8;
+  }
 
-/* Decorative right-side geometry */
-.right-deco-1 { position:absolute; top:770px; left:720px; width:35px; height:35px; border:2px solid #1B3B6B; border-radius:50%; }
-.right-deco-2 { position:absolute; top:780px; left:765px; width:15px; height:15px; background:#8B7355; border-radius:50%; }
-.right-deco-3 { position:absolute; top:790px; left:810px; width:25px; height:2px; background:#1B3B6B; }
-.right-deco-4 { position:absolute; top:785px; left:845px; width:14px; height:14px; background:#1B3B6B; }
+  .droplet-7 {
+    position: absolute;
+    width: 32px;
+    height: 22px;
+    border-radius: 16px;
+    background: #C49A6C;
+    top: 140px;
+    left: 350px;
+    opacity: 0.65;
+    transform: rotate(15deg);
+  }
 
-/* Big background number */
-.bg-number { position:absolute; top:680px; left:680px; font-family:'Noto Serif SC',serif; font-size:120px; color:rgba(27,59,107,0.06); font-weight:700; line-height:1; letter-spacing:-4px; }
-</style></head><body>
+  /* Motion arcs */
+  .arc-1 {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    border: 2px solid #8B7355;
+    border-radius: 50%;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    top: 50px;
+    left: 300px;
+    transform: rotate(-45deg);
+    opacity: 0.4;
+  }
 
-<div class="header-bar">
-  <div class="header-left">
-    <div class="header-dot"></div>
-    <div class="header-title">新制度经济学视角下的开源</div>
-    <div class="header-line"></div>
-    <div class="header-square"></div>
+  .arc-2 {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border: 2px solid #1B3B6B;
+    border-radius: 50%;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    top: 100px;
+    left: 100px;
+    transform: rotate(30deg);
+    opacity: 0.25;
+  }
+
+  /* Institutional squares at bottom */
+  .inst-square-1 {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: #1B3B6B;
+    top: 460px;
+    left: 60px;
+    opacity: 0.12;
+  }
+
+  .inst-square-2 {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    background: #1B3B6B;
+    top: 490px;
+    left: 140px;
+    opacity: 0.08;
+  }
+
+  .inst-square-3 {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: #1B3B6B;
+    top: 440px;
+    left: 200px;
+    opacity: 0.06;
+  }
+
+  .inst-square-4 {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    background: #8B7355;
+    top: 510px;
+    left: 300px;
+    opacity: 0.15;
+  }
+
+  /* Small connecting dots */
+  .dot-1 {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #1B3B6B;
+    top: 400px;
+    left: 100px;
+    opacity: 0.5;
+  }
+
+  .dot-2 {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #8B7355;
+    top: 420px;
+    left: 350px;
+    opacity: 0.5;
+  }
+
+  .dot-3 {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #C49A6C;
+    top: 380px;
+    left: 250px;
+    opacity: 0.6;
+  }
+
+  /* Right content panel */
+  .content-panel {
+    position: absolute;
+    top: 180px;
+    left: 830px;
+    width: 660px;
+    z-index: 10;
+  }
+
+  .quote-section {
+    position: relative;
+    padding-left: 40px;
+  }
+
+  .quote-mark {
+    position: absolute;
+    left: -20px;
+    top: -15px;
+    font-size: 80px;
+    color: #1B3B6B;
+    opacity: 0.15;
+    font-family: 'Noto Serif SC', serif;
+    line-height: 1;
+  }
+
+  .quote-text {
+    font-size: 26px;
+    line-height: 1.7;
+    color: #1B3B6B;
+    font-weight: 400;
+    font-style: italic;
+    margin-bottom: 30px;
+    max-width: 620px;
+  }
+
+  .quote-text .keyword {
+    font-style: normal;
+    font-weight: 700;
+    color: #1B3B6B;
+    border-bottom: 2px solid #8B7355;
+    padding-bottom: 2px;
+  }
+
+  .attribution {
+    position: relative;
+    padding-left: 40px;
+  }
+
+  .attribution-line {
+    width: 30px;
+    height: 1px;
+    background: #8B7355;
+    margin-bottom: 12px;
+    margin-left: 40px;
+    opacity: 0.6;
+  }
+
+  .author {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 16px;
+    color: #555;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+
+  .source {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13px;
+    color: #8B7355;
+    letter-spacing: 0.5px;
+  }
+
+  /* Visual metaphor label */
+  .metaphor-label {
+    position: absolute;
+    bottom: 200px;
+    left: 830px;
+    width: 660px;
+    z-index: 10;
+  }
+
+  .metaphor-line {
+    width: 40px;
+    height: 2px;
+    background: #8B7355;
+    margin-bottom: 14px;
+  }
+
+  .metaphor-text {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13px;
+    color: #8B7355;
+    letter-spacing: 1px;
+    line-height: 1.6;
+  }
+
+  /* Bottom decorative bar */
+  .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 1600px;
+    height: 6px;
+    background: #1B3B6B;
+    opacity: 0.8;
+  }
+
+  .bottom-bar-accent {
+    position: absolute;
+    bottom: 6px;
+    left: 0;
+    width: 400px;
+    height: 3px;
+    background: #8B7355;
+    opacity: 0.6;
+  }
+
+  /* Slide number */
+  .slide-num {
+    position: absolute;
+    bottom: 30px;
+    right: 60px;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    color: #8B7355;
+    opacity: 0.6;
+    letter-spacing: 2px;
+    z-index: 10;
+  }
+
+  /* Circle accent right */
+  .circle-accent-right {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: #C49A6C;
+    bottom: 120px;
+    right: 180px;
+    opacity: 0.12;
+    z-index: 2;
+  }
+
+  .circle-accent-right-2 {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid #1B3B6B;
+    bottom: 150px;
+    right: 150px;
+    opacity: 0.2;
+    z-index: 3;
+  }
+
+  /* Small Bauhaus triangle */
+  .bauhaus-tri {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 50px solid #1B3B6B;
+    top: 70px;
+    left: 750px;
+    opacity: 0.08;
+  }
+</style>
+</head>
+<body>
+
+  <!-- Decorative Bauhaus elements -->
+  <div class="deco-circle-top-right"></div>
+  <div class="deco-square-top-left"></div>
+  <div class="deco-line-h"></div>
+  <div class="deco-line-v"></div>
+  <div class="bauhaus-tri"></div>
+  <div class="circle-accent-right"></div>
+  <div class="circle-accent-right-2"></div>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="lecture-num">LECTURE · 11</div>
+    <div class="lecture-title">文化的重要作用 · Culture Matters</div>
   </div>
-  <div class="header-right">CHAPTER 08 · CULTURE</div>
-</div>
 
-<div class="composition">
-  <div class="deco-circle-outer"></div>
-  <div class="deco-circle-inner"></div>
+  <!-- Visual Metaphor: Spoon with caramel splashes -->
+  <div class="visual-container">
+    <!-- Motion arcs -->
+    <div class="arc-1"></div>
+    <div class="arc-2"></div>
 
-  <div class="splash-1"></div>
-  <div class="splash-2"></div>
-  <div class="splash-3"></div>
-  <div class="splash-4"></div>
-  <div class="splash-5"></div>
-  <div class="splash-6"></div>
-  <div class="splash-7"></div>
-  <div class="splash-8"></div>
-  <div class="splash-9"></div>
-  <div class="splash-10"></div>
+    <!-- Caramel droplets (splash) -->
+    <div class="droplet-6"></div>
+    <div class="droplet-3"></div>
+    <div class="droplet-1"></div>
+    <div class="droplet-7"></div>
+    <div class="droplet-2"></div>
+    <div class="droplet-5"></div>
+    <div class="droplet-4"></div>
 
-  <div class="scoop-1"></div>
-  <div class="scoop-3"></div>
-  <div class="scoop-2"></div>
-  <div class="texture-1"></div>
-  <div class="texture-2"></div>
-  <div class="texture-3"></div>
-  <div class="texture-4"></div>
-  <div class="texture-5"></div>
+    <!-- Spoon -->
+    <div class="spoon-bowl"></div>
+    <div class="caramel-scoop"></div>
+    <div class="caramel-highlight"></div>
+    <div class="spoon-handle"></div>
 
-  <div class="arc-1"></div>
-  <div class="arc-2"></div>
+    <!-- Connecting dots (transition from splash to institution) -->
+    <div class="dot-1"></div>
+    <div class="dot-3"></div>
+    <div class="dot-2"></div>
 
-  <div class="drip-1"></div>
-  <div class="drip-2"></div>
-  <div class="drip-3"></div>
-
-  <div class="spoon-bowl"></div>
-  <div class="spoon-bowl-inner"></div>
-  <div class="spoon-bowl-border"></div>
-  <div class="spoon-handle"></div>
-  <div class="spoon-handle-end"></div>
-
-  <div class="deco-square"></div>
-  <div class="deco-square-small"></div>
-  <div class="deco-triangle"></div>
-</div>
-
-<div class="bg-number">08</div>
-
-<div class="quote-area">
-  <div class="section-label">
-    <span class="section-label-bar"></span>
-    <span>文化 · 作为社会事实</span>
+    <!-- Institutional accumulation (squares at bottom) -->
+    <div class="inst-square-3"></div>
+    <div class="inst-square-1"></div>
+    <div class="inst-square-2"></div>
+    <div class="inst-square-4"></div>
   </div>
 
-  <div class="quote-mark">"</div>
-
-  <div class="quote-text">
-    Culture so understood is <span class="highlight">a social fact</span> about particular sets of <span class="em">human beings</span> in <span class="highlight">historical context</span>.
-  </div>
-
-  <div class="attribution">
-    <div class="attr-line"></div>
-    <div class="attr-text">
-      <div class="attr-author">Yochai Benkler</div>
-      <div><span class="attr-work">The Wealth of Networks</span></div>
-      <div>Chapter 8 · Culture and Economics</div>
+  <!-- Right content: Quote -->
+  <div class="content-panel">
+    <div class="quote-section">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">
+        Culture so understood is a <span class="keyword">social fact</span> about particular sets of human beings in <span class="keyword">historical context</span>.
+      </div>
+    </div>
+    <div class="attribution">
+      <div class="author">— Yochai Benkler</div>
+      <div class="source">《The Wealth of Networks》Chapter 8</div>
     </div>
   </div>
-</div>
 
-<div class="bottom-line"></div>
-<div class="bottom-bar">
-  <div class="bottom-left">
-    <div class="bottom-dot"></div>
-    <span>OPEN SOURCE · INSTITUTIONAL ECONOMICS</span>
+  <!-- Metaphor label -->
+  <div class="metaphor-label">
+    <div class="metaphor-line"></div>
+    <div class="metaphor-text">
+      文化——感官的爆发与制度的积淀<br>
+      Culture as sensory eruption and institutional sediment
+    </div>
   </div>
-  <div class="bottom-center">文化是感官爆发与制度积淀</div>
-  <div class="bottom-right">08 / 14</div>
-</div>
 
-</body></html>
+  <!-- Bottom decorations -->
+  <div class="bottom-bar"></div>
+  <div class="bottom-bar-accent"></div>
+
+  <!-- Slide number -->
+  <div class="slide-num">28 · 尾声</div>
+
+</body>
+</html>

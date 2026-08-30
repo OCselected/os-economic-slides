@@ -1,292 +1,677 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: 479822c098b8499a --><head><meta charset="UTF-8"><title>第 10 期 · 劳动报酬的可测量性</title><style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1600px;height:900px;overflow:hidden;margin:0;font-family:'Noto Sans SC','PingFang SC',sans-serif;color:#1B3B6B}
-body{position:relative;background:#F5F0E8}
+<!DOCTYPE html>
+<html><!-- source_hash: 52aaf924761e9839 -->
+<head>
+<meta charset="UTF-8">
+<title>劳动报酬与财产分配 - 劳动报酬的可测量性</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-/* parchment texture */
-body::before{content:"";position:absolute;width:1600px;height:900px;background:
-  radial-gradient(ellipse at 20% 15%, rgba(139,115,85,0.05) 0%, transparent 50%),
-  radial-gradient(ellipse at 85% 85%, rgba(27,59,107,0.04) 0%, transparent 50%);
-  pointer-events:none}
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
+}
 
-/* top border line */
-.top-rule{position:absolute;top:60px;left:80px;width:1440px;height:1px;background:#1B3B6B}
-.top-rule-thin{position:absolute;top:68px;left:80px;width:1440px;height:1px;background:#8B7355;opacity:0.5}
+body {
+  background: #F5F0E8;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: #1B3B6B;
+  position: relative;
+}
 
-/* lecture tag */
-.lecture-tag{position:absolute;top:30px;left:80px;font-size:13px;letter-spacing:4px;color:#555;font-weight:400}
-.lecture-num{position:absolute;top:28px;right:80px;font-family:'Noto Serif SC',serif;font-size:14px;letter-spacing:3px;color:#8B7355}
+.slide-container {
+  width: 1600px;
+  height: 900px;
+  position: relative;
+  overflow: hidden;
+}
 
-/* bottom rule */
-.bot-rule{position:absolute;bottom:40px;left:80px;width:1440px;height:1px;background:#1B3B6B}
-.bot-rule-thin{position:absolute;bottom:34px;left:80px;width:1440px;height:1px;background:#8B7355;opacity:0.5}
-.footer-left{position:absolute;bottom:15px;left:80px;font-size:11px;letter-spacing:3px;color:#555}
-.footer-right{position:absolute;bottom:15px;right:80px;font-size:11px;letter-spacing:3px;color:#555;font-family:'Noto Serif SC',serif}
+/* Background texture overlay */
+.parchment-texture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1600px;
+  height: 900px;
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(139, 115, 85, 0.015) 3px,
+      rgba(139, 115, 85, 0.015) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 5px,
+      rgba(139, 115, 85, 0.01) 5px,
+      rgba(139, 115, 85, 0.01) 6px
+    );
+  pointer-events: none;
+  z-index: 0;
+}
 
-/* main layout */
-.main{position:absolute;top:100px;left:80px;width:1440px;height:720px;display:flex}
+/* Header bar */
+.header-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1600px;
+  height: 6px;
+  background: #1B3B6B;
+  z-index: 10;
+}
 
-/* LEFT: visual metaphor ~580px */
-.left-visual{width:600px;height:720px;position:relative;padding-right:40px;border-right:1px solid rgba(139,115,85,0.3)}
+/* Slide number */
+.slide-number {
+  position: absolute;
+  top: 28px;
+  left: 60px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14px;
+  color: #8B7355;
+  letter-spacing: 2px;
+  z-index: 10;
+}
 
-/* Theodolite geometric representation */
-.theo-body{position:absolute;top:130px;left:180px;width:240px;height:240px}
-.theo-outer{position:absolute;top:0;left:0;width:240px;height:240px;border:2px solid #1B3B6B;border-radius:50%}
-.theo-inner{position:absolute;top:40px;left:40px;width:160px;height:160px;border:1.5px solid #8B7355;border-radius:50%}
-.theo-core{position:absolute;top:100px;left:100px;width:40px;height:40px;background:#1B3B6B;border-radius:50%}
-.theo-cross-h{position:absolute;top:239px;left:0;width:240px;height:1px;background:#1B3B6B}
-.theo-cross-v{position:absolute;top:0;left:119px;width:1px;height:240px;background:#1B3B6B}
-.theo-tick1{position:absolute;top:235px;left:60px;width:1px;height:8px;background:#1B3B6B}
-.theo-tick2{position:absolute;top:235px;left:179px;width:1px;height:8px;background:#1B3B6B}
-.theo-tick3{position:absolute;top:50px;left:119px;width:1px;height:8px;background:#1B3B6B}
-.theo-diag1{position:absolute;top:22px;left:22px;width:196px;height:1px;background:rgba(27,59,107,0.3);transform:rotate(45deg);transform-origin:0 0}
-.theo-diag2{position:absolute;top:22px;left:22px;width:196px;height:1px;background:rgba(27,59,107,0.3);transform:rotate(-45deg);transform-origin:0 0}
+.slide-number span {
+  font-size: 18px;
+  font-weight: bold;
+  color: #1B3B6B;
+}
 
-/* theodolite scale markings */
-.scale-ring{position:absolute;top:8px;left:8px;width:224px;height:224px;border:1px dashed rgba(27,59,107,0.4);border-radius:50%}
-.scale-tick{position:absolute;background:#1B3B6B}
+/* Deck identifier */
+.deck-id {
+  position: absolute;
+  top: 28px;
+  right: 60px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  color: #8B7355;
+  letter-spacing: 1px;
+  z-index: 10;
+}
 
-/* Surveying lines radiating downward */
-.ray{position:absolute;background:#1B3B6B;height:1px}
-.ray1{top:370px;left:200px;width:60px}
-.ray2{top:370px;left:280px;width:80px}
-.ray3{top:370px;left:360px;width:60px}
-.ray4{top:370px;left:440px;width:70px}
+/* Title section */
+.title-section {
+  position: absolute;
+  top: 72px;
+  left: 60px;
+  z-index: 10;
+}
 
-/* Code grid map */
-.code-grid{position:absolute;top:430px;left:50px;width:500px;height:240px}
-.grid-cell{position:absolute;border:1px solid rgba(27,59,107,0.35)}
-.grid-cell.filled{background:#1B3B6B;opacity:0.85}
-.grid-cell.copper{background:#8B7355;opacity:0.7}
+.slide-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 42px;
+  font-weight: bold;
+  color: #1B3B6B;
+  letter-spacing: 1px;
+  line-height: 1.3;
+}
 
-/* measurement markers on grid */
-.measure-point{position:absolute;width:8px;height:8px;background:#1B3B6B;border-radius:50%}
-.measure-square{position:absolute;width:10px;height:10px;border:1.5px solid #8B7355}
+.slide-subtitle {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 16px;
+  color: #8B7355;
+  margin-top: 10px;
+  letter-spacing: 0.5px;
+}
 
-/* label tags */
-.geo-label{font-family:'Noto Serif SC',serif;font-size:11px;letter-spacing:2px;color:#555}
+/* Left content area */
+.content-left {
+  position: absolute;
+  top: 200px;
+  left: 60px;
+  width: 720px;
+  z-index: 10;
+}
 
-/* visual sub-title */
-.visual-title{position:absolute;top:20px;left:60px;font-family:'Noto Serif SC',serif;font-size:14px;letter-spacing:3px;color:#1B3B6B}
-.visual-sub{position:absolute;top:42px;left:60px;font-size:11px;letter-spacing:2px;color:#555}
+.content-heading {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 22px;
+  font-weight: bold;
+  color: #1B3B6B;
+  margin-bottom: 24px;
+  padding-left: 16px;
+  border-left: 3px solid #1B3B6B;
+}
 
-/* instrument name plate */
-.name-plate{position:absolute;top:395px;left:230px;width:180px;text-align:center;font-family:'Noto Serif SC',serif;font-size:10px;letter-spacing:3px;color:#555;padding-top:6px;border-top:1px solid rgba(27,59,107,0.3)}
+.bullet-list {
+  list-style: none;
+  padding: 0;
+}
 
-/* RIGHT: content ~860px */
-.right-content{width:820px;height:720px;padding-left:60px;position:relative;display:flex;flex-direction:column;justify-content:center}
+.bullet-list li {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 17px;
+  color: #333;
+  line-height: 1.7;
+  margin-bottom: 14px;
+  padding-left: 24px;
+  position: relative;
+}
 
-.period-tag{font-size:12px;letter-spacing:5px;color:#8B7355;font-weight:400;margin-bottom:14px}
-.period-tag::before{content:"";display:inline-block;width:30px;height:1px;background:#8B7355;vertical-align:middle;margin-right:12px}
+.bullet-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 8px;
+  height: 8px;
+  background: #8B7355;
+}
 
-.main-title{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:52px;font-weight:600;line-height:1.15;color:#1B3B6B;letter-spacing:1px;margin-bottom:18px}
-.main-sub{font-family:'Noto Serif SC',serif;font-size:18px;color:#8B7355;letter-spacing:2px;margin-bottom:40px;font-weight:400}
+.bullet-list li.question {
+  color: #1B3B6B;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
 
-.title-bar{width:80px;height:3px;background:#1B3B6B;margin-bottom:36px}
+.bullet-list li.question::before {
+  width: 10px;
+  height: 10px;
+  background: #1B3B6B;
+  border-radius: 50%;
+  top: 9px;
+}
 
-/* bullets */
-.bullet-list{display:flex;flex-direction:column;gap:18px}
-.bullet{display:flex;align-items:flex-start;gap:20px}
-.bullet-mark{flex-shrink:0;margin-top:8px}
-.bullet-mark-square{width:12px;height:12px;background:#1B3B6B}
-.bullet-mark-circle{width:12px;height:12px;border:1.5px solid #1B3B6B;border-radius:50%;background:transparent}
-.bullet-mark-triangle{width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:12px solid #8B7355}
-.bullet-mark-line{width:14px;height:2px;background:#8B7355}
-.bullet-mark-diamond{width:10px;height:10px;background:#8B7355}
+/* Right visual area */
+.visual-area {
+  position: absolute;
+  top: 180px;
+  right: 60px;
+  width: 680px;
+  height: 620px;
+  z-index: 5;
+}
 
-.bullet-text{font-size:19px;line-height:1.5;color:#1B3B6B;font-weight:400}
-.bullet-text .em{font-family:'Noto Serif SC',serif;font-weight:600;color:#1B3B6B}
-.bullet-text .note{display:block;font-size:13px;color:#555;letter-spacing:1px;margin-top:4px;line-height:1.4}
+/* Geometric composition - theodolite/surveyor metaphor */
 
-.bullet-keyword{font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;letter-spacing:2px;display:block;margin-top:2px}
+/* Main circle - represents the survey scope */
+.scope-circle {
+  position: absolute;
+  top: 60px;
+  left: 140px;
+  width: 380px;
+  height: 380px;
+  border: 2px solid #1B3B6B;
+  border-radius: 50%;
+  opacity: 0.6;
+}
 
-/* small geometric decoration bottom-right */
-.deco-cluster{position:absolute;bottom:30px;right:40px;display:flex;gap:12px;align-items:center}
-.deco-dot{width:8px;height:8px;background:#1B3B6B;border-radius:50%}
-.deco-dot-outline{width:8px;height:8px;border:1px solid #1B3B6B;border-radius:50%}
-.deco-sq{width:8px;height:8px;background:#8B7355}
-.deco-sq-outline{width:8px;height:8px;border:1px solid #8B7355}
-.deco-line{width:24px;height:1px;background:#1B3B6B}
+.scope-circle-2 {
+  position: absolute;
+  top: 80px;
+  left: 160px;
+  width: 340px;
+  height: 340px;
+  border: 1px solid #8B7355;
+  border-radius: 50%;
+  opacity: 0.5;
+}
 
-</style></head><body>
+.scope-circle-3 {
+  position: absolute;
+  top: 100px;
+  left: 180px;
+  width: 300px;
+  height: 300px;
+  border: 1px dashed #8B7355;
+  border-radius: 50%;
+  opacity: 0.4;
+}
 
-<div class="lecture-tag">OPEN SOURCE ECONOMICS · LECTURE SERIES</div>
-<div class="lecture-num">N° 10 / 29</div>
-<div class="top-rule"></div>
-<div class="top-rule-thin"></div>
+/* Center crosshair */
+.crosshair-h {
+  position: absolute;
+  top: 248px;
+  left: 120px;
+  width: 420px;
+  height: 1px;
+  background: #1B3B6B;
+  opacity: 0.5;
+}
 
-<div class="main">
+.crosshair-v {
+  position: absolute;
+  top: 60px;
+  left: 328px;
+  width: 1px;
+  height: 380px;
+  background: #1B3B6B;
+  opacity: 0.5;
+}
 
-  <!-- LEFT VISUAL -->
-  <div class="left-visual">
-    <div class="visual-title">SURVEYING · 测 绘</div>
-    <div class="visual-sub">经纬仪测绘代码地图</div>
+/* Measurement ticks on the circle */
+.tick {
+  position: absolute;
+  background: #1B3B6B;
+  opacity: 0.6;
+}
 
-    <!-- Theodolite -->
-    <div class="theo-body">
-      <div class="theo-outer"></div>
-      <div class="scale-ring"></div>
-      <div class="theo-inner"></div>
-      <div class="theo-core"></div>
-      <div class="theo-cross-h"></div>
-      <div class="theo-cross-v"></div>
-      <div class="theo-tick1"></div>
-      <div class="theo-tick2"></div>
-      <div class="theo-tick3"></div>
-      <div class="scale-tick" style="top:-1px;left:116px;width:3px;height:7px"></div>
-      <div class="scale-tick" style="top:-1px;left:56px;width:3px;height:7px"></div>
-      <div class="scale-tick" style="top:-1px;left:180px;width:3px;height:7px"></div>
-      <div class="scale-tick" style="bottom:-1px;left:116px;width:3px;height:7px"></div>
-      <div class="scale-tick" style="bottom:-1px;left:56px;width:3px;height:7px"></div>
-      <div class="scale-tick" style="bottom:-1px;left:180px;width:3px;height:7px"></div>
-    </div>
+.tick-top {
+  top: 52px;
+  left: 326px;
+  width: 2px;
+  height: 16px;
+}
 
-    <div class="name-plate">THEODOLITE · CODE MAP</div>
+.tick-bottom {
+  top: 432px;
+  left: 326px;
+  width: 2px;
+  height: 16px;
+}
 
-    <!-- Rays -->
-    <div class="ray" style="top:410px;left:195px;width:100px;height:1px;transform:rotate(18deg);transform-origin:0 0"></div>
-    <div class="ray" style="top:410px;left:270px;width:80px;height:1px"></div>
-    <div class="ray" style="top:410px;left:335px;width:110px;height:1px;transform:rotate(-15deg);transform-origin:0 0"></div>
-    <div class="ray" style="top:410px;left:430px;width:90px;height:1px"></div>
+.tick-left {
+  top: 246px;
+  left: 112px;
+  width: 16px;
+  height: 2px;
+}
 
-    <!-- Code grid map -->
-    <div class="code-grid">
-      <!-- grid 10x4 -->
-      <div class="grid-cell filled" style="left:0px;top:0px;width:45px;height:45px"></div>
-      <div class="grid-cell" style="left:48px;top:0px;width:45px;height:45px"></div>
-      <div class="grid-cell filled" style="left:96px;top:0px;width:45px;height:45px"></div>
-      <div class="grid-cell" style="left:144px;top:0px;width:45px;height:45px"></div>
-      <div class="grid-cell copper" style="left:192px;top:0px;width:45px;height:45px"></div>
-      <div class="grid-cell" style="left:240px;top:0px;width:45px;height:45px"></div>
-      <div class="grid-cell filled" style="left:288px;top:0px;width:45px;height:45px"></div>
-      <div class="grid-cell" style="left:336px;top:0px;width:45px;height:45px"></div>
-      <div class="grid-cell" style="left:384px;top:0px;width:45px;height:45px"></div>
-      <div class="grid-cell filled" style="left:432px;top:0px;width:45px;height:45px"></div>
+.tick-right {
+  top: 246px;
+  left: 532px;
+  width: 16px;
+  height: 2px;
+}
 
-      <div class="grid-cell" style="left:0px;top:48px;width:45px;height:45px"></div>
-      <div class="grid-cell filled" style="left:48px;top:48px;width:45px;height:45px"></div>
-      <div class="grid-cell" style="left:96px;top:48px;width:45px;height:45px"></div>
-      <div class="grid-cell filled" style="left:144px;top:48px;width:45px;height:45px"></div>
-      <div class="grid-cell" style="left:192px;top:48px;width:45px;height:45px"></div>
-      <div class="grid-cell filled" style="left:240px;top:48px;width:45px;height:45px"></div>
-      <div class="grid-cell" style="left:288px;top:48px;width:45px;height:45px"></div>
-      <div class="grid-cell filled" style="left:336px;top:48px;width:45px;height:45px"></div>
-      <div class="grid-cell copper" style="left:384px;top:48px;width:45px;height:45px"></div>
-      <div class="grid-cell" style="left:432px;top:48px;width:45px;height:45px"></div>
+/* Angled measurement lines */
+.angle-line-1 {
+  position: absolute;
+  top: 249px;
+  left: 328px;
+  width: 220px;
+  height: 1px;
+  background: #8B7355;
+  opacity: 0.7;
+  transform-origin: left center;
+  transform: rotate(-35deg);
+}
 
-      <div class="grid-cell filled" style="left:0px;top:96px;width:45px;height:45px"></div>
-      <div class="grid-cell" style="left:48px;top:96px;width:45px;height:45px"></div>
-      <div class="grid-cell filled" style="left:96px;top:96px;width:45px;height:45px"></div>
-      <div class="grid-cell" style="left:144px;top:96px;width:45px;height:45px"></div>
-      <div class="grid-cell filled" style="left:192px;top:96px;width:45px;height:45px"></div>
-      <div class="grid-cell" style="left:240px;top:96px;width:45px;height:45px"></div>
-      <div class="grid-cell filled" style="left:288px;top:96px;width:45px;height:45px"></div>
-      <div class="grid-cell" style="left:336px;top:96px;width:45px;height:45px"></div>
-      <div class="grid-cell filled" style="left:384px;top:96px;width:45px;height:45px"></div>
-      <div class="grid-cell" style="left:432px;top:96px;width:45px;height:45px"></div>
+.angle-arc-1 {
+  position: absolute;
+  top: 185px;
+  left: 328px;
+  width: 80px;
+  height: 80px;
+  border: 1px solid #8B7355;
+  border-radius: 50%;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  opacity: 0.5;
+}
 
-      <div class="grid-cell" style="left:0px;top:144px;width:45px;height:45px"></div>
-      <div class="grid-cell filled" style="left:48px;top:144px;width:45px;height:45px"></div>
-      <div class="grid-cell" style="left:96px;top:144px;width:45px;height:45px"></div>
-      <div class="grid-cell filled" style="left:144px;top:144px;width:45px;height:45px"></div>
-      <div class="grid-cell filled" style="left:192px;top:144px;width:45px;height:45px"></div>
-      <div class="grid-cell copper" style="left:240px;top:144px;width:45px;height:45px"></div>
-      <div class="grid-cell" style="left:288px;top:144px;width:45px;height:45px"></div>
-      <div class="grid-cell filled" style="left:336px;top:144px;width:45px;height:45px"></div>
-      <div class="grid-cell" style="left:384px;top:144px;width:45px;height:45px"></div>
-      <div class="grid-cell filled" style="left:432px;top:144px;width:45px;height:45px"></div>
+.angle-line-2 {
+  position: absolute;
+  top: 249px;
+  left: 328px;
+  width: 180px;
+  height: 1px;
+  background: #1B3B6B;
+  opacity: 0.5;
+  transform-origin: left center;
+  transform: rotate(-65deg);
+}
 
-      <div class="grid-cell filled" style="left:0px;top:192px;width:45px;height:45px"></div>
-      <div class="grid-cell" style="left:48px;top:192px;width:45px;height:45px"></div>
-      <div class="grid-cell copper" style="left:96px;top:192px;width:45px;height:45px"></div>
-      <div class="grid-cell filled" style="left:144px;top:192px;width:45px;height:45px"></div>
-      <div class="grid-cell" style="left:192px;top:192px;width:45px;height:45px"></div>
-      <div class="grid-cell filled" style="left:240px;top:192px;width:45px;height:45px"></div>
-      <div class="grid-cell" style="left:288px;top:192px;width:45px;height:45px"></div>
-      <div class="grid-cell filled" style="left:336px;top:192px;width:45px;height:45px"></div>
-      <div class="grid-cell" style="left:384px;top:192px;width:45px;height:45px"></div>
-      <div class="grid-cell filled" style="left:432px;top:192px;width:45px;height:45px"></div>
+/* Theodolite tripod legs */
+.tripod-leg-1 {
+  position: absolute;
+  top: 440px;
+  left: 270px;
+  width: 2px;
+  height: 140px;
+  background: #1B3B6B;
+  opacity: 0.7;
+  transform-origin: top center;
+  transform: rotate(-15deg);
+}
 
-      <!-- measurement markers -->
-      <div class="measure-point" style="left:22px;top:22px"></div>
-      <div class="measure-square" style="left:212px;top:60px"></div>
-      <div class="measure-point" style="left:312px;top:118px"></div>
-      <div class="measure-square" style="left:446px;top:166px"></div>
-    </div>
+.tripod-leg-2 {
+  position: absolute;
+  top: 440px;
+  left: 330px;
+  width: 2px;
+  height: 140px;
+  background: #1B3B6B;
+  opacity: 0.7;
+}
 
-    <div class="geo-label" style="position:absolute;bottom:50px;left:60px">CODE MAP · 代码地图</div>
-    <div class="geo-label" style="position:absolute;bottom:30px;right:20px">N° 05.27</div>
+.tripod-leg-3 {
+  position: absolute;
+  top: 440px;
+  left: 390px;
+  width: 2px;
+  height: 140px;
+  background: #1B3B6B;
+  opacity: 0.7;
+  transform-origin: top center;
+  transform: rotate(15deg);
+}
+
+/* Tripod base */
+.tripod-base {
+  position: absolute;
+  top: 436px;
+  left: 310px;
+  width: 40px;
+  height: 8px;
+  background: #1B3B6B;
+  opacity: 0.8;
+}
+
+/* Data points scattered */
+.data-point {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.dp-1 {
+  top: 140px;
+  left: 400px;
+  width: 8px;
+  height: 8px;
+  background: #1B3B6B;
+}
+
+.dp-2 {
+  top: 200px;
+  left: 480px;
+  width: 6px;
+  height: 6px;
+  background: #8B7355;
+}
+
+.dp-3 {
+  top: 310px;
+  left: 460px;
+  width: 7px;
+  height: 7px;
+  background: #1B3B6B;
+}
+
+.dp-4 {
+  top: 370px;
+  left: 250px;
+  width: 5px;
+  height: 5px;
+  background: #8B7355;
+}
+
+.dp-5 {
+  top: 180px;
+  left: 220px;
+  width: 6px;
+  height: 6px;
+  background: #1B3B6B;
+}
+
+.dp-6 {
+  top: 340px;
+  left: 520px;
+  width: 9px;
+  height: 9px;
+  background: #8B7355;
+  opacity: 0.4;
+}
+
+/* Measurement line connecting points */
+.measure-line-1 {
+  position: absolute;
+  top: 200px;
+  left: 400px;
+  width: 1px;
+  height: 110px;
+  background: #8B7355;
+  opacity: 0.3;
+  transform-origin: top center;
+  transform: rotate(20deg);
+}
+
+/* Square geometric accent */
+.square-accent-1 {
+  position: absolute;
+  top: 520px;
+  left: 160px;
+  width: 60px;
+  height: 60px;
+  border: 2px solid #1B3B6B;
+  opacity: 0.3;
+  transform: rotate(45deg);
+}
+
+.square-accent-2 {
+  position: absolute;
+  top: 540px;
+  left: 440px;
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid #8B7355;
+  opacity: 0.4;
+}
+
+/* Labels */
+.visual-label {
+  position: absolute;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 1px;
+  opacity: 0.7;
+}
+
+.label-scope {
+  top: 55px;
+  right: 80px;
+  text-align: right;
+}
+
+.label-data {
+  top: 490px;
+  left: 120px;
+}
+
+.label-question {
+  top: 605px;
+  left: 120px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14px;
+  color: #1B3B6B;
+  opacity: 0.8;
+  width: 480px;
+}
+
+/* Bottom border */
+.bottom-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 1600px;
+  height: 4px;
+  background: #1B3B6B;
+  z-index: 10;
+}
+
+.bottom-accent {
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  width: 300px;
+  height: 2px;
+  background: #8B7355;
+  z-index: 10;
+}
+
+/* Vertical divider */
+.divider-vertical {
+  position: absolute;
+  top: 200px;
+  left: 810px;
+  width: 1px;
+  height: 600px;
+  background: #8B7355;
+  opacity: 0.2;
+  z-index: 5;
+}
+
+/* Footer info */
+.footer-info {
+  position: absolute;
+  bottom: 24px;
+  left: 60px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  color: #8B7355;
+  opacity: 0.7;
+  z-index: 10;
+}
+
+/* Geometric decoration top-right */
+.deco-square {
+  position: absolute;
+  top: 60px;
+  right: 60px;
+  width: 30px;
+  height: 30px;
+  border: 2px solid #1B3B6B;
+  opacity: 0.3;
+  z-index: 10;
+}
+
+.deco-circle-small {
+  position: absolute;
+  top: 58px;
+  right: 100px;
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid #8B7355;
+  border-radius: 50%;
+  opacity: 0.5;
+  z-index: 10;
+}
+
+/* Emphasis line */
+.emphasis-underline {
+  position: absolute;
+  top: 155px;
+  left: 60px;
+  width: 180px;
+  height: 2px;
+  background: #8B7355;
+  z-index: 10;
+}
+
+/* Angle measurement indicator */
+.angle-indicator {
+  position: absolute;
+  top: 215px;
+  left: 365px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 10px;
+  color: #8B7355;
+  opacity: 0.8;
+}
+
+</style>
+</head>
+<body>
+<div class="slide-container">
+  <div class="parchment-texture"></div>
+  
+  <div class="header-bar"></div>
+  
+  <div class="slide-number"><span>10</span> / 29</div>
+  <div class="deck-id">开源经济学 · 第 10 期</div>
+  
+  <div class="deco-square"></div>
+  <div class="deco-circle-small"></div>
+  
+  <div class="title-section">
+    <div class="slide-title">劳动报酬的可测量性</div>
+    <div class="slide-subtitle">从 Git 数据到制度设计：劳动度量的边界与可能</div>
   </div>
-
-  <!-- RIGHT CONTENT -->
-  <div class="right-content">
-
-    <div class="period-tag">CHAPTER · 劳动报酬的可测量性</div>
-    <div class="main-title">劳动数据能否<br/>转化为报酬？</div>
-    <div class="main-sub">Measurability of Labor Compensation</div>
-    <div class="title-bar"></div>
-
-    <div class="bullet-list">
-
-      <div class="bullet">
-        <div class="bullet-mark"><div class="bullet-mark-square"></div></div>
-        <div>
-          <div class="bullet-text"><span class="em">Git 贡献数据是劳动的度量</span></div>
-          <div class="bullet-text note">commits · commits · lines changed · review time</div>
-        </div>
-      </div>
-
-      <div class="bullet">
-        <div class="bullet-mark"><div class="bullet-mark-circle"></div></div>
-        <div>
-          <div class="bullet-text"><span class="em">代码质量、代码规模、维护工作量</span></div>
-          <div class="bullet-text note">质量何以量化？维护之劳何以计价？</div>
-        </div>
-      </div>
-
-      <div class="bullet">
-        <div class="bullet-mark"><div class="bullet-mark-triangle"></div></div>
-        <div>
-          <div class="bullet-text"><span class="em">但这些数据能否转化为报酬？</span></div>
-          <div class="bullet-text note">从可测量到可计价，中间隔着制度设计的鸿沟</div>
-        </div>
-      </div>
-
-      <div class="bullet">
-        <div class="bullet-mark"><div class="bullet-mark-line"></div></div>
-        <div>
-          <div class="bullet-text"><span class="em">谁来决定报酬？</span></div>
-          <div class="bullet-text note">贡献者自身？用户？基金会？市场？</div>
-        </div>
-      </div>
-
-      <div class="bullet">
-        <div class="bullet-mark"><div class="bullet-mark-diamond"></div></div>
-        <div>
-          <div class="bullet-text"><span class="em">如何保证报酬的公平性？</span></div>
-          <div class="bullet-text note">程序正义 · 分配正义 · 制度设计之责</div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="deco-cluster">
-      <div class="deco-line"></div>
-      <div class="deco-dot"></div>
-      <div class="deco-sq"></div>
-      <div class="deco-dot-outline"></div>
-      <div class="deco-sq-outline"></div>
-    </div>
-
+  
+  <div class="emphasis-underline"></div>
+  
+  <div class="content-left">
+    <div class="content-heading">度量劳动的经纬度</div>
+    <ul class="bullet-list">
+      <li>Git 贡献数据是劳动的度量</li>
+      <li>代码质量、代码规模、维护工作量</li>
+      <li>数据可被追踪、量化、比较</li>
+      <li class="question">这些数据能否转化为报酬？</li>
+      <li>制度设计需要回答：谁来决定报酬？</li>
+      <li>如何保证报酬的公平性？</li>
+    </ul>
   </div>
-
+  
+  <div class="divider-vertical"></div>
+  
+  <div class="visual-area">
+    <!-- Scope circles -->
+    <div class="scope-circle"></div>
+    <div class="scope-circle-2"></div>
+    <div class="scope-circle-3"></div>
+    
+    <!-- Crosshair -->
+    <div class="crosshair-h"></div>
+    <div class="crosshair-v"></div>
+    
+    <!-- Ticks -->
+    <div class="tick tick-top"></div>
+    <div class="tick tick-bottom"></div>
+    <div class="tick tick-left"></div>
+    <div class="tick tick-right"></div>
+    
+    <!-- Angled measurement lines -->
+    <div class="angle-line-1"></div>
+    <div class="angle-arc-1"></div>
+    <div class="angle-line-2"></div>
+    
+    <!-- Theodolite tripod -->
+    <div class="tripod-base"></div>
+    <div class="tripod-leg-1"></div>
+    <div class="tripod-leg-2"></div>
+    <div class="tripod-leg-3"></div>
+    
+    <!-- Data points -->
+    <div class="data-point dp-1"></div>
+    <div class="data-point dp-2"></div>
+    <div class="data-point dp-3"></div>
+    <div class="data-point dp-4"></div>
+    <div class="data-point dp-5"></div>
+    <div class="data-point dp-6"></div>
+    
+    <!-- Measurement line -->
+    <div class="measure-line-1"></div>
+    
+    <!-- Square accents -->
+    <div class="square-accent-1"></div>
+    <div class="square-accent-2"></div>
+    
+    <!-- Labels -->
+    <div class="visual-label label-scope">SCOPE · 测量范围</div>
+    <div class="visual-label label-data">DATA POINTS · 贡献数据点</div>
+    <div class="visual-label label-question">「 谁来决定报酬？如何保证公平？ 」</div>
+    <div class="angle-indicator">θ</div>
+  </div>
+  
+  <div class="bottom-accent"></div>
+  <div class="bottom-bar"></div>
+  
+  <div class="footer-info">包豪斯几何构成 · Bauhaus Geometric Composition</div>
 </div>
-
-<div class="bot-rule"></div>
-<div class="bot-rule-thin"></div>
-<div class="footer-left">第 10 期 · 劳动报酬与财产分配</div>
-<div class="footer-right">包豪斯几何构成 / Bauhaus Composition</div>
-
-</body></html>
+</body>
+</html>

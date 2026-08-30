@@ -1,154 +1,342 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: c4ea18aa3027a358 --><head><meta charset="UTF-8"><title>开源劳动报酬的未来 · 第10期</title><style>html,body{width:1600px;height:900px;overflow:hidden;margin:0;padding:0}body{background:#F5F0E8;font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-serif;color:#1B3B6B;position:relative}h1,h2,h3,.heading{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-weight:600}.left-panel{position:absolute;left:0;top:0;width:880px;height:900px}.right-panel{position:absolute;left:880px;top:0;width:720px;height:900px;padding:80px 70px 60px 50px;box-sizing:border-box;display:flex;flex-direction:column}.deck-tag{position:absolute;top:48px;left:880px;width:720px;display:flex;justify-content:space-between;align-items:center;font-size:13px;letter-spacing:3px;color:#8B7355;text-transform:uppercase;padding:0 10px}.deck-tag .ln{flex:1;height:1px;background:#1B3B6B;margin:0 18px;opacity:.5}.main-title{font-size:46px;line-height:1.2;color:#1B3B6B;margin-bottom:12px}.sub-title{font-size:22px;color:#8B7355;margin-bottom:36px;font-weight:400;letter-spacing:1px}.divider{width:60px;height:3px;background:#1B3B6B;margin-bottom:28px}.body-text{font-size:16px;line-height:1.9;color:#555;margin-bottom:24px}.question-block{margin-top:auto;padding:28px 28px;border:1.5px solid #1B3B6B;position:relative;background:rgba(27,59,107,0.03)}.question-block::before{content:'';position:absolute;top:-8px;left:24px;width:14px;height:14px;background:#8B7355}.q-label{font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:4px;margin-bottom:14px}.q-line{font-family:'Noto Serif SC',serif;font-size:19px;color:#1B3B6B;line-height:1.6;margin-bottom:10px}.q-line:last-child{margin-bottom:0}.num-badge{position:absolute;top:48px;right:50px;width:52px;height:52px;border:1.5px solid #1B3B6B;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif SC',serif;font-size:20px;color:#1B3B6B}.footer{position:absolute;bottom:30px;left:50px;width:720px;display:flex;justify-content:space-between;align-items:center;font-size:11px;letter-spacing:2px;color:#8B7355;padding:0 0}.footer .ln{flex:1;height:1px;background:#1B3B6B;margin:0 14px;opacity:.4}svg{display:block}
-</style></head><body><div class="left-panel">
-<svg width="880" height="900" viewBox="0 0 880 900">
-<!-- subtle parchment texture overlay via rect -->
-<rect x="0" y="0" width="880" height="900" fill="#F5F0E8"/>
-<!-- large decorative circle upper-right (sun / horizon object) -->
-<circle cx="720" cy="260" r="130" fill="none" stroke="#1B3B6B" stroke-width="1.5"/>
-<circle cx="720" cy="260" r="80" fill="#8B7355" opacity="0.18"/>
-<circle cx="720" cy="260" r="80" fill="none" stroke="#8B7355" stroke-width="1"/>
-<!-- small moon circle -->
-<circle cx="180" cy="150" r="22" fill="none" stroke="#1B3B6B" stroke-width="1.2"/>
+<!DOCTYPE html>
+<html lang="zh-CN"><!-- source_hash: 26678cc60eccdefb -->
+<head>
+<meta charset="UTF-8">
+<title>开源劳动报酬的未来 · 第10期 劳动报酬与财产分配</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  width: 1600px; height: 900px;
+  overflow: hidden; margin: 0;
+  background: #F5F0E8;
+  font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  color: #1B3B6B;
+  position: relative;
+}
+.parchment {
+  position: absolute; top: 0; left: 0;
+  width: 1600px; height: 900px;
+  background: radial-gradient(ellipse at 30% 50%, transparent 0%, rgba(200,185,165,0.035) 100%);
+  pointer-events: none; z-index: 0;
+}
+.ta1 { position: absolute; top: 0; left: 0; width: 140px; height: 5px; background: #1B3B6B; z-index: 10; }
+.ta2 { position: absolute; top: 0; left: 140px; width: 40px; height: 5px; background: #8B7355; z-index: 10; }
+.layout { position: absolute; top: 0; left: 0; width: 1600px; height: 900px; display: flex; z-index: 1; }
 
-<!-- horizon line -->
-<line x1="60" y1="620" x2="820" y2="620" stroke="#1B3B6B" stroke-width="1.5"/>
+/* ===== LEFT COLUMN ===== */
+.left {
+  width: 700px; height: 900px;
+  padding: 95px 50px 80px 90px;
+  display: flex; flex-direction: column; justify-content: center;
+  position: relative;
+}
+.bg-num {
+  position: absolute; top: 45px; left: 40px;
+  font-family: 'Noto Serif SC','Source Han Serif SC','Songti SC',serif;
+  font-size: 160px; font-weight: 900;
+  color: rgba(27,59,107,0.05); line-height: 1; letter-spacing: -5px;
+  user-select: none;
+}
+.meta {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 22px; position: relative; z-index: 2;
+}
+.meta-dot { width: 6px; height: 6px; background: #1B3B6B; border-radius: 50%; }
+.meta-sq { width: 5px; height: 5px; background: #8B7355; }
+.meta-txt { font-size: 11px; letter-spacing: 2.5px; color: #8B7355; font-weight: 500; }
 
-<!-- ground accent line -->
-<line x1="60" y1="640" x2="820" y2="640" stroke="#8B7355" stroke-width="0.8" opacity="0.6"/>
+.h1 {
+  font-family: 'Noto Serif SC','Source Han Serif SC','Songti SC',serif;
+  font-size: 44px; font-weight: 700;
+  color: #1B3B6B; line-height: 1.3; margin-bottom: 14px;
+  position: relative; z-index: 2;
+}
+.sub {
+  font-family: 'Noto Serif SC','Source Han Serif SC','Songti SC',serif;
+  font-size: 20px; color: #8B7355;
+  line-height: 1.7; margin-bottom: 4px;
+  position: relative; z-index: 2;
+}
+.sub b { color: #1B3B6B; font-weight: 600; }
 
-<!-- distant hills: geometric triangles -->
-<polygon points="60,620 200,500 340,620" fill="none" stroke="#1B3B6B" stroke-width="1" opacity="0.35"/>
-<polygon points="300,620 460,510 620,620" fill="none" stroke="#1B3B6B" stroke-width="1" opacity="0.28"/>
+.note {
+  font-size: 15px; color: #555;
+  line-height: 1.7; margin: 14px 0 26px;
+  position: relative; z-index: 2;
+}
+.sep {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 22px; position: relative; z-index: 2;
+}
+.sep-line { width: 48px; height: 2px; background: #1B3B6B; }
+.sep-dot { width: 5px; height: 5px; border-radius: 50%; border: 1.5px solid #1B3B6B; }
+.sep-txt {
+  font-family: 'Noto Serif SC','Source Han Serif SC','Songti SC',serif;
+  font-size: 14px; color: #8B7355;
+}
+.qbox {
+  position: relative; padding: 24px 28px;
+  border-left: 4px solid #1B3B6B;
+  background: rgba(27,59,107,0.045); z-index: 2;
+}
+.q-bg {
+  position: absolute; top: -6px; right: 14px;
+  font-family: 'Noto Serif SC','Source Han Serif SC','Songti SC',serif;
+  font-size: 52px; color: rgba(27,59,107,0.08);
+  font-weight: 900; line-height: 1;
+}
+.q {
+  font-family: 'Noto Serif SC','Source Han Serif SC','Songti SC',serif;
+  font-size: 19px; color: #1B3B6B; font-weight: 600;
+  line-height: 1.7; margin-bottom: 4px;
+}
+.q em { font-style: normal; color: #8B7355; font-weight: 400; }
 
-<!-- large square (institution / tradition) lower-left -->
-<rect x="80" y="680" width="120" height="120" fill="none" stroke="#1B3B6B" stroke-width="1.5"/>
-<rect x="80" y="680" width="120" height="120" fill="#1B3B6B" opacity="0.04"/>
-<line x1="80" y1="740" x2="200" y2="740" stroke="#8B7355" stroke-width="0.7"/>
+/* ===== RIGHT COLUMN ===== */
+.right { flex: 1; height: 900px; position: relative; overflow: hidden; }
+.sep-v {
+  position: absolute; top: 100px; bottom: 100px;
+  left: 0; width: 1px; background: rgba(139,115,85,0.12);
+}
 
-<!-- human conductor figure (left-center, standing on ground) -->
-<g>
-  <!-- head -->
-  <circle cx="370" cy="530" r="20" fill="#1B3B6B"/>
-  <!-- body: angular triangle for torso -->
-  <polygon points="355,555 385,555 375,620" fill="#1B3B6B"/>
-  <!-- left arm raised (conducting) -->
-  <line x1="370" y1="560" x2="330" y2="500" stroke="#1B3B6B" stroke-width="3"/>
-  <circle cx="330" cy="500" r="6" fill="#1B3B6B"/>
-  <!-- baton line -->
-  <line x1="330" y1="500" x2="290" y2="465" stroke="#8B7355" stroke-width="2"/>
-  <circle cx="290" cy="465" r="4" fill="#8B7355"/>
-  <!-- right arm extended forward -->
-  <line x1="370" y1="565" x2="440" y2="570" stroke="#1B3B6B" stroke-width="3"/>
-  <circle cx="440" cy="570" r="5" fill="#1B3B6B"/>
-  <!-- legs -->
-  <line x1="368" y1="620" x2="355" y2="680" stroke="#1B3B6B" stroke-width="3"/>
-  <line x1="372" y1="620" x2="388" y2="680" stroke="#1B3B6B" stroke-width="3"/>
-  <!-- feet -->
-  <line x1="345" y1="680" x2="362" y2="680" stroke="#1B3B6B" stroke-width="3"/>
-  <line x1="378" y1="680" x2="398" y2="680" stroke="#1B3B6B" stroke-width="3"/>
-</g>
+/* Horizon circle (future) */
+.hz-fill {
+  position: absolute; top: 110px; left: 380px;
+  width: 280px; height: 280px; border-radius: 50%;
+  background: radial-gradient(circle at 42% 38%, rgba(27,59,107,0.1) 0%, transparent 60%);
+}
+.hz-ring {
+  position: absolute; top: 110px; left: 380px;
+  width: 280px; height: 280px; border-radius: 50%;
+  border: 2px solid rgba(27,59,107,0.14);
+}
+.hz-inner {
+  position: absolute; top: 195px; left: 460px;
+  width: 105px; height: 105px; border-radius: 50%;
+  background: rgba(27,59,107,0.06);
+}
 
-<!-- mechanical band members (squares with details) facing the horizon -->
-<g>
-  <!-- member 1 -->
-  <rect x="490" y="580" width="42" height="42" fill="#1B3B6B"/>
-  <rect x="490" y="580" width="42" height="10" fill="#8B7355"/>
-  <circle cx="503" cy="562" r="10" fill="#1B3B6B"/>
-  <circle cx="521" cy="562" r="10" fill="#8B7355" opacity="0.6"/>
-  <line x1="511" y1="622" x2="502" y2="660" stroke="#1B3B6B" stroke-width="2.5"/>
-  <line x1="511" y1="622" x2="522" y2="660" stroke="#1B3B6B" stroke-width="2.5"/>
+/* Rays */
+.ray1 {
+  position: absolute; top: 350px; left: 335px;
+  width: 180px; height: 1px;
+  background: linear-gradient(to right, rgba(27,59,107,0.22), transparent);
+  transform-origin: left center; transform: rotate(-35deg);
+}
+.ray2 {
+  position: absolute; top: 375px; left: 335px;
+  width: 155px; height: 1px;
+  background: linear-gradient(to right, rgba(27,59,107,0.14), transparent);
+  transform-origin: left center; transform: rotate(-24deg);
+}
 
-  <!-- member 2 -->
-  <rect x="555" y="588" width="38" height="38" fill="#1B3B6B" opacity="0.85"/>
-  <rect x="555" y="588" width="38" height="8" fill="#8B7355"/>
-  <circle cx="568" cy="572" r="9" fill="#1B3B6B"/>
-  <circle cx="583" cy="572" r="9" fill="#8B7355" opacity="0.5"/>
-  <line x1="574" y1="626" x2="565" y2="660" stroke="#1B3B6B" stroke-width="2.5"/>
-  <line x1="574" y1="626" x2="586" y2="660" stroke="#1B3B6B" stroke-width="2.5"/>
-  <!-- instrument line -->
-  <line x1="593" y1="595" x2="630" y2="588" stroke="#8B7355" stroke-width="1.8"/>
+/* Conductor */
+.c-head {
+  position: absolute; top: 410px; left: 250px;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: #1B3B6B;
+}
+.c-body {
+  position: absolute; top: 442px; left: 257px;
+  width: 9px; height: 50px; background: #1B3B6B;
+}
+.c-arm-r {
+  position: absolute; top: 426px; left: 266px;
+  width: 74px; height: 2.5px; background: #1B3B6B;
+  transform-origin: left center; transform: rotate(-28deg);
+}
+.c-arm-l {
+  position: absolute; top: 438px; left: 257px;
+  width: 32px; height: 2px; background: #1B3B6B;
+  transform-origin: left center; transform: rotate(170deg);
+}
+.c-baton {
+  position: absolute; top: 393px; left: 328px;
+  width: 44px; height: 1.5px; background: #8B7355;
+  transform-origin: left center; transform: rotate(-6deg);
+}
 
-  <!-- member 3 -->
-  <rect x="620" y="595" width="36" height="36" fill="#1B3B6B" opacity="0.7"/>
-  <rect x="620" y="595" width="36" height="8" fill="#8B7355"/>
-  <circle cx="632" cy="580" r="8" fill="#1B3B6B"/>
-  <circle cx="646" cy="580" r="8" fill="#8B7355" opacity="0.5"/>
-  <line x1="638" y1="631" x2="630" y2="660" stroke="#1B3B6B" stroke-width="2.5"/>
-  <line x1="638" y1="631" x2="648" y2="660" stroke="#1B3B6B" stroke-width="2.5"/>
+/* Musical note accent near baton */
+.note-dot {
+  position: absolute; top: 386px; left: 376px;
+  width: 5px; height: 5px; border-radius: 50%;
+  background: #8B7355; opacity: 0.4;
+}
 
-  <!-- member 4 -->
-  <rect x="675" y="600" width="34" height="34" fill="#1B3B6B" opacity="0.55"/>
-  <rect x="675" y="600" width="34" height="7" fill="#8B7355"/>
-  <circle cx="686" cy="587" r="7" fill="#1B3B6B"/>
-  <circle cx="700" cy="587" r="7" fill="#8B7355" opacity="0.4"/>
-  <line x1="692" y1="634" x2="684" y2="660" stroke="#1B3B6B" stroke-width="2.5"/>
-  <line x1="692" y1="634" x2="702" y2="660" stroke="#1B3B6B" stroke-width="2.5"/>
-</g>
+/* Horizon line */
+.hz-line {
+  position: absolute; top: 538px; left: 60px;
+  width: 520px; height: 1.5px;
+  background: linear-gradient(to right, transparent, rgba(139,115,85,0.3) 12%, rgba(139,115,85,0.3) 88%, transparent);
+}
 
-<!-- sound/rhythm waves emanating from conductor toward horizon -->
-<circle cx="310" cy="500" r="40" fill="none" stroke="#8B7355" stroke-width="0.8" opacity="0.5"/>
-<circle cx="310" cy="500" r="65" fill="none" stroke="#8B7355" stroke-width="0.6" opacity="0.35"/>
-<circle cx="310" cy="500" r="92" fill="none" stroke="#8B7355" stroke-width="0.5" opacity="0.2"/>
+/* Musical staff */
+.staff { position: absolute; top: 520px; left: 60px; width: 500px; }
+.s-line { width: 100%; height: 0.5px; background: rgba(139,115,85,0.1); margin-bottom: 10px; }
 
-<!-- vertical accent line right side (structural column) -->
-<line x1="770" y1="420" x2="770" y2="720" stroke="#1B3B6B" stroke-width="1"/>
-<circle cx="770" cy="420" r="8" fill="#8B7355"/>
-<circle cx="770" cy="720" r="6" fill="none" stroke="#1B3B6B" stroke-width="1.2"/>
+/* Orchestra */
+.orch {
+  position: absolute; top: 478px; left: 60px;
+  display: flex; align-items: flex-end; gap: 13px;
+  height: 70px;
+}
+.o-co { border-radius: 50%; border: 2px solid #8B7355; }
+.o-so { border: 2px solid #8B7355; }
+.o-cf { border-radius: 50%; background: #8B7355; opacity: 0.6; }
+.o-sf { background: #8B7355; opacity: 0.45; }
+.o-tr {
+  width: 0; height: 0;
+  border-left: 11px solid transparent; border-right: 11px solid transparent;
+  border-bottom: 19px solid #8B7355; opacity: 0.5;
+}
 
-<!-- small square accent bottom-right -->
-<rect x="790" y="700" width="30" height="30" fill="#1B3B6B" opacity="0.15"/>
-<rect x="790" y="700" width="30" height="30" fill="none" stroke="#1B3B6B" stroke-width="1"/>
+/* Decorations */
+.d1 { position: absolute; top: 42px; left: 48px; width: 12px; height: 12px; background: #1B3B6B; opacity: 0.1; }
+.d2 { position: absolute; top: 72px; left: 74px; width: 7px; height: 7px; border-radius: 50%; background: #8B7355; opacity: 0.2; }
+.d3 { position: absolute; top: 56px; left: 96px; width: 6px; height: 6px; border-radius: 50%; border: 1.5px solid #1B3B6B; opacity: 0.12; }
+.d4 { position: absolute; bottom: 90px; left: 80px; width: 90px; height: 1.5px; background: #1B3B6B; opacity: 0.06; transform: rotate(-28deg); transform-origin: left center; }
+.d5 { position: absolute; top: 140px; left: 210px; width: 8px; height: 8px; border-radius: 50%; background: #1B3B6B; opacity: 0.06; }
+.d6 { position: absolute; top: 420px; left: 105px; width: 7px; height: 7px; border-radius: 50%; background: #8B7355; opacity: 0.1; }
+.d7 { position: absolute; top: 460px; left: 148px; width: 5px; height: 5px; background: #1B3B6B; opacity: 0.08; transform: rotate(45deg); }
+.d8 { position: absolute; top: 55px; left: 700px; width: 10px; height: 10px; border: 1.5px solid #8B7355; opacity: 0.1; }
+.d9 { position: absolute; bottom: 150px; left: 620px; width: 6px; height: 6px; border-radius: 50%; background: #1B3B6B; opacity: 0.07; }
+.d10 { position: absolute; top: 200px; left: 720px; width: 5px; height: 5px; background: #8B7355; opacity: 0.12; }
+.d11 { position: absolute; bottom: 100px; left: 680px; width: 80px; height: 1px; background: #8B7355; opacity: 0.08; transform: rotate(-15deg); transform-origin: left center; }
 
-<!-- diagonal accent line top -->
-<line x1="60" y1="40" x2="340" y2="40" stroke="#1B3B6B" stroke-width="1"/>
-<circle cx="60" cy="40" r="4" fill="#1B3B6B"/>
+/* Subtle labels */
+.lbl {
+  position: absolute;
+  font-size: 9px; letter-spacing: 2.5px;
+  text-transform: uppercase; font-weight: 500;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+.lbl-h { top: 378px; left: 215px; color: rgba(27,59,107,0.25); }
+.lbl-m { top: 560px; left: 65px; color: rgba(139,115,85,0.32); }
+.lbl-f { top: 430px; left: 480px; color: rgba(27,59,107,0.15); }
 
-<!-- caption label -->
-<text x="80" y="850" font-family="Noto Serif SC, serif" font-size="13" fill="#8B7355" letter-spacing="4">VISUAL METAPHOR</text>
-<text x="80" y="875" font-family="Noto Serif SC, serif" font-size="14" fill="#1B3B6B">人类指挥机械乐队 · 望向地平线</text>
+/* Bottom bar & page num */
+.btm {
+  position: absolute; bottom: 0; left: 0;
+  width: 1600px; height: 3px;
+  background: #1B3B6B; opacity: 0.4; z-index: 10;
+}
+.pn {
+  position: absolute; bottom: 18px; right: 90px;
+  font-size: 10px; color: #8B7355;
+  letter-spacing: 2px; opacity: 0.5; z-index: 10;
+}
+</style>
+</head>
+<body>
 
-<!-- side label vertical -->
-<text x="40" y="470" font-family="Noto Sans SC, sans-serif" font-size="11" fill="#8B7355" letter-spacing="6" transform="rotate(-90, 40, 470)">BAUHAUS · GEOMETRIC COMPOSITION</text>
+<div class="parchment"></div>
+<div class="ta1"></div>
+<div class="ta2"></div>
 
-<!-- small circle accents -->
-<circle cx="420" cy="130" r="18" fill="none" stroke="#1B3B6B" stroke-width="1"/>
-<circle cx="420" cy="130" r="8" fill="#8B7355"/>
+<div class="layout">
+  <div class="left">
+    <div class="bg-num">10</div>
 
-<!-- horizontal band top -->
-<line x1="60" y1="70" x2="820" y2="70" stroke="#1B3B6B" stroke-width="0.6" opacity="0.4"/>
-</svg>
+    <div class="meta">
+      <div class="meta-dot"></div>
+      <div class="meta-sq"></div>
+      <div class="meta-txt">LECTURE 10 · 劳动报酬与财产分配</div>
+    </div>
+
+    <div class="h1">开源劳动报酬的未来</div>
+
+    <div class="sub">当 <b>AI 辅助代码生成</b>，</div>
+    <div class="sub">人类维护者的角色发生变化。</div>
+
+    <div class="note">劳动报酬的制度也需要适应新的生产方式。</div>
+
+    <div class="sep">
+      <div class="sep-line"></div>
+      <div class="sep-dot"></div>
+      <div class="sep-txt">未来的制度设计需要回答</div>
+    </div>
+
+    <div class="qbox">
+      <div class="q-bg">?</div>
+      <div class="q">AI 时代，人类贡献者的<em>价值在哪里？</em></div>
+      <div class="q">他们应获得<em>什么样的报酬？</em></div>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="sep-v"></div>
+
+    <!-- Decorative elements -->
+    <div class="d1"></div>
+    <div class="d2"></div>
+    <div class="d3"></div>
+    <div class="d4"></div>
+    <div class="d5"></div>
+    <div class="d6"></div>
+    <div class="d7"></div>
+    <div class="d8"></div>
+    <div class="d9"></div>
+    <div class="d10"></div>
+    <div class="d11"></div>
+
+    <!-- Horizon circle (future) -->
+    <div class="hz-fill"></div>
+    <div class="hz-ring"></div>
+    <div class="hz-inner"></div>
+
+    <!-- Directional rays -->
+    <div class="ray1"></div>
+    <div class="ray2"></div>
+
+    <!-- Conductor figure -->
+    <div class="c-head"></div>
+    <div class="c-body"></div>
+    <div class="c-arm-r"></div>
+    <div class="c-arm-l"></div>
+    <div class="c-baton"></div>
+    <div class="note-dot"></div>
+
+    <!-- Horizon line -->
+    <div class="hz-line"></div>
+
+    <!-- Musical staff -->
+    <div class="staff">
+      <div class="s-line"></div>
+      <div class="s-line"></div>
+      <div class="s-line"></div>
+      <div class="s-line"></div>
+      <div class="s-line"></div>
+    </div>
+
+    <!-- Mechanical orchestra -->
+    <div class="orch">
+      <div class="o-co" style="width:26px;height:26px;"></div>
+      <div class="o-so" style="width:20px;height:20px;"></div>
+      <div class="o-cf" style="width:14px;height:14px;"></div>
+      <div class="o-sf" style="width:16px;height:16px;"></div>
+      <div class="o-co" style="width:34px;height:34px;"></div>
+      <div class="o-so" style="width:13px;height:13px;"></div>
+      <div class="o-tr"></div>
+      <div class="o-cf" style="width:11px;height:11px;"></div>
+      <div class="o-so" style="width:24px;height:24px;"></div>
+      <div class="o-co" style="width:18px;height:18px;"></div>
+      <div class="o-sf" style="width:10px;height:10px;"></div>
+      <div class="o-co" style="width:22px;height:22px;"></div>
+      <div class="o-so" style="width:16px;height:16px;"></div>
+      <div class="o-cf" style="width:13px;height:13px;"></div>
+    </div>
+
+    <!-- Subtle labels -->
+    <div class="lbl lbl-h">HUMAN</div>
+    <div class="lbl lbl-m">MECHANICAL</div>
+    <div class="lbl lbl-f">FUTURE</div>
+  </div>
 </div>
 
-<div class="right-panel">
-<div class="deck-tag">
-<span>第 10 期</span>
-<span class="ln"></span>
-<span>劳动报酬与财产分配</span>
-</div>
+<div class="btm"></div>
+<div class="pn">10 / 29</div>
 
-<div class="num-badge">10</div>
-
-<h1 class="main-title">开源劳动报酬的<br/>未来</h1>
-<div class="sub-title">当 AI 辅助代码生成</div>
-<div class="divider"></div>
-
-<p class="body-text">
-人类维护者的角色正在发生深刻变化，<br/>
-劳动报酬的制度设计也需要随之适应。
-</p>
-
-<div class="question-block">
-<div class="q-label">FUTURE QUESTIONS</div>
-<div class="q-line">01 &nbsp; AI 时代，人类贡献者的<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价值在哪里？</div>
-<div class="q-line">02 &nbsp; 他们应获得<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;什么样的报酬？</div>
-</div>
-
-<div class="footer">
-<span>OPEN SOURCE · NIE PERSPECTIVE</span>
-<span class="ln"></span>
-<span>10 / 29</span>
-</div>
-</div>
-</body></html>
+</body>
+</html>

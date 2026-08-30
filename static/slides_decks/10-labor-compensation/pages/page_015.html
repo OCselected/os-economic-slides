@@ -1,596 +1,644 @@
 
 
 <!DOCTYPE html>
-<html><!-- source_hash: 48477630d61e1399 -->
+<html lang="zh-CN"><!-- source_hash: 8afced7483e8714e -->
 <head>
 <meta charset="UTF-8">
 <title>开源劳动者与云厂商的分配冲突</title>
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html, body {
-  width: 1600px;
-  height: 900px;
-  overflow: hidden;
-  margin: 0;
-  font-family: 'Noto Sans SC', 'Source Han Sans SC', sans-serif;
-  background: #F5F0E8;
-  color: #1B3B6B;
-}
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-body {
-  position: relative;
-  background:
-    radial-gradient(ellipse at 20% 10%, rgba(139,115,85,0.04) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 90%, rgba(27,59,107,0.03) 0%, transparent 50%),
-    #F5F0E8;
-}
+  html, body {
+    width: 1600px;
+    height: 900px;
+    overflow: hidden;
+    margin: 0;
+    background: #F5F0E8;
+    font-family: 'Noto Sans SC', 'Source Han Sans SC', sans-serif;
+    color: #1B3B6B;
+  }
 
-/* Decorative Bauhaus elements */
-.deco-circle-tr {
-  position: absolute;
-  top: 60px;
-  right: 60px;
-  width: 80px;
-  height: 80px;
-  border: 2px solid #1B3B6B;
-  border-radius: 50%;
-}
-.deco-square-bl {
-  position: absolute;
-  bottom: 70px;
-  left: 60px;
-  width: 40px;
-  height: 40px;
-  background: #1B3B6B;
-}
-.deco-line-top {
-  position: absolute;
-  top: 150px;
-  left: 100px;
-  width: 600px;
-  height: 1px;
-  background: #1B3B6B;
-  opacity: 0.4;
-}
-.deco-line-bottom {
-  position: absolute;
-  bottom: 120px;
-  left: 800px;
-  width: 700px;
-  height: 1px;
-  background: #8B7355;
-  opacity: 0.5;
-}
-.deco-arc {
-  position: absolute;
-  top: 480px;
-  right: 80px;
-  width: 120px;
-  height: 120px;
-  border: 1px solid #8B7355;
-  border-radius: 50%;
-  opacity: 0.3;
-}
+  .slide {
+    position: relative;
+    width: 1600px;
+    height: 900px;
+    overflow: hidden;
+  }
 
-/* Header */
-.header {
-  position: absolute;
-  top: 50px;
-  left: 100px;
-  right: 100px;
-}
-.lecture-tag {
-  font-size: 13px;
-  letter-spacing: 4px;
-  color: #8B7355;
-  text-transform: uppercase;
-  font-weight: 500;
-}
-.main-title {
-  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-  font-size: 38px;
-  font-weight: 700;
-  color: #1B3B6B;
-  margin-top: 12px;
-  letter-spacing: 2px;
-  line-height: 1.3;
-}
-.title-bar {
-  width: 60px;
-  height: 3px;
-  background: #8B7355;
-  margin-top: 16px;
-}
+  /* Parchment texture overlay */
+  .slide::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(139, 115, 85, 0.02) 2px,
+        rgba(139, 115, 85, 0.02) 3px
+      );
+    pointer-events: none;
+    z-index: 0;
+  }
 
-/* Visual area */
-.visual-area {
-  position: absolute;
-  top: 180px;
-  left: 30px;
-  width: 720px;
-  height: 600px;
-}
+  /* Bauhaus decorative elements */
+  .bauhaus-circle-top {
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: rgba(27, 59, 107, 0.06);
+    z-index: 0;
+  }
 
-.scale-wrapper {
-  position: absolute;
-  top: 40px;
-  left: 220px;
-  width: 440px;
-  height: 480px;
-}
+  .bauhaus-square-left {
+    position: absolute;
+    bottom: 60px;
+    left: -40px;
+    width: 160px;
+    height: 160px;
+    background: rgba(139, 115, 85, 0.08);
+    transform: rotate(15deg);
+    z-index: 0;
+  }
 
-/* Beam */
-.beam {
-  position: absolute;
-  top: 160px;
-  left: 0;
-  width: 440px;
-  height: 4px;
-  background: #1B3B6B;
-  transform-origin: center center;
-  transform: rotate(24deg);
-}
+  .bauhaus-line-h {
+    position: absolute;
+    top: 110px;
+    left: 80px;
+    width: 500px;
+    height: 3px;
+    background: #1B3B6B;
+    z-index: 1;
+  }
 
-/* Fulcrum */
-.fulcrum {
-  position: absolute;
-  top: 100px;
-  left: 180px;
-  width: 0;
-  height: 0;
-  border-left: 40px solid transparent;
-  border-right: 40px solid transparent;
-  border-bottom: 70px solid #1B3B6B;
-}
-.fulcrum-base {
-  position: absolute;
-  top: 168px;
-  left: 160px;
-  width: 80px;
-  height: 6px;
-  background: #1B3B6B;
-}
-.fulcrum-column {
-  position: absolute;
-  top: 174px;
-  left: 208px;
-  width: 10px;
-  height: 120px;
-  background: #1B3B6B;
-}
-.fulcrum-foot {
-  position: absolute;
-  top: 290px;
-  left: 160px;
-  width: 100px;
-  height: 6px;
-  background: #1B3B6B;
-}
+  .bauhaus-line-h2 {
+    position: absolute;
+    top: 116px;
+    left: 80px;
+    width: 120px;
+    height: 3px;
+    background: #8B7355;
+    z-index: 1;
+  }
 
-/* Left pan (contributor - empty) */
-.pan-left {
-  position: absolute;
-  top: 60px;
-  left: -20px;
-  width: 200px;
-  height: 240px;
-  transform: rotate(24deg);
-  transform-origin: center top;
-}
-.rope-left {
-  position: absolute;
-  top: 188px;
-  left: 40px;
-  width: 2px;
-  height: 100px;
-  background: #555;
-}
-.rope-left2 {
-  position: absolute;
-  top: 188px;
-  left: 160px;
-  width: 2px;
-  height: 100px;
-  background: #555;
-}
-.tray-left {
-  position: absolute;
-  top: 284px;
-  left: 20px;
-  width: 160px;
-  height: 10px;
-  background: #555;
-}
-.tray-left-side {
-  position: absolute;
-  top: 270px;
-  left: 20px;
-  width: 160px;
-  height: 14px;
-  border-radius: 50%;
-  background: transparent;
-  border: 2px solid #555;
-  border-bottom: none;
-}
+  .bauhaus-dot {
+    position: absolute;
+    top: 100px;
+    right: 80px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #1B3B6B;
+    z-index: 1;
+  }
 
-/* Right pan (cloud vendor - coins) */
-.pan-right {
-  position: absolute;
-  top: 260px;
-  left: 220px;
-  width: 220px;
-  height: 220px;
-  transform: rotate(24deg);
-  transform-origin: center top;
-}
-.rope-right {
-  position: absolute;
-  top: 0px;
-  left: 40px;
-  width: 2px;
-  height: 140px;
-  background: #555;
-}
-.rope-right2 {
-  position: absolute;
-  top: 0px;
-  left: 180px;
-  width: 2px;
-  height: 140px;
-  background: #555;
-}
-.tray-right {
-  position: absolute;
-  top: 130px;
-  left: 20px;
-  width: 180px;
-  height: 10px;
-  background: #555;
-}
-.tray-right-side {
-  position: absolute;
-  top: 116px;
-  left: 20px;
-  width: 180px;
-  height: 14px;
-  border-radius: 50%;
-  background: transparent;
-  border: 2px solid #555;
-  border-bottom: none;
-}
+  .bauhaus-dot2 {
+    position: absolute;
+    top: 130px;
+    right: 80px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #8B7355;
+    z-index: 1;
+  }
 
-.coins-stack {
-  position: absolute;
-  top: 50px;
-  left: 40px;
-  width: 140px;
-  height: 90px;
-}
-.coin {
-  position: absolute;
-  border-radius: 50%;
-  background: #8B7355;
-  border: 1px solid #6B5535;
-}
-.coin-1 { top: 70px; left: 20px; width: 36px; height: 36px; }
-.coin-2 { top: 70px; left: 56px; width: 36px; height: 36px; }
-.coin-3 { top: 70px; left: 92px; width: 36px; height: 36px; }
-.coin-4 { top: 50px; left: 38px; width: 36px; height: 36px; }
-.coin-5 { top: 50px; left: 74px; width: 36px; height: 36px; }
-.coin-6 { top: 30px; left: 56px; width: 36px; height: 36px; }
-.coin-7 { top: 70px; left: 128px; width: 30px; height: 30px; }
+  /* Header */
+  .lecture-tag {
+    position: absolute;
+    top: 40px;
+    left: 80px;
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 14px;
+    letter-spacing: 4px;
+    color: #8B7355;
+    z-index: 2;
+  }
 
-/* Labels for the pans */
-.label-contributor {
-  position: absolute;
-  top: 330px;
-  left: 0px;
-  font-family: 'Noto Serif SC', serif;
-  font-size: 18px;
-  color: #555;
-  font-weight: 500;
-  text-align: center;
-  width: 180px;
-}
-.label-contributor-en {
-  position: absolute;
-  top: 352px;
-  left: 12px;
-  font-size: 11px;
-  color: #8B7355;
-  letter-spacing: 2px;
-  text-align: center;
-  width: 160px;
-}
+  .lecture-tag span {
+    font-size: 28px;
+    color: #1B3B6B;
+    margin-right: 6px;
+    vertical-align: -2px;
+  }
 
-.label-vendor {
-  position: absolute;
-  top: 540px;
-  left: 200px;
-  font-family: 'Noto Serif SC', serif;
-  font-size: 18px;
-  color: #1B3B6B;
-  font-weight: 600;
-  text-align: center;
-  width: 200px;
-}
-.label-vendor-en {
-  position: absolute;
-  top: 562px;
-  left: 212px;
-  font-size: 11px;
-  color: #8B7355;
-  letter-spacing: 2px;
-  text-align: center;
-  width: 180px;
-}
+  .slide-number {
+    position: absolute;
+    top: 40px;
+    right: 120px;
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+    font-size: 13px;
+    color: #555;
+    letter-spacing: 1px;
+    z-index: 2;
+  }
 
-/* Arrow showing tilt direction */
-.tilt-arrow {
-  position: absolute;
-  top: 380px;
-  left: 240px;
-  width: 2px;
-  height: 60px;
-  background: #1B3B6B;
-  opacity: 0.4;
-}
+  /* Title area */
+  .title-area {
+    position: absolute;
+    top: 150px;
+    left: 80px;
+    z-index: 2;
+  }
 
-/* Right text area */
-.text-area {
-  position: absolute;
-  top: 230px;
-  left: 820px;
-  width: 720px;
-  height: 560px;
-}
+  .main-title {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: #1B3B6B;
+    line-height: 1.3;
+    letter-spacing: 2px;
+  }
 
-.section-label {
-  font-size: 12px;
-  letter-spacing: 3px;
-  color: #8B7355;
-  font-weight: 500;
-  margin-bottom: 20px;
-}
+  .sub-title {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+    font-size: 16px;
+    color: #8B7355;
+    margin-top: 12px;
+    letter-spacing: 1px;
+  }
 
-.key-points {
-  list-style: none;
-  padding: 0;
-}
+  /* Content grid */
+  .content-area {
+    position: absolute;
+    top: 260px;
+    left: 80px;
+    right: 80px;
+    bottom: 80px;
+    display: flex;
+    gap: 50px;
+    z-index: 2;
+  }
 
-.key-point {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 28px;
-  padding-left: 0;
-}
+  /* Left: Visual metaphor - the scale */
+  .visual-panel {
+    flex: 0 0 620px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-.point-index {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 14px;
-  color: #8B7355;
-  font-weight: 700;
-  width: 36px;
-  flex-shrink: 0;
-  padding-top: 4px;
-  letter-spacing: 1px;
-}
+  .scale-container {
+    position: relative;
+    width: 560px;
+    height: 420px;
+  }
 
-.point-content {
-  flex: 1;
-}
+  /* Fulcrum */
+  .fulcrum {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 35px solid transparent;
+    border-right: 35px solid transparent;
+    border-bottom: 60px solid #1B3B6B;
+  }
 
-.point-text {
-  font-size: 17px;
-  color: #1B3B6B;
-  font-weight: 500;
-  line-height: 1.55;
-}
+  .fulcrum-base {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 8px;
+    background: #1B3B6B;
+  }
 
-.point-text .em {
-  color: #8B7355;
-  font-weight: 700;
-}
+  /* Beam (tilted) */
+  .beam {
+    position: absolute;
+    bottom: 78px;
+    left: 50%;
+    width: 500px;
+    height: 6px;
+    background: #1B3B6B;
+    transform-origin: 50% 50%;
+    transform: translateX(-50%) rotate(-18deg);
+    border-radius: 2px;
+  }
 
-.point-sub {
-  font-size: 12px;
-  color: #555;
-  margin-top: 6px;
-  letter-spacing: 0.5px;
-  line-height: 1.5;
-}
+  /* Left plate (contributors - empty, high side) */
+  .plate-left {
+    position: absolute;
+    bottom: 140px;
+    left: 75px;
+    width: 140px;
+    height: 8px;
+    background: #555;
+    border-radius: 4px;
+    transform: rotate(-3deg);
+  }
 
-/* Divider between points */
-.divider {
-  width: 48px;
-  height: 1px;
-  background: #8B7355;
-  opacity: 0.5;
-  margin-bottom: 24px;
-}
+  .plate-left-chain {
+    position: absolute;
+    bottom: 130px;
+    left: 100px;
+    width: 2px;
+    height: 50px;
+    background: #8B7355;
+  }
 
-/* Footer */
-.footer {
-  position: absolute;
-  bottom: 40px;
-  left: 100px;
-  right: 100px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.footer-left {
-  font-size: 11px;
-  color: #8B7355;
-  letter-spacing: 2px;
-}
-.footer-right {
-  font-size: 11px;
-  color: #8B7355;
-  letter-spacing: 2px;
-  font-family: 'Noto Serif SC', serif;
-}
-.footer-bar {
-  position: absolute;
-  bottom: 60px;
-  left: 100px;
-  width: 1400px;
-  height: 1px;
-  background: #1B3B6B;
-  opacity: 0.15;
-}
+  .plate-left-chain2 {
+    position: absolute;
+    bottom: 130px;
+    left: 190px;
+    width: 2px;
+    height: 50px;
+    background: #8B7355;
+  }
 
-/* Quote at bottom of visual */
-.visual-quote {
-  position: absolute;
-  bottom: 10px;
-  left: 60px;
-  width: 600px;
-  font-family: 'Noto Serif SC', serif;
-  font-size: 12px;
-  color: #555;
-  font-style: italic;
-  text-align: center;
-  letter-spacing: 1px;
-  line-height: 1.6;
-}
+  .plate-left-label {
+    position: absolute;
+    bottom: 175px;
+    left: 70px;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 13px;
+    color: #555;
+    letter-spacing: 1px;
+  }
 
-.deco-circle-bl {
-  position: absolute;
-  bottom: 90px;
-  right: 100px;
-  width: 24px;
-  height: 24px;
-  background: #8B7355;
-  border-radius: 50%;
-  opacity: 0.5;
-}
+  .plate-left-empty {
+    position: absolute;
+    bottom: 168px;
+    left: 100px;
+    width: 100px;
+    height: 30px;
+    border: 2px dashed rgba(85, 85, 85, 0.3);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: rgba(85, 85, 85, 0.5);
+  }
 
-.deco-square-tr {
-  position: absolute;
-  top: 100px;
-  right: 160px;
-  width: 16px;
-  height: 16px;
-  border: 1.5px solid #1B3B6B;
-  opacity: 0.4;
-}
+  /* Right plate (cloud vendors - loaded, low side) */
+  .plate-right {
+    position: absolute;
+    bottom: 95px;
+    right: 55px;
+    width: 180px;
+    height: 8px;
+    background: #8B7355;
+    border-radius: 4px;
+    transform: rotate(-2deg);
+  }
+
+  .plate-right-chain {
+    position: absolute;
+    bottom: 88px;
+    right: 90px;
+    width: 2px;
+    height: 40px;
+    background: #8B7355;
+  }
+
+  .plate-right-chain2 {
+    position: absolute;
+    bottom: 88px;
+    right: 210px;
+    width: 2px;
+    height: 40px;
+    background: #8B7355;
+  }
+
+  .plate-right-label {
+    position: absolute;
+    bottom: 130px;
+    right: 60px;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 13px;
+    color: #8B7355;
+    letter-spacing: 1px;
+  }
+
+  /* Gold coins pile */
+  .coins-pile {
+    position: absolute;
+    bottom: 108px;
+    right: 65px;
+    width: 170px;
+    height: 55px;
+  }
+
+  .coin {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #C9A96E, #8B7355);
+    border: 1px solid #6B5640;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.15);
+  }
+
+  .coin-1 { width: 22px; height: 22px; bottom: 0; left: 10px; }
+  .coin-2 { width: 20px; height: 20px; bottom: 0; left: 38px; }
+  .coin-3 { width: 24px; height: 24px; bottom: 0; left: 66px; }
+  .coin-4 { width: 18px; height: 18px; bottom: 0; left: 96px; }
+  .coin-5 { width: 22px; height: 22px; bottom: 0; left: 120px; }
+  .coin-6 { width: 21px; height: 21px; bottom: 0; left: 148px; }
+  .coin-7 { width: 20px; height: 20px; bottom: 18px; left: 22px; }
+  .coin-8 { width: 23px; height: 23px; bottom: 18px; left: 52px; }
+  .coin-9 { width: 19px; height: 19px; bottom: 18px; left: 84px; }
+  .coin-10 { width: 21px; height: 21px; bottom: 18px; left: 110px; }
+  .coin-11 { width: 18px; height: 18px; bottom: 18px; left: 138px; }
+  .coin-12 { width: 22px; height: 22px; bottom: 36px; left: 35px; }
+  .coin-13 { width: 20px; height: 20px; bottom: 36px; left: 65px; }
+  .coin-14 { width: 19px; height: 19px; bottom: 36px; left: 92px; }
+  .coin-15 { width: 20px; height: 20px; bottom: 36px; left: 118px; }
+
+  /* Arrow indicating imbalance */
+  .imbalance-arrow {
+    position: absolute;
+    bottom: 160px;
+    left: 250px;
+    width: 60px;
+    height: 2px;
+    background: #1B3B6B;
+    opacity: 0.4;
+  }
+
+  .imbalance-arrow::after {
+    content: '';
+    position: absolute;
+    right: -2px;
+    top: -5px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid #1B3B6B;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    opacity: 0.6;
+  }
+
+  /* Right: Bullet points */
+  .bullets-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 20px;
+  }
+
+  .bullet-item {
+    position: relative;
+    padding-left: 32px;
+    margin-bottom: 28px;
+    font-size: 17px;
+    line-height: 1.75;
+    color: #1B3B6B;
+  }
+
+  .bullet-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .bullet-num {
+    position: absolute;
+    left: 0;
+    top: 3px;
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #8B7355;
+  }
+
+  .bullet-item .highlight {
+    color: #1B3B6B;
+    font-weight: 700;
+    border-bottom: 2px solid rgba(27, 59, 107, 0.3);
+    padding-bottom: 1px;
+  }
+
+  .bullet-item .reference {
+    display: block;
+    font-size: 14px;
+    color: #8B7355;
+    font-style: italic;
+    margin-top: 6px;
+    padding-left: 0;
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  }
+
+  /* Bottom bar */
+  .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: #1B3B6B;
+    z-index: 2;
+  }
+
+  .bottom-bar-accent {
+    position: absolute;
+    bottom: 4px;
+    left: 0;
+    width: 200px;
+    height: 4px;
+    background: #8B7355;
+    z-index: 2;
+  }
+
+  /* Section divider */
+  .section-divider {
+    position: absolute;
+    top: 240px;
+    left: 80px;
+    width: 60px;
+    height: 3px;
+    background: #8B7355;
+    z-index: 2;
+  }
+
+  /* Bauhaus decorative circle bottom right */
+  .bauhaus-circle-br {
+    position: absolute;
+    bottom: -60px;
+    right: -60px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 3px solid rgba(27, 59, 107, 0.06);
+    z-index: 0;
+  }
+
+  /* Small decorative square */
+  .bauhaus-small-square {
+    position: absolute;
+    top: 200px;
+    right: 120px;
+    width: 20px;
+    height: 20px;
+    background: #8B7355;
+    opacity: 0.3;
+    z-index: 1;
+  }
+
+  .bauhaus-small-line {
+    position: absolute;
+    top: 250px;
+    right: 80px;
+    width: 2px;
+    height: 60px;
+    background: #1B3B6B;
+    opacity: 0.1;
+    z-index: 1;
+  }
+
+  /* Marx reference box */
+  .marx-ref {
+    position: absolute;
+    bottom: 50px;
+    right: 80px;
+    padding: 14px 22px;
+    border-left: 4px solid #8B7355;
+    background: rgba(139, 115, 85, 0.05);
+    z-index: 2;
+  }
+
+  .marx-ref-text {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 13px;
+    color: #8B7355;
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  .marx-ref-cite {
+    font-size: 12px;
+    color: #555;
+    margin-top: 4px;
+  }
 </style>
 </head>
 <body>
+<div class="slide">
 
-<!-- Decorative elements -->
-<div class="deco-circle-tr"></div>
-<div class="deco-square-bl"></div>
-<div class="deco-line-top"></div>
-<div class="deco-line-bottom"></div>
-<div class="deco-arc"></div>
-<div class="deco-circle-bl"></div>
-<div class="deco-square-tr"></div>
+  <!-- Bauhaus decorative elements -->
+  <div class="bauhaus-circle-top"></div>
+  <div class="bauhaus-square-left"></div>
+  <div class="bauhaus-circle-br"></div>
+  <div class="bauhaus-dot"></div>
+  <div class="bauhaus-dot2"></div>
+  <div class="bauhaus-small-square"></div>
+  <div class="bauhaus-small-line"></div>
 
-<!-- Header -->
-<div class="header">
-  <div class="lecture-tag">LECTURE 10 &nbsp;·&nbsp; OPEN-SOURCE ECONOMICS</div>
-  <div class="main-title">开源劳动者与云厂商的分配冲突</div>
-  <div class="title-bar"></div>
-</div>
+  <!-- Top line decorations -->
+  <div class="bauhaus-line-h"></div>
+  <div class="bauhaus-line-h2"></div>
 
-<!-- Visual Area: Tilted Balance Scale -->
-<div class="visual-area">
-  <div class="scale-wrapper">
-    <!-- Fulcrum -->
-    <div class="fulcrum"></div>
-    <div class="fulcrum-base"></div>
-    <div class="fulcrum-column"></div>
-    <div class="fulcrum-foot"></div>
+  <!-- Header -->
+  <div class="lecture-tag"><span>10</span>劳动报酬与财产分配</div>
+  <div class="slide-number">20 / 29</div>
 
-    <!-- Tilted Beam -->
-    <div class="beam"></div>
+  <!-- Title -->
+  <div class="title-area">
+    <div class="main-title">开源劳动者与云厂商的分配冲突</div>
+    <div class="sub-title">Labor Compensation vs. Cloud Capital: An Asymmetric Distribution</div>
+  </div>
 
-    <!-- Left Pan (Contributor - Empty) -->
-    <div class="pan-left">
-      <div class="rope-left"></div>
-      <div class="rope-left2"></div>
-      <div class="tray-left-side"></div>
-      <div class="tray-left"></div>
-    </div>
+  <div class="section-divider"></div>
 
-    <!-- Right Pan (Cloud Vendor - Coins) -->
-    <div class="pan-right">
-      <div class="rope-right"></div>
-      <div class="rope-right2"></div>
-      <div class="tray-right-side"></div>
-      <div class="tray-right"></div>
-      <div class="coins-stack">
-        <div class="coin coin-1"></div>
-        <div class="coin coin-2"></div>
-        <div class="coin coin-3"></div>
-        <div class="coin coin-4"></div>
-        <div class="coin coin-5"></div>
-        <div class="coin coin-6"></div>
-        <div class="coin coin-7"></div>
+  <!-- Content Area -->
+  <div class="content-area">
+
+    <!-- Visual: Tilted Scale -->
+    <div class="visual-panel">
+      <div class="scale-container">
+
+        <!-- Fulcrum -->
+        <div class="fulcrum"></div>
+        <div class="fulcrum-base"></div>
+
+        <!-- Tilted beam -->
+        <div class="beam"></div>
+
+        <!-- Left side: contributors (empty, high) -->
+        <div class="plate-left"></div>
+        <div class="plate-left-chain"></div>
+        <div class="plate-left-chain2"></div>
+        <div class="plate-left-label">贡献者</div>
+        <div class="plate-left-empty">空无</div>
+
+        <!-- Right side: cloud vendors (loaded, low) -->
+        <div class="plate-right"></div>
+        <div class="plate-right-chain"></div>
+        <div class="plate-right-chain2"></div>
+        <div class="plate-right-label">云厂商</div>
+
+        <!-- Gold coins -->
+        <div class="coins-pile">
+          <div class="coin coin-1"></div>
+          <div class="coin coin-2"></div>
+          <div class="coin coin-3"></div>
+          <div class="coin coin-4"></div>
+          <div class="coin coin-5"></div>
+          <div class="coin coin-6"></div>
+          <div class="coin coin-7"></div>
+          <div class="coin coin-8"></div>
+          <div class="coin coin-9"></div>
+          <div class="coin coin-10"></div>
+          <div class="coin coin-11"></div>
+          <div class="coin coin-12"></div>
+          <div class="coin coin-13"></div>
+          <div class="coin coin-14"></div>
+          <div class="coin coin-15"></div>
+        </div>
+
       </div>
     </div>
 
-    <div class="label-contributor">贡献者端</div>
-    <div class="label-contributor-en">CONTRIBUTORS — EMPTY</div>
-    <div class="label-vendor">云厂商端</div>
-    <div class="label-vendor-en">CLOUD VENDORS — PROSPEROUS</div>
+    <!-- Right: Bullet points -->
+    <div class="bullets-panel">
+
+      <div class="bullet-item">
+        <span class="bullet-num">01</span>
+        <span class="highlight">开源劳动者</span>与云厂商之间存在根本性的<span class="highlight">分配冲突</span>
+      </div>
+
+      <div class="bullet-item">
+        <span class="bullet-num">02</span>
+        云厂商利用开源代码提供服务，赚取<span class="highlight">巨额收入</span>——AWS、Azure、Google Cloud 均建立在开源之上
+      </div>
+
+      <div class="bullet-item">
+        <span class="bullet-num">03</span>
+        但贡献者未获得与之对应的<span class="highlight">直接回报</span>：劳动价值被制度性地截留与转移
+      </div>
+
+      <div class="bullet-item">
+        <span class="bullet-num">04</span>
+        这是数字时代的<span class="highlight">生产资料与劳动价值</span>之间的分配不匹配——代码即新生产资料
+      </div>
+
+      <div class="bullet-item">
+        <span class="bullet-num">05</span>
+        与《资本论》中分析的劳资矛盾在<span class="highlight">制度逻辑</span>上同构
+        <span class="reference">— 剩余价值论的开源映射 —</span>
+      </div>
+
+    </div>
+
   </div>
 
-  <div class="visual-quote">
-    「劳动创造价值，却未必享有价值。」
+  <!-- Marx reference -->
+  <div class="marx-ref">
+    <div class="marx-ref-text">"工人创造的价值与其实际获得的报酬之间的差额，构成资本积累的基础。"</div>
+    <div class="marx-ref-cite">— 《资本论》第一卷, 第六章</div>
   </div>
+
+  <!-- Bottom bars -->
+  <div class="bottom-bar"></div>
+  <div class="bottom-bar-accent"></div>
+
 </div>
-
-<!-- Text Area -->
-<div class="text-area">
-  <div class="section-label">DISTRIBUTION CONFLICT &nbsp;·&nbsp; 分配冲突</div>
-
-  <ul class="key-points">
-    <li class="key-point">
-      <span class="point-index">01</span>
-      <span class="point-content">
-        <span class="point-text">云厂商利用开源代码提供服务<span class="em">，赚取巨额收入</span></span>
-        <span class="point-sub">— Cloud vendors monetize OSS-based services at massive scale</span>
-      </span>
-    </li>
-    <div class="divider"></div>
-
-    <li class="key-point">
-      <span class="point-index">02</span>
-      <span class="point-content">
-        <span class="point-text">贡献者没有获得<span class="em">直接回报</span></span>
-        <span class="point-sub">— Contributors receive no direct compensation</span>
-      </span>
-    </li>
-    <div class="divider"></div>
-
-    <li class="key-point">
-      <span class="point-index">03</span>
-      <span class="point-content">
-        <span class="point-text">数字时代<span class="em">生产资料与劳动价值</span>之间的分配不匹配</span>
-        <span class="point-sub">— A structural mismatch between means of digital production and labor value</span>
-      </span>
-    </li>
-    <div class="divider"></div>
-
-    <li class="key-point">
-      <span class="point-index">04</span>
-      <span class="point-content">
-        <span class="point-text">与马克思在<span class="em">《资本论》</span>中分析的劳资矛盾在<span class="em">制度逻辑上同构</span></span>
-        <span class="point-sub">— Institutionally isomorphic to the labor-capital contradiction in Das Kapital</span>
-      </span>
-    </li>
-  </ul>
-</div>
-
-<!-- Footer -->
-<div class="footer-bar"></div>
-<div class="footer">
-  <span class="footer-left">第 10 期 · 劳动报酬与财产分配 &nbsp;/&nbsp; 开源之道</span>
-  <span class="footer-right">— 15 / 29 —</span>
-</div>
-
 </body>
 </html>

@@ -1,495 +1,883 @@
 
 
 <!DOCTYPE html>
-<html><!-- source_hash: 3b9ae60fb4b741d3 -->
+<html lang="zh-CN"><!-- source_hash: 88db068c4e39d895 -->
 <head>
 <meta charset="UTF-8">
 <title>第 10 期 · 劳动报酬与财产分配</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
+
   html, body {
     width: 1600px;
     height: 900px;
     overflow: hidden;
-    margin: 0;
     background: #F5F0E8;
     font-family: 'Noto Sans SC', sans-serif;
     color: #1B3B6B;
   }
-  .slide {
-    position: relative;
-    width: 1600px;
-    height: 900px;
-    background: #F5F0E8;
-    overflow: hidden;
-  }
-  /* Subtle parchment texture via layered noise-like radial */
-  .slide::before {
+
+  /* Subtle parchment texture */
+  body::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0; left: 0;
+    width: 1600px;
+    height: 900px;
     background:
-      radial-gradient(ellipse at 20% 30%, rgba(139,115,85,0.03) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 70%, rgba(139,115,85,0.025) 0%, transparent 50%),
-      radial-gradient(ellipse at 50% 50%, rgba(139,115,85,0.015) 0%, transparent 70%);
+      radial-gradient(ellipse at 30% 20%, rgba(139,115,85,0.03) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 80%, rgba(139,115,85,0.04) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(27,59,107,0.015) 0%, transparent 60%);
     pointer-events: none;
     z-index: 0;
   }
 
-  /* Bauhaus decorative elements */
-  .deco-circle-1 {
+  .slide {
     position: absolute;
-    top: -120px;
-    right: -120px;
-    width: 400px;
-    height: 400px;
-    border: 2px solid rgba(27,59,107,0.08);
-    border-radius: 50%;
-    z-index: 0;
-  }
-  .deco-circle-2 {
-    position: absolute;
-    top: -80px;
-    right: -80px;
-    width: 320px;
-    height: 320px;
-    border: 1px solid rgba(27,59,107,0.05);
-    border-radius: 50%;
-    z-index: 0;
-  }
-  .deco-square-1 {
-    position: absolute;
-    bottom: 60px;
-    left: 60px;
-    width: 80px;
-    height: 80px;
-    border: 2px solid rgba(139,115,85,0.2);
-    z-index: 0;
-  }
-  .deco-line-1 {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 2px;
+    width: 1600px;
     height: 900px;
-    background: rgba(27,59,107,0.04);
-    z-index: 0;
+    overflow: hidden;
   }
 
-  /* Surveying instrument - central geometric composition */
-  .instrument-container {
+  /* ===== HEADER AREA ===== */
+  .header-bar {
     position: absolute;
     top: 0;
     left: 0;
     width: 1600px;
-    height: 900px;
-    z-index: 1;
-    pointer-events: none;
-  }
-
-  /* The surveyor's instrument - geometric abstraction */
-  .instrument {
-    position: absolute;
-    top: 210px;
-    left: 890px;
-    width: 620px;
-    height: 520px;
-  }
-  .instr-circle-outer {
-    position: absolute;
-    top: 30px;
-    left: 90px;
-    width: 380px;
-    height: 380px;
-    border: 2.5px solid #1B3B6B;
-    border-radius: 50%;
-    opacity: 0.85;
-  }
-  .instr-circle-inner {
-    position: absolute;
-    top: 90px;
-    left: 150px;
-    width: 260px;
-    height: 260px;
-    border: 1.5px solid rgba(27,59,107,0.5);
-    border-radius: 50%;
-  }
-  .instr-circle-core {
-    position: absolute;
-    top: 140px;
-    left: 200px;
-    width: 160px;
-    height: 160px;
-    border: 1px solid rgba(27,59,107,0.35);
-    border-radius: 50%;
-  }
-  .instr-dot-center {
-    position: absolute;
-    top: 200px;
-    left: 260px;
-    width: 12px;
-    height: 12px;
+    height: 6px;
     background: #1B3B6B;
-    border-radius: 50%;
   }
 
-  /* Cross hairs */
-  .instr-cross-h {
+  .header-bar::after {
+    content: '';
     position: absolute;
-    top: 218px;
+    top: 0;
+    left: 0;
+    width: 480px;
+    height: 6px;
+    background: #8B7355;
+  }
+
+  .lecture-badge {
+    position: absolute;
+    top: 36px;
+    left: 80px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    z-index: 10;
+  }
+
+  .lecture-badge .num-square {
+    width: 48px;
+    height: 48px;
+    background: #1B3B6B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #F5F0E8;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 20px;
+    font-weight: 900;
+  }
+
+  .lecture-badge .label {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #8B7355;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .header-right {
+    position: absolute;
+    top: 36px;
+    right: 80px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    z-index: 10;
+  }
+
+  .header-right .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #8B7355;
+  }
+
+  .header-right .slide-num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+    color: #8B7355;
+    letter-spacing: 1px;
+  }
+
+  .header-right .section {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13px;
+    color: #555;
+    letter-spacing: 1px;
+  }
+
+  /* ===== MAIN CONTENT LAYOUT ===== */
+  .main {
+    position: absolute;
+    top: 110px;
+    left: 80px;
+    width: 1440px;
+    height: 720px;
+    display: flex;
+    gap: 60px;
+  }
+
+  /* ===== LEFT: GEOMETRIC INSTRUMENT COMPOSITION ===== */
+  .instrument-panel {
+    width: 580px;
+    height: 720px;
+    position: relative;
+  }
+
+  /* Background grid pattern */
+  .grid-bg {
+    position: absolute;
+    top: 40px;
     left: 40px;
     width: 500px;
-    height: 1px;
-    background: rgba(27,59,107,0.25);
-  }
-  .instr-cross-v {
-    position: absolute;
-    top: 10px;
-    left: 285px;
-    width: 1px;
-    height: 440px;
-    background: rgba(27,59,107,0.25);
+    height: 500px;
+    z-index: 1;
   }
 
-  /* Grid lines (经纬) */
-  .instr-grid-h1 {
+  .grid-line {
     position: absolute;
-    top: 100px;
-    left: 60px;
-    width: 500px;
-    height: 1px;
-    background: rgba(139,115,85,0.15);
+    background: rgba(139,115,85,0.08);
   }
-  .instr-grid-h2 {
+
+  .grid-line.h { width: 500px; height: 1px; }
+  .grid-line.v { width: 1px; height: 500px; }
+
+  /* Concentric circles - sextant rings */
+  .ring {
     position: absolute;
-    top: 340px;
-    left: 60px;
-    width: 500px;
-    height: 1px;
-    background: rgba(139,115,85,0.15);
+    border-radius: 50%;
+    border: 1.5px solid #1B3B6B;
   }
-  .instr-grid-v1 {
-    position: absolute;
-    top: 50px;
+
+  .ring-1 {
+    top: 90px;
+    left: 100px;
+    width: 400px;
+    height: 400px;
+    border-width: 2px;
+  }
+
+  .ring-2 {
+    top: 150px;
     left: 160px;
-    width: 1px;
-    height: 340px;
-    background: rgba(139,115,85,0.15);
-  }
-  .instr-grid-v2 {
-    position: absolute;
-    top: 50px;
-    left: 410px;
-    width: 1px;
-    height: 340px;
-    background: rgba(139,115,85,0.15);
+    width: 280px;
+    height: 280px;
+    border-color: #8B7355;
+    border-width: 1.5px;
   }
 
-  /* Surveyor's tripod legs */
-  .instr-leg-1 {
-    position: absolute;
-    top: 200px;
-    left: 300px;
-    width: 1px;
-    height: 290px;
-    background: rgba(27,59,107,0.3);
-    transform-origin: top center;
-    transform: rotate(-18deg);
-  }
-  .instr-leg-2 {
-    position: absolute;
-    top: 200px;
-    left: 320px;
-    width: 1px;
-    height: 290px;
-    background: rgba(27,59,107,0.3);
-    transform-origin: top center;
-    transform: rotate(0deg);
-  }
-  .instr-leg-3 {
-    position: absolute;
-    top: 200px;
-    left: 340px;
-    width: 1px;
-    height: 290px;
-    background: rgba(27,59,107,0.3);
-    transform-origin: top center;
-    transform: rotate(18deg);
+  .ring-3 {
+    top: 210px;
+    left: 220px;
+    width: 160px;
+    height: 160px;
+    border-color: rgba(139,115,85,0.4);
+    border-width: 1px;
   }
 
-  /* Focusing lens / telescope arm */
-  .instr-arm {
+  .ring-4 {
+    top: 240px;
+    left: 250px;
+    width: 100px;
+    height: 100px;
+    background: #1B3B6B;
+    border: none;
+    opacity: 0.12;
+  }
+
+  /* Center dot */
+  .center-dot {
     position: absolute;
-    top: 195px;
-    left: 270px;
-    width: 260px;
+    top: 282px;
+    left: 292px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #1B3B6B;
+  }
+
+  .center-dot-inner {
+    position: absolute;
+    top: 287px;
+    left: 297px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #8B7355;
+  }
+
+  /* Sextant arms - measuring lines */
+  .arm {
+    position: absolute;
+    background: #1B3B6B;
+    transform-origin: 300px 300px;
+  }
+
+  .arm-1 {
+    top: 90px;
+    left: 299px;
+    width: 2px;
+    height: 210px;
+    background: #1B3B6B;
+  }
+
+  .arm-2 {
+    top: 299px;
+    left: 90px;
+    width: 210px;
     height: 2px;
     background: #1B3B6B;
+  }
+
+  .arm-3 {
+    top: 299px;
+    left: 299px;
+    width: 210px;
+    height: 2px;
+    background: #1B3B6B;
+    opacity: 0.4;
+  }
+
+  /* Angled arm - diagonal */
+  .arm-diagonal {
+    position: absolute;
+    top: 300px;
+    left: 300px;
+    width: 180px;
+    height: 2px;
+    background: #8B7355;
+    transform-origin: 0 0;
+    transform: rotate(-45deg);
+  }
+
+  .arm-diagonal-2 {
+    position: absolute;
+    top: 300px;
+    left: 300px;
+    width: 180px;
+    height: 2px;
+    background: #8B7355;
+    opacity: 0.5;
+    transform-origin: 0 0;
+    transform: rotate(135deg);
+  }
+
+  /* Tick marks around the ring */
+  .tick {
+    position: absolute;
+    background: #1B3B6B;
+    opacity: 0.5;
+  }
+
+  .tick-major {
+    width: 1.5px;
+    height: 14px;
+  }
+
+  .tick-minor {
+    width: 1px;
+    height: 8px;
+    opacity: 0.25;
+  }
+
+  /* Coordinate labels */
+  .coord-label {
+    position: absolute;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 10px;
+    color: #8B7355;
+    letter-spacing: 1px;
     opacity: 0.6;
   }
-  .instr-arm-end {
+
+  .coord-n { top: 78px; left: 296px; }
+  .coord-s { top: 498px; left: 296px; }
+  .coord-w { top: 292px; left: 72px; }
+  .coord-e { top: 292px; left: 506px; }
+
+  /* Decorative square - representing institutional grid */
+  .deco-square-1 {
     position: absolute;
-    top: 186px;
-    left: 520px;
-    width: 18px;
-    height: 18px;
-    border: 2px solid #1B3B6B;
-    border-radius: 50%;
-    background: #F5F0E8;
-    opacity: 0.7;
+    top: 130px;
+    left: 140px;
+    width: 44px;
+    height: 44px;
+    border: 1.5px solid #8B7355;
+    opacity: 0.5;
   }
 
-  /* Copper accent - theodolite index mark */
-  .instr-index {
+  .deco-square-2 {
     position: absolute;
-    top: 26px;
-    left: 275px;
-    width: 10px;
-    height: 10px;
+    top: 142px;
+    left: 152px;
+    width: 20px;
+    height: 20px;
     background: #8B7355;
+    opacity: 0.12;
   }
 
-  /* Tick marks on the circle */
-  .instr-tick {
+  .deco-square-3 {
     position: absolute;
-    background: rgba(27,59,107,0.35);
+    top: 380px;
+    left: 400px;
+    width: 60px;
+    height: 60px;
+    border: 1px solid #1B3B6B;
+    opacity: 0.3;
   }
-  .instr-tick-1 { top: 20px; left: 280px; width: 1px; height: 12px; }
-  .instr-tick-2 { top: 400px; left: 280px; width: 1px; height: 12px; }
-  .instr-tick-3 { top: 208px; left: 80px; width: 12px; height: 1px; }
-  .instr-tick-4 { top: 208px; left: 470px; width: 12px; height: 1px; }
-  .instr-tick-5 { top: 70px; left: 135px; width: 1px; height: 10px; transform: rotate(45deg); }
-  .instr-tick-6 { top: 70px; left: 435px; width: 1px; height: 10px; transform: rotate(-45deg); }
-  .instr-tick-7 { top: 355px; left: 135px; width: 1px; height: 10px; transform: rotate(-45deg); }
-  .instr-tick-8 { top: 355px; left: 435px; width: 1px; height: 10px; transform: rotate(45deg); }
 
-  /* Copper accent - small square */
-  .instr-copper-square {
+  /* Vertical line element */
+  .v-line-1 {
+    position: absolute;
+    top: 0;
+    left: 60px;
+    width: 1px;
+    height: 560px;
+    background: rgba(27,59,107,0.15);
+  }
+
+  .h-line-1 {
+    position: absolute;
+    top: 540px;
+    left: 40px;
+    width: 520px;
+    height: 1px;
+    background: rgba(27,59,107,0.15);
+  }
+
+  /* Label text for instrument */
+  .instrument-label {
     position: absolute;
     bottom: 30px;
-    left: 200px;
-    width: 24px;
-    height: 24px;
-    background: #8B7355;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 12px;
+    color: #8B7355;
+    letter-spacing: 4px;
+    font-style: italic;
     opacity: 0.7;
   }
 
-  /* Content area */
-  .content {
+  /* Vertical axis line - latitude */
+  .axis-label-v {
     position: absolute;
-    top: 100px;
-    left: 80px;
-    width: 780px;
-    z-index: 2;
+    left: 32px;
+    top: 240px;
+    writing-mode: vertical-rl;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 11px;
+    color: #8B7355;
+    letter-spacing: 3px;
+    opacity: 0.5;
   }
 
-  .lecture-tag {
-    display: inline-block;
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-    font-size: 14px;
-    letter-spacing: 4px;
+  /* Horizontal axis line - longitude */
+  .axis-label-h {
+    position: absolute;
+    left: 200px;
+    bottom: 70px;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 11px;
     color: #8B7355;
+    letter-spacing: 3px;
+    opacity: 0.5;
+  }
+
+  /* Small accent circle */
+  .accent-circle {
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #8B7355;
+    opacity: 0.3;
+  }
+
+  .accent-circle-2 {
+    position: absolute;
+    bottom: 50px;
+    left: 20px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #1B3B6B;
+    opacity: 0.15;
+  }
+
+  /* ===== RIGHT: TEXT CONTENT ===== */
+  .content-panel {
+    flex: 1;
+    padding-top: 20px;
+    position: relative;
+  }
+
+  .kicker {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #8B7355;
+    letter-spacing: 3px;
     text-transform: uppercase;
-    border: 1px solid #8B7355;
-    padding: 6px 16px;
-    margin-bottom: 36px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
   }
 
-  .title-cn {
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-    font-size: 62px;
-    font-weight: 700;
+  .kicker-line {
+    width: 40px;
+    height: 1px;
+    background: #8B7355;
+  }
+
+  .main-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 42px;
+    font-weight: 900;
     color: #1B3B6B;
-    line-height: 1.15;
-    letter-spacing: 4px;
+    line-height: 1.3;
     margin-bottom: 8px;
+    letter-spacing: 1px;
   }
-  .title-cn .num {
-    font-size: 62px;
-    font-weight: 700;
-  }
-  .title-dot {
+
+  .main-title .accent {
     color: #8B7355;
-    margin: 0 12px;
-    font-weight: 300;
   }
 
   .subtitle {
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-    font-size: 22px;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px;
     color: #555;
-    margin-top: 18px;
-    letter-spacing: 2px;
+    line-height: 1.5;
+    margin-bottom: 48px;
     font-weight: 400;
-    line-height: 1.6;
+    letter-spacing: 1px;
   }
 
+  /* Divider */
   .divider {
-    width: 120px;
+    width: 80px;
     height: 2px;
     background: #1B3B6B;
-    margin: 36px 0 32px 0;
+    margin-bottom: 40px;
   }
 
+  .divider::after {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #8B7355;
+    margin-top: 6px;
+  }
+
+  /* Bullet points */
   .points {
     list-style: none;
     padding: 0;
     margin: 0;
   }
-  .points li {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 18px;
-    color: #1B3B6B;
-    line-height: 1.9;
-    padding-left: 28px;
-    position: relative;
-    margin-bottom: 6px;
-    letter-spacing: 0.5px;
-  }
-  .points li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 14px;
-    width: 12px;
-    height: 2px;
-    background: #8B7355;
+
+  .point-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 28px;
   }
 
-  .footer {
-    position: absolute;
-    bottom: 40px;
-    left: 80px;
-    width: 780px;
-    z-index: 2;
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 13px;
-    color: #8B7355;
-    letter-spacing: 2px;
-  }
-  .footer .f-left {
+  .point-marker {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
     display: flex;
     align-items: center;
-    gap: 12px;
-  }
-  .footer .f-line {
-    width: 40px;
-    height: 1px;
-    background: #8B7355;
-    opacity: 0.5;
+    justify-content: center;
+    margin-top: 4px;
   }
 
-  /* Right-side small Bauhaus accents */
-  .accent-square {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    background: #1B3B6B;
-    z-index: 1;
-    opacity: 0.12;
+  .marker-square {
+    width: 14px;
+    height: 14px;
+    border: 1.5px solid #1B3B6B;
+    position: relative;
   }
-  .accent-copper {
+
+  .marker-square::after {
+    content: '';
     position: absolute;
-    width: 20px;
-    height: 20px;
+    top: 4px;
+    left: 4px;
+    width: 6px;
+    height: 6px;
     background: #8B7355;
-    z-index: 1;
-    opacity: 0.5;
   }
-  .accent-ring {
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    border: 2px solid rgba(27,59,107,0.2);
+
+  .marker-circle {
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
-    z-index: 1;
+    border: 1.5px solid #1B3B6B;
+    position: relative;
+  }
+
+  .marker-circle::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #8B7355;
+  }
+
+  .marker-diamond {
+    width: 14px;
+    height: 14px;
+    border: 1.5px solid #1B3B6B;
+    transform: rotate(45deg);
+  }
+
+  .marker-line {
+    width: 14px;
+    height: 2px;
+    background: #1B3B6B;
+    position: relative;
+  }
+
+  .marker-line::after {
+    content: '';
+    position: absolute;
+    left: -3px;
+    top: -4px;
+    width: 2px;
+    height: 10px;
+    background: #8B7355;
+  }
+
+  .marker-cross {
+    width: 14px;
+    height: 14px;
+    position: relative;
+  }
+
+  .marker-cross::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 0;
+    width: 14px;
+    height: 1.5px;
+    background: #1B3B6B;
+  }
+
+  .marker-cross::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 6px;
+    width: 1.5px;
+    height: 14px;
+    background: #1B3B6B;
+  }
+
+  .point-text {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 17px;
+    color: #1B3B6B;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+  }
+
+  .point-text .highlight {
+    color: #8B7355;
+    font-weight: 700;
+  }
+
+  .point-text .sub {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13px;
+    color: #555;
+    display: block;
+    margin-top: 4px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+  }
+
+  /* ===== BOTTOM AREA ===== */
+  .footer {
+    position: absolute;
+    bottom: 30px;
+    left: 80px;
+    right: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    color: #8B7355;
+    letter-spacing: 2px;
+    opacity: 0.6;
+  }
+
+  .footer-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #8B7355;
+  }
+
+  .footer-right {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 11px;
+    color: #8B7355;
+    letter-spacing: 2px;
+    opacity: 0.5;
+    font-style: italic;
+  }
+
+  /* ===== LARGE DECORATIVE ELEMENTS ===== */
+  .deco-large-circle {
+    position: absolute;
+    top: -120px;
+    right: -80px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 1px solid rgba(27,59,107,0.06);
+    z-index: 0;
+  }
+
+  .deco-large-square {
+    position: absolute;
+    bottom: -60px;
+    left: -60px;
+    width: 200px;
+    height: 200px;
+    border: 1px solid rgba(139,115,85,0.06);
+    z-index: 0;
+  }
+
+  /* Tick marks positions around the ring */
+  /* 12 major ticks on ring-1 at radius 200 from center (300,300) */
+  .tick-pos {
+    position: absolute;
   }
 </style>
 </head>
 <body>
 <div class="slide">
-  <!-- Background decorative elements -->
-  <div class="deco-circle-1"></div>
-  <div class="deco-circle-2"></div>
-  <div class="deco-square-1"></div>
-  <div class="deco-line-1"></div>
 
-  <!-- Small Bauhaus accents -->
-  <div class="accent-square" style="bottom: 120px; right: 200px;"></div>
-  <div class="accent-copper" style="top: 130px; right: 100px;"></div>
-  <div class="accent-ring" style="top: 480px; right: 80px;"></div>
+  <!-- Top bar -->
+  <div class="header-bar"></div>
 
-  <!-- Surveying instrument geometric composition -->
-  <div class="instrument-container">
-    <div class="instrument">
-      <div class="instr-circle-outer"></div>
-      <div class="instr-circle-inner"></div>
-      <div class="instr-circle-core"></div>
-      <div class="instr-dot-center"></div>
+  <!-- Decorative background shapes -->
+  <div class="deco-large-circle"></div>
+  <div class="deco-large-square"></div>
 
-      <div class="instr-cross-h"></div>
-      <div class="instr-cross-v"></div>
+  <!-- Header -->
+  <div class="lecture-badge">
+    <div class="num-square">10</div>
+    <div class="label">LECTURE · 劳动报酬与财产分配</div>
+  </div>
 
-      <div class="instr-grid-h1"></div>
-      <div class="instr-grid-h2"></div>
-      <div class="instr-grid-v1"></div>
-      <div class="instr-grid-v2"></div>
-
-      <div class="instr-leg-1"></div>
-      <div class="instr-leg-2"></div>
-      <div class="instr-leg-3"></div>
-
-      <div class="instr-arm"></div>
-      <div class="instr-arm-end"></div>
-
-      <div class="instr-index"></div>
-
-      <div class="instr-tick instr-tick-1"></div>
-      <div class="instr-tick instr-tick-2"></div>
-      <div class="instr-tick instr-tick-3"></div>
-      <div class="instr-tick instr-tick-4"></div>
-      <div class="instr-tick instr-tick-5"></div>
-      <div class="instr-tick instr-tick-6"></div>
-      <div class="instr-tick instr-tick-7"></div>
-      <div class="instr-tick instr-tick-8"></div>
-
-      <div class="instr-copper-square"></div>
-    </div>
+  <div class="header-right">
+    <span class="dot"></span>
+    <span class="slide-num">第 10 期</span>
+    <span class="section">开源经济学讲座</span>
   </div>
 
   <!-- Main content -->
-  <div class="content">
-    <div class="lecture-tag">Lecture · 10</div>
-    <div class="title-cn">
-      <span class="num">第 10 期</span>
-      <span class="title-dot">·</span>
-      劳动报酬与财产分配
+  <div class="main">
+
+    <!-- Left: Instrument Composition -->
+    <div class="instrument-panel">
+
+      <!-- Background grid -->
+      <div class="grid-bg">
+        <div class="grid-line h" style="top:0;"></div>
+        <div class="grid-line h" style="top:100px;"></div>
+        <div class="grid-line h" style="top:200px;"></div>
+        <div class="grid-line h" style="top:300px;"></div>
+        <div class="grid-line h" style="top:400px;"></div>
+        <div class="grid-line h" style="top:500px;"></div>
+        <div class="grid-line v" style="left:0;"></div>
+        <div class="grid-line v" style="left:100px;"></div>
+        <div class="grid-line v" style="left:200px;"></div>
+        <div class="grid-line v" style="left:300px;"></div>
+        <div class="grid-line v" style="left:400px;"></div>
+        <div class="grid-line v" style="left:500px;"></div>
+      </div>
+
+      <!-- Axis lines -->
+      <div class="v-line-1"></div>
+      <div class="h-line-1"></div>
+
+      <!-- Rings (concentric circles - sextant/astrolabe) -->
+      <div class="ring ring-1"></div>
+      <div class="ring ring-2"></div>
+      <div class="ring ring-3"></div>
+      <div class="ring ring-4"></div>
+
+      <!-- Center dot -->
+      <div class="center-dot"></div>
+      <div class="center-dot-inner"></div>
+
+      <!-- Arms (measuring lines) -->
+      <div class="arm arm-1"></div>
+      <div class="arm arm-2"></div>
+      <div class="arm arm-3"></div>
+
+      <!-- Diagonal arms -->
+      <div class="arm-diagonal"></div>
+      <div class="arm-diagonal-2"></div>
+
+      <!-- Tick marks around ring-1 (positioned at ring-1 center = 300,300 with radius ~200) -->
+      <div class="tick tick-major" style="top:88px; left:299px;"></div>
+      <div class="tick tick-major" style="top:492px; left:299px;"></div>
+      <div class="tick tick-major" style="top:298px; left:98px; height:1.5px; width:14px;"></div>
+      <div class="tick tick-major" style="top:298px; left:488px; height:1.5px; width:14px;"></div>
+
+      <div class="tick tick-major" style="top:149px; left:148px; transform:rotate(45deg);"></div>
+      <div class="tick tick-major" style="top:149px; left:442px; transform:rotate(-45deg);"></div>
+      <div class="tick tick-major" style="top:442px; left:148px; transform:rotate(-45deg);"></div>
+      <div class="tick tick-major" style="top:442px; left:442px; transform:rotate(45deg);"></div>
+
+      <!-- Minor ticks -->
+      <div class="tick tick-minor" style="top:92px; left:232px;"></div>
+      <div class="tick tick-minor" style="top:92px; left:368px;"></div>
+      <div class="tick tick-minor" style="top:298px; left:142px; height:1px; width:8px;"></div>
+      <div class="tick tick-minor" style="top:298px; left:452px; height:1px; width:8px;"></div>
+      <div class="tick tick-minor" style="top:200px; left:98px; height:1px; width:8px;"></div>
+      <div class="tick tick-minor" style="top:200px; left:494px; height:1px; width:8px;"></div>
+      <div class="tick tick-minor" style="top:400px; left:98px; height:1px; width:8px;"></div>
+      <div class="tick tick-minor" style="top:400px; left:494px; height:1px; width:8px;"></div>
+
+      <!-- Decorative squares -->
+      <div class="deco-square-1"></div>
+      <div class="deco-square-2"></div>
+      <div class="deco-square-3"></div>
+
+      <!-- Accent circles -->
+      <div class="accent-circle"></div>
+      <div class="accent-circle-2"></div>
+
+      <!-- Axis labels -->
+      <div class="axis-label-v">制度纬线 · Institutional Latitude</div>
+      <div class="axis-label-h">财产经线 · Property Longitude</div>
+
+      <!-- Instrument label -->
+      <div class="instrument-label">— 制 图 仪 · CARTOGRAPHIC INSTRUMENT —</div>
+
     </div>
-    <div class="subtitle">
-      老式制图仪聚焦制度经纬，勾勒劳动与财产分配网格
+
+    <!-- Right: Text Content -->
+    <div class="content-panel">
+
+      <div class="kicker">
+        <span class="kicker-line"></span>
+        <span>THE ECONOMIC WAY OF THINKING</span>
+      </div>
+
+      <div class="main-title">
+        制图仪视角<br>
+        <span class="accent">下的劳动报酬</span>
+      </div>
+
+      <div class="subtitle">
+        聚焦制度经纬，勾勒劳动与财产分配网格
+      </div>
+
+      <div class="divider"></div>
+
+      <ul class="points">
+        <li class="point-item">
+          <div class="point-marker">
+            <div class="marker-square"></div>
+          </div>
+          <div class="point-text">
+            <span class="highlight">经济学的思维方式</span>
+            <span class="sub">制度是理解经济现象的坐标轴——如同制图仪上的经纬</span>
+          </div>
+        </li>
+
+        <li class="point-item">
+          <div class="point-marker">
+            <div class="marker-circle"></div>
+          </div>
+          <div class="point-text">
+            <span class="highlight">解释现代世界</span>
+            <span class="sub">新制度经济学为数字时代的生产与分配提供分析框架</span>
+          </div>
+        </li>
+
+        <li class="point-item">
+          <div class="point-marker">
+            <div class="marker-diamond"></div>
+          </div>
+          <div class="point-text">
+            <span class="highlight">制度、劳动与财产分配</span>
+            <span class="sub">产权界定、劳动激励与剩余分配构成制度三角</span>
+          </div>
+        </li>
+
+        <li class="point-item">
+          <div class="point-marker">
+            <div class="marker-cross"></div>
+          </div>
+          <div class="point-text">
+            <span class="highlight">开源的可持续发展</span>
+            <span class="sub">需要回答劳动报酬的问题——从制图仪视角审视贡献者的制度激励</span>
+          </div>
+        </li>
+      </ul>
+
     </div>
-    <div class="divider"></div>
-    <ul class="points">
-      <li>经济学的思维方式</li>
-      <li>解释现代世界</li>
-      <li>制度、劳动与财产分配</li>
-      <li>开源的可持续发展需要回答劳动报酬的问题——制图仪视角</li>
-    </ul>
+
   </div>
 
   <!-- Footer -->
   <div class="footer">
-    <div class="f-left">
-      <span>开源之道 · Open Source Economics</span>
-      <span class="f-line"></span>
+    <div class="footer-left">
+      <span>OPEN SOURCE ECONOMICS</span>
+      <span class="footer-dot"></span>
+      <span>NEW INSTITUTIONAL ECONOMICS</span>
+      <span class="footer-dot"></span>
+      <span>OPEN ROAD</span>
     </div>
-    <div class="f-right">
-      <span>新制度经济学视角 · 第 10 期</span>
+    <div class="footer-right">
+      开源之道 · 日常交流
     </div>
   </div>
+
 </div>
 </body>
 </html>

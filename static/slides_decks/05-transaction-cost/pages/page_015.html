@@ -1,243 +1,635 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: 6943ea4f9fd0048c --><head><meta charset="UTF-8"><title>科斯之鉴：从内部了解开源</title><style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1600px;height:900px;overflow:hidden;margin:0;background:#F5F0E8;font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif}
-.slide{position:relative;width:1600px;height:900px;background:#F5F0E8;overflow:hidden}
+<!DOCTYPE html>
+<html><!-- source_hash: c4379ce312022d10 -->
+<head>
+<meta charset="UTF-8">
+<title>交易成本与路径依赖 · 开源的科斯命题</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: #F5F0E8;
+  font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+  color: #333;
+  position: relative;
+}
 
-/* subtle parchment texture */
-.slide::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;background:repeating-linear-gradient(0deg,transparent 0px,transparent 3px,rgba(139,115,85,0.015) 3px,rgba(139,115,85,0.015) 4px),repeating-linear-gradient(90deg,transparent 0px,transparent 5px,rgba(27,59,107,0.01) 5px,rgba(27,59,107,0.01) 6px);pointer-events:none;z-index:1}
+/* Parchment texture overlay */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(139,115,85,0.015) 2px,
+      rgba(139,115,85,0.015) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(139,115,85,0.01) 2px,
+      rgba(139,115,85,0.01) 4px
+    );
+  pointer-events: none;
+  z-index: 0;
+}
 
-/* Header line */
-.header-line{position:absolute;top:70px;left:80px;right:80px;height:1px;background:#1B3B6B;z-index:3}
-.header-line-2{position:absolute;top:74px;left:80px;width:60px;height:1px;background:#8B7355;z-index:3}
+/* Geometric Bauhaus decorations */
+.geo-circle-1 {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 2px solid rgba(27,59,107,0.12);
+  top: -40px;
+  right: -40px;
+  z-index: 1;
+}
+.geo-circle-2 {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: rgba(27,59,107,0.06);
+  bottom: 60px;
+  right: 120px;
+  z-index: 1;
+}
+.geo-square-1 {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: rgba(139,115,85,0.08);
+  top: 100px;
+  left: 80px;
+  z-index: 1;
+}
+.geo-line-1 {
+  position: absolute;
+  width: 200px;
+  height: 1px;
+  background: rgba(27,59,107,0.15);
+  top: 240px;
+  left: 1420px;
+  transform: rotate(-45deg);
+  z-index: 1;
+}
+.geo-line-2 {
+  position: absolute;
+  width: 140px;
+  height: 1px;
+  background: rgba(139,115,85,0.2);
+  bottom: 180px;
+  left: 40px;
+  transform: rotate(30deg);
+  z-index: 1;
+}
+.geo-line-3 {
+  position: absolute;
+  width: 2px;
+  height: 100px;
+  background: rgba(27,59,107,0.1);
+  bottom: 320px;
+  right: 60px;
+  z-index: 1;
+}
+.geo-triangle {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+  border-bottom: 70px solid rgba(27,59,107,0.05);
+  bottom: 120px;
+  left: 100px;
+  transform: rotate(15deg);
+  z-index: 1;
+}
 
-/* Slide number */
-.slide-num{position:absolute;top:50px;right:80px;font-family:'Noto Serif SC',serif;font-size:14px;color:#555;letter-spacing:3px;z-index:3}
+/* Main layout */
+.slide-container {
+  position: relative;
+  width: 1600px;
+  height: 900px;
+  display: flex;
+  z-index: 2;
+}
 
-/* Section tag */
-.section-tag{position:absolute;top:50px;left:80px;font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;letter-spacing:6px;z-index:3}
+/* Left column - Visual metaphor area */
+.visual-column {
+  width: 520px;
+  height: 900px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
 
-/* Title area */
-.title-block{position:absolute;top:110px;left:80px;z-index:3}
-.title-main{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:48px;color:#1B3B6B;font-weight:600;line-height:1.2;letter-spacing:2px}
-.title-sub{font-family:'Noto Serif SC',serif;font-size:18px;color:#555;margin-top:14px;letter-spacing:4px;line-height:1.6}
-.title-underline{width:80px;height:3px;background:#1B3B6B;margin-top:20px}
-.title-underline-2{width:30px;height:3px;background:#8B7355;margin-top:6px}
+/* Bookshelf abstraction */
+.bookshelf-wrapper {
+  position: relative;
+  width: 420px;
+  height: 560px;
+  margin-top: 30px;
+}
 
-/* Left: Bookshelf geometric composition */
-.bookshelf-area{position:absolute;top:140px;left:80px;width:460px;height:680px;z-index:2}
+.bookshelf {
+  position: relative;
+  width: 400px;
+  height: 480px;
+  border: 2px solid #1B3B6B;
+  margin: 0 auto;
+}
 
-/* Bauhaus decorative circle (elder's presence) */
-.elder-circle{position:absolute;top:20px;left:280px;width:160px;height:160px;border-radius:50%;border:2px solid #1B3B6B;display:flex;align-items:center;justify-content:center;z-index:3}
-.elder-circle-inner{width:110px;height:110px;border-radius:50%;border:1px solid #8B7355;display:flex;align-items:center;justify-content:center;flex-direction:column}
-.elder-circle-text{font-family:'Noto Serif SC',serif;font-size:11px;color:#1B3B6B;letter-spacing:3px;line-height:1.8;text-align:center}
-.elder-circle-line{width:20px;height:1px;background:#8B7355;margin:4px auto}
+.shelf-line {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: #1B3B6B;
+}
+.shelf-1 { top: 33.33%; }
+.shelf-2 { top: 66.66%; }
+.shelf-3 { top: 0; }
+.shelf-4 { bottom: 0; }
 
-/* Bookshelf shelves */
-.shelf{position:absolute;left:40px;width:420px;height:2px;background:#1B3B6B;z-index:3}
-.shelf-1{top:200px}
-.shelf-2{top:360px}
-.shelf-3{top:520px}
-.shelf-4{top:680px}
+.shelf-side-left {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: #1B3B6B;
+}
+.shelf-side-right {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: #1B3B6B;
+}
 
-/* Books as rectangles */
-.book{position:absolute;border:1.5px solid #1B3B6B;background:#F5F0E8;z-index:2}
-.book-1a{top:210px;left:50px;width:34px;height:135px}
-.book-1b{top:220px;left:88px;width:28px;height:125px;background:#1B3B6B}
-.book-1c{top:215px;left:120px;width:38px;height:130px}
-.book-1d{top:225px;left:162px;width:26px;height:120px;background:#8B7355;border-color:#8B7355}
-.book-1e{top:212px;left:192px;width:36px;height:133px}
-.book-1f{top:222px;left:232px;width:22px;height:123px}
+/* Books */
+.book {
+  position: absolute;
+  border: 1px solid rgba(27,59,107,0.6);
+}
 
-.book-2a{top:370px;left:55px;width:30px;height:135px}
-.book-2b{top:380px;left:89px;width:40px;height:125px;background:#1B3B6B}
-.book-2c{top:372px;left:133px;width:26px;height:133px}
-.book-2d{top:382px;left:163px;width:34px;height:123px;background:#8B7355;border-color:#8B7355}
-.book-2e{top:375px;left:201px;width:28px;height:130px}
-.book-2f{top:385px;left:233px;width:38px;height:120px}
+/* Row 1 books */
+.book-1-1 { width: 28px; height: 100px; left: 30px; top: 12px; background: rgba(27,59,107,0.15); }
+.book-1-2 { width: 35px; height: 95px; left: 68px; top: 17px; background: rgba(139,115,85,0.2); }
+.book-1-3 { width: 25px; height: 105px; left: 112px; top: 7px; background: rgba(27,59,107,0.2); }
+.book-1-4 { width: 40px; height: 90px; left: 145px; top: 22px; background: rgba(139,115,85,0.15); }
+.book-1-5 { width: 30px; height: 100px; left: 194px; top: 12px; background: rgba(27,59,107,0.12); }
+.book-1-6 { width: 32px; height: 98px; left: 234px; top: 14px; background: rgba(139,115,85,0.18); }
+.book-1-7 { width: 28px; height: 102px; left: 275px; top: 10px; background: rgba(27,59,107,0.16); }
+.book-1-8 { width: 36px; height: 94px; left: 312px; top: 18px; background: rgba(139,115,85,0.12); }
 
-.book-3a{top:530px;left:50px;width:36px;height:135px}
-.book-3b{top:540px;left:90px;width:28px;height:125px}
-.book-3c{top:535px;left:122px;width:32px;height:130px;background:#1B3B6B}
-.book-3d{top:545px;left:158px;width:24px;height:120px}
-.book-3e{top:532px;left:186px;width:40px;height:133px;background:#8B7355;border-color:#8B7355}
-.book-3f{top:542px;left:230px;width:30px;height:123px}
+/* Row 2 books */
+.book-2-1 { width: 32px; height: 98px; left: 30px; top: 180px; background: rgba(27,59,107,0.18); }
+.book-2-2 { width: 38px; height: 100px; left: 71px; top: 178px; background: rgba(139,115,85,0.16); }
+.book-2-3 { width: 28px; height: 96px; left: 118px; top: 182px; background: rgba(27,59,107,0.14); }
+.book-2-4 { width: 34px; height: 104px; left: 155px; top: 174px; background: rgba(139,115,85,0.2); }
+.book-2-5 { width: 30px; height: 98px; left: 198px; top: 180px; background: rgba(27,59,107,0.2); }
+.book-2-6 { width: 36px; height: 94px; left: 237px; top: 184px; background: rgba(139,115,85,0.14); }
+.book-2-7 { width: 26px; height: 100px; left: 282px; top: 178px; background: rgba(27,59,107,0.12); }
+.book-2-8 { width: 32px; height: 100px; left: 317px; top: 178px; background: rgba(139,115,85,0.18); }
 
-/* Small circles on books (decorative) */
-.book-dot{position:absolute;width:6px;height:6px;border-radius:50%;background:#8B7355;z-index:4}
-.bd1{top:250px;left:65px}
-.bd2{top:260px;left:102px}
-.bd3{top:410px;left:104px}
-.bd4{top:420px;left:144px}
-.bd5{top:570px;left:66px}
-.bd6{top:580px;left:100px}
-.bd7{top:575px;left:140px}
+/* Row 3 books */
+.book-3-1 { width: 34px; height: 100px; left: 30px; top: 358px; background: rgba(139,115,85,0.2); }
+.book-3-2 { width: 28px; height: 96px; left: 73px; top: 362px; background: rgba(27,59,107,0.16); }
+.book-3-3 { width: 40px; height: 102px; left: 110px; top: 356px; background: rgba(27,59,107,0.2); }
+.book-3-4 { width: 30px; height: 98px; left: 159px; top: 360px; background: rgba(139,115,85,0.14); }
+.book-3-5 { width: 36px; height: 100px; left: 198px; top: 358px; background: rgba(27,59,107,0.12); }
+.book-3-6 { width: 28px; height: 94px; left: 243px; top: 364px; background: rgba(139,115,85,0.2); }
+.book-3-7 { width: 32px; height: 100px; left: 280px; top: 358px; background: rgba(27,59,107,0.18); }
+.book-3-8 { width: 34px; height: 98px; left: 321px; top: 360px; background: rgba(139,115,85,0.16); }
 
-/* Vertical lines accent */
-.vline{position:absolute;width:1px;background:#8B7355;opacity:0.5;z-index:2}
-.vline-1{top:200px;left:280px;height:160px}
-.vline-2{top:360px;left:280px;height:160px}
+/* Elder figure - abstract geometric */
+.elder-figure {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 120px;
+}
 
-/* Book labels */
-.shelf-label{position:absolute;font-family:'Noto Serif SC',serif;font-size:10px;color:#8B7355;letter-spacing:2px;z-index:3}
-.sl1{top:355px;left:280px;width:100px;text-align:left;line-height:1.6}
-.sl2{top:515px;left:280px;width:100px;text-align:left;line-height:1.6}
-.sl3{top:200px;left:280px;width:100px;text-align:left;line-height:1.6;margin-top:170px}
+.elder-head {
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(27,59,107,0.85);
+  top: 0;
+  left: 32px;
+}
 
-/* Right content area */
-.content-area{position:absolute;top:300px;right:80px;width:680px;z-index:3}
-.content-num{font-family:'Noto Serif SC',serif;font-size:11px;color:#8B7355;letter-spacing:4px;margin-bottom:6px}
-.content-rule{width:40px;height:2px;background:#1B3B6B;margin-bottom:22px}
+.elder-smile {
+  position: absolute;
+  width: 22px;
+  height: 12px;
+  border: 2px solid rgba(245,240,232,0.9);
+  border-top: none;
+  border-radius: 0 0 22px 22px;
+  bottom: 16px;
+  left: 49px;
+}
 
-/* Main description */
-.description{font-family:'Noto Serif SC',serif;font-size:15px;color:#555;line-height:1.9;letter-spacing:1px;margin-bottom:30px;padding-left:0}
+.elder-body {
+  position: absolute;
+  width: 80px;
+  height: 50px;
+  background: rgba(139,115,85,0.7);
+  top: 60px;
+  left: 20px;
+  border-radius: 10px 10px 0 0;
+}
 
-/* Bullet points */
-.bullets{display:flex;flex-direction:column;gap:14px}
-.bullet{display:flex;align-items:flex-start;gap:16px}
-.bullet-num{font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;letter-spacing:2px;min-width:28px;padding-top:3px;font-weight:600}
-.bullet-bar{width:2px;height:22px;background:#1B3B6B;margin-top:4px;flex-shrink:0}
-.bullet-text{font-family:'Noto Sans SC',sans-serif;font-size:14px;color:#1B3B6B;line-height:1.7;letter-spacing:0.5px;flex:1}
-.bullet-text em{font-style:normal;color:#8B7355;font-weight:600}
-.bullet-text strong{font-weight:600;color:#1B3B6B}
+/* Coase quote area */
+.coase-label {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 380px;
+  text-align: center;
+}
 
-/* Quote block */
-.quote-area{position:absolute;bottom:80px;left:80px;width:460px;z-index:3}
-.quote-mark{font-family:'Noto Serif SC',serif;font-size:56px;color:#1B3B6B;line-height:0.8;margin-bottom:8px}
-.quote-text{font-family:'Noto Serif SC',serif;font-size:13px;color:#555;line-height:1.8;letter-spacing:1px;font-style:italic}
-.quote-attr{font-family:'Noto Serif SC',serif;font-size:11px;color:#8B7355;margin-top:10px;letter-spacing:3px}
+.coase-name {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 16px;
+  color: #1B3B6B;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
 
-/* Footer */
-.footer-line{position:absolute;bottom:50px;right:80px;width:680px;height:1px;background:#8B7355;opacity:0.4;z-index:3}
-.footer-text{position:absolute;bottom:35px;right:80px;font-family:'Noto Serif SC',serif;font-size:10px;color:#8B7355;letter-spacing:3px;z-index:3}
+.coase-subtitle {
+  font-size: 12px;
+  color: #8B7355;
+  margin-top: 4px;
+  letter-spacing: 1px;
+}
 
-/* Bauhaus accent shapes */
-.accent-square{position:absolute;top:780px;right:80px;width:16px;height:16px;background:#1B3B6B;z-index:3}
-.accent-circle-sm{position:absolute;top:280px;right:200px;width:12px;height:12px;border-radius:50%;border:1.5px solid #8B7355;z-index:3}
-.accent-line{position:absolute;top:280px;right:80px;width:120px;height:1px;background:#8B7355;z-index:3}
+/* Right column - Content */
+.content-column {
+  width: 1080px;
+  height: 900px;
+  position: relative;
+  padding: 70px 80px 70px 60px;
+  display: flex;
+  flex-direction: column;
+}
 
-/* Decorative triangle */
-.deco-triangle{position:absolute;top:770px;right:110px;width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:14px solid #8B7355;z-index:3}
-</style></head><body>
-<div class="slide">
+/* Top bar */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 40px;
+}
 
-<div class="section-tag">CHAPTER · 03</div>
-<div class="slide-num">17 / 32</div>
-<div class="header-line"></div>
-<div class="header-line-2"></div>
+.slide-number {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 14px;
+  color: #8B7355;
+  letter-spacing: 3px;
+  line-height: 1;
+}
 
-<div class="title-block">
-<div class="title-main">科斯之鉴：从内部了解开源</div>
-<div class="title-sub">The Coasean Lens — Understanding Open Source from Within</div>
-<div class="title-underline"></div>
-<div class="title-underline-2"></div>
+.deck-id {
+  font-size: 11px;
+  color: rgba(85,85,85,0.5);
+  letter-spacing: 2px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+/* Title section */
+.title-section {
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.title-section::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -30px;
+  width: 4px;
+  height: 100px;
+  background: #1B3B6B;
+}
+
+.section-tag {
+  font-size: 13px;
+  color: #8B7355;
+  letter-spacing: 4px;
+  margin-bottom: 12px;
+  font-family: 'Noto Sans SC', sans-serif;
+  text-transform: uppercase;
+}
+
+.slide-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 38px;
+  color: #1B3B6B;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 2px;
+}
+
+.slide-subtitle {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 18px;
+  color: #8B7355;
+  margin-top: 10px;
+  letter-spacing: 1px;
+  font-style: italic;
+}
+
+/* Divider */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, rgba(27,59,107,0.3) 0%, rgba(27,59,107,0.08) 100%);
+  margin-bottom: 36px;
+}
+
+/* Content points */
+.content-points {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+}
+
+.point {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 14px 20px;
+  background: rgba(245,240,232,0.5);
+  border-left: 3px solid rgba(27,59,107,0.15);
+  transition: all 0.3s;
+}
+
+.point:hover {
+  border-left-color: rgba(27,59,107,0.5);
+  background: rgba(245,240,232,0.8);
+}
+
+.point-number {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 18px;
+  color: #1B3B6B;
+  font-weight: 700;
+  min-width: 28px;
+  line-height: 1.5;
+  letter-spacing: 1px;
+}
+
+.point-text {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 16px;
+  color: #333;
+  line-height: 1.7;
+  flex: 1;
+}
+
+.point-text .highlight {
+  color: #1B3B6B;
+  font-weight: 600;
+}
+
+.point-text .emphasis {
+  color: #8B7355;
+  font-style: italic;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+}
+
+/* Bottom bar */
+.bottom-bar {
+  position: absolute;
+  bottom: 30px;
+  left: 60px;
+  right: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lecture-info {
+  font-size: 11px;
+  color: rgba(85,85,85,0.6);
+  letter-spacing: 2px;
+}
+
+.page-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.page-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(27,59,107,0.2);
+}
+.page-dot.active {
+  background: #1B3B6B;
+}
+
+/* Decorative elements */
+.deco-circle-large {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 1px solid rgba(27,59,107,0.06);
+  top: -80px;
+  right: -80px;
+  z-index: 0;
+}
+
+.deco-arc {
+  position: absolute;
+  bottom: 100px;
+  right: 40px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 1px solid rgba(139,115,85,0.15);
+  border-top-color: transparent;
+  border-left-color: transparent;
+  transform: rotate(-30deg);
+  z-index: 0;
+}
+</style>
+</head>
+<body>
+
+<!-- Background decorative geometric elements -->
+<div class="deco-circle-large"></div>
+<div class="geo-circle-1"></div>
+<div class="geo-circle-2"></div>
+<div class="geo-square-1"></div>
+<div class="geo-line-1"></div>
+<div class="geo-line-2"></div>
+<div class="geo-line-3"></div>
+<div class="geo-triangle"></div>
+<div class="deco-arc"></div>
+
+<div class="slide-container">
+
+  <!-- Left column: Visual metaphor -->
+  <div class="visual-column">
+    <div class="bookshelf-wrapper">
+      
+      <!-- Elder figure -->
+      <div class="elder-figure">
+        <div class="elder-head">
+          <div class="elder-smile"></div>
+        </div>
+        <div class="elder-body"></div>
+      </div>
+
+      <!-- Bookshelf -->
+      <div class="bookshelf">
+        <!-- Shelf lines -->
+        <div class="shelf-line shelf-3"></div>
+        <div class="shelf-line shelf-1"></div>
+        <div class="shelf-line shelf-2"></div>
+        <div class="shelf-line shelf-4"></div>
+        <div class="shelf-side-left"></div>
+        <div class="shelf-side-right"></div>
+
+        <!-- Row 1 books -->
+        <div class="book book-1-1"></div>
+        <div class="book book-1-2"></div>
+        <div class="book book-1-3"></div>
+        <div class="book book-1-4"></div>
+        <div class="book book-1-5"></div>
+        <div class="book book-1-6"></div>
+        <div class="book book-1-7"></div>
+        <div class="book book-1-8"></div>
+
+        <!-- Row 2 books -->
+        <div class="book book-2-1"></div>
+        <div class="book book-2-2"></div>
+        <div class="book book-2-3"></div>
+        <div class="book book-2-4"></div>
+        <div class="book book-2-5"></div>
+        <div class="book book-2-6"></div>
+        <div class="book book-2-7"></div>
+        <div class="book book-2-8"></div>
+
+        <!-- Row 3 books -->
+        <div class="book book-3-1"></div>
+        <div class="book book-3-2"></div>
+        <div class="book book-3-3"></div>
+        <div class="book book-3-4"></div>
+        <div class="book book-3-5"></div>
+        <div class="book book-3-6"></div>
+        <div class="book book-3-7"></div>
+        <div class="book book-3-8"></div>
+      </div>
+
+      <!-- Coase label -->
+      <div class="coase-label">
+        <div class="coase-name">R. H. Coase</div>
+        <div class="coase-subtitle">The Firm, the Market, and the Law · 1937</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right column: Content -->
+  <div class="content-column">
+
+    <!-- Top bar -->
+    <div class="top-bar">
+      <div class="slide-number">Lecture V · 05</div>
+      <div class="deck-id">05-transaction-cost</div>
+    </div>
+
+    <!-- Title -->
+    <div class="title-section">
+      <div class="section-tag">Transaction Cost</div>
+      <div class="slide-title">交易成本的消解</div>
+      <div class="slide-subtitle">从信息产品到开源选型：科斯的追问在数字时代有了新的答案</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Content points -->
+    <div class="content-points">
+
+      <div class="point">
+        <div class="point-number">I</div>
+        <div class="point-text">
+          <span class="highlight">CTO是最后一个知道技术栈的</span>——信息不对称的结构性困境，决定了组织决策的路径依赖。
+        </div>
+      </div>
+
+      <div class="point">
+        <div class="point-number">II</div>
+        <div class="point-text">
+          软件是<span class="highlight">无形的信息产品</span>，专有软件的咨询、试用、谈判、交易、部署是<span class="emphasis">漫长而昂贵的</span>。
+        </div>
+      </div>
+
+      <div class="point">
+        <div class="point-number">III</div>
+        <div class="point-text">
+          开源项目的选型，<span class="highlight">只剩下了技术本身</span>——交易成本趋近于零，技术判断成为唯一的筛选标准。
+        </div>
+      </div>
+
+      <div class="point">
+        <div class="point-number">IV</div>
+        <div class="point-text">
+          从<span class="highlight">内部了解全貌</span>，还可以定制——代码的可读性与可改性消解了信息的层级壁垒。
+        </div>
+      </div>
+
+      <div class="point">
+        <div class="point-number">V</div>
+        <div class="point-text">
+          <span class="highlight">Upstream first</span>——在源头参与而非被动消费，降低未来的<span class="emphasis">路径锁定风险</span>。
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="bottom-bar">
+      <div class="lecture-info">第 05 期 · 交易成本与路径依赖 · 开源之道</div>
+      <div class="page-indicator">
+        <div class="page-dot"></div>
+        <div class="page-dot"></div>
+        <div class="page-dot"></div>
+        <div class="page-dot"></div>
+        <div class="page-dot active"></div>
+      </div>
+    </div>
+
+  </div>
+
 </div>
 
-<div class="bookshelf-area">
-
-<div class="elder-circle">
-<div class="elder-circle-inner">
-<div class="elder-circle-text">R. COASE</div>
-<div class="elder-circle-line"></div>
-<div class="elder-circle-text">1910—2013</div>
-</div>
-</div>
-
-<div class="shelf shelf-1"></div>
-<div class="book book-1a"></div>
-<div class="book book-1b"></div>
-<div class="book book-1c"></div>
-<div class="book book-1d"></div>
-<div class="book book-1e"></div>
-<div class="book book-1f"></div>
-<div class="book-dot bd1"></div>
-<div class="book-dot bd2"></div>
-<div class="shelf-label sl1">The Nature<br>of the Firm<br>1937</div>
-
-<div class="shelf shelf-2"></div>
-<div class="book book-2a"></div>
-<div class="book book-2b"></div>
-<div class="book book-2c"></div>
-<div class="book book-2d"></div>
-<div class="book book-2e"></div>
-<div class="book book-2f"></div>
-<div class="book-dot bd3"></div>
-<div class="book-dot bd4"></div>
-<div class="shelf-label sl2">The Problem<br>of Social Cost<br>1960</div>
-
-<div class="shelf shelf-3"></div>
-<div class="book book-3a"></div>
-<div class="book book-3b"></div>
-<div class="book book-3c"></div>
-<div class="book book-3d"></div>
-<div class="book book-3e"></div>
-<div class="book book-3f"></div>
-<div class="book-dot bd5"></div>
-<div class="book-dot bd6"></div>
-<div class="book-dot bd7"></div>
-
-<div class="shelf shelf-4"></div>
-
-<div class="vline vline-1"></div>
-<div class="vline vline-2"></div>
-</div>
-
-<div class="accent-circle-sm"></div>
-<div class="accent-line"></div>
-
-<div class="content-area">
-<div class="content-num">SECTION · III — 制度与认知</div>
-<div class="content-rule"></div>
-
-<div class="description">
-当交易成本趋近于零，市场协调便能替代层级组织。开源世界正是这样一个制度实验场——软件作为无形的信息产品，其生产与消费的方式正在重写商业契约的基础。
-</div>
-
-<div class="bullets">
-<div class="bullet">
-<div class="bullet-num">01</div>
-<div class="bullet-bar"></div>
-<div class="bullet-text"><em>CTO 是最后一个知道技术栈的</em>——组织内部的信息不对称，使技术决策权与认知权发生错位。</div>
-</div>
-<div class="bullet">
-<div class="bullet-num">02</div>
-<div class="bullet-bar"></div>
-<div class="bullet-text">软件是<em>无形的信息产品</em>，其复制成本趋零，这使得传统产权边界在数字空间内天然失效。</div>
-</div>
-<div class="bullet">
-<div class="bullet-num">03</div>
-<div class="bullet-bar"></div>
-<div class="bullet-text">专有软件的<em>咨询、试用、谈判、交易、部署</em>是一条漫长而昂贵的链条——交易成本极高。</div>
-</div>
-<div class="bullet">
-<div class="bullet-num">04</div>
-<div class="bullet-bar"></div>
-<div class="bullet-text">开源项目的选型，<strong>只剩下了技术本身</strong>。许可即契约，代码即承诺。</div>
-</div>
-<div class="bullet">
-<div class="bullet-num">05</div>
-<div class="bullet-bar"></div>
-<div class="bullet-text"><em>从内部了解全貌</em>，还可定制——阅读源码的能力，即是制度性议价能力。</div>
-</div>
-<div class="bullet">
-<div class="bullet-num">06</div>
-<div class="bullet-bar"></div>
-<div class="bullet-text"><strong>Upstream First</strong>——降低未来的风险。对上游的贡献，是对自身依赖的长期对冲。</div>
-</div>
-</div>
-</div>
-
-<div class="quote-area">
-<div class="quote-mark">"</div>
-<div class="quote-text">The cost of utilizing the price mechanism is too high.<br>若使用价格机制的成本太高，组织便会取而代之。</div>
-<div class="quote-attr">— R.H. Coase · 1937</div>
-</div>
-
-<div class="footer-line"></div>
-<div class="footer-text">OPEN SOURCE · INSTITUTIONAL ECONOMICS</div>
-<div class="deco-triangle"></div>
-<div class="accent-square"></div>
-
-</div>
-</body></html>
+</body>
+</html>

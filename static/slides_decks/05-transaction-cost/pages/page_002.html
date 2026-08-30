@@ -1,411 +1,757 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: 67cd9b3f498a96d0 --><head><meta charset="UTF-8"><title>经济学的思维方式</title><style>
-*{margin:0;padding:0;box-sizing:border-box;}
-html,body{width:1600px;height:900px;overflow:hidden;margin:0;}
-body{
-  background:#F5F0E8;
-  font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-serif;
-  color:#1B3B6B;
-  position:relative;
+<!DOCTYPE html>
+<html lang="zh-CN"><!-- source_hash: 720c2c1545eb1176 -->
+<head>
+<meta charset="UTF-8">
+<title>经济学的思维方式</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* parchment texture */
-body::before{
-  content:'';
-  position:absolute;top:0;left:0;width:1600px;height:900px;
-  background:
-    radial-gradient(ellipse at 20% 30%, rgba(139,115,85,0.04) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 70%, rgba(27,59,107,0.03) 0%, transparent 50%);
-  pointer-events:none;
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
 }
 
-/* --- top bar --- */
-.top-bar{
-  position:absolute;top:60px;left:80px;right:80px;
-  display:flex;align-items:center;justify-content:space-between;
-}
-.top-bar .label{
-  font-family:'Noto Serif SC',serif;
-  font-size:13px;letter-spacing:6px;color:#8B7355;
-  font-weight:400;
-}
-.top-bar .num{
-  font-family:'Noto Serif SC',serif;
-  font-size:13px;letter-spacing:3px;color:#555;
-}
-.top-rule{
-  position:absolute;top:95px;left:80px;right:80px;height:1px;
-  background:#1B3B6B;opacity:0.6;
+body {
+  background: #F5F0E8;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: #1B3B6B;
+  position: relative;
 }
 
-/* --- title block --- */
-.title-block{
-  position:absolute;top:140px;left:80px;width:720px;
-}
-.title-zh{
-  font-family:'Noto Serif SC','Source Han Serif SC',serif;
-  font-size:56px;font-weight:700;color:#1B3B6B;
-  letter-spacing:4px;line-height:1.2;
-}
-.title-en{
-  font-family:'Noto Serif SC',serif;
-  font-size:16px;color:#8B7355;
-  letter-spacing:5px;margin-top:18px;font-weight:400;
-  font-style:italic;
-}
-.title-accent{
-  width:60px;height:4px;background:#1B3B6B;margin-top:24px;
-}
-
-/* --- decorative square --- */
-.deco-square{
-  position:absolute;top:150px;left:640px;
-  width:36px;height:36px;background:#1B3B6B;
-}
-.deco-circle-small{
-  position:absolute;top:155px;left:690px;
-  width:26px;height:26px;border:2px solid #8B7355;border-radius:50%;
-}
-
-/* --- bullet list --- */
-.bullet-list{
-  position:absolute;top:340px;left:80px;width:720px;
-}
-.bullet-item{
-  display:flex;align-items:flex-start;
-  padding:14px 0;
-  border-bottom:1px solid rgba(27,59,107,0.12);
-}
-.bullet-num{
-  font-family:'Noto Serif SC',serif;
-  font-size:14px;color:#8B7355;
-  letter-spacing:2px;
-  min-width:40px;font-weight:600;
-  padding-top:3px;
-}
-.bullet-text{
-  font-family:'Noto Serif SC',serif;
-  font-size:19px;color:#1B3B6B;
-  line-height:1.6;font-weight:400;
-  flex:1;
-}
-.bullet-text .sub{
-  display:block;
-  font-family:'Noto Sans SC',sans-serif;
-  font-size:13px;color:#555;
-  margin-top:4px;letter-spacing:1px;
-  font-weight:300;
-}
-
-/* --- right visual: tree connecting earth and galaxy --- */
-.visual-area{
-  position:absolute;top:120px;right:60px;width:700px;height:720px;
-}
-
-/* galaxy band - top */
-.galaxy-band{
-  position:absolute;top:0;left:0;width:700px;height:220px;
-}
-.galaxy-circle-1{
-  position:absolute;top:20px;left:240px;
-  width:200px;height:200px;border:1px solid rgba(27,59,107,0.2);border-radius:50%;
-}
-.galaxy-circle-2{
-  position:absolute;top:30px;left:250px;
-  width:180px;height:180px;border:1px solid rgba(27,59,107,0.1);border-radius:50%;
-}
-.galaxy-circle-3{
-  position:absolute;top:70px;left:290px;
-  width:100px;height:100px;background:rgba(27,59,107,0.06);border-radius:50%;
-}
-
-/* star dots */
-.star{
-  position:absolute;background:#1B3B6B;border-radius:50%;
-}
-.star-1{width:4px;height:4px;top:50px;left:200px;}
-.star-2{width:3px;height:3px;top:80px;left:460px;}
-.star-3{width:5px;height:5px;top:30px;left:400px;}
-.star-4{width:3px;height:3px;top:130px;left:180px;}
-.star-5{width:4px;height:4px;top:160px;left:480px;}
-.star-6{width:3px;height:3px;top:60px;left:520px;}
-.star-7{width:4px;height:4px;top:180px;left:300px;background:#8B7355;}
-.star-8{width:3px;height:3px;top:100px;left:360px;background:#8B7355;}
-.star-9{width:5px;height:5px;top:20px;left:340px;}
-.star-10{width:3px;height:3px;top:150px;left:420px;}
-.star-11{width:4px;height:4px;top:40px;left:260px;}
-.star-12{width:3px;height:3px;top:110px;left:500px;}
-.star-13{width:4px;height:4px;top:170px;left:370px;}
-.star-14{width:3px;height:3px;top:70px;left:440px;}
-
-/* tree crown */
-.tree-crown{
-  position:absolute;top:180px;left:250px;
-  width:200px;height:160px;
-}
-.crown-shape{
-  position:absolute;top:0;left:50px;
-  width:100px;height:100px;background:#1B3B6B;border-radius:50%;
-}
-.crown-branch-1{
-  position:absolute;top:40px;left:10px;
-  width:60px;height:60px;background:rgba(27,59,107,0.7);border-radius:50%;
-}
-.crown-branch-2{
-  position:absolute;top:40px;left:130px;
-  width:60px;height:60px;background:rgba(27,59,107,0.7);border-radius:50%;
-}
-.crown-branch-3{
-  position:absolute;top:80px;left:60px;
-  width:80px;height:50px;background:rgba(27,59,107,0.5);border-radius:50%;
-}
-
-/* tree trunk */
-.tree-trunk{
-  position:absolute;top:310px;left:342px;
-  width:16px;height:220px;background:#1B3B6B;
-}
-
-/* branches */
-.branch-left{
-  position:absolute;top:370px;left:342px;
-  width:80px;height:2px;background:#1B3B6B;
-}
-.branch-right{
-  position:absolute;top:410px;left:342px;
-  width:70px;height:2px;background:#1B3B6B;
-}
-.branch-left-end{
-  position:absolute;top:360px;left:280px;
-  width:40px;height:2px;background:#1B3B6B;
-}
-.branch-right-end{
-  position:absolute;top:400px;left:412px;
-  width:40px;height:2px;background:#1B3B6B;
-}
-
-/* earth ground */
-.earth-ground{
-  position:absolute;top:530px;left:0;width:700px;height:190px;
-}
-.earth-line{
-  position:absolute;top:0;left:0;width:700px;height:2px;background:#1B3B6B;
-}
-.earth-fill{
-  position:absolute;top:2px;left:0;width:700px;height:188px;
-  background:rgba(139,115,85,0.08);
-}
-/* earth hatching */
-.earth-hatch{
-  position:absolute;top:2px;left:0;width:700px;height:188px;
-  background-image:repeating-linear-gradient(
-    45deg,
+/* Parchment texture overlay */
+.parchment-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1600px;
+  height: 900px;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: repeating-linear-gradient(
+    0deg,
     transparent,
-    transparent 12px,
-    rgba(139,115,85,0.08) 12px,
-    rgba(139,115,85,0.08) 13px
+    transparent 2px,
+    #1B3B6B 2px,
+    #1B3B6B 3px
+  ),
+  repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 3px,
+    #1B3B6B 3px,
+    #1B3B6B 4px
   );
 }
 
-/* roots */
-.root-1{
-  position:absolute;top:530px;left:342px;
-  width:2px;height:80px;background:#1B3B6B;
-}
-.root-2{
-  position:absolute;top:530px;left:336px;
-  width:2px;height:60px;background:#1B3B6B;
-}
-.root-3{
-  position:absolute;top:530px;left:350px;
-  width:2px;height:60px;background:#1B3B6B;
-}
-.root-4{
-  position:absolute;top:530px;left:342px;
-  width:1px;height:100px;background:rgba(27,59,107,0.6);
-}
-.root-5{
-  position:absolute;top:530px;left:338px;
-  width:1px;height:100px;background:rgba(27,59,107,0.6);
-}
-.root-6{
-  position:absolute;top:530px;left:346px;
-  width:1px;height:100px;background:rgba(27,59,107,0.6);
-}
-.root-cross-1{
-  position:absolute;top:590px;left:320px;
-  width:50px;height:1px;background:rgba(27,59,107,0.5);
-}
-.root-cross-2{
-  position:absolute;top:620px;left:340px;
-  width:50px;height:1px;background:rgba(27,59,107,0.4);
+/* Top border line */
+.top-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1600px;
+  height: 6px;
+  background: #1B3B6B;
 }
 
-/* earth label */
-.earth-label{
-  position:absolute;top:660px;left:0;width:700px;text-align:center;
-  font-family:'Noto Serif SC',serif;font-size:11px;
-  letter-spacing:8px;color:#8B7355;font-weight:400;
+/* Top accent line */
+.top-accent {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  width: 320px;
+  height: 2px;
+  background: #8B7355;
 }
 
-/* galaxy label */
-.galaxy-label{
-  position:absolute;top:235px;left:0;width:700px;text-align:center;
-  font-family:'Noto Serif SC',serif;font-size:11px;
-  letter-spacing:8px;color:#8B7355;font-weight:400;
+/* Header area */
+.header {
+  position: absolute;
+  top: 40px;
+  left: 80px;
+  display: flex;
+  align-items: flex-start;
+  gap: 28px;
 }
 
-/* visual caption */
-.visual-caption{
-  position:absolute;top:590px;left:80px;width:720px;
-  font-family:'Noto Serif SC',serif;font-size:12px;
-  letter-spacing:3px;color:#8B7355;font-style:italic;
-  border-top:1px solid rgba(27,59,107,0.2);
-  padding-top:12px;
+.header-mark {
+  width: 44px;
+  height: 44px;
+  background: #1B3B6B;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 6px;
 }
 
-/* bottom bar */
-.bottom-bar{
-  position:absolute;bottom:30px;left:80px;right:80px;
-  display:flex;align-items:center;justify-content:space-between;
-}
-.bottom-rule{
-  position:absolute;bottom:65px;left:80px;right:80px;height:1px;
-  background:#1B3B6B;opacity:0.4;
-}
-.bottom-left{
-  font-family:'Noto Sans SC',sans-serif;font-size:11px;
-  letter-spacing:3px;color:#555;font-weight:300;
-}
-.bottom-right{
-  font-family:'Noto Serif SC',serif;font-size:11px;
-  letter-spacing:4px;color:#8B7355;font-weight:400;
+.header-mark-inner {
+  width: 22px;
+  height: 22px;
+  border: 2px solid #F5F0E8;
+  border-radius: 50%;
 }
 
-/* decorative circles bottom-right */
-.deco-c-1{
-  position:absolute;bottom:75px;left:770px;
-  width:14px;height:14px;border:1px solid #1B3B6B;border-radius:50%;
+.header-text {
+  flex: 1;
 }
-.deco-c-2{
-  position:absolute;bottom:75px;left:800px;
-  width:8px;height:8px;background:#8B7355;border-radius:50%;
+
+.section-label {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #8B7355;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
 }
-.deco-c-3{
-  position:absolute;bottom:75px;left:820px;
-  width:14px;height:14px;border:1px solid #8B7355;border-radius:50%;
+
+.slide-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 52px;
+  font-weight: 700;
+  color: #1B3B6B;
+  line-height: 1.2;
+  letter-spacing: 2px;
 }
-</style></head>
+
+/* Decorative geometric elements */
+.deco-circle-1 {
+  position: absolute;
+  top: 60px;
+  right: 120px;
+  width: 80px;
+  height: 80px;
+  border: 2px solid #1B3B6B;
+  border-radius: 50%;
+  opacity: 0.15;
+}
+
+.deco-circle-2 {
+  position: absolute;
+  top: 100px;
+  right: 200px;
+  width: 40px;
+  height: 40px;
+  background: #8B7355;
+  border-radius: 50%;
+  opacity: 0.12;
+}
+
+.deco-square {
+  position: absolute;
+  top: 80px;
+  right: 250px;
+  width: 30px;
+  height: 30px;
+  border: 2px solid #1B3B6B;
+  opacity: 0.1;
+  transform: rotate(45deg);
+}
+
+/* Left content panel */
+.content-panel {
+  position: absolute;
+  top: 160px;
+  left: 80px;
+  width: 680px;
+}
+
+.subtitle-line {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #8B7355;
+  margin-bottom: 8px;
+  letter-spacing: 3px;
+}
+
+.subtitle-line-en {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: #8B7355;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+  opacity: 0.7;
+}
+
+.divider {
+  width: 60px;
+  height: 3px;
+  background: #1B3B6B;
+  margin-bottom: 28px;
+}
+
+/* Bullet list */
+.content-list {
+  list-style: none;
+}
+
+.content-list li {
+  position: relative;
+  padding-left: 36px;
+  margin-bottom: 16px;
+  font-size: 19px;
+  line-height: 1.6;
+  color: #1B3B6B;
+  font-weight: 400;
+}
+
+.content-list li .marker {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 12px;
+  height: 12px;
+  background: #1B3B6B;
+}
+
+.content-list li .marker.square {
+  background: #8B7355;
+}
+
+.content-list li .marker.hollow {
+  background: transparent;
+  border: 2px solid #1B3B6B;
+}
+
+.content-list li .marker.circle {
+  border-radius: 50%;
+}
+
+.content-list li .marker.diamond {
+  transform: rotate(45deg);
+  background: transparent;
+  border: 2px solid #8B7355;
+}
+
+.content-list li .item-title {
+  font-weight: 600;
+  color: #1B3B6B;
+}
+
+.content-list li .item-sub {
+  font-size: 16px;
+  color: #555;
+  font-weight: 300;
+}
+
+/* Right visual: Tree composition */
+.tree-container {
+  position: absolute;
+  top: 120px;
+  right: 60px;
+  width: 700px;
+  height: 760px;
+}
+
+/* Stars at the top */
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: #1B3B6B;
+}
+
+.star.s1 { top: 0; left: 320px; width: 8px; height: 8px; opacity: 0.6; }
+.star.s2 { top: 10px; left: 400px; width: 5px; height: 5px; opacity: 0.4; }
+.star.s3 { top: 5px; left: 480px; width: 6px; height: 6px; opacity: 0.5; }
+.star.s4 { top: 30px; left: 280px; width: 4px; height: 4px; opacity: 0.3; }
+.star.s5 { top: 25px; left: 550px; width: 7px; height: 7px; opacity: 0.55; }
+.star.s6 { top: 60px; left: 360px; width: 5px; height: 5px; opacity: 0.35; }
+.star.s7 { top: 45px; left: 440px; width: 4px; height: 4px; opacity: 0.4; }
+.star.s8 { top: 70px; left: 260px; width: 6px; height: 6px; opacity: 0.45; }
+.star.s9 { top: 15px; left: 600px; width: 5px; height: 5px; opacity: 0.3; }
+.star.s10 { top: 55px; left: 520px; width: 4px; height: 4px; opacity: 0.35; }
+.star.s11 { top: 85px; left: 340px; width: 5px; height: 5px; opacity: 0.4; }
+.star.s12 { top: 40px; left: 180px; width: 4px; height: 4px; opacity: 0.25; }
+.star.s13 { top: 20px; left: 120px; width: 6px; height: 6px; opacity: 0.3; }
+.star.s14 { top: 75px; left: 620px; width: 4px; height: 4px; opacity: 0.3; }
+.star.s15 { top: 90px; left: 450px; width: 5px; height: 5px; opacity: 0.35; }
+.star.s16 { top: 50px; left: 80px; width: 3px; height: 3px; opacity: 0.2; }
+.star.s17 { top: 100px; left: 500px; width: 4px; height: 4px; opacity: 0.25; }
+.star.s18 { top: 65px; left: 200px; width: 3px; height: 3px; opacity: 0.2; }
+.star.s19 { top: 80px; left: 580px; width: 5px; height: 5px; opacity: 0.3; }
+.star.s20 { top: 30px; left: 660px; width: 4px; height: 4px; opacity: 0.25; }
+
+/* Tree canopy circles */
+.canopy-circle {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid #1B3B6B;
+}
+
+.canopy-large {
+  top: 90px;
+  left: 250px;
+  width: 200px;
+  height: 200px;
+  opacity: 0.12;
+}
+
+.canopy-medium {
+  top: 130px;
+  left: 320px;
+  width: 140px;
+  height: 140px;
+  opacity: 0.18;
+  border-color: #8B7355;
+}
+
+.canopy-small {
+  top: 170px;
+  left: 380px;
+  width: 80px;
+  height: 80px;
+  opacity: 0.25;
+}
+
+/* Tree trunk */
+.trunk {
+  position: absolute;
+  top: 220px;
+  left: 410px;
+  width: 4px;
+  height: 380px;
+  background: #1B3B6B;
+}
+
+/* Tree branches */
+.branch {
+  position: absolute;
+  background: #1B3B6B;
+}
+
+.branch-b1 {
+  top: 240px;
+  left: 410px;
+  width: 3px;
+  height: 100px;
+  transform-origin: top left;
+  transform: rotate(30deg);
+}
+
+.branch-b2 {
+  top: 240px;
+  left: 410px;
+  width: 3px;
+  height: 100px;
+  transform-origin: top left;
+  transform: rotate(-30deg);
+}
+
+.branch-b3 {
+  top: 320px;
+  left: 410px;
+  width: 3px;
+  height: 80px;
+  transform-origin: top left;
+  transform: rotate(20deg);
+}
+
+.branch-b4 {
+  top: 320px;
+  left: 410px;
+  width: 3px;
+  height: 80px;
+  transform-origin: top left;
+  transform: rotate(-20deg);
+}
+
+.branch-b5 {
+  top: 380px;
+  left: 410px;
+  width: 3px;
+  height: 60px;
+  transform-origin: top left;
+  transform: rotate(15deg);
+}
+
+.branch-b6 {
+  top: 380px;
+  left: 410px;
+  width: 3px;
+  height: 60px;
+  transform-origin: top left;
+  transform: rotate(-15deg);
+}
+
+/* Ground line */
+.ground {
+  position: absolute;
+  bottom: 80px;
+  left: 100px;
+  width: 600px;
+  height: 3px;
+  background: #1B3B6B;
+}
+
+/* Ground texture lines */
+.ground-line-1 {
+  position: absolute;
+  bottom: 70px;
+  left: 140px;
+  width: 40px;
+  height: 2px;
+  background: #8B7355;
+  opacity: 0.4;
+}
+
+.ground-line-2 {
+  position: absolute;
+  bottom: 70px;
+  left: 220px;
+  width: 60px;
+  height: 2px;
+  background: #8B7355;
+  opacity: 0.3;
+}
+
+.ground-line-3 {
+  position: absolute;
+  bottom: 70px;
+  left: 340px;
+  width: 30px;
+  height: 2px;
+  background: #8B7355;
+  opacity: 0.35;
+}
+
+.ground-line-4 {
+  position: absolute;
+  bottom: 70px;
+  left: 450px;
+  width: 50px;
+  height: 2px;
+  background: #8B7355;
+  opacity: 0.3;
+}
+
+.ground-line-5 {
+  position: absolute;
+  bottom: 70px;
+  left: 560px;
+  width: 35px;
+  height: 2px;
+  background: #8B7355;
+  opacity: 0.25;
+}
+
+/* Concept nodes on the tree */
+.node {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.node-dot {
+  width: 10px;
+  height: 10px;
+  background: #8B7355;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.node-line {
+  width: 20px;
+  height: 1px;
+  background: #8B7355;
+  flex-shrink: 0;
+}
+
+.node-label {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14px;
+  color: #8B7355;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+/* Horizontal connecting line to content */
+.connect-line {
+  position: absolute;
+  top: 350px;
+  left: 680px;
+  width: 120px;
+  height: 1px;
+  background: #1B3B6B;
+  opacity: 0.15;
+}
+
+/* Root symbols at bottom */
+.root {
+  position: absolute;
+  background: #1B3B6B;
+}
+
+.root-r1 {
+  bottom: 75px;
+  left: 380px;
+  width: 3px;
+  height: 20px;
+  transform: rotate(10deg);
+}
+
+.root-r2 {
+  bottom: 75px;
+  left: 420px;
+  width: 3px;
+  height: 20px;
+  transform: rotate(-10deg);
+}
+
+.root-r3 {
+  bottom: 75px;
+  left: 400px;
+  width: 3px;
+  height: 25px;
+  transform: rotate(5deg);
+}
+
+/* Footer */
+.footer {
+  position: absolute;
+  bottom: 30px;
+  left: 80px;
+  right: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-bar {
+  width: 40px;
+  height: 2px;
+  background: #1B3B6B;
+}
+
+.footer-text {
+  font-size: 12px;
+  color: #8B7355;
+  letter-spacing: 2px;
+  font-weight: 300;
+}
+
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  color: #8B7355;
+  letter-spacing: 3px;
+}
+
+.footer-dot {
+  width: 6px;
+  height: 6px;
+  background: #8B7355;
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+/* Large number decoration */
+.big-num {
+  position: absolute;
+  top: 160px;
+  right: 80px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 200px;
+  font-weight: 700;
+  color: #1B3B6B;
+  opacity: 0.04;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* Bottom accent */
+.bottom-border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 1600px;
+  height: 4px;
+  background: #1B3B6B;
+  opacity: 0.3;
+}
+</style>
+</head>
 <body>
 
-<div class="top-bar">
-  <span class="label">新制度经济学视角下的开源</span>
-  <span class="num">— I —</span>
-</div>
-<div class="top-rule"></div>
+<div class="parchment-overlay"></div>
+<div class="top-border"></div>
+<div class="top-accent"></div>
 
-<!-- title -->
-<div class="title-block">
-  <div class="title-zh">经济学的思维方式</div>
-  <div class="title-en">THE ECONOMIC WAY OF THINKING</div>
-  <div class="title-accent"></div>
+<!-- Header -->
+<div class="header">
+  <div class="header-mark">
+    <div class="header-mark-inner"></div>
+  </div>
+  <div class="header-text">
+    <div class="section-label">第五讲 · Lecture V</div>
+    <div class="slide-title">经济学的思维方式</div>
+  </div>
 </div>
+
+<!-- Decorative geometric elements -->
+<div class="deco-circle-1"></div>
+<div class="deco-circle-2"></div>
 <div class="deco-square"></div>
-<div class="deco-circle-small"></div>
 
-<!-- bullet list -->
-<div class="bullet-list">
-  <div class="bullet-item">
-    <span class="bullet-num">01</span>
-    <span class="bullet-text">解释现代世界<span class="sub">Explain the modern world — 从稀缺到选择</span></span>
+<!-- Big background number -->
+<div class="big-num">05</div>
+
+<!-- Left content panel -->
+<div class="content-panel">
+  <div class="subtitle-line">解释现代世界</div>
+  <div class="subtitle-line-en">Explaining the Modern World</div>
+  <div class="divider"></div>
+  <ul class="content-list">
+    <li>
+      <span class="marker square"></span>
+      <span class="item-title">经济学的思维方式</span>
+    </li>
+    <li>
+      <span class="marker hollow"></span>
+      <span>人生活在一个<span class="item-title">稀缺无处不在</span>的世界</span>
+    </li>
+    <li>
+      <span class="marker circle"></span>
+      <span class="item-title">行为人：</span>有限理性、进化心理
+    </li>
+    <li>
+      <span class="marker diamond"></span>
+      <span class="item-title">制度：</span>法律、风俗、规章、行为指南
+    </li>
+    <li>
+      <span class="marker hollow"></span>
+      <span class="item-title">观念与文化</span>
+    </li>
+    <li>
+      <span class="marker circle"></span>
+      <span class="item-title">技术、网络</span>与累积
+    </li>
+  </ul>
+</div>
+
+<!-- Right visual: Tree composition -->
+<div class="tree-container">
+
+  <!-- Stars representing the galaxy/cosmos -->
+  <div class="star s1"></div>
+  <div class="star s2"></div>
+  <div class="star s3"></div>
+  <div class="star s4"></div>
+  <div class="star s5"></div>
+  <div class="star s6"></div>
+  <div class="star s7"></div>
+  <div class="star s8"></div>
+  <div class="star s9"></div>
+  <div class="star s10"></div>
+  <div class="star s11"></div>
+  <div class="star s12"></div>
+  <div class="star s13"></div>
+  <div class="star s14"></div>
+  <div class="star s15"></div>
+  <div class="star s16"></div>
+  <div class="star s17"></div>
+  <div class="star s18"></div>
+  <div class="star s19"></div>
+  <div class="star s20"></div>
+
+  <!-- Canopy circles -->
+  <div class="canopy-circle canopy-large"></div>
+  <div class="canopy-circle canopy-medium"></div>
+  <div class="canopy-circle canopy-small"></div>
+
+  <!-- Trunk -->
+  <div class="trunk"></div>
+
+  <!-- Branches -->
+  <div class="branch branch-b1"></div>
+  <div class="branch branch-b2"></div>
+  <div class="branch branch-b3"></div>
+  <div class="branch branch-b4"></div>
+  <div class="branch branch-b5"></div>
+  <div class="branch branch-b6"></div>
+
+  <!-- Concept nodes along the tree -->
+  <div class="node" style="top: 260px; left: 500px;">
+    <div class="node-line"></div>
+    <div class="node-dot"></div>
+    <span class="node-label">有限理性</span>
   </div>
-  <div class="bullet-item">
-    <span class="bullet-num">02</span>
-    <span class="bullet-text">稀缺无处不在<span class="sub">Scarcity is everywhere — 资源永远有限</span></span>
+
+  <div class="node" style="top: 360px; left: 510px;">
+    <div class="node-line"></div>
+    <div class="node-dot"></div>
+    <span class="node-label">制度框架</span>
   </div>
-  <div class="bullet-item">
-    <span class="bullet-num">03</span>
-    <span class="bullet-text">行为人：有限理性、进化心理<span class="sub">Bounded rationality & evolutionary psychology</span></span>
+
+  <div class="node" style="top: 460px; left: 510px;">
+    <div class="node-line"></div>
+    <div class="node-dot"></div>
+    <span class="node-label">文化观念</span>
   </div>
-  <div class="bullet-item">
-    <span class="bullet-num">04</span>
-    <span class="bullet-text">制度：法律、风俗、规章、行为指南<span class="sub">Law, custom, rules — the rules of the game</span></span>
+
+  <div class="node" style="top: 560px; left: 500px;">
+    <div class="node-line"></div>
+    <div class="node-dot"></div>
+    <span class="node-label">技术网络</span>
   </div>
-  <div class="bullet-item">
-    <span class="bullet-num">05</span>
-    <span class="bullet-text">观念与文化 · 技术、网络和累积<span class="sub">Ideas, culture, technology & cumulative networks</span></span>
+
+  <!-- Ground -->
+  <div class="ground"></div>
+  <div class="ground-line-1"></div>
+  <div class="ground-line-2"></div>
+  <div class="ground-line-3"></div>
+  <div class="ground-line-4"></div>
+  <div class="ground-line-5"></div>
+
+  <!-- Roots -->
+  <div class="root root-r1"></div>
+  <div class="root root-r2"></div>
+  <div class="root root-r3"></div>
+
+  <!-- Connection labels -->
+  <div style="position: absolute; bottom: 45px; left: 100px; font-family: 'Noto Serif SC', serif; font-size: 12px; color: #8B7355; letter-spacing: 2px; opacity: 0.6;">现实世界 · REALITY</div>
+  <div style="position: absolute; top: 5px; left: 250px; font-family: 'Noto Serif SC', serif; font-size: 12px; color: #8B7355; letter-spacing: 2px; opacity: 0.6;">无限宇宙 · COSMOS</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <div class="footer-left">
+    <div class="footer-bar"></div>
+    <span class="footer-text">开源之道 · 新制度经济学视角</span>
+  </div>
+  <div class="footer-right">
+    <span class="footer-num">第 05 期 · 交易成本与路径依赖</span>
+    <div class="footer-dot"></div>
+    <span class="footer-num">02 / 27</span>
   </div>
 </div>
 
-<div class="visual-caption">
-  孤树连接大地与银河——经济学思维沟通现实与无限宇宙
-</div>
+<div class="bottom-border"></div>
 
-<!-- right visual -->
-<div class="visual-area">
-  <!-- galaxy -->
-  <div class="galaxy-band">
-    <div class="galaxy-circle-1"></div>
-    <div class="galaxy-circle-2"></div>
-    <div class="galaxy-circle-3"></div>
-    <div class="star star-1"></div>
-    <div class="star star-2"></div>
-    <div class="star star-3"></div>
-    <div class="star star-4"></div>
-    <div class="star star-5"></div>
-    <div class="star star-6"></div>
-    <div class="star star-7"></div>
-    <div class="star star-8"></div>
-    <div class="star star-9"></div>
-    <div class="star star-10"></div>
-    <div class="star star-11"></div>
-    <div class="star star-12"></div>
-    <div class="star star-13"></div>
-    <div class="star star-14"></div>
-  </div>
-  <div class="galaxy-label">GALAXY · 无限</div>
-
-  <!-- tree crown -->
-  <div class="tree-crown">
-    <div class="crown-shape"></div>
-    <div class="crown-branch-1"></div>
-    <div class="crown-branch-2"></div>
-    <div class="crown-branch-3"></div>
-  </div>
-
-  <!-- trunk -->
-  <div class="tree-trunk"></div>
-  <div class="branch-left"></div>
-  <div class="branch-right"></div>
-  <div class="branch-left-end"></div>
-  <div class="branch-right-end"></div>
-
-  <!-- earth -->
-  <div class="earth-ground">
-    <div class="earth-line"></div>
-    <div class="earth-fill"></div>
-    <div class="earth-hatch"></div>
-    <div class="root-1"></div>
-    <div class="root-2"></div>
-    <div class="root-3"></div>
-    <div class="root-4"></div>
-    <div class="root-5"></div>
-    <div class="root-6"></div>
-    <div class="root-cross-1"></div>
-    <div class="root-cross-2"></div>
-  </div>
-  <div class="earth-label">EARTH · 现实</div>
-</div>
-
-<!-- bottom -->
-<div class="bottom-rule"></div>
-<div class="deco-c-1"></div>
-<div class="deco-c-2"></div>
-<div class="deco-c-3"></div>
-<div class="bottom-bar">
-  <span class="bottom-left">OPEN SOURCE × NEW INSTITUTIONAL ECONOMICS</span>
-  <span class="bottom-right">第 一 章 · 引 言</span>
-</div>
-
-</body></html>
+</body>
+</html>

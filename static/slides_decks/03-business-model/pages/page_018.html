@@ -1,175 +1,344 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: 7daeed9175a6298d --><head><meta charset="UTF-8"><title>案例分析之：订阅 · Red Hat</title><style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1600px;height:900px;overflow:hidden;margin:0}
-body{font-family:'Noto Sans SC','Source Han Serif SC',sans-serif;background:#F5F0E8;color:#1B3B6B;position:relative;overflow:hidden}
-.slide{width:1600px;height:900px;position:relative;overflow:hidden;padding:0}
+<!DOCTYPE html>
+<html><!-- source_hash: e6ff30d1e4ca3027 -->
+<head>
+<meta charset="UTF-8">
+<title>案例分析之：订阅 — RedHat</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1600px; height: 900px; overflow: hidden; margin: 0; }
+body { background: #F5F0E8; font-family: 'Noto Sans SC', sans-serif; position: relative; }
 
-/* Background parchment texture */
-.slide::before{content:'';position:absolute;top:0;left:0;width:1600px;height:900px;background:radial-gradient(ellipse at 30% 20%,rgba(139,115,85,0.04) 0%,transparent 60%),radial-gradient(ellipse at 70% 80%,rgba(27,59,107,0.03) 0%,transparent 50%);pointer-events:none;z-index:0}
+/* Subtle parchment texture overlay */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 1600px; height: 900px;
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(139,115,85,0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 30%, rgba(27,59,107,0.02) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: 0;
+}
 
 /* Bauhaus geometric decorations */
-.deco-circle-lg{position:absolute;width:340px;height:340px;border-radius:50%;border:3px solid #1B3B6B;top:-100px;right:-90px;z-index:1}
-.deco-circle-sm{position:absolute;width:80px;height:80px;border-radius:50%;background:#1B3B6B;bottom:120px;right:520px;z-index:2}
-.deco-square{position:absolute;width:120px;height:120px;background:#8B7355;top:140px;right:180px;z-index:2;opacity:0.85}
-.deco-square-outline{position:absolute;width:60px;height:60px;border:2px solid #1B3B6B;top:210px;right:290px;z-index:2}
-.deco-line-h{position:absolute;height:2px;background:#1B3B6B;z-index:1}
-.deco-line-v{position:absolute;width:2px;background:#1B3B6B;z-index:1}
-.deco-circle-accent{position:absolute;width:40px;height:40px;border-radius:50%;background:#8B7355;top:590px;right:260px;z-index:2}
+.geo-circle-large {
+  position: absolute;
+  width: 320px; height: 320px;
+  border: 3px solid #1B3B6B;
+  border-radius: 50%;
+  top: -80px; right: -80px;
+  opacity: 0.12;
+  z-index: 0;
+}
+.geo-circle-small {
+  position: absolute;
+  width: 60px; height: 60px;
+  background: #1B3B6B;
+  border-radius: 50%;
+  bottom: 60px; left: 60px;
+  opacity: 0.08;
+  z-index: 0;
+}
+.geo-square-rotated {
+  position: absolute;
+  width: 100px; height: 100px;
+  background: #8B7355;
+  top: 620px; right: 120px;
+  opacity: 0.07;
+  transform: rotate(45deg);
+  z-index: 0;
+}
+.geo-line-horizontal {
+  position: absolute;
+  width: 1600px; height: 1px;
+  background: #1B3B6B;
+  top: 130px;
+  opacity: 0.15;
+  z-index: 0;
+}
+.geo-line-short {
+  position: absolute;
+  width: 120px; height: 2px;
+  background: #8B7355;
+  top: 155px; left: 100px;
+  opacity: 0.4;
+  z-index: 1;
+}
+.geo-vertical-line {
+  position: absolute;
+  width: 2px; height: 500px;
+  background: #1B3B6B;
+  left: 580px;
+  top: 200px;
+  opacity: 0.06;
+  z-index: 0;
+}
+.geo-square-small {
+  position: absolute;
+  width: 20px; height: 20px;
+  border: 2px solid #8B7355;
+  top: 60px; right: 80px;
+  opacity: 0.3;
+  z-index: 1;
+}
+.geo-dot {
+  position: absolute;
+  width: 8px; height: 8px;
+  background: #1B3B6B;
+  border-radius: 50%;
+  opacity: 0.4;
+  z-index: 1;
+}
+.dot-1 { top: 130px; left: 160px; }
+.dot-2 { top: 130px; left: 170px; opacity: 0.25; }
+.dot-3 { top: 130px; left: 180px; opacity: 0.12; }
 
-.deco-line-1{top:100px;left:0;width:580px}
-.deco-line-2{top:780px;left:0;width:1600px;height:2px}
-.deco-line-3{top:100px;left:580px;width:2px;height:400px}
+/* Main layout */
+.content-container {
+  position: relative;
+  width: 1600px;
+  height: 900px;
+  z-index: 2;
+  display: flex;
+}
 
-.deco-triangle{position:absolute;width:0;height:0;border-left:30px solid transparent;border-right:30px solid transparent;border-bottom:52px solid #1B3B6B;top:310px;right:380px;z-index:2;opacity:0.7}
+/* Left panel */
+.left-panel {
+  width: 560px;
+  height: 900px;
+  padding: 80px 60px 60px 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
 
-.deco-square-tl{position:absolute;width:40px;height:40px;background:#1B3B6B;top:80px;left:60px;z-index:2}
+.slide-number {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 14px;
+  color: #8B7355;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+  opacity: 0.7;
+}
 
-/* Layout */
-.content-area{position:absolute;top:140px;left:80px;width:900px;z-index:5}
-.header-bar{position:absolute;top:60px;left:80px;right:80px;height:60px;display:flex;align-items:center;justify-content:space-between;z-index:5}
-.lecture-tag{font-size:14px;letter-spacing:4px;color:#8B7355;font-weight:600}
-.lecture-tag-num{font-family:'Noto Serif SC',serif;font-size:32px;color:#1B3B6B;font-weight:700;margin-left:16px;letter-spacing:0}
+.section-label {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 16px;
+  color: #8B7355;
+  letter-spacing: 4px;
+  margin-bottom: 20px;
+  font-weight: 400;
+}
 
-.page-indicator{font-size:12px;letter-spacing:3px;color:#555;font-weight:500}
+.main-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 44px;
+  color: #1B3B6B;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 16px;
+  letter-spacing: 1px;
+}
 
-.case-label{font-size:15px;letter-spacing:6px;color:#8B7355;font-weight:600;margin-bottom:14px}
-.main-title{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:54px;color:#1B3B6B;font-weight:700;line-height:1.2;margin-bottom:10px}
-.main-title-en{font-size:16px;letter-spacing:5px;color:#8B7355;font-weight:400;margin-bottom:28px;font-style:italic}
+.company-name {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 72px;
+  color: #1B3B6B;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 30px;
+  letter-spacing: -1px;
+}
 
-.divider{width:80px;height:4px;background:#1B3B6B;margin-bottom:24px}
+.founded-info {
+  font-size: 18px;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+.founded-info .year {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 28px;
+  color: #1B3B6B;
+  font-weight: 600;
+}
 
-/* Right info panel */
-.info-panel{position:absolute;top:140px;right:80px;width:420px;z-index:5;display:flex;flex-direction:column;gap:0}
-.info-row{display:flex;align-items:flex-start;padding:18px 0;border-bottom:1px solid rgba(27,59,107,0.15)}
-.info-row:last-child{border-bottom:none}
-.info-key{font-size:12px;letter-spacing:3px;color:#8B7355;font-weight:600;min-width:80px;padding-top:3px}
-.info-val{font-size:15px;color:#1B3B6B;font-weight:500;line-height:1.6;flex:1}
-.info-val strong{font-family:'Noto Serif SC',serif;font-weight:700;color:#1B3B6B}
+.acquisition-note {
+  margin-top: auto;
+  padding: 20px 0 0 0;
+  border-top: 1px solid rgba(139,115,85,0.3);
+  font-size: 16px;
+  color: #555;
+  line-height: 1.7;
+}
+.acquisition-note .amount {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 22px;
+  color: #1B3B6B;
+  font-weight: 600;
+}
 
-/* Bullet points area */
-.bullets{margin-top:30px;display:flex;flex-direction:column;gap:16px}
-.bullet{display:flex;align-items:flex-start;gap:16px}
-.bullet-num{font-family:'Noto Serif SC',serif;font-size:18px;color:#8B7355;font-weight:700;min-width:32px;padding-top:2px}
-.bullet-text{font-size:16px;color:#1B3B6B;line-height:1.6;font-weight:400;flex:1}
-.bullet-text .hl{font-weight:700;color:#1B3B6B}
-.bullet-text .em{color:#8B7355;font-weight:600}
+/* Right panel */
+.right-panel {
+  width: 1040px;
+  height: 900px;
+  padding: 80px 100px 60px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
-/* Acquire highlight box */
-.acquire-box{position:absolute;bottom:100px;left:80px;width:900px;background:#1B3B6B;color:#F5F0E8;padding:24px 32px;z-index:5;display:flex;align-items:center;gap:24px}
-.acquire-circle{width:64px;height:64px;border-radius:50%;border:2px solid #F5F0E8;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.acquire-circle-inner{width:32px;height:32px;border-radius:50%;background:#8B7355}
-.acquire-text{flex:1}
-.acquire-label{font-size:12px;letter-spacing:4px;color:#8B7355;font-weight:600;margin-bottom:6px}
-.acquire-main{font-family:'Noto Serif SC',serif;font-size:22px;color:#F5F0E8;font-weight:700;line-height:1.4}
-.acquire-amt{font-family:'Noto Serif SC',serif;font-size:38px;color:#8B7355;font-weight:700;flex-shrink:0;letter-spacing:1px}
+.subsection {
+  margin-bottom: 48px;
+}
 
-/* Footer */
-.footer{position:absolute;bottom:32px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:center;z-index:5}
-.footer-left{font-size:11px;letter-spacing:3px;color:#555;font-weight:500}
-.footer-right{font-size:11px;letter-spacing:3px;color:#555;font-weight:500}
+.subsection-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 15px;
+  color: #8B7355;
+  letter-spacing: 3px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.subsection-title::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 2px;
+  background: #8B7355;
+}
 
-/* Subtle decorative elements */
-.dot-grid{position:absolute;bottom:230px;right:120px;width:120px;height:80px;z-index:2}
-</style></head><body><div class="slide">
+.item-list {
+  list-style: none;
+  padding: 0;
+}
+.item-list li {
+  font-size: 22px;
+  color: #1B3B6B;
+  line-height: 2;
+  font-weight: 500;
+  padding-left: 24px;
+  position: relative;
+}
+.item-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background: #1B3B6B;
+  opacity: 0.3;
+}
 
-<!-- Geometric decorations -->
-<div class="deco-circle-lg"></div>
-<div class="deco-square"></div>
-<div class="deco-square-outline"></div>
-<div class="deco-triangle"></div>
-<div class="deco-circle-sm"></div>
-<div class="deco-circle-accent"></div>
-<div class="deco-square-tl"></div>
-<div class="deco-line-h deco-line-1"></div>
-<div class="deco-line-h deco-line-2"></div>
-<div class="deco-line-v deco-line-3"></div>
+.model-description {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 20px;
+  color: #1B3B6B;
+  line-height: 1.8;
+  padding: 24px 28px;
+  background: rgba(27,59,107,0.04);
+  border-left: 3px solid #1B3B6B;
+  margin-top: 10px;
+}
 
-<!-- Dot grid pattern -->
-<svg class="dot-grid" viewBox="0 0 120 80">
-  <g fill="#1B3B6B" opacity="0.3">
-    <circle cx="8" cy="8" r="2"/><circle cx="28" cy="8" r="2"/><circle cx="48" cy="8" r="2"/><circle cx="68" cy="8" r="2"/><circle cx="88" cy="8" r="2"/><circle cx="108" cy="8" r="2"/>
-    <circle cx="8" cy="28" r="2"/><circle cx="28" cy="28" r="2"/><circle cx="48" cy="28" r="2"/><circle cx="68" cy="28" r="2"/><circle cx="88" cy="28" r="2"/><circle cx="108" cy="28" r="2"/>
-    <circle cx="8" cy="48" r="2"/><circle cx="28" cy="48" r="2"/><circle cx="48" cy="48" r="2"/><circle cx="68" cy="48" r="2"/><circle cx="88" cy="48" r="2"/><circle cx="108" cy="48" r="2"/>
-    <circle cx="8" cy="68" r="2"/><circle cx="28" cy="68" r="2"/><circle cx="48" cy="68" r="2"/><circle cx="68" cy="68" r="2"/><circle cx="88" cy="68" r="2"/><circle cx="108" cy="68" r="2"/>
-  </g>
-</svg>
+/* Geometric accent for right panel */
+.right-geo-arc {
+  position: absolute;
+  width: 200px; height: 200px;
+  border: 2px solid #8B7355;
+  border-radius: 50%;
+  top: 80px;
+  right: 100px;
+  opacity: 0.1;
+  z-index: 0;
+}
+.right-geo-cross {
+  position: absolute;
+  top: 100px;
+  right: 180px;
+  z-index: 0;
+  opacity: 0.08;
+}
+.right-geo-cross::before,
+.right-geo-cross::after {
+  content: '';
+  position: absolute;
+  background: #1B3B6B;
+}
+.right-geo-cross::before {
+  width: 40px; height: 2px;
+  top: 0; left: 0;
+}
+.right-geo-cross::after {
+  width: 2px; height: 40px;
+  top: -19px; left: 19px;
+}
+</style>
+</head>
+<body>
 
-<!-- Header bar -->
-<div class="header-bar">
-  <div style="display:flex;align-items:baseline">
-    <span class="lecture-tag">第 03 期</span>
-    <span class="lecture-tag-num">商业模式</span>
-  </div>
-  <div class="page-indicator">CASE STUDY · 订阅模式</div>
-</div>
+<div class="geo-circle-large"></div>
+<div class="geo-circle-small"></div>
+<div class="geo-square-rotated"></div>
+<div class="geo-line-horizontal"></div>
+<div class="geo-line-short"></div>
+<div class="geo-vertical-line"></div>
+<div class="geo-square-small"></div>
+<div class="geo-dot dot-1"></div>
+<div class="geo-dot dot-2"></div>
+<div class="geo-dot dot-3"></div>
+<div class="right-geo-arc"></div>
+<div class="right-geo-cross"></div>
 
-<!-- Left content -->
-<div class="content-area">
-  <div class="case-label">CASE ANALYSIS / 03</div>
-  <h1 class="main-title">案例分析之：订阅</h1>
-  <div class="main-title-en">SUBSCRIPTION MODEL — THE NEWSPAPER OF SOFTWARE</div>
-  <div class="divider"></div>
-
-  <div class="bullets">
-    <div class="bullet">
-      <span class="bullet-num">01</span>
-      <span class="bullet-text"><span class="hl">Red Hat</span>，成立于 <span class="em">1993</span> 年，开源软件订阅模式的奠基者与典范</span>
+<div class="content-container">
+  <div class="left-panel">
+    <div class="slide-number">03 / 30</div>
+    <div class="section-label">CASE STUDY</div>
+    <div class="main-title">案例分析之：订阅</div>
+    <div class="company-name">RedHat</div>
+    <div class="founded-info">
+      成立于 <span class="year">1993</span> 年
     </div>
-    <div class="bullet">
-      <span class="bullet-num">02</span>
-      <span class="bullet-text">核心产品：<span class="hl">Red Hat Enterprise Linux</span>、OpenShift、Ansible——面向企业的关键基础设施软件</span>
-    </div>
-    <div class="bullet">
-      <span class="bullet-num">03</span>
-      <span class="bullet-text">驱动项目：<span class="hl">Fedora</span>、Kubernetes、Ceph——上游开源，下游增值服务</span>
-    </div>
-    <div class="bullet">
-      <span class="bullet-num">04</span>
-      <span class="bullet-text">以<span class="hl">订阅报纸</span>一样的方式<span class="em">订阅软件</span>：软件免费，服务与保障付费</span>
+    <div class="acquisition-note">
+      2018 年被 IBM 收购<br>
+      交易金额：<span class="amount">$340 亿</span>
     </div>
   </div>
+
+  <div class="right-panel">
+    <div class="subsection">
+      <div class="subsection-title">产品（PRODUCTS）</div>
+      <ul class="item-list">
+        <li>Red Hat Enterprise Linux</li>
+        <li>OpenShift</li>
+        <li>Ansible</li>
+      </ul>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">FOSS 项目（COMMUNITY）</div>
+      <ul class="item-list">
+        <li>Fedora</li>
+        <li>Kubernetes</li>
+        <li>Ceph</li>
+      </ul>
+    </div>
+
+    <div class="subsection">
+      <div class="subsection-title">商业模式（MODEL）</div>
+      <div class="model-description">
+        以订阅报纸一样的方式订阅软件——<br>
+        用户按年付费获取软件支持与服务。
+      </div>
+    </div>
+  </div>
 </div>
 
-<!-- Right info panel -->
-<div class="info-panel">
-  <div class="info-row">
-    <div class="info-key">FOUNDED</div>
-    <div class="info-val"><strong>1993</strong> 年，美国北卡罗来纳州</div>
-  </div>
-  <div class="info-row">
-    <div class="info-key">PRODUCTS</div>
-    <div class="info-val">Red Hat Enterprise Linux<br>OpenShift · Ansible</div>
-  </div>
-  <div class="info-row">
-    <div class="info-key">FOSS</div>
-    <div class="info-val">Fedora · Kubernetes · Ceph</div>
-  </div>
-  <div class="info-row">
-    <div class="info-key">MODEL</div>
-    <div class="info-val">订阅制（Subscription）<br>如订报般定期付费获取软件</div>
-  </div>
-  <div class="info-row">
-    <div class="info-key">ACQUIRED</div>
-    <div class="info-val"><strong>2018</strong> 年，IBM 收购</div>
-  </div>
-</div>
-
-<!-- Acquire highlight -->
-<div class="acquire-box">
-  <div class="acquire-circle"><div class="acquire-circle-inner"></div></div>
-  <div class="acquire-text">
-    <div class="acquire-label">MILESTONE / 2018</div>
-    <div class="acquire-main">IBM 以天价收购 Red Hat，标志订阅模式的巨大商业价值得到资本认可</div>
-  </div>
-  <div class="acquire-amt">$340亿</div>
-</div>
-
-<!-- Footer -->
-<div class="footer">
-  <span class="footer-left">OPEN SOURCE ECONOMICS · 开源经济学</span>
-  <span class="footer-right">03 / 30 — BUSINESS MODEL</span>
-</div>
-
-</div></body></html>
+</body>
+</html>

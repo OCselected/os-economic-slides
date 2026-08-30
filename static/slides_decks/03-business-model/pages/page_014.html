@@ -1,112 +1,381 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: b56fffb451b8dbb3 --><head><meta charset="UTF-8"><title>开源商业模式 — 八种路径</title><style>*{margin:0;padding:0;box-sizing:border-box}html,body{width:1600px;height:900px;overflow:hidden;margin:0;background:#F5F0E8;font-family:'Noto Sans SC','Source Han Sans SC','PingFang SC',sans-serif;color:#1B3B6B}body{position:relative}.serif{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif}/* Bauhaus geometric decorations */.circle-deco{position:absolute;border-radius:50%;border:2px solid #1B3B6B}.square-deco{position:absolute;background:#1B3B6B}.line-deco{position:absolute;background:#1B3B6B}.copper-line{position:absolute;background:#8B7355}.accent-square{position:absolute;background:#8B7355}.header{position:absolute;top:60px;left:80px;right:80px}.title-zh{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:54px;font-weight:700;letter-spacing:6px;color:#1B3B6B}.title-en{font-family:'Noto Sans SC',sans-serif;font-size:14px;letter-spacing:8px;color:#8B7355;margin-top:12px;font-weight:400}.sub-line{position:absolute;top:60px;left:80px;width:120px;height:3px;background:#1B3B6B}.grid-area{position:absolute;top:230px;left:80px;width:1440px;height:580px}.grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,1fr);gap:24px;width:100%;height:100%}.card{position:relative;border:1.5px solid #1B3B6B;padding:28px 24px 24px 28px;background:transparent;overflow:hidden}.card-num{position:absolute;top:14px;right:18px;font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:2px}.card-title{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:22px;font-weight:700;color:#1B3B6B;margin-bottom:8px;line-height:1.3}.card-title-cn{display:block}.card-en{font-size:11px;color:#555;letter-spacing:3px;margin-bottom:14px}.card-desc{font-size:13px;color:#555;line-height:1.7;letter-spacing:0.5px}.card-mark{position:absolute;bottom:0;left:0;width:0;height:0;border-style:solid}.card .geo{position:absolute}.footer-area{position:absolute;bottom:30px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:center}.footer-left{font-size:11px;color:#555;letter-spacing:3px}.footer-right{font-size:11px;color:#8B7355;letter-spacing:3px;font-family:'Noto Serif SC',serif}</style></head><body>
-<!-- Background geometric decorations -->
-<div class="circle-deco" style="top:-100px;right:-80px;width:280px;height:280px;"></div>
-<div class="circle-deco" style="top:-30px;right:120px;width:60px;height:60px;background:#1B3B6B;border:none;"></div>
-<div class="square-deco" style="bottom:-40px;left:-30px;width:120px;height:120px;"></div>
-<div class="line-deco" style="top:0;left:60px;width:2px;height:200px;"></div>
-<div class="copper-line" style="top:200px;left:60px;width:40px;height:2px;"></div>
-<div class="accent-square" style="top:-15px;right:60px;width:30px;height:30px;"></div>
-<div class="line-deco" style="bottom:0;right:60px;width:2px;height:180px;"></div>
-<div class="copper-line" style="bottom:160px;right:60px;width:40px;height:2px;"></div>
-<div class="circle-deco" style="bottom:-70px;right:-70px;width:200px;height:200px;border-color:#8B7355;"></div>
+<!DOCTYPE html>
+<html><!-- source_hash: 1d730ffe7006f443 -->
+<head>
+<meta charset="UTF-8">
+<title>第 03 期 · 商业模式：规则下的具体操作</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1600px; height: 900px; overflow: hidden; }
+body {
+  background: #F5F0E8;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: #1B3B6B;
+  position: relative;
+}
 
-<!-- Header -->
+.parchment {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(139,115,85,0.05) 0%, transparent 45%),
+    radial-gradient(circle at 88% 82%, rgba(139,115,85,0.05) 0%, transparent 45%);
+  pointer-events: none;
+}
+
+.header {
+  position: absolute;
+  top: 55px;
+  left: 80px;
+  right: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.lecture-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 100px;
+  font-weight: 900;
+  color: #1B3B6B;
+  line-height: 0.9;
+  letter-spacing: -3px;
+}
+.lecture-num sup {
+  font-size: 22px;
+  color: #8B7355;
+  font-weight: 400;
+  vertical-align: top;
+  letter-spacing: 1px;
+  margin-left: 6px;
+}
+.title-block { text-align: right; padding-bottom: 10px; }
+.title-main {
+  font-family: 'Noto Serif SC', 'Songti SC', serif;
+  font-size: 40px;
+  font-weight: 700;
+  color: #1B3B6B;
+  letter-spacing: 4px;
+  line-height: 1.2;
+}
+.title-sub {
+  font-size: 13px;
+  color: #8B7355;
+  letter-spacing: 6px;
+  margin-top: 8px;
+  font-style: italic;
+  font-family: 'Noto Serif SC', serif;
+}
+
+.divider {
+  position: absolute;
+  top: 200px;
+  left: 80px;
+  right: 80px;
+  height: 2px;
+  background: #1B3B6B;
+}
+.div-dot {
+  position: absolute;
+  top: 193px;
+  left: 80px;
+  width: 16px;
+  height: 16px;
+  background: #8B7355;
+  border-radius: 50%;
+}
+.div-square {
+  position: absolute;
+  top: 195px;
+  right: 80px;
+  width: 12px;
+  height: 12px;
+  background: #1B3B6B;
+}
+
+.section-title {
+  position: absolute;
+  top: 232px;
+  left: 80px;
+  right: 80px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.section-left { display: flex; align-items: baseline; gap: 18px; }
+.section-mark {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 15px;
+  color: #8B7355;
+  letter-spacing: 2px;
+}
+.section-label {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 28px;
+  color: #1B3B6B;
+  letter-spacing: 8px;
+  font-weight: 700;
+}
+.section-en {
+  font-size: 15px;
+  color: #555;
+  letter-spacing: 4px;
+  font-style: italic;
+  font-family: 'Noto Serif SC', serif;
+}
+.section-meta {
+  font-size: 12px;
+  color: #8B7355;
+  letter-spacing: 4px;
+  font-family: 'Noto Serif SC', serif;
+}
+
+.bg-circle {
+  position: absolute;
+  top: 370px;
+  right: 90px;
+  width: 320px;
+  height: 320px;
+  border: 2px solid #8B7355;
+  border-radius: 50%;
+  opacity: 0.15;
+  pointer-events: none;
+}
+.bg-line {
+  position: absolute;
+  top: 520px;
+  left: 80px;
+  width: 1440px;
+  height: 1px;
+  background: #1B3B6B;
+  opacity: 0.12;
+  pointer-events: none;
+}
+.bg-diag {
+  position: absolute;
+  top: 310px;
+  right: 60px;
+  width: 140px;
+  height: 140px;
+  border: 2px solid #1B3B6B;
+  opacity: 0.1;
+  transform: rotate(45deg);
+  pointer-events: none;
+}
+
+.main {
+  position: absolute;
+  top: 305px;
+  left: 80px;
+  right: 80px;
+  bottom: 95px;
+}
+
+.grid {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr 1fr;
+  gap: 24px 44px;
+  z-index: 2;
+}
+
+.item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 26px 24px 20px 0;
+}
+.item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: #1B3B6B;
+}
+.item::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  background: #8B7355;
+  border-radius: 50%;
+}
+.item-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12px;
+  color: #8B7355;
+  letter-spacing: 3px;
+  margin-bottom: 16px;
+}
+.shape-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  height: 60px;
+}
+.shape { flex-shrink: 0; }
+.item-label {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1B3B6B;
+  letter-spacing: 2px;
+  line-height: 1.35;
+}
+.item-en {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12px;
+  color: #555;
+  letter-spacing: 2px;
+  font-style: italic;
+  margin-top: 8px;
+}
+
+.sh-cir-solid { width: 46px; height: 46px; background: #1B3B6B; border-radius: 50%; }
+.sh-sq-solid { width: 46px; height: 46px; background: #8B7355; }
+.sh-rec-solid { width: 68px; height: 46px; background: #1B3B6B; }
+.sh-cir-line { width: 46px; height: 46px; border: 3px solid #8B7355; border-radius: 50%; }
+.sh-dia-solid { width: 36px; height: 36px; background: #1B3B6B; transform: rotate(45deg); }
+.sh-tri-solid { width: 0; height: 0; border-left: 25px solid transparent; border-right: 25px solid transparent; border-bottom: 44px solid #8B7355; }
+.sh-half-solid { width: 46px; height: 23px; background: #1B3B6B; border-radius: 46px 46px 0 0; }
+.sh-bar { width: 68px; height: 10px; background: #8B7355; }
+
+.footer {
+  position: absolute;
+  bottom: 40px;
+  left: 80px;
+  right: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-left { display: flex; align-items: center; gap: 14px; }
+.footer-mark { width: 24px; height: 2px; background: #1B3B6B; }
+.footer-text {
+  font-size: 11px;
+  color: #555;
+  letter-spacing: 4px;
+  font-family: 'Noto Serif SC', serif;
+}
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 4px;
+  font-family: 'Noto Serif SC', serif;
+}
+.footer-square { width: 8px; height: 8px; background: #1B3B6B; }
+
+</style>
+</head>
+<body>
+
+<div class="parchment"></div>
+
 <div class="header">
-<div class="sub-line"></div>
-<div style="margin-top:24px;">
-<div class="title-zh">开源商业模式 · 八种路径</div>
-<div class="title-en">OPEN SOURCE BUSINESS MODELS &nbsp;—&nbsp; EIGHT ROUTES TO VALUE</div>
-</div>
-</div>
-
-<!-- Horizontal decorative bar -->
-<div class="line-deco" style="top:200px;left:80px;width:1440px;height:1px;"></div>
-<div class="copper-line" style="top:200px;left:80px;width:60px;height:3px;"></div>
-
-<!-- 8 Cards Grid -->
-<div class="grid-area">
-<div class="grid">
-
-<!-- Card 1 -->
-<div class="card">
-<span class="card-num">01</span>
-<div class="geo" style="bottom:-15px;right:-15px;width:40px;height:40px;border-radius:50%;background:#1B3B6B;"></div>
-<span class="card-title"><span class="card-title-cn">所有权／使用权的转让</span></span>
-<div class="card-en">IP &amp; LICENSE TRANSFER</div>
-<div class="card-desc">将专利、商标或专有代码所有权转让予企业客户，作为一次性收入的核心交易。</div>
+  <div class="lecture-num">03<sup>TH</sup></div>
+  <div class="title-block">
+    <div class="title-main">商业模式 · 规则下的具体操作</div>
+    <div class="title-sub">BAUHAUS GEOMETRIC COMPOSITION</div>
+  </div>
 </div>
 
-<!-- Card 2 -->
-<div class="card">
-<span class="card-num">02</span>
-<div class="geo" style="bottom:-15px;right:-15px;width:40px;height:40px;background:transparent;border:2px solid #1B3B6B;border-radius:50%;"></div>
-<span class="card-title"><span class="card-title-cn">支持／教育</span></span>
-<div class="card-en">SUPPORT &amp; TRAINING</div>
-<div class="card-desc">提供技术支援、运维服务与培训认证，将知识转化为可订阅的长期服务收入。</div>
+<div class="div-dot"></div>
+<div class="div-square"></div>
+<div class="divider"></div>
+
+<div class="section-title">
+  <div class="section-left">
+    <span class="section-mark">§ 03.2</span>
+    <span class="section-label">装饰</span>
+    <span class="section-en">Ornamentation</span>
+  </div>
+  <div class="section-meta">EIGHT MODELS OF MONETIZATION</div>
 </div>
 
-<!-- Card 3 -->
-<div class="card">
-<span class="card-num">03</span>
-<div class="geo" style="bottom:-15px;right:-15px;width:40px;height:40px;background:#8B7355;"></div>
-<span class="card-title"><span class="card-title-cn">双重许可</span></span>
-<div class="card-en">DUAL LICENSING</div>
-<div class="card-desc">以宽松协议供社区自由使用，同时向需商业豁免的企业提供专有许可并收费。</div>
+<div class="bg-circle"></div>
+<div class="bg-diag"></div>
+<div class="bg-line"></div>
+
+<div class="main">
+  <div class="grid">
+    <div class="item">
+      <div class="item-num">Ⅰ</div>
+      <div class="shape-row"><div class="shape sh-cir-solid"></div></div>
+      <div class="item-label">所有权/使用权的转让</div>
+      <div class="item-en">Transfer of Rights</div>
+    </div>
+
+    <div class="item">
+      <div class="item-num">Ⅱ</div>
+      <div class="shape-row"><div class="shape sh-sq-solid"></div></div>
+      <div class="item-label">支持 / 教育</div>
+      <div class="item-en">Support &amp; Education</div>
+    </div>
+
+    <div class="item">
+      <div class="item-num">Ⅲ</div>
+      <div class="shape-row"><div class="shape sh-rec-solid"></div></div>
+      <div class="item-label">双重许可</div>
+      <div class="item-en">Dual Licensing</div>
+    </div>
+
+    <div class="item">
+      <div class="item-num">Ⅳ</div>
+      <div class="shape-row"><div class="shape sh-cir-line"></div></div>
+      <div class="item-label">咨询</div>
+      <div class="item-en">Consulting</div>
+    </div>
+
+    <div class="item">
+      <div class="item-num">Ⅴ</div>
+      <div class="shape-row"><div class="shape sh-dia-solid"></div></div>
+      <div class="item-label">赞助</div>
+      <div class="item-en">Sponsorship</div>
+    </div>
+
+    <div class="item">
+      <div class="item-num">Ⅵ</div>
+      <div class="shape-row"><div class="shape sh-tri-solid"></div></div>
+      <div class="item-label">托管</div>
+      <div class="item-en">Hosting</div>
+    </div>
+
+    <div class="item">
+      <div class="item-num">Ⅶ</div>
+      <div class="shape-row"><div class="shape sh-half-solid"></div></div>
+      <div class="item-label">优化</div>
+      <div class="item-en">Optimization</div>
+    </div>
+
+    <div class="item">
+      <div class="item-num">Ⅷ</div>
+      <div class="shape-row"><div class="shape sh-bar"></div></div>
+      <div class="item-label">嵌入</div>
+      <div class="item-en">Embedding</div>
+    </div>
+  </div>
 </div>
 
-<!-- Card 4 -->
-<div class="card">
-<span class="card-num">04</span>
-<div class="geo" style="bottom:-15px;right:-15px;width:40px;height:40px;background:transparent;border:2px solid #8B7355;"></div>
-<span class="card-title"><span class="card-title-cn">咨询</span></span>
-<div class="card-en">CONSULTING</div>
-<div class="card-desc">以社区领袖的专业信誉为基础，向企业客户交付架构设计、迁移落地等顾问服务。</div>
+<div class="footer">
+  <div class="footer-left">
+    <div class="footer-mark"></div>
+    <div class="footer-text">开源之道 · OPEN SOURCE ECONOMY</div>
+  </div>
+  <div class="footer-right">
+    <div class="footer-square"></div>
+    <div>08 / 30</div>
+  </div>
 </div>
 
-<!-- Card 5 -->
-<div class="card">
-<span class="card-num">05</span>
-<div class="geo" style="bottom:-15px;right:-15px;width:30px;height:30px;background:#1B3B6B;transform:rotate(45deg);position:absolute;"></div>
-<span class="card-title"><span class="card-title-cn">赞助</span></span>
-<div class="card-en">SPONSORSHIP</div>
-<div class="card-desc">由基金会聚合个人与企业捐赠，支撑核心维护者，形成可持续的集体供给模式。</div>
-</div>
-
-<!-- Card 6 -->
-<div class="card">
-<span class="card-num">06</span>
-<div class="geo" style="bottom:-15px;right:-15px;width:40px;height:20px;background:#1B3B6B;"></div>
-<span class="card-title"><span class="card-title-cn">托管</span></span>
-<div class="card-en">HOSTING &amp; CLOUD</div>
-<div class="card-desc">将开源软件封装为云托管服务，以便利性与可靠性换取持续订阅费。</div>
-</div>
-
-<!-- Card 7 -->
-<div class="card">
-<span class="card-num">07</span>
-<div class="geo" style="bottom:-15px;right:-15px;width:0;height:0;border-style:solid;border-width:0 0 30px 30px;border-color:transparent transparent #8B7355 transparent;"></div>
-<span class="card-title"><span class="card-title-cn">优化</span></span>
-<div class="card-en">OPTIMIZATION</div>
-<div class="card-desc">围绕开源核心构建性能调优、安全加固与高可用方案，以差异化价值定价。</div>
-</div>
-
-<!-- Card 8 -->
-<div class="card">
-<span class="card-num">08</span>
-<div class="geo" style="bottom:-15px;right:-15px;width:0;height:0;border-style:solid;border-width:0 0 30px 30px;border-color:transparent transparent #1B3B6B transparent;"></div>
-<span class="card-title"><span class="card-title-cn">嵌入</span></span>
-<div class="card-en">EMBEDDING</div>
-<div class="card-desc">将开源组件嵌入商业产品中增值销售，使代码成为更大价值链中的一个环节。</div>
-</div>
-
-</div>
-</div>
-
-<!-- Footer -->
-<div class="footer-area">
-<div class="footer-left">新制度经济学视角下的开源 · 商业模式图谱</div>
-<div class="footer-right">— 制度 · 协作 · 激励 —</div>
-</div>
-</body></html>
+</body>
+</html>

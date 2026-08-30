@@ -1,188 +1,509 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: ac33ef7411d64638 --><head><meta charset="UTF-8"><title>软件开发者：创造者的觉醒</title><style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1600px;height:900px;overflow:hidden;margin:0}
-body{background:#F5F0E8;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;color:#1B3B6B;position:relative;width:1600px;height:900px}
+<!DOCTYPE html>
+<html><!-- source_hash: 8fd03ba7c9f398a1 -->
+<head>
+<meta charset="UTF-8">
+<title>第04期 · 软件开发劳动力市场</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 1600px;
+    height: 900px;
+    overflow: hidden;
+    margin: 0;
+    background: #F5F0E8;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #1B3B6B;
+    position: relative;
+  }
 
-/* Parchment texture */
-body::before{content:'';position:absolute;top:0;left:0;width:1600px;height:900px;background:radial-gradient(ellipse at 30% 20%, rgba(139,115,85,0.04) 0%, transparent 60%),radial-gradient(ellipse at 70% 80%, rgba(27,59,107,0.03) 0%, transparent 60%);pointer-events:none;z-index:0}
+  /* Paper texture overlay */
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 1600px; height: 900px;
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(255,250,240,0.4) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 80%, rgba(240,235,225,0.3) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
 
-/* Header bar */
-.header-line{position:absolute;top:60px;left:80px;width:1440px;height:2px;background:#1B3B6B;z-index:2}
-.header-accent{position:absolute;top:55px;left:80px;width:12px;height:12px;background:#1B3B6B;border-radius:50%;z-index:3}
+  /* Bauhaus geometric decorations */
+  .geo {
+    position: absolute;
+    z-index: 1;
+  }
 
-/* Category label */
-.category{position:absolute;top:72px;left:110px;font-size:12px;letter-spacing:4px;color:#8B7355;font-weight:600;z-index:3}
-.category-num{position:absolute;top:68px;right:100px;font-size:12px;letter-spacing:3px;color:#8B7355;z-index:3;font-family:'Noto Serif SC',serif}
+  /* Large copper circle - top right */
+  .circle-copper-lg {
+    width: 340px; height: 340px;
+    border-radius: 50%;
+    border: 3px solid #8B7355;
+    top: -80px; right: -60px;
+    opacity: 0.25;
+  }
 
-/* Main title area */
-.title-block{position:absolute;top:130px;left:80px;width:700px;z-index:3}
-.title-en{font-size:14px;letter-spacing:5px;color:#8B7355;margin-bottom:16px;font-family:'Noto Serif SC',serif}
-.title-zh{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:56px;font-weight:700;line-height:1.2;color:#1B3B6B;letter-spacing:2px}
-.title-sub{font-family:'Noto Serif SC',serif;font-size:22px;color:#555;margin-top:20px;line-height:1.6;letter-spacing:1px}
-.title-underline{width:80px;height:4px;background:#8B7355;margin-top:28px}
+  /* Large blue circle - center right area */
+  .circle-blue-lg {
+    width: 520px; height: 520px;
+    border-radius: 50%;
+    border: 2px solid #1B3B6B;
+    top: 120px; right: 80px;
+    opacity: 0.12;
+  }
 
-/* Geometric composition - chalk dust burst */
-.geo-canvas{position:absolute;top:120px;right:60px;width:700px;height:620px;z-index:2}
-.center-square{position:absolute;top:220px;left:240px;width:100px;height:100px;border:3px solid #1B3B6B;background:#F5F0E8}
-.center-circle{position:absolute;top:240px;left:260px;width:60px;height:60px;border-radius:50%;background:#1B3B6B}
-.geo-line-h{position:absolute;top:280px;left:140px;width:200px;height:2px;background:#1B3B6B}
-.geo-line-v{position:absolute;top:180px;left:300px;width:2px;height:220px;background:#1B3B6B}
-.geo-triangle{position:absolute;top:200px;left:140px;width:0;height:0;border-left:50px solid transparent;border-right:0 solid transparent;border-bottom:86px solid #8B7355;opacity:0.7}
+  /* Central explosion point */
+  .center-burst {
+    width: 28px; height: 28px;
+    background: #8B7355;
+    border-radius: 50%;
+    top: 340px; right: 310px;
+    box-shadow:
+      0 0 0 8px rgba(139,115,85,0.15),
+      0 0 0 20px rgba(139,115,85,0.08),
+      0 0 40px rgba(139,115,85,0.2);
+  }
 
-/* Chalk dust particles */
-.dust{position:absolute;border-radius:50%;background:#1B3B6B}
-.dust-copper{background:#8B7355}
-.dust-outline{background:transparent;border:1.5px solid #1B3B6B}
-.dust-sm{width:3px;height:3px}
-.dust-md{width:5px;height:5px}
-.dust-lg{width:8px;height:8px}
-.dust-xl{width:12px;height:12px}
-.dust-line{border-radius:0;height:1.5px}
+  /* Diagonal energy lines */
+  .line-diag-1 {
+    width: 420px; height: 2px;
+    background: #1B3B6B;
+    top: 290px; right: 180px;
+    transform: rotate(25deg);
+    transform-origin: left center;
+    opacity: 0.5;
+  }
+  .line-diag-2 {
+    width: 350px; height: 2px;
+    background: #8B7355;
+    top: 390px; right: 100px;
+    transform: rotate(-18deg);
+    transform-origin: right center;
+    opacity: 0.55;
+  }
+  .line-diag-3 {
+    width: 280px; height: 2px;
+    background: #1B3B6B;
+    top: 480px; right: 240px;
+    transform: rotate(40deg);
+    transform-origin: left center;
+    opacity: 0.35;
+  }
+  .line-diag-4 {
+    width: 200px; height: 1.5px;
+    background: #8B7355;
+    top: 230px; right: 380px;
+    transform: rotate(-35deg);
+    transform-origin: right center;
+    opacity: 0.4;
+  }
+  .line-diag-5 {
+    width: 160px; height: 1.5px;
+    background: #1B3B6B;
+    top: 530px; right: 130px;
+    transform: rotate(-20deg);
+    transform-origin: left center;
+    opacity: 0.3;
+  }
 
-/* Bottom bullet area */
-.bullet-area{position:absolute;bottom:60px;left:80px;width:1440px;height:220px;z-index:3}
-.bullet-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
-.bullet-item{position:relative;padding:18px 20px 18px 24px;background:transparent;border-left:3px solid #1B3B6B}
-.bullet-num{font-family:'Noto Serif SC',serif;font-size:11px;color:#8B7355;letter-spacing:2px;margin-bottom:8px;font-weight:600}
-.bullet-text{font-size:14px;line-height:1.6;color:#1B3B6B;font-weight:500}
-.bullet-text em{font-style:normal;color:#555;font-weight:400;font-size:13px}
+  /* Floating squares - "magnesium powder" */
+  .sq-powder {
+    position: absolute;
+    z-index: 2;
+  }
+  .sq-1 { width: 8px; height: 8px; background: #8B7355; top: 260px; right: 420px; opacity: 0.7; transform: rotate(15deg); }
+  .sq-2 { width: 6px; height: 6px; background: #1B3B6B; top: 300px; right: 220px; opacity: 0.6; transform: rotate(30deg); }
+  .sq-3 { width: 10px; height: 10px; background: #8B7355; top: 410px; right: 460px; opacity: 0.5; transform: rotate(-10deg); }
+  .sq-4 { width: 7px; height: 7px; background: #1B3B6B; top: 460px; right: 170px; opacity: 0.65; transform: rotate(45deg); }
+  .sq-5 { width: 5px; height: 5px; background: #8B7355; top: 350px; right: 530px; opacity: 0.55; transform: rotate(60deg); }
+  .sq-6 { width: 9px; height: 9px; background: #1B3B6B; top: 200px; right: 300px; opacity: 0.45; transform: rotate(-20deg); }
+  .sq-7 { width: 6px; height: 6px; background: #8B7355; top: 500px; right: 350px; opacity: 0.5; transform: rotate(25deg); }
+  .sq-8 { width: 7px; height: 7px; background: #1B3B6B; top: 250px; right: 150px; opacity: 0.6; transform: rotate(-40deg); }
+  .sq-9 { width: 4px; height: 4px; background: #8B7355; top: 380px; right: 280px; opacity: 0.7; transform: rotate(10deg); }
+  .sq-10 { width: 8px; height: 8px; background: #1B3B6B; top: 440px; right: 500px; opacity: 0.4; transform: rotate(-15deg); }
+  .sq-11 { width: 5px; height: 5px; background: #8B7355; top: 180px; right: 450px; opacity: 0.5; transform: rotate(50deg); }
+  .sq-12 { width: 6px; height: 6px; background: #1B3B6B; top: 520px; right: 250px; opacity: 0.55; transform: rotate(30deg); }
+  .sq-13 { width: 9px; height: 9px; background: #8B7355; top: 300px; right: 100px; opacity: 0.45; transform: rotate(-25deg); }
+  .sq-14 { width: 4px; height: 4px; background: #1B3B6B; top: 550px; right: 420px; opacity: 0.6; transform: rotate(45deg); }
+  .sq-15 { width: 7px; height: 7px; background: #8B7355; top: 220px; right: 560px; opacity: 0.4; transform: rotate(15deg); }
 
-/* Vertical accent on right */
-.right-bar{position:absolute;top:130px;right:30px;width:4px;height:620px;background:#1B3B6B;opacity:0.15;z-index:1}
+  /* Floating small circles - more "powder" */
+  .circ-powder {
+    position: absolute;
+    border-radius: 50%;
+    z-index: 2;
+  }
+  .cp-1 { width: 5px; height: 5px; background: #8B7355; top: 270px; right: 360px; opacity: 0.6; }
+  .cp-2 { width: 4px; height: 4px; background: #1B3B6B; top: 330px; right: 180px; opacity: 0.5; }
+  .cp-3 { width: 7px; height: 7px; background: #8B7355; top: 390px; right: 400px; opacity: 0.55; }
+  .cp-4 { width: 3px; height: 3px; background: #1B3B6B; top: 450px; right: 200px; opacity: 0.6; }
+  .cp-5 { width: 6px; height: 6px; background: #8B7355; top: 210px; right: 350px; opacity: 0.45; }
+  .cp-6 { width: 4px; height: 4px; background: #1B3B6B; top: 500px; right: 380px; opacity: 0.5; }
+  .cp-7 { width: 5px; height: 5px; background: #8B7355; top: 280px; right: 520px; opacity: 0.5; }
+  .cp-8 { width: 3px; height: 3px; background: #1B3B6B; top: 430px; right: 300px; opacity: 0.55; }
+  .cp-9 { width: 6px; height: 6px; background: #8B7355; top: 190px; right: 220px; opacity: 0.4; }
+  .cp-10 { width: 4px; height: 4px; background: #1B3B6B; top: 540px; right: 150px; opacity: 0.5; }
 
-/* Footer */
-.footer-line{position:absolute;bottom:30px;left:80px;width:1440px;height:1px;background:#8B7355;opacity:0.4;z-index:2}
-.footer-text{position:absolute;bottom:35px;left:80px;font-size:11px;color:#8B7355;letter-spacing:2px;z-index:3;font-family:'Noto Serif SC',serif}
-.footer-right{position:absolute;bottom:35px;right:80px;font-size:11px;color:#8B7355;letter-spacing:2px;z-index:3;font-family:'Noto Serif SC',serif}
+  /* Medium blue square - anchor */
+  .sq-blue-md {
+    width: 60px; height: 60px;
+    background: #1B3B6B;
+    top: 180px; right: 480px;
+    opacity: 0.15;
+  }
 
-/* Floating geometric accents */
-.float-square{position:absolute;width:20px;height:20px;border:2px solid #8B7355;top:960px;left:800px;opacity:0.5}
-.float-circle-2{position:absolute;width:30px;height:30px;border-radius:50%;border:2px solid #1B3B6B;top:940px;left:900px;opacity:0.3}
-</style></head><body>
+  /* Medium copper square */
+  .sq-copper-md {
+    width: 40px; height: 40px;
+    background: #8B7355;
+    top: 480px; right: 420px;
+    opacity: 0.18;
+  }
 
-<div class="header-line"></div>
-<div class="header-accent"></div>
-<div class="category">NEW INSTITUTIONAL ECONOMICS · OPEN SOURCE</div>
-<div class="category-num">No. 03 / 16</div>
+  /* Small blue square accent */
+  .sq-blue-sm {
+    width: 24px; height: 24px;
+    background: #1B3B6B;
+    top: 370px; right: 560px;
+    opacity: 0.2;
+  }
 
-<div class="right-bar"></div>
+  /* Copper arc - partial circle */
+  .arc-copper {
+    width: 180px; height: 180px;
+    border: 2px solid #8B7355;
+    border-radius: 50%;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    top: 560px; right: 200px;
+    transform: rotate(160deg);
+    opacity: 0.3;
+  }
 
-<div class="title-block">
-<div class="title-en">THE AWAKENING OF THE CRAFTSMan</div>
-<div class="title-zh">软件开发者<br>创造者的觉醒</div>
-<div class="title-underline"></div>
-<div class="title-sub">镁粉飞扬 · 力量觉醒与蓄势待发的爆发瞬间</div>
-</div>
+  /* Left border accent */
+  .left-bar {
+    position: absolute;
+    left: 0; top: 0;
+    width: 8px; height: 900px;
+    background: #1B3B6B;
+    z-index: 3;
+  }
 
-<div class="geo-canvas">
-<!-- Central composition -->
-<div class="center-square"></div>
-<div class="center-circle"></div>
-<div class="geo-line-h"></div>
-<div class="geo-line-v"></div>
-<div class="geo-triangle"></div>
+  /* Top-right corner mark */
+  .corner-mark {
+    position: absolute;
+    top: 30px; right: 30px;
+    z-index: 10;
+  }
 
-<!-- Chalk dust burst particles -->
-<div class="dust dust-xl" style="top:150px;left:200px;opacity:0.8"></div>
-<div class="dust dust-lg dust-copper" style="top:170px;left:160px;opacity:0.6"></div>
-<div class="dust dust-md" style="top:140px;left:230px;opacity:0.7"></div>
-<div class="dust dust-sm" style="top:130px;left:280px;opacity:0.5"></div>
-<div class="dust dust-lg" style="top:180px;left:330px;opacity:0.5"></div>
-<div class="dust dust-md dust-copper" style="top:160px;left:360px;opacity:0.4"></div>
-<div class="dust dust-sm dust-copper" style="top:145px;left:400px;opacity:0.3"></div>
-<div class="dust dust-sm" style="top:135px;left:430px;opacity:0.5"></div>
-<div class="dust dust-md" style="top:155px;left:460px;opacity:0.4"></div>
-<div class="dust dust-lg dust-copper" style="top:175px;left:490px;opacity:0.35"></div>
-<div class="dust dust-sm" style="top:200px;left:530px;opacity:0.4"></div>
-<div class="dust dust-md" style="top:190px;left:560px;opacity:0.5"></div>
-<div class="dust dust-sm dust-copper" style="top:165px;left:590px;opacity:0.3"></div>
-<div class="dust dust-lg" style="top:210px;left:620px;opacity:0.4"></div>
-<div class="dust dust-md" style="top:230px;left:640px;opacity:0.35"></div>
+  /* Content area */
+  .content {
+    position: absolute;
+    z-index: 5;
+  }
 
-<div class="dust dust-md" style="top:260px;left:150px;opacity:0.5"></div>
-<div class="dust dust-sm" style="top:280px;left:120px;opacity:0.4"></div>
-<div class="dust dust-lg dust-copper" style="top:300px;left:100px;opacity:0.35"></div>
-<div class="dust dust-md" style="top:320px;left:130px;opacity:0.45"></div>
-<div class="dust dust-sm" style="top:340px;left:90px;opacity:0.3"></div>
-<div class="dust dust-md dust-copper" style="top:360px;left:160px;opacity:0.4"></div>
-<div class="dust dust-sm" style="top:380px;left:120px;opacity:0.35"></div>
+  /* Header */
+  .header {
+    top: 55px;
+    left: 80px;
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+  }
+  .lecture-num {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 72px;
+    color: #1B3B6B;
+    line-height: 1;
+    font-weight: 700;
+  }
+  .lecture-label {
+    font-size: 16px;
+    color: #8B7355;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+  }
 
-<div class="dust dust-lg" style="top:400px;left:220px;opacity:0.5"></div>
-<div class="dust dust-md" style="top:420px;left:250px;opacity:0.4"></div>
-<div class="dust dust-sm dust-copper" style="top:440px;left:210px;opacity:0.35"></div>
-<div class="dust dust-md" style="top:460px;left:280px;opacity:0.4"></div>
-<div class="dust dust-sm" style="top:480px;left:310px;opacity:0.3"></div>
+  /* Title block */
+  .title-block {
+    top: 160px;
+    left: 80px;
+    max-width: 700px;
+  }
+  .title-main {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 52px;
+    color: #1B3B6B;
+    line-height: 1.25;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .title-accent-line {
+    width: 100px;
+    height: 3px;
+    background: #8B7355;
+    margin-bottom: 20px;
+  }
+  .title-sub {
+    font-size: 22px;
+    color: #555;
+    line-height: 1.6;
+    font-weight: 300;
+  }
 
-<div class="dust dust-md" style="top:430px;left:380px;opacity:0.4"></div>
-<div class="dust dust-sm" style="top:450px;left:420px;opacity:0.35"></div>
-<div class="dust dust-lg dust-copper" style="top:470px;left:450px;opacity:0.3"></div>
-<div class="dust dust-md" style="top:490px;left:480px;opacity:0.4"></div>
-<div class="dust dust-sm" style="top:510px;left:430px;opacity:0.3"></div>
+  /* Content bullets */
+  .bullets {
+    top: 400px;
+    left: 80px;
+    max-width: 680px;
+  }
+  .bullet {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 22px;
+  }
+  .bullet-marker {
+    flex-shrink: 0;
+    width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4px;
+  }
+  .marker-square {
+    width: 14px;
+    height: 14px;
+    background: #1B3B6B;
+  }
+  .marker-circle {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid #1B3B6B;
+  }
+  .marker-filled-circle {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #8B7355;
+  }
+  .marker-diamond {
+    width: 12px;
+    height: 12px;
+    background: #8B7355;
+    transform: rotate(45deg);
+  }
+  .marker-half {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: linear-gradient(90deg, #1B3B6B 50%, transparent 50%);
+  }
+  .bullet-text {
+    font-size: 19px;
+    line-height: 1.55;
+    color: #1B3B6B;
+  }
+  .bullet-text .highlight {
+    color: #8B7355;
+    font-weight: 600;
+  }
+  .bullet-text .em {
+    color: #1B3B6B;
+    font-weight: 600;
+  }
+  .bullet-text .gates-letter {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-style: italic;
+    color: #8B7355;
+  }
 
-<div class="dust dust-md" style="top:410px;left:540px;opacity:0.35"></div>
-<div class="dust dust-sm" style="top:440px;left:570px;opacity:0.3"></div>
-<div class="dust dust-lg" style="top:470px;left:600px;opacity:0.35"></div>
-<div class="dust dust-md dust-copper" style="top:500px;left:550px;opacity:0.3"></div>
-<div class="dust dust-sm" style="top:530px;left:620px;opacity:0.25"></div>
+  /* Footer */
+  .footer {
+    position: absolute;
+    bottom: 35px;
+    left: 80px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .footer-line {
+    width: 60px;
+    height: 1px;
+    background: #8B7355;
+  }
+  .footer-text {
+    font-size: 13px;
+    color: #8B7355;
+    letter-spacing: 2px;
+  }
 
-<!-- Dust lines (motion trails) -->
-<div class="dust dust-line" style="top:155px;left:200px;width:30px;opacity:0.3"></div>
-<div class="dust dust-line" style="top:175px;left:300px;width:40px;opacity:0.25"></div>
-<div class="dust dust-line dust-copper" style="top:200px;left:380px;width:25px;opacity:0.2"></div>
-<div class="dust dust-line" style="top:225px;left:180px;width:35px;opacity:0.2"></div>
-<div class="dust dust-line" style="top:370px;left:140px;width:20px;opacity:0.25"></div>
-<div class="dust dust-line" style="top:445px;left:400px;width:30px;opacity:0.2"></div>
+  /* Bottom-right small mark */
+  .bottom-mark {
+    position: absolute;
+    bottom: 35px;
+    right: 80px;
+    z-index: 10;
+    font-size: 13px;
+    color: #8B7355;
+    letter-spacing: 1px;
+  }
 
-<!-- Outline dust circles for depth -->
-<div class="dust dust-lg dust-outline" style="top:190px;left:180px"></div>
-<div class="dust dust-xl dust-outline dust-copper" style="top:340px;left:280px;border-color:#8B7355"></div>
-<div class="dust dust-md dust-outline" style="top:310px;left:450px"></div>
-<div class="dust dust-lg dust-outline dust-copper" style="top:500px;left:350px;border-color:#8B7355"></div>
-<div class="dust dust-md dust-outline" style="top:250px;left:530px"></div>
-<div class="dust dust-lg dust-outline" style="top:130px;left:470px"></div>
+  /* Large number watermark */
+  .watermark-num {
+    position: absolute;
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 200px;
+    color: #1B3B6B;
+    opacity: 0.04;
+    line-height: 1;
+    z-index: 0;
+    top: 480px;
+    right: 40px;
+    font-weight: 700;
+  }
 
-<!-- Large faint arc -->
-<div class="dust dust-xl dust-outline" style="top:280px;left:380px;width:120px;height:120px;border-width:1px;opacity:0.2"></div>
-</div>
+  /* Radial burst lines from center point */
+  .burst-line {
+    position: absolute;
+    height: 1px;
+    background: #8B7355;
+    z-index: 2;
+    opacity: 0.35;
+  }
+  .bl-1 { width: 100px; top: 354px; right: 338px; transform: rotate(0deg); transform-origin: right center; }
+  .bl-2 { width: 80px; top: 354px; right: 310px; transform: rotate(180deg); transform-origin: left center; }
+  .bl-3 { width: 120px; top: 340px; right: 295px; transform: rotate(-60deg); transform-origin: top center; }
+  .bl-4 { width: 90px; top: 354px; right: 325px; transform: rotate(120deg); transform-origin: center; }
+  .bl-5 { width: 70px; top: 354px; right: 320px; transform: rotate(90deg); transform-origin: center; }
+  .bl-6 { width: 60px; top: 354px; right: 330px; transform: rotate(-30deg); transform-origin: center; }
+</style>
+</head>
+<body>
 
-<div class="bullet-area">
-<div class="bullet-grid">
-<div class="bullet-item">
-<div class="bullet-num">— 01 / CREATOR</div>
-<div class="bullet-text">作为创作者的软件开发者<em>· code as craft</em></div>
-</div>
-<div class="bullet-item">
-<div class="bullet-num">— 02 / ORIGIN</div>
-<div class="bullet-text">从学校实验室到学术交流<em>· lab to discourse</em></div>
-</div>
-<div class="bullet-item">
-<div class="bullet-num">— 03 / COMMODITY</div>
-<div class="bullet-text">劳动报酬，会成为一门生意<em>· labor becomes trade</em></div>
-</div>
-<div class="bullet-item">
-<div class="bullet-num">— 04 / LEGITIMACY</div>
-<div class="bullet-text">先是取得合理性：比尔·盖茨《致电脑爱好者的公开信》<em>· 1976</em></div>
-</div>
-</div>
-</div>
+  <!-- Left accent bar -->
+  <div class="left-bar"></div>
 
-<div class="bullet-area" style="bottom:285px;height:auto">
-<div class="bullet-grid" style="grid-template-columns:repeat(2,1fr)">
-<div class="bullet-item">
-<div class="bullet-num">— 05 / LEGAL EXPANSION</div>
-<div class="bullet-text">继而是法律上的扩张<em>· the codification of ownership</em></div>
-</div>
-<div class="bullet-item">
-<div class="bullet-num">— 06 / PROFESSION</div>
-<div class="bullet-text">软件工程本身的特性：开发者成为了一个职业<em>· engineering as vocation</em></div>
-</div>
-</div>
-</div>
+  <!-- Bauhaus geometric decorations -->
+  <div class="geo circle-copper-lg"></div>
+  <div class="geo circle-blue-lg"></div>
+  <div class="geo center-burst"></div>
+  <div class="geo sq-blue-md"></div>
+  <div class="geo sq-copper-md"></div>
+  <div class="geo sq-blue-sm"></div>
+  <div class="geo arc-copper"></div>
 
-<div class="footer-line"></div>
-<div class="footer-text">OPEN SOURCE · A NEW INSTITUTIONAL PERSPECTIVE</div>
-<div class="footer-right">THE AWAKENING — Chalk Dust &amp; First Ignition</div>
+  <!-- Diagonal energy lines -->
+  <div class="geo line-diag-1"></div>
+  <div class="geo line-diag-2"></div>
+  <div class="geo line-diag-3"></div>
+  <div class="geo line-diag-4"></div>
+  <div class="geo line-diag-5"></div>
 
-</body></html>
+  <!-- Burst radial lines from center -->
+  <div class="burst-line bl-1"></div>
+  <div class="burst-line bl-2"></div>
+  <div class="burst-line bl-3"></div>
+  <div class="burst-line bl-4"></div>
+  <div class="burst-line bl-5"></div>
+  <div class="burst-line bl-6"></div>
+
+  <!-- Magnesium powder - squares -->
+  <div class="sq-powder sq-1"></div>
+  <div class="sq-powder sq-2"></div>
+  <div class="sq-powder sq-3"></div>
+  <div class="sq-powder sq-4"></div>
+  <div class="sq-powder sq-5"></div>
+  <div class="sq-powder sq-6"></div>
+  <div class="sq-powder sq-7"></div>
+  <div class="sq-powder sq-8"></div>
+  <div class="sq-powder sq-9"></div>
+  <div class="sq-powder sq-10"></div>
+  <div class="sq-powder sq-11"></div>
+  <div class="sq-powder sq-12"></div>
+  <div class="sq-powder sq-13"></div>
+  <div class="sq-powder sq-14"></div>
+  <div class="sq-powder sq-15"></div>
+
+  <!-- Magnesium powder - circles -->
+  <div class="circ-powder cp-1"></div>
+  <div class="circ-powder cp-2"></div>
+  <div class="circ-powder cp-3"></div>
+  <div class="circ-powder cp-4"></div>
+  <div class="circ-powder cp-5"></div>
+  <div class="circ-powder cp-6"></div>
+  <div class="circ-powder cp-7"></div>
+  <div class="circ-powder cp-8"></div>
+  <div class="circ-powder cp-9"></div>
+  <div class="circ-powder cp-10"></div>
+
+  <!-- Watermark number -->
+  <div class="watermark-num">04</div>
+
+  <!-- Header -->
+  <div class="content header">
+    <div class="lecture-num">04</div>
+    <div class="lecture-label">软件开发劳动力市场</div>
+  </div>
+
+  <!-- Title -->
+  <div class="content title-block">
+    <div class="title-main">力量觉醒</div>
+    <div class="title-accent-line"></div>
+    <div class="title-sub">镁粉飞扬——蓄势待发的爆发瞬间</div>
+  </div>
+
+  <!-- Bullets -->
+  <div class="content bullets">
+    <div class="bullet">
+      <div class="bullet-marker">
+        <div class="marker-square"></div>
+      </div>
+      <div class="bullet-text">作为创作者的软件开发者——<span class="em">创造性</span>的劳动本质</div>
+    </div>
+    <div class="bullet">
+      <div class="bullet-marker">
+        <div class="marker-circle"></div>
+      </div>
+      <div class="bullet-text">从<span class="em">学校实验室</span>到学术交流：知识生产的制度场域</div>
+    </div>
+    <div class="bullet">
+      <div class="bullet-marker">
+        <div class="marker-filled-circle"></div>
+      </div>
+      <div class="bullet-text">劳动报酬成为一门<span class="highlight">生意</span>——商业化的起点</div>
+    </div>
+    <div class="bullet">
+      <div class="bullet-marker">
+        <div class="marker-diamond"></div>
+      </div>
+      <div class="bullet-text">先取得<span class="em">合理性</span>：<span class="gates-letter">比尔·盖茨《致电脑爱好者的一封公开信》</span></div>
+    </div>
+    <div class="bullet">
+      <div class="bullet-marker">
+        <div class="marker-half"></div>
+      </div>
+      <div class="bullet-text">继而是<span class="em">法律</span>上的扩张：产权与专断的边界</div>
+    </div>
+    <div class="bullet">
+      <div class="bullet-marker">
+        <div class="marker-square" style="background:#8B7355;"></div>
+      </div>
+      <div class="bullet-text">软件工程本身的特性：<span class="highlight">开发者</span>成为了一个职业</div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-line"></div>
+    <div class="footer-text">第 04 期 · 开源经济学讲座</div>
+  </div>
+  <div class="bottom-mark">新制度经济学视角</div>
+
+</body>
+</html>

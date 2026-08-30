@@ -1,214 +1,486 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: ac31213e35a37e26 --><head><meta charset="UTF-8"><title>留名文化与现代企业</title><style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1600px;height:900px;overflow:hidden;margin:0}
-body{background:#F5F0E8;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;color:#1B3B6B;position:relative}
-.bg-texture{position:absolute;top:0;left:0;width:1600px;height:900px;background:repeating-linear-gradient(0deg,transparent 0,transparent 3px,rgba(27,59,107,0.012) 3px,rgba(27,59,107,0.012) 4px),repeating-linear-gradient(90deg,transparent 0,transparent 5px,rgba(139,115,85,0.015) 5px,rgba(139,115,85,0.015) 6px);pointer-events:none;z-index:0}
+<!DOCTYPE html>
+<html><!-- source_hash: a7b0ffab86592f49 -->
+<head>
+<meta charset="UTF-8">
+<title>留名文化与现代企业</title>
+<style>
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
 
-/* Header decoration */
-.header-line{position:absolute;top:60px;left:80px;width:1440px;height:1px;background:#1B3B6B;z-index:2}
-.header-line-thin{position:absolute;top:66px;left:80px;width:1440px;height:1px;background:#1B3B6B;opacity:0.3;z-index:2}
+body {
+  background: #F5F0E8;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: #1B3B6B;
+  position: relative;
+}
 
-/* Geometric decorations top-right */
-.deco-square{position:absolute;top:55px;right:80px;width:22px;height:22px;background:#1B3B6B;z-index:2}
-.deco-circle{position:absolute;top:52px;right:115px;width:28px;height:28px;border-radius:50%;border:2px solid #8B7355;z-index:2}
-.deco-dot{position:absolute;top:62px;right:160px;width:8px;height:8px;border-radius:50%;background:#8B7355;z-index:2}
+/* Parchment texture overlay */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(139, 115, 85, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 30%, rgba(27, 59, 107, 0.02) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+/* Bauhaus geometric decorations */
+.deco-circle-lg {
+  position: absolute;
+  top: -80px;
+  right: -60px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 3px solid #1B3B6B;
+  opacity: 0.08;
+}
+
+.deco-square {
+  position: absolute;
+  bottom: 40px;
+  left: 60px;
+  width: 60px;
+  height: 60px;
+  background: #8B7355;
+  opacity: 0.12;
+}
+
+.deco-line-h {
+  position: absolute;
+  top: 180px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #1B3B6B;
+  opacity: 0.1;
+}
+
+.deco-circle-sm {
+  position: absolute;
+  bottom: 120px;
+  right: 80px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  opacity: 0.06;
+}
+
+.deco-square-outline {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  width: 30px;
+  height: 30px;
+  border: 2px solid #8B7355;
+  opacity: 0.2;
+}
+
+/* Header */
+.header {
+  position: absolute;
+  top: 60px;
+  left: 80px;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.lecture-badge {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 14px;
+  color: #8B7355;
+  letter-spacing: 2px;
+  border: 1px solid #8B7355;
+  padding: 4px 12px;
+}
+
+.slide-number {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 14px;
+  color: #8B7355;
+  letter-spacing: 1px;
+}
 
 /* Title */
-.title-cn{position:absolute;top:95px;left:80px;font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:46px;font-weight:700;color:#1B3B6B;letter-spacing:4px;z-index:3}
-.title-en{position:absolute;top:160px;left:84px;font-size:13px;color:#8B7355;letter-spacing:6px;z-index:3;text-transform:uppercase}
-.title-underline{position:absolute;top:182px;left:84px;width:80px;height:3px;background:#1B3B6B;z-index:3}
+.title {
+  position: absolute;
+  top: 110px;
+  left: 80px;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: #1B3B6B;
+  letter-spacing: 2px;
+  line-height: 1.3;
+}
 
-/* Visual metaphor area - left */
-.metaphor-area{position:absolute;top:230px;left:60px;width:720px;height:560px;z-index:3}
-.metaphor-label{position:absolute;top:0;left:0;font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:3px}
-.metaphor-label-cn{position:absolute;top:0;left:0;font-size:13px;color:#8B7355;letter-spacing:2px}
+.title-underline {
+  position: absolute;
+  top: 178px;
+  left: 80px;
+  width: 80px;
+  height: 3px;
+  background: #1B3B6B;
+}
 
-/* People silhouettes */
-.person{position:absolute}
-.head{border-radius:50%}
-.body-shape{position:absolute;top:0;left:0}
+/* Visual metaphor area */
+.visual-area {
+  position: absolute;
+  top: 220px;
+  left: 80px;
+  width: 600px;
+  height: 520px;
+}
 
-/* Connecting lines SVG */
-.net-svg{position:absolute;top:60px;left:20px;width:680px;height:340px;z-index:3}
+/* People looking at phones - geometric abstraction */
+.person-group {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  height: 320px;
+}
 
-/* Bullet points - right */
-.bullets-area{position:absolute;top:230px;left:820px;width:680px;z-index:3}
-.bullets-title{font-family:'Noto Serif SC',serif;font-size:15px;color:#8B7355;letter-spacing:4px;margin-bottom:30px;padding-bottom:12px;border-bottom:1px solid rgba(27,59,107,0.2)}
+.person {
+  position: absolute;
+  bottom: 0;
+}
 
-.bullet-item{display:flex;align-items:flex-start;margin-bottom:24px;padding:14px 0 14px 0;border-bottom:1px solid rgba(27,59,107,0.08)}
-.bullet-num{font-family:'Noto Serif SC',serif;font-size:22px;color:#8B7355;width:44px;flex-shrink:0;font-weight:400;line-height:1.2}
-.bullet-text{font-size:15px;color:#1B3B6B;line-height:1.7;flex:1}
-.bullet-text .key{font-family:'Noto Serif SC',serif;font-weight:700;font-size:17px;color:#1B3B6B}
-.bullet-text .em{color:#8B7355;font-weight:600}
-.bullet-text .gpl{color:#1B3B6B;font-weight:700;background:rgba(27,59,107,0.08);padding:1px 6px}
+/* Head circle */
+.person .head {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2.5px solid #1B3B6B;
+  margin: 0 auto;
+  position: relative;
+}
 
-/* Geometric accents near bullets */
-.accent-square{position:absolute;width:12px;height:12px;background:#1B3B6B}
-.accent-circle{position:absolute;border-radius:50%;border:1.5px solid #1B3B6B}
+.person .head::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  opacity: 0.3;
+}
+
+/* Body rectangle */
+.person .body {
+  width: 28px;
+  height: 80px;
+  border: 2px solid #1B3B6B;
+  margin: 4px auto 0;
+  opacity: 0.6;
+}
+
+/* Phone rectangle */
+.person .phone {
+  width: 14px;
+  height: 22px;
+  background: #8B7355;
+  opacity: 0.7;
+  margin: 6px auto 0;
+}
+
+.person-1 { left: 60px; }
+.person-2 { left: 180px; }
+.person-3 { left: 300px; }
+.person-4 { left: 420px; }
+.person-5 { left: 540px; }
+
+/* Connection lines above heads - network metaphor */
+.network-lines {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 100%;
+  height: 200px;
+}
+
+.line-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Sub-labels */
+.network-label {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 13px;
+  color: #8B7355;
+  letter-spacing: 3px;
+  opacity: 0.7;
+}
+
+/* Content panel */
+.content-panel {
+  position: absolute;
+  top: 230px;
+  right: 80px;
+  width: 760px;
+}
+
+.content-intro {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 16px;
+  color: #8B7355;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+  line-height: 1.8;
+}
+
+.bullet-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bullet-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 22px;
+  position: relative;
+}
+
+.bullet-marker {
+  flex-shrink: 0;
+  width: 10px;
+  height: 10px;
+  background: #1B3B6B;
+  margin-top: 8px;
+}
+
+.bullet-marker.round {
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid #1B3B6B;
+}
+
+.bullet-marker.triangle {
+  width: 0;
+  height: 0;
+  background: transparent;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 10px solid #8B7355;
+}
+
+.bullet-text {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  color: #1B3B6B;
+  opacity: 0.85;
+}
+
+.bullet-text .emphasis {
+  color: #1B3B6B;
+  opacity: 1;
+  font-weight: 600;
+}
+
+.bullet-text .copper {
+  color: #8B7355;
+}
+
+/* Bottom separator */
+.bottom-sep {
+  position: absolute;
+  bottom: 50px;
+  left: 80px;
+  right: 80px;
+  height: 1px;
+  background: #1B3B6B;
+  opacity: 0.12;
+}
 
 /* Footer */
-.footer-line{position:absolute;bottom:35px;left:80px;width:1440px;height:1px;background:#1B3B6B;opacity:0.3;z-index:2}
-.footer-text{position:absolute;bottom:42px;left:80px;font-size:11px;color:#8B7355;letter-spacing:3px;z-index:2}
-.footer-right{position:absolute;bottom:42px;right:80px;font-size:11px;color:#8B7355;letter-spacing:3px;z-index:2}
+.footer {
+  position: absolute;
+  bottom: 22px;
+  left: 80px;
+  right: 80px;
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  color: #8B7355;
+  opacity: 0.6;
+  letter-spacing: 1px;
+}
 
-/* Decorative large circle bottom-left */
-.deco-big-circle{position:absolute;bottom:-160px;left:-160px;width:340px;height:340px;border-radius:50%;border:1px solid rgba(27,59,107,0.12);z-index:1}
-.deco-big-circle2{position:absolute;bottom:-200px;left:-200px;width:260px;height:260px;border-radius:50%;background:rgba(139,115,85,0.04);z-index:1}
-.deco-right-square{position:absolute;top:230px;right:30px;width:60px;height:60px;border:1px solid rgba(27,59,107,0.15);z-index:1}
-</style></head><body>
-<div class="bg-texture"></div>
+/* Highlight box for GPL point */
+.highlight-box {
+  position: absolute;
+  bottom: 60px;
+  left: 80px;
+  width: 600px;
+  border-left: 3px solid #1B3B6B;
+  padding: 12px 0 12px 20px;
+}
 
-<div class="deco-big-circle"></div>
-<div class="deco-big-circle2"></div>
-<div class="deco-right-square"></div>
+.highlight-box-text {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 15px;
+  color: #1B3B6B;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
 
-<div class="header-line"></div>
-<div class="header-line-thin"></div>
-<div class="deco-dot"></div>
-<div class="deco-circle"></div>
+.highlight-box-sub {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  color: #8B7355;
+  margin-top: 4px;
+  opacity: 0.8;
+}
+</style>
+</head>
+<body>
+
+<!-- Bauhaus decorative elements -->
+<div class="deco-circle-lg"></div>
 <div class="deco-square"></div>
+<div class="deco-line-h"></div>
+<div class="deco-circle-sm"></div>
+<div class="deco-square-outline"></div>
 
-<div class="title-cn">留名文化与现代企业</div>
-<div class="title-en">Culture of Attribution &amp; The Modern Enterprise</div>
+<!-- Header -->
+<div class="header">
+  <span class="lecture-badge">LECTURE 04</span>
+  <span class="slide-number">第 04 期 · 软件开发劳动力市场</span>
+</div>
+
+<!-- Title -->
+<div class="title">留名文化与现代企业</div>
 <div class="title-underline"></div>
 
-<!-- Visual Metaphor: People looking at phones, connected lines above heads -->
-<div class="metaphor-area">
-  <div class="metaphor-label-cn">社交网络的互联互通 · Network of Connection</div>
-  <svg class="net-svg" viewBox="0 0 680 340" xmlns="http://www.w3.org/2000/svg">
-    <!-- Connecting lines above heads -->
-    <line x1="70" y1="110" x2="210" y2="60" stroke="#1B3B6B" stroke-width="1" opacity="0.5"/>
-    <line x1="210" y1="60" x2="360" y2="100" stroke="#1B3B6B" stroke-width="1" opacity="0.5"/>
-    <line x1="360" y1="100" x2="520" y2="50" stroke="#1B3B6B" stroke-width="1" opacity="0.5"/>
-    <line x1="520" y1="50" x2="630" y2="120" stroke="#1B3B6B" stroke-width="1" opacity="0.5"/>
-    <line x1="70" y1="110" x2="360" y2="100" stroke="#8B7355" stroke-width="0.8" opacity="0.4" stroke-dasharray="3,3"/>
-    <line x1="210" y1="60" x2="520" y2="50" stroke="#8B7355" stroke-width="0.8" opacity="0.4" stroke-dasharray="3,3"/>
-    <line x1="70" y1="110" x2="520" y2="50" stroke="#1B3B6B" stroke-width="0.5" opacity="0.25"/>
-    <line x1="360" y1="100" x2="630" y2="120" stroke="#1B3B6B" stroke-width="0.5" opacity="0.25"/>
-    <line x1="210" y1="60" x2="630" y2="120" stroke="#8B7355" stroke-width="0.5" opacity="0.2"/>
-
-    <!-- Connection nodes -->
-    <circle cx="70" cy="110" r="4" fill="#1B3B6B"/>
-    <circle cx="210" cy="60" r="4" fill="#1B3B6B"/>
-    <circle cx="360" cy="100" r="4" fill="#1B3B6B"/>
-    <circle cx="520" cy="50" r="4" fill="#1B3B6B"/>
-    <circle cx="630" cy="120" r="4" fill="#1B3B6B"/>
-
-    <!-- Extra network nodes -->
-    <circle cx="140" cy="30" r="3" fill="#8B7355" opacity="0.7"/>
-    <circle cx="440" cy="40" r="3" fill="#8B7355" opacity="0.7"/>
-    <circle cx="580" cy="70" r="3" fill="#8B7355" opacity="0.7"/>
-    <line x1="70" y1="110" x2="140" y2="30" stroke="#8B7355" stroke-width="0.5" opacity="0.3"/>
-    <line x1="210" y1="60" x2="140" y2="30" stroke="#8B7355" stroke-width="0.5" opacity="0.3"/>
-    <line x1="360" y1="100" x2="440" y2="40" stroke="#8B7355" stroke-width="0.5" opacity="0.3"/>
-    <line x1="520" y1="50" x2="440" y2="40" stroke="#8B7355" stroke-width="0.5" opacity="0.3"/>
-    <line x1="520" y1="50" x2="580" y2="70" stroke="#8B7355" stroke-width="0.5" opacity="0.3"/>
-    <line x1="630" y1="120" x2="580" y2="70" stroke="#8B7355" stroke-width="0.5" opacity="0.3"/>
-
-    <!-- Person 1 -->
-    <circle cx="70" cy="200" r="22" fill="#1B3B6B"/>
-    <rect x="52" y="225" width="36" height="8" fill="#1B3B6B"/>
-    <rect x="58" y="238" width="24" height="30" fill="#1B3B6B"/>
-    <rect x="56" y="280" width="28" height="18" fill="#1B3B6B"/>
-    <line x1="70" y1="225" x2="70" y2="212" stroke="#F5F0E8" stroke-width="1.5"/>
-
-    <!-- Person 2 -->
-    <circle cx="210" cy="180" r="22" fill="#1B3B6B"/>
-    <rect x="192" y="205" width="36" height="8" fill="#1B3B6B"/>
-    <rect x="198" y="218" width="24" height="35" fill="#1B3B6B"/>
-    <rect x="196" y="266" width="28" height="18" fill="#1B3B6B"/>
-    <line x1="210" y1="205" x2="210" y2="192" stroke="#F5F0E8" stroke-width="1.5"/>
-
-    <!-- Person 3 -->
-    <circle cx="360" cy="205" r="22" fill="#8B7355"/>
-    <rect x="342" y="230" width="36" height="8" fill="#8B7355"/>
-    <rect x="348" y="243" width="24" height="33" fill="#8B7355"/>
-    <rect x="346" y="288" width="28" height="18" fill="#8B7355"/>
-    <line x1="360" y1="230" x2="360" y2="217" stroke="#F5F0E8" stroke-width="1.5"/>
-
-    <!-- Person 4 -->
-    <circle cx="520" cy="185" r="22" fill="#1B3B6B"/>
-    <rect x="502" y="210" width="36" height="8" fill="#1B3B6B"/>
-    <rect x="508" y="223" width="24" height="34" fill="#1B3B6B"/>
-    <rect x="506" y="269" width="28" height="18" fill="#1B3B6B"/>
-    <line x1="520" y1="210" x2="520" y2="197" stroke="#F5F0E8" stroke-width="1.5"/>
-
-    <!-- Person 5 -->
-    <circle cx="630" cy="210" r="22" fill="#8B7355"/>
-    <rect x="612" y="235" width="36" height="8" fill="#8B7355"/>
-    <rect x="618" y="248" width="24" height="32" fill="#8B7355"/>
-    <rect x="616" y="282" width="28" height="18" fill="#8B7355"/>
-    <line x1="630" y1="235" x2="630" y2="222" stroke="#F5F0E8" stroke-width="1.5"/>
-
-    <!-- Ground line -->
-    <line x1="20" y1="310" x2="660" y2="310" stroke="#1B3B6B" stroke-width="1" opacity="0.3"/>
-    <line x1="20" y1="314" x2="660" y2="314" stroke="#1B3B6B" stroke-width="0.5" opacity="0.15"/>
-
-    <!-- Phone glow indicators -->
-    <rect x="64" y="278" width="12" height="8" fill="#F5F0E8" opacity="0.6"/>
-    <rect x="204" y="264" width="12" height="8" fill="#F5F0E8" opacity="0.6"/>
-    <rect x="354" y="286" width="12" height="8" fill="#F5F0E8" opacity="0.6"/>
-    <rect x="500" y="267" width="12" height="8" fill="#F5F0E8" opacity="0.6"/>
-    <rect x="610" y="280" width="12" height="8" fill="#F5F0E8" opacity="0.6"/>
-  </svg>
-
-  <div style="position:absolute;bottom:0;left:0;width:680px;font-size:11px;color:#555;letter-spacing:2px;line-height:1.8;border-top:1px solid rgba(27,59,107,0.15);padding-top:12px">
-    <span style="font-family:'Noto Serif SC',serif;color:#1B3B6B;font-size:13px">隐喻</span>　
-    低头的人与头顶的连线——个体的注意力被设备吞噬，而连接本身成为新的生产关系。
+<!-- Visual metaphor area -->
+<div class="visual-area">
+  <div class="network-label">S O C I A L &nbsp; N E T W O R K</div>
+  
+  <div class="network-lines">
+    <svg class="line-svg" viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">
+      <!-- Connection lines forming a network graph -->
+      <line x1="88" y1="160" x2="208" y2="80" stroke="#1B3B6B" stroke-width="1" opacity="0.3"/>
+      <line x1="208" y1="80" x2="328" y2="140" stroke="#1B3B6B" stroke-width="1" opacity="0.3"/>
+      <line x1="328" y1="140" x2="448" y2="60" stroke="#1B3B6B" stroke-width="1" opacity="0.3"/>
+      <line x1="448" y1="60" x2="568" y2="120" stroke="#1B3B6B" stroke-width="1" opacity="0.3"/>
+      <line x1="88" y1="160" x2="328" y2="40" stroke="#8B7355" stroke-width="1" opacity="0.25"/>
+      <line x1="328" y1="40" x2="568" y2="120" stroke="#8B7355" stroke-width="1" opacity="0.25"/>
+      <line x1="208" y1="80" x2="448" y2="60" stroke="#1B3B6B" stroke-width="1" opacity="0.2"/>
+      <line x1="88" y1="160" x2="568" y2="120" stroke="#8B7355" stroke-width="0.8" opacity="0.15"/>
+      
+      <!-- Network nodes -->
+      <circle cx="88" cy="160" r="5" fill="#1B3B6B" opacity="0.5"/>
+      <circle cx="208" cy="80" r="5" fill="#1B3B6B" opacity="0.5"/>
+      <circle cx="328" cy="140" r="5" fill="#1B3B6B" opacity="0.5"/>
+      <circle cx="448" cy="60" r="5" fill="#1B3B6B" opacity="0.5"/>
+      <circle cx="568" cy="120" r="5" fill="#1B3B6B" opacity="0.5"/>
+      <circle cx="328" cy="40" r="4" fill="#8B7355" opacity="0.4"/>
+      
+      <!-- Additional abstract network lines -->
+      <line x1="88" y1="160" x2="448" y2="60" stroke="#1B3B6B" stroke-width="0.5" opacity="0.15" stroke-dasharray="4 4"/>
+      <line x1="208" y1="80" x2="568" y2="120" stroke="#1B3B6B" stroke-width="0.5" opacity="0.12" stroke-dasharray="4 4"/>
+    </svg>
   </div>
-</div>
 
-<!-- Bullets area - right -->
-<div class="bullets-area">
-  <div class="bullets-title">要点 · KEY ARGUMENTS</div>
-
-  <div class="bullet-item">
-    <div class="bullet-num">01</div>
-    <div class="bullet-text">
-      <span class="key">留名文化</span>与现代企业<br>
-      从工匠的署名到匿名的代码提交——<span class="em">谁在署名？谁被抹去？</span>
+  <!-- People looking at phones -->
+  <div class="person-group">
+    <div class="person person-1">
+      <div class="head"></div>
+      <div class="body"></div>
+      <div class="phone"></div>
     </div>
-  </div>
-
-  <div class="bullet-item">
-    <div class="bullet-num">02</div>
-    <div class="bullet-text">
-      古罗马的制砖者与清代的宫廷瓷器工匠<br>
-      <span class="em">"物勒工名"</span>——制造者之名刻于器物，责任与荣誉由此生。
+    <div class="person person-2">
+      <div class="head"></div>
+      <div class="body"></div>
+      <div class="phone"></div>
     </div>
-  </div>
-
-  <div class="bullet-item">
-    <div class="bullet-num">03</div>
-    <div class="bullet-text">
-      企业会购买开发者/创作者的<span class="key">所有权</span><br>
-      知识产权制度将劳动者的署名权、创作权打包出售，<span class="em">"work made for hire"</span>。
+    <div class="person person-3">
+      <div class="head"></div>
+      <div class="body"></div>
+      <div class="phone"></div>
     </div>
-  </div>
-
-  <div class="bullet-item">
-    <div class="bullet-num">04</div>
-    <div class="bullet-text">
-      企业会不断地<span class="key">降低成本</span><br>
-      从雇佣到外包到平台零工——劳动者的身份与记录被层层稀释。
+    <div class="person person-4">
+      <div class="head"></div>
+      <div class="body"></div>
+      <div class="phone"></div>
     </div>
-  </div>
-
-  <div class="bullet-item" style="border-bottom:none;padding-top:8px;margin-top:8px">
-    <div class="bullet-num">05</div>
-    <div class="bullet-text">
-      <span class="em">没有记录就没有发生</span>的冷酷逻辑 vs. 自私的模因<br>
-      <span class="gpl">开源（GPL）</span>提供了一种可能性——署名不被购买，协作不被抹去，<span class="key">名字成为契约</span>。
+    <div class="person person-5">
+      <div class="head"></div>
+      <div class="body"></div>
+      <div class="phone"></div>
     </div>
   </div>
 </div>
 
-<div class="accent-square" style="bottom:180px;right:110px"></div>
-<div class="accent-circle" style="bottom:210px;right:80px;width:16px;height:16px"></div>
+<!-- Highlight box at bottom left -->
+<div class="highlight-box">
+  <div class="highlight-box-text">开源（GPL）提供了一种可能性</div>
+  <div class="highlight-box-sub">署名权不被剥夺，代码在公共领域中永恒存在</div>
+</div>
 
-<div class="footer-line"></div>
-<div class="footer-text">新制度经济学视角下的开源 · 留名文化与现代企业</div>
-<div class="footer-right">03 / 12</div>
-</body></html>
+<!-- Content panel on the right -->
+<div class="content-panel">
+  <div class="content-intro">
+    古罗马的制砖者留下刻痕以证明存在；清代宫廷瓷器工匠在瓷底落款以昭示归属。在开源时代，这一古老传统与现代企业的产权逻辑发生碰撞。
+  </div>
+  
+  <ul class="bullet-list">
+    <li class="bullet-item">
+      <div class="bullet-marker"></div>
+      <div class="bullet-text"><span class="emphasis">古罗马的制砖者</span>与清代的宫廷瓷器工匠——留名作为创造者的本能动机</div>
+    </li>
+    <li class="bullet-item">
+      <div class="bullet-marker round"></div>
+      <div class="bullet-text">企业会<span class="copper">购买</span>开发者/创作者的所有权，将个人署名转化为公司资产</div>
+    </li>
+    <li class="bullet-item">
+      <div class="bullet-marker"></div>
+      <div class="bullet-text">企业会不断<span class="emphasis">降低成本</span>——雇佣关系取代归属关系，名字消失在代码仓库中</div>
+    </li>
+    <li class="bullet-item">
+      <div class="bullet-marker triangle"></div>
+      <div class="bullet-text"><span class="emphasis">没有记录就没有发生</span>的现状，与<span class="copper">自私的模因</span>之间的对抗</div>
+    </li>
+    <li class="bullet-item">
+      <div class="bullet-marker round"></div>
+      <div class="bullet-text">开源（GPL）提供了一种可能性——署名权不可撤销，贡献在公共领域永续</div>
+    </li>
+  </ul>
+</div>
+
+<!-- Bottom separator -->
+<div class="bottom-sep"></div>
+
+<!-- Footer -->
+<div class="footer">
+  <span>开源经济学 · 新制度经济学视角</span>
+  <span>Slide 09 / 26</span>
+</div>
+
+</body>
+</html>

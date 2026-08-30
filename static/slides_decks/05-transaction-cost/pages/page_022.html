@@ -1,3 +1,557 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: fcb2303f5b38c168 --><head><meta charset="UTF-8"><title>真实的案例：开源及其标准</title><style>html,body{width:1600px;height:900px;overflow:hidden;margin:0;font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-serif;color:#1B3B6B;background:#F5F0E8;}body{position:relative;}.parchment{position:absolute;top:0;left:0;width:1600px;height:900px;background:#F5F0E8;}.parchment::before{content:'';position:absolute;top:0;left:0;width:1600px;height:900px;background:radial-gradient(ellipse at 30% 20%, rgba(139,115,85,0.04) 0%, transparent 60%),radial-gradient(ellipse at 70% 80%, rgba(27,59,107,0.03) 0%, transparent 60%);}.accent-line{position:absolute;top:80px;left:80px;width:80px;height:3px;background:#8B7355;}.accent-line-2{position:absolute;top:80px;left:170px;width:600px;height:1px;background:#1B3B6B;opacity:0.4;}.title{position:absolute;top:90px;left:80px;font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:42px;font-weight:600;color:#1B3B6B;letter-spacing:2px;line-height:1.2;}.subtitle{position:absolute;top:155px;left:80px;font-size:18px;color:#8B7355;letter-spacing:3px;font-weight:400;}.meta-bar{position:absolute;top:80px;right:80px;display:flex;align-items:center;gap:14px;}.meta-dot{width:10px;height:10px;background:#8B7355;border-radius:50%;}.meta-num{font-family:'Noto Serif SC',serif;font-size:14px;color:#555;letter-spacing:2px;}.meta-rect{width:24px;height:10px;background:#1B3B6B;}.visual-area{position:absolute;top:220px;left:80px;width:520px;height:560px;}.falling-circle{position:absolute;top:20px;left:180px;width:240px;height:240px;border-radius:50%;background:#1B3B6B;}.falling-circle-inner{position:absolute;top:60px;left:230px;width:140px;height:140px;border-radius:50%;border:2px solid #F5F0E8;}.falling-circle-text{position:absolute;top:105px;left:225px;width:150px;height:50px;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif SC',serif;font-size:22px;color:#F5F0E8;letter-spacing:1px;}.falling-square-1{position:absolute;top:280px;left:120px;width:50px;height:50px;background:#8B7355;transform:rotate(12deg);}.falling-square-2{position:absolute;top:300px;left:200px;width:30px;height:30px;background:#1B3B6B;transform:rotate(-8deg);}.falling-square-3{position:absolute;top:260px;left:310px;width:35px;height:35px;background:#555;transform:rotate(20deg);}.falling-line-1{position:absolute;top:340px;left:160px;width:2px;height:80px;background:#8B7355;transform:rotate(15deg);}.falling-line-2{position:absolute;top:330px;left:240px;width:2px;height:100px;background:#1B3B6B;transform:rotate(-10deg);}.falling-line-3{position:absolute;top:330px;left:300px;width:2px;height:70px;background:#555;transform:rotate(25deg);}.falling-triangle{position:absolute;top:300px;left:360px;width:0;height:0;border-left:25px solid transparent;border-right:25px solid transparent;border-bottom:40px solid #8B7355;}.crack-line{position:absolute;top:260px;left:80px;width:360px;height:1px;background:#1B3B6B;opacity:0.5;}.crack-line-2{position:absolute;top:260px;left:80px;width:3px;height:80px;background:#1B3B6B;opacity:0.3;}.sky-label{position:absolute;top:130px;left:180px;width:240px;text-align:center;font-family:'Noto Serif SC',serif;font-size:14px;color:#F5F0E8;opacity:0.7;letter-spacing:2px;}.fall-label{position:absolute;top:480px;left:180px;width:240px;text-align:center;font-family:'Noto Serif SC',serif;font-size:16px;color:#8B7355;letter-spacing:1px;}.arrow-down{position:absolute;top:440px;left:285px;width:30px;height:40px;}.arrow-down-bar{position:absolute;top:0;left:13px;width:2px;height:20px;background:#8B7355;}.arrow-down-head{position:absolute;top:20px;left:0;width:30px;height:0;border-top:2px solid #8B7355;border-right:2px solid #8B7355;transform:rotate(45deg);}.visual-caption{position:absolute;top:540px;left:80px;width:420px;font-family:'Noto Serif SC',serif;font-size:15px;color:#555;line-height:1.8;font-style:italic;letter-spacing:0.5px;}.visual-caption-em{color:#1B3B6B;font-weight:600;font-style:normal;}.content-area{position:absolute;top:230px;left:660px;width:860px;height:580px;}.content-title{font-family:'Noto Serif SC',serif;font-size:28px;color:#1B3B6B;font-weight:600;letter-spacing:1.5px;margin-bottom:12px;}.content-subtitle{font-size:14px;color:#8B7355;letter-spacing:4px;margin-bottom:30px;padding-bottom:14px;border-bottom:1px solid rgba(139,115,85,0.3);}.case-list{display:flex;flex-direction:column;gap:22px;}.case-item{display:flex;align-items:flex-start;gap:20px;padding-left:0;}.case-num{font-family:'Noto Serif SC',serif;font-size:20px;color:#1B3B6B;width:36px;height:36px;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:1.5px solid #1B3B6B;letter-spacing:0;}.case-num-square{background:#1B3B6B;color:#F5F0E8;border:none;}.case-num-circle{border-radius:50%;border:none;background:#8B7355;color:#F5F0E8;}.case-text{flex:1;padding-top:4px;}.case-main{font-family:'Noto Serif SC',serif;font-size:20px;color:#1B3B6B;font-weight:600;line-height:1.3;margin-bottom:4px;}.case-desc{font-size:13px;color:#555;line-height:1.5;letter-spacing:0.5px;}.case-underline{display:inline-block;width:30px;height:2px;background:#8B7355;margin-top:6px;margin-bottom:4px;}.footer-bar{position:absolute;bottom:50px;left:80px;width:1440px;height:1px;background:rgba(27,59,107,0.2);}.footer-text{position:absolute;bottom:25px;left:80px;font-size:12px;color:#555;letter-spacing:2px;}.footer-right{position:absolute;bottom:25px;right:80px;font-size:12px;color:#8B7355;letter-spacing:2px;}.deco-square{position:absolute;top:140px;right:80px;width:60px;height:60px;background:transparent;border:1.5px solid #1B3B6B;opacity:0.3;}.deco-square-inner{position:absolute;top:152px;right:92px;width:36px;height:36px;background:#1B3B6B;opacity:0.1;}.big-circle-deco{position:absolute;bottom:90px;right:100px;width:70px;height:70px;border-radius:50%;border:1.5px solid #8B7355;opacity:0.25;}</style></head><body><div class="parchment"></div><div class="accent-line"></div><div class="accent-line-2"></div><div class="title">天塌了：学习 Java 的绝望时刻</div><div class="subtitle">THE SKY IS FALLING — OPEN SOURCE AS ANSWER</div><div class="meta-bar"><span class="meta-rect"></span><span class="meta-num">CASE STUDIES</span><span class="meta-dot"></span></div><div class="deco-square"></div><div class="deco-square-inner"></div><div class="big-circle-deco"></div><div class="visual-area"><div class="falling-circle"></div><div class="falling-circle-inner"></div><div class="sky-label">—— 天</div><div class="falling-circle-text">JAVA</div><div class="crack-line"></div><div class="crack-line-2"></div><div class="falling-square-1"></div><div class="falling-square-2"></div><div class="falling-square-3"></div><div class="falling-triangle"></div><div class="falling-line-1"></div><div class="falling-line-2"></div><div class="falling-line-3"></div><div class="arrow-down"><div class="arrow-down-bar"></div><div class="arrow-down-head"></div></div><div class="fall-label">—— 崩溃 · 碎片化 · 重建</div></div><div class="visual-caption">「学习 Java 的艰难令人绝望，<br><span class="visual-caption-em">仿佛天塌了一样。</span>」<br>—— 当商业壁垒高筑，开源成为<br>那一代人抬头看见的另一片天。</div><div class="content-area"><div class="content-title">真实的案例：开源及其标准</div><div class="content-subtitle">REAL CASES — OPEN SOURCE &amp; STANDARDS</div><div class="case-list"><div class="case-item"><div class="case-num">01</div><div class="case-text"><div class="case-main">从 Unix 到 Linux</div><div class="case-underline"></div><div class="case-desc">Thorvalds 在 Minix 受限下另起炉灶，以 GPL 释放协作势能，三十余年成为操作系统事实标准。</div></div></div><div class="case-item"><div class="case-num case-num-circle">02</div><div class="case-text"><div class="case-main">Kernel 与超算</div><div class="case-underline"></div><div class="case-desc">全球 TOP500 超算 Linux 占比长期居于 95% 以上，开源内核成为计算基础设施的底层共识。</div></div></div><div class="case-item"><div class="case-num case-num-square">03</div><div class="case-text"><div class="case-main">2000 年 WWW 爆发与 LAMP 栈</div><div class="case-underline"></div><div class="case-desc">Linux + Apache + MySQL + PHP 以零许可成本支撑互联网泡沫时代的建站狂潮。</div></div></div><div class="case-item"><div class="case-num">04</div><div class="case-text"><div class="case-main">Git 与 GitHub</div><div class="case-underline"></div><div class="case-desc">Linus 为 Linux 内核设计分布式版本控制，GitHub 将其转化为全球开发者协作基础设施。</div></div></div><div class="case-item"><div class="case-num case-num-circle">05</div><div class="case-text"><div class="case-main">Apache Httpd 与浏览器的故事</div><div class="case-underline"></div><div class="case-desc">A17 项目意外催生 Apache 服务器，与 Netscape/Mozilla 形成浏览器生态的双螺旋叙事。</div></div></div></div></div><div class="footer-bar"></div><div class="footer-text">新制度经济学视角下的开源研究 · NEW INSTITUTIONAL ECONOMICS × OPEN SOURCE</div><div class="footer-right">CASE / 05 — 真实案例</div></body></html>
+<!DOCTYPE html>
+<html><!-- source_hash: ac517168300175ed -->
+<head>
+<meta charset="UTF-8">
+<title>真实的案例：开源及其标准</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  background: #F5F0E8;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+body {
+  position: relative;
+}
+
+/* Background texture - subtle parchment */
+.bg-texture {
+  position: absolute;
+  top: 0; left: 0;
+  width: 1600px; height: 900px;
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 49px,
+      rgba(27, 59, 107, 0.015) 49px,
+      rgba(27, 59, 107, 0.015) 50px
+    );
+  pointer-events: none;
+}
+
+/* Header */
+.header {
+  position: absolute;
+  top: 52px;
+  left: 80px;
+  right: 80px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-dot {
+  width: 10px;
+  height: 10px;
+  background: #1B3B6B;
+  border-radius: 50%;
+}
+
+.header-label {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #8B7355;
+  text-transform: uppercase;
+}
+
+.header-right {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #8B7355;
+}
+
+/* Title */
+.title-area {
+  position: absolute;
+  top: 95px;
+  left: 80px;
+}
+
+.main-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 42px;
+  font-weight: 900;
+  color: #1B3B6B;
+  line-height: 1.2;
+  letter-spacing: 1px;
+}
+
+.subtitle-note {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 14px;
+  color: #8B7355;
+  margin-top: 8px;
+  letter-spacing: 0.5px;
+}
+
+/* Divider line */
+.divider {
+  position: absolute;
+  top: 200px;
+  left: 80px;
+  width: 120px;
+  height: 3px;
+  background: #1B3B6B;
+}
+
+.divider-thin {
+  position: absolute;
+  top: 200px;
+  left: 210px;
+  right: 80px;
+  height: 1px;
+  background: rgba(27, 59, 107, 0.15);
+}
+
+/* Left Panel - Visual Metaphor */
+.metaphor-panel {
+  position: absolute;
+  top: 240px;
+  left: 80px;
+  width: 480px;
+  height: 580px;
+}
+
+.metaphor-container {
+  position: relative;
+  width: 480px;
+  height: 460px;
+}
+
+/* Large falling circle - the "sky falling" metaphor */
+.falling-circle-large {
+  position: absolute;
+  top: 20px;
+  left: 60px;
+  width: 220px;
+  height: 220px;
+  border: 3px solid #1B3B6B;
+  border-radius: 50%;
+}
+
+.falling-circle-medium {
+  position: absolute;
+  top: 100px;
+  left: 180px;
+  width: 160px;
+  height: 160px;
+  border: 2px solid rgba(27, 59, 107, 0.5);
+  border-radius: 50%;
+}
+
+.falling-circle-small {
+  position: absolute;
+  top: 180px;
+  left: 280px;
+  width: 80px;
+  height: 80px;
+  background: #1B3B6B;
+  border-radius: 50%;
+  opacity: 0.85;
+}
+
+.falling-square {
+  position: absolute;
+  top: 240px;
+  left: 120px;
+  width: 70px;
+  height: 70px;
+  border: 2.5px solid #8B7355;
+  transform: rotate(15deg);
+}
+
+.falling-square-small {
+  position: absolute;
+  top: 290px;
+  left: 220px;
+  width: 35px;
+  height: 35px;
+  background: #8B7355;
+  opacity: 0.4;
+  transform: rotate(-8deg);
+}
+
+/* Downward lines suggesting pressure/falling */
+.pressure-line-1 {
+  position: absolute;
+  top: 260px;
+  left: 40px;
+  width: 2px;
+  height: 120px;
+  background: linear-gradient(to bottom, #1B3B6B, transparent);
+}
+
+.pressure-line-2 {
+  position: absolute;
+  top: 280px;
+  left: 90px;
+  width: 1.5px;
+  height: 100px;
+  background: linear-gradient(to bottom, rgba(27,59,107,0.6), transparent);
+}
+
+.pressure-line-3 {
+  position: absolute;
+  top: 270px;
+  left: 340px;
+  width: 1.5px;
+  height: 90px;
+  background: linear-gradient(to bottom, rgba(27,59,107,0.4), transparent);
+}
+
+/* Ground line */
+.ground-line {
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  width: 480px;
+  height: 2px;
+  background: #1B3B6B;
+}
+
+/* Person figure - simple geometric representation */
+.person-square {
+  position: absolute;
+  bottom: 50px;
+  left: 200px;
+  width: 24px;
+  height: 24px;
+  background: #1B3B6B;
+}
+
+.person-body {
+  position: absolute;
+  bottom: 52px;
+  left: 204px;
+  width: 0;
+  height: 0;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-top: 26px solid #1B3B6B;
+}
+
+/* Metaphor caption */
+.metaphor-caption {
+  position: absolute;
+  top: 500px;
+  left: 0;
+  width: 480px;
+}
+
+.caption-label {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: #8B7355;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.caption-text {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 16px;
+  color: #1B3B6B;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.caption-text em {
+  font-style: italic;
+  font-weight: 700;
+}
+
+/* Right Panel - Content */
+.content-panel {
+  position: absolute;
+  top: 240px;
+  right: 80px;
+  width: 860px;
+  height: 580px;
+}
+
+.content-heading {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: #8B7355;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
+
+/* Timeline entries */
+.timeline-entry {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 22px;
+  padding-left: 40px;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: 0;
+  top: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.marker-circle {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #1B3B6B;
+}
+
+.marker-circle.copper {
+  background: #8B7355;
+}
+
+.marker-line {
+  width: 20px;
+  height: 1px;
+  background: rgba(27, 59, 107, 0.3);
+}
+
+.entry-content {
+  flex: 1;
+}
+
+.entry-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: #1B3B6B;
+  line-height: 1.4;
+  margin-bottom: 3px;
+}
+
+.entry-desc {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  color: #555;
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+.entry-year {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  color: #8B7355;
+  font-weight: 400;
+  margin-left: 8px;
+}
+
+/* Vertical timeline line */
+.timeline-spine {
+  position: absolute;
+  left: 3px;
+  top: 56px;
+  width: 1.5px;
+  height: 350px;
+  background: rgba(27, 59, 107, 0.12);
+}
+
+/* Decorative elements */
+.deco-circle-tr {
+  position: absolute;
+  top: 55px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border: 2px solid rgba(27, 59, 107, 0.1);
+  border-radius: 50%;
+}
+
+.deco-square-br {
+  position: absolute;
+  bottom: 50px;
+  right: 80px;
+  width: 30px;
+  height: 30px;
+  border: 1.5px solid rgba(139, 115, 85, 0.25);
+  transform: rotate(45deg);
+}
+
+/* Footer */
+.footer {
+  position: absolute;
+  bottom: 30px;
+  left: 80px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-line {
+  width: 40px;
+  height: 1px;
+  background: #8B7355;
+}
+
+.footer-text {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #8B7355;
+}
+
+.footer-page {
+  position: absolute;
+  bottom: 30px;
+  right: 80px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 1px;
+}
+
+/* Arch shape - representing the "ceiling" pressing down */
+.arch {
+  position: absolute;
+  top: -60px;
+  left: 20px;
+  width: 400px;
+  height: 300px;
+  border: 2px solid rgba(27, 59, 107, 0.06);
+  border-radius: 200px 200px 0 0;
+  border-bottom: none;
+}
+</style>
+</head>
+<body>
+
+<div class="bg-texture"></div>
+
+<!-- Header -->
+<div class="header">
+  <div class="header-left">
+    <div class="header-dot"></div>
+    <span class="header-label">OPEN SOURCE ECONOMICS · LECTURE 05</span>
+  </div>
+  <span class="header-right">交易成本与路径依赖</span>
+</div>
+
+<!-- Title -->
+<div class="title-area">
+  <div class="main-title">真实的案例：开源及其标准</div>
+  <div class="subtitle-note">Real Cases — Open Source and Its Standards</div>
+</div>
+
+<div class="divider"></div>
+<div class="divider-thin"></div>
+
+<!-- Left: Visual Metaphor -->
+<div class="metaphor-panel">
+  <div class="arch"></div>
+  <div class="metaphor-container">
+    <div class="falling-circle-large"></div>
+    <div class="falling-circle-medium"></div>
+    <div class="falling-circle-small"></div>
+    <div class="falling-square"></div>
+    <div class="falling-square-small"></div>
+    <div class="pressure-line-1"></div>
+    <div class="pressure-line-2"></div>
+    <div class="pressure-line-3"></div>
+    <div class="ground-line"></div>
+    <div class="person-square"></div>
+    <div class="person-body"></div>
+  </div>
+  <div class="metaphor-caption">
+    <div class="caption-label">视觉隐喻 · VISUAL METAPHOR</div>
+    <div class="caption-text">学习 Java 的艰难令人绝望，<br>仿佛<em>天塌了一样</em>——<br>但正是这种重量，<br>压出了开源世界的地基。</div>
+  </div>
+</div>
+
+<!-- Right: Content -->
+<div class="content-panel">
+  <div class="content-heading">技术演化脉络 · TECHNICAL EVOLUTION</div>
+  <div class="timeline-spine"></div>
+
+  <div class="timeline-entry">
+    <div class="timeline-marker">
+      <div class="marker-circle"></div>
+      <div class="marker-line"></div>
+    </div>
+    <div class="entry-content">
+      <div class="entry-title">从 Unix 到 Linux</div>
+      <div class="entry-desc">内核开放化与操作系统的民主化进程<span class="entry-year">1991</span></div>
+    </div>
+  </div>
+
+  <div class="timeline-entry">
+    <div class="timeline-marker">
+      <div class="marker-circle"></div>
+      <div class="marker-line"></div>
+    </div>
+    <div class="entry-content">
+      <div class="entry-title">Kernel 与超算时代</div>
+      <div class="entry-desc">全球超算 TOP500 中 96% 以上运行 Linux 内核<span class="entry-year">1993–</span></div>
+    </div>
+  </div>
+
+  <div class="timeline-entry">
+    <div class="timeline-marker">
+      <div class="marker-circle copper"></div>
+      <div class="marker-line"></div>
+    </div>
+    <div class="entry-content">
+      <div class="entry-title">LAMP 技术栈与 Web 爆发</div>
+      <div class="entry-desc">Linux + Apache + MySQL/PHP 定义了 Web 2.0 的底层架构<span class="entry-year">2000</span></div>
+    </div>
+  </div>
+
+  <div class="timeline-entry">
+    <div class="timeline-marker">
+      <div class="marker-circle copper"></div>
+      <div class="marker-line"></div>
+    </div>
+    <div class="entry-content">
+      <div class="entry-title">Git 与 GitHub：协作范式革命</div>
+      <div class="entry-desc">分布式版本控制重塑软件协作的基础设施<span class="entry-year">2005 / 2008</span></div>
+    </div>
+  </div>
+
+  <div class="timeline-entry">
+    <div class="timeline-marker">
+      <div class="marker-circle"></div>
+      <div class="marker-line"></div>
+    </div>
+    <div class="entry-content">
+      <div class="entry-title">Apache Httpd 与浏览器之战</div>
+      <div class="entry-desc">从 NCSA httpd 到 Apache 再到 Nginx——Web 服务器的代际更替<span class="entry-year">1995–</span></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Decorative elements -->
+<div class="deco-circle-tr"></div>
+<div class="deco-square-br"></div>
+
+<!-- Footer -->
+<div class="footer">
+  <div class="footer-line"></div>
+  <span class="footer-text">第 05 期 · 开源之道 · 新制度经济学视角</span>
+</div>
+<div class="footer-page">— 12 / 27 —</div>
+
+</body>
+</html>

@@ -1,166 +1,507 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: c5fcadbc48b7ed68 --><head><meta charset="UTF-8"><title>议程</title><style>html,body{width:1600px;height:900px;overflow:hidden;margin:0;font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-serif;color:#1B3B6B;}body{background:#F5F0E8;position:relative;}
-.serif{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;}
-.page-num{position:absolute;top:48px;left:80px;font-family:'Noto Serif SC',serif;font-size:14px;letter-spacing:3px;color:#8B7355;}
-.section-label{position:absolute;top:48px;right:80px;font-size:13px;letter-spacing:4px;color:#555;}
-.title-en{position:absolute;top:120px;left:80px;font-family:'Noto Serif SC',serif;font-size:18px;letter-spacing:8px;color:#8B7355;font-style:italic;}
-.title-zh{position:absolute;top:158px;left:80px;font-family:'Noto Serif SC',serif;font-size:56px;font-weight:700;letter-spacing:12px;color:#1B3B6B;}
-.title-underline{position:absolute;top:240px;left:80px;width:120px;height:3px;background:#1B3B6B;}
-.title-sub{position:absolute;top:256px;left:80px;font-family:'Noto Serif SC',serif;font-size:16px;letter-spacing:3px;color:#555;}
-.hand-wrap{position:absolute;top:90px;right:80px;width:500px;height:720px;}
-.hand-circle{position:absolute;top:30px;left:170px;width:180px;height:180px;border-radius:50%;border:2.5px solid #1B3B6B;}
-.hand-circle-inner{position:absolute;top:90px;left:220px;width:160px;height:160px;border-radius:50%;background:#1B3B6B;}
-.arm-line-1{position:absolute;top:180px;left:310px;width:3px;height:280px;background:#1B3B6B;}
-.arm-line-2{position:absolute;top:180px;left:330px;width:3px;height:280px;background:#1B3B6B;}
-.arm-extend{position:absolute;top:280px;left:270px;width:90px;height:3px;background:#1B3B6B;}
-.arm-thick{position:absolute;top:280px;left:340px;width:160px;height:8px;background:#8B7355;}
-.arm-thick-2{position:absolute;top:288px;left:340px;width:160px;height:3px;background:#1B3B6B;}
-.hand-square{position:absolute;top:300px;left:430px;width:70px;height:70px;background:#1B3B6B;}
-.thumb-bar{position:absolute;top:290px;left:380px;width:60px;height:6px;background:#8B7355;}
-.thumb-bar-2{position:absolute;top:296px;left:380px;width:60px;height:2px;background:#1B3B6B;}
-.finger-1{position:absolute;top:355px;left:445px;width:4px;height:70px;background:#1B3B6B;}
-.finger-2{position:absolute;top:355px;left:458px;width:4px;height:90px;background:#1B3B6B;}
-.finger-3{position:absolute;top:355px;left:471px;width:4px;height:80px;background:#1B3B6B;}
-.finger-4{position:absolute;top:355px;left:484px;width:4px;height:65px;background:#1B3B6B;}
-.finger-cap{position:absolute;top:352px;left:442px;width:10px;height:10px;border-radius:50%;background:#1B3B6B;}
-.finger-cap-2{position:absolute;top:342px;left:455px;width:10px;height:10px;border-radius:50%;background:#1B3B6B;}
-.finger-cap-3{position:absolute;top:347px;left:468px;width:10px;height:10px;border-radius:50%;background:#1B3B6B;}
-.finger-cap-4{position:absolute;top:352px;left:481px;width:10px;height:10px;border-radius:50%;background:#1B3B6B;}
-.palm-base{position:absolute;top:350px;left:440px;width:55px;height:95px;border-radius:10px 10px 25px 25px;background:#1B3B6B;border:2px solid #1B3B6B;}
-.hand-diagonal{position:absolute;top:470px;left:370px;width:3px;height:160px;background:#8B7355;}
-.hand-diagonal-2{position:absolute;top:475px;left:395px;width:3px;height:150px;background:#8B7355;}
-.hand-diagonal-3{position:absolute;top:480px;left:420px;width:3px;height:135px;background:#8B7355;}
-.slab-line{position:absolute;top:720px;left:200px;width:280px;height:2px;background:#8B7355;}
-.slab-tick-1{position:absolute;top:720px;left:280px;width:2px;height:14px;background:#8B7355;}
-.slab-tick-2{position:absolute;top:720px;left:360px;width:2px;height:14px;background:#8B7355;}
-.slab-tick-3{position:absolute;top:720px;left:440px;width:2px;height:14px;background:#8B7355;}
-.hand-label{position:absolute;top:750px;left:200px;width:280px;text-align:center;font-family:'Noto Serif SC',serif;font-size:12px;letter-spacing:5px;color:#8B7355;}
-.hand-en-label{position:absolute;top:768px;left:200px;width:280px;text-align:center;font-size:10px;letter-spacing:3px;color:#555;}
-.agenda-label{position:absolute;top:120px;left:80px;font-size:13px;letter-spacing:6px;color:#8B7355;}
-.agenda-title{position:absolute;top:148px;left:80px;font-family:'Noto Serif SC',serif;font-size:36px;font-weight:700;color:#1B3B6B;letter-spacing:6px;}
-.agenda-title-en{position:absolute;top:200px;left:80px;font-family:'Noto Serif SC',serif;font-size:14px;font-style:italic;letter-spacing:4px;color:#555;}
-.agenda-divider{position:absolute;top:228px;left:80px;width:1600px;height:1px;background:#8B7355;opacity:0.4;}
-.agenda-item{position:absolute;left:80px;display:flex;align-items:center;}
-.agenda-num{font-family:'Noto Serif SC',serif;font-size:28px;font-weight:300;color:#8B7355;width:70px;letter-spacing:2px;}
-.agenda-num-bar{width:2px;height:24px;background:#1B3B6B;margin-left:12px;}
-.agenda-text{font-family:'Noto Serif SC',serif;font-size:22px;font-weight:400;color:#1B3B6B;margin-left:20px;letter-spacing:3px;}
-.agenda-dash{width:30px;height:1px;background:#8B7355;margin:0 15px;opacity:0.6;}
-.item-1{top:260px;}
-.item-2{top:320px;}
-.item-3{top:380px;}
-.item-4{top:440px;}
-.item-5{top:500px;}
-.item-6{top:560px;}
-.bottom-bar{position:absolute;bottom:0;left:0;width:1600px;height:4px;background:#1B3B6B;}
-.bottom-bar-2{position:absolute;bottom:4px;left:0;width:1600px;height:2px;background:#8B7355;}
-.footer-left{position:absolute;bottom:24px;left:80px;font-family:'Noto Serif SC',serif;font-size:12px;letter-spacing:4px;color:#555;}
-.footer-right{position:absolute;bottom:24px;right:80px;font-size:11px;letter-spacing:3px;color:#555;}
-.meta-1{position:absolute;top:640px;left:80px;font-size:11px;letter-spacing:3px;color:#8B7355;}
-.meta-2{position:absolute;top:668px;left:80px;font-size:11px;letter-spacing:3px;color:#555;}
-.meta-3{position:absolute;top:696px;left:80px;font-size:11px;letter-spacing:3px;color:#555;}
-.meta-num{display:inline-block;width:30px;color:#8B7355;font-family:'Noto Serif SC',serif;}
-.corner-tl{position:absolute;top:30px;left:50px;width:20px;height:20px;border-top:2px solid #1B3B6B;border-left:2px solid #1B3B6B;}
-.corner-tr{position:absolute;top:30px;right:50px;width:20px;height:20px;border-top:2px solid #1B3B6B;border-right:2px solid #1B3B6B;}
-.corner-bl{position:absolute;bottom:14px;left:50px;width:20px;height:20px;border-bottom:2px solid #1B3B6B;border-left:2px solid #1B3B6B;}
-.corner-br{position:absolute;bottom:14px;right:50px;width:20px;height:20px;border-bottom:2px solid #1B3B6B;border-right:2px solid #1B3B6B;}
-.dot-deco{position:absolute;top:50px;left:50%;width:8px;height:8px;border-radius:50%;background:#8B7355;}
-</style></head><body>
-<div class="corner-tl"></div>
-<div class="corner-tr"></div>
-<div class="corner-bl"></div>
-<div class="corner-br"></div>
-<div class="dot-deco"></div>
+<!DOCTYPE html>
+<html lang="zh-CN"><!-- source_hash: a9b544cd00b2183f -->
+<head>
+<meta charset="UTF-8">
+<title>第 04 期 · 软件开发劳动力市场 — 议程</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
+  background: #F5F0E8;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: #1B3B6B;
+}
+.slide {
+  width: 1600px;
+  height: 900px;
+  position: relative;
+  background: #F5F0E8;
+  background-image: 
+    radial-gradient(ellipse at 20% 30%, rgba(27,59,107,0.02) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(139,115,85,0.03) 0%, transparent 50%);
+}
 
-<div class="page-num">01 / 06</div>
-<div class="section-label">AGENDA · 开源经济学</div>
+/* Header */
+.header {
+  position: absolute;
+  top: 48px;
+  left: 80px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.header-line {
+  width: 48px;
+  height: 3px;
+  background: #1B3B6B;
+}
+.header-text {
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #555;
+  font-weight: 400;
+}
 
-<div class="title-en">OPEN SOURCE &amp; NEW INSTITUTIONAL ECONOMICS</div>
-<div class="title-zh">议 程</div>
-<div class="title-underline"></div>
-<div class="title-sub">Six Topics · 六个议题</div>
+/* Top-right meta */
+.meta-right {
+  position: absolute;
+  top: 48px;
+  right: 80px;
+  text-align: right;
+  font-size: 12px;
+  color: #8B7355;
+  letter-spacing: 1px;
+}
+.meta-right .lecture-id {
+  font-size: 14px;
+  color: #1B3B6B;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
 
-<div class="hand-wrap">
-<div class="hand-circle"></div>
-<div class="hand-circle-inner"></div>
-<div class="arm-line-1"></div>
-<div class="arm-line-2"></div>
-<div class="arm-extend"></div>
-<div class="arm-thick"></div>
-<div class="arm-thick-2"></div>
-<div class="hand-square"></div>
-<div class="thumb-bar"></div>
-<div class="thumb-bar-2"></div>
-<div class="finger-1"></div>
-<div class="finger-2"></div>
-<div class="finger-3"></div>
-<div class="finger-4"></div>
-<div class="finger-cap"></div>
-<div class="finger-cap-2"></div>
-<div class="finger-cap-3"></div>
-<div class="finger-cap-4"></div>
-<div class="palm-base"></div>
-<div class="hand-diagonal"></div>
-<div class="hand-diagonal-2"></div>
-<div class="hand-diagonal-3"></div>
-<div class="slab-line"></div>
-<div class="slab-tick-1"></div>
-<div class="slab-tick-2"></div>
-<div class="slab-tick-3"></div>
-<div class="hand-label">举 手 · 求 知 · 参 与</div>
-<div class="hand-en-label">RAISED HAND — THE GAZE OF KNOWLEDGE</div>
-</div>
+/* Main content area */
+.content-area {
+  position: absolute;
+  top: 120px;
+  left: 80px;
+  width: 720px;
+  height: 720px;
+}
 
-<div class="agenda-item item-1">
-  <span class="agenda-num">01</span>
-  <span class="agenda-num-bar"></span>
-  <span class="agenda-text">议 程</span>
-  <span class="agenda-dash"></span>
-  <span style="font-size:12px;color:#555;letter-spacing:2px;margin-left:15px;">INTRODUCTION</span>
-</div>
-<div class="agenda-item item-2">
-  <span class="agenda-num">02</span>
-  <span class="agenda-num-bar"></span>
-  <span class="agenda-text">代码不是商品</span>
-  <span class="agenda-dash"></span>
-  <span style="font-size:12px;color:#555;letter-spacing:2px;margin-left:15px;">CODE IS NOT A COMMODITY</span>
-</div>
-<div class="agenda-item item-3">
-  <span class="agenda-num">03</span>
-  <span class="agenda-num-bar"></span>
-  <span class="agenda-text">供需关系的是人才</span>
-  <span class="agenda-dash"></span>
-  <span style="font-size:12px;color:#555;letter-spacing:2px;margin-left:15px;">TALENT IS THE REAL DEMAND</span>
-</div>
-<div class="agenda-item item-4">
-  <span class="agenda-num">04</span>
-  <span class="agenda-num-bar"></span>
-  <span class="agenda-text">软件人才工资与计算机工程项目之关系</span>
-  <span class="agenda-dash"></span>
-  <span style="font-size:12px;color:#555;letter-spacing:2px;margin-left:15px;">WAGE &amp; PROJECT ENGINEERING</span>
-</div>
-<div class="agenda-item item-5">
-  <span class="agenda-num">05</span>
-  <span class="agenda-num-bar"></span>
-  <span class="agenda-text">软件开发者工程师的人才培养</span>
-  <span class="agenda-dash"></span>
-  <span style="font-size:12px;color:#555;letter-spacing:2px;margin-left:15px;">TALENT CULTIVATION</span>
-</div>
-<div class="agenda-item item-6">
-  <span class="agenda-num">06</span>
-  <span class="agenda-num-bar"></span>
-  <span class="agenda-text">兴趣与实践培养</span>
-  <span class="agenda-dash"></span>
-  <span style="font-size:12px;color:#555;letter-spacing:2px;margin-left:15px;">INTEREST &amp; PRACTICE</span>
-</div>
+/* Title */
+.slide-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 52px;
+  font-weight: 700;
+  color: #1B3B6B;
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+.slide-subtitle {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 20px;
+  color: #8B7355;
+  font-weight: 400;
+  margin-bottom: 48px;
+  letter-spacing: 1px;
+}
 
-<div class="meta-1"><span class="meta-num">讲者</span> 独立开源研究者 · 协作机制设计师</div>
-<div class="meta-2"><span class="meta-num">视角</span> 新制度经济学 · 协作激励 · 治理机制</div>
-<div class="meta-3"><span class="meta-num">基调</span> 智识讨论 · 开放交流 · 思维碰撞</div>
+/* Agenda list */
+.agenda-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.agenda-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 22px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(139,115,85,0.15);
+}
+.agenda-item:last-child {
+  border-bottom: none;
+}
+.agenda-number {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 16px;
+  color: #8B7355;
+  font-weight: 600;
+  min-width: 32px;
+  padding-top: 4px;
+  letter-spacing: 1px;
+}
+.agenda-dot {
+  width: 6px;
+  height: 6px;
+  background: #1B3B6B;
+  border-radius: 0;
+  margin-top: 10px;
+  flex-shrink: 0;
+}
+.agenda-text {
+  font-size: 18px;
+  color: #1B3B6B;
+  line-height: 1.6;
+  font-weight: 400;
+}
+.agenda-text em {
+  font-style: normal;
+  color: #8B7355;
+  font-size: 14px;
+  display: block;
+  margin-top: 2px;
+}
 
-<div class="footer-left">OPEN SOURCE · DOSSIER №01</div>
-<div class="footer-right">2025 / DARK ACADEMIC SERIES</div>
+/* Right visual area - Geometric hands reaching up */
+.visual-area {
+  position: absolute;
+  top: 100px;
+  right: 60px;
+  width: 700px;
+  height: 740px;
+}
 
-<div class="bottom-bar"></div>
-<div class="bottom-bar-2"></div>
-</body></html>
+/* Geometric composition representing raised hands */
+.geo-hand {
+  position: absolute;
+}
+
+/* Hand 1 - tallest, leftmost */
+.hand-1-arm {
+  position: absolute;
+  left: 180px;
+  bottom: 40px;
+  width: 28px;
+  height: 480px;
+  background: #1B3B6B;
+}
+.hand-1-fingers {
+  position: absolute;
+  left: 168px;
+  top: 30px;
+  width: 52px;
+  height: 60px;
+  background: #1B3B6B;
+}
+.hand-1-finger-top {
+  position: absolute;
+  left: 184px;
+  top: 0px;
+  width: 20px;
+  height: 40px;
+  background: #1B3B6B;
+}
+.hand-1-circle {
+  position: absolute;
+  left: 160px;
+  top: -20px;
+  width: 76px;
+  height: 76px;
+  border: 3px solid #8B7355;
+  border-radius: 50%;
+}
+
+/* Hand 2 - medium height */
+.hand-2-arm {
+  position: absolute;
+  left: 280px;
+  bottom: 40px;
+  width: 24px;
+  height: 380px;
+  background: #8B7355;
+}
+.hand-2-fingers {
+  position: absolute;
+  left: 268px;
+  top: 130px;
+  width: 48px;
+  height: 50px;
+  background: #8B7355;
+}
+.hand-2-square {
+  position: absolute;
+  left: 256px;
+  top: 100px;
+  width: 72px;
+  height: 72px;
+  border: 3px solid #1B3B6B;
+}
+
+/* Hand 3 - shorter, rightmost */
+.hand-3-arm {
+  position: absolute;
+  left: 380px;
+  bottom: 40px;
+  width: 22px;
+  height: 300px;
+  background: #555;
+}
+.hand-3-fingers {
+  position: absolute;
+  left: 370px;
+  top: 210px;
+  width: 42px;
+  height: 44px;
+  background: #555;
+}
+.hand-3-triangle {
+  position: absolute;
+  left: 360px;
+  top: 175px;
+  width: 0;
+  height: 0;
+  border-left: 28px solid transparent;
+  border-right: 28px solid transparent;
+  border-bottom: 48px solid rgba(27,59,107,0.15);
+}
+
+/* Decorative geometric elements */
+.deco-circle-lg {
+  position: absolute;
+  left: 480px;
+  bottom: 60px;
+  width: 180px;
+  height: 180px;
+  border: 2px solid rgba(27,59,107,0.12);
+  border-radius: 50%;
+}
+.deco-circle-sm {
+  position: absolute;
+  left: 540px;
+  bottom: 120px;
+  width: 60px;
+  height: 60px;
+  background: rgba(139,115,85,0.08);
+  border-radius: 50%;
+}
+.deco-square-outline {
+  position: absolute;
+  left: 440px;
+  top: 80px;
+  width: 100px;
+  height: 100px;
+  border: 2px solid rgba(139,115,85,0.25);
+  transform: rotate(15deg);
+}
+.deco-diagonal-line {
+  position: absolute;
+  left: 300px;
+  bottom: 40px;
+  width: 400px;
+  height: 2px;
+  background: rgba(27,59,107,0.2);
+}
+.deco-vertical-line {
+  position: absolute;
+  left: 520px;
+  top: 160px;
+  width: 1px;
+  height: 400px;
+  background: rgba(139,115,85,0.2);
+}
+.deco-dot-grid {
+  position: absolute;
+  right: 60px;
+  top: 40px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  width: 120px;
+}
+.deco-dot-grid .dot {
+  width: 4px;
+  height: 4px;
+  background: #1B3B6B;
+  opacity: 0.3;
+}
+
+/* Classroom floor line */
+.floor-line {
+  position: absolute;
+  left: 120px;
+  bottom: 40px;
+  width: 500px;
+  height: 3px;
+  background: #1B3B6B;
+}
+.floor-line-secondary {
+  position: absolute;
+  left: 120px;
+  bottom: 34px;
+  width: 360px;
+  height: 1px;
+  background: rgba(139,115,85,0.4);
+}
+
+/* Bottom bar */
+.bottom-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 1600px;
+  height: 5px;
+  background: #1B3B6B;
+}
+.bottom-bar-accent {
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  width: 400px;
+  height: 2px;
+  background: #8B7355;
+}
+
+/* Bottom left corner info */
+.corner-info {
+  position: absolute;
+  bottom: 28px;
+  left: 80px;
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 2px;
+}
+
+/* Bottom right page */
+.page-info {
+  position: absolute;
+  bottom: 28px;
+  right: 80px;
+  font-size: 11px;
+  color: #555;
+  letter-spacing: 2px;
+  font-family: 'Noto Serif SC', serif;
+}
+
+/* Large geometric background element */
+.bg-geo-circle {
+  position: absolute;
+  left: -120px;
+  top: 200px;
+  width: 500px;
+  height: 500px;
+  border: 1px solid rgba(27,59,107,0.06);
+  border-radius: 50%;
+}
+.bg-geo-square {
+  position: absolute;
+  left: 680px;
+  top: 680px;
+  width: 80px;
+  height: 80px;
+  border: 2px solid rgba(139,115,85,0.1);
+}
+
+/* Quote-like element */
+.visual-caption {
+  position: absolute;
+  right: 80px;
+  bottom: 100px;
+  text-align: right;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 14px;
+  color: #8B7355;
+  font-style: italic;
+  line-height: 1.6;
+  max-width: 240px;
+}
+.visual-caption-line {
+  width: 40px;
+  height: 1px;
+  background: #8B7355;
+  margin-left: auto;
+  margin-top: 10px;
+}
+</style>
+</head>
+<body>
+<div class="slide">
+  
+  <!-- Background geometric elements -->
+  <div class="bg-geo-circle"></div>
+  <div class="bg-geo-square"></div>
+  
+  <!-- Header -->
+  <div class="header">
+    <div class="header-line"></div>
+    <div class="header-text">OPEN SOURCE ECONOMICS</div>
+  </div>
+  <div class="meta-right">
+    <div class="lecture-id">第 04 期</div>
+    <div style="margin-top:4px;">软件开发劳动力市场</div>
+  </div>
+  
+  <!-- Dot grid decoration -->
+  <div class="deco-dot-grid">
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+  </div>
+
+  <!-- Main content -->
+  <div class="content-area">
+    <div class="slide-title">议程</div>
+    <div class="slide-subtitle">The Labor Market for Software Development</div>
+    
+    <ul class="agenda-list">
+      <li class="agenda-item">
+        <span class="agenda-number">I.</span>
+        <span class="agenda-dot"></span>
+        <span class="agenda-text">代码不是商品<em>Code is not a commodity</em></span>
+      </li>
+      <li class="agenda-item">
+        <span class="agenda-number">II.</span>
+        <span class="agenda-dot"></span>
+        <span class="agenda-text">供需关系的是人才<em>The supply-demand is about talent, not product</em></span>
+      </li>
+      <li class="agenda-item">
+        <span class="agenda-number">III.</span>
+        <span class="agenda-dot"></span>
+        <span class="agenda-text">软件人才的工资与计算机项目工程的关系<em>Wages vs. engineering project economics</em></span>
+      </li>
+      <li class="agenda-item">
+        <span class="agenda-number">IV.</span>
+        <span class="agenda-dot"></span>
+        <span class="agenda-text">软件开发者工程师的人才培养<em>Cultivation pathways for software engineers</em></span>
+      </li>
+      <li class="agenda-item">
+        <span class="agenda-number">V.</span>
+        <span class="agenda-dot"></span>
+        <span class="agenda-text">兴趣与实践培养<em>Interest-driven learning and practice</em></span>
+      </li>
+    </ul>
+  </div>
+  
+  <!-- Visual area - geometric raised hands -->
+  <div class="visual-area">
+    <!-- Classroom floor -->
+    <div class="floor-line"></div>
+    <div class="floor-line-secondary"></div>
+    <div class="deco-diagonal-line"></div>
+    <div class="deco-vertical-line"></div>
+    
+    <!-- Hand 1 -->
+    <div class="hand-1-arm"></div>
+    <div class="hand-1-fingers"></div>
+    <div class="hand-1-finger-top"></div>
+    <div class="hand-1-circle"></div>
+    
+    <!-- Hand 2 -->
+    <div class="hand-2-arm"></div>
+    <div class="hand-2-fingers"></div>
+    <div class="hand-2-square"></div>
+    
+    <!-- Hand 3 -->
+    <div class="hand-3-arm"></div>
+    <div class="hand-3-fingers"></div>
+    <div class="hand-3-triangle"></div>
+    
+    <!-- Decorative elements -->
+    <div class="deco-circle-lg"></div>
+    <div class="deco-circle-sm"></div>
+    <div class="deco-square-outline"></div>
+  </div>
+  
+  <!-- Visual caption -->
+  <div class="visual-caption">
+    高举的手穿透教室<br>
+    象征求知若渴与积极参与
+    <div class="visual-caption-line"></div>
+  </div>
+  
+  <!-- Bottom elements -->
+  <div class="corner-info">BAUHAUS GEOMETRIC COMPOSITION</div>
+  <div class="page-info">02 / 26</div>
+  <div class="bottom-bar"></div>
+  <div class="bottom-bar-accent"></div>
+
+</div>
+</body>
+</html>

@@ -1,180 +1,644 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: a314b9850c06d81f --><head><meta charset="UTF-8"><title>开发者的技能要求 — 空椅与秩序</title><style>html,body{width:1600px;height:900px;overflow:hidden;margin:0;}body{font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;background:#F5F0E8;color:#1B3B6B;position:relative;}
-.bg-texture{position:absolute;top:0;left:0;width:1600px;height:900px;pointer-events:none;opacity:0.04;
-  background:repeating-linear-gradient(0deg,transparent 0,transparent 49px,#1B3B6B 49px,#1B3B6B 50px),repeating-linear-gradient(90deg,transparent 0,transparent 49px,#1B3B6B 49px,#1B3B6B 50px);}
-.top-bar{position:absolute;top:0;left:0;width:1600px;height:6px;background:#1B3B6B;}
-.top-bar-accent{position:absolute;top:0;left:0;width:533px;height:6px;background:#8B7355;}
+<!DOCTYPE html>
+<html><!-- source_hash: 8e5e63569312f0b5 -->
+<head>
+<meta charset="UTF-8">
+<title>开发者的技能要求 · 第 04 期</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 1600px;
+    height: 900px;
+    overflow: hidden;
+    background: #F5F0E8;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #1B3B6B;
+  }
 
-.deco-circle{position:absolute;top:60px;right:80px;width:120px;height:120px;border-radius:50%;border:3px solid #1B3B6B;}
-.deco-circle-inner{position:absolute;top:78px;right:98px;width:84px;height:84px;border-radius:50%;background:#8B7355;opacity:0.15;}
-.deco-square{position:absolute;top:58px;left:80px;width:44px;height:44px;background:#1B3B6B;}
-.deco-line-h{position:absolute;top:100px;left:80px;width:200px;height:2px;background:#8B7355;}
-.deco-line-v{position:absolute;top:60px;left:140px;width:2px;height:44px;background:#8B7355;}
+  /* Background texture */
+  .parchment {
+    position: absolute;
+    top: 0; left: 0;
+    width: 1600px; height: 900px;
+    background: #F5F0E8;
+  }
+  .parchment::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 1600px; height: 900px;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(139,115,85,0.015) 2px,
+      rgba(139,115,85,0.015) 4px
+    );
+  }
 
-.section-no{position:absolute;top:55px;left:100px;font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:3px;}
-.section-tag{position:absolute;top:55px;right:230px;font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:3px;}
+  /* Header */
+  .header {
+    position: absolute;
+    top: 56px;
+    left: 80px;
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+  }
+  .lecture-num {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 18px;
+    color: #8B7355;
+    letter-spacing: 2px;
+    font-weight: 400;
+  }
+  .lecture-line {
+    width: 60px;
+    height: 1px;
+    background: #8B7355;
+    position: relative;
+    top: -4px;
+  }
+  .header-title {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: #1B3B6B;
+    letter-spacing: 2px;
+  }
 
-.main-title{position:absolute;top:180px;left:80px;font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:52px;font-weight:700;color:#1B3B6B;letter-spacing:2px;line-height:1.2;}
-.main-title-en{position:absolute;top:260px;left:82px;font-family:'Noto Serif SC',serif;font-size:18px;color:#8B7355;letter-spacing:4px;font-style:italic;}
-.title-underline{position:absolute;top:298px;left:80px;width:120px;height:4px;background:#1B3B6B;}
-.title-underline-2{position:absolute;top:298px;left:206px;width:40px;height:4px;background:#8B7355;}
+  /* Decorative top-right circle */
+  .deco-circle-topright {
+    position: absolute;
+    top: 40px;
+    right: 80px;
+    width: 80px;
+    height: 80px;
+    border: 2px solid #1B3B6B;
+    border-radius: 50%;
+  }
+  .deco-circle-topright::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    background: #1B3B6B;
+  }
 
-.bullet-section{position:absolute;top:340px;left:80px;width:620px;}
-.bullet-title{font-family:'Noto Serif SC',serif;font-size:15px;color:#555;letter-spacing:2px;margin-bottom:18px;padding-bottom:8px;border-bottom:1px solid #1B3B6B;width:200px;}
-.bullet-item{display:flex;align-items:flex-start;margin-bottom:16px;}
-.bullet-num{font-family:'Noto Serif SC',serif;font-size:22px;color:#8B7355;width:36px;flex-shrink:0;font-weight:600;line-height:1.4;}
-.bullet-text{font-size:17px;color:#1B3B6B;line-height:1.6;font-weight:400;}
-.bullet-text .sub{font-size:14px;color:#555;margin-top:2px;display:block;}
-.bullet-marker{display:inline-block;width:8px;height:8px;background:#1B3B6B;margin-right:10px;flex-shrink:0;margin-top:8px;}
-.bullet-marker-square{display:inline-block;width:8px;height:8px;background:#8B7355;margin-right:10px;flex-shrink:0;margin-top:8px;}
+  /* Main content area */
+  .main {
+    position: absolute;
+    top: 140px;
+    left: 80px;
+    width: 1440px;
+    height: 700px;
+    display: flex;
+  }
 
-.visual-section{position:absolute;top:330px;right:60px;width:780px;height:440px;}
+  /* Left: Chair composition */
+  .chairs-area {
+    width: 640px;
+    height: 680px;
+    position: relative;
+    padding: 20px 0;
+  }
 
-.chair-row{position:absolute;display:flex;gap:28px;}
-.chair{display:flex;flex-direction:column;align-items:center;}
-.chair-back{width:52px;height:56px;border:2px solid #1B3B6B;background:transparent;position:relative;}
-.chair-back::before{content:'';position:absolute;top:8px;left:8px;width:36px;height:40px;border:1px solid #1B3B6B;opacity:0.5;}
-.chair-seat{width:56px;height:8px;background:#1B3B6B;margin-top:2px;}
-.chair-legs{display:flex;justify-content:space-between;width:52px;margin-top:0;}
-.chair-leg{width:2px;height:40px;background:#1B3B6B;}
+  /* Chair grid */
+  .chair-row {
+    display: flex;
+    gap: 28px;
+    margin-bottom: 32px;
+    padding-left: 10px;
+  }
 
-.chair-faded .chair-back{border-color:#8B7355;opacity:0.5;}
-.chair-faded .chair-back::before{border-color:#8B7355;opacity:0.3;}
-.chair-faded .chair-seat{background:#8B7355;opacity:0.6;}
-.chair-faded .chair-leg{background:#8B7355;opacity:0.6;}
+  .chair {
+    width: 60px;
+    height: 80px;
+    position: relative;
+  }
 
-.row-label{position:absolute;font-family:'Noto Serif SC',serif;font-size:13px;color:#555;letter-spacing:1px;width:80px;text-align:right;padding-right:12px;line-height:1.4;}
+  .chair-back {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    width: 40px;
+    height: 28px;
+    background: #1B3B6B;
+    opacity: 0.12;
+  }
 
-.floor-line{position:absolute;left:60px;width:780px;height:2px;background:#1B3B6B;}
-.floor-line-thin{position:absolute;left:60px;width:780px;height:1px;background:#8B7355;opacity:0.6;}
+  .chair-back-frame {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    width: 40px;
+    height: 28px;
+    border: 1.5px solid #1B3B6B;
+    border-radius: 2px 2px 0 0;
+  }
 
-.label-row1{top:360px;}
-.label-row2{top:490px;}
-.label-row3{top:620px;}
+  .chair-seat {
+    position: absolute;
+    top: 28px;
+    left: 4px;
+    width: 52px;
+    height: 8px;
+    background: #8B7355;
+    opacity: 0.6;
+  }
 
-.visual-title{position:absolute;top:0;left:0;font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:3px;}
-.visual-subtitle{position:absolute;top:24px;left:0;font-family:'Noto Serif SC',serif;font-size:11px;color:#555;letter-spacing:1px;}
-.visual-rows{position:absolute;top:60px;left:140px;right:0;width:640px;height:380px;}
+  .chair-leg-left {
+    position: absolute;
+    top: 36px;
+    left: 8px;
+    width: 2px;
+    height: 38px;
+    background: #1B3B6B;
+    opacity: 0.5;
+  }
 
-.chair-row1{top:0;}
-.chair-row2{top:130px;}
-.chair-row3{top:260px;}
+  .chair-leg-right {
+    position: absolute;
+    top: 36px;
+    left: 50px;
+    width: 2px;
+    height: 38px;
+    background: #1B3B6B;
+    opacity: 0.5;
+  }
 
-.visual-caption{position:absolute;bottom:0;right:0;font-family:'Noto Serif SC',serif;font-size:12px;color:#8B7355;letter-spacing:2px;font-style:italic;width:250px;text-align:right;line-height:1.6;}
+  .chair-cross {
+    position: absolute;
+    top: 58px;
+    left: 10px;
+    width: 40px;
+    height: 1.5px;
+    background: #8B7355;
+    opacity: 0.4;
+  }
 
-.bottom-bar{position:absolute;bottom:0;left:0;width:1600px;height:6px;background:#1B3B6B;}
-.bottom-bar-accent{position:absolute;bottom:0;right:0;width:200px;height:6px;background:#8B7355;}
+  /* Highlighted chair (the one being "filled") */
+  .chair.highlighted .chair-back-frame {
+    background: #1B3B6B;
+    opacity: 0.7;
+  }
+  .chair.highlighted .chair-seat {
+    background: #8B7355;
+    opacity: 1;
+    height: 10px;
+    top: 26px;
+  }
+  .chair.highlighted .chair-leg-left,
+  .chair.highlighted .chair-leg-right {
+    opacity: 0.8;
+  }
 
-.footer-left{position:absolute;bottom:20px;left:80px;font-family:'Noto Serif SC',serif;font-size:11px;color:#555;letter-spacing:2px;}
-.footer-right{position:absolute;bottom:20px;right:80px;font-family:'Noto Serif SC',serif;font-size:11px;color:#555;letter-spacing:2px;}
+  /* Metaphor caption */
+  .metaphor-text {
+    position: absolute;
+    bottom: 30px;
+    left: 10px;
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 15px;
+    color: #8B7355;
+    font-style: italic;
+    letter-spacing: 1px;
+    max-width: 500px;
+    line-height: 1.6;
+  }
 
-.big-numeral{position:absolute;top:150px;right:60px;font-family:'Noto Serif SC',serif;font-size:180px;color:#1B3B6B;opacity:0.06;font-weight:700;line-height:1;}
-</style></head><body>
-<div class="bg-texture"></div>
-<div class="top-bar"></div>
-<div class="top-bar-accent"></div>
+  /* Divider line */
+  .divider {
+    position: absolute;
+    top: 0;
+    left: 660px;
+    width: 1px;
+    height: 580px;
+    background: #8B7355;
+    opacity: 0.25;
+  }
 
-<div class="deco-square"></div>
-<div class="deco-line-h"></div>
-<div class="deco-line-v"></div>
-<div class="deco-circle"></div>
-<div class="deco-circle-inner"></div>
+  /* Right: Content bullets */
+  .content-area {
+    width: 780px;
+    height: 680px;
+    padding: 20px 0 20px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 
-<div class="section-no">§ 04 / 07</div>
-<div class="section-tag">SKILL &amp; DISCIPLINE</div>
+  .content-title {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #1B3B6B;
+    margin-bottom: 36px;
+    letter-spacing: 1px;
+  }
 
-<div class="big-numeral">04</div>
+  .bullet-group {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
 
-<div class="main-title">开发者的技能要求</div>
-<div class="main-title-en">The Skill Requirements of Developers</div>
-<div class="title-underline"></div>
-<div class="title-underline-2"></div>
+  .bullet-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
 
-<div class="bullet-section">
-  <div class="bullet-title">▎核心要点 / KEY POINTS</div>
+  .bullet-marker {
+    flex-shrink: 0;
+    width: 10px;
+    height: 10px;
+    background: #1B3B6B;
+    margin-top: 7px;
+  }
 
-  <div class="bullet-item">
-    <span class="bullet-marker"></span>
-    <span class="bullet-text">需要大量的基础知识受训
-      <span class="sub">Extensive foundational training is required</span>
-    </span>
-  </div>
+  .bullet-marker.square {
+    background: transparent;
+    border: 1.5px solid #1B3B6B;
+  }
 
-  <div class="bullet-item">
-    <span class="bullet-marker-square"></span>
-    <span class="bullet-text">底层计算机、程序框架和应用开发
-      <span class="sub">Computer fundamentals, program frameworks &amp; application development</span>
-    </span>
-  </div>
+  .bullet-marker.diamond {
+    width: 8px;
+    height: 8px;
+    background: #8B7355;
+    transform: rotate(45deg);
+    margin-top: 8px;
+  }
 
-  <div class="bullet-item">
-    <span class="bullet-marker"></span>
-    <span class="bullet-text">算法、生态和扩展
-      <span class="sub">Algorithms, ecosystem &amp; extensibility</span>
-    </span>
-  </div>
+  .bullet-text {
+    font-size: 19px;
+    line-height: 1.7;
+    color: #1B3B6B;
+    letter-spacing: 0.5px;
+  }
 
-  <div class="bullet-item">
-    <span class="bullet-marker-square"></span>
-    <span class="bullet-text">了解某类特定的业务
-      <span class="sub">Understanding of specific business domains</span>
-    </span>
-  </div>
+  .bullet-text .sub {
+    display: block;
+    font-size: 16px;
+    color: #555;
+    margin-top: 4px;
+    font-weight: 400;
+  }
 
-  <div class="bullet-item" style="margin-top:24px;padding-top:16px;border-top:1px solid #8B7355;opacity:0.85;">
-    <span style="font-family:'Noto Serif SC',serif;font-size:15px;color:#8B7355;font-style:italic;letter-spacing:1px;">「技术的本质是不断的组合，</span>
-    <span style="font-family:'Noto Serif SC',serif;font-size:15px;color:#8B7355;font-style:italic;letter-spacing:1px;">越发的复杂与细化。」</span>
-  </div>
+  /* Bottom insight */
+  .insight-box {
+    margin-top: 40px;
+    padding: 20px 24px;
+    border-left: 3px solid #1B3B6B;
+    background: rgba(27, 59, 107, 0.03);
+  }
+
+  .insight-text {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 18px;
+    color: #1B3B6B;
+    line-height: 1.7;
+    letter-spacing: 0.5px;
+  }
+
+  .insight-emphasis {
+    color: #8B7355;
+    font-weight: 700;
+  }
+
+  /* Footer */
+  .footer {
+    position: absolute;
+    bottom: 30px;
+    left: 80px;
+    right: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-left {
+    font-size: 12px;
+    color: #8B7355;
+    letter-spacing: 1px;
+  }
+
+  .footer-right {
+    font-size: 12px;
+    color: #8B7355;
+    letter-spacing: 1px;
+  }
+
+  /* Decorative elements */
+  .deco-square-bottomleft {
+    position: absolute;
+    bottom: 60px;
+    left: 30px;
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid #8B7355;
+    opacity: 0.4;
+  }
+
+  .deco-line-bottom {
+    position: absolute;
+    bottom: 55px;
+    left: 55px;
+    width: 100px;
+    height: 1px;
+    background: #8B7355;
+    opacity: 0.3;
+  }
+
+  /* Row number labels */
+  .row-label {
+    position: absolute;
+    left: 0;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 11px;
+    color: #8B7355;
+    opacity: 0.5;
+    letter-spacing: 2px;
+    width: 20px;
+  }
+</style>
+</head>
+<body>
+
+<div class="parchment"></div>
+
+<!-- Decorative top-right -->
+<div class="deco-circle-topright"></div>
+
+<!-- Header -->
+<div class="header">
+  <span class="lecture-num">Lecture 04</span>
+  <div class="lecture-line"></div>
+  <span class="header-title">开发者的技能要求</span>
 </div>
 
-<div class="visual-section">
-  <div class="visual-title">空椅 · EMPTY CHAIRS</div>
-  <div class="visual-subtitle">A metaphor of order awaiting to be filled</div>
+<!-- Main content -->
+<div class="main">
 
-  <div class="visual-rows">
-    <div class="chair-row chair-row1">
-      <div class="row-label label-row1">
-        第一层<br>FOUNDATIONS
+  <!-- Left: Chairs composition -->
+  <div class="chairs-area">
+
+    <div class="chair-row">
+      <div class="chair">
+        <div class="chair-back-frame"></div>
+        <div class="chair-seat"></div>
+        <div class="chair-leg-left"></div>
+        <div class="chair-leg-right"></div>
+        <div class="chair-cross"></div>
       </div>
-      <div class="chair"><div class="chair-back"></div><div class="chair-seat"></div><div class="chair-legs"><div class="chair-leg"></div><div class="chair-leg"></div></div></div>
-      <div class="chair"><div class="chair-back"></div><div class="chair-seat"></div><div class="chair-legs"><div class="chair-leg"></div><div class="chair-leg"></div></div></div>
-      <div class="chair"><div class="chair-back"></div><div class="chair-seat"></div><div class="chair-legs"><div class="chair-leg"></div><div class="chair-leg"></div></div></div>
-      <div class="chair"><div class="chair-back"></div><div class="chair-seat"></div><div class="chair-legs"><div class="chair-leg"></div><div class="chair-leg"></div></div></div>
-      <div class="chair"><div class="chair-back"></div><div class="chair-seat"></div><div class="chair-legs"><div class="chair-leg"></div><div class="chair-leg"></div></div></div>
-      <div class="chair"><div class="chair-back"></div><div class="chair-seat"></div><div class="chair-legs"><div class="chair-leg"></div><div class="chair-leg"></div></div></div>
-    </div>
-    <div class="chair-row chair-row2">
-      <div class="row-label label-row2">
-        第二层<br>FRAMEWORKS
+      <div class="chair">
+        <div class="chair-back-frame"></div>
+        <div class="chair-seat"></div>
+        <div class="chair-leg-left"></div>
+        <div class="chair-leg-right"></div>
+        <div class="chair-cross"></div>
       </div>
-      <div class="chair chair-faded"><div class="chair-back"></div><div class="chair-seat"></div><div class="chair-legs"><div class="chair-leg"></div><div class="chair-leg"></div></div></div>
-      <div class="chair chair-faded"><div class="chair-back"></div><div class="chair-seat"></div><div class="chair-legs"><div class="chair-leg"></div><div class="chair-leg"></div></div></div>
-      <div class="chair chair-faded"><div class="chair-back"></div><div class="chair-seat"></div><div class="chair-legs"><div class="chair-leg"></div><div class="chair-leg"></div></div></div>
-      <div class="chair chair-faded"><div class="chair-back"></div><div class="chair-seat"></div><div class="chair-legs"><div class="chair-leg"></div><div class="chair-leg"></div></div></div>
-      <div class="chair chair-faded"><div class="chair-back"></div><div class="chair-seat"></div><div class="chair-legs"><div class="chair-leg"></div><div class="chair-leg"></div></div></div>
-    </div>
-    <div class="chair-row chair-row3">
-      <div class="row-label label-row3">
-        第三层<br>DOMAINS
+      <div class="chair">
+        <div class="chair-back-frame"></div>
+        <div class="chair-seat"></div>
+        <div class="chair-leg-left"></div>
+        <div class="chair-leg-right"></div>
+        <div class="chair-cross"></div>
       </div>
-      <div class="chair chair-faded" style="opacity:0.7;"><div class="chair-back"></div><div class="chair-seat"></div><div class="chair-legs"><div class="chair-leg"></div><div class="chair-leg"></div></div></div>
-      <div class="chair chair-faded" style="opacity:0.7;"><div class="chair-back"></div><div class="chair-seat"></div><div class="chair-legs"><div class="chair-leg"></div><div class="chair-leg"></div></div></div>
-      <div class="chair chair-faded" style="opacity:0.7;"><div class="chair-back"></div><div class="chair-seat"></div><div class="chair-legs"><div class="chair-leg"></div><div class="chair-leg"></div></div></div>
+      <div class="chair">
+        <div class="chair-back-frame"></div>
+        <div class="chair-seat"></div>
+        <div class="chair-leg-left"></div>
+        <div class="chair-leg-right"></div>
+        <div class="chair-cross"></div>
+      </div>
+      <div class="chair">
+        <div class="chair-back-frame"></div>
+        <div class="chair-seat"></div>
+        <div class="chair-leg-left"></div>
+        <div class="chair-leg-right"></div>
+        <div class="chair-cross"></div>
+      </div>
     </div>
 
-    <div class="floor-line" style="top:350px;"></div>
-    <div class="floor-line-thin" style="top:352px;"></div>
+    <div class="chair-row">
+      <div class="chair">
+        <div class="chair-back-frame"></div>
+        <div class="chair-seat"></div>
+        <div class="chair-leg-left"></div>
+        <div class="chair-leg-right"></div>
+        <div class="chair-cross"></div>
+      </div>
+      <div class="chair">
+        <div class="chair-back-frame"></div>
+        <div class="chair-seat"></div>
+        <div class="chair-leg-left"></div>
+        <div class="chair-leg-right"></div>
+        <div class="chair-cross"></div>
+      </div>
+      <div class="chair highlighted">
+        <div class="chair-back-frame"></div>
+        <div class="chair-seat"></div>
+        <div class="chair-leg-left"></div>
+        <div class="chair-leg-right"></div>
+        <div class="chair-cross"></div>
+      </div>
+      <div class="chair">
+        <div class="chair-back-frame"></div>
+        <div class="chair-seat"></div>
+        <div class="chair-leg-left"></div>
+        <div class="chair-leg-right"></div>
+        <div class="chair-cross"></div>
+      </div>
+      <div class="chair">
+        <div class="chair-back-frame"></div>
+        <div class="chair-seat"></div>
+        <div class="chair-leg-left"></div>
+        <div class="chair-leg-right"></div>
+        <div class="chair-cross"></div>
+      </div>
+    </div>
+
+    <div class="chair-row">
+      <div class="chair">
+        <div class="chair-back-frame"></div>
+        <div class="chair-seat"></div>
+        <div class="chair-leg-left"></div>
+        <div class="chair-leg-right"></div>
+        <div class="chair-cross"></div>
+      </div>
+      <div class="chair">
+        <div class="chair-back-frame"></div>
+        <div class="chair-seat"></div>
+        <div class="chair-leg-left"></div>
+        <div class="chair-leg-right"></div>
+        <div class="chair-cross"></div>
+      </div>
+      <div class="chair">
+        <div class="chair-back-frame"></div>
+        <div class="chair-seat"></div>
+        <div class="chair-leg-left"></div>
+        <div class="chair-leg-right"></div>
+        <div class="chair-cross"></div>
+      </div>
+      <div class="chair">
+        <div class="chair-back-frame"></div>
+        <div class="chair-seat"></div>
+        <div class="chair-leg-left"></div>
+        <div class="chair-leg-right"></div>
+        <div class="chair-cross"></div>
+      </div>
+      <div class="chair">
+        <div class="chair-back-frame"></div>
+        <div class="chair-seat"></div>
+        <div class="chair-leg-left"></div>
+        <div class="chair-leg-right"></div>
+        <div class="chair-cross"></div>
+      </div>
+    </div>
+
+    <div class="chair-row">
+      <div class="chair">
+        <div class="chair-back-frame"></div>
+        <div class="chair-seat"></div>
+        <div class="chair-leg-left"></div>
+        <div class="chair-leg-right"></div>
+        <div class="chair-cross"></div>
+      </div>
+      <div class="chair">
+        <div class="chair-back-frame"></div>
+        <div class="chair-seat"></div>
+        <div class="chair-leg-left"></div>
+        <div class="chair-leg-right"></div>
+        <div class="chair-cross"></div>
+      </div>
+      <div class="chair">
+        <div class="chair-back-frame"></div>
+        <div class="chair-seat"></div>
+        <div class="chair-leg-left"></div>
+        <div class="chair-leg-right"></div>
+        <div class="chair-cross"></div>
+      </div>
+      <div class="chair">
+        <div class="chair-back-frame"></div>
+        <div class="chair-seat"></div>
+        <div class="chair-leg-left"></div>
+        <div class="chair-leg-right"></div>
+        <div class="chair-cross"></div>
+      </div>
+      <div class="chair">
+        <div class="chair-back-frame"></div>
+        <div class="chair-seat"></div>
+        <div class="chair-leg-left"></div>
+        <div class="chair-leg-right"></div>
+        <div class="chair-cross"></div>
+      </div>
+    </div>
+
+    <div class="chair-row">
+      <div class="chair">
+        <div class="chair-back-frame"></div>
+        <div class="chair-seat"></div>
+        <div class="chair-leg-left"></div>
+        <div class="chair-leg-right"></div>
+        <div class="chair-cross"></div>
+      </div>
+      <div class="chair">
+        <div class="chair-back-frame"></div>
+        <div class="chair-seat"></div>
+        <div class="chair-leg-left"></div>
+        <div class="chair-leg-right"></div>
+        <div class="chair-cross"></div>
+      </div>
+      <div class="chair">
+        <div class="chair-back-frame"></div>
+        <div class="chair-seat"></div>
+        <div class="chair-leg-left"></div>
+        <div class="chair-leg-right"></div>
+        <div class="chair-cross"></div>
+      </div>
+      <div class="chair">
+        <div class="chair-back-frame"></div>
+        <div class="chair-seat"></div>
+        <div class="chair-leg-left"></div>
+        <div class="chair-leg-right"></div>
+        <div class="chair-cross"></div>
+      </div>
+      <div class="chair">
+        <div class="chair-back-frame"></div>
+        <div class="chair-seat"></div>
+        <div class="chair-leg-left"></div>
+        <div class="chair-leg-right"></div>
+        <div class="chair-cross"></div>
+      </div>
+    </div>
+
+    <div class="metaphor-text">
+      整齐的空椅隐喻着等待被填充的秩序与规训——<br>
+      每把椅子等待一位受训者落座。
+    </div>
+
   </div>
 
-  <div class="visual-caption">
-    整齐的空椅隐喻着<br>等待被填充的<br>秩序与规训。
+  <!-- Divider -->
+  <div class="divider"></div>
+
+  <!-- Right: Bullet content -->
+  <div class="content-area">
+    <div class="bullet-group">
+      <div class="bullet-item">
+        <div class="bullet-marker"></div>
+        <div class="bullet-text">
+          需要大量的基础知识受训
+          <span class="sub">从底层计算机原理到工程化流程的系统训练</span>
+        </div>
+      </div>
+      <div class="bullet-item">
+        <div class="bullet-marker square"></div>
+        <div class="bullet-text">
+          底层计算机、程序框架与应用开发
+          <span class="sub">操作系统 · 编译器 · 运行时 · 架构模式</span>
+        </div>
+      </div>
+      <div class="bullet-item">
+        <div class="bullet-marker diamond"></div>
+        <div class="bullet-text">
+          算法、生态和扩展
+          <span class="sub">数据结构的直觉 · 技术生态的熟悉度 · 扩展机制的掌握</span>
+        </div>
+      </div>
+      <div class="bullet-item">
+        <div class="bullet-marker"></div>
+        <div class="bullet-text">
+          了解某类特定的业务领域
+          <span class="sub">从通用技能到领域知识的纵深穿透</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="insight-box">
+      <div class="insight-text">
+        技术的本质是<span class="insight-emphasis">不断的组合</span>，<br>
+        越发的复杂与细化——
+      </div>
+    </div>
   </div>
+
 </div>
 
-<div class="footer-left">§ 新制度经济学视角下的开源 / DIGITAL AGE OPEN SOURCE</div>
-<div class="footer-right">SLIDE 04 — SKILL DISCIPLINE</div>
+<!-- Decorative bottom-left -->
+<div class="deco-square-bottomleft"></div>
+<div class="deco-line-bottom"></div>
 
-<div class="bottom-bar"></div>
-<div class="bottom-bar-accent"></div>
-</body></html>
+<!-- Footer -->
+<div class="footer">
+  <span class="footer-left">04 · 软件开发劳动力市场</span>
+  <span class="footer-right">包豪斯几何构成 / Bauhaus Geometric Composition</span>
+</div>
+
+</body>
+</html>

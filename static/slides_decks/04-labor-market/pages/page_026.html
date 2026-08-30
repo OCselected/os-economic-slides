@@ -1,223 +1,776 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: e49857fc881acf0a --><head><meta charset="UTF-8"><title>第4期·软件开发劳动力市场 · 推荐阅读</title><style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1600px;height:900px;overflow:hidden;margin:0}
-body{background:#F5F0E8;font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-serif;color:#1B3B6B;position:relative}
+<!DOCTYPE html>
+<html><!-- source_hash: 65f88d0f65d4d822 -->
+<head>
+<meta charset="UTF-8">
+<title>第4期·软件开发劳动力市场 · 推荐阅读</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
 
-/* Bauhaus geometric decorations */
-.deco-circle-1{position:absolute;top:-60px;left:-60px;width:180px;height:180px;border-radius:50%;background:#1B3B6B;opacity:0.06}
-.deco-circle-2{position:absolute;bottom:-80px;right:-80px;width:220px;height:220px;border-radius:50%;background:#8B7355;opacity:0.08}
-.deco-square{position:absolute;top:40px;right:50px;width:14px;height:14px;background:#8B7355}
-.deco-line-1{position:absolute;top:80px;right:50px;width:14px;height:2px;background:#1B3B6B}
-.deco-line-2{position:absolute;bottom:80px;left:50px;width:60px;height:2px;background:#8B7355}
-.deco-ring{position:absolute;top:60px;right:120px;width:30px;height:30px;border:2px solid #1B3B6B;border-radius:50%}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* Header */
-.header{position:absolute;top:60px;left:80px;right:80px;display:flex;align-items:flex-end;justify-content:space-between;border-bottom:3px solid #1B3B6B;padding-bottom:20px}
-.issue-tag{font-family:'Noto Serif SC',serif;font-size:14px;letter-spacing:8px;color:#8B7355;font-weight:400}
-.issue-title{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:38px;color:#1B3B6B;font-weight:700;margin-top:6px;letter-spacing:2px}
-.issue-subtitle{font-family:'Noto Serif SC',serif;font-size:16px;color:#555;margin-top:8px;letter-spacing:4px}
-.header-right{text-align:right;font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;letter-spacing:3px;line-height:1.8}
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
+}
 
-/* Main layout */
-.main{position:absolute;top:220px;left:80px;right:80px;bottom:100px;display:flex;gap:50px}
+body {
+  background: #0F2340;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: #E8E2D6;
+  position: relative;
+}
 
-/* Left panel - visual metaphor */
-.left-panel{width:460px;height:580px;background:#1B3B6B;position:relative;overflow:hidden;padding:40px 35px}
-.left-panel::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(255,255,255,0.015) 2px,rgba(255,255,255,0.015) 4px)}
+/* Deep parchment texture overlay */
+.texture-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 1600px;
+  height: 900px;
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(27,59,107,0.3) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 30%, rgba(139,115,85,0.08) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
+}
 
-.meta-label{font-size:11px;letter-spacing:6px;color:#8B7355;font-weight:400}
-.meta-title{font-family:'Noto Serif SC',serif;font-size:22px;color:#F5F0E8;line-height:1.5;margin-top:10px;font-weight:400}
-.meta-divider{width:40px;height:2px;background:#8B7355;margin:16px 0}
+/* Grid pattern - subtle academic */
+.grid-bg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 1600px;
+  height: 900px;
+  background-image: 
+    linear-gradient(rgba(27,59,107,0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(27,59,107,0.12) 1px, transparent 1px);
+  background-size: 80px 80px;
+  z-index: 0;
+}
 
-/* Geometric craftsman representation */
-.craftsman-area{position:absolute;top:130px;left:0;right:0;bottom:0}
-.cm-bench{position:absolute;bottom:80px;left:30px;right:30px;height:6px;background:#8B7355}
-.cm-bench-leg-1{position:absolute;bottom:30px;left:45px;width:4px;height:50px;background:#8B7355}
-.cm-bench-leg-2{position:absolute;bottom:30px;right:45px;width:4px;height:50px;background:#8B7355}
+/* Bauhaus geometric composition - left panel */
+.bauhaus-panel {
+  position: absolute;
+  left: 60px;
+  top: 80px;
+  width: 420px;
+  height: 740px;
+  z-index: 2;
+}
 
-/* Workers as geometric abstractions */
-.worker{position:absolute;bottom:86px;display:flex;flex-direction:column;align-items:center}
-.worker-head{width:22px;height:22px;border-radius:50%;background:#F5F0E8;border:1.5px solid #8B7355}
-.worker-body{width:26px;height:40px;background:#F5F0E8;margin-top:3px;border:1.5px solid #8B7355;border-radius:2px 2px 0 0}
-.worker-1{left:60px}
-.worker-2{left:130px}
-.worker-3{left:200px}
-.worker-4{left:270px}
-.worker-5{left:340px}
-.worker-6{left:145px;bottom:86px;transform:translateY(20px)}
-.worker-7{left:280px;bottom:86px;transform:translateY(15px)}
+/* Background frame for the composition */
+.bauhaus-frame {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 420px;
+  height: 740px;
+  border-left: 3px solid #1B3B6B;
+  border-bottom: 3px solid #1B3B6B;
+}
 
-/* Tools on bench */
-.tool-hammer{position:absolute;bottom:92px;left:98px;width:2px;height:24px;background:#8B7355}
-.tool-hammer::after{content:'';position:absolute;top:-3px;left:-8px;width:18px;height:10px;background:#8B7355;border-radius:1px}
-.tool-book{position:absolute;bottom:92px;left:238px;width:30px;height:8px;background:#8B7355}
-.tool-book::after{content:'';position:absolute;top:8px;left:0;width:30px;height:8px;background:#F5F0E8;border:1px solid #8B7355}
-.tool-globe{position:absolute;bottom:86px;left:370px;width:24px;height:24px;border-radius:50%;background:transparent;border:1.5px solid #8B7355}
-.tool-globe::before{content:'';position:absolute;top:10px;left:-4px;width:32px;height:2px;background:#8B7355}
+/* Large circle - artisan spirit */
+.circle-large {
+  position: absolute;
+  left: 40px;
+  top: 40px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 2.5px solid #1B3B6B;
+}
 
-/* Big circle backdrop */
-.cm-circle{position:absolute;top:50px;left:50%;transform:translateX(-50%);width:110px;height:110px;border-radius:50%;background:#234985;border:1px solid #8B7355}
-.cm-square{position:absolute;top:170px;left:30px;width:36px;height:36px;background:#8B7355;opacity:0.7}
-.cm-triangle{position:absolute;top:170px;right:30px;width:0;height:0;border-left:20px solid transparent;border-right:20px solid transparent;border-bottom:34px solid #8B7355;opacity:0.7}
+.circle-large-fill {
+  position: absolute;
+  left: 70px;
+  top: 70px;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  opacity: 0.9;
+}
 
-.meta-quote{position:absolute;bottom:25px;left:35px;right:35px;font-family:'Noto Serif SC',serif;font-size:12px;color:#c9b896;line-height:1.7;font-style:italic}
-.meta-quote-mark{font-size:24px;color:#8B7355;font-family:serif;margin-right:4px}
+/* Square - workbench / discipline */
+.square-work {
+  position: absolute;
+  left: 220px;
+  top: 60px;
+  width: 140px;
+  height: 140px;
+  background: #1B3B6B;
+  opacity: 0.85;
+}
 
-/* Right panel - reading list */
-.right-panel{flex:1;display:flex;flex-direction:column}
-.list-header{display:flex;align-items:center;gap:14px;margin-bottom:16px}
-.list-header-bar{width:36px;height:2px;background:#1B3B6B}
-.list-header-text{font-family:'Noto Serif SC',serif;font-size:14px;letter-spacing:5px;color:#555}
+.square-inner {
+  position: absolute;
+  left: 245px;
+  top: 85px;
+  width: 90px;
+  height: 90px;
+  border: 2px solid #8B7355;
+  opacity: 0.7;
+}
 
-.reading-list{display:grid;grid-template-columns:1fr 1fr;gap:10px 30px;flex:1}
-.read-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid rgba(27,59,107,0.12)}
-.read-num{font-family:'Noto Serif SC',serif;font-size:12px;color:#8B7355;font-weight:700;min-width:22px;padding-top:2px}
-.read-content{flex:1}
-.read-title{font-family:'Noto Serif SC',serif;font-size:13.5px;color:#1B3B6B;line-height:1.45;font-weight:700}
-.read-author{font-size:11px;color:#555;margin-top:3px;line-height:1.5;letter-spacing:0.5px}
-.read-full{grid-column:1/-1;border-bottom:1px solid rgba(27,59,107,0.12)}
+/* Diagonal line - connecting line of thought */
+.diagonal-line {
+  position: absolute;
+  left: 0;
+  top: 200px;
+  width: 420px;
+  height: 2px;
+  background: #8B7355;
+  opacity: 0.5;
+}
 
-/* Bottom bar */
-.bottom-bar{position:absolute;bottom:30px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:center;font-family:'Noto Serif SC',serif;font-size:11px;color:#8B7355;letter-spacing:3px}
-.bottom-line{position:absolute;bottom:55px;left:80px;right:80px;height:1px;background:rgba(27,59,107,0.2)}
+.diagonal-line2 {
+  position: absolute;
+  left: 100px;
+  top: 0;
+  width: 2px;
+  height: 740px;
+  background: rgba(139,115,85,0.2);
+}
 
-/* Index number decoration */
-.idx-deco{position:absolute;top:250px;left:80px;font-family:'Noto Serif SC',serif;font-size:11px;color:#8B7355;letter-spacing:3px}
-</style></head><body>
+/* Small circle group - portrait silhouettes */
+.silhouette-group {
+  position: absolute;
+  left: 30px;
+  top: 300px;
+  width: 380px;
+  height: 200px;
+}
 
-<div class="deco-circle-1"></div>
-<div class="deco-circle-2"></div>
-<div class="deco-square"></div>
-<div class="deco-line-1"></div>
-<div class="deco-line-2"></div>
-<div class="deco-ring"></div>
+.silhouette {
+  position: absolute;
+  border-radius: 50%;
+}
 
-<div class="header">
-  <div>
-    <div class="issue-tag">OPEN SOURCE ECONOMICS · ISSUE 04</div>
-    <div class="issue-title">软件开发劳动力市场</div>
-    <div class="issue-subtitle">SOFTWARE LABOR MARKET · 推荐阅读</div>
+.sil-1 {
+  left: 10px;
+  top: 40px;
+  width: 80px;
+  height: 80px;
+  background: #1B3B6B;
+  opacity: 0.95;
+}
+
+.sil-1-head {
+  position: absolute;
+  left: 25px;
+  top: 10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #8B7355;
+  opacity: 0.5;
+}
+
+.sil-2 {
+  left: 110px;
+  top: 10px;
+  width: 95px;
+  height: 95px;
+  background: #1B3B6B;
+  opacity: 0.8;
+}
+
+.sil-2-head {
+  position: absolute;
+  left: 22px;
+  top: 8px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid #8B7355;
+  background: transparent;
+  opacity: 0.7;
+}
+
+.sil-3 {
+  left: 220px;
+  top: 55px;
+  width: 70px;
+  height: 70px;
+  background: #8B7355;
+  opacity: 0.6;
+}
+
+.sil-3-head {
+  position: absolute;
+  left: 15px;
+  top: 10px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid #1B3B6B;
+  background: transparent;
+  opacity: 0.8;
+}
+
+.sil-4 {
+  left: 310px;
+  top: 25px;
+  width: 60px;
+  height: 60px;
+  background: #1B3B6B;
+  opacity: 0.7;
+}
+
+/* Book stack metaphor */
+.book-stack {
+  position: absolute;
+  left: 30px;
+  top: 530px;
+  width: 380px;
+  height: 180px;
+}
+
+.book-row {
+  position: absolute;
+  border-left: 3px solid #8B7355;
+}
+
+.book-1 {
+  left: 0;
+  top: 0;
+  width: 180px;
+  height: 30px;
+  background: rgba(27,59,107,0.7);
+  border-left: 4px solid #1B3B6B;
+}
+
+.book-2 {
+  left: 195px;
+  top: 0;
+  width: 140px;
+  height: 30px;
+  background: rgba(139,115,85,0.4);
+  border-left: 3px solid #8B7355;
+}
+
+.book-3 {
+  left: 0;
+  top: 40px;
+  width: 120px;
+  height: 30px;
+  background: rgba(139,115,85,0.35);
+  border-left: 3px solid #1B3B6B;
+}
+
+.book-4 {
+  left: 130px;
+  top: 40px;
+  width: 205px;
+  height: 30px;
+  background: rgba(27,59,107,0.5);
+  border-left: 4px solid #8B7355;
+}
+
+.book-5 {
+  left: 20px;
+  top: 80px;
+  width: 160px;
+  height: 30px;
+  background: rgba(139,115,85,0.5);
+  border-left: 3px solid #1B3B6B;
+}
+
+.book-6 {
+  left: 195px;
+  top: 80px;
+  width: 140px;
+  height: 30px;
+  background: rgba(27,59,107,0.6);
+  border-left: 4px solid #8B7355;
+}
+
+.book-7 {
+  left: 0;
+  top: 120px;
+  width: 210px;
+  height: 30px;
+  background: rgba(27,59,107,0.55);
+  border-left: 3px solid #8B7355;
+}
+
+.book-8 {
+  left: 225px;
+  top: 120px;
+  width: 115px;
+  height: 30px;
+  background: rgba(139,115,85,0.4);
+  border-left: 4px solid #1B3B6B;
+}
+
+/* Vertical bar accent */
+.v-bar {
+  position: absolute;
+  left: 400px;
+  top: 300px;
+  width: 2px;
+  height: 320px;
+  background: #8B7355;
+  opacity: 0.4;
+}
+
+/* Horizontal accent lines */
+.h-accent-1 {
+  position: absolute;
+  left: 60px;
+  top: 500px;
+  width: 420px;
+  height: 1px;
+  background: rgba(139,115,85,0.3);
+}
+
+/* Triangle - Bauhaus element */
+.triangle-el {
+  position: absolute;
+  left: 300px;
+  top: 250px;
+  width: 0;
+  height: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-bottom: 50px solid rgba(27,59,107,0.4);
+}
+
+/* --- RIGHT PANEL: Reading List --- */
+.right-panel {
+  position: absolute;
+  left: 560px;
+  top: 60px;
+  width: 990px;
+  height: 780px;
+  z-index: 3;
+}
+
+/* Section header */
+.section-header {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 990px;
+}
+
+.lecture-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #8B7355;
+  letter-spacing: 4px;
+  margin-bottom: 6px;
+}
+
+.section-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 38px;
+  font-weight: 700;
+  color: #E8E2D6;
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+}
+
+.section-subtitle {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: #8B7355;
+  letter-spacing: 3px;
+}
+
+.title-underline {
+  width: 80px;
+  height: 2px;
+  background: #1B3B6B;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+.title-underline2 {
+  width: 40px;
+  height: 2px;
+  background: #8B7355;
+  margin-top: 4px;
+  opacity: 0.7;
+}
+
+/* Reading list container */
+.reading-list {
+  position: absolute;
+  left: 0;
+  top: 130px;
+  width: 990px;
+}
+
+.reading-section-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #8B7355;
+  letter-spacing: 3px;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(139,115,85,0.3);
+}
+
+.reading-row {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  padding: 6px 0 6px 0;
+}
+
+.reading-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1B3B6B;
+  width: 32px;
+  min-width: 32px;
+  text-align: right;
+  padding-right: 16px;
+  padding-top: 2px;
+  border-right: 1.5px solid rgba(27,59,107,0.3);
+}
+
+.reading-content {
+  flex: 1;
+  padding-left: 18px;
+}
+
+.reading-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #E8E2D6;
+  line-height: 1.4;
+  margin-bottom: 1px;
+}
+
+.reading-author {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12.5px;
+  font-weight: 300;
+  color: #8B7355;
+  line-height: 1.4;
+  letter-spacing: 0.5px;
+}
+
+/* Category divider */
+.category-divider {
+  display: flex;
+  align-items: center;
+  margin: 14px 0 10px 0;
+  gap: 10px;
+}
+
+.cat-dot {
+  width: 6px;
+  height: 6px;
+  background: #8B7355;
+  border-radius: 50%;
+}
+
+.cat-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(139,115,85,0.3);
+}
+
+.cat-label {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: #8B7355;
+  letter-spacing: 3px;
+}
+
+/* Small Bauhaus decorations on right panel */
+.deco-circle-1 {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #1B3B6B;
+  opacity: 0.4;
+}
+
+.deco-square-1 {
+  position: absolute;
+  right: 50px;
+  top: -10px;
+  width: 25px;
+  height: 25px;
+  background: #1B3B6B;
+  opacity: 0.3;
+}
+
+.deco-line-1 {
+  position: absolute;
+  right: -20px;
+  top: 50px;
+  width: 1px;
+  height: 600px;
+  background: rgba(27,59,107,0.2);
+}
+
+/* Bottom footer */
+.footer {
+  position: absolute;
+  left: 60px;
+  bottom: 30px;
+  width: 1480px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 5;
+}
+
+.footer-left {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: rgba(232,226,214,0.35);
+  letter-spacing: 2px;
+}
+
+.footer-right {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: rgba(232,226,214,0.35);
+  letter-spacing: 2px;
+}
+
+.footer-line {
+  position: absolute;
+  left: 60px;
+  bottom: 50px;
+  width: 1480px;
+  height: 1px;
+  background: rgba(139,115,85,0.2);
+  z-index: 4;
+}
+
+/* Corner accents */
+.corner-tl {
+  position: absolute;
+  left: 40px;
+  top: 40px;
+  width: 20px;
+  height: 20px;
+  border-top: 2px solid #1B3B6B;
+  border-left: 2px solid #1B3B6B;
+  opacity: 0.5;
+}
+
+.corner-br {
+  position: absolute;
+  right: 40px;
+  bottom: 40px;
+  width: 20px;
+  height: 20px;
+  border-bottom: 2px solid #1B3B6B;
+  border-right: 2px solid #1B3B6B;
+  opacity: 0.5;
+}
+
+/* Page number */
+.page-num {
+  position: absolute;
+  right: 40px;
+  top: 40px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12px;
+  color: rgba(139,115,85,0.5);
+  letter-spacing: 2px;
+  z-index: 5;
+}
+</style>
+</head>
+<body>
+
+<div class="grid-bg"></div>
+<div class="texture-overlay"></div>
+
+<!-- Corner accents -->
+<div class="corner-tl"></div>
+<div class="corner-br"></div>
+
+<!-- Page number -->
+<div class="page-num">第 4 期 · 024 / 026</div>
+
+<!-- LEFT PANEL: Bauhaus geometric composition -->
+<div class="bauhaus-panel">
+  <div class="bauhaus-frame"></div>
+  
+  <div class="diagonal-line"></div>
+  <div class="diagonal-line2"></div>
+  <div class="h-accent-1"></div>
+  
+  <div class="circle-large"></div>
+  <div class="circle-large-fill"></div>
+  
+  <div class="square-work"></div>
+  <div class="square-inner"></div>
+  
+  <div class="triangle-el"></div>
+  
+  <div class="v-bar"></div>
+  
+  <!-- Silhouette group - representing laborers -->
+  <div class="silhouette-group">
+    <div class="silhouette sil-1">
+      <div class="sil-1-head"></div>
+    </div>
+    <div class="silhouette sil-2">
+      <div class="sil-2-head"></div>
+    </div>
+    <div class="silhouette sil-3">
+      <div class="sil-3-head"></div>
+    </div>
+    <div class="silhouette sil-4"></div>
   </div>
-  <div class="header-right">
-    新制度经济学视角<br>
-    开源之道 · 系列讲座
+  
+  <!-- Book stack - representing knowledge & craft -->
+  <div class="book-stack">
+    <div class="book-row book-1"></div>
+    <div class="book-row book-2"></div>
+    <div class="book-row book-3"></div>
+    <div class="book-row book-4"></div>
+    <div class="book-row book-5"></div>
+    <div class="book-row book-6"></div>
+    <div class="book-row book-7"></div>
+    <div class="book-row book-8"></div>
   </div>
 </div>
 
-<div class="main">
-
-  <div class="left-panel">
-    <div class="meta-label">VISUAL METAPHOR</div>
-    <div class="meta-title">工匠的工作台<br>与软件劳动者的群像</div>
-    <div class="meta-divider"></div>
-
-    <div class="craftsman-area">
-      <div class="cm-circle"></div>
-      <div class="cm-square"></div>
-      <div class="cm-triangle"></div>
-
-      <div class="tool-hammer"></div>
-      <div class="tool-book"></div>
-      <div class="tool-globe"></div>
-
-      <div class="cm-bench"></div>
-      <div class="cm-bench-leg-1"></div>
-      <div class="cm-bench-leg-2"></div>
-
-      <div class="worker worker-1"><div class="worker-head"></div><div class="worker-body"></div></div>
-      <div class="worker worker-2"><div class="worker-head"></div><div class="worker-body"></div></div>
-      <div class="worker worker-3"><div class="worker-head"></div><div class="worker-body"></div></div>
-      <div class="worker worker-4"><div class="worker-head"></div><div class="worker-body"></div></div>
-      <div class="worker worker-5"><div class="worker-head"></div><div class="worker-body"></div></div>
-      <div class="worker worker-6"><div class="worker-head"></div><div class="worker-body"></div></div>
-      <div class="worker worker-7"><div class="worker-head"></div><div class="worker-body"></div></div>
-    </div>
-
-    <div class="meta-quote">
-      <span class="meta-quote-mark">"</span>软件劳动者不只是一份职业——他们是在代码中锻造秩序的当代匠人，其精神与伦理值得我们以阅读来靠近。<span class="meta-quote-mark">"</span>
-    </div>
+<!-- RIGHT PANEL: Reading List -->
+<div class="right-panel">
+  
+  <!-- Decorative elements -->
+  <div class="deco-circle-1"></div>
+  <div class="deco-square-1"></div>
+  <div class="deco-line-1"></div>
+  
+  <!-- Header -->
+  <div class="section-header">
+    <div class="lecture-num">Lecture 04 · Software Labor Market</div>
+    <div class="section-title">推荐阅读</div>
+    <div class="section-subtitle">Recommended Reading · 劳动、伦理与制度</div>
+    <div class="title-underline"></div>
+    <div class="title-underline2"></div>
   </div>
-
-  <div class="right-panel">
-    <div class="list-header">
-      <div class="list-header-bar"></div>
-      <div class="list-header-text">READING LIST · 九则书目</div>
-    </div>
-
-    <div class="reading-list">
-      <div class="read-item">
-        <div class="read-num">01</div>
-        <div class="read-content">
-          <div class="read-title">《匠人》</div>
-          <div class="read-author">Richard Sennett · 上海译文出版社 · 2015.07</div>
-        </div>
-      </div>
-      <div class="read-item">
-        <div class="read-num">02</div>
-        <div class="read-content">
-          <div class="read-title">《人的境况》</div>
-          <div class="read-author">Hannah Arendt · 商务印书馆</div>
-        </div>
-      </div>
-      <div class="read-item">
-        <div class="read-num">03</div>
-        <div class="read-content">
-          <div class="read-title">《大繁荣》</div>
-          <div class="read-author">Edmund Phelps · 中信出版社 · 2018.10</div>
-        </div>
-      </div>
-      <div class="read-item">
-        <div class="read-num">04</div>
-        <div class="read-content">
-          <div class="read-title">《动机与人格》</div>
-          <div class="read-author">Abraham Maslow · 人大出版社 · 2013.09</div>
-        </div>
-      </div>
-      <div class="read-item">
-        <div class="read-num">05</div>
-        <div class="read-content">
-          <div class="read-title">《全球"猎身"》</div>
-          <div class="read-author">项飙 · 北京大学出版社 · 2012.01</div>
-        </div>
-      </div>
-      <div class="read-item">
-        <div class="read-num">06</div>
-        <div class="read-content">
-          <div class="read-title">《确定性的寻求》</div>
-          <div class="read-author">John Dewey · 华东师大出版社 · 2019.08</div>
-        </div>
-      </div>
-      <div class="read-item read-full">
-        <div class="read-num">07</div>
-        <div class="read-content">
-          <div class="read-title">The New Kingmaker: How Developers Conquered the World</div>
-          <div class="read-author">Stephen O'Grady · O'Reilly · 2013.01</div>
-        </div>
-      </div>
-      <div class="read-item read-full">
-        <div class="read-num">08</div>
-        <div class="read-content">
-          <div class="read-title">The Shifting Sands of Motivation</div>
-          <div class="read-author">Gerosa et al. · arXiv:2101.10291v3 · 2021.01</div>
-        </div>
-      </div>
-      <div class="read-item read-full">
-        <div class="read-num">09</div>
-        <div class="read-content">
-          <div class="read-title">Linux Foundation · 历年人才调查报告</div>
-          <div class="read-author">Talent Shortage Survey · Annual Series</div>
-        </div>
+  
+  <!-- Reading List -->
+  <div class="reading-list">
+    
+    <!-- Category 1: 劳动伦理与人的境况 -->
+    <div class="reading-section-title">壹 · 劳动伦理与人的境况</div>
+    
+    <div class="reading-row">
+      <div class="reading-num">01</div>
+      <div class="reading-content">
+        <div class="reading-title">《匠人》</div>
+        <div class="reading-author">Richard Sennett · 上海译文出版社 · 2015.07</div>
       </div>
     </div>
+    
+    <div class="reading-row">
+      <div class="reading-num">02</div>
+      <div class="reading-content">
+        <div class="reading-title">《人的境况》</div>
+        <div class="reading-author">Hannah Arendt · 商务印书馆</div>
+      </div>
+    </div>
+    
+    <div class="reading-row">
+      <div class="reading-num">03</div>
+      <div class="reading-content">
+        <div class="reading-title">《动机与人格》</div>
+        <div class="reading-author">Abraham Maslow · 中国人民大学出版社 · 2013.09</div>
+      </div>
+    </div>
+    
+    <!-- Category 2: 宏观与产业 -->
+    <div class="category-divider">
+      <div class="cat-dot"></div>
+      <div class="cat-line"></div>
+      <div class="cat-label">贰 · 宏观与产业</div>
+      <div class="cat-line"></div>
+      <div class="cat-dot"></div>
+    </div>
+    
+    <div class="reading-row">
+      <div class="reading-num">04</div>
+      <div class="reading-content">
+        <div class="reading-title">《大繁荣》</div>
+        <div class="reading-author">Edmund Phelps · 中信出版社 · 2018.10</div>
+      </div>
+    </div>
+    
+    <div class="reading-row">
+      <div class="reading-num">05</div>
+      <div class="reading-content">
+        <div class="reading-title">The New Kingmaker: How Developers Conquered the World</div>
+        <div class="reading-author">Stephen O'Grady · O'Reilly · 2013.01</div>
+      </div>
+    </div>
+    
+    <div class="reading-row">
+      <div class="reading-num">06</div>
+      <div class="reading-content">
+        <div class="reading-title">《全球"猎身"》</div>
+        <div class="reading-author">项飙 · 北京大学出版社 · 2012.01</div>
+      </div>
+    </div>
+    
+    <!-- Category 3: 方法论与实证 -->
+    <div class="category-divider">
+      <div class="cat-dot"></div>
+      <div class="cat-line"></div>
+      <div class="cat-label">叁 · 方法论与实证</div>
+      <div class="cat-line"></div>
+      <div class="cat-dot"></div>
+    </div>
+    
+    <div class="reading-row">
+      <div class="reading-num">07</div>
+      <div class="reading-content">
+        <div class="reading-title">《确定性的寻求》</div>
+        <div class="reading-author">John Dewey · 华东师范大学出版社 · 2019.08</div>
+      </div>
+    </div>
+    
+    <div class="reading-row">
+      <div class="reading-num">08</div>
+      <div class="reading-content">
+        <div class="reading-title">The Shifting Sands of Motivation</div>
+        <div class="reading-author">Gerosa et al. · arXiv:2101.10291v3 · 2021.01</div>
+      </div>
+    </div>
+    
+    <div class="reading-row">
+      <div class="reading-num">09</div>
+      <div class="reading-content">
+        <div class="reading-title">Linux Foundation 历年人才调查报告</div>
+        <div class="reading-author">Linux Foundation · Workforce Development Series</div>
+      </div>
+    </div>
+    
   </div>
 </div>
 
-<div class="bottom-line"></div>
-<div class="bottom-bar">
-  <div>NEW INSTITUTIONAL ECONOMICS × OPEN SOURCE</div>
-  <div>FOR THINKERS · READERS · DIALOGUERS</div>
+<!-- Footer -->
+<div class="footer-line"></div>
+<div class="footer">
+  <div class="footer-left">开源之道 · 新制度经济学视角</div>
+  <div class="footer-right">Bauhaus Geometric Composition · 深普鲁士蓝 · 工匠与知识</div>
 </div>
 
-</body></html>
+</body>
+</html>

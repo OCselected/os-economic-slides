@@ -1,226 +1,559 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: ddf438fc5fd91991 --><head><meta charset="UTF-8"><title>劳动力市场：以外包为例</title><style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1600px;height:900px;overflow:hidden;margin:0;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;color:#1B3B6B}
-.slide{position:relative;width:1600px;height:900px;background:#F5F0E8;overflow:hidden}
+<!DOCTYPE html>
+<html><!-- source_hash: a835028342c40143 -->
+<head>
+<meta charset="UTF-8">
+<title>第 04 期 · 软件开发劳动力市场 — 以外包为例</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
 
-/* parchment texture */
-.slide::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(139,115,85,0.02) 3px,rgba(139,115,85,0.02) 4px);pointer-events:none;z-index:0}
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* page border frame */
-.frame{position:absolute;top:40px;left:40px;width:1520px;height:820px;border:1px solid #8B7355;z-index:1;pointer-events:none}
-.frame-inner{position:absolute;top:48px;left:48px;width:1504px;height:804px;border:1px solid rgba(139,115,85,0.3);z-index:1;pointer-events:none}
+  html, body {
+    width: 1600px;
+    height: 900px;
+    overflow: hidden;
+    background: #F5F0E8;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #1B3B6B;
+  }
 
-/* top label bar */
-.top-bar{position:absolute;top:56px;left:80px;right:80px;height:36px;display:flex;align-items:center;z-index:5;font-size:13px;letter-spacing:3px;color:#8B7355;font-weight:400}
-.top-bar .line{flex:1;height:1px;background:#8B7355;margin:0 16px;opacity:0.5}
+  /* Parchment texture overlay */
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 1600px; height: 900px;
+    background:
+      radial-gradient(ellipse at 20% 30%, rgba(27,59,107,0.015) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 70%, rgba(139,115,85,0.02) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
 
-/* section number */
-.section-num{position:absolute;top:120px;left:80px;font-size:11px;letter-spacing:4px;color:#8B7355;z-index:5}
+  .slide {
+    position: relative;
+    width: 1600px;
+    height: 900px;
+    overflow: hidden;
+  }
 
-/* title area */
-.title-area{position:absolute;top:150px;left:80px;width:820px;z-index:5}
-.title-main{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:56px;font-weight:700;color:#1B3B6B;line-height:1.15;letter-spacing:2px}
-.title-sub{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:22px;color:#8B7355;margin-top:18px;letter-spacing:1px;font-weight:400}
-.title-underline{width:120px;height:3px;background:#1B3B6B;margin-top:22px}
+  /* Geometric decorations */
+  .geo {
+    position: absolute;
+    z-index: 1;
+  }
 
-/* bullets */
-.bullets{position:absolute;top:380px;left:80px;width:820px;z-index:5}
-.bullet{display:flex;align-items:flex-start;margin-bottom:18px;font-size:17px;line-height:1.6;color:#1B3B6B}
-.bullet-marker{min-width:16px;height:16px;margin-right:16px;margin-top:6px;flex-shrink:0}
-.bullet-marker.square{background:#1B3B6B}
-.bullet-marker.circle{width:16px;border-radius:50%;background:#8B7355}
-.bullet-marker.line{width:14px;height:2px;background:#1B3B6B;margin-top:11px}
-.bullet-text{flex:1}
-.bullet-text .em{color:#555;font-size:14px;display:block;margin-top:3px;letter-spacing:0.5px}
-.bullet-highlight{color:#1B3B6B;font-weight:600}
-.bullet-quote{font-family:'Noto Serif SC',serif;font-style:italic;color:#555;font-size:15px;border-left:2px solid #8B7355;padding-left:14px;margin-top:20px;line-height:1.6}
+  /* Large blue square top-right */
+  .geo-square-1 {
+    top: -40px;
+    right: -60px;
+    width: 220px;
+    height: 220px;
+    background: #1B3B6B;
+    opacity: 0.06;
+  }
 
-/* right side: geometric code grid visualization */
-.viz-area{position:absolute;top:120px;right:80px;width:580px;height:680px;z-index:3}
+  /* Copper circle */
+  .geo-circle-1 {
+    bottom: 80px;
+    right: 180px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 2px solid rgba(139,115,85,0.12);
+  }
 
-/* grid backdrop */
-.grid-bg{position:absolute;top:0;left:0;width:580px;height:680px;background-image:linear-gradient(rgba(139,115,85,0.12) 1px,transparent 1px),linear-gradient(90deg,rgba(139,115,85,0.12) 1px,transparent 1px);background-size:28px 28px}
+  .geo-circle-2 {
+    bottom: 160px;
+    right: 240px;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: rgba(139,115,85,0.04);
+  }
 
-/* large circle - bauhaus */
-.big-circle{position:absolute;top:60px;left:140px;width:300px;height:300px;border-radius:50%;background:#1B3B6B;opacity:0.92}
+  /* Grid lines - left side */
+  .geo-line-v1 {
+    top: 0;
+    left: 80px;
+    width: 1px;
+    height: 900px;
+    background: rgba(27,59,107,0.05);
+  }
 
-/* ring */
-.ring{position:absolute;top:90px;left:170px;width:240px;height:240px;border-radius:50%;border:2px solid #F5F0E8}
+  .geo-line-v2 {
+    top: 0;
+    left: 760px;
+    width: 1px;
+    height: 900px;
+    background: rgba(27,59,107,0.03);
+  }
 
-/* inner circle accent */
-.inner-circle{position:absolute;top:150px;left:230px;width:120px;height:120px;border-radius:50%;background:#F5F0E8}
+  /* Horizontal lines */
+  .geo-line-h1 {
+    top: 130px;
+    left: 0;
+    width: 1600px;
+    height: 1px;
+    background: rgba(27,59,107,0.04);
+  }
 
-/* copper square */
-.copper-square{position:absolute;top:200px;left:60px;width:80px;height:80px;background:#8B7355;opacity:0.85}
+  .geo-line-h2 {
+    bottom: 100px;
+    left: 0;
+    width: 1600px;
+    height: 1px;
+    background: rgba(139,115,85,0.08);
+  }
 
-/* small circles */
-.sm-c1{position:absolute;top:100px;left:50px;width:18px;height:18px;border-radius:50%;background:#1B3B6B}
-.sm-c2{position:absolute;top:80px;left:490px;width:24px;height:24px;border-radius:50%;background:#8B7355}
-.sm-c3{position:absolute;top:340px;left:500px;width:14px;height:14px;border-radius:50%;background:#1B3B6B}
-.sm-c4{position:absolute;top:510px;left:30px;width:20px;height:20px;border-radius:50%;border:2px solid #1B3B6B}
+  /* Small filled square */
+  .geo-square-2 {
+    top: 150px;
+    right: 60px;
+    width: 18px;
+    height: 18px;
+    background: #8B7355;
+    opacity: 0.5;
+  }
 
-/* horizontal bar */
-.h-bar{position:absolute;top:410px;left:0;width:580px;height:6px;background:#1B3B6B}
-.h-bar-thin{position:absolute;top:430px;left:0;width:380px;height:2px;background:#8B7355}
+  /* Code grid background */
+  .code-grid {
+    position: absolute;
+    bottom: 120px;
+    right: 40px;
+    width: 420px;
+    height: 260px;
+    z-index: 1;
+    opacity: 0.045;
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    line-height: 1.6;
+    color: #1B3B6B;
+    white-space: pre;
+    word-break: break-all;
+    overflow: hidden;
+  }
 
-/* code-like blocks below */
-.code-blocks{position:absolute;top:460px;left:0;width:580px;display:flex;flex-direction:column;gap:8px}
-.code-row{display:flex;gap:6px;align-items:center}
-.code-seg{height:14px;background:#1B3B6B;opacity:0.85}
-.code-seg.copper{background:#8B7355}
-.code-seg.thin{height:4px;opacity:0.5}
-.code-seg.gap{background:transparent;border:1px solid rgba(27,59,107,0.3)}
+  /* Header section */
+  .header {
+    position: absolute;
+    top: 60px;
+    left: 100px;
+    z-index: 2;
+  }
 
-/* vertical accent lines */
-.v-line-1{position:absolute;top:20px;left:20px;width:2px;height:200px;background:#8B7355;opacity:0.5}
-.v-line-2{position:absolute;top:20px;left:560px;width:2px;height:200px;background:#8B7355;opacity:0.5}
+  .lecture-tag {
+    display: inline-block;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    color: #8B7355;
+    border: 1px solid rgba(139,115,85,0.4);
+    padding: 5px 16px;
+    margin-bottom: 18px;
+  }
 
-/* bottom annotation */
-.viz-caption{position:absolute;bottom:8px;left:0;width:580px;font-size:11px;letter-spacing:2px;color:#8B7355;text-align:center}
+  .main-title {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: #1B3B6B;
+    line-height: 1.3;
+    letter-spacing: 1px;
+  }
 
-/* bottom footer */
-.footer{position:absolute;bottom:56px;left:80px;right:80px;display:flex;align-items:center;z-index:5}
-.footer .line{flex:1;height:1px;background:rgba(139,115,85,0.4);margin:0 20px}
-.footer-text{font-size:11px;letter-spacing:3px;color:#8B7355}
-.footer-page{font-family:'Noto Serif SC',serif;font-size:14px;color:#1B3B6B}
+  .subtitle {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    color: #555;
+    margin-top: 12px;
+    letter-spacing: 2px;
+  }
 
-/* decorative corner marks */
-.corner-tl{position:absolute;top:48px;left:48px;width:20px;height:20px;border-top:2px solid #1B3B6B;border-left:2px solid #1B3B6B;z-index:6}
-.corner-tr{position:absolute;top:48px;right:48px;width:20px;height:20px;border-top:2px solid #1B3B6B;border-right:2px solid #1B3B6B;z-index:6}
-.corner-bl{position:absolute;bottom:48px;left:48px;width:20px;height:20px;border-bottom:2px solid #1B3B6B;border-left:2px solid #1B3B6B;z-index:6}
-.corner-br{position:absolute;bottom:48px;right:48px;width:20px;height:20px;border-bottom:2px solid #1B3B6B;border-right:2px solid #1B3B6B;z-index:6}
-</style></head><body>
+  /* Vertical accent bar */
+  .accent-bar {
+    position: absolute;
+    top: 210px;
+    left: 100px;
+    width: 4px;
+    height: 48px;
+    background: #1B3B6B;
+    z-index: 2;
+  }
+
+  .accent-bar-copper {
+    position: absolute;
+    top: 210px;
+    left: 112px;
+    width: 4px;
+    height: 28px;
+    background: #8B7355;
+    z-index: 2;
+  }
+
+  /* Section label */
+  .section-label {
+    position: absolute;
+    top: 210px;
+    left: 140px;
+    z-index: 2;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #8B7355;
+    letter-spacing: 4px;
+  }
+
+  /* Content area */
+  .content {
+    position: absolute;
+    top: 290px;
+    left: 100px;
+    width: 660px;
+    z-index: 2;
+  }
+
+  .geo-circle-content {
+    position: absolute;
+    z-index: 1;
+  }
+
+  .geo-circle-content-1 {
+    top: 340px;
+    left: 760px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: rgba(27,59,107,0.04);
+  }
+
+  .geo-square-content {
+    position: absolute;
+    z-index: 1;
+  }
+
+  .geo-square-content-1 {
+    top: 430px;
+    left: 860px;
+    width: 80px;
+    height: 80px;
+    background: rgba(139,115,85,0.05);
+  }
+
+  .item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 26px;
+  }
+
+  .item-number {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border: 1.5px solid #1B3B6B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #1B3B6B;
+    margin-right: 20px;
+    margin-top: 2px;
+  }
+
+  .item-number.alt {
+    background: #1B3B6B;
+    color: #F5F0E8;
+  }
+
+  .item-text {
+    flex: 1;
+  }
+
+  .item-title {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+    font-size: 21px;
+    font-weight: 600;
+    color: #1B3B6B;
+    line-height: 1.5;
+    margin-bottom: 4px;
+  }
+
+  .item-desc {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 14.5px;
+    font-weight: 400;
+    color: #555;
+    line-height: 1.7;
+  }
+
+  /* Location callout */
+  .locations {
+    position: absolute;
+    top: 290px;
+    right: 100px;
+    width: 320px;
+    z-index: 3;
+  }
+
+  .locations-label {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    color: #8B7355;
+    margin-bottom: 14px;
+    border-bottom: 1px solid rgba(139,115,85,0.2);
+    padding-bottom: 8px;
+  }
+
+  .location-item {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 12px;
+  }
+
+  .location-dot {
+    width: 6px;
+    height: 6px;
+    background: #1B3B6B;
+    margin-right: 12px;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  .location-dot.copper {
+    background: #8B7355;
+  }
+
+  .location-country {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1B3B6B;
+    margin-right: 8px;
+  }
+
+  .location-city {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #555;
+  }
+
+  .location-note {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(85,85,85,0.7);
+    margin-top: 16px;
+    line-height: 1.7;
+    font-style: italic;
+    border-left: 2px solid rgba(139,115,85,0.3);
+    padding-left: 12px;
+  }
+
+  /* Footer */
+  .footer {
+    position: absolute;
+    bottom: 38px;
+    left: 100px;
+    right: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+  }
+
+  .footer-left {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    color: rgba(85,85,85,0.5);
+    letter-spacing: 1.5px;
+  }
+
+  .footer-right {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    color: rgba(85,85,85,0.5);
+    letter-spacing: 1px;
+  }
+
+  .page-num {
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 700;
+    color: #1B3B6B;
+    font-size: 13px;
+  }
+
+  /* Small triangle decoration */
+  .geo-triangle {
+    position: absolute;
+    z-index: 1;
+    top: 500px;
+    left: 800px;
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 52px solid rgba(27,59,107,0.04);
+  }
+
+  /* Insight quote */
+  .insight-box {
+    position: absolute;
+    bottom: 120px;
+    left: 100px;
+    width: 660px;
+    z-index: 3;
+    padding: 16px 20px;
+    background: rgba(27,59,107,0.03);
+    border-left: 3px solid #1B3B6B;
+  }
+
+  .insight-label {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    color: #8B7355;
+    margin-bottom: 6px;
+  }
+
+  .insight-text {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #1B3B6B;
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  .insight-highlight {
+    font-weight: 600;
+    color: #1B3B6B;
+  }
+</style>
+</head>
+<body>
 <div class="slide">
-  <div class="frame"></div>
-  <div class="frame-inner"></div>
-  <div class="corner-tl"></div>
-  <div class="corner-tr"></div>
-  <div class="corner-bl"></div>
-  <div class="corner-br"></div>
 
-  <div class="top-bar">
-    <span>OPEN SOURCE</span>
-    <div class="line"></div>
-    <span>NEW INSTITUTIONAL ECONOMICS</span>
-    <div class="line"></div>
-    <span>VOL. Ⅱ</span>
+  <!-- Geometric decorations -->
+  <div class="geo geo-square-1"></div>
+  <div class="geo geo-circle-1"></div>
+  <div class="geo geo-circle-2"></div>
+  <div class="geo geo-line-v1"></div>
+  <div class="geo geo-line-v2"></div>
+  <div class="geo geo-line-h1"></div>
+  <div class="geo geo-line-h2"></div>
+  <div class="geo geo-square-2"></div>
+  <div class="geo geo-triangle"></div>
+  <div class="geo-circle-content geo-circle-content-1"></div>
+  <div class="geo-square-content geo-square-content-1"></div>
+
+  <!-- Code grid background texture -->
+  <div class="code-grid">01001000 01000101 01000011 01000100   01010011 01001001 01000100 01010010
+function(outsource, task, spec) {
+  let output = task.decompose(spec);
+  return output.map(piece => assign(piece, cheapLabor));
+}
+while (cost < budget) {
+  delegate(task[i], location.remote);
+}
+// 印度 · 班加罗尔  │  中国 · 大连
+01101000 01100101 01101100 01110000 01110100 01101000 01101111 01110111
+const laborMarket = new OutsourcingModel({
+  demand: '大厂降本',
+  supply: '细化任务',
+  info: 'asymmetric',
+  product: 'unknown_final'
+});
+λ · φ · π · ∫ · ∑ · ∂ · ∇ · Δ · μ · θ
+grid.network.map(node => {
+  node.cost = minimize(node.price);
+  node.value = uncertain;
+});
+01000011 01001001 01001000 01000001 01001000 01000011 01010001</div>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="lecture-tag">Lecture 04 · Labor Market</div>
+    <div class="main-title">软件开发劳动力市场</div>
+    <div class="subtitle">以外包为例 —— 全球化分工下的任务碎片化</div>
   </div>
 
-  <div class="section-num">— § 06 / LABOR MARKET —</div>
+  <!-- Accent bars and section label -->
+  <div class="accent-bar"></div>
+  <div class="accent-bar-copper"></div>
+  <div class="section-label">案例剖析</div>
 
-  <div class="title-area">
-    <div class="title-main">劳动力市场</div>
-    <div class="title-sub">以外包为例 &nbsp;·&nbsp; Outsourcing as Labor Market</div>
-    <div class="title-underline"></div>
-  </div>
+  <!-- Main content -->
+  <div class="content">
+    <div class="item">
+      <div class="item-number">01</div>
+      <div class="item-text">
+        <div class="item-title">大厂的成本节省动力</div>
+        <div class="item-desc">跨国企业与科技巨头将非核心开发任务外包至低成本地区，以制度化的方式压缩人力支出。</div>
+      </div>
+    </div>
 
-  <div class="bullets">
-    <div class="bullet">
-      <div class="bullet-marker square"></div>
-      <div class="bullet-text">
-        <span class="bullet-highlight">印度 · 班加罗尔 &nbsp;/&nbsp; 中国 · 大连</span>
-        <span class="em">全球软件外包的双极——英语时区与成本洼地的地理耦合</span>
+    <div class="item">
+      <div class="item-number">02</div>
+      <div class="item-text">
+        <div class="item-title">明确的需求与技能匹配</div>
+        <div class="item-desc">项目方提供细化的需求文档与接口规范，外包团队依据技能标签完成特定模块，效率来自分工而非创造。</div>
       </div>
     </div>
-    <div class="bullet">
-      <div class="bullet-marker circle"></div>
-      <div class="bullet-text">
-        <span class="bullet-highlight">大厂的成本节省</span>
-        <span class="em">将固定人力资本转化为可变支出，外包成为平台经济的底层基础设施</span>
+
+    <div class="item">
+      <div class="item-number alt">03</div>
+      <div class="item-text">
+        <div class="item-title">未知的最终产品</div>
+        <div class="item-desc">执行者只看到局部任务与交付节点，并不知晓产品全貌与用户价值——劳动被彻底原子化。</div>
       </div>
-    </div>
-    <div class="bullet">
-      <div class="bullet-marker line"></div>
-      <div class="bullet-text">
-        <span class="bullet-highlight">明确的项目需求 &amp; 技能匹配</span>
-        <span class="em">任务被拆解为可度量的原子单元，技能图谱与职位说明书精确对应</span>
-      </div>
-    </div>
-    <div class="bullet">
-      <div class="bullet-marker square"></div>
-      <div class="bullet-text">
-        <span class="bullet-highlight">并不知道最终的产品，只有细化的任务</span>
-        <span class="em">生产者的认知被剥离于意义整体——代码成为脱离目的的工具劳动</span>
-      </div>
-    </div>
-    <div class="bullet-quote">
-      「低廉的价格，未必好过开源项目的协作。」<br>
-      &nbsp;&nbsp;&nbsp;—— 当协作本身成为激励，市场定价的边界开始松动。
     </div>
   </div>
 
-  <div class="viz-area">
-    <div class="grid-bg"></div>
-    <div class="v-line-1"></div>
-    <div class="v-line-2"></div>
-
-    <div class="big-circle"></div>
-    <div class="ring"></div>
-    <div class="inner-circle"></div>
-    <div class="copper-square"></div>
-    <div class="sm-c1"></div>
-    <div class="sm-c2"></div>
-    <div class="sm-c3"></div>
-    <div class="sm-c4"></div>
-
-    <div class="h-bar"></div>
-    <div class="h-bar-thin"></div>
-
-    <div class="code-blocks">
-      <div class="code-row">
-        <div class="code-seg" style="width:60px"></div>
-        <div class="code-seg copper" style="width:40px"></div>
-        <div class="code-seg" style="width:80px"></div>
-        <div class="code-seg gap" style="width:30px"></div>
-        <div class="code-seg copper" style="width:50px"></div>
-        <div class="code-seg" style="width:35px"></div>
-      </div>
-      <div class="code-row">
-        <div class="code-seg copper" style="width:30px"></div>
-        <div class="code-seg" style="width:50px"></div>
-        <div class="code-seg" style="width:25px"></div>
-        <div class="code-seg" style="width:70px"></div>
-        <div class="code-seg copper" style="width:45px"></div>
-        <div class="code-seg" style="width:60px"></div>
-        <div class="code-seg" style="width:20px"></div>
-      </div>
-      <div class="code-row">
-        <div class="code-seg" style="width:40px"></div>
-        <div class="code-seg gap" style="width:20px"></div>
-        <div class="code-seg copper" style="width:65px"></div>
-        <div class="code-seg" style="width:30px"></div>
-        <div class="code-seg" style="width:55px"></div>
-        <div class="code-seg copper" style="width:35px"></div>
-      </div>
-      <div class="code-row">
-        <div class="code-seg copper" style="width:45px"></div>
-        <div class="code-seg" style="width:30px"></div>
-        <div class="code-seg" style="width:80px"></div>
-        <div class="code-seg gap" style="width:25px"></div>
-        <div class="code-seg" style="width:40px"></div>
-        <div class="code-seg copper" style="width:55px"></div>
-        <div class="code-seg" style="width:28px"></div>
-      </div>
-      <div class="code-row">
-        <div class="code-seg" style="width:25px"></div>
-        <div class="code-seg copper" style="width:60px"></div>
-        <div class="code-seg" style="width:40px"></div>
-        <div class="code-seg" style="width:35px"></div>
-        <div class="code-seg copper" style="width:20px"></div>
-        <div class="code-seg" style="width:70px"></div>
-        <div class="code-seg gap" style="width:20px"></div>
-      </div>
+  <!-- Locations -->
+  <div class="locations">
+    <div class="locations-label">GLOBAL OUTSOURCING HUBS</div>
+    <div class="location-item">
+      <div class="location-dot"></div>
+      <div class="location-country">印度</div>
+      <div class="location-city">班加罗尔</div>
     </div>
-
-    <div class="viz-caption">▸ CODE · GRID · NETWORK — 数字劳动的拓扑</div>
+    <div class="location-item">
+      <div class="location-dot copper"></div>
+      <div class="location-country">中国</div>
+      <div class="location-city">大连</div>
+    </div>
+    <div class="location-note">
+      离岸外包的典型地域——以英语能力与技术教育为基础，承接跨国企业的基础开发需求。
+    </div>
   </div>
 
+  <!-- Insight box -->
+  <div class="insight-box">
+    <div class="insight-label">CORE OBSERVATION</div>
+    <div class="insight-text">
+      低廉的价格未必好过开源项目的协作——当劳动被拆解为可替换的原子任务，
+      <span class="insight-highlight">知识沉淀与长期演化</span>的空间便被压缩为交易成本的最短路径。
+    </div>
+  </div>
+
+  <!-- Footer -->
   <div class="footer">
-    <span class="footer-text">OPEN-SOURCE.ORG &nbsp;·&nbsp; LECTURE DECK</span>
-    <div class="line"></div>
-    <span class="footer-page">06 / 24</span>
+    <div class="footer-left">开源之道 · 新制度经济学视角</div>
+    <div class="footer-right"><span class="page-num">14</span> / 26</div>
   </div>
+
 </div>
-</body></html>
+</body>
+</html>

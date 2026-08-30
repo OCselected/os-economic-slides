@@ -1,165 +1,381 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: eb417e7da299dc6f --><head><meta charset="UTF-8"><title>讲座规则 — 开源经济学</title><style>html,body{width:1600px;height:900px;overflow:hidden;margin:0;font-family:'Noto Sans SC','PingFang SC',sans-serif;}body{background:#F5F0E8;color:#1B3B6B;position:relative;}
+<!DOCTYPE html>
+<html><!-- source_hash: 1bce92d1d2f7e381 -->
+<head>
+<meta charset="UTF-8">
+<title>第 03 期 · 商业模式：规则下的具体操作</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
 
-/* subtle parchment texture */
-body::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;background:radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.4) 0%, transparent 50%),radial-gradient(ellipse at 70% 80%, rgba(139,115,85,0.06) 0%, transparent 60%);pointer-events:none;}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-/* Bauhaus decorative elements */
-.deco-circle-lg{position:absolute;width:380px;height:380px;border-radius:50%;border:2px solid #1B3B6B;top:-80px;left:520px;}
-.deco-circle-sm{position:absolute;width:160px;height:160px;border-radius:50%;background:#1B3B6B;top:60px;left:100px;}
-.deco-square{position:absolute;width:120px;height:120px;background:#1B3B6B;top:110px;left:720px;transform:rotate(0deg);}
-.deco-line-h{position:absolute;height:2px;background:#1B3B6B;}
-.deco-line-v{position:absolute;width:2px;background:#1B3B6B;}
-.deco-arc{position:absolute;width:240px;height:240px;border-radius:50%;border:3px solid #1B3B6B;border-right-color:transparent;border-bottom-color:transparent;border-top-color:transparent;top:380px;left:80px;}
-.deco-dot{position:absolute;width:14px;height:14px;border-radius:50%;background:#1B3B6B;}
-.deco-rect{position:absolute;width:80px;height:6px;background:#1B3B6B;}
-.deco-ring{position:absolute;width:60px;height:60px;border-radius:50%;border:2px solid #1B3B6B;}
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
 
-.top-rule{position:absolute;top:0;left:0;width:1600px;height:4px;background:#1B3B6B;}
-.bot-rule{position:absolute;bottom:0;left:0;width:1600px;height:4px;background:#1B3B6B;}
-.left-rule{position:absolute;top:0;left:0;width:4px;height:900px;background:#1B3B6B;}
+body {
+  background-color: #F5F0E8;
+  background-image: 
+    radial-gradient(ellipse at 20% 50%, rgba(27,59,107,0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(139,115,85,0.04) 0%, transparent 40%),
+    radial-gradient(ellipse at 60% 80%, rgba(27,59,107,0.02) 0%, transparent 45%);
+  position: relative;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: #1B3B6B;
+}
+
+/* Geometric decorative elements */
+.geo-circle-large {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  border: 3px solid #1B3B6B;
+  opacity: 0.08;
+  top: -100px;
+  right: -80px;
+}
+
+.geo-circle-small {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  opacity: 0.06;
+  bottom: 60px;
+  left: -40px;
+}
+
+.geo-square-tilted {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  background: #8B7355;
+  opacity: 0.07;
+  top: 120px;
+  right: 200px;
+  transform: rotate(45deg);
+}
+
+.geo-line-v1 {
+  position: absolute;
+  width: 2px;
+  height: 320px;
+  background: #1B3B6B;
+  opacity: 0.12;
+  left: 780px;
+  top: 100px;
+}
+
+.geo-line-h1 {
+  position: absolute;
+  width: 380px;
+  height: 2px;
+  background: #8B7355;
+  opacity: 0.15;
+  left: 100px;
+  bottom: 160px;
+}
+
+.geo-line-h2 {
+  position: absolute;
+  width: 200px;
+  height: 1px;
+  background: #1B3B6B;
+  opacity: 0.1;
+  right: 120px;
+  top: 380px;
+}
+
+.geo-triangle {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 87px solid #1B3B6B;
+  opacity: 0.05;
+  bottom: 120px;
+  right: 300px;
+}
+
+.geo-dot-grid {
+  position: absolute;
+  bottom: 80px;
+  right: 80px;
+  display: grid;
+  grid-template-columns: repeat(5, 8px);
+  grid-gap: 14px;
+  opacity: 0.12;
+}
+
+.geo-dot-grid span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #1B3B6B;
+}
 
 /* Header */
-.header-num{position:absolute;top:40px;left:60px;font-family:'Noto Serif SC',serif;font-size:22px;color:#8B7355;letter-spacing:6px;}
-.header-en{position:absolute;top:75px;left:60px;font-size:13px;color:#555;letter-spacing:3px;font-weight:300;}
+.header {
+  position: absolute;
+  top: 50px;
+  left: 80px;
+  right: 80px;
+}
 
-/* Title area */
-.main-title{position:absolute;top:155px;left:60px;font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:76px;font-weight:700;color:#1B3B6B;line-height:1.1;letter-spacing:8px;}
-.title-sub{position:absolute;top:275px;left:62px;font-family:'Noto Serif SC',serif;font-size:20px;color:#8B7355;letter-spacing:4px;}
-.title-underline{position:absolute;top:315px;left:62px;width:120px;height:3px;background:#1B3B6B;}
+.lecture-tag {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  color: #8B7355;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
 
-/* English tagline */
-.tagline{position:absolute;top:345px;left:62px;font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:16px;color:#555;letter-spacing:1px;}
+.main-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1B3B6B;
+  letter-spacing: 1px;
+}
+
+.main-title em {
+  font-style: normal;
+  color: #8B7355;
+  font-weight: 400;
+}
+
+/* Central quote block */
+.central-quote {
+  position: absolute;
+  top: 175px;
+  left: 80px;
+  width: 720px;
+}
+
+.quote-en {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 52px;
+  font-weight: 900;
+  color: #1B3B6B;
+  line-height: 1.15;
+  letter-spacing: -1px;
+  margin-bottom: 8px;
+}
+
+.quote-en .highlight {
+  color: #8B7355;
+}
+
+.quote-cn {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #555;
+  letter-spacing: 2px;
+  margin-top: 16px;
+  line-height: 1.6;
+}
 
 /* Rules section */
-.rules-area{position:absolute;top:410px;left:62px;width:720px;}
-.rule-item{display:flex;align-items:flex-start;margin-bottom:18px;}
-.rule-num{font-family:'Noto Serif SC',serif;font-size:28px;color:#1B3B6B;font-weight:700;width:48px;flex-shrink:0;line-height:1.4;}
-.rule-num-bar{width:4px;height:32px;background:#1B3B6B;margin-right:18px;flex-shrink:0;margin-top:2px;}
-.rule-text{font-size:19px;color:#1B3B6B;line-height:1.6;letter-spacing:1px;}
-.rule-text .em{font-weight:700;}
-.rule-text .note{font-size:14px;color:#555;margin-top:2px;font-weight:300;letter-spacing:0;}
+.rules-container {
+  position: absolute;
+  top: 440px;
+  left: 80px;
+  right: 80px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
 
-/* Right side - geometric composition */
-.geo-composition{position:absolute;top:110px;right:80px;width:640px;height:700px;}
-.geo-circle-big{position:absolute;width:340px;height:340px;border-radius:50%;border:2.5px solid #1B3B6B;top:20px;right:40px;}
-.geo-circle-fill{position:absolute;width:200px;height:200px;border-radius:50%;background:#1B3B6B;top:140px;right:160px;}
-.geo-square-tl{position:absolute;width:100px;height:100px;background:#1B3B6B;top:60px;right:340px;}
-.geo-square-tr{position:absolute;width:70px;height:70px;border:2px solid #1B3B6B;top:380px;right:50px;}
-.geo-square-bl{position:absolute;width:140px;height:140px;border:2px solid #1B3B6B;top:420px;right:280px;}
-.geo-line1{position:absolute;width:300px;height:2px;background:#1B3B6B;top:100px;right:60px;}
-.geo-line2{position:absolute;width:180px;height:2px;background:#1B3B6B;top:200px;right:200px;}
-.geo-line3{position:absolute;width:2px;height:200px;background:#1B3B6B;top:180px;right:200px;}
-.geo-line4{position:absolute;width:2px;height:160px;background:#1B3B6B;top:340px;right:360px;}
-.geo-arc2{position:absolute;width:180px;height:180px;border-radius:50%;border:3px solid #1B3B6B;border-left-color:transparent;border-top-color:transparent;top:400px;right:40px;}
-.geo-triangle{position:absolute;width:0;height:0;border-left:50px solid transparent;border-right:50px solid transparent;border-bottom:80px solid #1B3B6B;top:490px;right:200px;}
-.geo-dot1{position:absolute;width:18px;height:18px;border-radius:50%;background:#1B3B6B;top:180px;right:120px;}
-.geo-dot2{position:absolute;width:12px;height:12px;border-radius:50%;background:#1B3B6B;top:300px;right:80px;}
-.geo-dot3{position:absolute;width:10px;height:10px;border-radius:50%;background:#1B3B6B;top:560px;right:320px;}
-.geo-ring2{position:absolute;width:80px;height:80px;border-radius:50%;border:2px solid #1B3B6B;top:500px;right:380px;}
-.geo-rect1{position:absolute;width:60px;height:4px;background:#1B3B6B;top:280px;right:100px;}
+.rule-item {
+  position: relative;
+  padding: 22px 24px 22px 28px;
+  border-left: 3px solid #1B3B6B;
+}
 
-/* Central label on geometry */
-.geo-label{position:absolute;top:200px;right:220px;width:140px;text-align:center;font-family:'Noto Serif SC',serif;font-size:14px;color:#F5F0E8;letter-spacing:2px;line-height:1.8;font-weight:500;}
+.rule-item:nth-child(2) {
+  border-left-color: #8B7355;
+}
 
-/* Bottom bar */
-.bot-bar{position:absolute;bottom:30px;left:62px;right:62px;display:flex;justify-content:space-between;align-items:center;}
-.bot-left{font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:3px;}
-.bot-right{font-size:12px;color:#555;letter-spacing:2px;}
+.rule-item:nth-child(3) {
+  border-left-color: #1B3B6B;
+}
 
-/* Vertical label on right */
-.vertical-label{position:absolute;top:110px;right:40px;writing-mode:vertical-rl;font-family:Georgia,serif;font-style:italic;font-size:14px;color:#555;letter-spacing:4px;}
+.rule-item:nth-child(4) {
+  border-left-color: #8B7355;
+}
 
-/* Section divider */
-.section-divider{position:absolute;top:375px;left:62px;width:720px;height:1px;background:#1B3B6B;opacity:0.3;}
+.rule-item:nth-child(5) {
+  border-left-color: #1B3B6B;
+}
 
-/* Tag box */
-.tag-box{position:absolute;top:40px;right:60px;width:auto;padding:6px 16px;border:1.5px solid #1B3B6B;font-family:Georgia,serif;font-style:italic;font-size:13px;color:#1B3B6B;letter-spacing:2px;}
-</style></head><body>
+.rule-item:nth-child(6) {
+  border-left-color: #8B7355;
+}
 
-<div class="top-rule"></div>
-<div class="bot-rule"></div>
-<div class="left-rule"></div>
+.rule-number {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #8B7355;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  opacity: 0.7;
+}
 
-<div class="header-num">Ⅰ</div>
-<div class="header-en">OPEN SOURCE &nbsp;/&nbsp; INSTITUTIONAL ECONOMICS</div>
+.rule-text {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+  color: #1B3B6B;
+  line-height: 1.5;
+}
 
-<div class="tag-box">Lecture Rules</div>
+.rule-sub {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  color: #555;
+  line-height: 1.5;
+  margin-top: 6px;
+}
 
-<div class="main-title">共 读 规 则</div>
-<div class="title-sub">Reading Together — A Covenant of Inquiry</div>
-<div class="title-underline"></div>
-<div class="tagline">Business is just business — 且让我们以制度的目光重新审视之。</div>
+/* Footer */
+.footer {
+  position: absolute;
+  bottom: 40px;
+  left: 80px;
+  right: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-<div class="section-divider"></div>
+.footer-left {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  color: #8B7355;
+  letter-spacing: 2px;
+  font-weight: 300;
+}
 
-<div class="rules-area">
+.footer-right {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12px;
+  color: #555;
+  opacity: 0.6;
+  letter-spacing: 1px;
+}
 
-<div class="rule-item">
-  <div class="rule-num">01</div>
-  <div class="rule-num-bar"></div>
-  <div class="rule-text"><span class="em">关于讲座的规则说明</span>——本讲非教条传授，乃共读推演。<br><span class="note">以新制度经济学为透镜，讨论开源之生产、许可、交易与治理。</span></div>
+/* Separator line */
+.separator {
+  position: absolute;
+  top: 410px;
+  left: 80px;
+  width: 100px;
+  height: 2px;
+  background: #1B3B6B;
+  opacity: 0.5;
+}
+
+.section-label {
+  position: absolute;
+  top: 410px;
+  left: 195px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #8B7355;
+  letter-spacing: 3px;
+  line-height: 2px;
+}
+</style>
+</head>
+<body>
+
+<!-- Geometric decorations -->
+<div class="geo-circle-large"></div>
+<div class="geo-circle-small"></div>
+<div class="geo-square-tilted"></div>
+<div class="geo-line-v1"></div>
+<div class="geo-line-h1"></div>
+<div class="geo-line-h2"></div>
+<div class="geo-triangle"></div>
+<div class="geo-dot-grid">
+  <span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span><span></span>
+  <span></span><span></span><span></span><span></span><span></span>
 </div>
 
-<div class="rule-item">
-  <div class="rule-num">02</div>
-  <div class="rule-num-bar"></div>
-  <div class="rule-text"><span class="em">随时交流或提问</span>——对话在此不被打断。<br><span class="note">任何疑问、联想、异议，皆可插话。</span></div>
+<!-- Header -->
+<div class="header">
+  <div class="lecture-tag">LECTURE 03 · 开源经济学</div>
+  <div class="main-title">第 03 期 · 商业模式：<em>规则下的具体操作</em></div>
 </div>
 
-<div class="rule-item">
-  <div class="rule-num">03</div>
-  <div class="rule-num-bar"></div>
-  <div class="rule-text"><span class="em">指出错误有奖励</span>——谬误是思想进步的阶梯。<br><span class="note">欢迎指正事实、逻辑与引用之不当。</span></div>
+<!-- Central Quote -->
+<div class="central-quote">
+  <div class="quote-en">"Business is<br>just <span class="highlight">business.</span>"</div>
+  <div class="quote-cn">商业即商业——<br>规则之下的每一笔交易，皆是制度与选择的显影。</div>
 </div>
 
-<div class="rule-item">
-  <div class="rule-num">04</div>
-  <div class="rule-num-bar"></div>
-  <div class="rule-text"><span class="em">个人的视角是有限的，协作更佳</span>——独思有界，众议无疆。<br><span class="note">开源的精神，在于让智识成为公共品。</span></div>
+<!-- Separator and section label -->
+<div class="separator"></div>
+<div class="section-label">讲座规则</div>
+
+<!-- Rules Grid -->
+<div class="rules-container">
+  <div class="rule-item">
+    <div class="rule-number">Ⅰ</div>
+    <div class="rule-text">关于讲座的规则说明</div>
+    <div class="rule-sub">此乃协作之场，非演讲之台</div>
+  </div>
+  <div class="rule-item">
+    <div class="rule-number">Ⅱ</div>
+    <div class="rule-text">随时交流或提问</div>
+    <div class="rule-sub">思维的碰撞无需等待</div>
+  </div>
+  <div class="rule-item">
+    <div class="rule-number">Ⅲ</div>
+    <div class="rule-text">指出错误有奖励</div>
+    <div class="rule-sub">纠错即是贡献知识</div>
+  </div>
+  <div class="rule-item">
+    <div class="rule-number">Ⅳ</div>
+    <div class="rule-text">视角有限，协作更佳</div>
+    <div class="rule-sub">个体之镜映不全貌</div>
+  </div>
+  <div class="rule-item">
+    <div class="rule-number">Ⅴ</div>
+    <div class="rule-text">项目开始，就没有结束</div>
+    <div class="rule-sub">开源是持续的过程</div>
+  </div>
+  <div class="rule-item">
+    <div class="rule-number">Ⅵ</div>
+    <div class="rule-text">遵循「开源之道」</div>
+    <div class="rule-sub">开放、协作、自由共享</div>
+  </div>
 </div>
 
-<div class="rule-item">
-  <div class="rule-num">05</div>
-  <div class="rule-num-bar"></div>
-  <div class="rule-text"><span class="em">项目开始，就没有结束</span>——开源即永续之工程。<br><span class="note">代码有版本，思想有迭代。</span></div>
+<!-- Footer -->
+<div class="footer">
+  <div class="footer-left">BAUHAUS GEOMETRIC COMPOSITION</div>
+  <div class="footer-right">第 03 期 · 商业模式：规则下的具体操作</div>
 </div>
 
-<div class="rule-item">
-  <div class="rule-num">06</div>
-  <div class="rule-num-bar"></div>
-  <div class="rule-text"><span class="em">遵循「开源之道」</span>——开放、协作、透明、互惠。<br><span class="note">此为方法论，亦为价值观。</span></div>
-</div>
-
-</div>
-
-<!-- Right geometric composition -->
-<div class="geo-composition">
-  <div class="geo-circle-big"></div>
-  <div class="geo-circle-fill"></div>
-  <div class="geo-label">B U I L D<br>&amp;<br>C O L L A B</div>
-  <div class="geo-square-tl"></div>
-  <div class="geo-square-tr"></div>
-  <div class="geo-square-bl"></div>
-  <div class="geo-line1"></div>
-  <div class="geo-line2"></div>
-  <div class="geo-line3"></div>
-  <div class="geo-line4"></div>
-  <div class="geo-arc2"></div>
-  <div class="geo-triangle"></div>
-  <div class="geo-dot1"></div>
-  <div class="geo-dot2"></div>
-  <div class="geo-dot3"></div>
-  <div class="geo-ring2"></div>
-  <div class="geo-rect1"></div>
-</div>
-
-<div class="vertical-label">— A COVENANT OF INQUIRY —</div>
-
-<div class="bot-bar">
-  <div class="bot-left">新制度经济学视角下的开源 &nbsp;|&nbsp; Ⅰ — 共读规则</div>
-  <div class="bot-right">OPEN SOURCE WAYS &nbsp;·&nbsp; LECTURE DECK &nbsp;·&nbsp; PAGE 01 / 00</div>
-</div>
-
-</body></html>
+</body>
+</html>

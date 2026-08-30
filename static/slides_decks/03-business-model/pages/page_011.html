@@ -1,180 +1,477 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: 3ce9cb7a01a25402 --><head><meta charset="UTF-8"><title>软件的性质与获取</title><style>*{margin:0;padding:0;box-sizing:border-box;}html,body{width:1600px;height:900px;overflow:hidden;}body{background:#F5F0E8;font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;color:#1B3B6B;position:relative;overflow:hidden;}
-/* parchment texture */
-body::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;background:radial-gradient(ellipse at 30% 20%,rgba(255,255,255,0.4) 0%,transparent 50%),radial-gradient(ellipse at 80% 80%,rgba(139,115,85,0.06) 0%,transparent 60%);pointer-events:none;z-index:0;}
-/* top rule */
-.top-rule{position:absolute;top:54px;left:90px;width:1420px;height:1px;background:#1B3B6B;z-index:2;}
-.top-rule-thin{position:absolute;top:62px;left:90px;width:1420px;height:1px;background:#8B7355;opacity:0.5;z-index:2;}
-/* header text */
-.deck-label{position:absolute;top:30px;left:90px;font-size:13px;letter-spacing:6px;color:#8B7355;z-index:2;}
-.deck-page{position:absolute;top:30px;right:90px;font-size:13px;letter-spacing:4px;color:#8B7355;z-index:2;font-family:'Noto Serif SC',serif;}
-/* section number */
-.sec-num{position:absolute;top:112px;left:90px;font-size:14px;letter-spacing:4px;color:#555;z-index:2;}
-/* main title */
-.main-title{position:absolute;top:140px;left:90px;font-family:'Noto Serif SC','Songti SC',serif;font-size:56px;font-weight:700;color:#1B3B6B;letter-spacing:8px;z-index:2;line-height:1.1;}
-.sub-title{position:absolute;top:210px;left:95px;font-family:'Noto Serif SC',serif;font-size:17px;color:#555;letter-spacing:3px;font-style:italic;z-index:2;}
-.title-underline{position:absolute;top:240px;left:90px;width:120px;height:3px;background:#1B3B6B;z-index:2;}
-/* LEFT: visual metaphor - geometric boutique */
-.boutique{position:absolute;top:290px;left:90px;width:600px;height:520px;z-index:2;}
-.boutique-frame{position:absolute;top:0;left:0;width:600px;height:520px;border:2px solid #1B3B6B;}
-/* shelves */
-.shelf{position:absolute;left:20px;height:1px;background:#8B7355;opacity:0.7;}
-.shelf1{top:100px;width:560px;}
-.shelf2{top:200px;width:560px;}
-.shelf3{top:300px;width:560px;}
-.shelf4{top:400px;width:560px;}
-/* shelf label */
-.shelf-label{position:absolute;font-size:10px;letter-spacing:3px;color:#8B7355;font-family:'Noto Serif SC',serif;}
-/* goods - geometric items on shelves */
-.goods-circle{position:absolute;width:30px;height:30px;border-radius:50%;border:1.5px solid #1B3B6B;}
-.goods-square{position:absolute;width:28px;height:28px;border:1.5px solid #1B3B6B;}
-.goods-triangle{position:absolute;width:0;height:0;border-left:15px solid transparent;border-right:15px solid transparent;border-bottom:26px solid #1B3B6B;}
-.goods-dotted{position:absolute;width:32px;height:32px;border:1.5px solid #8B7355;display:flex;align-items:center;justify-content:center;}
-.goods-dotted::after{content:"";width:8px;height:8px;border-radius:50%;background:#8B7355;}
-/* goods rows */
-.g1a{top:72px;left:50px;} .g1b{top:72px;left:120px;} .g1c{top:70px;left:190px;} .g1d{top:72px;left:260px;} .g1e{top:70px;left:330px;} .g1f{top:72px;left:400px;}
-.g2a{top:168px;left:80px;} .g2b{top:170px;left:150px;} .g2c{top:172px;left:220px;} .g2d{top:168px;left:290px;} .g2e{top:170px;left:360px;} .g2f{top:172px;left:430px;}
-.g3a{top:272px;left:40px;} .g3b{top:268px;left:110px;} .g3c{top:270px;left:180px;} .g3d{top:272px;left:250px;} .g3e{top:270px;left:320px;} .g3f{top:268px;left:390px;} .g3g{top:272px;left:460px;}
-/* examining figure - geometric woman */
-.figure-body{position:absolute;top:340px;left:430px;width:50px;height:80px;border:2px solid #1B3B6B;border-radius:2px 2px 0 0;}
-.figure-head{position:absolute;top:318px;left:442px;width:26px;height:26px;border-radius:50%;border:2px solid #1B3B6B;background:#F5F0E8;}
-.figure-eye{position:absolute;top:326px;left:452px;width:4px;height:4px;border-radius:50%;background:#1B3B6B;}
-.figure-arm{position:absolute;top:370px;left:428px;width:40px;height:2px;background:#1B3B6B;}
-.figure-leg-l{position:absolute;top:415px;left:437px;width:8px;height:50px;border:2px solid #1B3B6B;border-top:none;}
-.figure-leg-r{position:absolute;top:415px;left:455px;width:8px;height:50px;border:2px solid #1B3B6B;border-top:none;}
-/* magnifier - examining */
-.mag-outer{position:absolute;top:350px;left:370px;width:50px;height:50px;border-radius:50%;border:2.5px solid #1B3B6B;background:rgba(245,240,232,0.6);}
-.mag-handle{position:absolute;top:390px;left:395px;width:3px;height:25px;background:#1B3B6B;}
-.mag-highlight{position:absolute;top:358px;left:378px;width:34px;height:34px;border-radius:50%;border:1px solid #8B7355;opacity:0.5;}
-/* caption under boutique */
-.boutique-caption{position:absolute;top:820px;left:90px;font-size:11px;letter-spacing:4px;color:#8B7355;font-family:'Noto Serif SC',serif;z-index:2;}
+<!DOCTYPE html>
+<html><!-- source_hash: 9db991a9047e71a9 -->
+<head>
+<meta charset="UTF-8">
+<title>软件的性质与获取</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
+}
+body {
+  background: #F5F0E8;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  color: #1B3B6B;
+  position: relative;
+}
+/* Subtle parchment texture */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(139,115,85,0.015) 3px,
+    rgba(139,115,85,0.015) 4px
+  );
+  pointer-events: none;
+}
+/* Header area */
+.header {
+  position: absolute;
+  top: 52px;
+  left: 80px;
+  right: 80px;
+}
+.slide-number {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  color: #8B7355;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+}
+.title {
+  font-size: 44px;
+  font-weight: 700;
+  color: #1B3B6B;
+  letter-spacing: 2px;
+  line-height: 1.2;
+}
+.title-underline {
+  width: 80px;
+  height: 3px;
+  background: #1B3B6B;
+  margin-top: 16px;
+}
+/* Visual composition area */
+.visual-area {
+  position: absolute;
+  left: 80px;
+  top: 210px;
+  width: 520px;
+  height: 620px;
+}
+/* Geometric boutique scene */
+.boutique-frame {
+  position: absolute;
+  width: 500px;
+  height: 580px;
+  border: 2px solid #1B3B6B;
+  border-radius: 0;
+}
+/* Shelves */
+.shelf-1 {
+  position: absolute;
+  top: 80px;
+  left: 30px;
+  width: 440px;
+  height: 2px;
+  background: #1B3B6B;
+}
+.shelf-2 {
+  position: absolute;
+  top: 220px;
+  left: 30px;
+  width: 440px;
+  height: 2px;
+  background: #1B3B6B;
+}
+/* Items on shelf 1 */
+.item-circle-1 {
+  position: absolute;
+  top: 42px;
+  left: 60px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #1B3B6B;
+}
+.item-square-1 {
+  position: absolute;
+  top: 40px;
+  left: 130px;
+  width: 40px;
+  height: 40px;
+  background: #8B7355;
+}
+.item-triangle-1 {
+  position: absolute;
+  top: 46px;
+  left: 200px;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 34px solid #1B3B6B;
+}
+.item-circle-2 {
+  position: absolute;
+  top: 44px;
+  left: 270px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #1B3B6B;
+  background: transparent;
+}
+.item-rect-1 {
+  position: absolute;
+  top: 38px;
+  left: 330px;
+  width: 22px;
+  height: 42px;
+  background: #8B7355;
+}
+.item-small-square {
+  position: absolute;
+  top: 48px;
+  left: 390px;
+  width: 28px;
+  height: 28px;
+  background: transparent;
+  border: 2px solid #8B7355;
+  transform: rotate(45deg);
+}
+/* Items on shelf 2 */
+.item-rect-2 {
+  position: absolute;
+  top: 182px;
+  left: 60px;
+  width: 30px;
+  height: 38px;
+  background: #1B3B6B;
+}
+.item-circle-3 {
+  position: absolute;
+  top: 184px;
+  left: 130px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: transparent;
+  border: 3px solid #8B7355;
+}
+.item-square-2 {
+  position: absolute;
+  top: 186px;
+  left: 200px;
+  width: 34px;
+  height: 34px;
+  background: #1B3B6B;
+}
+.item-half-circle {
+  position: absolute;
+  top: 186px;
+  left: 270px;
+  width: 40px;
+  height: 34px;
+  background: #8B7355;
+  border-radius: 40px 40px 0 0;
+}
+.item-diamond {
+  position: absolute;
+  top: 188px;
+  left: 340px;
+  width: 28px;
+  height: 28px;
+  background: #1B3B6B;
+  transform: rotate(45deg);
+}
+/* Figure examining goods */
+.figure-head {
+  position: absolute;
+  top: 320px;
+  left: 160px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #1B3B6B;
+}
+/* Body as line */
+.figure-body {
+  position: absolute;
+  top: 366px;
+  left: 180px;
+  width: 2px;
+  height: 100px;
+  background: #1B3B6B;
+}
+/* Arm reaching toward shelf */
+.figure-arm {
+  position: absolute;
+  top: 368px;
+  left: 181px;
+  width: 90px;
+  height: 2px;
+  background: #1B3B6B;
+  transform: rotate(-28deg);
+  transform-origin: left center;
+}
+/* Hand indicator */
+.figure-hand {
+  position: absolute;
+  top: 222px;
+  left: 258px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #1B3B6B;
+}
+/* Legs */
+.figure-leg-left {
+  position: absolute;
+  top: 466px;
+  left: 172px;
+  width: 2px;
+  height: 80px;
+  background: #1B3B6B;
+  transform: rotate(8deg);
+  transform-origin: top center;
+}
+.figure-leg-right {
+  position: absolute;
+  top: 466px;
+  left: 186px;
+  width: 2px;
+  height: 80px;
+  background: #1B3B6B;
+  transform: rotate(-8deg);
+  transform-origin: top center;
+}
+/* Gaze line */
+.gaze-line {
+  position: absolute;
+  top: 328px;
+  left: 204px;
+  width: 70px;
+  height: 1px;
+  background: #8B7355;
+}
+.gaze-dot {
+  position: absolute;
+  top: 325px;
+  left: 270px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #8B7355;
+}
+/* Decorative corner circles */
+.deco-circle-tl {
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #8B7355;
+}
+.deco-circle-br {
+  position: absolute;
+  bottom: -12px;
+  right: -12px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #1B3B6B;
+}
+/* Text content area */
+.content-area {
+  position: absolute;
+  left: 680px;
+  top: 220px;
+  width: 840px;
+}
+.content-intro {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 14px;
+  color: #8B7355;
+  letter-spacing: 2px;
+  margin-bottom: 28px;
+  text-transform: uppercase;
+}
+.content-list {
+  list-style: none;
+  padding: 0;
+}
+.content-list li {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 22px;
+  line-height: 1.6;
+  color: #1B3B6B;
+  margin-bottom: 22px;
+  padding-left: 32px;
+  position: relative;
+}
+.content-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #1B3B6B;
+  background: transparent;
+}
+.content-list li:nth-child(odd)::before {
+  background: #1B3B6B;
+}
+.content-list li:nth-child(2)::before {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid #1B3B6B;
+  background: transparent;
+  top: 13px;
+}
+.content-list li:nth-child(3)::before {
+  background: transparent;
+  border-color: #8B7355;
+}
+.content-list li:nth-child(4)::before {
+  background: #8B7355;
+  border-color: #8B7355;
+}
+.content-list li:nth-child(5)::before {
+  background: transparent;
+  border-color: #1B3B6B;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  top: 13px;
+}
+.content-list li:nth-child(6)::before {
+  background: #1B3B6B;
+}
+/* Bottom accent line */
+.bottom-line {
+  position: absolute;
+  bottom: 50px;
+  left: 80px;
+  width: 1440px;
+  height: 1px;
+  background: #8B7355;
+  opacity: 0.3;
+}
+/* Bottom info */
+.bottom-info {
+  position: absolute;
+  bottom: 24px;
+  left: 80px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  color: #8B7355;
+  letter-spacing: 2px;
+}
+/* Metaphor note */
+.metaphor-note {
+  position: absolute;
+  bottom: 100px;
+  left: 680px;
+  width: 840px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  color: #8B7355;
+  letter-spacing: 1px;
+  font-style: italic;
+  border-left: 2px solid #8B7355;
+  padding-left: 16px;
+}
+/* Decorative large circle in background */
+.bg-circle {
+  position: absolute;
+  top: -150px;
+  right: -100px;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  border: 1px solid #1B3B6B;
+  opacity: 0.06;
+}
+</style>
+</head>
+<body>
 
-/* RIGHT: content */
-.content-area{position:absolute;top:290px;left:750px;width:760px;height:520px;z-index:2;}
-.content-rule{position:absolute;top:0;left:0;width:2px;height:520px;background:#1B3B6B;opacity:0.15;}
+<div class="bg-circle"></div>
 
-/* bullet items */
-.bullet{position:absolute;left:40px;width:700px;display:flex;align-items:flex-start;}
-.b-num{font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;width:36px;flex-shrink:0;padding-top:6px;letter-spacing:1px;}
-.b-dot{width:8px;height:8px;border-radius:50%;background:#1B3B6B;margin-top:12px;margin-right:16px;flex-shrink:0;}
-.b-text{flex:1;}
-.b-heading{font-family:'Noto Serif SC','Songti SC',serif;font-size:20px;color:#1B3B6B;font-weight:600;letter-spacing:2px;line-height:1.3;}
-.b-desc{font-size:13.5px;color:#555;margin-top:6px;line-height:1.6;letter-spacing:1px;}
-
-.b1{top:0;} .b2{top:115px;} .b3{top:230px;} .b4{top:345px;}
-
-/* decorative elements */
-.deco-circle{position:absolute;width:70px;height:70px;border-radius:50%;border:1.5px solid #8B7355;top:310px;right:60px;opacity:0.4;z-index:1;}
-.deco-square{position:absolute;width:40px;height:40px;border:1.5px solid #1B3B6B;top:800px;right:100px;opacity:0.3;z-index:1;}
-.deco-line{position:absolute;top:800px;right:60px;width:60px;height:1px;background:#8B7355;opacity:0.5;z-index:1;}
-
-/* footer */
-.footer-rule{position:absolute;bottom:24px;left:90px;width:1420px;height:1px;background:#1B3B6B;z-index:2;}
-.footer-thin{position:absolute;bottom:18px;left:90px;width:1420px;height:1px;background:#8B7355;opacity:0.4;z-index:2;}
-.footer-left{position:absolute;bottom:2px;left:90px;font-size:10px;letter-spacing:3px;color:#8B7355;z-index:2;}
-.footer-right{position:absolute;bottom:2px;right:90px;font-size:10px;letter-spacing:3px;color:#8B7355;font-family:'Noto Serif SC',serif;z-index:2;}
-.footer-center{position:absolute;bottom:2px;left:50%;transform:translateX(-50%);font-size:10px;letter-spacing:5px;color:#8B7355;z-index:2;}
-</style></head><body>
-
-<div class="deck-label">OPEN SOURCE &nbsp;·&nbsp; NEW INSTITUTIONAL ECONOMICS</div>
-<div class="deck-page">03 / 12</div>
-<div class="top-rule"></div>
-<div class="top-rule-thin"></div>
-
-<div class="sec-num">SECTION Ⅰ &nbsp;·&nbsp; 商品属性</div>
-<div class="main-title">软件的性质与获取</div>
-<div class="sub-title">The Nature and Acquisition of Software</div>
-<div class="title-underline"></div>
-
-<!-- LEFT: Boutique visual metaphor -->
-<div class="boutique">
-  <div class="boutique-frame"></div>
-  <div class="shelf shelf1"></div>
-  <div class="shelf shelf2"></div>
-  <div class="shelf shelf3"></div>
-  <div class="shelf shelf4"></div>
-
-  <div class="goods-circle g1a"></div>
-  <div class="goods-square g1b"></div>
-  <div class="goods-triangle g1c"></div>
-  <div class="goods-dotted g1d"></div>
-  <div class="goods-circle g1e"></div>
-  <div class="goods-square g1f"></div>
-
-  <div class="goods-square g2a"></div>
-  <div class="goods-triangle g2b"></div>
-  <div class="goods-circle g2c"></div>
-  <div class="goods-dotted g2d"></div>
-  <div class="goods-square g2e"></div>
-  <div class="goods-circle g2f"></div>
-
-  <div class="goods-triangle g3a"></div>
-  <div class="goods-circle g3b"></div>
-  <div class="goods-dotted g3c"></div>
-  <div class="goods-square g3d"></div>
-  <div class="goods-triangle g3e"></div>
-  <div class="goods-circle g3f"></div>
-  <div class="goods-dotted g3g"></div>
-
-  <!-- examining figure -->
-  <div class="figure-head"></div>
-  <div class="figure-eye"></div>
-  <div class="figure-body"></div>
-  <div class="figure-arm"></div>
-  <div class="figure-leg-l"></div>
-  <div class="figure-leg-r"></div>
-  <div class="mag-outer"></div>
-  <div class="mag-handle"></div>
-  <div class="mag-highlight"></div>
+<div class="header">
+  <div class="slide-number">第 03 期 · 商业模式 — 规则下的具体操作</div>
+  <div class="title">软件的性质与获取</div>
+  <div class="title-underline"></div>
 </div>
-<div class="boutique-caption">— 精品店内，细察商品 —</div>
 
-<!-- RIGHT: Content -->
+<div class="visual-area">
+  <div class="boutique-frame">
+    <div class="deco-circle-tl"></div>
+    <div class="deco-circle-br"></div>
+    
+    <div class="shelf-1"></div>
+    <div class="shelf-2"></div>
+    
+    <!-- Items on shelf 1 -->
+    <div class="item-circle-1"></div>
+    <div class="item-square-1"></div>
+    <div class="item-triangle-1"></div>
+    <div class="item-circle-2"></div>
+    <div class="item-rect-1"></div>
+    <div class="item-small-square"></div>
+    
+    <!-- Items on shelf 2 -->
+    <div class="item-rect-2"></div>
+    <div class="item-circle-3"></div>
+    <div class="item-square-2"></div>
+    <div class="item-half-circle"></div>
+    <div class="item-diamond"></div>
+    
+    <!-- Figure -->
+    <div class="figure-head"></div>
+    <div class="figure-body"></div>
+    <div class="figure-arm"></div>
+    <div class="figure-hand"></div>
+    <div class="figure-leg-left"></div>
+    <div class="figure-leg-right"></div>
+    
+    <!-- Gaze line -->
+    <div class="gaze-line"></div>
+    <div class="gaze-dot"></div>
+  </div>
+</div>
+
 <div class="content-area">
-  <div class="content-rule"></div>
-
-  <div class="bullet b1">
-    <div class="b-dot"></div>
-    <div class="b-text">
-      <div class="b-heading">信息载体 · 无形之物</div>
-      <div class="b-desc">软件并非物理实体，它以代码与数据结构存在，脱离任何单一物质形态</div>
-    </div>
-  </div>
-
-  <div class="bullet b2">
-    <div class="b-dot"></div>
-    <div class="b-text">
-      <div class="b-heading">无排他性 · 无竞争性</div>
-      <div class="b-desc">一人使用不损他人，边际分配成本趋零，天然倾向于非排他的公共物品</div>
-    </div>
-  </div>
-
-  <div class="bullet b3">
-    <div class="b-dot"></div>
-    <div class="b-text">
-      <div class="b-heading">复制成本近乎为零</div>
-      <div class="b-desc">边际复制成本几可忽略，而开发成本却极为高昂——一项高度复杂的系统工程</div>
-    </div>
-  </div>
-
-  <div class="bullet b4">
-    <div class="b-dot"></div>
-    <div class="b-text">
-      <div class="b-heading">学习成本 · 试用与宣传成本</div>
-      <div class="b-desc">用户需投入认知资源理解其逻辑，推广者需承担试用转化与宣扬的隐性代价</div>
-    </div>
-  </div>
+  <div class="content-intro">— 信息品的经济学特征 —</div>
+  <ul class="content-list">
+    <li>信息载体、无形</li>
+    <li>无排他性、无竞争性</li>
+    <li>复制成本几乎可以忽略不计</li>
+    <li>开发成本极为高昂、复杂的工程项目</li>
+    <li>学习成本高</li>
+    <li>试用和宣传成本也高</li>
+  </ul>
 </div>
 
-<div class="deco-circle"></div>
-<div class="deco-square"></div>
-<div class="deco-line"></div>
+<div class="metaphor-note">
+  精品店内女士细察商品——在秩序中寻求价值与选择的审慎
+</div>
 
-<div class="footer-rule"></div>
-<div class="footer-thin"></div>
-<div class="footer-left">2025 &nbsp;·&nbsp; 开源之道</div>
-<div class="footer-center">B A U H A U S &nbsp;·&nbsp; A C A D E M I C</div>
-<div class="footer-right">Ⅲ &nbsp; 商品</div>
+<div class="bottom-line"></div>
+<div class="bottom-info">LECTURE 03 · 开源经济学 · 新制度经济学视角</div>
 
-</body></html>
+</body>
+</html>

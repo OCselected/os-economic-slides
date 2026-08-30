@@ -1,491 +1,387 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: 89fb46f7be95b036 --><head><meta charset="UTF-8"><title>代码无法售卖的难题</title><style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html, body { width: 1600px; height: 900px; overflow: hidden; margin: 0; }
-body {
-  background: #F5F0E8;
-  font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
-  color: #1B3B6B;
-  position: relative;
-}
-/* Subtle parchment texture */
-body::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; width: 1600px; height: 900px;
-  background:
-    radial-gradient(ellipse at 20% 10%, rgba(139,115,85,0.04) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 90%, rgba(27,59,107,0.03) 0%, transparent 50%);
-  pointer-events: none;
-}
+<!DOCTYPE html>
+<html lang="zh-CN"><!-- source_hash: 1fadd782a3b3c5de -->
+<head>
+<meta charset="UTF-8">
+<title>第 04 期 · 软件开发劳动力市场 — 兵与王的影子</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 1600px; height: 900px; overflow: hidden;
+    background: #F5F0E8;
+    font-family: 'Noto Sans SC', sans-serif;
+  }
+  .slide {
+    position: relative;
+    width: 1600px; height: 900px;
+    background: #F5F0E8;
+  }
 
-/* Top decorative bar */
-.top-bar {
-  position: absolute;
-  top: 0; left: 0; width: 1600px; height: 8px;
-  background: #1B3B6B;
-}
-.top-bar-accent {
-  position: absolute;
-  top: 8px; left: 0; width: 400px; height: 3px;
-  background: #8B7355;
-}
+  /* subtle parchment texture lines */
+  .parchment-line {
+    position: absolute;
+    width: 100%; height: 1px;
+    background: rgba(139, 115, 85, 0.06);
+  }
 
-/* Header section */
-.header {
-  position: absolute;
-  top: 48px; left: 80px; width: 1440px;
-  display: flex; align-items: center; justify-content: space-between;
-}
-.chapter-tag {
-  font-family: 'Noto Serif SC', 'Songti SC', serif;
-  font-size: 14px;
-  letter-spacing: 4px;
-  color: #8B7355;
-  font-weight: 600;
-}
-.header-line {
-  flex: 1;
-  height: 1px;
-  background: #1B3B6B;
-  opacity: 0.3;
-  margin: 0 30px;
-}
-.page-num {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 14px;
-  letter-spacing: 2px;
-  color: #1B3B6B;
-  font-weight: 600;
-}
+  /* header area */
+  .header {
+    position: absolute;
+    top: 48px; left: 80px;
+    width: 1440px;
+  }
+  .header .lecture-tag {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 14px;
+    letter-spacing: 6px;
+    color: #8B7355;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .header .divider-line {
+    width: 120px; height: 2px;
+    background: #1B3B6B;
+    margin-top: 8px;
+  }
+  .header .slide-title {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 36px;
+    color: #1B3B6B;
+    margin-top: 14px;
+    line-height: 1.3;
+    font-weight: 700;
+  }
+  .header .subtitle {
+    font-size: 15px;
+    color: #555;
+    margin-top: 10px;
+    line-height: 1.6;
+    letter-spacing: 1px;
+  }
 
-/* Main layout */
-.main {
-  position: absolute;
-  top: 110px; left: 80px; width: 1440px; height: 720px;
-  display: flex;
-  gap: 60px;
-}
+  /* left panel — geometric metaphor */
+  .left-panel {
+    position: absolute;
+    top: 210px; left: 60px;
+    width: 580px; height: 640px;
+  }
+  .caption {
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%;
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 15px;
+    color: #8B7355;
+    text-align: center;
+    line-height: 1.8;
+    letter-spacing: 2px;
+    font-style: italic;
+  }
+  .caption .emphasis {
+    color: #1B3B6B;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 17px;
+  }
 
-/* Left: Visual metaphor area */
-.visual-area {
-  width: 560px;
-  height: 720px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  /* right panel — content */
+  .right-panel {
+    position: absolute;
+    top: 210px; left: 680px;
+    width: 860px; height: 620px;
+  }
 
-.visual-frame {
-  position: relative;
-  width: 520px;
-  height: 560px;
-}
+  .content-block {
+    margin-bottom: 28px;
+  }
+  .content-block .block-label {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 12px;
+    letter-spacing: 5px;
+    color: #8B7355;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  .content-block .block-label::before {
+    content: '';
+    display: inline-block;
+    width: 24px; height: 1px;
+    background: #8B7355;
+    vertical-align: middle;
+    margin-right: 10px;
+  }
 
-/* Bauhaus geometric chess composition */
-/* King shadow - large behind */
-.king-shadow-base {
-  position: absolute;
-  top: 30px; left: 60px;
-  width: 280px;
-  height: 440px;
-  opacity: 0.18;
-}
-.king-shadow-top {
-  position: absolute;
-  top: 30px; left: 120px;
-  width: 160px;
-  height: 16px;
-  background: #1B3B6B;
-}
-.king-shadow-cross {
-  position: absolute;
-  top: 0px; left: 194px;
-  width: 12px; height: 40px;
-  background: #1B3B6B;
-  opacity: 0.18;
-}
-.king-shadow-cross-h {
-  position: absolute;
-  top: 22px; left: 174px;
-  width: 52px; height: 12px;
-  background: #1B3B6B;
-  opacity: 0.18;
-}
-.king-shadow-head {
-  position: absolute;
-  top: 46px; left: 128px;
-  width: 144px;
-  height: 144px;
-  background: #1B3B6B;
-  opacity: 0.18;
-}
-.king-shadow-body {
-  position: absolute;
-  top: 190px; left: 100px;
-  width: 200px;
-  height: 140px;
-  background: #1B3B6B;
-  opacity: 0.18;
-}
-.king-shadow-shoulder-l {
-  position: absolute;
-  top: 190px; left: 70px;
-  width: 60px;
-  height: 140px;
-  background: #1B3B6B;
-  opacity: 0.18;
-}
-.king-shadow-shoulder-r {
-  position: absolute;
-  top: 190px; left: 300px;
-  width: 60px;
-  height: 140px;
-  background: #1B3B6B;
-  opacity: 0.18;
-}
-.king-shadow-belt {
-  position: absolute;
-  top: 270px; left: 70px;
-  width: 290px;
-  height: 8px;
-  background: #F5F0E8;
-  opacity: 0.6;
-}
-.king-shadow-legs {
-  position: absolute;
-  top: 330px; left: 120px;
-  width: 160px;
-  height: 140px;
-  background: #1B3B6B;
-  opacity: 0.18;
-}
-.king-shadow-foot {
-  position: absolute;
-  top: 470px; left: 90px;
-  width: 220px;
-  height: 18px;
-  background: #1B3B6B;
-  opacity: 0.18;
-}
+  .point-list {
+    list-style: none;
+  }
+  .point-list li {
+    position: relative;
+    padding-left: 22px;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #1B3B6B;
+    margin-bottom: 9px;
+    font-weight: 400;
+  }
+  .point-list li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 11px;
+    width: 8px; height: 8px;
+    background: #1B3B6B;
+  }
+  .point-list li:nth-child(2)::before {
+    background: none;
+    border: 1.5px solid #1B3B6B;
+  }
+  .point-list li:nth-child(4)::before {
+    background: none;
+    border: 1.5px solid #1B3B6B;
+  }
+  .point-list li:nth-child(6)::before {
+    background: none;
+    border: 1.5px solid #1B3B6B;
+  }
+  .point-list li .accent {
+    font-weight: 600;
+    color: #1B3B6B;
+  }
+  .point-list li .gray {
+    color: #555;
+    font-size: 13px;
+  }
 
-/* Pawn in foreground */
-.pawn-head {
-  position: absolute;
-  top: 260px; left: 240px;
-  width: 80px; height: 80px;
-  background: #1B3B6B;
-  border-radius: 50%;
-  z-index: 2;
-}
-.pawn-neck {
-  position: absolute;
-  top: 335px; left: 262px;
-  width: 36px; height: 20px;
-  background: #1B3B6B;
-  z-index: 2;
-}
-.pawn-body {
-  position: absolute;
-  top: 350px; left: 220px;
-  width: 80px; height: 130px;
-  background: #1B3B6B;
-  z-index: 2;
-}
-.pawn-belt {
-  position: absolute;
-  top: 395px; left: 210px;
-  width: 100px; height: 8px;
-  background: #F5F0E8;
-  z-index: 3;
-}
-.pawn-belt-inner {
-  position: absolute;
-  top: 396px; left: 213px;
-  width: 94px; height: 4px;
-  background: #1B3B6B;
-  z-index: 3;
-}
-.pawn-foot {
-  position: absolute;
-  top: 475px; left: 195px;
-  width: 130px; height: 20px;
-  background: #1B3B6B;
-  z-index: 2;
-}
+  .separator {
+    width: 60px; height: 1px;
+    background: #8B7355;
+    opacity: 0.4;
+    margin: 22px 0;
+  }
 
-/* Shadow line from pawn to king shadow */
-.shadow-arrow {
-  position: absolute;
-  top: 300px; left: 250px;
-  width: 80px; height: 1px;
-  background: #8B7355;
-  opacity: 0.6;
-  z-index: 1;
-}
+  .highlight-box {
+    position: relative;
+    padding: 20px 24px;
+    border-left: 3px solid #1B3B6B;
+    background: rgba(27, 59, 107, 0.04);
+    margin-top: 10px;
+  }
+  .highlight-box .hb-label {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: #8B7355;
+    margin-bottom: 8px;
+  }
+  .highlight-box .hb-text {
+    font-size: 16px;
+    color: #1B3B6B;
+    line-height: 1.7;
+    font-weight: 500;
+  }
+  .highlight-box .hb-text .strong {
+    font-weight: 700;
+  }
 
-/* Geometric decoration squares */
-.deco-square-1 {
-  position: absolute;
-  top: 10px; left: 10px;
-  width: 40px; height: 40px;
-  background: #8B7355;
-}
-.deco-square-2 {
-  position: absolute;
-  top: 10px; left: 58px;
-  width: 20px; height: 20px;
-  border: 2px solid #1B3B6B;
-}
-.deco-circle {
-  position: absolute;
-  bottom: 20px; right: 10px;
-  width: 60px; height: 60px;
-  border: 3px solid #1B3B6B;
-  border-radius: 50%;
-}
-.deco-circle-inner {
-  position: absolute;
-  bottom: 32px; right: 22px;
-  width: 36px; height: 36px;
-  background: #1B3B6B;
-  border-radius: 50%;
-}
-.deco-line {
-  position: absolute;
-  top: 250px; left: 5px;
-  width: 3px; height: 80px;
-  background: #8B7355;
-}
-.deco-square-3 {
-  position: absolute;
-  bottom: 10px; left: 10px;
-  width: 30px; height: 30px;
-  background: #1B3B6B;
-}
+  /* footer */
+  .footer {
+    position: absolute;
+    bottom: 30px; left: 80px;
+    width: 1440px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: #8B7355;
+    letter-spacing: 3px;
+  }
+  .footer .page-num {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 13px;
+  }
 
-/* Metaphor caption */
-.metaphor-caption {
-  position: absolute;
-  bottom: 0px; left: 0; width: 520px;
-  text-align: center;
-  font-family: 'Noto Serif SC', serif;
-  font-size: 16px;
-  color: #555;
-  letter-spacing: 2px;
-  line-height: 1.8;
-  font-style: italic;
-}
+  /* geometric decoration elements */
+  .geo-circle-1 {
+    position: absolute;
+    top: 80px; right: 100px;
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    border: 2px solid #1B3B6B;
+    opacity: 0.12;
+  }
+  .geo-square-1 {
+    position: absolute;
+    top: 100px; right: 170px;
+    width: 30px; height: 30px;
+    background: #1B3B6B;
+    opacity: 0.08;
+  }
+  .geo-line-1 {
+    position: absolute;
+    top: 48px; right: 240px;
+    width: 80px; height: 1px;
+    background: #8B7355;
+    opacity: 0.3;
+  }
+  .geo-circle-2 {
+    position: absolute;
+    bottom: 50px; right: 140px;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: #8B7355;
+    opacity: 0.08;
+  }
+  .geo-square-2 {
+    position: absolute;
+    bottom: 70px; right: 200px;
+    width: 18px; height: 18px;
+    border: 1.5px solid #1B3B6B;
+    opacity: 0.15;
+  }
 
-/* Right: Content area */
-.content-area {
-  width: 820px;
-  height: 720px;
-  display: flex;
-  flex-direction: column;
-}
-
-.title-block {
-  margin-bottom: 40px;
-}
-.title-eyebrow {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 13px;
-  letter-spacing: 6px;
-  color: #8B7355;
-  font-weight: 600;
-  margin-bottom: 18px;
-}
-.main-title {
-  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
-  font-size: 46px;
-  font-weight: 700;
-  color: #1B3B6B;
-  letter-spacing: 2px;
-  line-height: 1.3;
-  margin-bottom: 16px;
-}
-.title-accent {
-  display: inline-block;
-  width: 60px;
-  height: 4px;
-  background: #8B7355;
-  margin-bottom: 20px;
-}
-.subtitle {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 18px;
-  color: #555;
-  line-height: 1.7;
-  font-style: italic;
-  letter-spacing: 1px;
-}
-
-/* Bullet list */
-.bullet-list {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-.bullet-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 18px;
-}
-.bullet-marker {
-  flex-shrink: 0;
-  width: 12px;
-  height: 12px;
-  background: #1B3B6B;
-  margin-top: 8px;
-}
-.bullet-marker.circle {
-  border-radius: 50%;
-  background: transparent;
-  border: 2px solid #8B7355;
-}
-.bullet-marker.square {
-  background: #8B7355;
-}
-.bullet-text {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 17px;
-  color: #1B3B6B;
-  line-height: 1.65;
-  letter-spacing: 0.5px;
-  flex: 1;
-}
-.bullet-text .em {
-  color: #8B7355;
-  font-weight: 600;
-}
-.bullet-text .num {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 14px;
-  color: #8B7355;
-  margin-right: 10px;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
-/* Bottom decorative line */
-.bottom-bar {
-  position: absolute;
-  bottom: 30px; left: 80px;
-  width: 1440px;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-.bottom-line {
-  flex: 1;
-  height: 1px;
-  background: #1B3B6B;
-  opacity: 0.2;
-}
-.bottom-text {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 12px;
-  letter-spacing: 4px;
-  color: #8B7355;
-}
-</style></head>
+</style>
+</head>
 <body>
+<div class="slide">
 
-<div class="top-bar"></div>
-<div class="top-bar-accent"></div>
+  <!-- subtle parchment horizontal lines -->
+  <div class="parchment-line" style="top:150px;"></div>
+  <div class="parchment-line" style="top:300px;"></div>
+  <div class="parchment-line" style="top:450px;"></div>
+  <div class="parchment-line" style="top:600px;"></div>
+  <div class="parchment-line" style="top:750px;"></div>
 
-<div class="header">
-  <div class="chapter-tag">新制度经济学 · 开源软件</div>
-  <div class="header-line"></div>
-  <div class="page-num">07 / 24</div>
-</div>
+  <!-- decorative geometry -->
+  <div class="geo-circle-1"></div>
+  <div class="geo-square-1"></div>
+  <div class="geo-line-1"></div>
+  <div class="geo-circle-2"></div>
+  <div class="geo-square-2"></div>
 
-<div class="main">
+  <!-- header -->
+  <div class="header">
+    <div class="lecture-tag">Lecture 04 · 软件开发劳动力市场</div>
+    <div class="divider-line"></div>
+    <div class="slide-title">兵投下王的影子</div>
+    <div class="subtitle">The Pawn Casts the King's Shadow &nbsp;·&nbsp; 代码的不可售卖性与知识产权困境</div>
+  </div>
 
-  <!-- Left: Visual Metaphor -->
-  <div class="visual-area">
-    <div class="visual-frame">
-      <!-- Decorative elements -->
-      <div class="deco-square-1"></div>
-      <div class="deco-square-2"></div>
-      <div class="deco-circle"></div>
-      <div class="deco-circle-inner"></div>
-      <div class="deco-line"></div>
-      <div class="deco-square-3"></div>
+  <!-- left panel: geometric metaphor -->
+  <div class="left-panel">
+    <svg width="580" height="640" viewBox="0 0 580 640">
+      <!-- chessboard hint: grid lines -->
+      <g opacity="0.06" stroke="#1B3B6B" stroke-width="0.5">
+        <line x1="0" y1="0" x2="0" y2="640"/>
+        <line x1="0" y1="0" x2="580" y2="0"/>
+        <line x1="0" y1="100" x2="580" y2="100"/>
+        <line x1="0" y1="200" x2="580" y2="200"/>
+        <line x1="0" y1="300" x2="580" y2="300"/>
+        <line x1="0" y1="400" x2="580" y2="400"/>
+        <line x1="0" y1="500" x2="580" y2="500"/>
+        <line x1="0" y1="600" x2="580" y2="600"/>
+        <line x1="100" y1="0" x2="100" y2="640"/>
+        <line x1="200" y1="0" x2="200" y2="640"/>
+        <line x1="300" y1="0" x2="300" y2="640"/>
+        <line x1="400" y1="0" x2="400" y2="640"/>
+        <line x1="500" y1="0" x2="500" y2="640"/>
+      </g>
 
-      <!-- King shadow (large, faint) -->
-      <div class="king-shadow-cross"></div>
-      <div class="king-shadow-cross-h"></div>
-      <div class="king-shadow-top"></div>
-      <div class="king-shadow-head"></div>
-      <div class="king-shadow-shoulder-l"></div>
-      <div class="king-shadow-body"></div>
-      <div class="king-shadow-shoulder-r"></div>
-      <div class="king-shadow-belt"></div>
-      <div class="king-shadow-legs"></div>
-      <div class="king-shadow-foot"></div>
+      <!-- the shadow of a king: tall elongated form extending from the pawn -->
+      <!-- shadow body — elongated rectangle -->
+      <rect x="215" y="50" width="100" height="380" fill="#1B3B6B" opacity="0.10"/>
+      <!-- shadow crown — triangle on top -->
+      <polygon points="215,50 265,0 315,50" fill="#1B3B6B" opacity="0.10"/>
+      <!-- shadow crown middle point -->
+      <polygon points="235,50 265,-15 295,50" fill="#1B3B6B" opacity="0.12"/>
+      <!-- shadow cross on crown -->
+      <line x1="265" y1="-25" x2="265" y2="15" stroke="#1B3B6B" stroke-width="2" opacity="0.15"/>
+      <line x1="250" y1="0" x2="280" y2="0" stroke="#1B3B6B" stroke-width="2" opacity="0.15"/>
 
-      <!-- Pawn (small, foreground) -->
-      <div class="pawn-head"></div>
-      <div class="pawn-neck"></div>
-      <div class="pawn-body"></div>
-      <div class="pawn-belt"></div>
-      <div class="pawn-belt-inner"></div>
-      <div class="pawn-foot"></div>
+      <!-- the pawn itself: small solid circle at base -->
+      <circle cx="265" cy="440" r="28" fill="#1B3B6B"/>
 
-      <!-- Caption -->
-      <div class="metaphor-caption">
-        兵投下王的影子<br>
-        <span style="font-size:13px; color:#8B7355; letter-spacing:1px;">
-          — 微末的开发者，真正的造王者
-        </span>
-      </div>
+      <!-- pawn stem -->
+      <rect x="258" y="465" width="14" height="40" fill="#1B3B6B"/>
+
+      <!-- pawn base -->
+      <ellipse cx="265" cy="510" rx="45" ry="14" fill="#1B3B6B" opacity="0.85"/>
+
+      <!-- geometric accent: small square near pawn -->
+      <rect x="340" y="460" width="16" height="16" fill="#8B7355" opacity="0.5"/>
+
+      <!-- geometric accent: small circle -->
+      <circle cx="170" cy="480" r="10" fill="none" stroke="#8B7355" stroke-width="1.5" opacity="0.5"/>
+
+      <!-- the light ray from top-left creating the shadow -->
+      <line x1="30" y1="20" x2="235" y2="440" stroke="#8B7355" stroke-width="1" opacity="0.25" stroke-dasharray="6,4"/>
+
+      <!-- directional arrow marker -->
+      <circle cx="30" cy="20" r="5" fill="#8B7355" opacity="0.3"/>
+
+      <!-- annotation lines and text for metaphor labels -->
+      <!-- pawn label -->
+      <line x1="295" y1="440" x2="420" y2="440" stroke="#1B3B6B" stroke-width="0.8" opacity="0.4"/>
+      <circle cx="420" cy="440" r="2" fill="#1B3B6B" opacity="0.4"/>
+
+      <!-- king shadow label -->
+      <line x1="315" y1="200" x2="450" y2="200" stroke="#1B3B6B" stroke-width="0.8" opacity="0.4"/>
+      <circle cx="450" cy="200" r="2" fill="#1B3B6B" opacity="0.4"/>
+
+      <!-- text annotations -->
+      <text x="430" y="445" font-family="Noto Serif SC, Source Han Serif SC, serif" font-size="14" fill="#1B3B6B" opacity="0.7" letter-spacing="2">兵 · PAWN</text>
+      <text x="460" y="205" font-family="Noto Serif SC, Source Han Serif SC, serif" font-size="14" fill="#1B3B6B" opacity="0.7" letter-spacing="2">王 · KING</text>
+      <text x="460" y="225" font-family="Noto Sans SC, sans-serif" font-size="10" fill="#8B7355" opacity="0.6" letter-spacing="1">（影子 · Shadow）</text>
+
+      <!-- bottom reference line -->
+      <line x1="100" y1="560" x2="430" y2="560" stroke="#8B7355" stroke-width="0.5" opacity="0.3"/>
+    </svg>
+
+    <div class="caption">
+      <span class="emphasis">兵投下王的影子</span><br>
+      开发者虽微末，却是真正的造王者<br>
+      <span style="font-size:12px; color:#8B7355; opacity:0.7;">The pawn casts the king's shadow — modest builders shape grand systems</span>
     </div>
   </div>
 
-  <!-- Right: Content -->
-  <div class="content-area">
-    <div class="title-block">
-      <div class="title-eyebrow">07 · THE PARADOX OF CODE</div>
-      <div class="main-title">代码无法售卖的难题</div>
-      <div class="title-accent"></div>
-      <div class="subtitle">当复制成本归零，传统产权制度在数字疆域遭遇根本性瓦解</div>
+  <!-- right panel: content -->
+  <div class="right-panel">
+
+    <div class="content-block">
+      <div class="block-label">代码的不可售卖性</div>
+      <ul class="point-list">
+        <li><span class="accent">代码是文本</span>——阅读、交流、修改不构成侵权</li>
+        <li>同行之间的知识传递<span class="gray">，在知识产权框架下并不被禁止</span></li>
+        <li>软件作为信息，<span class="accent">复制成本趋近于零</span>——传统的"一本书"售卖逻辑失效</li>
+      </ul>
     </div>
 
-    <div class="bullet-list">
-      <div class="bullet-item">
-        <div class="bullet-marker"></div>
-        <div class="bullet-text"><span class="num">壹</span>代码是文本——复制成本为零，传统书籍模式不再有效</div>
-      </div>
-      <div class="bullet-item">
-        <div class="bullet-marker circle"></div>
-        <div class="bullet-text"><span class="num">贰</span>同行的交流并非侵权——思想与代码的自由流转，法难禁之</div>
-      </div>
-      <div class="bullet-item">
-        <div class="bullet-marker square"></div>
-        <div class="bullet-text"><span class="num">叁</span>计算机本身的技术可阻止访问源代码——<span class="em">技术即新的边界</span></div>
-      </div>
-      <div class="bullet-item">
-        <div class="bullet-marker"></div>
-        <div class="bullet-text"><span class="num">肆</span>权利用尽法则无能为力——售出之物已无处约束，数字副本无限增殖</div>
-      </div>
-      <div class="bullet-item">
-        <div class="bullet-marker circle"></div>
-        <div class="bullet-text"><span class="num">伍</span>技术加高壁垒，法律被寄予厚望——<span class="em">制度与技术的合谋</span></div>
+    <div class="separator"></div>
+
+    <div class="content-block">
+      <div class="block-label">法律与技术的回应</div>
+      <ul class="point-list">
+        <li>权利用尽法则<span class="gray">（exhaustion doctrine）</span>对数字复制同样无能为力</li>
+        <li>技术本身可以阻止访问源代码——<span class="accent">技术加强壁垒</span>（TEAC）</li>
+      </ul>
+    </div>
+
+    <div class="highlight-box">
+      <div class="hb-label">HOPES OF LAW &amp; TECHNOLOGY</div>
+      <div class="hb-text">
+        当市场逻辑无法保护代码的经济价值时，<br>
+        <span class="strong">技术增强壁垒（TEAC）与法律框架</span>被寄予厚望——<br>
+        成为开源与闭源之间最微妙的制度平衡点。
       </div>
     </div>
+
+  </div>
+
+  <!-- footer -->
+  <div class="footer">
+    <div>第 04 期 · 软件开发劳动力市场 · 包豪斯几何构成</div>
+    <div class="page-num">04 / 26</div>
   </div>
 
 </div>
-
-<div class="bottom-bar">
-  <div class="bottom-text">OPEN SOURCE · NEW INSTITUTIONAL ECONOMICS</div>
-  <div class="bottom-line"></div>
-  <div class="bottom-text">开源之道 · 日常交流</div>
-</div>
-
-</body></html>
+</body>
+</html>

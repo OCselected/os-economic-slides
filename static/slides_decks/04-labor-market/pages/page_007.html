@@ -1,180 +1,430 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: cf31cc0eb737e9cf --><head><meta charset="UTF-8"><title>就业让人愁</title><style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1600px;height:900px;overflow:hidden;margin:0;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;color:#1B3B6B}
-body{background:#F5F0E8;position:relative}
+<!DOCTYPE html>
+<html lang="zh-CN"><!-- source_hash: 503d760ab97f48d8 -->
+<head>
+<meta charset="UTF-8">
+<title>就业让人愁 · 第 04 期</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600&display=swap');
 
-/* subtle parchment texture */
-.parchment{position:absolute;top:0;left:0;width:1600px;height:900px;background:
-  radial-gradient(ellipse at 30% 20%, rgba(139,115,85,0.04) 0%, transparent 50%),
-  radial-gradient(ellipse at 70% 80%, rgba(27,59,107,0.03) 0%, transparent 50%);}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* page frame */
-.frame{position:absolute;top:40px;left:40px;width:1520px;height:820px;border:1px solid rgba(27,59,107,0.2);pointer-events:none}
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
+}
 
-/* top bar */
-.top-bar{position:absolute;top:60px;left:80px;right:80px;height:2px;background:#1B3B6B;opacity:0.15}
+body {
+  background: #F5F0E8;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: #1B3B6B;
+  position: relative;
+}
 
-/* bottom bar */
-.bottom-bar{position:absolute;bottom:50px;left:80px;right:80px;height:1px;background:#8B7355;opacity:0.3}
+/* Parchment texture */
+.parchment {
+  position: absolute;
+  top: 0; left: 0;
+  width: 1600px; height: 900px;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(139,115,85,0.03) 0%, transparent 70%),
+    radial-gradient(ellipse at 80% 30%, rgba(27,59,107,0.02) 0%, transparent 60%),
+    radial-gradient(ellipse at 60% 80%, rgba(139,115,85,0.025) 0%, transparent 50%);
+  pointer-events: none;
+}
 
-/* header text */
-.header{position:absolute;top:75px;left:100px;font-size:13px;letter-spacing:4px;color:#8B7355;font-weight:400}
-.header-right{position:absolute;top:75px;right:100px;font-size:13px;letter-spacing:3px;color:#8B7355;font-weight:400}
+/* Bauhaus geometric elements - left composition */
+.geo-circle-large {
+  position: absolute;
+  width: 320px; height: 320px;
+  border-radius: 50%;
+  border: 3px solid #1B3B6B;
+  top: 180px;
+  left: 80px;
+  opacity: 0.12;
+}
 
-/* main layout */
-.main{position:absolute;top:140px;left:100px;width:1400px;height:680px;display:flex;gap:60px}
+.geo-circle-solid {
+  position: absolute;
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  top: 280px;
+  left: 180px;
+  opacity: 0.9;
+}
 
-/* left column */
-.left-col{width:780px;position:relative}
-.right-col{flex:1;position:relative}
+.geo-circle-small {
+  position: absolute;
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  background: #8B7355;
+  top: 210px;
+  left: 120px;
+  opacity: 0.7;
+}
 
-/* section label */
-.section-label{font-size:12px;letter-spacing:5px;color:#8B7355;margin-bottom:24px;font-weight:400}
+.geo-square-large {
+  position: absolute;
+  width: 200px; height: 200px;
+  background: #1B3B6B;
+  top: 480px;
+  left: 130px;
+  opacity: 0.85;
+}
 
-/* title */
-.title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:100px;font-weight:900;color:#1B3B6B;line-height:1.05;letter-spacing:2px;margin-bottom:30px}
+.geo-square-outline {
+  position: absolute;
+  width: 280px; height: 280px;
+  border: 2px solid #8B7355;
+  top: 440px;
+  left: 90px;
+  opacity: 0.4;
+}
 
-/* subtitle */
-.subtitle{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:22px;color:#555;line-height:1.6;font-weight:400;margin-bottom:36px;max-width:700px}
+/* Diagonal line */
+.geo-line-diag {
+  position: absolute;
+  width: 400px;
+  height: 2px;
+  background: #1B3B6B;
+  top: 140px;
+  left: 80px;
+  transform: rotate(25deg);
+  transform-origin: left center;
+  opacity: 0.3;
+}
 
-/* horizontal accent line */
-.accent-line{width:80px;height:3px;background:#1B3B6B;margin-bottom:28px}
+.geo-line-diag-2 {
+  position: absolute;
+  width: 300px;
+  height: 2px;
+  background: #8B7355;
+  top: 700px;
+  left: 160px;
+  transform: rotate(-10deg);
+  transform-origin: left center;
+  opacity: 0.35;
+}
 
-/* bullet points */
-.bullets{margin-top:10px}
-.bullet{display:flex;align-items:flex-start;gap:18px;margin-bottom:22px;max-width:720px}
-.bullet-num{font-family:'Noto Serif SC',serif;font-size:18px;color:#1B3B6B;font-weight:700;min-width:28px;padding-top:2px}
-.bullet-text{font-size:16px;line-height:1.75;color:#333;flex:1}
-.bullet-text strong{color:#1B3B6B;font-weight:700}
+/* Vertical line */
+.geo-line-vert {
+  position: absolute;
+  width: 2px;
+  height: 200px;
+  background: #1B3B6B;
+  top: 160px;
+  left: 500px;
+  opacity: 0.25;
+}
 
-/* right column - geometric composition */
-.geo-container{position:relative;width:100%;height:580px;margin-top:0}
+/* Top section - report reference */
+.report-badge {
+  position: absolute;
+  top: 60px;
+  left: 580px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
 
-/* big circle */
-.geo-circle{position:absolute;top:20px;right:0;width:260px;height:260px;border-radius:50%;background:#1B3B6B;opacity:0.95}
-.geo-circle-inner{position:absolute;top:95px;right:75px;width:110px;height:110px;border-radius:50%;background:#F5F0E8}
-.geo-circle-text{position:absolute;top:135px;right:90px;width:80px;height:80px;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif SC',serif;font-size:12px;color:#1B3B6B;font-weight:700;letter-spacing:2px;line-height:1.3;text-align:center}
+.report-dot {
+  width: 10px;
+  height: 10px;
+  background: #8B7355;
+  border-radius: 50%;
+}
 
-/* rectangle block */
-.geo-rect{position:absolute;top:200px;right:200px;width:140px;height:140px;background:#8B7355;opacity:0.85}
-.geo-rect-inner{position:absolute;top:220px;right:220px;width:100px;height:100px;background:#1B3B6B}
-.geo-rect-dot{position:absolute;top:265px;right:265px;width:10px;height:10px;background:#F5F0E8;border-radius:50%}
+.report-text {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  color: #8B7355;
+  text-transform: uppercase;
+}
 
-/* small circle */
-.geo-small-circle{position:absolute;top:400px;right:60px;width:80px;height:80px;border:3px solid #1B3B6B;border-radius:50%}
-.geo-small-circle-inner{position:absolute;top:415px;right:75px;width:50px;height:50px;background:#1B3B6B;border-radius:50%}
+/* Main title area */
+.slide-header {
+  position: absolute;
+  top: 110px;
+  left: 580px;
+  width: 920px;
+}
 
-/* triangle (using border) */
-.geo-triangle{position:absolute;top:360px;right:240px;width:0;height:0;border-left:40px solid transparent;border-right:40px solid transparent;border-bottom:70px solid #8B7355;opacity:0.7}
+.slide-number {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #555;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
 
-/* diagonal lines */
-.diag-line-1{position:absolute;top:30px;right:200px;width:2px;height:200px;background:#1B3B6B;opacity:0.3}
-.diag-line-2{position:absolute;top:420px;right:200px;width:200px;height:2px;background:#8B7355;opacity:0.4}
+.main-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 72px;
+  font-weight: 900;
+  color: #1B3B6B;
+  line-height: 1.15;
+  letter-spacing: 4px;
+  margin-bottom: 10px;
+}
 
-/* report label card */
-.report-card{position:absolute;bottom:0;right:0;width:340px;padding:22px 24px;border:1px solid rgba(27,59,107,0.3);background:rgba(245,240,232,0.9)}
-.report-card-label{font-size:10px;letter-spacing:3px;color:#8B7355;margin-bottom:8px}
-.report-card-title{font-family:'Noto Serif SC',serif;font-size:16px;color:#1B3B6B;font-weight:700;line-height:1.4;margin-bottom:6px}
-.report-card-sub{font-size:11px;color:#555;letter-spacing:1px}
-.report-card-bar{width:30px;height:2px;background:#8B7355;margin-top:10px}
+.subtitle-line {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #555;
+  letter-spacing: 1.5px;
+  line-height: 1.6;
+}
 
-/* stats row */
-.stats-row{position:absolute;top:140px;left:100px;display:flex;gap:0;border-top:1px solid rgba(27,59,107,0.2);border-bottom:1px solid rgba(27,59,107,0.2);width:1400px}
-.stat-item{flex:1;padding:18px 24px;border-right:1px solid rgba(27,59,107,0.15);position:relative}
-.stat-item:last-child{border-right:none}
-.stat-number{font-family:'Noto Serif SC',serif;font-size:28px;font-weight:700;color:#1B3B6B;line-height:1}
-.stat-label{font-size:11px;color:#8B7355;letter-spacing:2px;margin-top:6px}
+/* Divider */
+.title-divider {
+  position: absolute;
+  top: 310px;
+  left: 580px;
+  width: 120px;
+  height: 3px;
+  background: #1B3B6B;
+}
 
-/* footer */
-.footer-left{position:absolute;bottom:20px;left:100px;font-size:11px;color:#8B7355;letter-spacing:2px}
-.footer-right{position:absolute;bottom:20px;right:100px;font-size:11px;color:#8B7355;letter-spacing:2px}
-</style></head><body>
+.title-divider-short {
+  position: absolute;
+  top: 310px;
+  left: 710px;
+  width: 40px;
+  height: 3px;
+  background: #8B7355;
+}
+
+/* Content bullets */
+.bullet-list {
+  position: absolute;
+  top: 360px;
+  left: 580px;
+  width: 900px;
+}
+
+.bullet-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.bullet-marker {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  background: #1B3B6B;
+  margin-top: 7px;
+}
+
+.bullet-marker-alt {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  border: 2px solid #8B7355;
+  background: transparent;
+  margin-top: 7px;
+  border-radius: 50%;
+}
+
+.bullet-text {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #1B3B6B;
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+}
+
+.bullet-emphasis {
+  font-weight: 600;
+  color: #1B3B6B;
+}
+
+/* Bottom footer */
+.footer {
+  position: absolute;
+  bottom: 40px;
+  left: 580px;
+  width: 920px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-left {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  color: #8B7355;
+  letter-spacing: 1.5px;
+}
+
+.footer-right {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12px;
+  color: #555;
+  letter-spacing: 1px;
+}
+
+/* Decorative square accent near title */
+.accent-square {
+  position: absolute;
+  top: 100px;
+  right: 100px;
+  width: 80px;
+  height: 80px;
+  border: 2px solid #1B3B6B;
+  opacity: 0.2;
+}
+
+.accent-square-inner {
+  position: absolute;
+  top: 115px;
+  right: 115px;
+  width: 50px;
+  height: 50px;
+  background: #8B7355;
+  opacity: 0.15;
+}
+
+/* Bottom right decoration */
+.bottom-deco-circle {
+  position: absolute;
+  bottom: -40px;
+  right: -40px;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 2px solid #1B3B6B;
+  opacity: 0.08;
+}
+
+/* Quote mark */
+.quote-mark {
+  position: absolute;
+  top: 720px;
+  left: 580px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 60px;
+  color: #1B3B6B;
+  opacity: 0.12;
+  line-height: 1;
+}
+
+.quote-source {
+  position: absolute;
+  top: 730px;
+  left: 650px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  color: #8B7355;
+  font-style: italic;
+  letter-spacing: 0.5px;
+}
+
+/* Thin frame lines */
+.frame-top {
+  position: absolute;
+  top: 40px;
+  left: 60px;
+  width: 1480px;
+  height: 1px;
+  background: #8B7355;
+  opacity: 0.3;
+}
+
+.frame-bottom {
+  position: absolute;
+  bottom: 30px;
+  left: 60px;
+  width: 1480px;
+  height: 1px;
+  background: #8B7355;
+  opacity: 0.2;
+}
+</style>
+</head>
+<body>
+
 <div class="parchment"></div>
-<div class="frame"></div>
-<div class="top-bar"></div>
-<div class="bottom-bar"></div>
-<div class="header">新制度经济学视角下的开源 · 第四章</div>
-<div class="header-right">CHAPTER 04 / 劳动力市场</div>
 
-<div class="main">
-  <div class="left-col">
-    <div class="section-label">— 劳动力市场 & 交易成本 —</div>
-    <div class="title">就业让人愁</div>
-    <div class="accent-line"></div>
-    <div class="subtitle">开源贡献者的职业处境，折射出数字劳动中<br>身份归属与价值回报之间的结构性张力。</div>
-    <div class="bullets">
-      <div class="bullet">
-        <div class="bullet-num">01</div>
-        <div class="bullet-text"><strong>职业身份模糊。</strong>LF 调查显示，大量开源贡献者处于非全职、非雇佣的灰色地带，缺乏社会保障与职业发展通道。</div>
-      </div>
-      <div class="bullet">
-        <div class="bullet-num">02</div>
-        <div class="bullet-text"><strong>报酬与贡献脱节。</strong>核心维护者往往来自少数企业或无偿劳动，"爱好的负担"使资深贡献者持续流失。</div>
-      </div>
-      <div class="bullet">
-        <div class="bullet-num">03</div>
-        <div class="bullet-text"><strong>企业依赖与个人风险错配。</strong>公司消耗社区劳动红利，而贡献者个人承担技能折旧与转型的不确定性。</div>
-      </div>
-      <div class="bullet">
-        <div class="bullet-num">04</div>
-        <div class="bullet-text"><strong>制度回应迟缓。</strong>劳动法、知识产权与协作治理框架尚未为分布式数字劳动提供适配的制度基础设施。</div>
-      </div>
-    </div>
+<!-- Frame lines -->
+<div class="frame-top"></div>
+<div class="frame-bottom"></div>
+
+<!-- Left geometric composition -->
+<div class="geo-line-diag"></div>
+<div class="geo-line-diag-2"></div>
+<div class="geo-line-vert"></div>
+<div class="geo-circle-large"></div>
+<div class="geo-circle-solid"></div>
+<div class="geo-circle-small"></div>
+<div class="geo-square-outline"></div>
+<div class="geo-square-large"></div>
+
+<!-- Accent decorations -->
+<div class="accent-square"></div>
+<div class="accent-square-inner"></div>
+<div class="bottom-deco-circle"></div>
+
+<!-- Report badge -->
+<div class="report-badge">
+  <div class="report-dot"></div>
+  <div class="report-text">Linux Foundation · 调查报告 2024</div>
+</div>
+
+<!-- Main content area -->
+<div class="slide-header">
+  <div class="slide-number">§ 04 — 软件开发劳动力市场</div>
+  <div class="main-title">就业让人愁</div>
+  <div class="subtitle-line">初级岗位萎缩 · 地理集中加剧 · AI 替代初现</div>
+</div>
+
+<!-- Divider -->
+<div class="title-divider"></div>
+<div class="title-divider-short"></div>
+
+<!-- Bullet points -->
+<div class="bullet-list">
+  <div class="bullet-item">
+    <div class="bullet-marker"></div>
+    <div class="bullet-text"><span class="bullet-emphasis">初级开发者岗位持续缩减</span>——2023–2024 年间全球初级岗位发布量下降约 30%，供需结构性失衡加深</div>
   </div>
-
-  <div class="right-col">
-    <div class="geo-container">
-      <div class="geo-circle"></div>
-      <div class="geo-circle-inner"></div>
-      <div class="geo-circle-text">机构<br>调研</div>
-
-      <div class="geo-rect"></div>
-      <div class="geo-rect-inner"></div>
-      <div class="geo-rect-dot"></div>
-
-      <div class="geo-triangle"></div>
-
-      <div class="geo-small-circle"></div>
-      <div class="geo-small-circle-inner"></div>
-
-      <div class="diag-line-1"></div>
-      <div class="diag-line-2"></div>
-
-      <div class="report-card">
-        <div class="report-card-label">REFERENCE</div>
-        <div class="report-card-title">LF 调查报告 2024<br>Linux Foundation</div>
-        <div class="report-card-sub">2024 State of Open Source</div>
-        <div class="report-card-bar"></div>
-      </div>
-    </div>
+  <div class="bullet-item">
+    <div class="bullet-marker-alt"></div>
+    <div class="bullet-text">远程办公并未实现地理平等，<span class="bullet-emphasis">高薪岗位向旧金山、都柏林、班加罗尔进一步集中</span>，区域落差拉大</div>
+  </div>
+  <div class="bullet-item">
+    <div class="bullet-marker"></div>
+    <div class="bullet-text">AI 编码辅助工具对初级任务的<span class="bullet-emphasis">替代效应已可观测</span>，企业开始以 AI 预算替代人力编制</div>
+  </div>
+  <div class="bullet-item">
+    <div class="bullet-marker-alt"></div>
+    <div class="bullet-text">技术栈碎片化使<span class="bullet-emphasis">职业转换成本递增</span>，工程师面临「持续再培训」的制度性负担</div>
+  </div>
+  <div class="bullet-item">
+    <div class="bullet-marker"></div>
+    <div class="bullet-text">自由职业与合同制比例上升，<span class="bullet-emphasis">社会保障的制度真空</span>成为开源生态劳动力的结构性风险</div>
   </div>
 </div>
 
-<div class="stats-row">
-  <div class="stat-item">
-    <div class="stat-number">87<span style="font-size:16px">%</span></div>
-    <div class="stat-label">企业依赖开源</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-number">15<span style="font-size:16px">%</span></div>
-    <div class="stat-label">核心贡献者全职率</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-number">63<span style="font-size:16px">%</span></div>
-    <div class="stat-label">关键项目面临维护者流失</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-number">2.4<span style="font-size:16px">×</span></div>
-    <div class="stat-label">无偿劳动与企业收益比</div>
-  </div>
-  <div class="stat-item">
-    <div class="stat-number">—</div>
-    <div class="stat-label">制度保障空白区</div>
-  </div>
+<!-- Quote accent -->
+<div class="quote-mark">"</div>
+<div class="quote-source">「我们正在见证一个工程师职业路径被重新定义的时期。」—— LF 调查引言</div>
+
+<!-- Footer -->
+<div class="footer">
+  <div class="footer-left">第 04 期 · 软件开发劳动力市场 · Slide 06/26</div>
+  <div class="footer-right">新制度经济学视角下的开源</div>
 </div>
 
-<div class="footer-left">FOSS ECONOMICS · 2024</div>
-<div class="footer-right">04 / 12</div>
-</body></html>
+</body>
+</html>

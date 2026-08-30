@@ -1,134 +1,515 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: e28efe9a2b0ba9e4 --><head><meta charset="UTF-8"><title>新制度经济学视野下的开源</title><style>*{margin:0;padding:0;box-sizing:border-box}html,body{width:1600px;height:900px;overflow:hidden}body{background:#F5F0E8;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;color:#1B3B6B;position:relative}h1,h2,h3{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-weight:700}.top-bar{position:absolute;top:0;left:0;width:1600px;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 56px;border-bottom:2px solid #1B3B6B}.top-bar .brand{font-family:'Noto Serif SC',serif;font-size:18px;letter-spacing:4px;color:#1B3B6B}.top-bar .brand span{color:#8B7355}.top-bar .section-num{font-family:'Noto Serif SC',serif;font-size:14px;letter-spacing:3px;color:#8B7355}.header{position:absolute;top:96px;left:56px;right:56px}.header .kicker{font-family:'Noto Serif SC',serif;font-size:13px;letter-spacing:6px;color:#8B7355;margin-bottom:14px}.header .main-title{font-family:'Noto Serif SC',serif;font-size:52px;color:#1B3B6B;letter-spacing:2px;line-height:1.2}.header .subtitle{font-size:16px;color:#555;margin-top:10px;letter-spacing:1px}.header .title-underline{width:120px;height:4px;background:#1B3B6B;margin-top:18px}.header .title-underline2{width:48px;height:4px;background:#8B7355;margin-top:6px}.left-panel{position:absolute;top:320px;left:56px;width:520px;height:460px}.label-individual{position:absolute;top:0;left:0;font-family:'Noto Serif SC',serif;font-size:14px;letter-spacing:4px;color:#8B7355}.label-universal{position:absolute;top:0;right:0;font-family:'Noto Serif SC',serif;font-size:14px;letter-spacing:4px;color:#8B7355}.label-arrow{position:absolute;top:10px;left:50%;transform:translateX(-50%);font-family:'Noto Serif SC',serif;font-size:12px;letter-spacing:3px;color:#555}.tree-container{position:absolute;top:56px;left:20px;width:180px;height:360px}.galaxy-container{position:absolute;top:56px;right:0;width:340px;height:360px}.arrow-container{position:absolute;top:100px;left:220px;width:60px;height:40px}.right-panel{position:absolute;top:230px;right:56px;width:600px}.right-panel .panel-title{font-family:'Noto Serif SC',serif;font-size:22px;color:#1B3B6B;margin-bottom:24px;padding-bottom:12px;border-bottom:1px solid #1B3B6B;letter-spacing:2px}.right-panel .panel-title span{color:#8B7355;font-size:14px;margin-left:12px;letter-spacing:3px}.bullet-list{list-style:none}.bullet-list li{display:flex;align-items:flex-start;padding:12px 0;border-bottom:1px dashed #C4B9A8}.bullet-list li:last-child{border-bottom:none}.bullet-list .num{font-family:'Noto Serif SC',serif;font-size:24px;color:#8B7355;width:44px;flex-shrink:0;line-height:1.2}.bullet-list .dot{width:8px;height:8px;background:#1B3B6B;margin-right:16px;margin-top:9px;flex-shrink:0}.bullet-list .content{flex:1}.bullet-list .content .txt{font-size:16px;color:#1B3B6B;line-height:1.6}.bullet-list .content .en{font-size:11px;color:#8B7355;letter-spacing:2px;margin-top:3px}.footnote{position:absolute;bottom:36px;left:56px;right:56px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:#8B7355;letter-spacing:2px}.footnote .ref{font-family:'Noto Serif SC',serif}.footnote .meta{font-family:'Noto Serif SC',serif}.deco-circle-1{position:absolute;width:200px;height:200px;border:1px solid #1B3B6B;border-radius:50%;top:600px;right:56px}.deco-circle-2{position:absolute;width:100px;height:100px;border:1px solid #8B7355;border-radius:50%;top:80px;right:56px}.deco-square{position:absolute;width:16px;height:16px;background:#1B3B6B;top:130px;right:96px}.deco-line-v{position:absolute;width:1px;height:80px;background:#1B3B6B;top:310px;right:72px}.deco-line-h{position:absolute;width:80px;height:1px;background:#1B3B6B;top:790px;left:56px}.quote-mark{position:absolute;font-family:'Noto Serif SC',serif;font-size:120px;color:#1B3B6B;opacity:0.08;top:200px;right:0;line-height:1}#cosmic-svg{display:block}</style></head><body>
+<!DOCTYPE html>
+<html><!-- source_hash: 1bd76672eed0ad9f -->
+<head>
+<meta charset="UTF-8">
+<title>第 05 期 · 新制度经济学视野下的开源</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-<div class="top-bar">
-  <div class="brand">开源之道 · <span>OPEN SOURCE STUDIES</span></div>
-  <div class="section-num">CHAPTER · I</div>
+body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
+  background: #F5F0E8;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: #1B3B6B;
+  position: relative;
+}
+
+.parchment-bg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 1600px; height: 900px;
+  background: 
+    radial-gradient(ellipse at 15% 70%, rgba(139,115,85,0.025) 0%, transparent 45%),
+    radial-gradient(ellipse at 85% 25%, rgba(27,59,107,0.02) 0%, transparent 35%),
+    radial-gradient(circle at 50% 50%, rgba(139,115,85,0.01) 0%, transparent 60%),
+    #F5F0E8;
+  z-index: 0;
+}
+
+/* Title area */
+.title-area {
+  position: absolute;
+  top: 55px;
+  left: 70px;
+  z-index: 10;
+}
+
+.lecture-tag {
+  font-size: 11px;
+  letter-spacing: 5px;
+  color: #8B7355;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tag-line {
+  width: 30px;
+  height: 1px;
+  background: rgba(27,59,107,0.3);
+}
+
+.slide-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 34px;
+  font-weight: 600;
+  color: #1B3B6B;
+  line-height: 1.4;
+  letter-spacing: 1px;
+}
+
+.slide-number {
+  position: absolute;
+  top: 55px;
+  right: 70px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  color: #8B7355;
+  z-index: 10;
+  letter-spacing: 3px;
+}
+
+/* Galaxy circles - cosmic order */
+.galaxy-group {
+  position: absolute;
+  top: 200px;
+  left: 420px;
+  z-index: 2;
+}
+
+.g-circle-outer {
+  position: absolute;
+  width: 560px;
+  height: 560px;
+  border-radius: 50%;
+  border: 1px solid rgba(27,59,107,0.12);
+  top: 0; left: 0;
+}
+
+.g-circle-mid {
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  border: 1px solid rgba(27,59,107,0.1);
+  top: 100px; left: 100px;
+}
+
+.g-circle-inner {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(27,59,107,0.18);
+  background: rgba(27,59,107,0.02);
+  top: 190px; left: 190px;
+}
+
+.g-core {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(27,59,107,0.08);
+  top: 245px; left: 245px;
+}
+
+/* Galaxy stars/dots */
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: #1B3B6B;
+}
+
+/* Tree - individual */
+.tree-area {
+  position: absolute;
+  bottom: 160px;
+  left: 120px;
+  z-index: 5;
+  width: 140px;
+  height: 240px;
+}
+
+.t-trunk {
+  position: absolute;
+  width: 2.5px;
+  height: 130px;
+  background: #1B3B6B;
+  bottom: 0;
+  left: 68px;
+}
+
+.t-branch1 {
+  position: absolute;
+  width: 45px;
+  height: 1.5px;
+  background: #1B3B6B;
+  bottom: 90px;
+  left: 23px;
+  transform: rotate(-30deg);
+  transform-origin: right center;
+}
+
+.t-branch2 {
+  position: absolute;
+  width: 38px;
+  height: 1.5px;
+  background: #1B3B6B;
+  bottom: 70px;
+  left: 68px;
+  transform: rotate(25deg);
+  transform-origin: left center;
+}
+
+.t-branch3 {
+  position: absolute;
+  width: 30px;
+  height: 1.5px;
+  background: #1B3B6B;
+  bottom: 110px;
+  left: 35px;
+  transform: rotate(-20deg);
+  transform-origin: right center;
+}
+
+.t-branch4 {
+  position: absolute;
+  width: 32px;
+  height: 1.5px;
+  background: #1B3B6B;
+  bottom: 105px;
+  right: 28px;
+  transform: rotate(35deg);
+  transform-origin: left center;
+}
+
+.t-crown {
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 1.5px solid #1B3B6B;
+  background: rgba(27,59,107,0.03);
+  top: 0;
+  left: 15px;
+}
+
+.t-ground {
+  position: absolute;
+  width: 160px;
+  height: 1px;
+  background: rgba(27,59,107,0.25);
+  bottom: -2px;
+  left: -10px;
+}
+
+/* Scale labels */
+.scale-individual {
+  position: absolute;
+  bottom: 135px;
+  left: 118px;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: #8B7355;
+  z-index: 10;
+}
+
+.scale-cosmic {
+  position: absolute;
+  top: 225px;
+  left: 940px;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: #8B7355;
+  z-index: 10;
+}
+
+/* Connection dashed line */
+.connector {
+  position: absolute;
+  z-index: 3;
+}
+
+/* Content column */
+.content-col {
+  position: absolute;
+  top: 165px;
+  left: 1080px;
+  width: 460px;
+  z-index: 10;
+}
+
+.content-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 26px;
+  position: relative;
+  padding-left: 28px;
+}
+
+.marker {
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 9px;
+  height: 9px;
+}
+
+.marker-solid {
+  background: #1B3B6B;
+}
+
+.marker-copper {
+  background: #8B7355;
+}
+
+.marker-ring {
+  border-radius: 50%;
+  border: 1.5px solid #1B3B6B;
+  background: transparent;
+}
+
+.item-text {
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: #1B3B6B;
+  font-weight: 400;
+}
+
+.item-text .em {
+  font-weight: 600;
+}
+
+.item-text .sub {
+  display: block;
+  font-size: 12px;
+  color: #8B7355;
+  margin-top: 3px;
+  font-style: italic;
+}
+
+/* Metaphor note */
+.metaphor {
+  position: absolute;
+  bottom: 75px;
+  left: 70px;
+  width: 420px;
+  font-size: 12.5px;
+  color: #555;
+  line-height: 1.85;
+  font-style: italic;
+  z-index: 10;
+  border-left: 2px solid rgba(27,59,107,0.35);
+  padding-left: 16px;
+}
+
+.metaphor-title {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #8B7355;
+  font-style: normal;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+/* Footer */
+.footer {
+  position: absolute;
+  bottom: 35px;
+  left: 70px;
+  right: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
+.footer-left {
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 1.5px;
+}
+
+.footer-right {
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 1.5px;
+}
+
+/* Separator line */
+.sep-line {
+  position: absolute;
+  top: 145px;
+  left: 70px;
+  width: 980px;
+  height: 1px;
+  background: rgba(27,59,107,0.12);
+  z-index: 4;
+}
+
+/* Bauhaus geometric accents */
+.bauhaus-sq1 {
+  position: absolute;
+  bottom: 65px;
+  right: 70px;
+  width: 50px;
+  height: 50px;
+  border: 1px solid rgba(27,59,107,0.08);
+  z-index: 1;
+}
+
+.bauhaus-sq2 {
+  position: absolute;
+  bottom: 78px;
+  right: 83px;
+  width: 24px;
+  height: 24px;
+  background: rgba(139,115,85,0.06);
+  z-index: 1;
+}
+
+/* Corner decoration */
+.corner-deco {
+  position: absolute;
+  top: 55px;
+  left: 70px;
+  z-index: 10;
+}
+</style>
+</head>
+<body>
+<div class="parchment-bg"></div>
+
+<!-- Title -->
+<div class="title-area">
+  <div class="lecture-tag">
+    <div class="tag-line"></div>
+    <span>LECTURE 05 / 27</span>
+  </div>
+  <div class="slide-title">新制度经济学视野下的开源</div>
 </div>
 
-<div class="deco-circle-2"></div>
-<div class="deco-square"></div>
-<div class="deco-line-v"></div>
+<div class="slide-number">05 / 27</div>
 
-<div class="header">
-  <div class="kicker">NEO-INSTITUTIONAL ECONOMICS × OPEN SOURCE</div>
-  <div class="main-title">新制度经济学视野下的开源</div>
-  <div class="subtitle">从个体行为人到宇宙级合作秩序 —— 一项关于制度、协作与激励的智识考察</div>
-  <div class="title-underline"></div>
-  <div class="title-underline2"></div>
+<!-- Separator -->
+<div class="sep-line"></div>
+
+<!-- Galaxy group (cosmic order) -->
+<div class="galaxy-group">
+  <div class="g-circle-outer"></div>
+  <div class="g-circle-mid"></div>
+  <div class="g-circle-inner"></div>
+  <div class="g-core"></div>
+  
+  <!-- Stars scattered -->
+  <div class="star" style="top:60px; left:180px; width:2.5px; height:2.5px; opacity:0.2;"></div>
+  <div class="star" style="top:100px; left:320px; width:3px; height:3px; opacity:0.3;"></div>
+  <div class="star" style="top:160px; left:450px; width:2px; height:2px; opacity:0.18;"></div>
+  <div class="star" style="top:220px; left:100px; width:3.5px; height:3.5px; opacity:0.25;"></div>
+  <div class="star" style="top:280px; left:420px; width:2.5px; height:2.5px; opacity:0.22;"></div>
+  <div class="star" style="top:340px; left:500px; width:2px; height:2px; opacity:0.15;"></div>
+  <div class="star" style="top:380px; left:80px; width:3px; height:3px; opacity:0.28;"></div>
+  <div class="star" style="top:420px; left:200px; width:2.5px; height:2.5px; opacity:0.2;"></div>
+  <div class="star" style="top:460px; left:380px; width:2px; height:2px; opacity:0.18;"></div>
+  <div class="star" style="top:500px; left:150px; width:3.5px; height:3.5px; opacity:0.3;"></div>
+  <div class="star" style="top:520px; left:300px; width:2px; height:2px; opacity:0.15;"></div>
+  <div class="star" style="top:140px; left:80px; width:2px; height:2px; opacity:0.14;"></div>
+  <div class="star" style="top:300px; left:250px; width:4px; height:4px; opacity:0.22;"></div>
+  <div class="star" style="top:400px; left:480px; width:2.5px; height:2.5px; opacity:0.18;"></div>
+  <div class="star" style="top:80px; left:400px; width:2px; height:2px; opacity:0.12;"></div>
+  <div class="star" style="top:550px; left:250px; width:2px; height:2px; opacity:0.13;"></div>
+  <div class="star" style="top:190px; left:380px; width:3px; height:3px; opacity:0.25;"></div>
+  <div class="star" style="top:370px; left:320px; width:2px; height:2px; opacity:0.16;"></div>
 </div>
 
-<div class="left-panel">
-  <div class="label-individual">个 体</div>
-  <div class="label-universal">宇 宙</div>
-  <div class="label-arrow">— 扩展 —</div>
+<!-- Connection dashed line -->
+<svg class="connector" style="position:absolute; top:0; left:0; width:1600px; height:900px; pointer-events:none;" xmlns="http://www.w3.org/2000/svg">
+  <line x1="230" y1="640" x2="700" y2="500" stroke="rgba(27,59,107,0.12)" stroke-width="1" stroke-dasharray="3,10"/>
+</svg>
 
-  <svg id="cosmic-svg" width="520" height="360" viewBox="0 0 520 360">
-    <!-- 孤树 / Individual -->
-    <line x1="40" y1="80" x2="40" y2="320" stroke="#1B3B6B" stroke-width="3"/>
-    <line x1="10" y1="320" x2="80" y2="320" stroke="#1B3B6B" stroke-width="2"/>
-    <circle cx="40" cy="80" r="6" fill="#1B3B6B"/>
-    <circle cx="28" cy="100" r="4" fill="#8B7355"/>
-    <circle cx="52" cy="100" r="4" fill="#8B7355"/>
-    <circle cx="34" cy="120" r="3" fill="#555"/>
-    <circle cx="46" cy="120" r="3" fill="#555"/>
-    <text x="40" y="345" text-anchor="middle" font-family="Noto Serif SC,serif" font-size="11" fill="#8B7355" letter-spacing="2">BEHAVIORAL AGENT</text>
-
-    <!-- Arrow -->
-    <line x1="105" y1="200" x2="185" y2="200" stroke="#8B7355" stroke-width="1.5" stroke-dasharray="4 3"/>
-    <polygon points="185,200 178,196 178,204" fill="#8B7355"/>
-
-    <!-- 银河 / Universe -->
-    <circle cx="360" cy="200" r="140" fill="none" stroke="#1B3B6B" stroke-width="1"/>
-    <circle cx="360" cy="200" r="110" fill="none" stroke="#1B3B6B" stroke-width="0.5"/>
-    <circle cx="360" cy="200" r="80" fill="none" stroke="#8B7355" stroke-width="0.5"/>
-    <circle cx="360" cy="200" r="50" fill="none" stroke="#1B3B6B" stroke-width="0.5"/>
-
-    <!-- Galaxy spiral lines -->
-    <path d="M 360 200 Q 400 170 440 200 Q 470 240 420 260 Q 370 270 340 240 Q 310 210 360 200" fill="none" stroke="#1B3B6B" stroke-width="0.5" opacity="0.4"/>
-    <path d="M 360 200 Q 320 170 290 200 Q 270 240 310 260 Q 350 270 380 240 Q 400 210 360 200" fill="none" stroke="#8B7355" stroke-width="0.5" opacity="0.4"/>
-
-    <!-- Nodes in galaxy -->
-    <circle cx="410" cy="180" r="3" fill="#1B3B6B"/>
-    <circle cx="440" cy="220" r="2" fill="#1B3B6B"/>
-    <circle cx="390" cy="240" r="3" fill="#8B7355"/>
-    <circle cx="330" cy="220" r="2" fill="#1B3B6B"/>
-    <circle cx="310" cy="180" r="3" fill="#1B3B6B"/>
-    <circle cx="290" cy="230" r="2" fill="#8B7355"/>
-    <circle cx="360" cy="170" r="2" fill="#1B3B6B"/>
-    <circle cx="370" cy="250" r="2" fill="#1B3B6B"/>
-    <circle cx="430" cy="195" r="1.5" fill="#555"/>
-    <circle cx="350" cy="195" r="1.5" fill="#555"/>
-    <circle cx="380" cy="215" r="1.5" fill="#555"/>
-    <circle cx="320" cy="205" r="1.5" fill="#555"/>
-
-    <!-- Center -->
-    <circle cx="360" cy="200" r="6" fill="#1B3B6B"/>
-    <circle cx="360" cy="200" r="10" fill="none" stroke="#1B3B6B" stroke-width="1"/>
-
-    <!-- Radial lines -->
-    <line x1="360" y1="200" x2="440" y2="140" stroke="#1B3B6B" stroke-width="0.3" opacity="0.4"/>
-    <line x1="360" y1="200" x2="440" y2="260" stroke="#1B3B6B" stroke-width="0.3" opacity="0.4"/>
-    <line x1="360" y1="200" x2="280" y2="140" stroke="#1B3B6B" stroke-width="0.3" opacity="0.4"/>
-    <line x1="360" y1="200" x2="280" y2="260" stroke="#1B3B6B" stroke-width="0.3" opacity="0.4"/>
-
-    <text x="360" y="345" text-anchor="middle" font-family="Noto Serif SC,serif" font-size="11" fill="#8B7355" letter-spacing="2">UNIVERSAL COOPERATION</text>
-  </svg>
+<!-- Tree (individual) -->
+<div class="tree-area">
+  <div class="t-crown"></div>
+  <div class="t-branch1"></div>
+  <div class="t-branch2"></div>
+  <div class="t-branch3"></div>
+  <div class="t-branch4"></div>
+  <div class="t-trunk"></div>
+  <div class="t-ground"></div>
 </div>
 
-<div class="right-panel">
-  <div class="panel-title">分析框架 <span>ANALYTICAL FRAMEWORK</span></div>
-  <ul class="bullet-list">
-    <li>
-      <div class="num">01</div>
-      <div class="dot"></div>
-      <div class="content">
-        <div class="txt">行为人 —— 具有有限理性与机会主义倾向的经济人</div>
-        <div class="en">BEHAVIORAL AGENT</div>
-      </div>
-    </li>
-    <li>
-      <div class="num">02</div>
-      <div class="dot"></div>
-      <div class="content">
-        <div class="txt">基于互联网的 Cyberspace 与 Community</div>
-        <div class="en">CYBERSPACE &amp; COMMUNITY</div>
-      </div>
-    </li>
-    <li>
-      <div class="num">03</div>
-      <div class="dot"></div>
-      <div class="content">
-        <div class="txt">信息的属性与生产、分发机制</div>
-        <div class="en">INFORMATION: PRODUCTION &amp; DISTRIBUTION</div>
-      </div>
-    </li>
-    <li>
-      <div class="num">04</div>
-      <div class="dot"></div>
-      <div class="content">
-        <div class="txt">一系列的制度安排：政治、组织、经济 —— 可持续发展</div>
-        <div class="en">INSTITUTIONAL ARRANGEMENTS: POLITICAL · ORGANIZATIONAL · ECONOMIC</div>
-      </div>
-    </li>
-    <li>
-      <div class="num">05</div>
-      <div class="dot"></div>
-      <div class="content">
-        <div class="txt">人类合作秩序的扩展</div>
-        <div class="en">EXTENSION OF HUMAN COOPERATIVE ORDER</div>
-      </div>
-    </li>
-  </ul>
+<!-- Scale labels -->
+<div class="scale-individual">个体 / INDIVIDUAL</div>
+<div class="scale-cosmic">宇宙秩序 / COSMIC ORDER</div>
+
+<!-- Content column -->
+<div class="content-col">
+  <div class="content-item">
+    <div class="marker marker-solid"></div>
+    <div class="item-text">
+      <span class="em">行为人</span>——有限理性假设下的人类行动者
+      <span class="sub">Bounded rationality agents</span>
+    </div>
+  </div>
+  
+  <div class="content-item">
+    <div class="marker marker-copper"></div>
+    <div class="item-text">
+      基于互联网的 <span class="em">cyberspace</span> 与 <span class="em">community</span>
+      <span class="sub">网络空间与共同体</span>
+    </div>
+  </div>
+  
+  <div class="content-item">
+    <div class="marker marker-ring"></div>
+    <div class="item-text">
+      信息的属性：<span class="em">非竞争性</span>与零边际成本的生产、分发
+      <span class="sub">Information: non-rivalry & zero marginal cost</span>
+    </div>
+  </div>
+  
+  <div class="content-item">
+    <div class="marker marker-solid"></div>
+    <div class="item-text">
+      制度安排（政治、组织、经济）—— <span class="em">可持续发展</span>
+      <span class="sub">Institutional arrangements for sustainability</span>
+    </div>
+  </div>
+  
+  <div class="content-item">
+    <div class="marker marker-copper"></div>
+    <div class="item-text">
+      <span class="em">人类合作秩序的扩展</span>
+      <span class="sub">From tribal cooperation to cosmic collaborative order</span>
+    </div>
+  </div>
 </div>
 
-<div class="deco-circle-1"></div>
-<div class="deco-line-h"></div>
-
-<div class="footnote">
-  <div class="ref">↳ 引用 · https://x.com/earthcurated/status/1803004738956415338</div>
-  <div class="meta">OPEN SOURCE · NEW INSTITUTIONAL ECONOMICS · 2025</div>
+<!-- Metaphor note -->
+<div class="metaphor">
+  <div class="metaphor-title">视觉隐喻</div>
+  宇宙尺度对比——孤树与银河。<br>
+  新制度经济学视野下，个体行为人与宇宙性合作秩序之间的联系。
 </div>
 
-</body></html>
+<!-- Bauhaus accents -->
+<div class="bauhaus-sq1"></div>
+<div class="bauhaus-sq2"></div>
+
+<!-- Footer -->
+<div class="footer">
+  <div class="footer-left">第 05 期 · 交易成本与路径依赖</div>
+  <div class="footer-right">开源之道 · 新制度经济学</div>
+</div>
+
+</body>
+</html>

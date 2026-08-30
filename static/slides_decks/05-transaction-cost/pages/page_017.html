@@ -1,171 +1,581 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: b6aa8e593fc89aed --><head><meta charset="UTF-8"><title>罗纳德·科斯 — 新制度经济学的奠基者</title><style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1600px;height:900px;overflow:hidden;margin:0}
-body{background:#F5F0E8;color:#1B3B6B;font-family:'Noto Sans SC',sans-serif;position:relative}
-.serif{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif}
+<!DOCTYPE html>
+<html><!-- source_hash: 7d3e2c1f725e2e0b -->
+<head>
+<meta charset="UTF-8">
+<title>科斯的贡献 — 第05期 · 交易成本与路径依赖</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
 
-/* 顶部装饰线 */
-.top-line{position:absolute;top:60px;left:80px;right:80px;height:2px;background:#1B3B6B}
-.top-square{position:absolute;top:52px;left:80px;width:16px;height:16px;background:#1B3B6B}
-.top-circle{position:absolute;top:53px;right:80px;width:14px;height:14px;border-radius:50%;background:#8B7355}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* 标题区 */
-.header-area{position:absolute;top:85px;left:80px;right:80px;height:180px}
-.kicker{font-size:13px;letter-spacing:6px;color:#8B7355;font-weight:400;margin-bottom:10px}
-.main-title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:56px;font-weight:700;color:#1B3B6B;line-height:1.1;letter-spacing:2px}
-.sub-title{font-size:18px;color:#555;margin-top:14px;line-height:1.6;font-weight:300}
-.title-underline{position:absolute;left:80px;top:265px;width:120px;height:3px;background:#8B7355}
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  background: #F5F0E8;
+  position: relative;
+}
 
-/* 中央视觉 — 破碎的CD */
-.cd-visual{position:absolute;top:300px;left:80px;width:600px;height:520px}
+/* Parchment texture overlay */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 1600px; height: 900px;
+  background: 
+    repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(139,115,85,0.015) 3px, rgba(139,115,85,0.015) 4px),
+    repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(139,115,85,0.01) 3px, rgba(139,115,85,0.01) 4px);
+  pointer-events: none;
+  z-index: 1;
+}
 
-.cd-shard{position:absolute;background:#1B3B6B}
-.cd-core{position:absolute;left:240px;top:160px;width:140px;height:140px;border-radius:50%;background:#1B3B6B}
-.cd-inner-ring{position:absolute;left:270px;top:190px;width:80px;height:80px;border-radius:50%;border:2px solid #F5F0E8}
-.cd-hole{position:absolute;left:298px;top:218px;width:24px;height:24px;border-radius:50%;background:#F5F0E8}
-.cd-ring-outer{position:absolute;left:180px;top:100px;width:260px;height:260px;border-radius:50%;border:1.5px solid #1B3B6B;opacity:0.3}
-.cd-ring-mid{position:absolute;left:210px;top:130px;width:200px;height:200px;border-radius:50%;border:1px solid #1B3B6B;opacity:0.2}
+/* Geometric decorations */
+.geo-circle-1 {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  border: 3px solid #1B3B6B;
+  top: -100px;
+  right: -80px;
+  opacity: 0.08;
+  z-index: 2;
+}
 
-/* 碎片1 - 右上弧 */
-.shard-1{position:absolute;left:340px;top:80px;width:200px;height:60px;background:#1B3B6B;border-radius:200px 200px 0 0/200px 200px 0 0;clip-path:polygon(0 100%, 30% 0, 100% 0)}
-.shard-2{position:absolute;left:350px;top:100px;width:180px;height:30px;background:#8B7355;clip-path:polygon(0 0, 100% 40%, 100% 100%, 0 70%)}
-.shard-3{position:absolute;left:420px;top:260px;width:30px;height:120px;background:#1B3B6B;clip-path:polygon(0 0, 100% 30%, 100% 100%, 0 70%)}
-.shard-4{position:absolute;left:100px;top:280px;width:140px;height:25px;background:#8B7355;clip-path:polygon(0 30%, 100% 0, 100% 100%, 0 70%)}
-.shard-5{position:absolute;left:80px;top:200px;width:80px;height:50px;background:#1B3B6B;clip-path:polygon(0 0, 100% 50%, 80% 100%, 0 80%)}
+.geo-circle-2 {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  opacity: 0.04;
+  bottom: -60px;
+  left: 60px;
+  z-index: 2;
+}
 
-/* 大碎片 - 左下 */
-.shard-6{position:absolute;left:60px;top:360px;width:180px;height:90px;background:#1B3B6B;border-radius:0 120px 120px 0/0 90px 90px 0;clip-path:polygon(0 20%, 60% 0, 100% 40%, 90% 100%, 0 80%)}
-.shard-7{position:absolute;left:110px;top:450px;width:60px;height:40px;background:#8B7355;clip-path:polygon(0 0, 100% 30%, 80% 100%, 0 70%)}
-.shard-8{position:absolute;left:220px;top:420px;width:40px;height:60px;background:#1B3B6B;clip-path:polygon(0 0, 100% 40%, 60% 100%, 0 80%)}
+.geo-square-1 {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  background: #1B3B6B;
+  opacity: 0.06;
+  top: 120px;
+  right: 200px;
+  transform: rotate(15deg);
+  z-index: 2;
+}
 
-/* 碎片 - 右下 */
-.shard-9{position:absolute;left:380px;top:400px;width:130px;height:50px;background:#1B3B6B;border-radius:0 100px 100px 0/0 80px 80px 0;clip-path:polygon(0 20%, 40% 0, 100% 50%, 100% 100%, 20% 100%)}
-.shard-10{position:absolute;left:440px;top:470px;width:70px;height:35px;background:#8B7355;clip-path:polygon(0 0, 100% 40%, 100% 100%, 0 80%)}
-.shard-11{position:absolute;left:250px;top:500px;width:80px;height:20px;background:#1B3B6B}
+.geo-line-h {
+  position: absolute;
+  width: 1600px;
+  height: 1px;
+  background: #1B3B6B;
+  opacity: 0.12;
+  z-index: 2;
+}
 
-/* 裂纹线 */
-.crack-1{position:absolute;left:280px;top:160px;width:2px;height:140px;background:#1B3B6B;opacity:0.4}
-.crack-2{position:absolute;left:200px;top:230px;width:140px;height:2px;background:#1B3B6B;opacity:0.4}
-.crack-3{position:absolute;left:310px;top:190px;width:100px;height:2px;background:#8B7355;opacity:0.5}
+.geo-line-v {
+  position: absolute;
+  width: 1px;
+  height: 900px;
+  background: #1B3B6B;
+  opacity: 0.06;
+  z-index: 2;
+}
 
-/* 装饰几何元素 */
-.deco-square{position:absolute;left:30px;top:700px;width:20px;height:20px;background:#8B7355}
-.deco-circle-outline{position:absolute;left:50px;top:700px;width:20px;height:20px;border-radius:50%;border:1.5px solid #1B3B6B}
+/* Broken CD visual metaphor */
+.cd-container {
+  position: absolute;
+  top: 50%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  width: 520px;
+  height: 520px;
+  z-index: 5;
+}
 
-/* 右侧内容区 */
-.right-area{position:absolute;top:300px;right:80px;width:700px;height:520px}
-.section-label{font-size:11px;letter-spacing:5px;color:#8B7355;margin-bottom:18px;font-weight:400}
-.section-number{position:absolute;right:0;top:0;font-family:'Noto Serif SC',serif;font-size:80px;color:#1B3B6B;opacity:0.08;line-height:1;font-weight:700}
+.cd-piece {
+  position: absolute;
+  border-radius: 50%;
+  background: #1B3B6B;
+}
 
-.contrib-list{list-style:none;margin:0;padding:0}
-.contrib-list li{position:relative;padding-left:36px;margin-bottom:22px;font-size:17px;line-height:1.55;color:#1B3B6B;font-weight:400}
-.contrib-list li .marker{position:absolute;left:0;top:8px;width:12px;height:12px;background:#1B3B6B}
-.contrib-list li .marker.circle{border-radius:50%}
-.contrib-list li .marker.diamond{transform:rotate(45deg);background:#8B7355}
-.contrib-list li .marker.square{background:#8B7355}
+.cd-outer-1 {
+  width: 520px;
+  height: 520px;
+  top: 0; left: 0;
+  border: 2px solid #1B3B6B;
+  background: transparent;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 48%, 72% 52%, 68% 60%, 50% 55%, 30% 62%, 25% 50%, 0% 52%);
+  opacity: 0.10;
+}
 
-.contrib-list li .work{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-weight:700;color:#1B3B6B;font-size:18px}
-.contrib-list li .year{color:#8B7355;font-weight:600;margin-left:8px;font-size:15px}
-.contrib-list li .desc{display:block;font-size:14px;color:#555;margin-top:4px;line-height:1.5;font-weight:300}
+.cd-outer-2 {
+  width: 520px;
+  height: 520px;
+  top: 0; left: 0;
+  border: 2px solid #1B3B6B;
+  background: transparent;
+  clip-path: polygon(0% 52%, 25% 50%, 30% 62%, 50% 55%, 68% 60%, 72% 52%, 100% 48%, 100% 100%, 0% 100%);
+  opacity: 0.08;
+  margin-top: 8px;
+}
 
-/* 中国相关区块 */
-.china-block{position:absolute;top:380px;right:80px;width:700px;background:transparent;border-left:3px solid #8B7355;padding:16px 0 16px 24px}
-.china-title{font-family:'Noto Serif SC',serif;font-size:17px;font-weight:700;color:#1B3B6B;margin-bottom:10px;letter-spacing:1px}
-.china-text{font-size:14px;color:#555;line-height:1.7}
-.china-text .em{color:#1B3B6B;font-weight:600}
+.cd-ring-1 {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  border: 1.5px solid #1B3B6B;
+  top: 60px;
+  left: 60px;
+  opacity: 0.10;
+  clip-path: polygon(0% 0%, 60% 0%, 55% 35%, 40% 30%, 20% 40%, 0% 30%);
+}
 
-/* 底部装饰 */
-.bottom-line{position:absolute;bottom:40px;left:80px;right:80px;height:1px;background:#1B3B6B;opacity:0.3}
-.bottom-info{position:absolute;bottom:18px;left:80px;font-size:11px;color:#8B7355;letter-spacing:3px}
-.bottom-page{position:absolute;bottom:18px;right:80px;font-size:11px;color:#8B7355;letter-spacing:2px;font-family:'Noto Serif SC',serif}
+.cd-ring-2 {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  border: 1.5px solid #1B3B6B;
+  top: 60px;
+  left: 60px;
+  opacity: 0.08;
+  clip-path: polygon(60% 0%, 100% 0%, 100% 100%, 40% 100%, 35% 65%, 50% 55%, 60% 40%);
+}
 
-/* 年份标记 */
-.year-badge{position:absolute;top:300px;right:80px;width:70px;height:70px;border:2px solid #1B3B6B;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif SC',serif;font-size:14px;color:#1B3B6B;font-weight:700;letter-spacing:1px}
-.year-badge-2{position:absolute;top:370px;right:80px;width:70px;height:70px;border:2px solid #8B7355;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;font-weight:700;letter-spacing:1px}
+.cd-center {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 2px solid #1B3B6B;
+  background: #F5F0E8;
+  top: 200px;
+  left: 200px;
+  opacity: 0.5;
+  box-shadow: 0 0 0 8px #F5F0E8, 0 0 0 9px rgba(27,59,107,0.3);
+}
 
-/* 视觉隐喻标注 */
-.metaphor-tag{position:absolute;bottom:60px;left:80px;font-size:11px;color:#555;font-style:italic;font-family:'Noto Serif SC',serif;max-width:400px;line-height:1.5}
-</style></head><body>
+.cd-hole {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #F5F0E8;
+  border: 2px solid #1B3B6B;
+  top: 240px;
+  left: 240px;
+  opacity: 0.6;
+}
 
-<div class="top-square"></div>
-<div class="top-circle"></div>
-<div class="top-line"></div>
+/* Shattered fragments */
+.shard {
+  position: absolute;
+  background: #1B3B6B;
+  opacity: 0.06;
+}
 
-<div class="header-area">
-  <div class="kicker">FIGURE 01 · 制度经济学的奠基者</div>
-  <div class="main-title serif">罗纳德·科斯</div>
-  <div class="sub-title">Ronald H. Coase &nbsp;/&nbsp; 1910 — 2013 &nbsp;·&nbsp; 美国芝加哥大学教授，芝加哥经济学派代表人物，1991年诺贝尔经济学奖得主</div>
-</div>
-<div class="title-underline"></div>
+.shard-1 {
+  width: 80px; height: 3px;
+  top: 180px; left: 380px;
+  transform: rotate(35deg);
+}
 
-<!-- 中央视觉：破碎的CD -->
-<div class="cd-visual">
-  <div class="cd-ring-outer"></div>
-  <div class="cd-ring-mid"></div>
-  <div class="crack-1"></div>
-  <div class="crack-2"></div>
-  <div class="crack-3"></div>
+.shard-2 {
+  width: 60px; height: 3px;
+  top: 350px; left: 60px;
+  transform: rotate(-20deg);
+}
 
-  <div class="cd-core"></div>
-  <div class="cd-inner-ring"></div>
+.shard-3 {
+  width: 50px; height: 2.5px;
+  top: 420px; left: 450px;
+  transform: rotate(70deg);
+}
+
+.shard-4 {
+  width: 70px; height: 2px;
+  top: 120px; left: 120px;
+  transform: rotate(50deg);
+}
+
+.shard-5 {
+  width: 45px; height: 2.5px;
+  top: 450px; left: 150px;
+  transform: rotate(-45deg);
+}
+
+/* Layout sections */
+.slide-content {
+  position: absolute;
+  top: 0; left: 0;
+  width: 1600px;
+  height: 900px;
+  z-index: 10;
+  padding: 70px 90px;
+}
+
+/* Header */
+.header-bar {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.lecture-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #8B7355;
+  letter-spacing: 2px;
+}
+
+.lecture-title {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #555;
+  letter-spacing: 1px;
+}
+
+.top-line {
+  position: absolute;
+  top: 60px;
+  left: 90px;
+  width: 60px;
+  height: 3px;
+  background: #1B3B6B;
+  z-index: 11;
+}
+
+/* Main title area */
+.main-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 64px;
+  font-weight: 900;
+  color: #1B3B6B;
+  line-height: 1.1;
+  margin-top: 50px;
+  letter-spacing: -1px;
+}
+
+.subtitle-text {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #8B7355;
+  margin-top: 12px;
+  letter-spacing: 1px;
+}
+
+/* Content blocks */
+.content-area {
+  display: flex;
+  gap: 50px;
+  margin-top: 45px;
+}
+
+.left-block {
+  width: 380px;
+}
+
+.right-block {
+  width: 440px;
+  padding-left: 30px;
+  border-left: 1px solid rgba(27,59,107,0.15);
+}
+
+.block-label {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #8B7355;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.work-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1B3B6B;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+
+.work-year {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: #555;
+  margin-bottom: 18px;
+  letter-spacing: 1px;
+}
+
+.bio-text {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: #333;
+  line-height: 2;
+}
+
+.bio-highlight {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 700;
+  color: #1B3B6B;
+}
+
+.book-collab {
+  margin-top: 22px;
+  padding: 16px 20px;
+  border: 1px solid rgba(139,115,85,0.3);
+  background: rgba(139,115,85,0.04);
+}
+
+.collab-label {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: #8B7355;
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+}
+
+.collab-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1B3B6B;
+  line-height: 1.5;
+}
+
+/* Footer */
+.footer {
+  position: absolute;
+  bottom: 40px;
+  left: 90px;
+  right: 90px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 11;
+}
+
+.footer-left {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  color: #555;
+  letter-spacing: 1px;
+}
+
+.footer-right {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  color: #8B7355;
+  letter-spacing: 1px;
+}
+
+.footer-line {
+  position: absolute;
+  bottom: 65px;
+  left: 90px;
+  width: 1420px;
+  height: 1px;
+  background: rgba(27,59,107,0.1);
+  z-index: 11;
+}
+
+/* Visual metaphor label */
+.metaphor-label {
+  position: absolute;
+  bottom: 90px;
+  left: 55%;
+  transform: translateX(-50%);
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: #8B7355;
+  letter-spacing: 2px;
+  z-index: 11;
+  opacity: 0.7;
+  font-style: italic;
+}
+
+/* Decorative dots */
+.dot {
+  position: absolute;
+  border-radius: 50%;
+  background: #1B3B6B;
+  z-index: 12;
+}
+
+.dot-1 {
+  width: 8px; height: 8px;
+  top: 68px; left: 68px;
+  opacity: 0.7;
+}
+
+.dot-2 {
+  width: 5px; height: 5px;
+  top: 68px; left: 88px;
+  opacity: 0.4;
+}
+
+.dot-3 {
+  width: 4px; height: 4px;
+  top: 68px; left: 102px;
+  opacity: 0.25;
+}
+
+/* Name display */
+.name-display {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1B3B6B;
+  margin-bottom: 6px;
+  letter-spacing: 1px;
+}
+
+.name-en {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #8B7355;
+  letter-spacing: 2px;
+  margin-bottom: 14px;
+}
+
+/* Small geometric accents near CD */
+.acc-line {
+  position: absolute;
+  background: #1B3B6B;
+  z-index: 6;
+  opacity: 0.15;
+}
+
+.acc-line-1 {
+  width: 200px;
+  height: 1px;
+  top: 180px;
+  left: 900px;
+}
+
+.acc-line-2 {
+  width: 1px;
+  height: 100px;
+  top: 680px;
+  left: 1150px;
+}
+
+.acc-square {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid #1B3B6B;
+  z-index: 6;
+  opacity: 0.15;
+}
+
+.acc-square-1 {
+  top: 200px;
+  left: 1110px;
+}
+</style>
+</head>
+<body>
+
+<!-- Background geometric elements -->
+<div class="geo-circle-1"></div>
+<div class="geo-circle-2"></div>
+<div class="geo-square-1"></div>
+
+<!-- Broken CD visual metaphor -->
+<div class="cd-container">
+  <div class="cd-outer-1"></div>
+  <div class="cd-outer-2"></div>
+  <div class="cd-ring-1"></div>
+  <div class="cd-ring-2"></div>
+  <div class="cd-center"></div>
   <div class="cd-hole"></div>
-
-  <div class="shard-1"></div>
-  <div class="shard-2"></div>
-  <div class="shard-3"></div>
-  <div class="shard-4"></div>
-  <div class="shard-5"></div>
-  <div class="shard-6"></div>
-  <div class="shard-7"></div>
-  <div class="shard-8"></div>
-  <div class="shard-9"></div>
-  <div class="shard-10"></div>
-  <div class="shard-11"></div>
-
-  <div class="deco-square"></div>
-  <div class="deco-circle-outline"></div>
+  <div class="shard shard-1"></div>
+  <div class="shard shard-2"></div>
+  <div class="shard shard-3"></div>
+  <div class="shard shard-4"></div>
+  <div class="shard shard-5"></div>
 </div>
 
-<div class="metaphor-tag">「破碎的CD」—— 标准与路径在数字时代引发的产业崩塌，正如同制度的瓦解与重构。</div>
+<!-- Accents -->
+<div class="acc-line acc-line-1"></div>
+<div class="acc-line acc-line-2"></div>
+<div class="acc-square acc-square-1"></div>
 
-<!-- 右侧年份标记 -->
-<div class="year-badge">1937</div>
-<div class="year-badge-2">1962</div>
+<!-- Main content -->
+<div class="slide-content">
+  <div class="top-line"></div>
+  
+  <!-- Decorative dots -->
+  <div class="dot dot-1"></div>
+  <div class="dot dot-2"></div>
+  <div class="dot dot-3"></div>
+  
+  <!-- Header -->
+  <div class="header-bar">
+    <span class="lecture-num">No.05</span>
+    <span class="lecture-title">交易成本与路径依赖</span>
+  </div>
 
-<!-- 右侧内容 -->
-<div class="right-area">
-  <div class="section-number">01</div>
-  <div style="margin-top:100px">
-    <div class="section-label">CORE CONTRIBUTIONS · 核心贡献</div>
-    <ul class="contrib-list">
-      <li>
-        <span class="marker circle"></span>
-        <span class="work">《企业的性质》</span><span class="year">· 1937</span>
-        <span class="desc">首次提出交易成本概念，解释企业存在与规模边界——为什么有些交换在企业内发生，而非在市场上。</span>
-      </li>
-      <li>
-        <span class="marker diamond"></span>
-        <span class="work">《社会成本问题》</span><span class="year">· 1962</span>
-        <span class="desc">奠定科斯定理基础：当产权清晰且交易成本为零时，资源可通过自由协商实现最优配置。</span>
-      </li>
-    </ul>
+  <!-- Main title -->
+  <h1 class="main-title">科斯的贡献</h1>
+  <p class="subtitle-text">Ronald H. Coase · The Father of New Institutional Economics</p>
+
+  <!-- Content area -->
+  <div class="content-area">
+    <div class="left-block">
+      <div class="block-label">主要著作</div>
+      <div class="work-title">《企业的性质》</div>
+      <div class="work-year">The Nature of the Firm · 1937</div>
+      <div class="work-title">《社会成本问题》</div>
+      <div class="work-year">The Problem of Social Cost · 1962</div>
+      
+      <div class="book-collab">
+        <div class="collab-label">合作著作</div>
+        <div class="collab-title">《变革中国：市场经济的中国之路》<br><span style="font-size:13px; font-weight:400; color:#555;">与中国学者王宁合著</span></div>
+      </div>
+    </div>
+    
+    <div class="right-block">
+      <div class="block-label">学术身份</div>
+      <div class="name-display">罗纳德·科斯</div>
+      <div class="name-en">Ronald Harry Coase (1910–2013)</div>
+      <div class="bio-text">
+        新制度经济学的<span class="bio-highlight">鼻祖</span>。<br>
+        美国<span class="bio-highlight">芝加哥大学</span>教授、<br>
+        <span class="bio-highlight">芝加哥经济学派</span>代表人物之一。<br>
+        <span class="bio-highlight">1991年</span>诺贝尔经济学奖得主。<br>
+        长期关注<span class="bio-highlight">中国</span>经济体制变革。
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="china-block">
-  <div class="section-label">CHINA CONNECTION · 中国关注</div>
-  <div class="china-title">长期关注中国的制度变迁</div>
-  <div class="china-text">
-    多次实地考察中国，与经济学家<span class="em">王宁</span>合著
-    <span class="em serif" style="font-family:'Noto Serif SC',serif;font-weight:700">《变革中国：市场经济的中国之路》</span>，
-    以新制度经济学视角剖析中国经济转型的制度逻辑与微观基础。
-  </div>
+<!-- Metaphor label -->
+<div class="metaphor-label">破碎的 CD — 标准与路径的崩塌</div>
+
+<!-- Footer -->
+<div class="footer-line"></div>
+<div class="footer">
+  <span class="footer-left">开源之道 · 新制度经济学视角</span>
+  <span class="footer-right">05 · 27</span>
 </div>
 
-<div class="bottom-line"></div>
-<div class="bottom-info">NEW INSTITUTIONAL ECONOMICS · OPEN SOURCE SERIES</div>
-<div class="bottom-page">— 02 —</div>
-
-</body></html>
+</body>
+</html>

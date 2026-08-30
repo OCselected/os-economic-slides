@@ -1,157 +1,482 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: 10d8f357521fcb56 --><head><meta charset="UTF-8"><title>什么是交易成本</title><style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
-html,body{width:1600px;height:900px;overflow:hidden;margin:0;padding:0}
-body{background:#F5F0E8;font-family:'Noto Sans SC',sans-serif;color:#1B3B6B;position:relative}
-.page{position:absolute;top:0;left:0;width:1600px;height:900px;padding:60px 80px;box-sizing:border-box}
-/* parchment texture */
-.page::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(139,115,85,0.012) 3px,rgba(139,115,85,0.012) 4px),repeating-linear-gradient(90deg,transparent,transparent 5px,rgba(27,59,107,0.008) 5px,rgba(27,59,107,0.008) 6px);pointer-events:none;z-index:0}
-/* top rule */
-.top-rule{position:absolute;top:50px;left:80px;width:1440px;height:2px;background:#1B3B6B;z-index:1}
-.top-rule-thin{position:absolute;top:58px;left:80px;width:1440px;height:1px;background:#8B7355;z-index:1;opacity:0.5}
-/* footer */
-.footer{position:absolute;bottom:32px;left:80px;width:1440px;display:flex;justify-content:space-between;align-items:center;z-index:2;font-size:13px;color:#555;letter-spacing:2px}
-.footer-line{position:absolute;bottom:64px;left:80px;width:1440px;height:1px;background:#8B7355;opacity:0.3}
-/* left column */
-.left-col{position:absolute;top:110px;left:80px;width:520px;height:700px;z-index:2}
-.section-label{font-family:'Noto Sans SC',sans-serif;font-size:13px;font-weight:500;color:#8B7355;letter-spacing:6px;margin-bottom:14px}
-.section-num{font-family:'Noto Serif SC',serif;font-size:15px;color:#1B3B6B;font-weight:600;margin-bottom:28px;letter-spacing:3px}
-.main-title{font-family:'Noto Serif SC',serif;font-size:72px;font-weight:900;color:#1B3B6B;line-height:1.1;margin-bottom:20px;letter-spacing:4px}
-.main-title-en{font-family:'Noto Serif SC',serif;font-size:16px;color:#8B7355;font-weight:400;letter-spacing:4px;margin-bottom:36px;font-style:italic}
-.title-divider{width:120px;height:3px;background:#1B3B6B;margin-bottom:24px}
-.title-divider-thin{width:200px;height:1px;background:#8B7355;opacity:0.6;margin-bottom:24px}
-.subtitle-text{font-family:'Noto Serif SC',serif;font-size:17px;color:#1B3B6B;line-height:1.9;font-weight:400;letter-spacing:1px}
-.subtitle-text .em{color:#8B7355;font-weight:600}
-/* visual metaphor: geometric composition */
-.metaphor{position:absolute;bottom:0;left:0;width:520px;height:200px}
-.m-circle-bg{position:absolute;left:20px;top:30px;width:140px;height:140px;border:2px solid #1B3B6B;border-radius:50%}
-.m-circle-inner{position:absolute;left:55px;top:65px;width:70px;height:70px;background:#1B3B6B;border-radius:50%}
-.m-square{position:absolute;left:190px;top:45px;width:80px;height:80px;background:#8B7355;opacity:0.85}
-.m-square-rotate{position:absolute;left:285px;top:35px;width:60px;height:60px;background:#1B3B6B;border:2px solid #F5F0E8}
-.m-line{position:absolute;left:360px;top:75px;width:150px;height:2px;background:#1B3B6B}
-.m-line-thin{position:absolute;left:360px;top:80px;width:100px;height:1px;background:#8B7355}
-.m-dot{position:absolute;left:365px;top:55px;width:12px;height:12px;background:#8B7355;border-radius:50%}
-.m-triangle{position:absolute;left:410px;top:20px;width:0;height:0;border-left:30px solid transparent;border-right:30px solid transparent;border-bottom:52px solid #1B3B6B;opacity:0.9}
-.metaphor-label{position:absolute;bottom:-8px;left:20px;font-size:11px;color:#8B7355;letter-spacing:3px}
-/* right column */
-.right-col{position:absolute;top:110px;left:660px;width:860px;height:700px;z-index:2}
-.right-header{display:flex;align-items:center;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid rgba(27,59,107,0.2)}
-.right-header-line{width:40px;height:2px;background:#1B3B6B;margin-right:16px}
-.right-header-text{font-family:'Noto Serif SC',serif;font-size:15px;color:#1B3B6B;font-weight:600;letter-spacing:4px}
-.right-header-text-en{font-size:11px;color:#8B7355;letter-spacing:3px;margin-left:12px;font-style:italic}
-/* bullet list */
-.bullet-list{margin-top:8px}
-.bullet-item{display:flex;align-items:flex-start;padding:14px 0;border-bottom:1px solid rgba(139,115,85,0.15)}
-.bullet-item:last-child{border-bottom:none}
-.bullet-num{font-family:'Noto Serif SC',serif;font-size:22px;font-weight:700;color:#1B3B6B;min-width:48px;line-height:1.4;letter-spacing:1px}
-.bullet-num-copper{color:#8B7355}
-.bullet-content{flex:1;padding-left:8px}
-.bullet-title{font-family:'Noto Serif SC',serif;font-size:21px;font-weight:700;color:#1B3B6B;line-height:1.5;margin-bottom:4px;letter-spacing:1px}
-.bullet-title-copper{color:#8B7355}
-.bullet-desc{font-size:14px;color:#555;line-height:1.7;letter-spacing:0.5px;font-weight:300}
-.bullet-desc .key{color:#1B3B6B;font-weight:500}
-/* highlight box */
-.highlight-box{margin-top:20px;padding:20px 24px;background:rgba(27,59,107,0.04);border-left:3px solid #1B3B6B;position:relative}
-.highlight-box::after{content:"";position:absolute;top:12px;right:12px;width:8px;height:8px;background:#8B7355;border-radius:50%}
-.highlight-text{font-family:'Noto Serif SC',serif;font-size:16px;color:#1B3B6B;line-height:1.8;font-weight:500;letter-spacing:1px}
-.highlight-text .quote-mark{font-size:32px;color:#8B7355;font-family:'Noto Serif SC',serif;line-height:0;vertical-align:-8px;margin-right:6px}
-.highlight-text .key{color:#8B7355;font-weight:700}
-/* corner decoration */
-.corner-tl{position:absolute;top:60px;left:60px;width:14px;height:14px;border-top:2px solid #1B3B6B;border-left:2px solid #1B3B6B;z-index:1}
-.corner-tr{position:absolute;top:60px;right:60px;width:14px;height:14px;border-top:2px solid #1B3B6B;border-right:2px solid #1B3B6B;z-index:1}
-.corner-bl{position:absolute;bottom:74px;left:60px;width:14px;height:14px;border-bottom:2px solid #1B3B6B;border-left:2px solid #1B3B6B;z-index:1}
-.corner-br{position:absolute;bottom:74px;right:60px;width:14px;height:14px;border-bottom:2px solid #1B3B6B;border-right:2px solid #1B3B6B;z-index:1}
-/* page number */
-.page-num{position:absolute;top:60px;right:100px;font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;letter-spacing:2px;z-index:2}
-</style></head><body>
-<div class="page">
-<div class="top-rule"></div>
-<div class="top-rule-thin"></div>
-<div class="corner-tl"></div>
-<div class="corner-tr"></div>
-<div class="corner-bl"></div>
-<div class="corner-br"></div>
-<div class="page-num">— 05 —</div>
+<!DOCTYPE html>
+<html><!-- source_hash: 59be585777e6d55d -->
+<head>
+<meta charset="UTF-8">
+<title>什么是交易成本</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;500;700;900&display=swap');
 
-<div class="left-col">
-<div class="section-label">CHAPTER · 三</div>
-<div class="section-num">§ 03 / 交易成本</div>
-<div class="main-title">什么是<br>交易成本</div>
-<div class="main-title-en">What Are Transaction Costs</div>
-<div class="title-divider"></div>
-<div class="title-divider-thin"></div>
-<div class="subtitle-text">
-从<span class="em">物物交换</span>到<span class="em">契约社会</span>，<br>
-每一次价值获取，<br>
-都是一场看不见的<span class="em">成本博弈</span>。
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
+  background: #F5F0E8;
+}
+
+body {
+  position: relative;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: #1B3B6B;
+}
+
+/* Parchment texture */
+.texture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1600px;
+  height: 900px;
+  background: radial-gradient(ellipse at 30% 20%, rgba(139,115,85,0.03) 0%, transparent 50%),
+              radial-gradient(ellipse at 70% 80%, rgba(27,59,107,0.02) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Header bar */
+.header-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1600px;
+  height: 4px;
+  background: #1B3B6B;
+}
+
+/* Lecture info top right */
+.lecture-info {
+  position: absolute;
+  top: 28px;
+  right: 60px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  color: #8B7355;
+  letter-spacing: 2px;
+  font-weight: 400;
+}
+
+.lecture-num {
+  font-size: 15px;
+  font-weight: 500;
+  color: #1B3B6B;
+}
+
+/* Slide counter */
+.slide-counter {
+  position: absolute;
+  bottom: 30px;
+  right: 60px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  color: #8B7355;
+  letter-spacing: 1px;
+}
+
+/* Left content area */
+.content-area {
+  position: absolute;
+  top: 120px;
+  left: 80px;
+  width: 720px;
+}
+
+.slide-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: #1B3B6B;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.title-accent {
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: #8B7355;
+  margin-bottom: 40px;
+}
+
+.subtitle-note {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 15px;
+  color: #8B7355;
+  font-weight: 400;
+  margin-bottom: 44px;
+  letter-spacing: 1px;
+  font-style: italic;
+}
+
+/* Bullet points */
+.bullets {
+  list-style: none;
+  padding: 0;
+}
+
+.bullets li {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 19px;
+  line-height: 1.8;
+  color: #2c3e50;
+  margin-bottom: 14px;
+  padding-left: 28px;
+  position: relative;
+  font-weight: 300;
+}
+
+.bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 10px;
+  height: 10px;
+  background: #1B3B6B;
+}
+
+.bullets li:nth-child(even)::before {
+  background: transparent;
+  border: 2px solid #8B7355;
+}
+
+.bullets li.emphasis {
+  color: #1B3B6B;
+  font-weight: 500;
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
+.bullets li.emphasis::before {
+  width: 12px;
+  height: 12px;
+  top: 10px;
+}
+
+/* Right visual area - Bauhaus geometric composition */
+.visual-area {
+  position: absolute;
+  top: 80px;
+  right: 60px;
+  width: 660px;
+  height: 720px;
+}
+
+/* Large decorative circle */
+.big-circle {
+  position: absolute;
+  top: 60px;
+  right: 40px;
+  width: 280px;
+  height: 280px;
+  border: 3px solid #1B3B6B;
+  border-radius: 50%;
+  opacity: 0.15;
+}
+
+/* Medium filled circle - the unique one */
+.unique-circle {
+  position: absolute;
+  top: 140px;
+  right: 180px;
+  width: 100px;
+  height: 100px;
+  background: #1B3B6B;
+  border-radius: 50%;
+}
+
+.unique-circle-label {
+  position: absolute;
+  top: 175px;
+  right: 155px;
+  width: 150px;
+  text-align: center;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 11px;
+  color: #F5F0E8;
+  line-height: 1.4;
+  letter-spacing: 1px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Grid of small circles */
+.circle-grid {
+  position: absolute;
+  top: 360px;
+  right: 20px;
+  width: 580px;
+  height: 300px;
+}
+
+.small-circle {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1.5px solid #1B3B6B;
+  opacity: 0.3;
+}
+
+/* One highlighted small circle */
+.highlighted-small {
+  background: #8B7355;
+  border-color: #8B7355;
+  opacity: 0.7;
+}
+
+/* Decorative square */
+.deco-square {
+  position: absolute;
+  bottom: 20px;
+  right: 60px;
+  width: 80px;
+  height: 80px;
+  background: #1B3B6B;
+  opacity: 0.08;
+}
+
+.deco-square-inner {
+  position: absolute;
+  bottom: 40px;
+  right: 80px;
+  width: 40px;
+  height: 40px;
+  background: #8B7355;
+  opacity: 0.3;
+}
+
+/* Horizontal line accent */
+.h-line {
+  position: absolute;
+  top: 340px;
+  right: 20px;
+  width: 500px;
+  height: 1px;
+  background: #8B7355;
+  opacity: 0.4;
+}
+
+/* Vertical line accent */
+.v-line {
+  position: absolute;
+  top: 80px;
+  right: 360px;
+  width: 1px;
+  height: 620px;
+  background: #1B3B6B;
+  opacity: 0.1;
+}
+
+/* Triangle */
+.deco-triangle {
+  position: absolute;
+  top: 40px;
+  right: 320px;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 34px solid #8B7355;
+  opacity: 0.2;
+}
+
+/* Diagonal line */
+.diag-line {
+  position: absolute;
+  bottom: 80px;
+  right: 160px;
+  width: 200px;
+  height: 1px;
+  background: #1B3B6B;
+  opacity: 0.15;
+  transform: rotate(-30deg);
+  transform-origin: right center;
+}
+
+/* Key quote */
+.key-quote {
+  position: absolute;
+  bottom: 90px;
+  right: 40px;
+  width: 260px;
+  text-align: right;
+}
+
+.key-quote-text {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14px;
+  color: #8B7355;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* Footer line */
+.footer-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 1600px;
+  height: 2px;
+  background: #1B3B6B;
+  opacity: 0.2;
+}
+
+/* Left decorative element */
+.left-deco-square {
+  position: absolute;
+  top: 60px;
+  left: 30px;
+  width: 24px;
+  height: 24px;
+  border: 2px solid #1B3B6B;
+}
+
+.left-deco-circle {
+  position: absolute;
+  top: 95px;
+  left: 36px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #8B7355;
+}
+
+/* Concept label */
+.concept-label {
+  position: absolute;
+  top: 100px;
+  left: 60px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #8B7355;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+</style>
+</head>
+<body>
+
+<div class="texture"></div>
+<div class="header-line"></div>
+
+<!-- Lecture info -->
+<div class="lecture-info">
+  <span class="lecture-num">第 05 期</span> &nbsp;·&nbsp; 交易成本与路径依赖
 </div>
 
-<div class="metaphor">
-<div class="m-circle-bg"></div>
-<div class="m-circle-inner"></div>
-<div class="m-square"></div>
-<div class="m-square-rotate"></div>
-<div class="m-triangle"></div>
-<div class="m-dot"></div>
-<div class="m-line"></div>
-<div class="m-line-thin"></div>
-<div class="metaphor-label">Bauhaus · Composition</div>
-</div>
+<!-- Left decoration -->
+<div class="left-deco-square"></div>
+<div class="left-deco-circle"></div>
+<div class="concept-label">TRANSACTION COST</div>
+
+<!-- Main content -->
+<div class="content-area">
+  <h1 class="slide-title">什么是交易成本</h1>
+  <span class="title-accent"></span>
+  <p class="subtitle-note">What are transaction costs — the hidden expenses of exchange</p>
+
+  <ul class="bullets">
+    <li>原始社会：偶尔的物物交换，直接而简单</li>
+    <li>现代复杂社会：不确定性是常态</li>
+    <li>获取信息 · 谈判 · 签订契约 · 履行承诺</li>
+    <li>需要大量的沟通、获取信任、相互理解</li>
+    <li class="emphasis">成本无处不在 —— 天下没有免费的午餐</li>
+  </ul>
 </div>
 
-<div class="right-col">
-<div class="right-header">
-<div class="right-header-line"></div>
-<div class="right-header-text">核心要点</div>
-<div class="right-header-text-en">Key Points</div>
+<!-- Right visual: Bauhaus geometric composition -->
+<div class="visual-area">
+  <div class="big-circle"></div>
+  <div class="unique-circle"></div>
+  <div class="unique-circle-label">价值之光<br>the value</div>
+  <div class="v-line"></div>
+  <div class="h-line"></div>
+  <div class="deco-triangle"></div>
+  <div class="deco-square"></div>
+  <div class="deco-square-inner"></div>
+  <div class="diag-line"></div>
+
+  <!-- Circle grid -->
+  <div class="circle-grid">
+    <!-- Row 1 -->
+    <div class="small-circle" style="top:0; left:20px;"></div>
+    <div class="small-circle" style="top:0; left:70px;"></div>
+    <div class="small-circle" style="top:0; left:120px;"></div>
+    <div class="small-circle" style="top:0; left:170px;"></div>
+    <div class="small-circle" style="top:0; left:220px;"></div>
+    <div class="small-circle" style="top:0; left:270px;"></div>
+    <div class="small-circle" style="top:0; left:320px;"></div>
+    <div class="small-circle" style="top:0; left:370px;"></div>
+    <div class="small-circle" style="top:0; left:420px;"></div>
+    <div class="small-circle" style="top:0; left:470px;"></div>
+
+    <!-- Row 2 -->
+    <div class="small-circle" style="top:50px; left:20px;"></div>
+    <div class="small-circle" style="top:50px; left:70px;"></div>
+    <div class="small-circle" style="top:50px; left:120px;"></div>
+    <div class="small-circle" style="top:50px; left:170px;"></div>
+    <div class="small-circle highlighted-small" style="top:50px; left:220px;"></div>
+    <div class="small-circle" style="top:50px; left:270px;"></div>
+    <div class="small-circle" style="top:50px; left:320px;"></div>
+    <div class="small-circle" style="top:50px; left:370px;"></div>
+    <div class="small-circle" style="top:50px; left:420px;"></div>
+    <div class="small-circle" style="top:50px; left:470px;"></div>
+
+    <!-- Row 3 -->
+    <div class="small-circle" style="top:100px; left:20px;"></div>
+    <div class="small-circle" style="top:100px; left:70px;"></div>
+    <div class="small-circle" style="top:100px; left:120px;"></div>
+    <div class="small-circle" style="top:100px; left:170px;"></div>
+    <div class="small-circle" style="top:100px; left:220px;"></div>
+    <div class="small-circle" style="top:100px; left:270px;"></div>
+    <div class="small-circle" style="top:100px; left:320px;"></div>
+    <div class="small-circle" style="top:100px; left:370px;"></div>
+    <div class="small-circle" style="top:100px; left:420px;"></div>
+    <div class="small-circle" style="top:100px; left:470px;"></div>
+
+    <!-- Row 4 -->
+    <div class="small-circle" style="top:150px; left:20px;"></div>
+    <div class="small-circle" style="top:150px; left:70px;"></div>
+    <div class="small-circle" style="top:150px; left:120px;"></div>
+    <div class="small-circle" style="top:150px; left:170px;"></div>
+    <div class="small-circle" style="top:150px; left:220px;"></div>
+    <div class="small-circle" style="top:150px; left:270px;"></div>
+    <div class="small-circle" style="top:150px; left:320px;"></div>
+    <div class="small-circle" style="top:150px; left:370px;"></div>
+    <div class="small-circle" style="top:150px; left:420px;"></div>
+    <div class="small-circle" style="top:150px; left:470px;"></div>
+
+    <!-- Row 5 -->
+    <div class="small-circle" style="top:200px; left:20px;"></div>
+    <div class="small-circle" style="top:200px; left:70px;"></div>
+    <div class="small-circle" style="top:200px; left:120px;"></div>
+    <div class="small-circle" style="top:200px; left:170px;"></div>
+    <div class="small-circle" style="top:200px; left:220px;"></div>
+    <div class="small-circle" style="top:200px; left:270px;"></div>
+    <div class="small-circle" style="top:200px; left:320px;"></div>
+    <div class="small-circle" style="top:200px; left:370px;"></div>
+    <div class="small-circle" style="top:200px; left:420px;"></div>
+    <div class="small-circle" style="top:200px; left:470px;"></div>
+  </div>
+
+  <!-- Key quote in visual area -->
+  <div class="key-quote">
+    <p class="key-quote-text">"平凡中孕育独特<br>——差异化选择中的价值之光"</p>
+  </div>
 </div>
 
-<div class="bullet-list">
-<div class="bullet-item">
-<div class="bullet-num">01</div>
-<div class="bullet-content">
-<div class="bullet-title">原始社会：偶尔的物物交换</div>
-<div class="bullet-desc">匮乏时代，交换频次极低，<span class="key">信任基于血缘与熟人网络</span>，成本几近为零</div>
-</div>
-</div>
-
-<div class="bullet-item">
-<div class="bullet-num bullet-num-copper">02</div>
-<div class="bullet-content">
-<div class="bullet-title bullet-title-copper">现代复杂社会：不确定性弥漫</div>
-<div class="bullet-desc">陌生人协作成为常态，<span class="key">信息不对称、契约不完全</span>，风险与成本同步攀升</div>
-</div>
-</div>
-
-<div class="bullet-item">
-<div class="bullet-num">03</div>
-<div class="bullet-content">
-<div class="bullet-title">全链条成本：信息 · 谈判 · 签约 · 履行</div>
-<div class="bullet-desc">从<span class="key">搜寻信息</span>到<span class="key">签订契约</span>，再到<span class="key">监督执行</span>，每一环节皆为成本的累积</div>
-</div>
-</div>
-
-<div class="bullet-item">
-<div class="bullet-num bullet-num-copper">04</div>
-<div class="bullet-content">
-<div class="bullet-title bullet-title-copper">隐性成本：信任 · 沟通 · 理解</div>
-<div class="bullet-desc">获取信任、相互理解、反复沟通——这些<span class="key">看不见的支出</span>，往往远超交易本身</div>
-</div>
-</div>
-</div>
-
-<div class="highlight-box">
-<div class="highlight-text">
-<span class="quote-mark">"</span>天下<span class="key">没有免费的午餐</span>——每一次交换，都在无声地<span class="key">支付</span>。
-</div>
-</div>
-</div>
-
+<!-- Footer -->
 <div class="footer-line"></div>
-<div class="footer">
-<span>新制度经济学视角下的开源 · NEW INSTITUTIONAL ECONOMICS &amp; OPEN SOURCE</span>
-<span>开源之道 · OPEN SOURCE PRINCIPLES</span>
-</div>
-</div>
-</body></html>
+<div class="slide-counter">05 / 27</div>
+
+</body>
+</html>

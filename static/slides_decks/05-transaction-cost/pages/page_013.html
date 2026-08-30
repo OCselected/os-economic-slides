@@ -1,123 +1,429 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: 8832dbc491cb5caf --><head><meta charset="UTF-8"><title>企业的性质与交易成本</title><style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1600px;height:900px;overflow:hidden;margin:0}
-body{font-family:'Noto Sans SC','PingFang SC',sans-serif;background:#F5F0E8;color:#1B3B6B;position:relative}
+<!DOCTYPE html>
+<html><!-- source_hash: de2fcab44e619e2f -->
+<head>
+<meta charset="UTF-8">
+<title>第 05 期 · 交易成本与路径依赖 — 交易成本</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
 
-.canvas{width:1600px;height:900px;position:relative;overflow:hidden}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* Bauhaus geometric decorations */
-.deco-circle-blue{position:absolute;width:180px;height:180px;border-radius:50%;background:#1B3B6B;top:-90px;right:-90px}
-.deco-circle-copper{position:absolute;width:60px;height:60px;border-radius:50%;background:#8B7355;top:220px;right:80px}
-.deco-square-line{position:absolute;top:0;left:80px;width:4px;height:900px;background:#1B3B6B}
-.deco-small-square{position:absolute;width:24px;height:24px;background:#8B7355;top:760px;right:120px}
-.deco-half-circle{position:absolute;width:140px;height:70px;border-radius:140px 140px 0 0;background:#1B3B6B;bottom:0;left:60px}
-.deco-thin-line{position:absolute;top:170px;left:100px;width:300px;height:1px;background:#1B3B6B}
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
+  background: #F5F0E8;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: #1B3B6B;
+}
 
-/* Header */
-.header{position:absolute;top:80px;left:140px;width:1200px}
-.section-num{font-family:'Noto Serif SC',serif;font-size:14px;letter-spacing:8px;color:#8B7355;font-weight:400}
-.title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:54px;color:#1B3B6B;font-weight:600;margin-top:16px;letter-spacing:2px;line-height:1.3}
-.subtitle{font-family:'Noto Serif SC',serif;font-size:18px;color:#555;margin-top:20px;letter-spacing:3px;font-style:italic}
+.slide {
+  position: relative;
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+}
 
-/* Binary wave visual */
-.wave-container{position:absolute;top:300px;left:140px;width:700px;height:340px}
-.wave-row{display:flex;align-items:center;height:32px;margin-bottom:6px;font-family:'Courier New',monospace;font-size:12px;color:#1B3B6B;letter-spacing:1px;opacity:0.7}
-.wave-row.r2{margin-left:30px;opacity:0.55}
-.wave-row.r3{margin-left:60px;opacity:0.4}
-.wave-row.r4{margin-left:30px;opacity:0.5}
-.wave-row.r5{margin-left:0;opacity:0.65}
-.wave-row.r6{margin-left:50px;opacity:0.35}
-.wave-row.r7{margin-left:80px;opacity:0.25}
+/* Parchment texture overlay */
+.slide::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 1600px;
+  height: 900px;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(139, 115, 85, 0.015) 3px,
+    rgba(139, 115, 85, 0.015) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
 
-/* Vertical geometric column */
-.geo-column{position:absolute;top:320px;left:880px;width:80px;height:320px;display:flex;flex-direction:column;justify-content:space-between}
-.geo-col-item{width:80px;height:56px;display:flex;align-items:center;justify-content:center}
-.gc-square{width:56px;height:56px;background:#1B3B6B}
-.gc-circle{width:56px;height:56px;border-radius:50%;background:#8B7355}
-.gc-ring{width:56px;height:56px;border-radius:50%;border:3px solid #1B3B6B;background:transparent}
-.gc-square-outline{width:56px;height:56px;border:3px solid #8B7355;background:transparent}
+/* Header area */
+.header {
+  position: absolute;
+  top: 48px;
+  left: 72px;
+  z-index: 10;
+}
 
-/* Content bullets */
-.bullet-section{position:absolute;top:310px;left:1010px;width:480px}
-.bullet-list{list-style:none;padding:0;margin:0}
-.bullet-list li{position:relative;padding:12px 0 12px 36px;font-size:17px;line-height:1.5;color:#1B3B6B;border-bottom:1px solid rgba(139,115,85,0.25);font-weight:400}
-.bullet-list li:last-child{border-bottom:none}
-.bullet-list li::before{content:"";position:absolute;left:0;top:22px;width:18px;height:1px;background:#8B7355}
-.bullet-list li::after{content:"";position:absolute;left:14px;top:18px;width:8px;height:8px;border:1.5px solid #1B3B6B;background:transparent}
-.bullet-list li em{font-style:normal;color:#8B7355;font-weight:600}
-.bullet-list li strong{font-weight:600;color:#1B3B6B}
+.lecture-badge {
+  display: inline-block;
+  background: #1B3B6B;
+  color: #F5F0E8;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  padding: 6px 14px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
 
-/* Footer */
-.footer{position:absolute;bottom:40px;left:140px;width:1320px;display:flex;justify-content:space-between;align-items:center}
-.footer-left{font-family:'Noto Serif SC',serif;font-size:13px;color:#555;letter-spacing:4px}
-.footer-right{font-family:'Noto Serif SC',serif;font-size:13px;color:#555;letter-spacing:2px}
-.footer-line{position:absolute;bottom:70px;left:140px;width:1320px;height:1px;background:rgba(27,59,107,0.2)}
+.slide-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 42px;
+  font-weight: 900;
+  color: #1B3B6B;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
 
-/* Quote block */
-.quote-block{position:absolute;top:680px;left:140px;width:700px;font-family:'Noto Serif SC',serif;font-size:14px;color:#555;line-height:1.8;font-style:italic;letter-spacing:1px}
-.quote-block::before{content:"——";margin-right:8px;color:#8B7355}
+.slide-subtitle {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  color: #8B7355;
+  margin-top: 8px;
+  letter-spacing: 1px;
+}
 
-/* Page number */
-.page-num{position:absolute;top:80px;right:120px;font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:3px}
-</style></head><body>
-<div class="canvas">
+/* Left content panel */
+.content-panel {
+  position: absolute;
+  top: 190px;
+  left: 72px;
+  width: 720px;
+  z-index: 10;
+}
 
-  <div class="deco-circle-blue"></div>
-  <div class="deco-circle-copper"></div>
-  <div class="deco-square-line"></div>
-  <div class="deco-small-square"></div>
-  <div class="deco-half-circle"></div>
-  <div class="deco-thin-line"></div>
+.section-label {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #8B7355;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(139, 115, 85, 0.3);
+}
 
-  <div class="page-num">04 / 12</div>
+.bullet-list {
+  list-style: none;
+  padding: 0;
+}
 
+.bullet-list li {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  color: #1B3B6B;
+  line-height: 1.6;
+  margin-bottom: 16px;
+  padding-left: 28px;
+  position: relative;
+}
+
+.bullet-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 11px;
+  width: 10px;
+  height: 10px;
+  background: #1B3B6B;
+}
+
+.bullet-list li:nth-child(2)::before {
+  background: transparent;
+  border: 2px solid #1B3B6B;
+  border-radius: 50%;
+}
+
+.bullet-list li:nth-child(3)::before {
+  background: #8B7355;
+}
+
+.bullet-list li:nth-child(4)::before {
+  background: transparent;
+  border: 2px solid #8B7355;
+}
+
+.bullet-list li:nth-child(5)::before {
+  background: #1B3B6B;
+  width: 10px;
+  height: 10px;
+  transform: rotate(45deg);
+}
+
+.bullet-list li:nth-child(6)::before {
+  background: transparent;
+  border: 2px solid #1B3B6B;
+  border-radius: 50%;
+}
+
+.bullet-list .em {
+  font-weight: 700;
+  color: #1B3B6B;
+}
+
+/* Right visual composition area */
+.visual-area {
+  position: absolute;
+  top: 180px;
+  right: 72px;
+  width: 700px;
+  height: 620px;
+  z-index: 5;
+}
+
+/* Binary wave visualization */
+.binary-wave {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 700px;
+  height: 500px;
+  overflow: hidden;
+}
+
+.binary-row {
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  color: #1B3B6B;
+  white-space: nowrap;
+  letter-spacing: 2px;
+  line-height: 1.8;
+}
+
+/* Wave rows with varying opacity */
+.binary-row:nth-child(1) { opacity: 0.06; transform: translateX(20px); }
+.binary-row:nth-child(2) { opacity: 0.09; transform: translateX(-10px); }
+.binary-row:nth-child(3) { opacity: 0.12; transform: translateX(15px); }
+.binary-row:nth-child(4) { opacity: 0.16; transform: translateX(-5px); }
+.binary-row:nth-child(5) { opacity: 0.2; transform: translateX(25px); }
+.binary-row:nth-child(6) { opacity: 0.25; transform: translateX(0px); }
+.binary-row:nth-child(7) { opacity: 0.3; transform: translateX(-20px); }
+.binary-row:nth-child(8) { opacity: 0.38; transform: translateX(10px); }
+.binary-row:nth-child(9) { opacity: 0.5; transform: translateX(-15px); }
+.binary-row:nth-child(10) { opacity: 0.65; transform: translateX(5px); }
+.binary-row:nth-child(11) { opacity: 0.8; transform: translateX(-10px); }
+.binary-row:nth-child(12) { opacity: 0.9; transform: translateX(0px); }
+
+/* Bauhaus geometric elements */
+.geo-circle-large {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  border: 3px solid #1B3B6B;
+  top: 80px;
+  right: 20px;
+  opacity: 0.12;
+}
+
+.geo-circle-medium {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  opacity: 0.08;
+  top: 180px;
+  right: 120px;
+}
+
+.geo-square {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: #8B7355;
+  opacity: 0.1;
+  top: 60px;
+  right: 300px;
+}
+
+.geo-square-outline {
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  border: 2px solid #1B3B6B;
+  opacity: 0.2;
+  top: 40px;
+  right: 380px;
+  transform: rotate(45deg);
+}
+
+.geo-line-1 {
+  position: absolute;
+  width: 3px;
+  height: 180px;
+  background: #1B3B6B;
+  opacity: 0.15;
+  top: 200px;
+  right: 50px;
+}
+
+.geo-line-2 {
+  position: absolute;
+  width: 200px;
+  height: 2px;
+  background: #8B7355;
+  opacity: 0.2;
+  top: 460px;
+  right: 60px;
+}
+
+/* Bottom annotation */
+.annotation {
+  position: absolute;
+  bottom: 56px;
+  left: 72px;
+  z-index: 10;
+}
+
+.annotation-line {
+  display: inline-block;
+  width: 40px;
+  height: 2px;
+  background: #8B7355;
+  vertical-align: middle;
+  margin-right: 12px;
+}
+
+.annotation-text {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: #8B7355;
+  letter-spacing: 1px;
+  vertical-align: middle;
+}
+
+/* Page indicator */
+.page-indicator {
+  position: absolute;
+  bottom: 56px;
+  right: 72px;
+  z-index: 10;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 2px;
+}
+
+/* Decorative diagonal line */
+.deco-diagonal {
+  position: absolute;
+  top: 0;
+  left: 660px;
+  width: 2px;
+  height: 900px;
+  background: rgba(139, 115, 85, 0.1);
+  z-index: 2;
+}
+
+/* Top border accent */
+.top-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1600px;
+  height: 4px;
+  background: #1B3B6B;
+  z-index: 10;
+}
+
+/* Key concept highlight box */
+.key-concept {
+  position: absolute;
+  top: 530px;
+  left: 72px;
+  width: 560px;
+  padding: 20px 24px;
+  background: rgba(27, 59, 107, 0.04);
+  border-left: 3px solid #1B3B6B;
+  z-index: 10;
+}
+
+.key-concept-text {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1B3B6B;
+  line-height: 1.5;
+}
+
+.key-concept-sub {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: #8B7355;
+  margin-top: 8px;
+  line-height: 1.5;
+}
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="top-accent"></div>
+  <div class="deco-diagonal"></div>
+
+  <!-- Header -->
   <div class="header">
-    <div class="section-num">PART  ·  ONE</div>
-    <div class="title">企业的性质与交易成本</div>
-    <div class="subtitle">From the Nature of the Firm to Transaction Costs — Coase, 1937</div>
+    <div class="lecture-badge">LECTURE 05 · TRANSACTION COSTS</div>
+    <div class="slide-title">交易成本的本质</div>
+    <div class="slide-subtitle">Why enterprises exist — and why they sometimes fail</div>
   </div>
 
-  <div class="wave-container">
-    <div class="wave-row r1">01001000 01000101 01001100 01001100 01001111 01010000 01000101 01001110</div>
-    <div class="wave-row r2">01101111 01010011 01001111 01010110 01000101 01010010 01001110 01010001</div>
-    <div class="wave-row r3">01010101 01010001 01000110 01001101 01000101 01001110 01000101 01010010</div>
-    <div class="wave-row r4">01001010 01010111 01000101 01001000 01001100 01000101 01001001 01001110</div>
-    <div class="wave-row r5">01100101 01110100 01101111 01101000 01100101 01101110 01110011 00100000</div>
-    <div class="wave-row r6">01100100 01100101 01101101 01101111 01100011 01110010 01100001 01110100</div>
-    <div class="wave-row r7">01100011 01101111 01100110 01101100 01110100 01100011 01111000 01100011</div>
-  </div>
-
-  <div class="geo-column">
-    <div class="geo-col-item"><div class="gc-square"></div></div>
-    <div class="geo-col-item"><div class="gc-circle"></div></div>
-    <div class="geo-col-item"><div class="gc-ring"></div></div>
-    <div class="geo-col-item"><div class="gc-square-outline"></div></div>
-    <div class="geo-col-item"><div class="gc-circle"></div></div>
-  </div>
-
-  <div class="bullet-section">
+  <!-- Left Content -->
+  <div class="content-panel">
+    <div class="section-label">核心命题</div>
     <ul class="bullet-list">
-      <li>从<em>企业的性质</em>到<em>交易成本</em></li>
-      <li>我们为什么要成为"打工人"？</li>
-      <li><strong>市场与价格信号</strong>——社会分工之最优配置</li>
-      <li>「<em>科斯定理</em>」——产权界定与效率</li>
-      <li><strong>交易成本</strong>决定了企业的存在边界</li>
+      <li>从企业的性质到交易成本</li>
+      <li>我们为什么要成为<span class="em">"打工人"</span>？</li>
+      <li>市场和价格信号，可以让社会分工最优</li>
+      <li><span class="em">"科斯定理"</span>：交易成本决定了企业的存在</li>
       <li>想象一下——企业为什么要裁员？</li>
     </ul>
   </div>
 
-  <div class="quote-block">
-    &ldquo;The reason why firms arise is that the use of the price mechanism involves costs.&rdquo;<br>
-    &mdash; Ronald Coase, The Nature of the Firm (1937)
+  <!-- Key Concept Box -->
+  <div class="key-concept">
+    <div class="key-concept-text">如果市场是零成本的，企业就不需要存在。</div>
+    <div class="key-concept-sub">Ronald Coase, 1937 — 但市场从不为零成本。</div>
   </div>
 
-  <div class="footer-line"></div>
-  <div class="footer">
-    <div class="footer-left">开源之道 · 新制度经济学视角</div>
-    <div class="footer-right">Ronald H. Coase &nbsp;·&nbsp; 1910 — 2013</div>
+  <!-- Right Visual Composition -->
+  <div class="visual-area">
+    <div class="binary-wave">
+      <div class="binary-row">01001000 01100101 01101100 01101100 01101111 00100000</div>
+      <div class="binary-row">01000101 01101110 01110100 01100101 01110010 01110000 01110010</div>
+      <div class="binary-row">01100101 01110011 01110101 00100000 01110011 01100100 01101101 01101001 01101101 01100101 01101110</div>
+      <div class="binary-row">00100000 01110100 01110000 01100001 01101110 01110111 01101111 01110011</div>
+      <div class="binary-row">01000101 01101110 01110100 01110010 01101011 01110011 01101111 01101110 01110010</div>
+      <div class="binary-row">00100000 01110100 01100101 01100000 01100100 01100001 01110110 01100101</div>
+      <div class="binary-row">01000101 01101101 01110010 01101101 01101011 01100101 01101110 00100000</div>
+      <div class="binary-row">01001000 01100101 01110001 01110000 01110011 00101100 01110100 01110010</div>
+      <div class="binary-row">01100101 01100000 01110010 01100001 01101100 01110010 01101011 01100101</div>
+      <div class="binary-row">01101101 01101011 01101111 01110111 01110011 00101110 00101111</div>
+      <div class="binary-row">01001000 01100101 01110100 01101110 01100000 01100010 01110010 01101100 01100101</div>
+      <div class="binary-row">01110010 01110011 01110000 01110010 01101111 01110101 01110011 01110010 01101011</div>
+    </div>
+
+    <!-- Bauhaus geometric decorations -->
+    <div class="geo-circle-large"></div>
+    <div class="geo-circle-medium"></div>
+    <div class="geo-square"></div>
+    <div class="geo-square-outline"></div>
+    <div class="geo-line-1"></div>
+    <div class="geo-line-2"></div>
   </div>
 
+  <!-- Bottom annotations -->
+  <div class="annotation">
+    <span class="annotation-line"></span>
+    <span class="annotation-text">数字信息的流动 · 开发者共同体的协作 · 制度设计的约束</span>
+  </div>
+
+  <div class="page-indicator">05 / 27</div>
 </div>
-</body></html>
+</body>
+</html>

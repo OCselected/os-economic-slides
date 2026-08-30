@@ -1,198 +1,631 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: b08c21665d2a9e3e --><head><meta charset="UTF-8"><title>第 03 期 · 商业模式：互补型案例分析</title><style>
-html,body{width:1600px;height:900px;overflow:hidden;margin:0;padding:0;font-family:'Noto Sans SC','Source Han Sans SC','PingFang SC',sans-serif;color:#1B3B6B}
-body{background:#F5F0E8;position:relative}
+<!DOCTYPE html>
+<html><!-- source_hash: ee3734a3a201262d -->
+<head>
+<meta charset="UTF-8">
+<title>案例分析之：互补型</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600&display=swap');
 
-/* subtle parchment texture */
-body::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;background:radial-gradient(ellipse at 20% 10%,rgba(139,115,85,0.04) 0%,transparent 50%),radial-gradient(ellipse at 80% 90%,rgba(27,59,107,0.03) 0%,transparent 50%);pointer-events:none;z-index:0}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* top border line */
-.top-rule{position:absolute;top:60px;left:80px;right:80px;height:2px;background:#1B3B6B;z-index:2}
-.top-rule-thin{position:absolute;top:72px;left:80px;width:120px;height:1px;background:#8B7355;z-index:2}
+body, html {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
+}
 
-/* lecture number badge */
-.lecture-badge{position:absolute;top:38px;left:80px;font-family:'Noto Serif SC','Songti SC',serif;font-size:14px;letter-spacing:3px;color:#8B7355;z-index:3}
-.lecture-period{position:absolute;top:38px;right:80px;font-size:13px;letter-spacing:2px;color:#8B7355;z-index:3}
+body {
+  background: #F5F0E8;
+  position: relative;
+  font-family: 'Noto Sans SC', sans-serif;
+}
 
-/* section label */
-.section-label{position:absolute;top:96px;left:80px;font-size:12px;letter-spacing:4px;color:#555;z-index:2}
+/* Parchment texture overlay */
+.parchment-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 1600px; height: 900px;
+  background: 
+    radial-gradient(ellipse at 20% 30%, rgba(139,115,85,0.03) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 70%, rgba(27,59,107,0.02) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 1;
+}
 
-/* main title */
-.main-title{position:absolute;top:128px;left:80px;font-family:'Noto Serif SC','Songti SC',serif;font-size:46px;font-weight:700;color:#1B3B6B;letter-spacing:1px;line-height:1.2;z-index:2}
-.main-title-sub{position:absolute;top:196px;left:82px;font-size:18px;color:#8B7355;font-family:'Noto Serif SC','Songti SC',serif;letter-spacing:1px;z-index:2}
+/* Header */
+.header {
+  position: absolute;
+  top: 48px;
+  left: 80px;
+  z-index: 10;
+}
 
-/* geometric decorations */
-.geo-circle-1{position:absolute;top:520px;left:60px;width:140px;height:140px;border-radius:50%;background:#1B3B6B;opacity:0.08;z-index:1}
-.geo-square-1{position:absolute;top:780px;left:80px;width:36px;height:36px;background:#8B7355;opacity:0.3;z-index:1}
-.geo-square-2{position:absolute;top:770px;left:124px;width:20px;height:20px;background:#1B3B6B;opacity:0.15;z-index:1}
-.geo-line-1{position:absolute;top:240px;left:80px;width:60px;height:1px;background:#1B3B6B;z-index:2}
-.geo-line-2{position:absolute;top:240px;left:150px;width:200px;height:1px;background:#8B7355;z-index:2}
-.geo-dot{position:absolute;top:237px;left:77px;width:6px;height:6px;border-radius:50%;background:#8B7355;z-index:2}
+.header .lecture-tag {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #8B7355;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
 
-/* balance scale container */
-.balance-container{position:absolute;top:270px;left:80px;width:640px;height:560px;z-index:2}
+.header .lecture-num {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
 
-/* right content panel */
-.right-panel{position:absolute;top:270px;left:770px;width:750px;height:560px;z-index:3}
+.header .lecture-num .num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1B3B6B;
+  line-height: 1;
+}
 
-/* case header */
-.case-header{border-left:3px solid #1B3B6B;padding-left:16px;margin-bottom:32px}
-.case-header-title{font-family:'Noto Serif SC','Songti SC',serif;font-size:22px;color:#1B3B6B;font-weight:700;letter-spacing:1px}
-.case-header-meta{font-size:12px;color:#8B7355;letter-spacing:2px;margin-top:6px}
+.header .lecture-num .label {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #8B7355;
+  letter-spacing: 2px;
+  border-left: 1px solid #8B7355;
+  padding-left: 12px;
+}
 
-/* bullet points */
-.bullet{display:flex;align-items:flex-start;margin-bottom:20px;gap:14px}
-.bullet-marker{flex-shrink:0;width:10px;height:10px;background:#1B3B6B;margin-top:8px}
-.bullet-marker.copper{background:#8B7355}
-.bullet-marker.hollow{background:transparent;border:2px solid #1B3B6B;width:8px;height:8px;margin-top:9px}
-.bullet-marker.copper-hollow{background:transparent;border:2px solid #8B7355;width:8px;height:8px;margin-top:9px}
-.bullet-text{flex:1;font-size:17px;line-height:1.7;color:#1B3B6B}
-.bullet-text .em{color:#8B7355;font-weight:600;font-family:'Noto Serif SC','Songti SC',serif}
-.bullet-text .strong{font-weight:600;color:#1B3B6B}
+/* Title */
+.title-area {
+  position: absolute;
+  top: 130px;
+  left: 80px;
+  z-index: 10;
+  width: 760px;
+}
 
-/* keyword tags */
-.keywords{margin-top:24px;padding-top:20px;border-top:1px solid rgba(27,59,107,0.2);display:flex;gap:10px;flex-wrap:wrap}
-.keyword-tag{font-size:12px;padding:5px 12px;border:1px solid #8B7355;color:#8B7355;letter-spacing:1px}
-.keyword-tag.solid{background:#1B3B6B;border-color:#1B3B6B;color:#F5F0E8}
+.title-area .case-label {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #8B7355;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+}
 
-/* bottom footer */
-.footer-line{position:absolute;bottom:36px;left:80px;right:80px;height:1px;background:rgba(27,59,107,0.2);z-index:2}
-.footer-left{position:absolute;bottom:16px;left:80px;font-size:11px;color:#555;letter-spacing:2px;z-index:2}
-.footer-right{position:absolute;bottom:16px;right:80px;font-size:11px;color:#555;letter-spacing:2px;z-index:2}
+.title-area h1 {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 52px;
+  font-weight: 700;
+  color: #1B3B6B;
+  line-height: 1.25;
+  letter-spacing: 2px;
+}
 
-/* balance metaphor caption */
-.metaphor-caption{position:absolute;top:820px;left:80px;width:640px;font-size:11px;color:#555;letter-spacing:2px;z-index:3;line-height:1.6}
-</style></head><body>
+.title-area h1 .accent {
+  color: #8B7355;
+  font-weight: 600;
+}
 
-<div class="lecture-badge">LECTURE · 03</div>
-<div class="lecture-period">第 03 期 / 共 30 讲</div>
-<div class="top-rule"></div>
-<div class="top-rule-thin"></div>
-<div class="section-label">CHAPTER · BUSINESS MODEL</div>
+.title-area .underline {
+  width: 120px;
+  height: 3px;
+  background: #1B3B6B;
+  margin-top: 24px;
+}
 
-<div class="main-title">案例分析之：互补型</div>
-<div class="main-title-sub">Complementary Business Model — IBM & Intel</div>
+.title-area .subtitle-en {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  color: #555;
+  letter-spacing: 1px;
+  margin-top: 16px;
+  line-height: 1.6;
+  font-style: italic;
+}
 
-<div class="geo-line-1"></div>
-<div class="geo-line-2"></div>
-<div class="geo-dot"></div>
-<div class="geo-circle-1"></div>
-<div class="geo-square-1"></div>
-<div class="geo-square-2"></div>
+/* Content left column */
+.content-left {
+  position: absolute;
+  top: 380px;
+  left: 80px;
+  z-index: 10;
+  width: 680px;
+}
 
-<!-- Tilted Balance Scale SVG -->
-<div class="balance-container">
-<svg viewBox="0 0 640 560" width="640" height="560" xmlns="http://www.w3.org/2000/svg">
-  <!-- subtle geometric background shapes -->
-  <rect x="20" y="20" width="600" height="520" fill="none" stroke="#1B3B6B" stroke-width="0.5" opacity="0.1"/>
-  <circle cx="320" cy="280" r="240" fill="none" stroke="#8B7355" stroke-width="0.5" opacity="0.15"/>
-  <circle cx="320" cy="280" r="180" fill="none" stroke="#1B3B6B" stroke-width="0.5" opacity="0.12"/>
+.content-left .section-label {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: #8B7355;
+  letter-spacing: 3px;
+  margin-bottom: 18px;
+}
 
-  <!-- pivot / fulcrum base -->
-  <rect x="270" y="470" width="100" height="14" fill="#1B3B6B"/>
-  <rect x="260" y="456" width="120" height="14" fill="#8B7355" opacity="0.6"/>
+.content-left .companies {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 30px;
+}
 
-  <!-- vertical pillar -->
-  <rect x="316" y="155" width="8" height="302" fill="#1B3B6B"/>
+.content-left .company-card {
+  background: rgba(27,59,107,0.06);
+  border-left: 3px solid #1B3B6B;
+  padding: 14px 24px;
+  min-width: 110px;
+}
 
-  <!-- top ornament -->
-  <circle cx="320" cy="150" r="8" fill="#1B3B6B"/>
-  <rect x="317" y="130" width="6" height="22" fill="#1B3B6B"/>
-  <circle cx="320" cy="126" r="5" fill="none" stroke="#8B7355" stroke-width="2"/>
+.content-left .company-card .name {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1B3B6B;
+  letter-spacing: 1px;
+}
 
-  <!-- TILT: the beam is tilted, left side down, right side up -->
-  <g transform="rotate(-8 320 178)">
-    <!-- beam -->
-    <rect x="80" y="174" width="480" height="8" fill="#1B3B6B"/>
-    <!-- beam end caps -->
-    <rect x="72" y="168" width="12" height="20" fill="#1B3B6B"/>
-    <rect x="556" y="168" width="12" height="20" fill="#1B3B6B"/>
+.content-left .company-card .role {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: #555;
+  margin-top: 4px;
+  letter-spacing: 1px;
+}
 
-    <!-- LEFT pan suspension (heavier side, lower) -->
-    <line x1="100" y1="182" x2="100" y2="270" stroke="#1B3B6B" stroke-width="1.5"/>
-    <line x1="80" y1="182" x2="60" y2="290" stroke="#1B3B6B" stroke-width="1"/>
-    <line x1="120" y1="182" x2="140" y2="290" stroke="#1B3B6B" stroke-width="1"/>
-    <!-- left pan -->
-    <path d="M 50 290 L 150 290 L 130 340 L 70 340 Z" fill="none" stroke="#1B3B6B" stroke-width="2"/>
-    <ellipse cx="100" cy="290" rx="50" ry="8" fill="none" stroke="#1B3B6B" stroke-width="1.5"/>
+.bullets {
+  list-style: none;
+  padding: 0;
+}
 
-    <!-- LEFT pan content: heavier, labeled "本土制度环境" -->
-    <rect x="82" y="300" width="36" height="28" fill="#1B3B6B"/>
-    <rect x="82" y="300" width="36" height="4" fill="#8B7355"/>
-    <text x="100" y="320" text-anchor="middle" font-size="10" fill="#F5F0E8" font-family="Noto Serif SC,serif">制度</text>
+.bullets li {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: #333;
+  line-height: 1.8;
+  padding-left: 24px;
+  position: relative;
+  margin-bottom: 6px;
+}
 
-    <!-- RIGHT pan suspension (lighter side, higher) -->
-    <line x1="540" y1="182" x2="540" y2="220" stroke="#1B3B6B" stroke-width="1.5"/>
-    <line x1="520" y1="182" x2="500" y2="230" stroke="#1B3B6B" stroke-width="1"/>
-    <line x1="560" y1="182" x2="580" y2="230" stroke="#1B3B6B" stroke-width="1"/>
-    <path d="M 490 230 L 590 230 L 570 270 L 510 270 Z" fill="none" stroke="#1B3B6B" stroke-width="2"/>
-    <ellipse cx="540" cy="230" rx="50" ry="8" fill="none" stroke="#1B3B6B" stroke-width="1.5"/>
+.bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 8px;
+  height: 8px;
+  background: #1B3B6B;
+}
 
-    <!-- RIGHT pan content: lighter -->
-    <rect x="528" y="238" width="24" height="18" fill="none" stroke="#8B7355" stroke-width="1.5"/>
-    <circle cx="540" cy="247" r="4" fill="#8B7355"/>
-  </g>
+.bullets li .highlight {
+  font-weight: 600;
+  color: #1B3B6B;
+}
 
-  <!-- Labels for the two pans -->
-  <text x="80" y="380" font-size="15" fill="#1B3B6B" font-family="Noto Serif SC,serif" font-weight="700">本土制度环境</text>
-  <text x="80" y="400" font-size="11" fill="#8B7355" font-family="Noto Serif SC,serif" letter-spacing="1">Local Institutional Context</text>
-  <text x="440" y="200" font-size="15" fill="#1B3B6B" font-family="Noto Serif SC,serif" font-weight="700">全球化商业逻辑</text>
-  <text x="440" y="220" font-size="11" fill="#8B7355" font-family="Noto Serif SC,serif" letter-spacing="1">Global Business Logic</text>
+.bullets li .secondary {
+  font-weight: 400;
+  color: #555;
+  font-size: 13px;
+  display: block;
+  margin-top: 2px;
+  padding-left: 0;
+}
 
-  <!-- arrow indicating tilt direction -->
-  <path d="M 460 420 Q 380 400 280 430" fill="none" stroke="#8B7355" stroke-width="1" stroke-dasharray="4,4"/>
-  <polygon points="270,428 282,430 278,438" fill="#8B7355"/>
+.bullets li .secondary::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 18px;
+  width: 4px;
+  height: 4px;
+  background: #8B7355;
+}
 
-  <text x="370" y="410" font-size="10" fill="#8B7355" font-family="Noto Serif SC,serif" letter-spacing="2" text-anchor="middle">失衡 · Imbalance</text>
+/* Investment list */
+.investment-list {
+  position: absolute;
+  top: 380px;
+  left: 800px;
+  z-index: 10;
+  width: 280px;
+}
 
-  <!-- decorative geometric elements -->
-  <circle cx="600" cy="100" r="24" fill="none" stroke="#1B3B6B" stroke-width="1" opacity="0.4"/>
-  <rect x="20" y="60" width="20" height="20" fill="#1B3B6B" opacity="0.2"/>
-  <circle cx="620" cy="480" r="6" fill="#8B7355" opacity="0.5"/>
-</svg>
+.investment-list .inv-label {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: #8B7355;
+  letter-spacing: 3px;
+  margin-bottom: 16px;
+}
+
+.inv-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 15px;
+  color: #1B3B6B;
+  font-weight: 500;
+}
+
+.inv-item .dot {
+  width: 6px;
+  height: 6px;
+  background: #8B7355;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Footer */
+.footer {
+  position: absolute;
+  bottom: 40px;
+  left: 80px;
+  right: 80px;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer .deck-title {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 2px;
+}
+
+.footer .page-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  color: #8B7355;
+  letter-spacing: 1px;
+}
+
+/* Bauhaus decorative elements */
+.deco-circle-lg {
+  position: absolute;
+  top: -120px;
+  right: -80px;
+  width: 420px;
+  height: 420px;
+  border: 3px solid rgba(27,59,107,0.1);
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.deco-circle-sm {
+  position: absolute;
+  top: 60px;
+  right: 60px;
+  width: 60px;
+  height: 60px;
+  background: rgba(27,59,107,0.07);
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.deco-square-tilt {
+  position: absolute;
+  bottom: -60px;
+  right: -40px;
+  width: 200px;
+  height: 200px;
+  background: rgba(139,115,85,0.05);
+  transform: rotate(15deg);
+  z-index: 2;
+}
+
+.deco-line-v {
+  position: absolute;
+  top: 0;
+  right: 750px;
+  width: 1px;
+  height: 900px;
+  background: rgba(27,59,107,0.06);
+  z-index: 2;
+}
+
+.deco-line-h-top {
+  position: absolute;
+  top: 48px;
+  left: 760px;
+  width: 60px;
+  height: 1px;
+  background: rgba(139,115,85,0.3);
+  z-index: 10;
+}
+
+/* Balance Scale Visualization */
+.scale-container {
+  position: absolute;
+  top: 130px;
+  right: 80px;
+  width: 560px;
+  height: 200px;
+  z-index: 5;
+}
+
+.scale-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Annotation for scale */
+.scale-annotation-left {
+  position: absolute;
+  top: 300px;
+  right: 320px;
+  z-index: 6;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: #8B7355;
+  text-align: center;
+  width: 100px;
+  letter-spacing: 1px;
+}
+
+.scale-annotation-right {
+  position: absolute;
+  top: 170px;
+  right: 90px;
+  z-index: 6;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: #8B7355;
+  text-align: center;
+  width: 100px;
+  letter-spacing: 1px;
+}
+
+/* Vertical divider between content sections */
+.content-divider {
+  position: absolute;
+  top: 380px;
+  left: 760px;
+  width: 1px;
+  height: 320px;
+  background: rgba(27,59,107,0.1);
+  z-index: 5;
+}
+
+/* Bottom-left geometric accent */
+.deco-square-sm {
+  position: absolute;
+  bottom: 80px;
+  left: 80px;
+  width: 12px;
+  height: 12px;
+  background: #1B3B6B;
+  z-index: 3;
+}
+
+.deco-square-sm2 {
+  position: absolute;
+  bottom: 76px;
+  left: 100px;
+  width: 8px;
+  height: 8px;
+  background: #8B7355;
+  z-index: 3;
+}
+
+.deco-line-bot {
+  position: absolute;
+  bottom: 84px;
+  left: 120px;
+  width: 40px;
+  height: 1px;
+  background: rgba(27,59,107,0.2);
+  z-index: 3;
+}
+
+/* TCO box */
+.tco-box {
+  position: absolute;
+  top: 500px;
+  left: 800px;
+  z-index: 10;
+  width: 280px;
+  background: rgba(27,59,107,0.04);
+  border: 1px solid rgba(27,59,107,0.12);
+  padding: 20px 24px;
+}
+
+.tco-box .tco-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1B3B6B;
+  margin-bottom: 10px;
+}
+
+.tco-box .tco-sub {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Horizontal accent line */
+.deco-h-line {
+  position: absolute;
+  top: 350px;
+  left: 80px;
+  width: 700px;
+  height: 1px;
+  background: rgba(27,59,107,0.08);
+  z-index: 3;
+}
+
+/* Arrow indicator for scale */
+.arrow-down {
+  position: absolute;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 10px;
+  color: #8B7355;
+  letter-spacing: 1px;
+}
+</style>
+</head>
+<body>
+
+<div class="parchment-overlay"></div>
+
+<!-- Bauhaus decorative elements -->
+<div class="deco-circle-lg"></div>
+<div class="deco-circle-sm"></div>
+<div class="deco-square-tilt"></div>
+<div class="deco-line-v"></div>
+<div class="deco-line-h-top"></div>
+<div class="deco-h-line"></div>
+<div class="content-divider"></div>
+
+<!-- Header -->
+<div class="header">
+  <div class="lecture-tag">
+    <span class="lecture-num">
+      <span class="num">03</span>
+      <span class="label">LEARN · 开源之道</span>
+    </span>
+  </div>
 </div>
 
-<div class="metaphor-caption">视觉隐喻 — 倾斜的天平：本土制度环境与全球化商业逻辑之间的失衡与博弈</div>
-
-<!-- Right Panel -->
-<div class="right-panel">
-<div class="case-header">
-<div class="case-header-title">IBM · Intel — 互补型生态</div>
-<div class="case-header-meta">CASE STUDY / COMPLEMENTARY MODEL</div>
+<!-- Title -->
+<div class="title-area">
+  <div class="case-label">CASE ANALYSIS · 案例分析</div>
+  <h1>互补型<br><span class="accent">Complementary</span></h1>
+  <div class="underline"></div>
+  <div class="subtitle-en">
+    本土制度环境 vs. 全球化商业逻辑<br>
+    The Tilted Balance — Institutional Constraints & Global Logic
+  </div>
 </div>
 
-<div class="bullet">
-<div class="bullet-marker"></div>
-<div class="bullet-text"><span class="strong">降低用户总拥有成本（TCO）</span>——通过软硬件深度协同，为用户提供从底层芯片到上层应用的一体化解决方案，削减集成与运维的综合开销。</div>
+<!-- Balance Scale SVG -->
+<div class="scale-container">
+  <svg class="scale-svg" viewBox="0 0 560 200" xmlns="http://www.w3.org/2000/svg">
+    <!-- Fulcrum triangle -->
+    <polygon points="280,120 260,180 300,180" fill="rgba(27,59,107,0.15)" stroke="#1B3B6B" stroke-width="1.5"/>
+    <!-- Vertical stand -->
+    <line x1="280" y1="120" x2="280" y2="60" stroke="#1B3B6B" stroke-width="2"/>
+    <!-- Fulcrum circle -->
+    <circle cx="280" cy="60" r="4" fill="#1B3B6B"/>
+    
+    <!-- Tilted beam (rotated ~12 degrees left-heavy) -->
+    <line x1="140" y1="85" x2="420" y2="35" stroke="#1B3B6B" stroke-width="2.5"/>
+    
+    <!-- Left chain (longer, hangs lower - local institutional side) -->
+    <line x1="140" y1="85" x2="140" y2="130" stroke="rgba(27,59,107,0.5)" stroke-width="1"/>
+    <line x1="140" y1="85" x2="130" y2="130" stroke="rgba(27,59,107,0.5)" stroke-width="1"/>
+    <line x1="140" y1="85" x2="150" y2="130" stroke="rgba(27,59,107,0.5)" stroke-width="1"/>
+    
+    <!-- Left pan (heavier, lower) -->
+    <ellipse cx="140" cy="138" rx="55" ry="8" fill="rgba(139,115,85,0.12)" stroke="#8B7355" stroke-width="1.5"/>
+    <path d="M85,138 Q140,160 195,138" fill="rgba(139,115,85,0.08)" stroke="#8B7355" stroke-width="1.5"/>
+    
+    <!-- Right chain (shorter, hangs higher - global logic side) -->
+    <line x1="420" y1="35" x2="420" y2="65" stroke="rgba(27,59,107,0.5)" stroke-width="1"/>
+    <line x1="420" y1="35" x2="410" y2="65" stroke="rgba(27,59,107,0.5)" stroke-width="1"/>
+    <line x1="420" y1="35" x2="430" y2="65" stroke="rgba(27,59,107,0.5)" stroke-width="1"/>
+    
+    <!-- Right pan (lighter, higher) -->
+    <ellipse cx="420" cy="73" rx="55" ry="8" fill="rgba(27,59,107,0.08)" stroke="#1B3B6B" stroke-width="1.5"/>
+    <path d="M365,73 Q420,92 475,73" fill="rgba(27,59,107,0.05)" stroke="#1B3B6B" stroke-width="1.5"/>
+    
+    <!-- Weight indicators on left pan -->
+    <rect x="120" y="122" width="14" height="14" fill="rgba(139,115,85,0.3)" stroke="#8B7355" stroke-width="1"/>
+    <rect x="140" y="118" width="12" height="18" fill="rgba(139,115,85,0.3)" stroke="#8B7355" stroke-width="1"/>
+    <rect x="156" y="124" width="10" height="12" fill="rgba(139,115,85,0.3)" stroke="#8B7355" stroke-width="1"/>
+    
+    <!-- Weight indicators on right pan -->
+    <rect x="410" y="60" width="10" height="10" fill="rgba(27,59,107,0.2)" stroke="#1B3B6B" stroke-width="1"/>
+    <rect x="424" y="58" width="8" height="12" fill="rgba(27,59,107,0.2)" stroke="#1B3B6B" stroke-width="1"/>
+  </svg>
 </div>
 
-<div class="bullet">
-<div class="bullet-marker copper"></div>
-<div class="bullet-text">战略性投入 <span class="em">Linux、Apache、MySQL、Python</span> 等开源基础设施，以开放标准撬动企业级市场的规模效应。</div>
+<!-- Scale annotations -->
+<div class="scale-annotation-left">本土制度环境</div>
+<div class="scale-annotation-right">全球化商业逻辑</div>
+
+<!-- Content Left Column -->
+<div class="content-left">
+  <div class="section-label">CASE STUDIES · 企业实例</div>
+  
+  <div class="companies">
+    <div class="company-card">
+      <div class="name">IBM</div>
+      <div class="role">系统集成商 · 中间件</div>
+    </div>
+    <div class="company-card">
+      <div class="name">Intel</div>
+      <div class="role">硬件芯片 · 平台</div>
+    </div>
+  </div>
+
+  <ul class="bullets">
+    <li>
+      <span class="highlight">降低用户总拥有成本（TCO）</span>
+      <span class="secondary">开源栈替代商业许可费用，实现基础设施成本结构优化</span>
+    </li>
+    <li>
+      <span class="highlight">不仅限于硬件层</span>
+      <span class="secondary">向上延伸至操作系统之上的专用数据库、中间件、运行时</span>
+    </li>
+    <li>
+      <span class="highlight">以开源投入换取生态系统锁定</span>
+      <span class="secondary">通过赞助与维护构建不可替代的技术依赖关系</span>
+    </li>
+  </ul>
 </div>
 
-<div class="bullet">
-<div class="bullet-marker hollow"></div>
-<div class="bullet-text">竞争边界不止于 <span class="strong">硬件</span>——操作系统之上的<span class="em">专用数据库、中间件、企业软件服务</span>构成差异化利润来源。</div>
+<!-- Investment list -->
+<div class="investment-list">
+  <div class="inv-label">KEY INVESTMENTS · 核心投入</div>
+  
+  <div class="inv-item">
+    <span class="dot"></span>
+    <span>Linux</span>
+  </div>
+  <div class="inv-item">
+    <span class="dot"></span>
+    <span>Apache</span>
+  </div>
+  <div class="inv-item">
+    <span class="dot"></span>
+    <span>MySQL</span>
+  </div>
+  <div class="inv-item">
+    <span class="dot"></span>
+    <span>Python</span>
+  </div>
 </div>
 
-<div class="bullet">
-<div class="bullet-marker copper-hollow"></div>
-<div class="bullet-text">互补品定价的<span class="strong">跨产品锁定</span>：硬件以接近成本价销售，利润由上层软件与服务承载，形成"剃须刀与刀片"的长期现金流结构。</div>
+<!-- TCO Box -->
+<div class="tco-box">
+  <div class="tco-title">Total Cost of Ownership</div>
+  <div class="tco-sub">
+    操作系统之上的专用数据库、中间件、运行时环境——<br>
+    形成互补性壁垒与生态锁定
+  </div>
 </div>
 
-<div class="keywords">
-<span class="keyword-tag solid">TCO 优化</span>
-<span class="keyword-tag">开源投入</span>
-<span class="keyword-tag">软件中间件</span>
-<span class="keyword-tag">互补品定价</span>
-<span class="keyword-tag">生态锁定</span>
-</div>
+<!-- Bottom geometric accents -->
+<div class="deco-square-sm"></div>
+<div class="deco-square-sm2"></div>
+<div class="deco-line-bot"></div>
+
+<!-- Footer -->
+<div class="footer">
+  <div class="deck-title">第 03 期 · 商业模式：规则下的具体操作</div>
+  <div class="page-num">— 04 / 30 —</div>
 </div>
 
-<div class="footer-line"></div>
-<div class="footer-left">OPEN SOURCE · NEW INSTITUTIONAL ECONOMICS</div>
-<div class="footer-right">SLIDE 05 / 30</div>
-
-</body></html>
+</body>
+</html>

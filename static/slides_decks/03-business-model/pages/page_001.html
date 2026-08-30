@@ -1,400 +1,462 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN"><!-- source_hash: dff1ffb06e6264fb -->
+<html><!-- source_hash: 74f13eb96be762c4 -->
 <head>
 <meta charset="UTF-8">
-<title>前情提要 · 第 03 期</title>
+<title>第 03 期 · 商业模式：规则下的具体操作</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  background: #F5F0E8;
+  position: relative;
+  font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  color: #1B3B6B;
+}
 
-  html, body {
-    width: 1600px;
-    height: 900px;
-    overflow: hidden;
-    margin: 0;
-    background: #F5F0E8;
-  }
+/* Subtle parchment texture overlay */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 1600px; height: 900px;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(139, 115, 85, 0.015) 2px,
+    rgba(139, 115, 85, 0.015) 4px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
 
-  body {
-    font-family: 'Noto Sans SC', sans-serif;
-    color: #1B3B6B;
-    position: relative;
-  }
+/* Geometric decorative elements */
+.geo-circle-large {
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  border: 3px solid #1B3B6B;
+  top: -100px;
+  right: -80px;
+  opacity: 0.12;
+  z-index: 1;
+}
 
-  .canvas {
-    width: 1600px;
-    height: 900px;
-    position: relative;
-    overflow: hidden;
-  }
+.geo-circle-medium {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  opacity: 0.06;
+  bottom: 60px;
+  left: 80px;
+  z-index: 1;
+}
 
-  /* Subtle parchment texture overlay */
-  .texture {
-    position: absolute;
-    top: 0; left: 0;
-    width: 1600px; height: 900px;
-    background:
-      repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 3px,
-        rgba(139,115,85,0.015) 3px,
-        rgba(139,115,85,0.015) 4px
-      ),
-      repeating-linear-gradient(
-        90deg,
-        transparent,
-        transparent 3px,
-        rgba(139,115,85,0.012) 3px,
-        rgba(139,115,85,0.012) 4px
-      );
-    pointer-events: none;
-    z-index: 1;
-  }
+.geo-circle-small {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  opacity: 0.9;
+  top: 140px;
+  left: 580px;
+  z-index: 2;
+}
 
-  /* Large geometric composition - left side */
-  .geo-square-main {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 520px;
-    height: 900px;
-    background: #1B3B6B;
-    z-index: 2;
-  }
+.geo-square-large {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  background: #1B3B6B;
+  opacity: 0.07;
+  top: 520px;
+  right: 120px;
+  z-index: 1;
+}
 
-  .geo-circle-copper {
-    position: absolute;
-    left: 280px;
-    top: 180px;
-    width: 380px;
-    height: 380px;
-    border-radius: 50%;
-    border: 3px solid #8B7355;
-    background: transparent;
-    z-index: 3;
-  }
+.geo-square-medium {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border: 2.5px solid #8B7355;
+  top: 200px;
+  right: 300px;
+  transform: rotate(0deg);
+  opacity: 0.5;
+  z-index: 2;
+}
 
-  .geo-circle-copper-fill {
-    position: absolute;
-    left: 350px;
-    top: 320px;
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    background: #8B7355;
-    opacity: 0.85;
-    z-index: 3;
-  }
+.geo-square-small {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: #8B7355;
+  opacity: 0.7;
+  bottom: 200px;
+  right: 450px;
+  z-index: 2;
+}
 
-  .geo-square-white {
-    position: absolute;
-    left: 120px;
-    top: 520px;
-    width: 140px;
-    height: 140px;
-    background: #F5F0E8;
-    z-index: 3;
-  }
+.geo-line-v1 {
+  position: absolute;
+  width: 2px;
+  height: 700px;
+  background: #1B3B6B;
+  opacity: 0.15;
+  left: 540px;
+  top: 100px;
+  z-index: 1;
+}
 
-  .geo-line-v {
-    position: absolute;
-    left: 460px;
-    top: 0;
-    width: 3px;
-    height: 900px;
-    background: #8B7355;
-    z-index: 4;
-  }
+.geo-line-v2 {
+  position: absolute;
+  width: 1.5px;
+  height: 500px;
+  background: #8B7355;
+  opacity: 0.2;
+  right: 380px;
+  top: 80px;
+  z-index: 1;
+}
 
-  .geo-line-h {
-    position: absolute;
-    left: 0;
-    top: 450px;
-    width: 460px;
-    height: 2px;
-    background: rgba(245,240,232,0.15);
-    z-index: 4;
-  }
+.geo-line-h1 {
+  position: absolute;
+  width: 400px;
+  height: 1.5px;
+  background: #1B3B6B;
+  opacity: 0.12;
+  left: 100px;
+  top: 430px;
+  z-index: 1;
+}
 
-  .geo-dot-small {
-    position: absolute;
-    left: 80px;
-    top: 120px;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #F5F0E8;
-    z-index: 4;
-  }
+.geo-line-h2 {
+  position: absolute;
+  width: 200px;
+  height: 1px;
+  background: #8B7355;
+  opacity: 0.25;
+  left: 120px;
+  top: 145px;
+  z-index: 2;
+}
 
-  .geo-square-inner {
-    position: absolute;
-    left: 320px;
-    top: 620px;
-    width: 80px;
-    height: 80px;
-    border: 2px solid rgba(245,240,232,0.4);
-    z-index: 4;
-  }
+/* Diagonal line */
+.geo-line-diag {
+  position: absolute;
+  width: 320px;
+  height: 1.5px;
+  background: #1B3B6B;
+  opacity: 0.08;
+  left: 900px;
+  top: 600px;
+  transform: rotate(-25deg);
+  transform-origin: left center;
+  z-index: 1;
+}
 
-  /* Decorative geometric on right side */
-  .deco-line-top {
-    position: absolute;
-    left: 620px;
-    top: 60px;
-    width: 120px;
-    height: 3px;
-    background: #1B3B6B;
-    z-index: 5;
-  }
+/* Main content area */
+.content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1600px;
+  height: 900px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px 140px;
+}
 
-  .deco-dot-right {
-    position: absolute;
-    right: 80px;
-    top: 60px;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: #8B7355;
-    z-index: 5;
-  }
+.series-tag {
+  font-size: 14px;
+  letter-spacing: 6px;
+  color: #8B7355;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  font-weight: 400;
+}
 
-  .deco-line-bottom {
-    position: absolute;
-    left: 620px;
-    bottom: 60px;
-    width: 700px;
-    height: 1px;
-    background: rgba(139,115,85,0.3);
-    z-index: 5;
-  }
+.main-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 56px;
+  font-weight: 700;
+  color: #1B3B6B;
+  line-height: 1.3;
+  margin-bottom: 12px;
+  letter-spacing: 2px;
+}
 
-  .deco-square-corner {
-    position: absolute;
-    right: 80px;
-    bottom: 80px;
-    width: 40px;
-    height: 40px;
-    border: 2px solid #1B3B6B;
-    z-index: 5;
-  }
+.sub-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 26px;
+  font-weight: 400;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 60px;
+  letter-spacing: 1px;
+}
 
-  /* Content area */
-  .content {
-    position: absolute;
-    left: 620px;
-    top: 130px;
-    width: 860px;
-    z-index: 10;
-  }
+.divider {
+  width: 80px;
+  height: 3px;
+  background: #1B3B6B;
+  margin-bottom: 50px;
+}
 
-  .lecture-label {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 4px;
-    color: #8B7355;
-    margin-bottom: 16px;
-    text-transform: uppercase;
-  }
+.agenda-section {
+  display: flex;
+  gap: 80px;
+  align-items: flex-start;
+}
 
-  .main-title {
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-    font-size: 64px;
-    font-weight: 900;
-    color: #1B3B6B;
-    line-height: 1.15;
-    margin-bottom: 12px;
-    letter-spacing: 2px;
-  }
+.agenda-left {
+  flex: 0 0 420px;
+}
 
-  .title-underline {
-    width: 80px;
-    height: 4px;
-    background: #8B7355;
-    margin-bottom: 40px;
-  }
+.agenda-item {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 28px;
+}
 
-  .lecture-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
+.agenda-num {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 32px;
+  color: #1B3B6B;
+  opacity: 0.3;
+  margin-right: 20px;
+  font-weight: 700;
+  min-width: 42px;
+}
 
-  .lecture-item {
-    display: flex;
-    align-items: baseline;
-    margin-bottom: 28px;
-    position: relative;
-    padding-left: 32px;
-  }
+.agenda-text {
+  font-size: 20px;
+  color: #1B3B6B;
+  line-height: 1.6;
+  font-weight: 400;
+}
 
-  .lecture-num {
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-    font-size: 15px;
-    font-weight: 600;
-    color: #8B7355;
-    margin-right: 18px;
-    letter-spacing: 1px;
-    flex-shrink: 0;
-    width: 60px;
-  }
+.agenda-right {
+  flex: 0 0 340px;
+  padding-top: 5px;
+}
 
-  .lecture-title-text {
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-    font-size: 26px;
-    font-weight: 600;
-    color: #1B3B6B;
-    line-height: 1.4;
-  }
+.agenda-item-r {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 28px;
+}
 
-  .lecture-item::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 8px;
-    height: 8px;
-    background: #1B3B6B;
-  }
+.agenda-num-r {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 32px;
+  color: #8B7355;
+  opacity: 0.35;
+  margin-right: 20px;
+  font-weight: 700;
+  min-width: 42px;
+}
 
-  .lecture-item.highlight::before {
-    background: #8B7355;
-    border-radius: 50%;
-    width: 10px;
-    height: 10px;
-  }
+.agenda-text-r {
+  font-size: 20px;
+  color: #1B3B6B;
+  line-height: 1.6;
+  font-weight: 400;
+}
 
-  .lecture-item.highlight .lecture-title-text {
-    color: #8B7355;
-  }
+/* Speaker info */
+.speaker-info {
+  position: absolute;
+  bottom: 90px;
+  left: 140px;
+  z-index: 10;
+}
 
-  /* Bottom meta */
-  .bottom-meta {
-    position: absolute;
-    left: 620px;
-    bottom: 80px;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    gap: 24px;
-  }
+.speaker-label {
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: #8B7355;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
 
-  .meta-text {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 13px;
-    color: #555;
-    letter-spacing: 1px;
-  }
+.speaker-name {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 22px;
+  color: #1B3B6B;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
 
-  .meta-separator {
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: #8B7355;
-  }
+/* Series label top-right */
+.series-topright {
+  position: absolute;
+  top: 60px;
+  right: 80px;
+  z-index: 10;
+  text-align: right;
+}
 
-  /* Series indicator on blue panel */
-  .series-vertical {
-    position: absolute;
-    left: 40px;
-    top: 180px;
-    writing-mode: vertical-rl;
-    font-family: 'Noto Serif SC', serif;
-    font-size: 14px;
-    letter-spacing: 6px;
-    color: rgba(245,240,232,0.5);
-    z-index: 5;
-  }
+.series-topright .lect-num {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 72px;
+  color: #1B3B6B;
+  opacity: 0.1;
+  font-weight: 700;
+  line-height: 1;
+}
 
-  /* Current slide indicator */
-  .current-indicator {
-    position: absolute;
-    left: 460px;
-    top: 750px;
-    width: 3px;
-    height: 60px;
-    background: #8B7355;
-    z-index: 5;
-  }
+.series-topright .lect-label {
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: #8B7355;
+  opacity: 0.7;
+  margin-top: -10px;
+}
 
-  .current-label {
-    position: absolute;
-    left: 470px;
-    top: 758px;
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 11px;
-    letter-spacing: 2px;
-    color: #8B7355;
-    z-index: 5;
-    width: 120px;
-    white-space: nowrap;
-  }
+/* Bottom accent */
+.bottom-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 1600px;
+  height: 4px;
+  background: #1B3B6B;
+  opacity: 0.8;
+  z-index: 5;
+}
+
+.bottom-bar-accent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 400px;
+  height: 4px;
+  background: #8B7355;
+  opacity: 0.6;
+  z-index: 6;
+}
+
+/* Additional geometric detail */
+.geo-dot-row {
+  position: absolute;
+  display: flex;
+  gap: 12px;
+  bottom: 140px;
+  right: 140px;
+  z-index: 3;
+}
+
+.geo-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  opacity: 0.3;
+}
+
+.geo-arc {
+  position: absolute;
+  width: 120px;
+  height: 60px;
+  border: 2px solid #1B3B6B;
+  border-radius: 120px 120px 0 0;
+  opacity: 0.1;
+  bottom: 100px;
+  left: 620px;
+  z-index: 1;
+}
 </style>
 </head>
 <body>
-<div class="canvas">
 
-  <!-- Parchment texture -->
-  <div class="texture"></div>
+<!-- Geometric decorations -->
+<div class="geo-circle-large"></div>
+<div class="geo-circle-medium"></div>
+<div class="geo-circle-small"></div>
+<div class="geo-square-large"></div>
+<div class="geo-square-medium"></div>
+<div class="geo-square-small"></div>
+<div class="geo-line-v1"></div>
+<div class="geo-line-v2"></div>
+<div class="geo-line-h1"></div>
+<div class="geo-line-h2"></div>
+<div class="geo-line-diag"></div>
+<div class="geo-arc"></div>
 
-  <!-- Geometric composition -->
-  <div class="geo-square-main"></div>
-  <div class="geo-circle-copper"></div>
-  <div class="geo-circle-copper-fill"></div>
-  <div class="geo-square-white"></div>
-  <div class="geo-line-v"></div>
-  <div class="geo-line-h"></div>
-  <div class="geo-dot-small"></div>
-  <div class="geo-square-inner"></div>
-
-  <!-- Series label on blue panel -->
-  <div class="series-vertical">第 03 期 · 商业模式</div>
-
-  <!-- Current slide indicator -->
-  <div class="current-indicator"></div>
-  <div class="current-label">本期 · 规则下的具体操作</div>
-
-  <!-- Decorative elements on right -->
-  <div class="deco-line-top"></div>
-  <div class="deco-dot-right"></div>
-  <div class="deco-line-bottom"></div>
-  <div class="deco-square-corner"></div>
-
-  <!-- Main content -->
-  <div class="content">
-    <div class="lecture-label">PREVIOUS LECTURES · 前情提要</div>
-    <h1 class="main-title">前情提要</h1>
-    <div class="title-underline"></div>
-
-    <ul class="lecture-list">
-      <li class="lecture-item">
-        <span class="lecture-num">第 0 讲</span>
-        <span class="lecture-title-text">增长的开源经济</span>
-      </li>
-      <li class="lecture-item">
-        <span class="lecture-num">第 1 讲</span>
-        <span class="lecture-title-text">软件的生产、分销和消费</span>
-      </li>
-      <li class="lecture-item highlight">
-        <span class="lecture-num">第 2 讲</span>
-        <span class="lecture-title-text">数字时代的知识财产法演变与开源许可</span>
-      </li>
-    </ul>
-  </div>
-
-  <!-- Bottom meta -->
-  <div class="bottom-meta">
-    <span class="meta-text">开源之道 · 新制度经济学视角</span>
-    <div class="meta-separator"></div>
-    <span class="meta-text">Lecture 3 / 30</span>
-  </div>
-
+<!-- Series indicator top right -->
+<div class="series-topright">
+  <div class="lect-num">03</div>
+  <div class="lect-label">LECTURE SERIES</div>
 </div>
+
+<!-- Main content -->
+<div class="content">
+  <div class="series-tag">「开源之道」· 开源的经济学</div>
+  <h1 class="main-title">商业模式：规则下的具体操作</h1>
+  <p class="sub-title">开源软件的商业模式 — 产权制度与案例分析</p>
+  <div class="divider"></div>
+
+  <div class="agenda-section">
+    <div class="agenda-left">
+      <div class="agenda-item">
+        <span class="agenda-num">01</span>
+        <span class="agenda-text">产权制度的经济学基础</span>
+      </div>
+      <div class="agenda-item">
+        <span class="agenda-num">02</span>
+        <span class="agenda-text">开源许可与知识产权的边界</span>
+      </div>
+      <div class="agenda-item">
+        <span class="agenda-num">03</span>
+        <span class="agenda-text">交易成本与企业组织形式</span>
+      </div>
+    </div>
+    <div class="agenda-right">
+      <div class="agenda-item-r">
+        <span class="agenda-num-r">04</span>
+        <span class="agenda-text-r">商业模式类型学分析</span>
+      </div>
+      <div class="agenda-item-r">
+        <span class="agenda-num-r">05</span>
+        <span class="agenda-text-r">典型案例：Red Hat / GitLab</span>
+      </div>
+      <div class="agenda-item-r">
+        <span class="agenda-num-r">06</span>
+        <span class="agenda-text-r">制度演进与未来展望</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Speaker info -->
+<div class="speaker-info">
+  <div class="speaker-label">SPEAKER</div>
+  <div class="speaker-name">「开源之道」· 适兕</div>
+</div>
+
+<!-- Bottom geometric dots -->
+<div class="geo-dot-row">
+  <div class="geo-dot"></div>
+  <div class="geo-dot"></div>
+  <div class="geo-dot"></div>
+  <div class="geo-dot" style="opacity:0.15;"></div>
+</div>
+
+<!-- Bottom bars -->
+<div class="bottom-bar"></div>
+<div class="bottom-bar-accent"></div>
+
 </body>
 </html>

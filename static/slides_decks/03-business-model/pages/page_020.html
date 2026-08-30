@@ -1,161 +1,858 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: aa1d5de1eb5dacc3 --><head><meta charset="UTF-8"><title>案例分析之：移动终端平台 · Google</title><style>*{margin:0;padding:0;box-sizing:border-box;}html,body{width:1600px;height:900px;overflow:hidden;margin:0;font-family:'Noto Sans SC','Source Han Sans SC','PingFang SC',sans-serif;color:#1B3B6B;background:#F5F0E8;}h1,h2,h3,.serif{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;}
-.parchment{position:absolute;top:0;left:0;width:1600px;height:900px;background:#F5F0E8;}
-.parchment::after{content:'';position:absolute;top:0;left:0;width:1600px;height:900px;background:repeating-linear-gradient(0deg,transparent 0,transparent 2px,rgba(139,115,85,0.012) 2px,rgba(139,115,85,0.012) 3px);}
-/* Bauhaus geometric decorations */
-.geo-circle-lg{position:absolute;width:280px;height:280px;border-radius:50%;background:#1B3B6B;}
-.geo-circle-med{position:absolute;width:160px;height:160px;border-radius:50%;border:6px solid #1B3B6B;}
-.geo-circle-sm{position:absolute;width:80px;height:80px;border-radius:50%;background:#8B7355;}
-.geo-circle-outline{position:absolute;width:120px;height:120px;border-radius:50%;border:3px solid #8B7355;background:transparent;}
-.geo-square{position:absolute;width:140px;height:140px;background:#8B7355;}
-.geo-square-outline{position:absolute;width:90px;height:90px;border:4px solid #1B3B6B;background:transparent;}
-.geo-line-h{position:absolute;height:4px;background:#1B3B6B;}
-.geo-line-v{position:absolute;width:4px;background:#1B3B6B;}
-.geo-line-thin{position:absolute;height:2px;background:#8B7355;}
+<!DOCTYPE html>
+<html lang="zh-CN"><!-- source_hash: 6c715c0a26a3f6b2 -->
+<head>
+<meta charset="UTF-8">
+<title>第03期 · 商业模式：案例分析之Google Android</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
 
-/* Header */
-.header-bar{position:absolute;top:0;left:0;width:1600px;height:8px;background:#1B3B6B;}
-.slide-num{position:absolute;top:24px;left:48px;font-family:'Noto Serif SC',serif;font-size:16px;color:#8B7355;letter-spacing:3px;}
-.deck-id{position:absolute;top:24px;right:48px;font-size:13px;color:#8B7355;letter-spacing:2px;}
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-/* Main title area */
-.title-block{position:absolute;top:88px;left:64px;width:1050px;}
-.title-kicker{font-size:14px;letter-spacing:6px;color:#8B7355;font-weight:500;margin-bottom:14px;}
-.title-main{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:46px;font-weight:700;line-height:1.2;color:#1B3B6B;margin-bottom:18px;}
-.title-sub{font-size:18px;color:#555;font-weight:300;line-height:1.6;}
+  html, body {
+    width: 1600px;
+    height: 900px;
+    overflow: hidden;
+    margin: 0;
+    background: #F5F0E8;
+  }
 
-/* Right geometric composition */
-.composition-area{position:absolute;top:90px;right:48px;width:380px;height:240px;}
-.c-circle-1{top:10px;right:100px;width:120px;height:120px;border-radius:50%;background:#1B3B6B;}
-.c-circle-2{top:60px;right:20px;width:70px;height:70px;border-radius:50%;background:#8B7355;}
-.c-square-1{top:130px;right:100px;width:70px;height:70px;background:transparent;border:5px solid #1B3B6B;}
-.c-line-1{top:0px;right:0px;width:120px;height:4px;background:#1B3B6B;}
-.c-circle-outline-1{top:160px;right:20px;width:50px;height:50px;border-radius:50%;border:3px solid #8B7355;background:transparent;}
-.c-square-2{top:10px;right:180px;width:40px;height:40px;background:#F5F0E8;border:3px solid #8B7355;}
+  body {
+    position: relative;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #1B3B6B;
+  }
 
-/* Divider line */
-.main-divider{position:absolute;top:380px;left:64px;width:1472px;height:2px;background:#1B3B6B;}
-.main-divider-thin{position:absolute;top:386px;left:64px;width:1472px;height:1px;background:#8B7355;}
+  /* ===== BACKGROUND PARCHMENT TEXTURE ===== */
+  .bg-texture {
+    position: absolute;
+    top: 0; left: 0;
+    width: 1600px;
+    height: 900px;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(139,115,85,0.03) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 30%, rgba(27,59,107,0.02) 0%, transparent 40%),
+      radial-gradient(ellipse at 50% 80%, rgba(139,115,85,0.02) 0%, transparent 45%);
+    pointer-events: none;
+  }
 
-/* Content sections */
-.content-area{position:absolute;top:420px;left:64px;width:1472px;height:380px;display:flex;gap:40px;}
+  /* ===== GEOMETRIC DECORATIONS ===== */
+  .deco-circle-1 {
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    border: 2px solid #1B3B6B;
+    border-radius: 50%;
+    top: -80px;
+    right: -60px;
+    opacity: 0.08;
+  }
 
-.section{flex:1;position:relative;padding-top:16px;}
-.section-label{font-size:12px;letter-spacing:5px;color:#8B7355;font-weight:500;margin-bottom:10px;}
-.section-value{font-family:'Noto Serif SC',serif;font-size:32px;font-weight:700;color:#1B3B6B;line-height:1.3;margin-bottom:12px;}
-.section-desc{font-size:14px;color:#555;line-height:1.8;font-weight:300;}
-.section-divider{width:48px;height:3px;background:#1B3B6B;margin:8px 0 14px 0;}
-.section-divider-copper{width:48px;height:3px;background:#8B7355;margin:8px 0 14px 0;}
+  .deco-circle-2 {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border: 1.5px solid #8B7355;
+    border-radius: 50%;
+    bottom: -60px;
+    left: -50px;
+    opacity: 0.12;
+  }
 
-/* Year badge */
-.year-badge{display:inline-block;font-family:'Noto Serif SC',serif;font-size:52px;font-weight:700;color:#1B3B6B;line-height:1;letter-spacing:2px;}
-.year-badge-label{font-size:12px;letter-spacing:4px;color:#8B7355;margin-top:10px;}
+  .deco-circle-3 {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border: 2px solid #1B3B6B;
+    border-radius: 50%;
+    bottom: 120px;
+    right: 200px;
+    opacity: 0.06;
+  }
 
-/* Right geometric panel */
-.right-geo{position:absolute;right:48px;bottom:48px;width:200px;height:200px;}
-.rg-circle{position:absolute;top:20px;right:20px;width:120px;height:120px;border-radius:50%;background:#1B3B6B;}
-.rg-square{position:absolute;top:0px;right:120px;width:80px;height:80px;background:#8B7355;}
-.rg-line{position:absolute;top:150px;right:0px;width:200px;height:3px;background:#1B3B6B;}
-.rg-dot{position:absolute;top:175px;right:180px;width:12px;height:12px;border-radius:50%;background:#8B7355;}
+  .deco-square-1 {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border: 2px solid #8B7355;
+    top: 80px;
+    right: 120px;
+    transform: rotate(45deg);
+    opacity: 0.07;
+  }
 
-/* Footer */
-.footer-line{position:absolute;bottom:0;left:0;width:1600px;height:8px;background:#8B7355;}
-.footer-text{position:absolute;bottom:24px;left:64px;font-size:12px;color:#8B7355;letter-spacing:3px;}
-.footer-right{position:absolute;bottom:24px;right:64px;font-size:12px;color:#8B7355;letter-spacing:2px;}
+  .deco-square-2 {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    background: #1B3B6B;
+    bottom: 60px;
+    left: 420px;
+    opacity: 0.04;
+  }
 
-/* Decorative vertical lines */
-.v-line-1{position:absolute;top:380px;left:504px;width:1px;height:420px;background:#8B7355;opacity:0.4;}
-.v-line-2{position:absolute;top:380px;left:870px;width:1px;height:420px;background:#8B7355;opacity:0.4;}
-.v-line-3{position:absolute;top:380px;left:1236px;width:1px;height:420px;background:#8B7355;opacity:0.4;}
+  .deco-line-1 {
+    position: absolute;
+    width: 500px;
+    height: 1px;
+    background: #1B3B6B;
+    top: 220px;
+    left: 80px;
+    opacity: 0.15;
+  }
 
-/* Android OSS tag */
-.oss-tag{display:inline-block;padding:6px 16px;border:2px solid #1B3B6B;font-family:'Noto Serif SC',serif;font-size:18px;font-weight:600;color:#1B3B6B;letter-spacing:2px;margin-top:8px;}
-</style></head><body>
-<div class="parchment"></div>
+  .deco-line-2 {
+    position: absolute;
+    width: 1px;
+    height: 200px;
+    background: #8B7355;
+    top: 300px;
+    left: 760px;
+    opacity: 0.12;
+  }
 
-<!-- Header bar -->
-<div class="header-bar"></div>
-<div class="slide-num">03 · 17</div>
-<div class="deck-id">03-BUSINESS-MODEL</div>
+  .deco-line-3 {
+    position: absolute;
+    width: 320px;
+    height: 1px;
+    background: #8B7355;
+    bottom: 140px;
+    left: 900px;
+    opacity: 0.1;
+  }
 
-<!-- Geometric composition (top right) -->
-<div class="composition-area">
-  <div class="c-circle-1 geo-circle-lg" style="width:110px;height:110px;top:10px;right:130px;"></div>
-  <div class="c-circle-2 geo-circle-sm" style="width:60px;height:60px;top:60px;right:20px;"></div>
-  <div class="c-square-1" style="width:60px;height:60px;top:130px;right:130px;border:5px solid #1B3B6B;background:transparent;"></div>
-  <div class="c-line-1" style="width:100px;top:5px;right:0px;height:4px;background:#1B3B6B;"></div>
-  <div class="c-circle-outline-1" style="width:40px;height:40px;top:160px;right:10px;"></div>
-  <div class="c-square-2" style="width:34px;height:34px;top:10px;right:200px;background:#F5F0E8;border:3px solid #8B7355;"></div>
-</div>
+  .deco-dot {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #1B3B6B;
+    border-radius: 50%;
+    opacity: 0.3;
+  }
 
-<!-- Title block -->
-<div class="title-block">
-  <div class="title-kicker">CASE STUDY · 案例分析</div>
-  <div class="title-main">移动终端平台 · Mobile Platform</div>
-  <div class="title-sub">从收购到生态——一种开源驱动的商业构建路径</div>
-</div>
+  .deco-dot-1 { top: 180px; left: 750px; }
+  .deco-dot-2 { top: 460px; right: 340px; width: 6px; height: 6px; }
+  .deco-dot-3 { bottom: 200px; left: 760px; width: 5px; height: 5px; }
 
-<!-- Divider -->
-<div class="main-divider"></div>
-<div class="main-divider-thin"></div>
+  .deco-triangle {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 50px solid #8B7355;
+    opacity: 0.06;
+    bottom: 300px;
+    left: 150px;
+    transform: rotate(15deg);
+  }
 
-<!-- Vertical dividers -->
-<div class="v-line-1"></div>
-<div class="v-line-2"></div>
-<div class="v-line-3"></div>
+  /* ===== HEADER ===== */
+  .header {
+    position: absolute;
+    top: 50px;
+    left: 80px;
+    right: 80px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
 
-<!-- Content sections -->
-<div class="content-area">
-  <div class="section">
-    <div class="section-label">C O R P O R A T I O N</div>
-    <div class="section-value">Google</div>
-    <div class="section-divider"></div>
-    <div class="section-desc">
-      谷歌——搜索帝国的版图延伸，以互联网基础设施为根基，向移动终端操作系统发起的战略跃迁。
-    </div>
+  .header-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 18px;
+    background: #1B3B6B;
+    color: #F5F0E8;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+  }
+
+  .header-badge-num {
+    font-size: 18px;
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  .header-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1B3B6B;
+    letter-spacing: 1px;
+  }
+
+  .header-line {
+    flex: 1;
+    height: 1px;
+    background: #1B3B6B;
+    opacity: 0.2;
+  }
+
+  .header-meta {
+    font-size: 12px;
+    color: #8B7355;
+    letter-spacing: 0.5px;
+    font-family: 'Noto Sans SC', sans-serif;
+  }
+
+  /* ===== SECTION LABEL ===== */
+  .section-label {
+    position: absolute;
+    top: 130px;
+    left: 80px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .section-label-bar {
+    width: 4px;
+    height: 28px;
+    background: #1B3B6B;
+  }
+
+  .section-label-text {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: #8B7355;
+    letter-spacing: 3px;
+  }
+
+  /* ===== MAIN CONTENT ===== */
+  .main-content {
+    position: absolute;
+    top: 180px;
+    left: 80px;
+    right: 80px;
+    display: flex;
+    gap: 50px;
+  }
+
+  .left-column {
+    width: 600px;
+    flex-shrink: 0;
+  }
+
+  .right-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  /* ===== CASE STUDY TITLE ===== */
+  .case-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 16px;
+    border: 1.5px solid #1B3B6B;
+    font-size: 13px;
+    font-weight: 500;
+    color: #1B3B6B;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+  }
+
+  .case-tag-dot {
+    width: 6px;
+    height: 6px;
+    background: #1B3B6B;
+    border-radius: 50%;
+  }
+
+  .case-main-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 48px;
+    font-weight: 900;
+    color: #1B3B6B;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .case-main-title-en {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: #8B7355;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+  }
+
+  .case-description {
+    font-size: 15px;
+    line-height: 1.9;
+    color: #333;
+    font-weight: 300;
+    margin-bottom: 36px;
+    padding-left: 16px;
+    border-left: 2px solid #8B7355;
+  }
+
+  .case-description strong {
+    color: #1B3B6B;
+    font-weight: 700;
+  }
+
+  /* ===== TIMELINE ===== */
+  .timeline-section {
+    margin-top: 10px;
+  }
+
+  .timeline-label {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #8B7355;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .timeline-label-line {
+    width: 40px;
+    height: 1px;
+    background: #8B7355;
+  }
+
+  .timeline {
+    position: relative;
+    padding-left: 32px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 4px;
+    bottom: 4px;
+    width: 2px;
+    background: #1B3B6B;
+    opacity: 0.3;
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 22px;
+  }
+
+  .timeline-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: -28px;
+    top: 5px;
+    width: 14px;
+    height: 14px;
+    border: 2px solid #1B3B6B;
+    background: #F5F0E8;
+    border-radius: 50%;
+  }
+
+  .timeline-dot.active {
+    background: #1B3B6B;
+  }
+
+  .timeline-year {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #1B3B6B;
+    letter-spacing: 1px;
+  }
+
+  .timeline-text {
+    font-size: 14px;
+    color: #555;
+    margin-top: 4px;
+    line-height: 1.6;
+  }
+
+  /* ===== RIGHT COLUMN CARDS ===== */
+  .info-card {
+    background: #FFFFFF;
+    padding: 28px 30px;
+    position: relative;
+    border: 1px solid rgba(139,115,85,0.15);
+  }
+
+  .info-card-corner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 40px;
+    background: #1B3B6B;
+  }
+
+  .info-card-corner.bottom {
+    height: 20px;
+    top: auto;
+    bottom: 0;
+  }
+
+  .info-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .info-card-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1B3B6B;
+    flex-shrink: 0;
+  }
+
+  .info-card-icon-rect {
+    width: 12px;
+    height: 12px;
+    background: #F5F0E8;
+  }
+
+  .info-card-icon-circle {
+    width: 12px;
+    height: 12px;
+    border: 2px solid #F5F0E8;
+    border-radius: 50%;
+  }
+
+  .info-card-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1B3B6B;
+  }
+
+  .info-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .info-row {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+  }
+
+  .info-row-label {
+    font-size: 12px;
+    color: #8B7355;
+    letter-spacing: 1px;
+    min-width: 80px;
+    flex-shrink: 0;
+  }
+
+  .info-row-value {
+    font-size: 15px;
+    color: #333;
+    font-weight: 500;
+    flex: 1;
+  }
+
+  .info-row-value.highlight {
+    color: #1B3B6B;
+    font-weight: 700;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 17px;
+  }
+
+  .info-row-value .tag {
+    display: inline-block;
+    padding: 2px 10px;
+    background: #1B3B6B;
+    color: #F5F0E8;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    margin-left: 4px;
+  }
+
+  .info-row-value .tag-outline {
+    display: inline-block;
+    padding: 2px 10px;
+    border: 1.5px solid #8B7355;
+    color: #8B7355;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    margin-left: 4px;
+  }
+
+  /* ===== RELATIONSHIP DIAGRAM ===== */
+  .relation-diagram {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    background: rgba(27,59,107,0.03);
+    border-left: 3px solid #1B3B6B;
+  }
+
+  .relation-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .relation-node-box {
+    width: 80px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #F5F0E8;
+    background: #1B3B6B;
+    text-align: center;
+  }
+
+  .relation-node-box.outline {
+    background: transparent;
+    color: #8B7355;
+    border: 1.5px solid #8B7355;
+  }
+
+  .relation-node-label {
+    font-size: 11px;
+    color: #8B7355;
+    letter-spacing: 0.5px;
+  }
+
+  .relation-arrow {
+    font-size: 18px;
+    color: #1B3B6B;
+    opacity: 0.4;
+    flex-shrink: 0;
+  }
+
+  .relation-arrow-label {
+    font-size: 10px;
+    color: #8B7355;
+    letter-spacing: 1px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+
+  /* ===== BOTTOM NOTE ===== */
+  .bottom-note {
+    position: absolute;
+    bottom: 40px;
+    left: 80px;
+    right: 80px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(139,115,85,0.2);
+  }
+
+  .bottom-note-square {
+    width: 10px;
+    height: 10px;
+    background: #1B3B6B;
+    flex-shrink: 0;
+  }
+
+  .bottom-note-text {
+    font-size: 12px;
+    color: #8B7355;
+    letter-spacing: 1px;
+    line-height: 1.5;
+  }
+
+  .bottom-note-text strong {
+    color: #1B3B6B;
+    font-weight: 700;
+  }
+
+  .bottom-page {
+    margin-left: auto;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 13px;
+    color: #1B3B6B;
+    font-weight: 700;
+    letter-spacing: 1px;
+    flex-shrink: 0;
+  }
+
+  .bottom-page-total {
+    color: #8B7355;
+    font-weight: 400;
+  }
+
+  /* ===== BIG GEOMETRIC COMPOSITION (BAUHAUS) ===== */
+  .bauhaus-composition {
+    position: absolute;
+    top: 180px;
+    right: 80px;
+    width: 160px;
+    height: 160px;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .bauhaus-circle-large {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: #1B3B6B;
+    opacity: 0.06;
+    top: 20px;
+    left: 20px;
+  }
+
+  .bauhaus-square-large {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background: #8B7355;
+    opacity: 0.08;
+    top: 0;
+    left: 60px;
+  }
+
+  .bauhaus-circle-small {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #1B3B6B;
+    opacity: 0.12;
+    top: 100px;
+    left: 0;
+  }
+
+  .bauhaus-line {
+    position: absolute;
+    width: 80px;
+    height: 2px;
+    background: #1B3B6B;
+    opacity: 0.15;
+    top: 85px;
+    left: 60px;
+    transform: rotate(-30deg);
+  }
+
+</style>
+</head>
+<body>
+
+  <!-- Background texture -->
+  <div class="bg-texture"></div>
+
+  <!-- Geometric decorations -->
+  <div class="deco-circle-1"></div>
+  <div class="deco-circle-2"></div>
+  <div class="deco-circle-3"></div>
+  <div class="deco-square-1"></div>
+  <div class="deco-square-2"></div>
+  <div class="deco-line-1"></div>
+  <div class="deco-line-2"></div>
+  <div class="deco-line-3"></div>
+  <div class="deco-triangle"></div>
+  <div class="deco-dot deco-dot-1"></div>
+  <div class="deco-dot deco-dot-2"></div>
+  <div class="deco-dot deco-dot-3"></div>
+
+  <!-- Bauhaus composition top-right -->
+  <div class="bauhaus-composition">
+    <div class="bauhaus-circle-large"></div>
+    <div class="bauhaus-square-large"></div>
+    <div class="bauhaus-circle-small"></div>
+    <div class="bauhaus-line"></div>
   </div>
 
-  <div class="section">
-    <div class="section-label">T I M E L I N E</div>
-    <div class="year-badge">2008</div>
-    <div class="section-divider-copper"></div>
-    <div class="section-desc">
-      收购 Android 公司，以约 17 亿美元完成交易，将其纳入移动战略核心，奠定此后十年移动生态格局。
+  <!-- Header -->
+  <div class="header">
+    <div class="header-badge">
+      <span class="header-badge-num">03</span>
+      <span>商业模式</span>
     </div>
+    <span class="header-title">规则下的具体操作</span>
+    <div class="header-line"></div>
+    <span class="header-meta">开源之道 · 新制度经济学视角</span>
   </div>
 
-  <div class="section">
-    <div class="section-label">P R O D U C T</div>
-    <div class="section-value">Android</div>
-    <div class="section-divider"></div>
-    <div class="section-desc">
-      全球第一大移动操作系统，覆盖智能手机与平板设备，成为开源商业化的典型范例。
-    </div>
+  <!-- Section label -->
+  <div class="section-label">
+    <div class="section-label-bar"></div>
+    <span class="section-label-text">案例分析 / CASE STUDY</span>
   </div>
 
-  <div class="section">
-    <div class="section-label">F O S S · 项 目</div>
-    <div class="section-value" style="font-size:26px;">Android OSS</div>
-    <div class="section-divider-copper"></div>
-    <div class="section-desc">
-      基于 Apache 2.0 协议的开放源代码项目，以 AOSP 形式对外发布，构建开放协作的生产体系。
-      <br><span class="oss-tag">A P A C H E  2 . 0</span>
+  <!-- Main content -->
+  <div class="main-content">
+
+    <!-- Left column -->
+    <div class="left-column">
+      <div class="case-tag">
+        <span class="case-tag-dot"></span>
+        <span>移动终端平台 · MOBILE PLATFORM</span>
+      </div>
+
+      <h1 class="case-main-title">Google</h1>
+      <div class="case-main-title-en">Android 平台生态</div>
+
+      <p class="case-description">
+        以 <strong>Google / Android</strong> 为例，考察一家科技巨头如何通过<strong>收购开源项目</strong>，构建移动终端操作系统平台，并在<strong>闭源商业产品</strong>与<strong>开放源代码项目</strong>之间建立规则化的运作机制。
+      </p>
+
+      <!-- Timeline -->
+      <div class="timeline-section">
+        <div class="timeline-label">
+          <span>关键节点</span>
+          <span class="timeline-label-line"></span>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot active"></div>
+            <div class="timeline-year">2007</div>
+            <div class="timeline-text">Andy Rubin 创立 Android Inc.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot active"></div>
+            <div class="timeline-year">2008</div>
+            <div class="timeline-text">Google 以约 50 亿美元收购 Android</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot active"></div>
+            <div class="timeline-year">2008.10</div>
+            <div class="timeline-text">发布 Android 开源源代码（Apache 2.0）</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-year">2009.10</div>
+            <div class="timeline-text">HTC Dream — 首款 Android 商业手机</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-year">至今</div>
+            <div class="timeline-text">全球最大移动操作系统市场份额</div>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- Right column -->
+    <div class="right-column">
+
+      <!-- Card 1: Company & Product -->
+      <div class="info-card">
+        <div class="info-card-corner"></div>
+        <div class="info-card-header">
+          <div class="info-card-icon">
+            <div class="info-card-icon-rect"></div>
+          </div>
+          <span class="info-card-title">企业 · 产品</span>
+        </div>
+        <div class="info-card-content">
+          <div class="info-row">
+            <span class="info-row-label">企业</span>
+            <span class="info-row-value highlight">Alphabet / Google</span>
+          </div>
+          <div class="info-row">
+            <span class="info-row-label">产品</span>
+            <span class="info-row-value">Android 操作系统 <span class="tag-outline">闭源商业层</span></span>
+          </div>
+          <div class="info-row">
+            <span class="info-row-label">平台层级</span>
+            <span class="info-row-value">移动终端操作系统 · OS Layer</span>
+          </div>
+        </div>
+        <div class="info-card-corner bottom"></div>
+      </div>
+
+      <!-- Card 2: FOSS Project -->
+      <div class="info-card">
+        <div class="info-card-corner" style="background: #8B7355;"></div>
+        <div class="info-card-header">
+          <div class="info-card-icon" style="background: #8B7355;">
+            <div class="info-card-icon-circle"></div>
+          </div>
+          <span class="info-card-title">FOSS 项目</span>
+        </div>
+        <div class="info-card-content">
+          <div class="info-row">
+            <span class="info-row-label">项目</span>
+            <span class="info-row-value highlight">Android Open Source Project</span>
+          </div>
+          <div class="info-row">
+            <span class="info-row-label">许可证</span>
+            <span class="info-row-value">Apache License 2.0</span>
+          </div>
+          <div class="info-row">
+            <span class="info-row-label">托管</span>
+            <span class="info-row-value">AOSP / Android Open Source</span>
+          </div>
+        </div>
+        <div class="info-card-corner bottom" style="background: #8B7355;"></div>
+      </div>
+
+      <!-- Relationship diagram -->
+      <div class="relation-diagram">
+        <div class="relation-node">
+          <div class="relation-node-box">Google</div>
+          <span class="relation-node-label">收购方</span>
+        </div>
+        <div class="relation-arrow-label">
+          <span class="relation-arrow">→</span>
+          <span>2008</span>
+        </div>
+        <div class="relation-node">
+          <div class="relation-node-box outline">Android</div>
+          <span class="relation-node-label">目标公司</span>
+        </div>
+        <div class="relation-arrow-label">
+          <span class="relation-arrow">→</span>
+          <span>开源化</span>
+        </div>
+        <div class="relation-node">
+          <div class="relation-node-box outline" style="border-style: dashed;">AOSP</div>
+          <span class="relation-node-label">开源项目</span>
+        </div>
+      </div>
+
+    </div>
+
   </div>
-</div>
 
-<!-- Right bottom geometric decoration -->
-<div class="right-geo">
-  <div class="rg-square" style="position:absolute;top:0;right:120px;width:70px;height:70px;background:#8B7355;"></div>
-  <div class="rg-circle" style="position:absolute;top:20px;right:10px;width:90px;height:90px;border-radius:50%;background:#1B3B6B;"></div>
-  <div class="rg-line" style="position:absolute;top:120px;right:0;width:200px;height:3px;background:#1B3B6B;"></div>
-  <div class="rg-dot" style="position:absolute;top:140px;right:175px;width:10px;height:10px;border-radius:50%;background:#8B7355;"></div>
-  <div style="position:absolute;top:140px;right:140px;width:30px;height:30px;background:transparent;border:3px solid #1B3B6B;"></div>
-</div>
+  <!-- Bottom note -->
+  <div class="bottom-note">
+    <div class="bottom-note-square"></div>
+    <span class="bottom-note-text">
+      <strong>制度视角：</strong>Google 通过「收购 → 开源 → 商业闭环」的三层架构，将 FOSS 纳入企业战略——开源代码降低生态系统进入壁垒，商业层捕获价值。
+    </span>
+    <span class="bottom-page">
+      <span id="page-num">07</span> <span class="bottom-page-total">/ 30</span>
+    </span>
+  </div>
 
-<!-- Footer -->
-<div class="footer-text">03 · BUSINESS MODEL · 规则下的具体操作</div>
-<div class="footer-right">第 17 页 / 共 30 页</div>
-<div class="footer-line"></div>
-</body></html>
+</body>
+</html>

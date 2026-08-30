@@ -1,476 +1,430 @@
 
 
 <!DOCTYPE html>
-<html><!-- source_hash: 3da5d8f742bda446 -->
+<html lang="zh-CN"><!-- source_hash: d62f3d9134892034 -->
 <head>
 <meta charset="UTF-8">
-<title>前情提要 · 第02期</title>
+<title>开源经济学 · 数字时代的知识财产法演变与开源许可</title>
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-html, body {
-  width: 1600px;
-  height: 900px;
-  overflow: hidden;
-  margin: 0;
-  background: #F5F0E8;
-}
+  html, body {
+    width: 1600px;
+    height: 900px;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+  }
 
-body {
-  font-family: 'Noto Sans SC', sans-serif;
-  color: #1B3B6B;
-  position: relative;
-}
+  body {
+    background: #F5F0E8;
+    font-family: 'Noto Sans SC', 'Source Han Sans SC', 'PingFang SC', sans-serif;
+    color: #1B3B6B;
+    position: relative;
+  }
 
-/* Parchment texture overlay */
-.parchment-texture {
-  position: absolute;
-  top: 0; left: 0;
-  width: 1600px; height: 900px;
-  background: 
-    radial-gradient(ellipse at 20% 50%, rgba(139,115,85,0.03) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 30%, rgba(27,59,107,0.02) 0%, transparent 40%),
-    radial-gradient(ellipse at 50% 80%, rgba(139,115,85,0.025) 0%, transparent 45%);
-  pointer-events: none;
-}
+  .canvas {
+    width: 1600px;
+    height: 900px;
+    position: relative;
+    overflow: hidden;
+  }
 
-/* Decorative geometric elements */
-.deco-circle-large {
-  position: absolute;
-  width: 420px;
-  height: 420px;
-  border-radius: 50%;
-  border: 2px solid rgba(27,59,107,0.08);
-  right: 80px;
-  top: 120px;
-}
+  /* Background parchment texture */
+  .canvas::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1600px;
+    height: 900px;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(27, 59, 107, 0.02) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 30%, rgba(139, 115, 85, 0.03) 0%, transparent 40%);
+    z-index: 0;
+  }
 
-.deco-circle-small {
-  position: absolute;
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background: rgba(27,59,107,0.04);
-  right: 160px;
-  top: 460px;
-}
+  /* Subtle noise texture */
+  .canvas::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1600px;
+    height: 900px;
+    background:
+      linear-gradient(135deg, rgba(245, 240, 232, 0.3) 0%, rgba(235, 228, 215, 0.2) 50%, rgba(245, 240, 232, 0.3) 100%);
+    z-index: 0;
+  }
 
-.deco-square-1 {
-  position: absolute;
-  width: 60px;
-  height: 60px;
-  border: 1.5px solid rgba(139,115,85,0.2);
-  top: 60px;
-  left: 80px;
-}
+  /* Geometric composition - Large circle (representing openness) */
+  .circle-main {
+    position: absolute;
+    width: 520px;
+    height: 520px;
+    border-radius: 50%;
+    background: #1B3B6B;
+    top: 130px;
+    right: 100px;
+    z-index: 1;
+  }
 
-.deco-square-2 {
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  background: rgba(139,115,85,0.12);
-  top: 80px;
-  left: 100px;
-}
+  /* Copper ring around circle */
+  .circle-ring {
+    position: absolute;
+    width: 560px;
+    height: 560px;
+    border-radius: 50%;
+    border: 3px solid #8B7355;
+    top: 110px;
+    right: 80px;
+    z-index: 1;
+  }
 
-.deco-line-h {
-  position: absolute;
-  height: 1px;
-  background: rgba(27,59,107,0.12);
-}
+  /* Inner circle - white/parchment */
+  .circle-inner {
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background: #F5F0E8;
+    top: 260px;
+    right: 230px;
+    z-index: 2;
+  }
 
-.deco-line-1 {
-  top: 30px;
-  left: 80px;
-  width: 200px;
-}
+  /* Inner circle inner accent */
+  .circle-inner-accent {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #8B7355;
+    top: 390px;
+    right: 360px;
+    z-index: 3;
+  }
 
-.deco-line-2 {
-  top: 860px;
-  left: 80px;
-  width: 1440px;
-  background: rgba(27,59,107,0.08);
-}
+  /* Square element - lower left */
+  .square-main {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    background: #1B3B6B;
+    top: 620px;
+    left: 100px;
+    transform: rotate(0deg);
+    z-index: 1;
+  }
 
-.deco-line-v {
-  position: absolute;
-  width: 1px;
-  background: rgba(27,59,107,0.06);
-}
+  /* Copper square */
+  .square-copper {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    background: #8B7355;
+    top: 685px;
+    left: 270px;
+    z-index: 1;
+  }
 
-.deco-line-v-1 {
-  top: 200px;
-  left: 80px;
-  height: 680px;
-}
+  /* Small blue square */
+  .square-small {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    background: #1B3B6B;
+    top: 710px;
+    left: 380px;
+    z-index: 1;
+  }
 
-/* Header section */
-.header {
-  position: absolute;
-  top: 50px;
-  left: 80px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
+  /* Diagonal line */
+  .line-diagonal {
+    position: absolute;
+    width: 3px;
+    height: 200px;
+    background: #8B7355;
+    top: 530px;
+    left: 100px;
+    transform: rotate(45deg);
+    transform-origin: top left;
+    z-index: 1;
+  }
 
-.header-tag {
-  font-size: 11px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: rgba(139,115,85,0.8);
-  font-weight: 500;
-}
+  /* Horizontal line */
+  .line-h {
+    position: absolute;
+    width: 400px;
+    height: 2px;
+    background: #1B3B6B;
+    top: 590px;
+    left: 100px;
+    z-index: 1;
+  }
 
-.header-divider {
-  width: 40px;
-  height: 1px;
-  background: rgba(139,115,85,0.4);
-}
+  /* Vertical line */
+  .line-v {
+    position: absolute;
+    width: 2px;
+    height: 280px;
+    background: #8B7355;
+    top: 500px;
+    left: 480px;
+    z-index: 1;
+  }
 
-/* Main title area - center left */
-.title-block {
-  position: absolute;
-  top: 180px;
-  left: 120px;
-  width: 600px;
-}
+  /* Small circle accent - top left */
+  .circle-small-top {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #8B7355;
+    top: 80px;
+    left: 400px;
+    z-index: 1;
+  }
 
-.title-label {
-  font-size: 13px;
-  letter-spacing: 4px;
-  color: rgba(139,115,85,0.7);
-  margin-bottom: 20px;
-  font-weight: 400;
-}
+  /* Small circle outline */
+  .circle-outline {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid #1B3B6B;
+    top: 70px;
+    left: 500px;
+    z-index: 1;
+  }
 
-.title-main {
-  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-  font-size: 72px;
-  font-weight: 700;
-  color: #1B3B6B;
-  letter-spacing: 8px;
-  line-height: 1.2;
-  position: relative;
-}
+  /* Small copper circle */
+  .circle-copper-small {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #1B3B6B;
+    top: 95px;
+    left: 600px;
+    z-index: 1;
+  }
 
-.title-main::after {
-  content: '';
-  position: absolute;
-  bottom: -16px;
-  left: 0;
-  width: 80px;
-  height: 3px;
-  background: #1B3B6B;
-}
+  /* Text area */
+  .text-block {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    z-index: 10;
+    width: 580px;
+  }
 
-.title-subtitle {
-  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-  font-size: 18px;
-  color: rgba(27,59,107,0.55);
-  margin-top: 40px;
-  letter-spacing: 2px;
-  font-weight: 400;
-}
+  /* Series label */
+  .series-label {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 15px;
+    letter-spacing: 6px;
+    color: #8B7355;
+    margin-bottom: 24px;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
 
-/* Center visual - "开源" characters on parchment */
-.center-visual {
-  position: absolute;
-  top: 200px;
-  left: 860px;
-  width: 480px;
-  height: 480px;
-}
+  /* Main title */
+  .main-title {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: #1B3B6B;
+    line-height: 1.15;
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+  }
 
-.visual-frame {
-  position: absolute;
-  top: 0; left: 0;
-  width: 480px;
-  height: 480px;
-  background: rgba(245,240,232,0.6);
-  border: 1px solid rgba(139,115,85,0.15);
-}
+  /* Subtitle - session */
+  .session-info {
+    font-family: 'Noto Sans SC', 'Source Han Sans SC', sans-serif;
+    font-size: 20px;
+    color: #555;
+    margin-top: 20px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
 
-.visual-frame-inner {
-  position: absolute;
-  top: 24px; left: 24px;
-  width: 432px;
-  height: 432px;
-  border: 1px solid rgba(27,59,107,0.06);
-}
+  .session-num {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 22px;
+    color: #8B7355;
+    font-weight: 500;
+    letter-spacing: 3px;
+  }
 
-.char-visual {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-  font-size: 180px;
-  font-weight: 700;
-  color: rgba(27,59,107,0.07);
-  letter-spacing: 16px;
-  white-space: nowrap;
-}
+  /* Speaker info */
+  .speaker-block {
+    position: absolute;
+    bottom: 80px;
+    left: 100px;
+    z-index: 10;
+    width: 580px;
+  }
 
-/* Bottom content - recap items */
-.recap-section {
-  position: absolute;
-  bottom: 120px;
-  left: 120px;
-  width: 1360px;
-  display: flex;
-  gap: 40px;
-}
+  .speaker-label {
+    font-family: 'Noto Sans SC', 'Source Han Sans SC', sans-serif;
+    font-size: 13px;
+    color: #8B7355;
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+    font-weight: 400;
+  }
 
-.recap-item {
-  flex: 1;
-  padding: 28px 28px 24px 28px;
-  border-top: 2px solid rgba(27,59,107,0.15);
-  position: relative;
-}
+  .speaker-name {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 28px;
+    color: #1B3B6B;
+    font-weight: 600;
+    letter-spacing: 2px;
+  }
 
-.recap-item.active {
-  border-top-color: #1B3B6B;
-}
+  /* Lecture series line */
+  .lecture-line {
+    position: absolute;
+    top: 530px;
+    left: 100px;
+    z-index: 10;
+    font-family: 'Noto Sans SC', 'Source Han Sans SC', sans-serif;
+    font-size: 16px;
+    color: #555;
+    letter-spacing: 2px;
+    font-weight: 300;
+  }
 
-.recap-num {
-  position: absolute;
-  top: -14px;
-  left: 0;
-  background: #F5F0E8;
-  padding-right: 12px;
-  font-size: 12px;
-  letter-spacing: 2px;
-  color: rgba(139,115,85,0.7);
-  font-weight: 500;
-}
+  /* Corner accent - top right */
+  .corner-top-right {
+    position: absolute;
+    top: 60px;
+    right: 60px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
 
-.recap-item.active .recap-num {
-  color: #1B3B6B;
-}
+  .corner-label {
+    font-family: 'Noto Sans SC', 'Source Han Sans SC', sans-serif;
+    font-size: 11px;
+    color: #8B7355;
+    letter-spacing: 3px;
+    font-weight: 400;
+  }
 
-.recap-title {
-  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-  font-size: 20px;
-  font-weight: 600;
-  color: #1B3B6B;
-  margin-bottom: 10px;
-  line-height: 1.4;
-}
+  /* Bottom right accent */
+  .bottom-right-accent {
+    position: absolute;
+    bottom: 60px;
+    right: 80px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
 
-.recap-desc {
-  font-size: 13px;
-  color: rgba(85,85,85,0.75);
-  line-height: 1.7;
-}
+  .bottom-right-line {
+    width: 80px;
+    height: 1px;
+    background: #8B7355;
+  }
 
-/* Geometric accent dots */
-.dot-cluster {
-  position: absolute;
-  display: flex;
-  gap: 8px;
-}
+  .bottom-right-text {
+    font-family: 'Noto Sans SC', 'Source Han Sans SC', sans-serif;
+    font-size: 11px;
+    color: #8B7355;
+    letter-spacing: 2px;
+    font-weight: 400;
+  }
 
-.dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: rgba(27,59,107,0.2);
-}
+  /* Triangle element */
+  .triangle {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 35px solid transparent;
+    border-right: 35px solid transparent;
+    border-bottom: 60px solid #8B7355;
+    top: 120px;
+    left: 320px;
+    z-index: 1;
+    opacity: 0.6;
+  }
 
-.dot-cluster-1 {
-  bottom: 60px;
-  right: 100px;
-}
-
-/* Additional geometric decorations */
-.deco-triangle {
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-  border-bottom: 34px solid rgba(139,115,85,0.08);
-  top: 100px;
-  right: 40px;
-}
-
-.deco-ring {
-  position: absolute;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  border: 3px solid rgba(139,115,85,0.1);
-  bottom: 300px;
-  left: 840px;
-}
-
-.deco-half-circle {
-  position: absolute;
-  width: 100px;
-  height: 50px;
-  border-radius: 100px 100px 0 0;
-  background: rgba(27,59,107,0.03);
-  top: 750px;
-  left: 750px;
-}
-
-/* Current lecture indicator */
-.current-indicator {
-  position: absolute;
-  bottom: 120px;
-  left: 120px;
-  width: 1360px;
-  padding: 28px 28px 24px 28px;
-  border-top: 2px solid rgba(27,59,107,0.15);
-  position: absolute;
-  display: flex;
-  gap: 40px;
-}
-
-/* Footer */
-.footer {
-  position: absolute;
-  bottom: 40px;
-  left: 80px;
-  right: 80px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.footer-left {
-  font-size: 11px;
-  letter-spacing: 2px;
-  color: rgba(139,115,85,0.5);
-}
-
-.footer-right {
-  font-size: 11px;
-  letter-spacing: 2px;
-  color: rgba(139,115,85,0.5);
-}
-
-/* Vertical text decoration */
-.vertical-text {
-  position: absolute;
-  writing-mode: vertical-rl;
-  font-size: 11px;
-  letter-spacing: 4px;
-  color: rgba(139,115,85,0.25);
-  top: 300px;
-  left: 40px;
-}
-
-/* Open source characters with layering effect */
-.os-char-layer {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-  font-weight: 700;
-  letter-spacing: 16px;
-  white-space: nowrap;
-  line-height: 1;
-}
-
-.os-char-back {
-  font-size: 200px;
-  color: rgba(27,59,107,0.03);
-  top: calc(50% + 8px);
-  left: calc(50% + 6px);
-}
-
-.os-char-mid {
-  font-size: 180px;
-  color: rgba(27,59,107,0.06);
-  top: calc(50% - 2px);
-  left: calc(50% - 2px);
-}
-
-.os-char-front {
-  font-size: 160px;
-  color: rgba(27,59,107,0.14);
-}
-
+  /* Dotted line pattern */
+  .dot-line {
+    position: absolute;
+    top: 750px;
+    left: 100px;
+    width: 300px;
+    height: 1px;
+    background: repeating-linear-gradient(
+      to right,
+      #8B7355 0,
+      #8B7355 4px,
+      transparent 4px,
+      transparent 10px
+    );
+    z-index: 1;
+    opacity: 0.5;
+  }
 </style>
 </head>
 <body>
+<div class="canvas">
+  <!-- Geometric decorations -->
+  <div class="circle-main"></div>
+  <div class="circle-ring"></div>
+  <div class="circle-inner"></div>
+  <div class="circle-inner-accent"></div>
 
-<!-- Parchment texture -->
-<div class="parchment-texture"></div>
+  <div class="square-main"></div>
+  <div class="square-copper"></div>
+  <div class="square-small"></div>
 
-<!-- Geometric decorations -->
-<div class="deco-circle-large"></div>
-<div class="deco-circle-small"></div>
-<div class="deco-square-1"></div>
-<div class="deco-square-2"></div>
-<div class="deco-line-h deco-line-1"></div>
-<div class="deco-line-h deco-line-2"></div>
-<div class="deco-line-v deco-line-v-1"></div>
-<div class="deco-triangle"></div>
-<div class="deco-ring"></div>
-<div class="deco-half-circle"></div>
+  <div class="line-diagonal"></div>
+  <div class="line-h"></div>
+  <div class="line-v"></div>
 
-<!-- Dot cluster -->
-<div class="dot-cluster dot-cluster-1">
-  <div class="dot"></div>
-  <div class="dot"></div>
-  <div class="dot"></div>
-  <div class="dot"></div>
-</div>
+  <div class="circle-small-top"></div>
+  <div class="circle-outline"></div>
+  <div class="circle-copper-small"></div>
 
-<!-- Vertical text -->
-<div class="vertical-text">RECAP &middot; 前情</div>
+  <div class="triangle"></div>
+  <div class="dot-line"></div>
 
-<!-- Header -->
-<div class="header">
-  <span class="header-tag">前情提要</span>
-  <span class="header-divider"></span>
-  <span class="header-tag">Previously</span>
-</div>
-
-<!-- Title block -->
-<div class="title-block">
-  <div class="title-label">EPISODE 02</div>
-  <div class="title-main">开源</div>
-  <div class="title-subtitle">象征一次思想的开启</div>
-</div>
-
-<!-- Center visual -->
-<div class="center-visual">
-  <div class="visual-frame"></div>
-  <div class="visual-frame-inner"></div>
-  <div class="os-char-layer os-char-back">开源</div>
-  <div class="os-char-layer os-char-mid">开源</div>
-  <div class="os-char-layer os-char-front">开源</div>
-</div>
-
-<!-- Recap section -->
-<div class="recap-section">
-  <div class="recap-item">
-    <div class="recap-num">第 0 讲</div>
-    <div class="recap-title">增长的开源经济</div>
-    <div class="recap-desc">开源从边缘技术实践走向主流经济形态，全球协作网络的规模效应与价值创造。</div>
+  <!-- Text Content -->
+  <div class="text-block">
+    <div class="series-label">「开源之道」· 开源的经济学</div>
+    <div class="main-title">开源经济学</div>
+    <div class="lecture-line">
+      <span class="session-num">第三期</span>&nbsp;&nbsp;数字时代的知识财产法演变与开源许可
+    </div>
   </div>
-  <div class="recap-item">
-    <div class="recap-num">第 1 讲</div>
-    <div class="recap-title">软件的生产、分销和消费</div>
-    <div class="recap-desc">数字商品的特殊属性——复制成本趋零、版本演进、公共物品特征与搭便车问题。</div>
+
+  <div class="speaker-block">
+    <div class="speaker-label">主讲人</div>
+    <div class="speaker-name">「开源之道」· 适兕</div>
   </div>
-  <div class="recap-item active">
-    <div class="recap-num">第 2 讲 · 本期</div>
-    <div class="recap-title">数字时代的知识财产法与开源许可</div>
-    <div class="recap-desc">制度框架如何回应开源协作：版权、专利、合同三足鼎立下的许可体系设计。</div>
+
+  <!-- Corner accents -->
+  <div class="corner-top-right">
+    <div class="corner-label">12 讲座系列</div>
+  </div>
+
+  <div class="bottom-right-accent">
+    <div class="bottom-right-text">BAUHAUS COMPOSITION</div>
+    <div class="bottom-right-line"></div>
   </div>
 </div>
-
-<!-- Footer -->
-<div class="footer">
-  <span class="footer-left">开源之道 · 新制度经济学视角</span>
-  <span class="footer-right">第 02 期 &middot; 共 24 页 &middot; P.02</span>
-</div>
-
 </body>
 </html>

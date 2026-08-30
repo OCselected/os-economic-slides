@@ -1,434 +1,586 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: be1f360b2d6d1611 --><head><meta charset="UTF-8"><title>第 03 期 · 商业模式：规则下的具体操作</title><style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html, body { width: 1600px; height: 900px; overflow: hidden; margin: 0; }
-body {
-  font-family: 'Noto Sans SC', 'Source Han Sans SC', sans-serif;
-  background: #F5F0E8;
-  color: #1B3B6B;
-  position: relative;
-}
-.parchment-texture {
-  position: absolute; top: 0; left: 0; width: 1600px; height: 900px;
-  background:
-    radial-gradient(ellipse at 20% 30%, rgba(139,115,85,0.03) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 70%, rgba(27,59,107,0.025) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 50%, rgba(139,115,85,0.015) 0%, transparent 70%);
-  pointer-events: none;
-}
+<!DOCTYPE html>
+<html><!-- source_hash: d9e6586b1b906c3e -->
+<head>
+<meta charset="UTF-8">
+<title>案例分析：搜索入口 — Google Chrome & Chromium</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* Header strip */
-.header {
-  position: absolute; top: 0; left: 0; width: 1600px; height: 52px;
-  border-bottom: 2px solid #1B3B6B;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 60px;
-}
-.header-left { display: flex; align-items: center; gap: 16px; }
-.header-num {
-  width: 32px; height: 32px; background: #1B3B6B; color: #F5F0E8;
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Noto Serif SC', serif; font-size: 14px; font-weight: 700;
-}
-.header-title { font-family: 'Noto Serif SC', serif; font-size: 15px; color: #1B3B6B; letter-spacing: 1px; }
-.header-right { font-size: 12px; color: #555; letter-spacing: 2px; }
+  body {
+    width: 1600px;
+    height: 900px;
+    overflow: hidden;
+    background: #F5F0E8;
+    font-family: 'Noto Sans SC', 'Source Han Sans SC', sans-serif;
+    position: relative;
+  }
 
-/* Bottom strip */
-.footer {
-  position: absolute; bottom: 0; left: 0; width: 1600px; height: 44px;
-  border-top: 1px solid #8B7355;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 60px;
-  font-size: 11px; color: #555; letter-spacing: 2px;
-}
-.footer-bar { display: flex; gap: 4px; }
-.footer-bar span { width: 20px; height: 4px; background: #8B7355; opacity: 0.3; }
-.footer-bar span.active { background: #1B3B6B; opacity: 1; }
+  /* Parchment texture overlay */
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: 
+      repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(139,115,85,0.015) 2px, rgba(139,115,85,0.015) 4px),
+      repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(139,115,85,0.015) 2px, rgba(139,115,85,0.015) 4px);
+    pointer-events: none;
+    z-index: 0;
+  }
 
-/* Left content area */
-.left-panel {
-  position: absolute; top: 96px; left: 60px; width: 540px; height: 720px;
-}
-.case-tag {
-  display: inline-block; padding: 4px 14px; border: 1.5px solid #8B7355;
-  font-size: 11px; letter-spacing: 3px; color: #8B7355; margin-bottom: 24px;
-}
-.main-title {
-  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
-  font-size: 40px; font-weight: 700; color: #1B3B6B; line-height: 1.3;
-  letter-spacing: 2px;
-}
-.subtitle-deco {
-  display: flex; align-items: center; gap: 12px; margin-top: 20px; margin-bottom: 32px;
-}
-.subtitle-deco .line { width: 60px; height: 2px; background: #1B3B6B; }
-.subtitle-deco .dot { width: 10px; height: 10px; background: #8B7355; border-radius: 50%; }
-.subtitle-deco .sq { width: 10px; height: 10px; background: #1B3B6B; }
-.subtitle-deco .txt { font-family: 'Noto Serif SC', serif; font-size: 14px; color: #8B7355; letter-spacing: 2px; }
+  /* Bauhaus decorative geometric elements */
+  .geo-deco {
+    position: absolute;
+    z-index: 1;
+  }
 
-.bullets { margin-top: 12px; }
-.bullet {
-  display: flex; align-items: flex-start; gap: 14px; margin-bottom: 18px;
-}
-.bullet-marker {
-  flex-shrink: 0; width: 22px; height: 22px; margin-top: 4px;
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Noto Serif SC', serif; font-size: 11px; color: #F5F0E8;
-  background: #1B3B6B;
-}
-.bullet-marker.sq { background: #8B7355; }
-.bullet-marker.circle { border-radius: 50%; background: #555; }
-.bullet-text { font-size: 14.5px; line-height: 1.7; color: #1B3B6B; }
-.bullet-text strong { font-family: 'Noto Serif SC', serif; font-weight: 700; }
-.bullet-text .dim { color: #555; font-size: 13px; }
+  .geo-deco.circle-large {
+    width: 320px;
+    height: 320px;
+    border: 3px solid #1B3B6B;
+    border-radius: 50%;
+    top: -120px;
+    right: -120px;
+    opacity: 0.08;
+  }
 
-/* Right ecosystem diagram */
-.right-panel {
-  position: absolute; top: 80px; right: 50px; width: 880px; height: 740px;
-}
+  .geo-deco.square-large {
+    width: 260px;
+    height: 260px;
+    border: 3px solid #8B7355;
+    bottom: -80px;
+    left: -60px;
+    opacity: 0.07;
+    transform: rotate(12deg);
+  }
 
-.eco-label {
-  position: absolute; top: 0; left: 40px; font-family: 'Noto Serif SC', serif;
-  font-size: 12px; color: #8B7355; letter-spacing: 3px;
-}
-.eco-label-line {
-  position: absolute; top: 20px; left: 40px; width: 30px; height: 2px; background: #8B7355;
-}
+  .geo-deco.circle-small {
+    width: 80px;
+    height: 80px;
+    background: #1B3B6B;
+    border-radius: 50%;
+    bottom: 80px;
+    right: 60px;
+    opacity: 0.06;
+  }
 
-/* Google parent */
-.google-node {
-  position: absolute; top: 60px; left: 280px; width: 320px; height: 110px;
-  background: #1B3B6B; display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-}
-.google-node .label-cn { font-family: 'Noto Serif SC', serif; font-size: 22px; color: #F5F0E8; font-weight: 700; letter-spacing: 4px; }
-.google-node .label-en { font-size: 10px; color: #8B7355; letter-spacing: 3px; margin-top: 4px; }
-.google-node-side {
-  position: absolute; top: 72px; left: 310px; width: 24px; height: 24px;
-  background: #8B7355;
-}
+  .geo-deco.line-h {
+    width: 400px;
+    height: 2px;
+    background: #8B7355;
+    opacity: 0.12;
+    top: 680px;
+    left: 100px;
+  }
 
-/* Parent company annotation */
-.google-annotation {
-  position: absolute; top: 178px; left: 200px; font-size: 11px; color: #555;
-  letter-spacing: 2px; text-align: center; width: 120px;
-}
+  .geo-deco.line-v {
+    width: 2px;
+    height: 200px;
+    background: #1B3B6B;
+    opacity: 0.08;
+    top: 100px;
+    left: 60px;
+  }
 
-/* Connection lines */
-.conn-line-1 { position: absolute; top: 170px; left: 370px; width: 2px; height: 60px; background: #1B3B6B; }
-.conn-line-2 { position: absolute; top: 170px; left: 560px; width: 2px; height: 60px; background: #1B3B6B; }
-.conn-h { position: absolute; top: 230px; left: 370px; width: 190px; height: 2px; background: #1B3B6B; }
+  .geo-deco.circle-tri {
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 86px solid #8B7355;
+    opacity: 0.05;
+    top: 350px;
+    right: 200px;
+    transform: rotate(25deg);
+  }
 
-/* Chrome node */
-.chrome-node {
-  position: absolute; top: 240px; left: 280px; width: 190px; height: 120px;
-  border: 2.5px solid #1B3B6B; background: #F5F0E8;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-}
-.chrome-node .chrome-title { font-family: 'Noto Serif SC', serif; font-size: 19px; font-weight: 700; color: #1B3B6B; letter-spacing: 2px; }
-.chrome-node .chrome-sub { font-size: 10px; color: #555; letter-spacing: 2px; margin-top: 4px; }
-.chrome-node .chrome-tag {
-  margin-top: 8px; padding: 2px 10px; background: #1B3B6B; color: #F5F0E8;
-  font-size: 9px; letter-spacing: 2px;
-}
-.chrome-circle {
-  position: absolute; top: 248px; left: 290px; width: 20px; height: 20px;
-  background: #8B7355; border-radius: 50%;
-}
+  /* Header area */
+  .header {
+    position: absolute;
+    top: 45px;
+    left: 80px;
+    right: 80px;
+    z-index: 10;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
 
-/* Chromium node */
-.chromium-node {
-  position: absolute; top: 240px; left: 510px; width: 190px; height: 120px;
-  border: 2.5px solid #8B7355; background: #F5F0E8; border-style: dashed;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-}
-.chromium-node .chromium-title { font-family: 'Noto Serif SC', serif; font-size: 17px; font-weight: 700; color: #8B7355; letter-spacing: 1px; }
-.chromium-node .chromium-sub { font-size: 10px; color: #555; letter-spacing: 2px; margin-top: 4px; }
-.chromium-node .chromium-tag {
-  margin-top: 8px; padding: 2px 10px; background: #8B7355; color: #F5F0E8;
-  font-size: 9px; letter-spacing: 2px;
-}
-.chromium-square {
-  position: absolute; top: 248px; left: 520px; width: 20px; height: 20px;
-  background: #1B3B6B;
-}
+  .lecture-tag {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #8B7355;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
 
-/* Bottom nodes - Search and Ad Revenue */
-.conn-down-1 { position: absolute; top: 360px; left: 370px; width: 2px; height: 50px; background: #1B3B6B; }
-.conn-down-2 { position: absolute; top: 360px; left: 560px; width: 2px; height: 50px; background: #8B7355; }
-.conn-to-search { position: absolute; top: 410px; left: 370px; width: 190px; height: 2px; background: #1B3B6B; }
+  .slide-title {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #1B3B6B;
+    line-height: 1.3;
+  }
 
-/* Search node */
-.search-node {
-  position: absolute; top: 415px; left: 260px; width: 360px; height: 100px;
-  background: #1B3B6B; display: flex; align-items: center; justify-content: center;
-  position: absolute;
-}
-.search-node-content { text-align: center; }
-.search-node-content .search-title { font-family: 'Noto Serif SC', serif; font-size: 17px; font-weight: 700; color: #F5F0E8; letter-spacing: 3px; }
-.search-node-content .search-sub { font-size: 10px; color: #8B7355; letter-spacing: 2px; margin-top: 4px; }
-.search-deco-left { position: absolute; left: -16px; top: 42px; width: 16px; height: 16px; border-radius: 50%; background: #F5F0E8; border: 2px solid #1B3B6B; }
-.search-deco-right { position: absolute; right: -16px; top: 42px; width: 16px; height: 16px; background: #8B7355; }
+  .slide-title .accent {
+    color: #8B7355;
+    font-weight: 400;
+    font-size: 20px;
+    display: block;
+    margin-top: 4px;
+    letter-spacing: 1px;
+  }
 
-/* Arrow to ad revenue */
-.arrow-line {
-  position: absolute; top: 515px; left: 440px; width: 2px; height: 40px; background: #8B7355;
-}
-.arrow-head {
-  position: absolute; top: 550px; left: 432px; width: 0; height: 0;
-  border-left: 5px solid transparent; border-right: 5px solid transparent;
-  border-top: 8px solid #8B7355;
-}
+  .header-right {
+    text-align: right;
+  }
 
-/* Ad revenue node */
-.ad-node {
-  position: absolute; top: 565px; left: 320px; width: 240px; height: 80px;
-  border: 2px solid #8B7355; display: flex; flex-direction: column;
-  align-items: center; justify-content: center; background: #F5F0E8;
-}
-.ad-node .ad-title { font-family: 'Noto Serif SC', serif; font-size: 15px; font-weight: 700; color: #8B7355; letter-spacing: 2px; }
-.ad-node .ad-sub { font-size: 10px; color: #555; letter-spacing: 2px; margin-top: 4px; }
+  .header-right .case-label {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: #8B7355;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
 
-/* Right side annotations */
-.anno-box-1 {
-  position: absolute; top: 240px; right: 0; width: 160px;
-}
-.anno-box-1 .anno-title { font-family: 'Noto Serif SC', serif; font-size: 12px; color: #1B3B6B; font-weight: 700; letter-spacing: 2px; margin-bottom: 6px; }
-.anno-box-1 .anno-line { width: 30px; height: 2px; background: #1B3B6B; margin-bottom: 8px; }
-.anno-box-1 .anno-text { font-size: 11px; color: #555; line-height: 1.6; }
+  .header-right .case-name {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+    font-size: 22px;
+    color: #1B3B6B;
+    font-weight: 600;
+  }
 
-.anno-box-2 {
-  position: absolute; top: 415px; right: 0; width: 160px;
-}
-.anno-box-2 .anno-title { font-family: 'Noto Serif SC', serif; font-size: 12px; color: #8B7355; font-weight: 700; letter-spacing: 2px; margin-bottom: 6px; }
-.anno-box-2 .anno-line { width: 30px; height: 2px; background: #8B7355; margin-bottom: 8px; }
-.anno-box-2 .anno-text { font-size: 11px; color: #555; line-height: 1.6; }
+  /* Divider */
+  .divider {
+    position: absolute;
+    top: 155px;
+    left: 80px;
+    right: 80px;
+    height: 1px;
+    background: linear-gradient(to right, #1B3B6B 0%, #8B7355 50%, transparent 100%);
+    opacity: 0.3;
+    z-index: 10;
+  }
 
-/* Left side date annotation */
-.date-badge {
-  position: absolute; top: 240px; left: 20px; width: 180px;
-  border-left: 3px solid #1B3B6B; padding-left: 12px;
-}
-.date-badge .date-title { font-family: 'Noto Serif SC', serif; font-size: 12px; color: #1B3B6B; font-weight: 700; letter-spacing: 2px; margin-bottom: 6px; }
-.date-badge .date-value { font-family: 'Noto Serif SC', serif; font-size: 18px; font-weight: 700; color: #1B3B6B; letter-spacing: 1px; }
-.date-badge .date-sub { font-size: 10px; color: #555; letter-spacing: 2px; margin-top: 4px; }
+  /* Main content area - ecosystem diagram */
+  .ecosystem {
+    position: absolute;
+    top: 185px;
+    left: 80px;
+    right: 80px;
+    bottom: 80px;
+    z-index: 10;
+  }
 
-.date-badge-2 {
-  position: absolute; top: 415px; left: 20px; width: 180px;
-  border-left: 3px solid #8B7355; padding-left: 12px;
-}
-.date-badge-2 .date-title { font-family: 'Noto Serif SC', serif; font-size: 12px; color: #8B7355; font-weight: 700; letter-spacing: 2px; margin-bottom: 6px; }
-.date-badge-2 .date-value { font-size: 13px; font-weight: 700; color: #8B7355; letter-spacing: 1px; }
-.date-badge-2 .date-sub { font-size: 10px; color: #555; letter-spacing: 2px; margin-top: 4px; }
+  /* Central Google hub */
+  .hub {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
 
-/* Bottom annotation about indirect value */
-.indirect-anno {
-  position: absolute; top: 670px; left: 100px; width: 680px;
-  border-top: 1px solid #1B3B6B; padding-top: 14px;
-}
-.indirect-anno-title { font-family: 'Noto Serif SC', serif; font-size: 12px; color: #1B3B6B; font-weight: 700; letter-spacing: 3px; margin-bottom: 4px; }
-.indirect-anno-text { font-size: 11.5px; color: #555; line-height: 1.6; }
+  .hub-ring-outer {
+    width: 200px;
+    height: 200px;
+    border: 2px solid #1B3B6B;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(27, 59, 107, 0.03);
+  }
 
-/* Decorative geometric elements */
-.deco-circle-1 {
-  position: absolute; top: 680px; right: 50px; width: 100px; height: 100px;
-  border: 2px solid #1B3B6B; border-radius: 50%;
-}
-.deco-circle-2 {
-  position: absolute; top: 700px; right: 70px; width: 60px; height: 60px;
-  background: #8B7355; border-radius: 50%;
-}
-.deco-square-1 {
-  position: absolute; top: 690px; right: 90px; width: 40px; height: 40px;
-  background: #1B3B6B; opacity: 0.15;
-}
-.deco-line-1 {
-  position: absolute; top: 750px; right: 50px; width: 120px; height: 2px;
-  background: #1B3B6B; opacity: 0.4;
-}
-.deco-circle-3 {
-  position: absolute; top: 690px; left: 660px; width: 8px; height: 8px;
-  background: #8B7355; border-radius: 50%;
-}
+  .hub-ring-inner {
+    width: 150px;
+    height: 150px;
+    border: 1.5px solid #8B7355;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #F5F0E8;
+  }
 
-/* Key quote */
-.quote-bar {
-  position: absolute; top: 740px; left: 60px; width: 540px;
-  font-family: 'Noto Serif SC', serif; font-size: 13px; color: #1B3B6B;
-  font-style: italic; letter-spacing: 1px; line-height: 1.6;
-  border-left: 3px solid #8B7355; padding-left: 16px;
-}
+  .hub-label {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: #1B3B6B;
+    letter-spacing: 2px;
+  }
 
-/* Section divider dots */
-.section-dots {
-  position: absolute; top: 720px; left: 60px; display: flex; gap: 6px;
-}
-.section-dots span { width: 6px; height: 6px; background: #8B7355; border-radius: 50%; opacity: 0.5; }
-.section-dots span:nth-child(3) { background: #1B3B6B; opacity: 1; }
-</style></head><body>
-<div class="parchment-texture"></div>
+  .hub-sublabel {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    color: #8B7355;
+    letter-spacing: 3px;
+    margin-top: 4px;
+  }
 
-<!-- Header -->
-<div class="header">
-  <div class="header-left">
-    <div class="header-num">03</div>
-    <div class="header-title">商业模式：规则下的具体操作</div>
-  </div>
-  <div class="header-right">第 03 期 · 开源经济学讲座</div>
-</div>
+  /* Connection lines using SVG */
+  .connections-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+  }
 
-<!-- Left panel -->
-<div class="left-panel">
-  <div class="case-tag">CASE STUDY · 01</div>
-  <div class="main-title">案例分析<br/>搜索入口</div>
-  <div class="subtitle-deco">
-    <span class="line"></span>
-    <span class="dot"></span>
-    <span class="sq"></span>
-    <span class="txt">Google · Chrome · Chromium</span>
-  </div>
+  /* Node cards */
+  .node {
+    position: absolute;
+    z-index: 10;
+  }
 
-  <div class="bullets">
-    <div class="bullet">
-      <div class="bullet-marker">01</div>
-      <div class="bullet-text"><strong>2008年9月</strong>，Google 释出 Chrome <strong>1.0</strong> 版本，同时开源底层项目</div>
+  .node-card {
+    background: #F5F0E8;
+    border: 1.5px solid #1B3B6B;
+    padding: 16px 20px;
+    position: relative;
+  }
+
+  .node-card.secondary {
+    border-color: #8B7355;
+  }
+
+  .node-card .node-tag {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #8B7355;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+
+  .node-card .node-name {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1B3B6B;
+    margin-bottom: 4px;
+  }
+
+  .node-card .node-desc {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 12px;
+    color: #555;
+    line-height: 1.6;
+  }
+
+  .node-card .node-badge {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 1px;
+    padding: 2px 8px;
+    margin-top: 8px;
+    font-weight: 500;
+  }
+
+  .node-card .node-badge.open {
+    background: rgba(139, 115, 85, 0.12);
+    color: #8B7355;
+    border: 1px solid #8B7355;
+  }
+
+  .node-card .node-badge.commercial {
+    background: rgba(27, 59, 107, 0.1);
+    color: #1B3B6B;
+    border: 1px solid #1B3B6B;
+  }
+
+  /* Left node: Chromium (open source) */
+  .node-chromium {
+    top: 30px;
+    left: 30px;
+    width: 240px;
+  }
+
+  .node-chromium .node-card {
+    border-top: 4px solid #8B7355;
+  }
+
+  /* Right node: Chrome (commercial) */
+  .node-chrome {
+    top: 30px;
+    right: 30px;
+    width: 240px;
+  }
+
+  .node-chrome .node-card {
+    border-top: 4px solid #1B3B6B;
+  }
+
+  /* Bottom node: Search / Ad Revenue */
+  .node-search {
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 280px;
+  }
+
+  .node-search .node-card {
+    border-bottom: 4px solid #1B3B6B;
+    text-align: center;
+  }
+
+  /* Flow direction indicators */
+  .flow-label {
+    position: absolute;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    color: #8B7355;
+    letter-spacing: 1px;
+    z-index: 10;
+  }
+
+  .flow-label.top-left {
+    top: 195px;
+    left: 280px;
+    text-align: right;
+    width: 160px;
+  }
+
+  .flow-label.top-right {
+    top: 195px;
+    right: 280px;
+    text-align: left;
+    width: 160px;
+  }
+
+  .flow-label.bottom {
+    bottom: 155px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+
+  .flow-label .flow-arrow {
+    display: block;
+    font-size: 16px;
+    color: #1B3B6B;
+    margin-top: 2px;
+    font-weight: 300;
+  }
+
+  /* Timeline marker */
+  .timeline {
+    position: absolute;
+    bottom: 20px;
+    left: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 10;
+  }
+
+  .timeline-dot {
+    width: 10px;
+    height: 10px;
+    background: #1B3B6B;
+    border-radius: 50%;
+  }
+
+  .timeline-text {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 12px;
+    color: #555;
+    letter-spacing: 1px;
+  }
+
+  /* Revenue flow annotation */
+  .revenue-annotation {
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
+    text-align: right;
+    z-index: 10;
+  }
+
+  .revenue-annotation .rev-label {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    color: #8B7355;
+    letter-spacing: 2px;
+    font-weight: 500;
+  }
+
+  .revenue-annotation .rev-desc {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    color: #555;
+    margin-top: 3px;
+  }
+
+  /* Small decorative dot pattern near hub */
+  .hub-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    position: absolute;
+  }
+
+  .hub-dot-1 { background: #1B3B6B; top: -10px; left: 50%; transform: translateX(-50%); }
+  .hub-dot-2 { background: #8B7355; bottom: -10px; left: 50%; transform: translateX(-50%); }
+  .hub-dot-3 { background: #1B3B6B; left: -10px; top: 50%; transform: translateY(-50%); }
+  .hub-dot-4 { background: #8B7355; right: -10px; top: 50%; transform: translateY(-50%); }
+
+  /* Bottom bar */
+  .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(to right, #1B3B6B 0%, #1B3B6B 30%, #8B7355 30%, #8B7355 55%, transparent 55%);
+    z-index: 10;
+  }
+
+  /* Page number */
+  .page-num {
+    position: absolute;
+    bottom: 18px;
+    right: 30px;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    color: #8B7355;
+    letter-spacing: 1px;
+    opacity: 0.6;
+  }
+</style>
+</head>
+<body>
+
+  <!-- Bauhaus geometric decorations -->
+  <div class="geo-deco circle-large"></div>
+  <div class="geo-deco square-large"></div>
+  <div class="geo-deco circle-small"></div>
+  <div class="geo-deco line-h"></div>
+  <div class="geo-deco line-v"></div>
+  <div class="geo-deco circle-tri"></div>
+
+  <!-- Header -->
+  <div class="header">
+    <div>
+      <div class="lecture-tag">LECTURE 03 · 商业模式</div>
+      <div class="slide-title">
+        案例分析之：搜索入口
+        <span class="accent">母公司统领多元化产品矩阵的生态逻辑</span>
+      </div>
     </div>
-    <div class="bullet">
-      <div class="bullet-marker sq">02</div>
-      <div class="bullet-text"><strong>产品层</strong>：Chrome 浏览器 —— 面向终端用户的封闭商业产品</div>
-    </div>
-    <div class="bullet">
-      <div class="bullet-marker circle">03</div>
-      <div class="bullet-text"><strong>FOSS 层</strong>：Chromium 项目 —— 开源内核，社区协作开发</div>
-    </div>
-    <div class="bullet">
-      <div class="bullet-marker">04</div>
-      <div class="bullet-text">浏览器 <span class="dim">→</span> 搜索入口 <span class="dim">→</span> <strong>Google 搜索服务</strong> <span class="dim">→</span> <strong>广告收入</strong></div>
-    </div>
-    <div class="bullet">
-      <div class="bullet-marker sq">05</div>
-      <div class="bullet-text">开源是 <strong>间接战略</strong>：以 Chromium 为杠杆，撬动搜索流量入口的控制权</div>
+    <div class="header-right">
+      <div class="case-label">CASE STUDY</div>
+      <div class="case-name">Google Chrome / Chromium</div>
     </div>
   </div>
-</div>
 
-<!-- Right ecosystem diagram -->
-<div class="right-panel">
-  <div class="eco-label">ECOSYSTEM MAP</div>
-  <div class="eco-label-line"></div>
+  <!-- Divider -->
+  <div class="divider"></div>
 
-  <!-- Date annotations left -->
-  <div class="date-badge">
-    <div class="date-title">发布时间</div>
-    <div class="date-value">2008.09</div>
-    <div class="date-sub">Chrome 1.0 · 开源同步</div>
-  </div>
-  <div class="date-badge-2">
-    <div class="date-title">战略定位</div>
-    <div class="date-value">搜索入口</div>
-    <div class="date-sub">Default Search Engine</div>
-  </div>
+  <!-- Ecosystem Diagram -->
+  <div class="ecosystem">
 
-  <!-- Google parent -->
-  <div class="google-node">
-    <div class="google-node-side"></div>
-    <div class="label-cn">Google</div>
-    <div class="label-en">母公司 · PARENT COMPANY</div>
-  </div>
-  <div class="google-annotation">Alphabet Inc.<br/>母公司 / 产品矩阵</div>
+    <!-- SVG Connection Lines -->
+    <svg class="connections-svg" viewBox="0 0 1440 635" preserveAspectRatio="none">
+      <!-- Left connection: Chromium to Hub -->
+      <line x1="290" y1="90" x2="580" y2="317" stroke="#8B7355" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.5"/>
+      <!-- Right connection: Chrome to Hub -->
+      <line x1="1150" y1="90" x2="860" y2="317" stroke="#1B3B6B" stroke-width="1.5" opacity="0.4"/>
+      <!-- Bottom connection: Hub to Search -->
+      <line x1="720" y1="417" x2="720" y2="510" stroke="#1B3B6B" stroke-width="1.5" opacity="0.4"/>
+      <!-- Left-bottom: Chromium to Search (indirect) -->
+      <path d="M 270 140 Q 400 450 650 530" fill="none" stroke="#8B7355" stroke-width="1" stroke-dasharray="4,6" opacity="0.3"/>
+      <!-- Arrow indicators -->
+      <polygon points="580,317 572,310 572,324" fill="#8B7355" opacity="0.5"/>
+      <polygon points="860,317 868,310 868,324" fill="#1B3B6B" opacity="0.4"/>
+      <polygon points="720,510 713,500 727,500" fill="#1B3B6B" opacity="0.4"/>
+    </svg>
 
-  <!-- Connection -->
-  <div class="conn-line-1"></div>
-  <div class="conn-line-2"></div>
-  <div class="conn-h"></div>
-
-  <!-- Chrome -->
-  <div class="chrome-circle"></div>
-  <div class="chrome-node">
-    <div class="chrome-title">Chrome</div>
-    <div class="chrome-sub">商业产品</div>
-    <div class="chrome-tag">PRODUCT</div>
-  </div>
-
-  <!-- Chromium -->
-  <div class="chromium-square"></div>
-  <div class="chromium-node">
-    <div class="chromium-title">Chromium</div>
-    <div class="chrome-sub">开源内核</div>
-    <div class="chromium-tag">FOSS</div>
-  </div>
-
-  <!-- Right annotations -->
-  <div class="anno-box-1">
-    <div class="anno-title">产品矩阵</div>
-    <div class="anno-line"></div>
-    <div class="anno-text">以开源项目为底座，构建封闭商业产品之上层</div>
-  </div>
-  <div class="anno-box-2">
-    <div class="anno-title">双轨策略</div>
-    <div class="anno-line"></div>
-    <div class="anno-text">开源吸纳社区劳动 / 商业产品收割流量价值</div>
-  </div>
-
-  <!-- Connections to search -->
-  <div class="conn-down-1"></div>
-  <div class="conn-down-2"></div>
-  <div class="conn-to-search"></div>
-
-  <!-- Search -->
-  <div class="search-deco-left"></div>
-  <div class="search-node">
-    <div class="search-node-content">
-      <div class="search-title">Google Search</div>
-      <div class="search-sub">搜索服务 · 流量入口</div>
+    <!-- Left Node: Chromium (FOSS) -->
+    <div class="node node-chromium">
+      <div class="node-card secondary">
+        <div class="node-tag">FOSS PROJECT</div>
+        <div class="node-name">Chromium</div>
+        <div class="node-desc">开源浏览器项目<br>社区协作开发 · BSD 许可证</div>
+        <span class="node-badge open">OPEN SOURCE</span>
+      </div>
     </div>
-    <div class="search-deco-right"></div>
+
+    <!-- Right Node: Chrome (Commercial) -->
+    <div class="node node-chrome">
+      <div class="node-card">
+        <div class="node-tag">PRODUCT</div>
+        <div class="node-name">Chrome</div>
+        <div class="node-desc">商业分发版本<br>Google 品牌 · 完整功能</div>
+        <span class="node-badge commercial">COMMERCIAL</span>
+      </div>
+    </div>
+
+    <!-- Central Hub: Google -->
+    <div class="hub">
+      <div class="hub-ring-outer">
+        <div class="hub-ring-inner">
+          <div class="hub-label">Google</div>
+          <div class="hub-sublabel">母公司 / 生态核心</div>
+          <div class="hub-dot hub-dot-1"></div>
+          <div class="hub-dot hub-dot-2"></div>
+          <div class="hub-dot hub-dot-3"></div>
+          <div class="hub-dot hub-dot-4"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Node: Search / Ad Revenue -->
+    <div class="node node-search">
+      <div class="node-card">
+        <div class="node-tag">REVENUE ENGINE</div>
+        <div class="node-name">搜索服务 · 广告收入</div>
+        <div class="node-desc">Chrome 作为搜索入口，将用户流量导入 Google 搜索，最终转化为广告收益</div>
+      </div>
+    </div>
+
+    <!-- Flow Labels -->
+    <div class="flow-label top-left">
+      开源协作开发
+      <span class="flow-arrow">→</span>
+    </div>
+
+    <div class="flow-label top-right">
+      品牌化商业分发
+      <span class="flow-arrow">←</span>
+    </div>
+
+    <div class="flow-label bottom">
+      流量变现路径
+      <span class="flow-arrow">↓</span>
+    </div>
+
+    <!-- Timeline -->
+    <div class="timeline">
+      <div class="timeline-dot"></div>
+      <div class="timeline-text">2008.09 — Chromium 1.0 释出 · 同步开源</div>
+    </div>
+
+    <!-- Revenue Annotation -->
+    <div class="revenue-annotation">
+      <div class="rev-label">INDIRECT VALUE FLOW</div>
+      <div class="rev-desc">Chrome → 搜索入口 → 广告</div>
+    </div>
+
   </div>
 
-  <!-- Arrow to ad -->
-  <div class="arrow-line"></div>
-  <div class="arrow-head"></div>
+  <!-- Bottom bar -->
+  <div class="bottom-bar"></div>
 
-  <!-- Ad revenue -->
-  <div class="ad-node">
-    <div class="ad-title">广告收入</div>
-    <div class="ad-sub">Advertising Revenue</div>
-  </div>
-
-  <div class="deco-circle-3"></div>
-
-  <!-- Bottom annotation -->
-  <div class="indirect-anno">
-    <div class="indirect-anno-title">间接价值链 · INDIRECT VALUE CHAIN</div>
-    <div class="indirect-anno-text">Chrome / Chromium → 浏览器市场份额 → 搜索入口控制 → 搜索流量 → 广告变现 —— 开源并非盈利模式本身，而是通向盈利的制度性基础设施</div>
-  </div>
-
-  <!-- Decorative -->
-  <div class="deco-circle-1"></div>
-  <div class="deco-circle-2"></div>
-  <div class="deco-square-1"></div>
-  <div class="deco-line-1"></div>
-</div>
-
-<!-- Quote -->
-<div class="section-dots"><span></span><span></span><span></span><span></span></div>
-<div class="quote-bar">
-  "开源不是目的，而是通向搜索入口与广告收入的一条制度通道。"
-</div>
-
-<!-- Footer -->
-<div class="footer">
-  <div class="footer-bar">
-    <span class="active"></span><span class="active"></span><span class="active"></span>
-    <span class="active"></span><span class="active"></span><span class="active"></span>
-    <span class="active"></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span><span></span>
-  </div>
-  <div>SLIDE 10 / 30 · BUSINESS MODEL</div>
-</div>
-
-</body></html>
+</body>
+</html>

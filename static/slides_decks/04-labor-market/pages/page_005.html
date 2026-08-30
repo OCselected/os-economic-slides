@@ -1,394 +1,567 @@
 
 
 <!DOCTYPE html>
-<html><!-- source_hash: 887494a4d7e28a6d -->
+<html><!-- source_hash: 4c7623a2685bd521 -->
 <head>
 <meta charset="UTF-8">
-<title>讲座规则 · 于崩塌之上求平衡</title>
+<title>第 04 期 · 软件开发劳动力市场 — 讲座规则</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1600px;height:900px;overflow:hidden;margin:0}
-body{
-  font-family:'Noto Sans SC','PingFang SC',sans-serif;
-  background:#F5F0E8;
-  color:#1B3B6B;
-  position:relative;
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body, html {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
+  background: #F5F0E8;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: #1B3B6B;
 }
 
-/* parchment texture */
-body::before{
-  content:"";
-  position:absolute;top:0;left:0;width:1600px;height:900px;
-  background:
-    radial-gradient(ellipse at 20% 15%, rgba(139,115,85,0.06) 0%, transparent 50%),
-    radial-gradient(ellipse at 85% 80%, rgba(27,59,107,0.05) 0%, transparent 55%),
-    radial-gradient(ellipse at 50% 50%, rgba(245,240,232,0) 60%, rgba(139,115,85,0.04) 100%);
-  pointer-events:none;
+.canvas {
+  width: 1600px;
+  height: 900px;
+  position: relative;
+  overflow: hidden;
 }
 
-/* top border line */
-.top-rule{
-  position:absolute;top:40px;left:80px;width:1440px;height:2px;
-  background:#1B3B6B;
-}
-.top-rule-thin{
-  position:absolute;top:50px;left:80px;width:1440px;height:1px;
-  background:#8B7355;
-}
-.bottom-rule{
-  position:absolute;bottom:40px;left:80px;width:1440px;height:2px;
-  background:#1B3B6B;
-}
-.bottom-rule-thin{
-  position:absolute;bottom:50px;left:80px;width:1440px;height:1px;
-  background:#8B7355;
+/* Subtle parchment texture overlay */
+.canvas::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 1600px; height: 900px;
+  background: 
+    radial-gradient(ellipse at 30% 20%, rgba(139,115,85,0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 80%, rgba(27,59,107,0.02) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
 }
 
-/* header text */
-.header-meta{
-  position:absolute;top:55px;left:80px;
-  font-family:'Noto Serif SC',serif;
-  font-size:13px;letter-spacing:6px;color:#8B7355;
-}
-.header-right{
-  position:absolute;top:55px;right:80px;
-  font-family:'Noto Serif SC',serif;
-  font-size:13px;letter-spacing:4px;color:#8B7355;
+/* Top bar */
+.top-bar {
+  position: absolute;
+  top: 0; left: 0;
+  width: 1600px;
+  height: 3px;
+  background: #1B3B6B;
+  z-index: 10;
 }
 
-/* LEFT PANEL - visual metaphor */
-.left-panel{
-  position:absolute;top:110px;left:80px;width:640px;height:720px;
+.top-bar-accent {
+  position: absolute;
+  top: 0; left: 0;
+  width: 280px;
+  height: 3px;
+  background: #8B7355;
+  z-index: 11;
 }
 
-.panel-label{
-  position:absolute;top:0;left:0;
-  font-family:'Noto Serif SC',serif;
-  font-size:12px;letter-spacing:5px;color:#8B7355;
-}
-.panel-label-line{
-  position:absolute;top:22px;left:0;width:60px;height:1px;background:#8B7355;
-}
-
-/* Title */
-.main-title{
-  position:absolute;top:70px;left:0;
-  font-family:'Noto Serif SC','Source Han Serif SC',serif;
-  font-size:42px;font-weight:700;color:#1B3B6B;
-  letter-spacing:2px;line-height:1.2;
-}
-.main-subtitle{
-  position:absolute;top:180px;left:0;
-  font-family:'Noto Serif SC',serif;
-  font-size:16px;color:#555;letter-spacing:3px;line-height:1.8;
-  width:560px;
+/* Header */
+.header {
+  position: absolute;
+  top: 40px;
+  left: 80px;
+  right: 80px;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
-/* Visual metaphor illustration */
-.metaphor-stage{
-  position:absolute;top:260px;left:0;width:640px;height:440px;
+.header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
-/* Downward trending lines */
-.trend-line{
-  position:absolute;
-  background:#555;
-  opacity:0.35;
-}
-.trend-1{top:20px;left:40px;width:560px;height:1px;transform:rotate(0deg);
-  transform-origin:left center;}
-.trend-2{top:80px;left:40px;width:500px;height:1px;background:#8B7355;opacity:0.4;
-  transform:rotate(3deg);transform-origin:left center;}
-.trend-3{top:140px;left:40px;width:440px;height:1px;opacity:0.5;
-  transform:rotate(7deg);transform-origin:left center;}
-
-/* Collapsing stone blocks */
-.block{
-  position:absolute;background:#1B3B6B;
-}
-.block-1{top:250px;left:60px;width:120px;height:36px;}
-.block-2{top:290px;left:190px;width:100px;height:30px;background:#8B7355;}
-.block-3{top:325px;left:300px;width:90px;height:28px;opacity:0.85;}
-.block-4{top:360px;left:400px;width:80px;height:26px;opacity:0.7;background:#8B7355;}
-.block-5{top:392px;left:490px;width:60px;height:22px;opacity:0.55;}
-.block-crack{
-  position:absolute;top:250px;left:175px;width:2px;height:80px;
-  background:#F5F0E8;
-}
-.block-crack2{
-  position:absolute;top:290px;left:290px;width:2px;height:60px;
-  background:#F5F0E8;opacity:0.8;
+.deck-label {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: #8B7355;
+  text-transform: uppercase;
 }
 
-/* The figure balancing */
-.figure-base{
-  position:absolute;top:220px;left:110px;width:5px;height:30px;
-  background:#1B3B6B;
-}
-.figure-body{
-  position:absolute;top:190px;left:100px;width:25px;height:35px;
-  background:#1B3B6B;border-radius:3px;
-}
-.figure-head{
-  position:absolute;top:170px;left:105px;width:16px;height:16px;
-  background:#1B3B6B;border-radius:50%;
-}
-/* arms reaching */
-.arm-left{
-  position:absolute;top:200px;left:70px;width:35px;height:3px;
-  background:#1B3B6B;
-  transform:rotate(-15deg);transform-origin:right center;
-}
-.arm-right{
-  position:absolute;top:195px;left:125px;width:40px;height:3px;
-  background:#1B3B6B;
-  transform:rotate(-25deg);transform-origin:left center;
-}
-/* legs - one on block, one reaching down */
-.leg-left{
-  position:absolute;top:245px;left:108px;width:4px;height:30px;
-  background:#1B3B6B;
-}
-.leg-right{
-  position:absolute;top:245px;left:120px;width:4px;height:55px;
-  background:#1B3B6B;
-  transform:rotate(20deg);transform-origin:top center;
+.deck-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 15px;
+  color: #555;
+  letter-spacing: 1px;
 }
 
-/* equilibrium circle */
-.equilibrium{
-  position:absolute;top:155px;left:95px;width:45px;height:45px;
-  border:1.5px solid #8B7355;
-  border-radius:50%;
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
-/* falling fragments */
-.frag{
-  position:absolute;background:#8B7355;opacity:0.6;
-}
-.frag-1{top:400px;left:520px;width:8px;height:8px;
-  transform:rotate(20deg);}
-.frag-2{top:430px;left:540px;width:5px;height:5px;opacity:0.4;}
-.frag-3{top:450px;left:510px;width:6px;height:6px;
-  transform:rotate(45deg);opacity:0.35;}
-.frag-4{top:470px;left:560px;width:4px;height:4px;opacity:0.3;}
-.frag-5{top:395px;left:545px;width:3px;height:3px;opacity:0.5;}
-
-/* downward arrow hint */
-.arrow-down{
-  position:absolute;top:380px;left:600px;width:2px;height:40px;
-  background:#1B3B6B;opacity:0.4;
-}
-.arrow-head{
-  position:absolute;top:415px;left:595px;width:12px;height:12px;
-  border-right:2px solid #1B3B6B;border-bottom:2px solid #1B3B6B;
-  transform:rotate(45deg);opacity:0.4;
+.slide-counter {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14px;
+  color: #555;
+  letter-spacing: 1px;
 }
 
-/* visual caption */
-.metaphor-caption{
-  position:absolute;top:700px;left:0;
-  font-family:'Noto Serif SC',serif;
-  font-size:13px;color:#8B7355;letter-spacing:2px;
-  font-style:italic;
+.slide-counter .num {
+  font-size: 22px;
+  color: #1B3B6B;
+  font-weight: 700;
 }
 
-/* RIGHT PANEL - content */
-.right-panel{
-  position:absolute;top:110px;left:780px;width:740px;height:720px;
+/* Main content area */
+.main {
+  position: absolute;
+  top: 130px;
+  left: 80px;
+  right: 80px;
+  bottom: 80px;
+  z-index: 10;
+  display: flex;
+  gap: 60px;
 }
 
-.section-num{
-  position:absolute;top:0;left:0;
-  font-family:'Noto Serif SC',serif;
-  font-size:56px;font-weight:300;color:#1B3B6B;
-  letter-spacing:3px;
-  line-height:1;
-}
-.section-num-line{
-  position:absolute;top:72px;left:0;width:80px;height:2px;background:#1B3B6B;
+/* Left panel - Visual metaphor */
+.visual-panel {
+  width: 520px;
+  height: 100%;
+  position: relative;
+  flex-shrink: 0;
 }
 
-.section-title{
-  position:absolute;top:95px;left:0;
-  font-family:'Noto Serif SC',serif;
-  font-size:32px;font-weight:700;color:#1B3B6B;
-  letter-spacing:3px;
+.visual-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 13px;
+  letter-spacing: 4px;
+  color: #8B7355;
+  margin-bottom: 24px;
+  text-transform: uppercase;
 }
 
-.section-en{
-  position:absolute;top:145px;left:0;
-  font-family:'Noto Serif SC',serif;
-  font-size:12px;color:#8B7355;letter-spacing:4px;
+/* Geometric composition area */
+.geo-composition {
+  width: 520px;
+  height: 460px;
+  position: relative;
 }
 
-/* divider */
-.divider{
-  position:absolute;top:190px;left:0;width:600px;height:1px;background:#8B7355;opacity:0.4;
+/* Downward diagonal line */
+.diagonal-line {
+  position: absolute;
+  top: 40px;
+  left: 30px;
+  width: 460px;
+  height: 2px;
+  background: #1B3B6B;
+  transform-origin: left center;
+  transform: rotate(28deg);
 }
 
-/* bullet list */
-.bullets{
-  position:absolute;top:220px;left:0;width:600px;
-}
-.bullet{
-  display:flex;align-items:flex-start;
-  margin-bottom:34px;
-}
-.bullet-num{
-  font-family:'Noto Serif SC',serif;
-  font-size:14px;color:#8B7355;
-  letter-spacing:2px;
-  width:42px;flex-shrink:0;
-  padding-top:5px;
-  position:relative;
-}
-.bullet-num::after{
-  content:"";position:absolute;top:12px;left:30px;width:12px;height:1px;
-  background:#8B7355;opacity:0.5;
-}
-.bullet-text{
-  font-family:'Noto Serif SC',serif;
-  font-size:19px;color:#1B3B6B;
-  line-height:1.6;letter-spacing:1px;
-  font-weight:400;
-}
-.bullet-text em{
-  font-style:normal;color:#8B7355;font-size:14px;
-  display:block;margin-top:4px;letter-spacing:2px;
+/* Tilted large square (collapsing block) */
+.collapsing-block {
+  position: absolute;
+  top: 60px;
+  left: 80px;
+  width: 140px;
+  height: 140px;
+  border: 3px solid #1B3B6B;
+  background: rgba(27,59,107,0.06);
+  transform: rotate(12deg);
 }
 
-/* right decoration - geometric */
-.geo-circle{
-  position:absolute;top:530px;right:0;width:80px;height:80px;
-  border:2px solid #1B3B6B;
-  border-radius:50%;
-}
-.geo-square{
-  position:absolute;top:555px;right:35px;width:30px;height:30px;
-  background:#8B7355;
-}
-.geo-circle-inner{
-  position:absolute;top:555px;right:55px;width:30px;height:30px;
-  border:1.5px solid #1B3B6B;
-  border-radius:50%;
+/* Smaller block on edge */
+.edge-block {
+  position: absolute;
+  top: 150px;
+  left: 220px;
+  width: 70px;
+  height: 70px;
+  background: #1B3B6B;
+  transform: rotate(-8deg);
 }
 
-/* bottom meta */
-.foot-note{
-  position:absolute;bottom:60px;left:80px;
-  font-size:11px;color:#8B7355;letter-spacing:3px;
+/* Circle - balancing point */
+.balance-circle {
+  position: absolute;
+  top: 220px;
+  left: 320px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 3px solid #8B7355;
+  background: rgba(139,115,85,0.1);
 }
-.foot-right{
-  position:absolute;bottom:60px;right:80px;
-  font-family:'Noto Serif SC',serif;
-  font-size:11px;color:#8B7355;letter-spacing:3px;
+
+/* Filling circle */
+.fill-circle-small {
+  position: absolute;
+  top: 300px;
+  left: 160px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #8B7355;
 }
+
+/* Falling small square */
+.falling-square {
+  position: absolute;
+  top: 340px;
+  left: 380px;
+  width: 24px;
+  height: 24px;
+  background: #555;
+  transform: rotate(35deg);
+  opacity: 0.6;
+}
+
+/* Another falling element */
+.falling-square-2 {
+  position: absolute;
+  top: 380px;
+  left: 440px;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #555;
+  transform: rotate(52deg);
+  opacity: 0.4;
+}
+
+/* Thin vertical support line */
+.support-line {
+  position: absolute;
+  top: 180px;
+  left: 260px;
+  width: 2px;
+  height: 180px;
+  background: #8B7355;
+  transform: rotate(-15deg);
+  opacity: 0.7;
+}
+
+/* Large circle outline - representing wholeness/stability */
+.wholeness-circle {
+  position: absolute;
+  top: 280px;
+  left: 30px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 2px solid rgba(27,59,107,0.2);
+}
+
+/* Horizontal grounding line */
+.ground-line {
+  position: absolute;
+  top: 440px;
+  left: 20px;
+  width: 480px;
+  height: 1.5px;
+  background: rgba(85,85,85,0.4);
+}
+
+/* Tension line */
+.tension-line {
+  position: absolute;
+  top: 100px;
+  left: 200px;
+  width: 2px;
+  height: 120px;
+  background: #1B3B6B;
+  transform: rotate(20deg);
+  opacity: 0.5;
+}
+
+/* Small dot accents */
+.dot-accent {
+  position: absolute;
+  top: 370px;
+  left: 80px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #1B3B6B;
+}
+
+.dot-accent-2 {
+  position: absolute;
+  top: 310px;
+  left: 420px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #8B7355;
+}
+
+/* Quote below composition */
+.composition-quote {
+  margin-top: 20px;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 15px;
+  color: #555;
+  font-style: italic;
+  line-height: 1.6;
+  max-width: 420px;
+  border-left: 2px solid #8B7355;
+  padding-left: 16px;
+}
+
+/* Right panel - Content */
+.content-panel {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+}
+
+.content-heading {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 36px;
+  color: #1B3B6B;
+  font-weight: 700;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.content-subheading {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 14px;
+  color: #8B7355;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+}
+
+.rules-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.rule-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  position: relative;
+}
+
+.rule-marker {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-top: 2px;
+}
+
+.rule-marker .marker-square {
+  width: 12px;
+  height: 12px;
+  background: #1B3B6B;
+}
+
+.rule-marker .marker-circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #8B7355;
+}
+
+.rule-marker .marker-outline-square {
+  width: 12px;
+  height: 12px;
+  border: 2px solid #1B3B6B;
+}
+
+.rule-marker .marker-outline-circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid #8B7355;
+}
+
+.rule-marker .marker-filled-circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #1B3B6B;
+}
+
+.rule-marker .marker-hollow-square {
+  width: 12px;
+  height: 12px;
+  border: 2px solid #8B7355;
+}
+
+.rule-text {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 17px;
+  color: #1B3B6B;
+  line-height: 1.6;
+}
+
+.rule-text .highlight {
+  font-weight: 700;
+}
+
+.rule-text .sub {
+  font-size: 13px;
+  color: #555;
+  display: block;
+  margin-top: 2px;
+  letter-spacing: 0.5px;
+}
+
+/* Bottom decorative elements */
+.bottom-line {
+  position: absolute;
+  bottom: 40px;
+  left: 80px;
+  right: 80px;
+  height: 1px;
+  background: rgba(27,59,107,0.15);
+  z-index: 5;
+}
+
+.footer-left {
+  position: absolute;
+  bottom: 20px;
+  left: 80px;
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 2px;
+  z-index: 10;
+}
+
+.footer-right {
+  position: absolute;
+  bottom: 20px;
+  right: 80px;
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 2px;
+  z-index: 10;
+}
+
+/* Divider between panels */
+.panel-divider {
+  position: absolute;
+  top: 130px;
+  left: 660px;
+  width: 1px;
+  height: 690px;
+  background: rgba(27,59,107,0.08);
+  z-index: 5;
+}
+
+/* Geometric corner accents */
+.corner-accent-tr {
+  position: absolute;
+  top: 50px;
+  right: 120px;
+  width: 40px;
+  height: 40px;
+  border-top: 2px solid #8B7355;
+  border-right: 2px solid #8B7355;
+  z-index: 5;
+}
+
 </style>
 </head>
 <body>
-
-<div class="top-rule"></div>
-<div class="top-rule-thin"></div>
-<div class="bottom-rule"></div>
-<div class="bottom-rule-thin"></div>
-
-<div class="header-meta">新制度经济学 × 开源软件</div>
-<div class="header-right">SESSION 01 / PROLOGUE</div>
-
-<!-- LEFT PANEL -->
-<div class="left-panel">
-  <div class="panel-label">VISUAL METAPHOR</div>
-  <div class="panel-label-line"></div>
-
-  <div class="main-title">于崩塌之上<br>求平衡</div>
-  <div class="main-subtitle">下行趋势中，于崩塌基石之上<br>艰难维持平衡的挣扎</div>
-
-  <div class="metaphor-stage">
-    <div class="trend-line trend-1"></div>
-    <div class="trend-line trend-2"></div>
-    <div class="trend-line trend-3"></div>
-
-    <div class="equilibrium"></div>
-
-    <div class="figure-head"></div>
-    <div class="figure-body"></div>
-    <div class="arm-left"></div>
-    <div class="arm-right"></div>
-    <div class="figure-base"></div>
-    <div class="leg-left"></div>
-    <div class="leg-right"></div>
-
-    <div class="block block-1"></div>
-    <div class="block-crack"></div>
-    <div class="block block-2"></div>
-    <div class="block-crack2"></div>
-    <div class="block block-3"></div>
-    <div class="block block-4"></div>
-    <div class="block block-5"></div>
-
-    <div class="frag frag-1"></div>
-    <div class="frag frag-2"></div>
-    <div class="frag frag-3"></div>
-    <div class="frag frag-4"></div>
-    <div class="frag frag-5"></div>
-
-    <div class="arrow-down"></div>
-    <div class="arrow-head"></div>
-  </div>
-
-  <div class="metaphor-caption">— 基石倾颓，而求道不止 —</div>
-</div>
-
-<!-- RIGHT PANEL -->
-<div class="right-panel">
-  <div class="section-num">01</div>
-  <div class="section-num-line"></div>
-  <div class="section-title">讲座规则</div>
-  <div class="section-en">RULES OF ENGAGEMENT</div>
-  <div class="divider"></div>
-
-  <div class="buckets"></div>
-  <div class="bullets">
-    <div class="bullet">
-      <div class="bullet-num">01</div>
-      <div class="bullet-text">关于讲座的规则说明
-        <em>Ground Rules of the Seminar</em></div>
+<div class="canvas">
+  <div class="top-bar"></div>
+  <div class="top-bar-accent"></div>
+  
+  <div class="corner-accent-tr"></div>
+  
+  <div class="header">
+    <div class="header-left">
+      <span class="deck-label">第 04 期</span>
+      <span class="deck-title">软件开发劳动力市场</span>
     </div>
-    <div class="bullet">
-      <div class="bullet-num">02</div>
-      <div class="bullet-text">随时交流或提问
-        <em>Questions &amp; Dialogue, Anytime</em></div>
-    </div>
-    <div class="bullet">
-      <div class="bullet-num">03</div>
-      <div class="bullet-text">指出错误有奖励
-        <em>Correction Rewarded</em></div>
-    </div>
-    <div class="bullet">
-      <div class="bullet-num">04</div>
-      <div class="bullet-text">个人的视角是有限的，协作更佳
-        <em>Solitary View Is Narrow; Collaboration Prevails</em></div>
-    </div>
-    <div class="bullet">
-      <div class="bullet-num">05</div>
-      <div class="bullet-text">项目开始，就没有结束
-        <em>Once Began, Never Truly Ends</em></div>
-    </div>
-    <div class="bullet">
-      <div class="bullet-num">06</div>
-      <div class="bullet-text">遵循「开源之道」
-        <em>Adhering to the Open Source Way</em></div>
+    <div class="header-right">
+      <span class="slide-counter"><span class="num">07</span> / 26</span>
     </div>
   </div>
 
-  <div class="geo-circle"></div>
-  <div class="geo-square"></div>
-  <div class="geo-circle-inner"></div>
+  <div class="panel-divider"></div>
+
+  <div class="main">
+    <!-- Left: Visual Metaphor -->
+    <div class="visual-panel">
+      <div class="visual-title">Visual Metaphor</div>
+      <div class="geo-composition">
+        <div class="diagonal-line"></div>
+        <div class="collapsing-block"></div>
+        <div class="edge-block"></div>
+        <div class="support-line"></div>
+        <div class="tension-line"></div>
+        <div class="balance-circle"></div>
+        <div class="fill-circle-small"></div>
+        <div class="wholeness-circle"></div>
+        <div class="falling-square"></div>
+        <div class="falling-square-2"></div>
+        <div class="dot-accent"></div>
+        <div class="dot-accent-2"></div>
+        <div class="ground-line"></div>
+      </div>
+      <div class="composition-quote">
+        下行趋势中，于崩塌基石上<br>艰难维持平衡的挣扎。
+      </div>
+    </div>
+
+    <!-- Right: Content -->
+    <div class="content-panel">
+      <h2 class="content-heading">讲座规则</h2>
+      <p class="content-subheading">RULES OF ENGAGEMENT</p>
+      
+      <ul class="rules-list">
+        <li class="rule-item">
+          <div class="rule-marker"><div class="marker-square"></div></div>
+          <div class="rule-text">
+            <span class="highlight">随时交流或提问</span>
+            <span class="sub">对话不是打断，是协作的起点</span>
+          </div>
+        </li>
+        <li class="rule-item">
+          <div class="rule-marker"><div class="marker-circle"></div></div>
+          <div class="rule-text">
+            <span class="highlight">指出错误有奖励</span>
+            <span class="sub">纠错是最高形式的尊重</span>
+          </div>
+        </li>
+        <li class="rule-item">
+          <div class="rule-marker"><div class="marker-outline-square"></div></div>
+          <div class="rule-text">
+            <span class="highlight">个人的视角是有限的</span>
+            <span class="sub">协作产生超越个体的认知</span>
+          </div>
+        </li>
+        <li class="rule-item">
+          <div class="rule-marker"><div class="marker-outline-circle"></div></div>
+          <div class="rule-text">
+            <span class="highlight">项目开始，就没有结束</span>
+            <span class="sub">开源是无终点的持续共建</span>
+          </div>
+        </li>
+        <li class="rule-item">
+          <div class="rule-marker"><div class="marker-filled-circle"></div></div>
+          <div class="rule-text">
+            <span class="highlight">遵循「开源之道」</span>
+            <span class="sub">透明 · 协作 · 共建 · 自由</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="bottom-line"></div>
+  <div class="footer-left">OPEN SOURCE ECONOMICS LECTURES</div>
+  <div class="footer-right">BAUHAUS GEOMETRIC COMPOSITION</div>
 </div>
-
-<div class="foot-note">OPEN SOURCE · NEW INSTITUTIONAL ECONOMICS · LECTURE NOTES</div>
-<div class="foot-right">VOL. 01 / 共 18 章</div>
-
 </body>
 </html>

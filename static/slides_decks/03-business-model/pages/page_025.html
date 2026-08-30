@@ -1,3 +1,497 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: 65c4302ffaaa2197 --><head><meta charset="UTF-8"><title>第 03 期 · 案例分析：Elastic.co</title><style>html,body{width:1600px;height:900px;overflow:hidden;margin:0;padding:0;background:#F5F0E8;}body{font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;color:#1B3B6B;position:relative;overflow:hidden;}h1,h2,h3{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;margin:0;font-weight:600;}/* Decorative geometric elements */.deco-circle-1{position:absolute;width:280px;height:280px;border-radius:50%;background:#1B3B6B;top:60px;left:80px;opacity:0.92;}.deco-circle-2{position:absolute;width:120px;height:120px;border-radius:50%;background:#8B7355;top:200px;left:420px;}.deco-square-1{position:absolute;width:160px;height:160px;background:#1B3B6B;top:380px;left:520px;transform:rotate(0deg);}.deco-square-2{position:absolute;width:80px;height:80px;background:#F5F0E8;border:3px solid #1B3B6B;top:430px;left:380px;}.deco-line-1{position:absolute;width:2px;height:300px;background:#1B3B6B;top:80px;left:680px;}.deco-line-2{position:absolute;width:200px;height:2px;background:#8B7355;top:420px;left:780px;}.deco-circle-3{position:absolute;width:60px;height:60px;border-radius:50%;background:#F5F0E8;border:3px solid #1B3B6B;top:100px;left:600px;}.deco-arc{position:absolute;width:180px;height:90px;border-top:3px solid #8B7355;border-radius:180px 180px 0 0;top:500px;left:340px;}.deco-square-3{position:absolute;width:40px;height:40px;background:#8B7355;top:570px;left:720px;}.geo-label{position:absolute;font-family:'Noto Serif SC',serif;font-size:14px;color:#F5F0E8;top:180px;left:140px;letter-spacing:2px;}.geo-label-2{position:absolute;font-family:'Noto Serif SC',serif;font-size:12px;color:#F5F0E8;top:420px;left:580px;letter-spacing:1px;writing-mode:vertical-rl;}/* Top bar */.top-bar{position:absolute;top:0;left:0;width:1600px;height:8px;background:#1B3B6B;}.top-bar-accent{position:absolute;top:8px;left:0;width:600px;height:3px;background:#8B7355;}/* Header */.header{position:absolute;top:50px;left:900px;right:60px;}.header-num{font-family:'Noto Serif SC',serif;font-size:13px;letter-spacing:4px;color:#8B7355;margin-bottom:8px;} .header-title{font-size:34px;color:#1B3B6B;line-height:1.3;margin-bottom:10px;} .header-sub{font-size:15px;color:#555;line-height:1.6;letter-spacing:1px;} .header-divider{width:80px;height:2px;background:#1B3B6B;margin-top:16px;margin-bottom:16px;}.header-note{font-size:12px;color:#8B7355;letter-spacing:2px;}/* Content panel */.content-panel{position:absolute;top:210px;left:900px;right:60px;bottom:80px;}.section-label{font-family:'Noto Serif SC',serif;font-size:11px;color:#8B7355;letter-spacing:4px;margin-bottom:6px;} .section-title{font-size:22px;color:#1B3B6B;margin-bottom:18px;font-weight:600;} .bullet{display:flex;align-items:flex-start;margin-bottom:14px;font-size:14px;line-height:1.65;color:#1B3B6B;} .bullet-marker{flex-shrink:0;width:8px;height:8px;background:#1B3B6B;margin-right:12px;margin-top:7px;} .bullet-marker-2{flex-shrink:0;width:8px;height:8px;background:#8B7355;margin-right:12px;margin-top:7px;border-radius:50%;} .bullet-text{flex:1;color:#2a2a2a;} .bullet-text strong{color:#1B3B6B;font-weight:600;} .highlight-box{background:#1B3B6B;color:#F5F0E8;padding:14px 18px;margin-top:12px;display:flex;align-items:center;gap:18px;} .highlight-box .hb-num{font-family:'Noto Serif SC',serif;font-size:26px;font-weight:600;letter-spacing:1px;}.highlight-box .hb-label{font-size:12px;letter-spacing:2px;opacity:0.85;line-height:1.5;} .similar-box{margin-top:14px;padding:12px 16px;border-left:3px solid #8B7355;background:rgba(139,115,85,0.08);font-size:13px;color:#555;line-height:1.7;} .similar-box .sb-label{font-size:11px;letter-spacing:3px;color:#8B7355;margin-bottom:4px;font-family:'Noto Serif SC',serif;} .similar-box .sb-items{color:#1B3B6B;font-weight:500;}/* Footer */.footer{position:absolute;bottom:0;left:0;width:1600px;height:50px;border-top:1px solid rgba(27,59,107,0.2);display:flex;align-items:center;justify-content:space-between;padding:0 60px;font-size:11px;color:#8B7355;letter-spacing:2px;} .footer-left{font-family:'Noto Serif SC',serif;} .footer-right{font-family:'Noto Serif SC',serif;} .footer-dot{display:inline-block;width:6px;height:6px;background:#1B3B6B;margin:0 10px;vertical-align:middle;}</style></head><body><div class="top-bar"></div><div class="top-bar-accent"></div><!-- Left geometric composition --><div class="deco-circle-1"></div><div class="deco-circle-2"></div><div class="deco-circle-3"></div><div class="deco-square-1"></div><div class="deco-square-2"></div><div class="deco-square-3"></div><div class="deco-line-1"></div><div class="deco-line-2"></div><div class="deco-arc"></div><div class="geo-label">COMPLEMENTARY</div><div class="geo-label-2">Bauhaus · 互补型构成</div><!-- Header --><div class="header"><div class="header-num">CASE STUDY · 03 / 30</div><h1 class="header-title">案例分析之：Open Core</h1><div class="header-sub">生态中的差异化定位——以核心开源产品为锚，<br>通过增值商业功能构建收入壁垒</div><div class="header-divider"></div><div class="header-note">ELASTIC.CO — 检索引擎领域的开源商业化范本</div></div><!-- Content panel --><div class="content-panel"><div class="section-label">PROFILE / 档案</div><div class="section-title">Elastic.co</div><div class="bullet"><div class="bullet-marker"></div><div class="bullet-text"><strong>2014 年成立</strong>，由原 Apache Lucene 核心团队成员创立，自源头继承检索引擎技术血脉。</div></div><div class="bullet"><div class="bullet-marker"></div><div class="bullet-text">核心产品：<strong>Elasticsearch</strong> —— FOSS 项目 elastic Search，全球最广泛使用的分布式搜索与分析引擎。</div></div><div class="bullet"><div class="bullet-marker"></div><div class="bullet-text">2018 年公开 IPO，目前市值 <strong>10.14B USD</strong>，成为开源基础设施领域标杆企业。</div></div><div class="bullet"><div class="bullet-marker"></div><div class="bullet-text">2021 年转型：采用 <strong>Elastic License + SSPL</strong> 双重授权模式，将核心商业功能从社区版剥离。</div></div><div class="highlight-box"><div class="hb-num">10.14B</div><div class="hb-label">IPO 后市值（USD）<br>搜索与分析基础设施领军者</div></div><div class="similar-box"><div class="sb-label">SIMILAR PATTERNS / 同类范式</div><div class="sb-items">MongoDB &nbsp;·&nbsp; Redis Labs &nbsp;·&nbsp; Cockroach Labs</div><div style="font-size:11px;color:#8B7355;margin-top:4px;letter-spacing:1px;">同源基因：开源内核 + 商业增强层的分层授权策略</div></div></div><!-- Footer --><div class="footer"><span class="footer-left">第 03 期 <span class="footer-dot"></span> 商业模式：规则下的具体操作</span><span class="footer-right">OPEN SOURCE ECONOMICS <span class="footer-dot"></span> NEW INSTITUTIONAL PERSPECTIVE <span class="footer-dot"></span> 03 / 30</span></div></body></html>
+<!DOCTYPE html>
+<html><!-- source_hash: 322480a0c578cd5b -->
+<head>
+<meta charset="UTF-8">
+<title>案例分析之：Open Core — Elastic.co</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
+  font-family: 'Noto Sans SC', sans-serif;
+  background-color: #F5F0E8;
+  color: #1B3B6B;
+}
+
+.slide {
+  position: relative;
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  background: #F5F0E8;
+}
+
+/* Subtle parchment texture */
+.slide::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(139,115,85,0.025) 40px, rgba(139,115,85,0.025) 41px),
+    repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(139,115,85,0.025) 40px, rgba(139,115,85,0.025) 41px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Top bar */
+.top-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background-color: #1B3B6B;
+  z-index: 1;
+}
+
+/* Header */
+.header {
+  position: absolute;
+  top: 52px;
+  left: 80px;
+  right: 80px;
+  z-index: 1;
+}
+
+.header-lecture-num {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 14px;
+  color: #8B7355;
+  margin-bottom: 14px;
+  letter-spacing: 3px;
+  font-weight: 500;
+}
+
+.header-line {
+  width: 80px;
+  height: 3px;
+  background-color: #1B3B6B;
+  margin-bottom: 20px;
+}
+
+.header-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 52px;
+  font-weight: 700;
+  color: #1B3B6B;
+  line-height: 1.15;
+  margin-bottom: 10px;
+}
+
+.header-subtitle {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 22px;
+  color: #8B7355;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+/* Geometric composition */
+.geo-container {
+  position: absolute;
+  top: 250px;
+  left: 80px;
+  width: 480px;
+  height: 520px;
+  z-index: 1;
+}
+
+.geo-shape {
+  position: absolute;
+}
+
+.geo-circle-main {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: #1B3B6B;
+  top: 40px;
+  left: 50px;
+}
+
+.geo-rect-copper {
+  width: 120px;
+  height: 240px;
+  background-color: #8B7355;
+  top: 190px;
+  left: 270px;
+}
+
+.geo-square-blue {
+  width: 70px;
+  height: 70px;
+  background-color: #1B3B6B;
+  top: 40px;
+  left: 300px;
+}
+
+.geo-square-gray {
+  width: 44px;
+  height: 44px;
+  background-color: #555;
+  top: 380px;
+  left: 80px;
+}
+
+.geo-triangle {
+  width: 0;
+  height: 0;
+  border-left: 36px solid transparent;
+  border-right: 36px solid transparent;
+  border-bottom: 62px solid #1B3B6B;
+  top: 320px;
+  left: 300px;
+}
+
+.geo-circle-accent {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #8B7355;
+  top: 420px;
+  left: 330px;
+}
+
+.geo-line-h1 {
+  width: 260px;
+  height: 2px;
+  background-color: #1B3B6B;
+  top: 280px;
+  left: 50px;
+}
+
+.geo-line-v1 {
+  width: 2px;
+  height: 260px;
+  background-color: #1B3B6B;
+  top: 40px;
+  left: 420px;
+}
+
+.geo-line-short {
+  width: 50px;
+  height: 2px;
+  background-color: #8B7355;
+  top: 440px;
+  left: 50px;
+}
+
+.geo-dot-1 {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #1B3B6B;
+  top: 260px;
+  left: 340px;
+}
+
+.geo-dot-2 {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #8B7355;
+  top: 460px;
+  left: 180px;
+}
+
+.geo-label {
+  position: absolute;
+  top: 480px;
+  left: 80px;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 15px;
+  color: #1B3B6B;
+  letter-spacing: 3px;
+  font-weight: 500;
+}
+
+.geo-label-sub {
+  position: absolute;
+  top: 505px;
+  left: 80px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 2px;
+}
+
+/* Content area */
+.content {
+  position: absolute;
+  top: 250px;
+  left: 620px;
+  right: 80px;
+  bottom: 70px;
+  z-index: 1;
+}
+
+.company-header {
+  margin-bottom: 28px;
+  padding-bottom: 22px;
+  border-bottom: 2px solid #1B3B6B;
+}
+
+.company-name {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 40px;
+  font-weight: 700;
+  color: #1B3B6B;
+  margin-bottom: 8px;
+}
+
+.company-tagline {
+  font-size: 16px;
+  color: #8B7355;
+  font-weight: 300;
+}
+
+/* Timeline */
+.timeline {
+  position: relative;
+  margin-bottom: 28px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background-color: #1B3B6B;
+  opacity: 0.25;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 26px;
+  padding-left: 28px;
+  position: relative;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 14px;
+  height: 14px;
+  background-color: #1B3B6B;
+  border-radius: 50%;
+  border: 3px solid #F5F0E8;
+  box-shadow: 0 0 0 1px #1B3B6B;
+}
+
+.timeline-year {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1B3B6B;
+  min-width: 72px;
+  margin-right: 20px;
+  padding-top: 1px;
+}
+
+.timeline-text {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.75;
+}
+
+.timeline-text strong {
+  color: #1B3B6B;
+  font-weight: 600;
+}
+
+.timeline-text .accent {
+  color: #8B7355;
+  font-weight: 600;
+}
+
+/* Similar companies */
+.similar-section {
+  margin-top: 8px;
+  padding-top: 24px;
+  border-top: 1px solid #D0C8B8;
+}
+
+.similar-label {
+  font-size: 12px;
+  color: #8B7355;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 500;
+}
+
+.similar-list {
+  display: flex;
+  gap: 14px;
+}
+
+.similar-item {
+  font-size: 15px;
+  color: #1B3B6B;
+  font-weight: 600;
+  padding: 8px 18px;
+  border: 2px solid #1B3B6B;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+
+/* Footer */
+.footer {
+  position: absolute;
+  bottom: 28px;
+  left: 80px;
+  right: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  color: #8B7355;
+  z-index: 1;
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-divider {
+  width: 1px;
+  height: 10px;
+  background-color: #CCC5B4;
+}
+
+/* Decorative large number */
+.deco-number {
+  position: absolute;
+  top: 35px;
+  right: 80px;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 100px;
+  color: #8B7355;
+  opacity: 0.06;
+  font-weight: 700;
+  z-index: 0;
+  line-height: 1;
+}
+
+/* Vertical accent line on right */
+.deco-vline {
+  position: absolute;
+  top: 200px;
+  right: 50px;
+  width: 2px;
+  height: 500px;
+  background-color: #8B7355;
+  opacity: 0.15;
+  z-index: 0;
+}
+</style>
+</head>
+<body>
+<div class="slide">
+  <!-- Top bar -->
+  <div class="top-bar"></div>
+
+  <!-- Decorative elements -->
+  <div class="deco-number">03</div>
+  <div class="deco-vline"></div>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-lecture-num">LECTURE 03</div>
+    <div class="header-line"></div>
+    <div class="header-title">案例分析之：Open Core</div>
+    <div class="header-subtitle">互补型商业模式 · 生态中的差异化定位</div>
+  </div>
+
+  <!-- Bauhaus Geometric Composition -->
+  <div class="geo-container">
+    <div class="geo-shape geo-circle-main"></div>
+    <div class="geo-shape geo-rect-copper"></div>
+    <div class="geo-shape geo-square-blue"></div>
+    <div class="geo-shape geo-square-gray"></div>
+    <div class="geo-shape geo-triangle"></div>
+    <div class="geo-shape geo-circle-accent"></div>
+    <div class="geo-shape geo-line-h1"></div>
+    <div class="geo-shape geo-line-v1"></div>
+    <div class="geo-shape geo-line-short"></div>
+    <div class="geo-shape geo-dot-1"></div>
+    <div class="geo-shape geo-dot-2"></div>
+
+    <div class="geo-label">开源 &times; 商业</div>
+    <div class="geo-label-sub">COMPLEMENTARY POSITIONING</div>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+    <div class="company-header">
+      <div class="company-name">Elastic.co</div>
+      <div class="company-tagline">Elasticsearch &nbsp;·&nbsp; 开源搜索引擎与数据分析平台 &nbsp;·&nbsp; FOSS 项目</div>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">2014</div>
+        <div class="timeline-text">
+          由原 <strong>Apache Lucene</strong> 团队成员创立
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">2018</div>
+        <div class="timeline-text">
+          公开 IPO，目前市值达 <strong>10.14B USD</strong>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">2021</div>
+        <div class="timeline-text">
+          采用 <span class="accent">Elastic 许可</span> + <span class="accent">SSPL</span>（服务器端公共许可）双重授权模式
+        </div>
+      </div>
+    </div>
+
+    <div class="similar-section">
+      <div class="similar-label">Similar Open Core Models</div>
+      <div class="similar-list">
+        <div class="similar-item">MongoDB</div>
+        <div class="similar-item">Redis Labs</div>
+        <div class="similar-item">Cockroach Labs</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-left">
+      <span>第 03 期 · 商业模式：规则下的具体操作</span>
+      <div class="footer-divider"></div>
+      <span>包豪斯几何构成</span>
+    </div>
+    <div class="footer-right">
+      <span>12 / 30</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

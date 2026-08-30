@@ -4,344 +4,381 @@
 <html><!-- source_hash: dcf0b251d007c2e3 -->
 <head>
 <meta charset="UTF-8">
-<title>第 11 期 · 文化的重要作用</title>
+<title>第11期 · 文化的重要作用 — 前情提要</title>
 <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html, body {
   width: 1600px;
   height: 900px;
   overflow: hidden;
-  margin: 0;
-  padding: 0;
   background: #F5F0E8;
   font-family: 'Noto Sans SC', sans-serif;
 }
 
-.slide {
+body {
   position: relative;
-  width: 1600px;
-  height: 900px;
-  overflow: hidden;
 }
 
-/* Geometric decorations */
-.circle-blue {
+/* Bauhaus geometric decorations */
+.deco-circle-1 {
   position: absolute;
-  width: 420px;
-  height: 420px;
+  width: 320px;
+  height: 320px;
   border-radius: 50%;
   background: #1B3B6B;
-  top: -80px;
-  right: -60px;
-  opacity: 0.92;
+  top: -100px;
+  left: -80px;
+  opacity: 0.08;
 }
 
-.square-copper {
+.deco-circle-2 {
   position: absolute;
   width: 180px;
   height: 180px;
+  border-radius: 50%;
   background: #8B7355;
-  bottom: 60px;
+  bottom: -60px;
+  right: 120px;
+  opacity: 0.07;
+}
+
+.deco-square-1 {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: #1B3B6B;
+  opacity: 0.1;
+  bottom: 80px;
   left: 60px;
-  opacity: 0.85;
 }
 
-.line-vertical {
+.deco-square-2 {
   position: absolute;
-  width: 3px;
-  height: 900px;
-  background: #1B3B6B;
-  left: 780px;
-  opacity: 0.15;
-}
-
-.circle-small {
-  position: absolute;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  border: 3px solid #8B7355;
-  top: 520px;
-  right: 520px;
-  opacity: 0.6;
-}
-
-.square-small-blue {
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  background: #1B3B6B;
-  top: 120px;
-  left: 580px;
-  opacity: 0.7;
-}
-
-.line-horizontal {
-  position: absolute;
-  width: 200px;
-  height: 3px;
+  width: 35px;
+  height: 35px;
   background: #8B7355;
-  top: 850px;
-  right: 400px;
-  opacity: 0.5;
+  opacity: 0.12;
+  top: 70px;
+  right: 80px;
 }
 
-.circle-inner {
+.deco-line-1 {
   position: absolute;
   width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  border: 2px solid #F5F0E8;
-  top: 30px;
-  right: 80px;
-  opacity: 0.3;
+  height: 2px;
+  background: #1B3B6B;
+  opacity: 0.15;
+  top: 130px;
+  left: 680px;
 }
 
-/* Header section */
-.header {
+.deco-line-2 {
+  position: absolute;
+  width: 2px;
+  height: 160px;
+  background: #8B7355;
+  opacity: 0.12;
+  bottom: 100px;
+  left: 340px;
+}
+
+.deco-line-3 {
+  position: absolute;
+  width: 120px;
+  height: 2px;
+  background: #1B3B6B;
+  opacity: 0.1;
+  bottom: 60px;
+  right: 300px;
+}
+
+/* Header area */
+.header-block {
   position: absolute;
   top: 60px;
   left: 80px;
   display: flex;
-  align-items: center;
-  gap: 16px;
+  align-items: baseline;
+  gap: 24px;
 }
 
-.header-line {
-  width: 60px;
-  height: 3px;
-  background: #1B3B6B;
+.lecture-number {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 72px;
+  font-weight: 900;
+  color: #1B3B6B;
+  line-height: 1;
 }
 
 .header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.header-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1B3B6B;
+  letter-spacing: 2px;
+}
+
+.header-subtitle {
   font-family: 'Noto Sans SC', sans-serif;
   font-size: 14px;
-  letter-spacing: 3px;
-  color: #555;
+  color: #8B7355;
+  letter-spacing: 4px;
   text-transform: uppercase;
 }
 
-/* Main title area */
-.title-area {
-  position: absolute;
-  top: 120px;
-  left: 80px;
-  width: 650px;
-}
-
-.lecture-label {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 16px;
-  letter-spacing: 2px;
-  color: #8B7355;
-  margin-bottom: 16px;
-  font-weight: 500;
-}
-
+/* Main title */
 .main-title {
-  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-  font-size: 72px;
-  font-weight: 700;
-  color: #1B3B6B;
-  line-height: 1.2;
-  margin-bottom: 24px;
-}
-
-.subtitle {
-  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-  font-size: 22px;
-  font-weight: 400;
-  color: #555;
-  line-height: 1.6;
-  margin-bottom: 40px;
-}
-
-.divider {
-  width: 80px;
-  height: 3px;
-  background: #8B7355;
-  margin-bottom: 28px;
-}
-
-/* Recap section */
-.recap {
   position: absolute;
-  bottom: 80px;
+  top: 180px;
   left: 80px;
-  width: 640px;
-}
-
-.recap-title {
   font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 42px;
+  font-weight: 900;
   color: #1B3B6B;
-  margin-bottom: 16px;
-  letter-spacing: 1px;
+  letter-spacing: 3px;
 }
 
-.recap-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  columns: 2;
-  column-gap: 24px;
-}
-
-.recap-list li {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 13px;
-  color: #555;
-  line-height: 1.8;
-  padding-left: 14px;
-  position: relative;
-  break-inside: avoid;
-}
-
-.recap-list li::before {
-  content: '';
+.main-title-line {
   position: absolute;
-  left: 0;
-  top: 9px;
-  width: 5px;
-  height: 5px;
+  top: 240px;
+  left: 80px;
+  width: 80px;
+  height: 4px;
   background: #8B7355;
 }
 
-.recap-list li.current {
-  color: #1B3B6B;
-  font-weight: 600;
-}
-
-.recap-list li.current::before {
-  background: #1B3B6B;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  top: 8px;
-}
-
-/* Right panel */
-.right-panel {
+/* Content area - two columns */
+.content-area {
   position: absolute;
-  top: 200px;
-  right: 80px;
-  width: 400px;
+  top: 290px;
+  left: 80px;
+  width: 1440px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.lecture-item {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 6px 0;
+}
+
+.lecture-tag {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #8B7355;
+  letter-spacing: 1px;
+  min-width: 36px;
   text-align: right;
 }
 
-.deck-meta {
+.lecture-separator {
+  width: 16px;
+  height: 1px;
+  background: #8B7355;
+  opacity: 0.4;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.lecture-title {
   font-family: 'Noto Sans SC', sans-serif;
-  font-size: 14px;
-  color: #8B7355;
-  line-height: 2;
-}
-
-.deck-meta .meta-label {
-  color: #555;
-  letter-spacing: 1px;
-}
-
-.theme-label {
-  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-  font-size: 28px;
+  font-size: 15px;
   color: #1B3B6B;
-  margin-top: 40px;
-  line-height: 1.5;
-  font-weight: 600;
+  line-height: 1.6;
+  font-weight: 400;
 }
 
-.theme-en {
+.lecture-title.current {
+  font-weight: 700;
+  color: #1B3B6B;
+  border-left: 3px solid #8B7355;
+  padding-left: 12px;
+  margin-left: -15px;
+}
+
+/* Highlighted current lecture */
+.current-lecture-box {
+  position: relative;
+  background: #1B3B6B;
+  padding: 14px 20px;
+  margin-top: 10px;
+}
+
+.current-lecture-box::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  border: 1px solid #1B3B6B;
+  opacity: 0.3;
+}
+
+.current-lecture-num {
   font-family: 'Noto Sans SC', sans-serif;
-  font-size: 13px;
+  font-size: 11px;
   color: #8B7355;
   letter-spacing: 2px;
-  margin-top: 8px;
+  margin-bottom: 4px;
+}
+
+.current-lecture-text {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 17px;
+  color: #F5F0E8;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
 /* Footer */
 .footer {
   position: absolute;
-  bottom: 30px;
+  bottom: 40px;
+  left: 80px;
   right: 80px;
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 12px;
-  color: #8B7355;
-  letter-spacing: 1px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
 }
 
-/* Large number decoration */
-.bignum {
-  position: absolute;
-  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-  font-size: 280px;
-  font-weight: 700;
-  color: #1B3B6B;
-  opacity: 0.06;
-  right: 100px;
-  bottom: -60px;
-  line-height: 1;
+.footer-left {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  color: #555;
+  letter-spacing: 1px;
+  opacity: 0.7;
+}
+
+.footer-right {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  color: #555;
+  letter-spacing: 1px;
+  opacity: 0.5;
 }
 </style>
 </head>
 <body>
-<div class="slide">
-  <!-- Geometric decorations -->
-  <div class="circle-blue"></div>
-  <div class="circle-inner"></div>
-  <div class="square-copper"></div>
-  <div class="line-vertical"></div>
-  <div class="circle-small"></div>
-  <div class="square-small-blue"></div>
-  <div class="line-horizontal"></div>
 
-  <!-- Large background number -->
-  <div class="bignum">11</div>
+<!-- Bauhaus geometric decorations -->
+<div class="deco-circle-1"></div>
+<div class="deco-circle-2"></div>
+<div class="deco-square-1"></div>
+<div class="deco-square-2"></div>
+<div class="deco-line-1"></div>
+<div class="deco-line-2"></div>
+<div class="deco-line-3"></div>
 
-  <!-- Header -->
-  <div class="header">
-    <div class="header-line"></div>
-    <div class="header-text">开源经济学 · 新制度经济学视角</div>
+<!-- Header -->
+<div class="header-block">
+  <span class="lecture-number">11</span>
+  <div class="header-text">
+    <span class="header-title">开源之道</span>
+    <span class="header-subtitle">Open Source Economics</span>
   </div>
-
-  <!-- Title Area -->
-  <div class="title-area">
-    <div class="lecture-label">第 11 期 / Lecture 11</div>
-    <div class="main-title">文化的重要<br>作用</div>
-    <div class="divider"></div>
-    <div class="subtitle">Culture Matters —<br>制度、劳动与财产分配的<br>文化维度</div>
-  </div>
-
-  <!-- Right Panel -->
-  <div class="right-panel">
-    <div class="deck-meta">
-      <div><span class="meta-label">主题</span>：包豪斯几何构成</div>
-      <div><span class="meta-label">共</span>：28 张幻灯片</div>
-    </div>
-    <div class="theme-label">Intellectual<br>Visual System</div>
-    <div class="theme-en">BAUHAUS GEOMETRIC COMPOSITION</div>
-  </div>
-
-  <!-- Recap Section -->
-  <div class="recap">
-    <div class="recap-title">前情提要 · PREVIOUS LECTURES</div>
-    <ul class="recap-list">
-      <li>第0讲 增长的开源经济</li>
-      <li>第1讲 软件的生产、分销和消费</li>
-      <li>第2讲 知识财产法与开源许可</li>
-      <li>第3讲 商业模式：产权制度与案例分析</li>
-      <li>第4讲 开源的劳动力市场</li>
-      <li>第5讲 交易成本与路径依赖</li>
-      <li>第6讲 组织结构与治理</li>
-      <li>第7讲 开源的政治经济学</li>
-      <li>第8讲 商业价值与社会价值</li>
-      <li>第9讲 信息规则与网络经济</li>
-      <li>第10讲 排他权与 Copyleft</li>
-      <li class="current">第11讲 制度、劳动与财产分配</li>
-    </ul>
-  </div>
-
-  <!-- Footer -->
-  <div class="footer">「开源之道」 · 2024</div>
 </div>
+
+<!-- Main title -->
+<div class="main-title">前情提要</div>
+<div class="main-title-line"></div>
+
+<!-- Content grid -->
+<div class="content-area">
+  <!-- Left column: Lectures 0-5 -->
+  <div class="column">
+    <div class="lecture-item">
+      <span class="lecture-tag">0</span>
+      <span class="lecture-separator"></span>
+      <span class="lecture-title">增长的开源经济</span>
+    </div>
+    <div class="lecture-item">
+      <span class="lecture-tag">1</span>
+      <span class="lecture-separator"></span>
+      <span class="lecture-title">软件的生产、分销和消费</span>
+    </div>
+    <div class="lecture-item">
+      <span class="lecture-tag">2</span>
+      <span class="lecture-separator"></span>
+      <span class="lecture-title">数字时代的知识财产法演变与开源许可</span>
+    </div>
+    <div class="lecture-item">
+      <span class="lecture-tag">3</span>
+      <span class="lecture-separator"></span>
+      <span class="lecture-title">开源软件的商业模式：产权制度与案例分析</span>
+    </div>
+    <div class="lecture-item">
+      <span class="lecture-tag">4</span>
+      <span class="lecture-separator"></span>
+      <span class="lecture-title">开源的劳动力市场</span>
+    </div>
+    <div class="lecture-item">
+      <span class="lecture-tag">5</span>
+      <span class="lecture-separator"></span>
+      <span class="lecture-title">交易成本与路径依赖</span>
+    </div>
+  </div>
+
+  <!-- Right column: Lectures 6-11 -->
+  <div class="column">
+    <div class="lecture-item">
+      <span class="lecture-tag">6</span>
+      <span class="lecture-separator"></span>
+      <span class="lecture-title">组织结构与治理</span>
+    </div>
+    <div class="lecture-item">
+      <span class="lecture-tag">7</span>
+      <span class="lecture-separator"></span>
+      <span class="lecture-title">开源的政治经济学</span>
+    </div>
+    <div class="lecture-item">
+      <span class="lecture-tag">8</span>
+      <span class="lecture-separator"></span>
+      <span class="lecture-title">商业价值与社会价值</span>
+    </div>
+    <div class="lecture-item">
+      <span class="lecture-tag">9</span>
+      <span class="lecture-separator"></span>
+      <span class="lecture-title">信息规则与网络经济</span>
+    </div>
+    <div class="lecture-item">
+      <span class="lecture-tag">10</span>
+      <span class="lecture-separator"></span>
+      <span class="lecture-title">排他权与容他权、比例原则与 Copyleft</span>
+    </div>
+    <div class="current-lecture-box">
+      <div class="current-lecture-num">11</div>
+      <div class="current-lecture-text">制度、劳动与财产分配 — 文化的重要作用</div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <span class="footer-left">第 11 期 · 11-culture-matters</span>
+  <span class="footer-right">新制度经济学视角</span>
+</div>
+
 </body>
 </html>

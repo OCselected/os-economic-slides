@@ -1,200 +1,357 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: ed45fbb5be36da96 --><head><meta charset="UTF-8"><title>开源是无偿劳动吗？· 第10期</title><style>
-html,body{width:1600px;height:900px;overflow:hidden;margin:0;padding:0}
-body{background:#F5F0E8;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;color:#1B3B6B;position:relative}
+<!DOCTYPE html>
+<html><!-- source_hash: bc3dc0778ddbbf39 -->
+<head>
+<meta charset="UTF-8">
+<title>开源是无偿劳动吗？</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
 
-.page-num{position:absolute;top:36px;right:54px;font-family:'Noto Serif SC',serif;font-size:18px;color:#8B7355;letter-spacing:2px}
-.page-lecture{position:absolute;top:36px;left:54px;font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:3px}
+html,body{
+  width:1600px;height:900px;
+  overflow:hidden;margin:0;
+  background:#F5F0E8;
+  font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;
+  color:#1B3B6B;
+}
 
-.title-wrap{position:absolute;top:82px;left:54px;width:1492px;display:flex;align-items:baseline;gap:30px}
-.title{font-family:'Noto Serif SC',serif;font-size:56px;font-weight:700;color:#1B3B6B;letter-spacing:1px;line-height:1.1}
-.title-sub{font-family:'Noto Serif SC',serif;font-size:20px;color:#8B7355;letter-spacing:2px}
+.slide{width:1600px;height:900px;position:relative;overflow:hidden}
 
-.title-bar{position:absolute;top:172px;left:54px;width:80px;height:4px;background:#1B3B6B}
-.title-bar2{position:absolute;top:172px;left:144px;width:200px;height:4px;background:#8B7355}
+/* ===== HEADER ===== */
+.header{position:absolute;top:56px;left:80px}
 
-/* Left visual: old 1976 letter */
-.letter-zone{position:absolute;top:218px;left:54px;width:520px;height:580px}
-.letter-card{position:absolute;top:20px;left:30px;width:440px;height:490px;background:#F0E8D8;border:2px solid #1B3B6B;padding:30px 34px}
-.letter-stamp{position:absolute;top:-14px;right:-14px;width:90px;height:90px;background:#8B7355;color:#F5F0E8;font-family:'Noto Serif SC',serif;font-size:13px;font-weight:700;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.3;letter-spacing:1px}
-.letter-year{font-family:'Noto Serif SC',serif;font-size:42px;font-weight:700;color:#1B3B6B;letter-spacing:3px}
-.letter-from{font-family:'Noto Serif SC',serif;font-size:16px;color:#555;margin-top:6px;letter-spacing:1px}
-.letter-rule{width:100%;height:1px;background:#1B3B6B;margin:18px 0}
-.letter-lines{margin-top:12px}
-.letter-line{height:2px;background:#1B3B6B;opacity:0.55;margin-bottom:14px}
-.letter-line.short{width:70%}
-.letter-line.mid{width:88%}
-.letter-sign{font-family:'Noto Serif SC',serif;font-size:15px;color:#1B3B6B;margin-top:22px;letter-spacing:1px}
-.letter-tag{position:absolute;top:-16px;left:-16px;width:70px;height:70px;border:2px solid #1B3B6B;background:#F5F0E8;font-family:'Noto Serif SC',serif;font-size:13px;font-weight:700;color:#1B3B6B;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.2;padding:6px}
-.letter-caption{position:absolute;top:530px;left:30px;width:440px;font-family:'Noto Sans SC',sans-serif;font-size:13px;color:#555;line-height:1.6;letter-spacing:0.5px}
-.letter-caption b{color:#1B3B6B;font-weight:700}
+.lecture-tag{
+  font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;
+  font-size:13px;color:#8B7355;
+  letter-spacing:3px;margin-bottom:18px;
+  display:flex;align-items:center;gap:14px;
+}
 
-/* Beam / signal tower zone */
-.beam-zone{position:absolute;top:218px;right:54px;width:520px;height:580px}
-.beam-square{position:absolute;top:120px;left:120px;width:280px;height:280px;border:3px solid #1B3B6B}
-.beam-square-inner{position:absolute;top:160px;left:160px;width:200px;height:200px;border:2px solid #8B7355}
-.beam-circle{position:absolute;top:200px;left:200px;width:120px;height:120px;border-radius:50%;background:#1B3B6B}
-.beam-circle-small{position:absolute;top:230px;left:230px;width:60px;height:60px;border-radius:50%;background:#F5F0E8}
-.beam-circle-core{position:absolute;top:248px;left:248px;width:24px;height:24px;border-radius:50%;background:#8B7355}
+.tag-line{display:inline-block;width:48px;height:1px;background:#8B7355;opacity:.5}
 
-/* Beams radiating from center (280,300) in beam-zone coords → top:218, right:54 so center ≈ beam-zone top + 200 = y418, left = 1600-54-520+280 = 1306 */
-.beam{position:absolute;width:1px;background:#1B3B6B;opacity:0.5;transform-origin:bottom center}
-.b1{top:298px;left:1306px;height:80px;width:140px;background:none;border-right:1px solid #1B3B6B;opacity:0.6}
+.title{
+  font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;
+  font-size:52px;color:#1B3B6B;
+  font-weight:700;line-height:1.2;letter-spacing:1px;
+}
 
-/* Horizontal beam lines radiating */
-.h-beam{position:absolute;height:2px;background:#1B3B6B}
-.h1{top:418px;left:780px;width:280px;opacity:0.85}
-.h2{top:418px;left:1306px;width:240px;opacity:0.6}
-.h3{top:378px;left:820px;width:200px;opacity:0.55;transform:rotate(-14deg);transform-origin:left center}
-.h4{top:378px;left:1320px;width:180px;opacity:0.55;transform:rotate(-14deg);transform-origin:right center}
-.h5{top:458px;left:840px;width:180px;opacity:0.55;transform:rotate(14deg);transform-origin:left center}
-.h6{top:458px;left:1306px;width:200px;opacity:0.55;transform:rotate(14deg);transform-origin:right center}
-.h7{top:418px;left:820px;width:0;height:0;border-left:30px solid transparent;border-right:30px solid transparent;border-bottom:16px solid #8B7355;opacity:0.7}
+.title-accent{
+  position:absolute;bottom:-14px;left:0;
+  width:80px;height:4px;background:#1B3B6B;
+}
 
-.beam-label{position:absolute;top:120px;left:200px;width:200px;text-align:center;font-family:'Noto Serif SC',serif;font-size:14px;color:#1B3B6B;letter-spacing:2px;font-weight:700}
-.beam-tag{position:absolute;top:438px;left:200px;width:200px;text-align:center;font-family:'Noto Sans SC',sans-serif;font-size:13px;color:#555;letter-spacing:1px}
+/* ===== VERTICAL DIVIDER ===== */
+.v-divider{
+  position:absolute;top:260px;left:740px;
+  width:1px;height:460px;
+  background:#1B3B6B;opacity:.06;
+}
 
-.beam-side-text{position:absolute;top:530px;left:200px;width:200px;text-align:center;font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;line-height:1.6;letter-spacing:1px}
+/* ===== CONTENT BULLETS ===== */
+.content-area{position:absolute;top:290px;left:80px;width:620px}
 
-.beam-corner-line-v{position:absolute;top:240px;right:108px;width:2px;height:340px;background:#1B3B6B;opacity:0.4}
-.beam-corner-line-v2{position:absolute;top:240px;right:148px;width:1px;height:340px;background:#8B7355;opacity:0.5}
-.beam-corner-line-h{position:absolute;top:240px;left:108px;width:200px;height:1px;background:#1B3B6B;opacity:0.4}
+.bullet-item{
+  margin-bottom:34px;
+  display:flex;align-items:flex-start;gap:18px;
+}
 
-/* Right bullets */
-.bullets{position:absolute;top:218px;right:54px;width:0}
+.bullet-marker{flex-shrink:0;width:12px;height:12px;margin-top:7px}
 
-/* Bottom info row */
-.bottom-bar{position:absolute;bottom:42px;left:54px;width:1492px;height:1px;background:#1B3B6B;opacity:0.35}
-.bottom-info{position:absolute;bottom:18px;left:54px;font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;letter-spacing:3px}
-.bottom-info2{position:absolute;bottom:18px;right:54px;font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;letter-spacing:2px}
+.m-esq{border:2px solid #1B3B6B;background:transparent}
+.m-ecir{border-radius:50%;border:2px solid #1B3B6B;background:transparent}
+.m-fcir{border-radius:50%;background:#1B3B6B}
+.m-fsq{background:#1B3B6B}
 
-/* Geometric accents */
-.geo-circle-tl{position:absolute;top:60px;left:60px;width:18px;height:18px;border-radius:50%;background:#1B3B6B;opacity:0}
-.geo-square-tl{position:absolute;top:78px;left:60px;width:14px;height:14px;background:#8B7355}
+.bullet-text{font-size:19px;line-height:1.75;color:#2C4A73}
 
-/* Central quote strip */
-.quote-strip{position:absolute;top:790px;left:54px;width:520px;height:56px;background:#1B3B6B;color:#F5F0E8;display:flex;align-items:center;padding:0 24px;font-family:'Noto Serif SC',serif;font-size:14px;letter-spacing:2px}
-.quote-strip-dot{width:8px;height:8px;background:#8B7355;border-radius:50%;margin-right:14px;flex-shrink:0}
+.hl-blue{color:#1B3B6B;font-weight:700}
+.hl-copper{color:#8B7355;font-weight:600}
+.hl-quote{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-style:italic;color:#8B7355}
 
-/* Right info card (over beam) */
-.info-card{position:absolute;top:218px;right:54px;width:500px;height:580px;background:transparent}
-.info-title{font-family:'Noto Serif SC',serif;font-size:22px;color:#1B3B6B;font-weight:700;letter-spacing:1px;line-height:1.4;padding:0 4px}
-.info-title-tag{display:inline-block;width:24px;height:3px;background:#8B7355;vertical-align:middle;margin-right:10px;margin-bottom:4px}
+/* ===== VISUAL AREA ===== */
+.visual{
+  position:absolute;top:220px;left:800px;
+  width:760px;height:560px;overflow:visible;
+}
 
-.key-points{position:absolute;top:278px;right:74px;width:460px}
-.kp{display:flex;align-items:flex-start;margin-bottom:18px}
-.kp-num{font-family:'Noto Serif SC',serif;font-size:20px;color:#8B7355;font-weight:700;width:36px;flex-shrink:0;line-height:1.3;letter-spacing:1px}
-.kp-text{font-family:'Noto Sans SC',sans-serif;font-size:15px;color:#1B3B6B;line-height:1.55;letter-spacing:0.3px;padding-top:2px}
-.kp-text em{color:#8B7355;font-style:normal;font-weight:700}
+/* Background geometric */
+.bg-arc{
+  position:absolute;width:440px;height:440px;
+  border-radius:50%;border:2px solid #1B3B6B;
+  opacity:.035;top:0;left:160px;
+}
 
-/* Geometric right decoration */
-.geo-r1{position:absolute;top:218px;right:54px;width:40px;height:40px;border:2px solid #1B3B6B}
-.geo-r2{position:absolute;top:768px;right:80px;width:60px;height:60px;background:#1B3B6B}
-.geo-r3{position:absolute;top:790px;right:54px;width:20px;height:20px;background:#8B7355}
+.bg-fill{
+  position:absolute;width:300px;height:300px;
+  border-radius:50%;background:#1B3B6B;
+  opacity:.025;top:70px;left:230px;
+}
 
-.geo-l1{position:absolute;top:218px;left:54px;width:40px;height:40px;background:#1B3B6B}
-.geo-l2{position:absolute;top:800px;left:54px;width:60px;height:60px;border:2px solid #8B7355}
+.bg-sq{
+  position:absolute;width:90px;height:90px;
+  background:#8B7355;opacity:.05;
+  bottom:80px;left:20px;transform:rotate(12deg);
+}
 
-/* Vertical accent lines */
-.v-accent1{position:absolute;top:190px;left:54px;width:1px;height:18px;background:#1B3B6B}
-.v-accent2{position:absolute;top:810px;left:54px;width:1px;height:18px;background:#1B3B6B}
-.v-accent3{position:absolute;top:190px;right:54px;width:1px;height:18px;background:#1B3B6B}
-.v-accent4{position:absolute;top:810px;right:54px;width:1px;height:18px;background:#1B3B6B}
-</style></head><body>
+/* ===== SIGNAL TOWER ===== */
+.tower{
+  position:absolute;bottom:50px;right:100px;
+  width:60px;height:440px;
+}
 
-<div class="page-lecture">LECTURE · 10 / 29</div>
-<div class="page-num">10 · 劳动与分配</div>
+.t-pole{
+  position:absolute;bottom:0;left:22px;
+  width:16px;height:440px;background:#1B3B6B;
+}
 
-<div class="title-wrap">
-<div class="title">开源是无偿劳动吗？</div>
-<div class="title-sub">— 信号价值与动态报酬机制</div>
+.t-cross{position:absolute;background:#1B3B6B;height:2px}
+
+.tc1{bottom:70px;left:5px;width:50px}
+.tc2{bottom:140px;left:8px;width:44px}
+.tc3{bottom:210px;left:11px;width:38px}
+.tc4{bottom:280px;left:14px;width:32px}
+.tc5{bottom:350px;left:17px;width:26px}
+
+.t-beacon{
+  position:absolute;top:-8px;left:22px;
+  width:16px;height:16px;border-radius:50%;
+  background:#8B7355;
+}
+
+/* Signal waves */
+.sw{
+  position:absolute;border-radius:50%;
+  border:2px solid #1B3B6B;
+}
+
+.sw1{top:-14px;left:4px;width:52px;height:52px;opacity:.25}
+.sw2{top:-24px;left:-2px;width:64px;height:64px;opacity:.15}
+.sw3{top:-34px;left:-8px;width:76px;height:76px;opacity:.07}
+
+/* Light beams */
+.lb{
+  position:absolute;height:2px;
+  background:#1B3B6B;transform-origin:left center;
+}
+
+.lb1{top:0;left:30px;width:200px;transform:rotate(-55deg);opacity:.18}
+.lb2{top:0;left:30px;width:300px;transform:rotate(-30deg);opacity:.13}
+.lb3{top:0;left:30px;width:380px;transform:rotate(-10deg);opacity:.10}
+.lb4{top:0;left:30px;width:350px;transform:rotate(8deg);opacity:.10}
+.lb5{top:0;left:30px;width:260px;transform:rotate(25deg);opacity:.12}
+
+/* ===== OLD LETTER ===== */
+.letter{
+  position:absolute;bottom:60px;left:30px;
+  width:250px;height:170px;
+}
+
+.l-label{
+  position:absolute;top:-30px;left:16px;
+  font-family:'Noto Serif SC','Source Han Serif SC',serif;
+  font-size:16px;color:#8B7355;
+  font-weight:700;letter-spacing:3px;
+}
+
+.l-paper{
+  position:absolute;bottom:0;left:0;
+  width:250px;height:170px;
+  background:#FEF9F0;border:1px solid #C8B89A;
+  box-shadow:3px 5px 16px rgba(27,59,107,.1);
+  transform:rotate(-4deg);transform-origin:bottom left;
+}
+
+.l-stamp{
+  position:absolute;top:14px;right:18px;
+  width:32px;height:42px;
+  border:1.5px solid #8B7355;opacity:.35;
+}
+
+.l-text{position:absolute;top:58px;left:24px;right:24px}
+
+.lt{height:2px;background:#C0B090;margin-bottom:11px;opacity:.7}
+
+.lt1{width:85%}.lt2{width:70%}.lt3{width:90%}
+.lt4{width:60%}.lt5{width:75%}.lt6{width:40%}
+
+/* ===== FLOW ARROW ===== */
+.flow{
+  position:absolute;bottom:200px;left:310px;
+  width:280px;height:50px;
+}
+
+.f-line{
+  position:absolute;top:22px;left:0;
+  width:258px;height:2px;
+  background:#1B3B6B;
+  opacity:.35;
+}
+
+.f-tip{
+  position:absolute;top:16px;left:254px;
+  width:0;height:0;
+  border-top:6px solid transparent;
+  border-bottom:6px solid transparent;
+  border-left:10px solid #1B3B6B;
+  opacity:.35;
+}
+
+.f-label{
+  position:absolute;top:-4px;left:80px;
+  font-family:'Noto Serif SC',serif;
+  font-size:13px;color:#8B7355;
+  opacity:.65;letter-spacing:3px;
+}
+
+/* ===== FOOTER ===== */
+.footer{
+  position:absolute;bottom:30px;
+  left:80px;right:80px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+
+.ftxt{
+  font-size:11px;color:#8B7355;
+  opacity:.45;letter-spacing:1.5px;
+}
+
+/* ===== DECORATIVE ===== */
+.deco-tri{
+  position:absolute;top:70px;right:110px;
+  width:0;height:0;
+  border-left:36px solid transparent;
+  border-right:36px solid transparent;
+  border-bottom:54px solid #1B3B6B;
+  opacity:.03;
+}
+
+.deco-dia{
+  position:absolute;top:130px;right:190px;
+  width:26px;height:26px;
+  background:#8B7355;opacity:.05;
+  transform:rotate(45deg);
+}
+
+.d-dot1{
+  position:absolute;width:6px;height:6px;
+  border-radius:50%;background:#1B3B6B;
+  opacity:.08;bottom:120px;left:520px;
+}
+
+.d-dot2{
+  position:absolute;width:8px;height:8px;
+  border-radius:50%;background:#8B7355;
+  opacity:.06;bottom:180px;left:580px;
+}
+</style>
+</head>
+<body>
+<div class="slide">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="lecture-tag">
+      <span>第 10 期 · 劳动报酬与财产分配</span>
+      <span class="tag-line"></span>
+    </div>
+    <div class="title">开源是无偿劳动吗？</div>
+    <div class="title-accent"></div>
+  </div>
+
+  <!-- Divider -->
+  <div class="v-divider"></div>
+
+  <!-- Content -->
+  <div class="content-area">
+    <div class="bullet-item">
+      <div class="bullet-marker m-esq"></div>
+      <div class="bullet-text">
+        比尔·盖茨 <span class="hl-copper">1976 年公开信</span>：软件可以免费复制，谁还会付费？
+      </div>
+    </div>
+    <div class="bullet-item">
+      <div class="bullet-marker m-ecir"></div>
+      <div class="bullet-text">
+        但他的推理是<span class="hl-blue">静态的</span>
+      </div>
+    </div>
+    <div class="bullet-item">
+      <div class="bullet-marker m-fcir"></div>
+      <div class="bullet-text">
+        忽略了开源中<span class="hl-quote">「贡献即报酬」</span>的动态机制
+      </div>
+    </div>
+    <div class="bullet-item">
+      <div class="bullet-marker m-fsq"></div>
+      <div class="bullet-text">
+        当开发者获得足够的<span class="hl-blue">信号价值</span>时，劳动就不是无偿的
+      </div>
+    </div>
+  </div>
+
+  <!-- Visual Metaphor -->
+  <div class="visual">
+    <!-- Background shapes -->
+    <div class="bg-arc"></div>
+    <div class="bg-fill"></div>
+    <div class="bg-sq"></div>
+
+    <!-- Signal Tower -->
+    <div class="tower">
+      <div class="t-pole"></div>
+      <div class="t-cross tc1"></div>
+      <div class="t-cross tc2"></div>
+      <div class="t-cross tc3"></div>
+      <div class="t-cross tc4"></div>
+      <div class="t-cross tc5"></div>
+      <div class="t-beacon"></div>
+      <div class="sw sw1"></div>
+      <div class="sw sw2"></div>
+      <div class="sw sw3"></div>
+      <div class="lb lb1"></div>
+      <div class="lb lb2"></div>
+      <div class="lb lb3"></div>
+      <div class="lb lb4"></div>
+      <div class="lb lb5"></div>
+    </div>
+
+    <!-- Old Letter -->
+    <div class="letter">
+      <div class="l-label">1976</div>
+      <div class="l-paper">
+        <div class="l-stamp"></div>
+        <div class="l-text">
+          <div class="lt lt1"></div>
+          <div class="lt lt2"></div>
+          <div class="lt lt3"></div>
+          <div class="lt lt4"></div>
+          <div class="lt lt5"></div>
+          <div class="lt lt6"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flow Arrow -->
+    <div class="flow">
+      <div class="f-label">静态 → 动态</div>
+      <div class="f-line"></div>
+      <div class="f-tip"></div>
+    </div>
+  </div>
+
+  <!-- Decorative -->
+  <div class="deco-tri"></div>
+  <div class="deco-dia"></div>
+  <div class="d-dot1"></div>
+  <div class="d-dot2"></div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span class="ftxt">开源之道 · 新制度经济学视角</span>
+    <span class="ftxt">10 / 29</span>
+  </div>
+
 </div>
-<div class="title-bar"></div>
-<div class="title-bar2"></div>
-
-<div class="geo-l1"></div>
-<div class="geo-r1"></div>
-<div class="v-accent1"></div>
-<div class="v-accent2"></div>
-<div class="v-accent3"></div>
-<div class="v-accent4"></div>
-
-<!-- LEFT: Old 1976 letter -->
-<div class="letter-zone">
-<div class="letter-card">
-<div class="letter-tag">1976<br>OPEN<br>LETTER</div>
-<div class="letter-stamp">B. GATES<br>MSFT<br>1976</div>
-<div class="letter-year">1976</div>
-<div class="letter-from">— 致 Altair 爱好者们的公开信 —</div>
-<div class="letter-rule"></div>
-<div class="letter-lines">
-<div class="letter-line" style="width:92%"></div>
-<div class="letter-line mid"></div>
-<div class="letter-line" style="width:85%"></div>
-<div class="letter-line short"></div>
-<div class="letter-line" style="width:78%"></div>
-<div class="letter-line mid"></div>
-</div>
-<div class="letter-rule"></div>
-<div class="letter-sign">— B. Gates, 1976.03</div>
-</div>
-<div class="letter-caption"><b>核心质疑：</b>若软件可被随意复制，谁还会为其付费？这一推理预设了"免费即无偿"的静态框架。</div>
-</div>
-
-<div class="quote-strip">
-<span class="quote-strip-dot"></span>
-他推理的前提，是价值的静态模型
-</div>
-
-<div class="geo-l2"></div>
-
-<!-- RIGHT: Signal tower + bullets -->
-<div class="beam-zone" style="width:0;height:0"></div>
-
-<div class="beam-square"></div>
-<div class="beam-square-inner"></div>
-<div class="beam-circle"></div>
-<div class="beam-circle-small"></div>
-<div class="beam-circle-core"></div>
-
-<div class="h-beam h1"></div>
-<div class="h-beam h2"></div>
-<div class="h-beam h3"></div>
-<div class="h-beam h4"></div>
-<div class="h-beam h5"></div>
-<div class="h-beam h6"></div>
-
-<div class="beam-corner-line-v"></div>
-<div class="beam-corner-line-v2"></div>
-<div class="beam-corner-line-h"></div>
-
-<div class="info-title"><span class="info-title-tag"></span>信号塔：贡献即报酬的动态机制</div>
-
-<div class="key-points">
-<div class="kp">
-<div class="kp-num">01</div>
-<div class="kp-text">比尔·盖茨 1976 年公开信：<em>软件可被免费复制，谁还会付费？</em></div>
-</div>
-<div class="kp">
-<div class="kp-num">02</div>
-<div class="kp-text">但他的推理是 <em>静态的</em>——只看见复制成本趋零，未看见价值生成方式的变化。</div>
-</div>
-<div class="kp">
-<div class="kp-num">03</div>
-<div class="kp-text">忽略了开源中 <em>「贡献即报酬」</em> 的动态信号机制。</div>
-</div>
-<div class="kp">
-<div class="kp-num">04</div>
-<div class="kp-text">当开发者获得足够的 <em>信号价值</em>——声誉、机会、期权——劳动便不再是无偿的。</div>
-</div>
-</div>
-
-<div class="geo-r2"></div>
-<div class="geo-r3"></div>
-
-<div class="bottom-bar"></div>
-<div class="bottom-info">OPEN SOURCE · NEW INSTITUTIONAL ECONOMICS</div>
-<div class="bottom-info2">第 10 期 · 劳动报酬与财产分配</div>
-
-</body></html>
+</body>
+</html>

@@ -1,203 +1,518 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: 84e4659886be84b3 --><head><meta charset="UTF-8"><title>跨越有形与无形财产的边界</title><style>html,body{width:1600px;height:900px;overflow:hidden;margin:0;}body{background:#F5F0E8;font-family:'Noto Sans SC','PingFang SC',sans-serif;color:#1B3B6B;position:relative;}h1,h2,h3{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-weight:400;}
-/* Bauhaus geometric decorations */
-.deco-circle-1{position:absolute;top:60px;left:80px;width:120px;height:120px;border-radius:50%;background:#1B3B6B;}
-.deco-square-1{position:absolute;top:80px;left:230px;width:40px;height:40px;background:#8B7355;}
-.deco-line-1{position:absolute;top:120px;left:80px;width:200px;height:2px;background:#1B3B6B;}
-.deco-line-vertical{position:absolute;top:60px;left:500px;width:2px;height:60px;background:#1B3B6B;}
-.deco-number{position:absolute;top:30px;right:80px;font-family:'Noto Serif SC',serif;font-size:18px;color:#8B7355;letter-spacing:3px;}
-.deco-underline{position:absolute;top:68px;right:80px;width:60px;height:2px;background:#8B7355;}
+<!DOCTYPE html>
+<html lang="zh-CN"><!-- source_hash: 9d6eec446d462b90 -->
+<head>
+<meta charset="UTF-8">
+<title>第 03 期 · 商业模式：规则下的具体操作</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700;900&display=swap');
 
-/* Visual metaphor area */
-.metaphor-area{position:absolute;top:200px;left:80px;width:700px;height:480px;}
-.boardwalk{position:absolute;top:280px;left:0;width:700px;height:60px;background:#8B7355;opacity:0.85;}
-.boardwalk-line{position:absolute;background:#5C4A32;height:1px;}
-.boardwalk-line:nth-child(1){top:295px;left:0;width:700px;}
-.boardwalk-line:nth-child(2){top:315px;left:0;width:700px;}
-.boardwalk-line:nth-child(3){top:335px;left:0;width:700px;}
-.water-line{position:absolute;top:278px;left:0;width:700px;height:3px;background:#1B3B6B;}
-.splash{position:absolute;border-radius:50%;background:#1B3B6B;}
-.splash-1{top:250px;left:120px;width:16px;height:16px;}
-.splash-2{top:240px;left:135px;width:10px;height:10px;}
-.splash-3{top:255px;left:110px;width:8px;height:8px;}
-.splash-4{top:245px;left:148px;width:6px;height:6px;}
-.splash-5{top:260px;left:128px;width:5px;height:5px;}
-.splash-6{top:230px;left:132px;width:4px;height:4px;}
-.splash-7{top:250px;left:380px;width:18px;height:18px;}
-.splash-8{top:238px;left:395px;width:11px;height:11px;}
-.splash-9{top:255px;left:370px;width:7px;height:7px;}
-.splash-10{top:245px;left:408px;width:5px;height:5px;}
-.splash-11{top:262px;left:388px;width:4px;height:4px;}
-.splash-12{top:232px;left:392px;width:3px;height:3px;}
-.splash-13{top:250px;left:600px;width:14px;height:14px;}
-.splash-14{top:242px;left:612px;width:8px;height:8px;}
-.splash-15{top:256px;left:592px;width:6px;height:6px;}
-.splash-16{top:262px;left:608px;width:4px;height:4px;}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* Footprints on the boardwalk */
-.footprint{position:absolute;border-radius:50%;background:#1B3B6B;opacity:0.7;}
-.fp-1{top:295px;left:125px;width:18px;height:22px;border-radius:50% 50% 40% 40%/60% 60% 40% 40%;}
-.fp-2{top:298px;left:155px;width:14px;height:18px;border-radius:50% 50% 40% 40%/60% 60% 40% 40%;}
-.fp-3{top:296px;left:240px;width:18px;height:22px;border-radius:50% 50% 40% 40%/60% 60% 40% 40%;}
-.fp-4{top:299px;left:270px;width:14px;height:18px;border-radius:50% 50% 40% 40%/60% 60% 40% 40%;}
-.fp-5{top:295px;left:385px;width:18px;height:22px;border-radius:50% 50% 40% 40%/60% 60% 40% 40%;}
-.fp-6{top:298px;left:415px;width:14px;height:18px;border-radius:50% 50% 40% 40%/60% 60% 40% 40%;}
-.fp-7{top:296px;left:510px;width:18px;height:22px;border-radius:50% 50% 40% 40%/60% 60% 40% 40%;}
-.fp-8{top:299px;left:540px;width:14px;height:18px;border-radius:50% 50% 40% 40%/60% 60% 40% 40%;}
-.fp-9{top:295px;left:605px;width:18px;height:22px;border-radius:50% 50% 40% 40%/60% 60% 40% 40%;}
-.fp-10{top:298px;left:635px;width:14px;height:18px;border-radius:50% 50% 40% 40%/60% 60% 40% 40%;}
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
+  background: #F5F0E8;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: #1B3B6B;
+  position: relative;
+}
 
-/* Water ripples */
-.ripple{position:absolute;border-radius:50%;border:1px solid #1B3B6B;opacity:0.3;}
-.rip-1{top:270px;left:90px;width:80px;height:80px;}
-.rip-2{top:265px;left:82px;width:96px;height:96px;opacity:0.15;}
-.rip-3{top:268px;left:348px;width:64px;height:64px;}
-.rip-4{top:263px;left:340px;width:80px;height:80px;opacity:0.15;}
-.rip-5{top:272px;left:568px;width:64px;height:64px;}
-.rip-6{top:267px;left:560px;width:80px;height:80px;opacity:0.15;}
+body::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 1600px; height: 900px;
+  background:
+    radial-gradient(ellipse at 18% 45%, rgba(139,115,85,0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 82% 28%, rgba(139,115,85,0.025) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: 0;
+}
 
-.metaphor-label{position:absolute;top:370px;left:0;width:700px;text-align:center;font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:4px;}
-.metaphor-sublabel{position:absolute;top:400px;left:0;width:700px;text-align:center;font-size:12px;color:#555;letter-spacing:2px;}
+.hdr {
+  position: absolute;
+  top: 38px;
+  left: 64px;
+  right: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  z-index: 10;
+}
 
-/* Boundary markers */
-.boundary-left{position:absolute;top:180px;left:60px;width:20px;height:20px;border:2px solid #1B3B6B;background:transparent;}
-.boundary-right{position:absolute;top:180px;left:680px;width:20px;height:20px;border:2px solid #1B3B6B;background:#1B3B6B;}
-.boundary-tag-left{position:absolute;top:155px;left:20px;font-family:'Noto Serif SC',serif;font-size:13px;color:#1B3B6B;letter-spacing:2px;}
-.boundary-tag-right{position:absolute;top:155px;left:660px;font-family:'Noto Serif SC',serif;font-size:13px;color:#1B3B6B;letter-spacing:2px;}
-.boundary-bridge{position:absolute;top:190px;left:80px;width:600px;height:2px;background:#8B7355;}
+.hdr-l {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  color: #8B7355;
+  letter-spacing: 3px;
+}
 
-/* Content area */
-.content-area{position:absolute;top:200px;left:830px;width:690px;height:640px;}
-.content-title{font-family:'Noto Serif SC',serif;font-size:36px;color:#1B3B6B;line-height:1.4;margin-bottom:8px;}
-.content-subtitle{font-size:13px;color:#8B7355;letter-spacing:3px;margin-bottom:35px;font-family:'Noto Serif SC',serif;}
-.content-divider{width:80px;height:2px;background:#1B3B6B;margin-bottom:30px;}
+.hdr-r {
+  font-size: 13px;
+  color: #555;
+  letter-spacing: 2px;
+}
 
-.bullet-list{list-style:none;padding:0;margin:0;}
-.bullet-item{margin-bottom:22px;display:flex;align-items:flex-start;gap:18px;}
-.bullet-marker{flex-shrink:0;margin-top:6px;}
-.bullet-marker-square{width:10px;height:10px;background:#1B3B6B;}
-.bullet-marker-circle{width:10px;height:10px;border-radius:50%;background:#8B7355;}
-.bullet-marker-line{width:2px;height:18px;background:#1B3B6B;margin-top:3px;}
-.bullet-marker-triangle{width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:10px solid #1B3B6B;margin-top:9px;}
-.bullet-marker-diamond{width:8px;height:8px;background:#1B3B6B;transform:rotate(45deg);margin-top:7px;}
-.bullet-text{flex:1;font-size:16px;color:#1B3B6B;line-height:1.7;}
-.bullet-text .sub{display:block;font-size:13px;color:#555;margin-top:3px;line-height:1.6;}
-.bullet-text .accent{color:#8B7355;font-weight:500;}
+.hdr-line {
+  position: absolute;
+  top: 64px;
+  left: 64px;
+  right: 64px;
+  height: 1px;
+  background: #8B7355;
+  opacity: 0.25;
+  z-index: 10;
+}
 
-/* Footer */
-.footer-line{position:absolute;bottom:40px;left:80px;width:1440px;height:1px;background:#1B3B6B;opacity:0.3;}
-.footer-left{position:absolute;bottom:20px;left:80px;font-size:11px;color:#8B7355;letter-spacing:2px;}
-.footer-right{position:absolute;bottom:20px;right:80px;font-size:11px;color:#8B7355;letter-spacing:2px;}
+/* === VISUAL AREA === */
+.viz {
+  position: absolute;
+  top: 92px;
+  left: 64px;
+  width: 540px;
+  height: 700px;
+  overflow: hidden;
+  z-index: 5;
+}
 
-/* Bottom right decoration */
-.deco-circle-tr{position:absolute;bottom:70px;right:70px;width:50px;height:50px;border-radius:50%;border:2px solid #1B3B6B;background:transparent;}
-.deco-square-tr{position:absolute;bottom:80px;right:140px;width:20px;height:20px;background:#8B7355;}
+.pl {
+  position: absolute;
+  border-radius: 1px;
+}
 
-/* Big decorative circle left-bottom */
-.deco-big-circle{position:absolute;bottom:80px;left:100px;width:80px;height:80px;border-radius:50%;background:#1B3B6B;opacity:0.08;}
-</style></head><body>
+.bd {
+  position: absolute;
+  border-left: 1px dashed #1B3B6B;
+  opacity: 0.3;
+}
 
-<!-- Header decorations -->
-<div class="deco-circle-1"></div>
-<div class="deco-square-1"></div>
-<div class="deco-line-1"></div>
-<div class="deco-line-vertical"></div>
-<div class="deco-number">06 / 12</div>
-<div class="deco-underline"></div>
+.bd-lbl {
+  position: absolute;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 10px;
+  color: #1B3B6B;
+  opacity: 0.45;
+  letter-spacing: 2px;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}
 
-<!-- Left: Visual Metaphor -->
-<div class="metaphor-area">
-  <div class="boundary-tag-left">TANGIBLE</div>
-  <div class="boundary-tag-right">INTANGIBLE</div>
-  <div class="boundary-left"></div>
-  <div class="boundary-right"></div>
-  <div class="boundary-bridge"></div>
+.sp {
+  position: absolute;
+  border-radius: 50%;
+  background: #1B3B6B;
+}
 
-  <div class="boardwalk"></div>
-  <div class="water-line"></div>
-  <div class="boardwalk-line" style="top:295px;"></div>
-  <div class="boardwalk-line" style="top:315px;"></div>
-  <div class="boardwalk-line" style="top:335px;"></div>
+.spr {
+  position: absolute;
+  border-radius: 50%;
+  border: 1.5px solid #1B3B6B;
+  background: transparent;
+}
 
-  <!-- Ripples -->
-  <div class="ripple rip-1"></div>
-  <div class="ripple rip-2"></div>
-  <div class="ripple rip-3"></div>
-  <div class="ripple rip-4"></div>
-  <div class="ripple rip-5"></div>
-  <div class="ripple rip-6"></div>
+.dp {
+  position: absolute;
+  border-radius: 50%;
+  background: #1B3B6B;
+}
 
-  <!-- Splashes -->
-  <div class="splash splash-1"></div>
-  <div class="splash splash-2"></div>
-  <div class="splash splash-3"></div>
-  <div class="splash splash-4"></div>
-  <div class="splash splash-5"></div>
-  <div class="splash splash-6"></div>
-  <div class="splash splash-7"></div>
-  <div class="splash splash-8"></div>
-  <div class="splash splash-9"></div>
-  <div class="splash splash-10"></div>
-  <div class="splash splash-11"></div>
-  <div class="splash splash-12"></div>
-  <div class="splash splash-13"></div>
-  <div class="splash splash-14"></div>
-  <div class="splash splash-15"></div>
-  <div class="splash splash-16"></div>
+.fp {
+  position: absolute;
+  background: #1B3B6B;
+  border-radius: 40%;
+}
 
-  <!-- Footprints -->
-  <div class="footprint fp-1"></div>
-  <div class="footprint fp-2"></div>
-  <div class="footprint fp-3"></div>
-  <div class="footprint fp-4"></div>
-  <div class="footprint fp-5"></div>
-  <div class="footprint fp-6"></div>
-  <div class="footprint fp-7"></div>
-  <div class="footprint fp-8"></div>
-  <div class="footprint fp-9"></div>
-  <div class="footprint fp-10"></div>
+.dc {
+  position: absolute;
+  border: 2px solid #1B3B6B;
+  border-radius: 50%;
+  opacity: 0.08;
+}
 
-  <div class="metaphor-label">木栈道 · 水花 · 湿脚印</div>
-  <div class="metaphor-sublabel">跨越有形与无形财产的边界</div>
+.ds {
+  position: absolute;
+  background: #8B7355;
+  opacity: 0.12;
+}
+
+.wv {
+  position: absolute;
+  height: 1px;
+  background: #1B3B6B;
+  opacity: 0.12;
+}
+
+.cap {
+  position: absolute;
+  bottom: 18px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 11px;
+  color: #8B7355;
+  opacity: 0.5;
+  letter-spacing: 2px;
+  font-style: italic;
+}
+
+/* === CONTENT AREA === */
+.ct {
+  position: absolute;
+  top: 92px;
+  left: 670px;
+  right: 64px;
+  height: 700px;
+  z-index: 5;
+}
+
+.ct-bg1 {
+  position: absolute;
+  right: -40px;
+  top: -60px;
+  width: 200px;
+  height: 200px;
+  border: 2px solid #1B3B6B;
+  border-radius: 50%;
+  opacity: 0.04;
+  pointer-events: none;
+}
+
+.ct-bg2 {
+  position: absolute;
+  right: 80px;
+  bottom: -40px;
+  width: 100px;
+  height: 100px;
+  border: 1.5px solid #8B7355;
+  border-radius: 50%;
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+.ct-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 38px;
+  font-weight: 700;
+  color: #1B3B6B;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.ct-underline {
+  width: 72px;
+  height: 3px;
+  background: #1B3B6B;
+  margin-bottom: 28px;
+}
+
+.ctx {
+  margin-bottom: 28px;
+}
+
+.ctx-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  color: #555;
+  font-weight: 400;
+}
+
+.ctx-dot {
+  width: 6px;
+  height: 6px;
+  background: #8B7355;
+  flex-shrink: 0;
+}
+
+.ctx-divider {
+  width: 100%;
+  height: 1px;
+  background: #8B7355;
+  opacity: 0.2;
+  margin-bottom: 28px;
+}
+
+.cols {
+  display: flex;
+  gap: 36px;
+  position: relative;
+}
+
+.col-divider {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: #8B7355;
+  opacity: 0.15;
+}
+
+.col {
+  flex: 1;
+}
+
+.col-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.col-marker {
+  width: 12px;
+  height: 12px;
+  background: #1B3B6B;
+  flex-shrink: 0;
+}
+
+.col-marker.round {
+  border-radius: 50%;
+}
+
+.col-name {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #1B3B6B;
+  letter-spacing: 1px;
+}
+
+.col-desc {
+  font-size: 13px;
+  color: #8B7355;
+  margin-bottom: 18px;
+  letter-spacing: 0.5px;
+}
+
+.entity-list {
+  list-style: none;
+}
+
+.entity-item {
+  font-size: 14px;
+  color: #333;
+  line-height: 2;
+  padding-left: 16px;
+  position: relative;
+}
+
+.entity-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 11px;
+  width: 8px;
+  height: 1px;
+  background: #8B7355;
+}
+
+/* === FOOTER === */
+.ftr {
+  position: absolute;
+  bottom: 28px;
+  left: 64px;
+  right: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
+.ftr-line {
+  position: absolute;
+  top: -14px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #8B7355;
+  opacity: 0.12;
+}
+
+.ftr-l {
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 2px;
+}
+
+.ftr-c {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 11px;
+  color: #8B7355;
+  opacity: 0.7;
+  letter-spacing: 1px;
+}
+
+.ftr-r {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12px;
+  color: #8B7355;
+  opacity: 0.6;
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="hdr">
+  <span class="hdr-l">第 03 期 · 开源经济学</span>
+  <span class="hdr-r">商业模式：规则下的具体操作</span>
+</div>
+<div class="hdr-line"></div>
+
+<!-- Visual Area: Boardwalk with Water Splashes -->
+<div class="viz">
+  <!-- Decorative circles -->
+  <div class="dc" style="left: 320px; top: 25px; width: 170px; height: 170px;"></div>
+  <div class="dc" style="left: 358px; top: 55px; width: 94px; height: 94px; opacity: 0.13;"></div>
+
+  <!-- Boundary line (tangible / intangible) -->
+  <div class="bd" style="left: 310px; top: 28px; height: 575px;"></div>
+
+  <!-- Boundary labels -->
+  <div class="bd-lbl" style="left: 283px; top: 48px;">有形财产</div>
+  <div class="bd-lbl" style="left: 343px; top: 48px;">无形财产</div>
+
+  <!-- Boardwalk planks -->
+  <div class="pl" style="left: 0; top: 262px; width: 540px; height: 15px; background: #8B7355;"></div>
+  <div class="pl" style="left: 8px; top: 290px; width: 524px; height: 15px; background: #7D6845;"></div>
+  <div class="pl" style="left: 4px; top: 318px; width: 532px; height: 15px; background: #918060;"></div>
+  <div class="pl" style="left: 12px; top: 346px; width: 516px; height: 15px; background: #766040;"></div>
+  <div class="pl" style="left: 6px; top: 374px; width: 528px; height: 15px; background: #8B7355;"></div>
+  <div class="pl" style="left: 16px; top: 402px; width: 508px; height: 15px; background: #7D6845;"></div>
+
+  <!-- Footprints crossing the boundary -->
+  <div class="fp" style="left: 68px; top: 266px; width: 6px; height: 10px;"></div>
+  <div class="fp" style="left: 76px; top: 270px; width: 6px; height: 10px;"></div>
+
+  <div class="fp" style="left: 138px; top: 294px; width: 6px; height: 10px;"></div>
+  <div class="fp" style="left: 146px; top: 298px; width: 6px; height: 10px;"></div>
+
+  <div class="fp" style="left: 208px; top: 322px; width: 6px; height: 10px;"></div>
+  <div class="fp" style="left: 216px; top: 326px; width: 6px; height: 10px;"></div>
+
+  <div class="fp" style="left: 278px; top: 350px; width: 6px; height: 10px;"></div>
+  <div class="fp" style="left: 286px; top: 354px; width: 6px; height: 10px;"></div>
+
+  <div class="fp" style="left: 358px; top: 378px; width: 6px; height: 10px;"></div>
+  <div class="fp" style="left: 366px; top: 382px; width: 6px; height: 10px;"></div>
+
+  <div class="fp" style="left: 428px; top: 406px; width: 6px; height: 10px;"></div>
+  <div class="fp" style="left: 436px; top: 410px; width: 6px; height: 10px;"></div>
+
+  <!-- Water splashes (solid) -->
+  <div class="sp" style="left: 42px; top: 448px; width: 26px; height: 26px; opacity: 0.5;"></div>
+  <div class="sp" style="left: 92px; top: 468px; width: 16px; height: 16px; opacity: 0.45;"></div>
+  <div class="sp" style="left: 152px; top: 452px; width: 30px; height: 30px; opacity: 0.55;"></div>
+  <div class="sp" style="left: 212px; top: 472px; width: 12px; height: 12px; opacity: 0.4;"></div>
+  <div class="sp" style="left: 262px; top: 458px; width: 22px; height: 22px; opacity: 0.5;"></div>
+  <div class="sp" style="left: 322px; top: 478px; width: 18px; height: 18px; opacity: 0.45;"></div>
+  <div class="sp" style="left: 382px; top: 462px; width: 24px; height: 24px; opacity: 0.5;"></div>
+  <div class="sp" style="left: 442px; top: 472px; width: 14px; height: 14px; opacity: 0.4;"></div>
+  <div class="sp" style="left: 492px; top: 458px; width: 20px; height: 20px; opacity: 0.45;"></div>
+
+  <!-- Water splashes (outline rings) -->
+  <div class="spr" style="left: 22px; top: 498px; width: 48px; height: 48px; opacity: 0.18;"></div>
+  <div class="spr" style="left: 122px; top: 508px; width: 40px; height: 40px; opacity: 0.15;"></div>
+  <div class="spr" style="left: 232px; top: 502px; width: 52px; height: 52px; opacity: 0.18;"></div>
+  <div class="spr" style="left: 352px; top: 512px; width: 36px; height: 36px; opacity: 0.15;"></div>
+  <div class="spr" style="left: 452px; top: 508px; width: 44px; height: 44px; opacity: 0.18;"></div>
+
+  <!-- Droplets -->
+  <div class="dp" style="left: 72px; top: 518px; width: 4px; height: 4px; opacity: 0.3;"></div>
+  <div class="dp" style="left: 112px; top: 533px; width: 3px; height: 3px; opacity: 0.25;"></div>
+  <div class="dp" style="left: 172px; top: 523px; width: 5px; height: 5px; opacity: 0.3;"></div>
+  <div class="dp" style="left: 192px; top: 538px; width: 3px; height: 3px; opacity: 0.2;"></div>
+  <div class="dp" style="left: 252px; top: 528px; width: 4px; height: 4px; opacity: 0.25;"></div>
+  <div class="dp" style="left: 302px; top: 543px; width: 3px; height: 3px; opacity: 0.2;"></div>
+  <div class="dp" style="left: 342px; top: 526px; width: 4px; height: 4px; opacity: 0.3;"></div>
+  <div class="dp" style="left: 402px; top: 536px; width: 3px; height: 3px; opacity: 0.25;"></div>
+  <div class="dp" style="left: 472px; top: 523px; width: 5px; height: 5px; opacity: 0.3;"></div>
+  <div class="dp" style="left: 512px; top: 538px; width: 3px; height: 3px; opacity: 0.2;"></div>
+
+  <!-- Wave lines -->
+  <div class="wv" style="left: 12px; top: 560px; width: 180px;"></div>
+  <div class="wv" style="left: 238px; top: 570px; width: 140px;"></div>
+  <div class="wv" style="left: 342px; top: 564px; width: 160px;"></div>
+  <div class="wv" style="left: 32px; top: 580px; width: 110px;"></div>
+  <div class="wv" style="left: 288px; top: 590px; width: 150px;"></div>
+  <div class="wv" style="left: 458px; top: 580px; width: 60px;"></div>
+
+  <!-- Decorative square -->
+  <div class="ds" style="left: 0; bottom: 28px; width: 30px; height: 30px;"></div>
+
+  <!-- Partial circle -->
+  <div class="dc" style="right: -20px; bottom: 55px; width: 90px; height: 90px; opacity: 0.06;"></div>
+
+  <!-- Caption -->
+  <div class="cap">木栈道上水花四溅 · 留下湿脚印</div>
 </div>
 
-<!-- Right: Content -->
-<div class="content-area">
-  <div class="content-title">跨越边界：从有形到无形</div>
-  <div class="content-subtitle">CROSSING THE BOUNDARY</div>
-  <div class="content-divider"></div>
+<!-- Content Area -->
+<div class="ct">
+  <div class="ct-bg1"></div>
+  <div class="ct-bg2"></div>
 
-  <ul class="bullet-list">
-    <li class="bullet-item">
-      <div class="bullet-marker bullet-marker-square"></div>
-      <div class="bullet-text">To B 与 To C 是人话吗？<span class="sub">——语言先于制度，术语塑造认知框架</span></div>
-    </li>
-    <li class="bullet-item">
-      <div class="bullet-marker bullet-marker-circle"></div>
-      <div class="bullet-text">合同与许可<span class="sub">——私人约定与标准化赋权的两种治理机制</span></div>
-    </li>
-    <li class="bullet-item">
-      <div class="bullet-marker bullet-marker-line"></div>
-      <div class="bullet-text">私人秩序与公共立法<span class="sub">——自发协作规范与正式法律体系的张力</span></div>
-    </li>
-    <li class="bullet-item">
-      <div class="bullet-marker bullet-marker-triangle"></div>
-      <div class="bullet-text">面向<span class="accent">特定的社会实体</span><span class="sub">公司 · 政府 · 学校 · 非营利——识别明确的交易对象</span></div>
-    </li>
-    <li class="bullet-item">
-      <div class="bullet-marker bullet-marker-diamond"></div>
-      <div class="bullet-text">面向<span class="accent">全体公民</span><span class="sub">尽可能的简化手续——降低公共领域的进入门槛</span></div>
-    </li>
-  </ul>
+  <h1 class="ct-title">To B 与 To C<br>是人话吗？</h1>
+  <div class="ct-underline"></div>
+
+  <div class="ctx">
+    <div class="ctx-item">
+      <div class="ctx-dot"></div>
+      <span>合同与许可</span>
+    </div>
+    <div class="ctx-item">
+      <div class="ctx-dot"></div>
+      <span>私人秩序与公共立法</span>
+    </div>
+  </div>
+
+  <div class="ctx-divider"></div>
+
+  <div class="cols">
+    <div class="col-divider"></div>
+
+    <div class="col">
+      <div class="col-header">
+        <div class="col-marker"></div>
+        <span class="col-name">To B</span>
+      </div>
+      <div class="col-desc">面向特定的社会实体</div>
+      <ul class="entity-list">
+        <li class="entity-item">公司</li>
+        <li class="entity-item">政府</li>
+        <li class="entity-item">学校</li>
+        <li class="entity-item">非营利</li>
+      </ul>
+    </div>
+
+    <div class="col">
+      <div class="col-header">
+        <div class="col-marker round"></div>
+        <span class="col-name">To C</span>
+      </div>
+      <div class="col-desc">面向全体公民</div>
+      <ul class="entity-list">
+        <li class="entity-item">尽可能的简化手续</li>
+      </ul>
+    </div>
+  </div>
 </div>
 
 <!-- Footer -->
-<div class="deco-big-circle"></div>
-<div class="deco-square-tr"></div>
-<div class="deco-circle-tr"></div>
-<div class="footer-line"></div>
-<div class="footer-left">新制度经济学视角下的开源 · NEW INSTITUTIONAL ECONOMICS</div>
-<div class="footer-right">OPEN SOURCE × INSTITUTIONAL DESIGN</div>
+<div class="ftr">
+  <div class="ftr-line"></div>
+  <span class="ftr-l">OPEN SOURCE ECONOMICS</span>
+  <span class="ftr-c">包豪斯几何构成 · Bauhaus Geometric Composition</span>
+  <span class="ftr-r">18 / 30</span>
+</div>
 
-</body></html>
+</body>
+</html>

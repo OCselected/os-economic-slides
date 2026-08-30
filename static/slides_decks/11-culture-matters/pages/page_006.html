@@ -1,181 +1,433 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: 959f555d102cce72 --><head><meta charset="UTF-8"><title>文化制度分析的框架路径</title><style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1600px;height:900px;overflow:hidden;margin:0;font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif}
-body{background:#F5F0E8;position:relative;color:#1B3B6B}
+<!DOCTYPE html>
+<html><!-- source_hash: ce0b1b001fe80a7d -->
+<head>
+<meta charset="UTF-8">
+<title>第 11 期 · 文化的重要作用 — 议程</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap');
 
-/* subtle parchment texture */
-body::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(139,115,85,0.015) 3px,rgba(139,115,85,0.015) 4px),repeating-linear-gradient(90deg,transparent,transparent 5px,rgba(27,59,107,0.008) 5px,rgba(27,59,107,0.008) 6px);pointer-events:none;z-index:0}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-/* Top header line */
-.header-rule{position:absolute;top:56px;left:100px;width:1400px;height:1px;background:#1B3B6B;z-index:2}
-.header-rule-thin{position:absolute;top:62px;left:100px;width:1400px;height:1px;background:#8B7355;z-index:2}
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  background: #F5F0E8;
+}
 
-.corner-mark{position:absolute;top:36px;left:100px;font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:13px;color:#8B7355;letter-spacing:3px;z-index:2}
-.corner-mark-right{position:absolute;top:36px;right:100px;font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:13px;color:#8B7355;letter-spacing:3px;z-index:2}
+body {
+  position: relative;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: #1B3B6B;
+}
 
-/* Title block */
-.title-block{position:absolute;top:88px;left:100px;width:800px;z-index:3}
-.title-cn{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:48px;font-weight:700;color:#1B3B6B;line-height:1.25;letter-spacing:2px}
-.title-sub{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:18px;color:#8B7355;margin-top:14px;letter-spacing:1px;font-style:italic}
+/* Subtle parchment texture overlay */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1600px;
+  height: 900px;
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(139,115,85,0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 30%, rgba(27,59,107,0.02) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: 1;
+}
 
-/* Geometric decoration - left column */
-.geo-circle-1{position:absolute;top:140px;left:920px;width:180px;height:180px;border-radius:50%;background:#1B3B6B;z-index:1}
-.geo-circle-2{position:absolute;top:170px;left:950px;width:120px;height:120px;border-radius:50%;border:2px solid #8B7355;background:transparent;z-index:2}
-.geo-square-1{position:absolute;top:195px;left:1010px;width:70px;height:70px;background:#8B7355;z-index:3}
-.geo-line-1{position:absolute;top:140px;left:1120px;width:340px;height:1px;background:#1B3B6B;z-index:2}
-.geo-line-2{position:absolute;top:320px;left:1120px;width:340px;height:1px;background:#8B7355;z-index:2}
-.geo-dot{position:absolute;top:320px;left:1450px;width:8px;height:8px;background:#1B3B6B;border-radius:50%;z-index:2}
-.geo-dot2{position:absolute;top:140px;left:1120px;width:8px;height:8px;background:#1B3B6B;border-radius:50%;z-index:2}
-.geo-bar{position:absolute;top:330px;left:100px;width:4px;height:60px;background:#1B3B6B;z-index:2}
-.geo-bar-2{position:absolute;top:340px;left:100px;width:4px;height:30px;background:#8B7355;z-index:2}
+/* Decorative geometric elements */
+.geo-circle-large {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  border: 2px solid #1B3B6B;
+  border-radius: 50%;
+  left: -120px;
+  top: 140px;
+  opacity: 0.12;
+  z-index: 2;
+}
 
-/* Right decorative frame */
-.right-frame{position:absolute;top:140px;left:1120px;width:340px;height:180px;z-index:1;pointer-events:none}
-.right-frame::after{content:"";position:absolute;top:30px;left:20px;width:20px;height:20px;border:1px solid #8B7355}
-.right-frame::before{content:"";position:absolute;bottom:10px;right:20px;width:20px;height:20px;background:#1B3B6B}
+.geo-circle-inner {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border: 1.5px solid #8B7355;
+  border-radius: 50%;
+  left: -20px;
+  top: 260px;
+  opacity: 0.18;
+  z-index: 2;
+}
 
-.right-label{position:absolute;top:370px;left:1120px;font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:14px;color:#8B7355;letter-spacing:2px;z-index:3}
-.right-label-2{position:absolute;top:392px;left:1120px;font-family:'Noto Sans SC',sans-serif;font-size:11px;color:#555;letter-spacing:1px;z-index:3}
+.geo-square-1 {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border: 2px solid #8B7355;
+  left: 160px;
+  top: 580px;
+  opacity: 0.1;
+  transform: rotate(15deg);
+  z-index: 2;
+}
 
-/* Path diagram on right */
-.path-title{position:absolute;top:440px;left:1120px;font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:15px;color:#1B3B6B;letter-spacing:2px;z-index:3;font-weight:600}
-.path-item{position:absolute;left:1120px;width:340px;font-family:'Noto Sans SC',sans-serif;font-size:13px;color:#555;z-index:3;display:flex;align-items:center;gap:10px}
-.path-item .num{font-family:'Noto Serif SC',serif;font-size:12px;color:#8B7355;width:18px;height:18px;border:1px solid #8B7355;display:flex;align-items:center;justify-content:center;border-radius:50%;flex-shrink:0}
-.path-item .txt{flex:1}
-.path-item .arrow{color:#8B7355;font-size:11px}
+.geo-line-1 {
+  position: absolute;
+  width: 600px;
+  height: 1px;
+  background: #1B3B6B;
+  left: 80px;
+  top: 118px;
+  opacity: 0.25;
+  z-index: 2;
+}
 
-/* Connector lines on right */
-.path-conn{position:absolute;left:1129px;width:1px;background:#8B7355;z-index:2}
+.geo-line-2 {
+  position: absolute;
+  width: 1px;
+  height: 500px;
+  background: #8B7355;
+  left: 780px;
+  top: 160px;
+  opacity: 0.15;
+  z-index: 2;
+}
 
-/* Main content - agenda items */
-.agenda{position:absolute;top:140px;left:100px;width:920px;z-index:3}
-.agenda-row{display:flex;align-items:flex-start;margin-bottom:26px;position:relative;padding-bottom:22px;border-bottom:1px dashed rgba(139,115,85,0.25)}
-.agenda-row:last-child{border-bottom:none;margin-bottom:0}
-.agenda-num{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:32px;color:#1B3B6B;width:70px;flex-shrink:0;font-weight:700;line-height:1;position:relative;padding-top:4px}
-.agenda-num::after{content:"";position:absolute;bottom:-24px;left:0;width:50px;height:2px;background:#1B3B6B}
-.agenda-row:last-child .agenda-num::after{display:none}
-.agenda-content{flex:1;padding-left:8px}
-.agenda-text{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:22px;color:#1B3B6B;font-weight:600;line-height:1.5;letter-spacing:1px}
-.agenda-desc{font-family:'Noto Sans SC',sans-serif;font-size:13px;color:#555;margin-top:5px;letter-spacing:0.5px}
+.geo-circle-small {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border: 2px solid #1B3B6B;
+  border-radius: 50%;
+  left: 766px;
+  top: 148px;
+  opacity: 0.4;
+  z-index: 3;
+}
 
-/* Footer */
-.footer-rule{position:absolute;bottom:56px;left:100px;width:1400px;height:1px;background:#1B3B6B;z-index:2}
-.footer-rule-thin{position:absolute;bottom:50px;left:100px;width:1400px;height:1px;background:#8B7355;z-index:2}
-.footer-left{position:absolute;bottom:28px;left:100px;font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:12px;color:#8B7355;letter-spacing:2px;z-index:2}
-.footer-right{position:absolute;bottom:28px;right:100px;font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:12px;color:#8B7355;letter-spacing:2px;z-index:2}
+.geo-circle-small-2 {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: #8B7355;
+  border-radius: 50%;
+  left: 773px;
+  top: 632px;
+  opacity: 0.35;
+  z-index: 3;
+}
 
-/* Big decorative circle bottom right */
-.big-circle{position:absolute;bottom:60px;right:100px;width:120px;height:120px;border-radius:50%;border:1px solid #1B3B6B;z-index:1}
-.big-circle-inner{position:absolute;bottom:80px;right:120px;width:80px;height:80px;border-radius:50%;background:#8B7355;opacity:0.15;z-index:1}
+/* Top bar */
+.top-bar {
+  position: absolute;
+  top: 38px;
+  left: 80px;
+  right: 80px;
+  z-index: 10;
+}
 
-/* Small geometric cluster bottom left */
-.geo-cluster{position:absolute;bottom:80px;left:100px;z-index:1;display:flex;gap:8px;align-items:center}
-.geo-cluster .c1{width:10px;height:10px;background:#1B3B6B}
-.geo-cluster .c2{width:10px;height:10px;border:1px solid #1B3B6B}
-.geo-cluster .c3{width:10px;height:10px;border-radius:50%;background:#8B7355}
-.geo-cluster .c4{width:20px;height:1px;background:#1B3B6B}
+.top-bar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-/* Section label */
-.section-label{position:absolute;top:100px;left:880px;font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:14px;color:#8B7355;letter-spacing:3px;z-index:3}
-</style></head><body>
+.lecture-label {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: #8B7355;
+  letter-spacing: 2px;
+}
 
-<div class="corner-mark">OPEN SOURCE · INSTITUTIONAL ECONOMICS</div>
-<div class="corner-mark-right">LECTURE · VII</div>
+.slide-counter {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  color: #8B7355;
+  letter-spacing: 1px;
+}
 
-<div class="header-rule"></div>
-<div class="header-rule-thin"></div>
+/* Left column */
+.left-col {
+  position: absolute;
+  left: 80px;
+  top: 180px;
+  width: 480px;
+  z-index: 10;
+}
 
-<div class="title-block">
-  <div class="title-cn">文化制度分析的<br>框架路径</div>
-  <div class="title-sub">A Framework Path for Cultural-Institutional Analysis</div>
-</div>
+.eyebrow {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #8B7355;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
 
-<div class="section-label">AGENDA &nbsp; / &nbsp; 议 程</div>
+.main-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 56px;
+  font-weight: 700;
+  color: #1B3B6B;
+  line-height: 1.2;
+  margin-bottom: 18px;
+}
 
-<!-- Geometric decorations -->
-<div class="geo-circle-1"></div>
-<div class="geo-circle-2"></div>
+.subtitle-en {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: #8B7355;
+  letter-spacing: 1px;
+  margin-bottom: 40px;
+}
+
+.framework-label {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 32px;
+  max-width: 380px;
+}
+
+/* Accent line */
+.accent-line {
+  width: 60px;
+  height: 3px;
+  background: #1B3B6B;
+  margin-bottom: 28px;
+}
+
+/* Right column - Agenda items */
+.right-col {
+  position: absolute;
+  left: 860px;
+  top: 175px;
+  width: 620px;
+  z-index: 10;
+}
+
+.agenda-list {
+  list-style: none;
+}
+
+.agenda-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 28px;
+  position: relative;
+}
+
+.agenda-item:last-child {
+  margin-bottom: 0;
+}
+
+.item-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #8B7355;
+  min-width: 42px;
+  padding-top: 2px;
+  flex-shrink: 0;
+}
+
+.item-content {
+  flex: 1;
+}
+
+.item-text {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 21px;
+  font-weight: 600;
+  color: #1B3B6B;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+
+.item-detail {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: #555;
+  line-height: 1.5;
+}
+
+.item-dot {
+  position: absolute;
+  left: 42px;
+  bottom: -12px;
+  width: 3px;
+  height: 3px;
+  background: #8B7355;
+  border-radius: 50%;
+  opacity: 0.4;
+}
+
+/* Bottom note */
+.bottom-note {
+  position: absolute;
+  bottom: 50px;
+  left: 80px;
+  right: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
+.note-text {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #8B7355;
+  font-style: italic;
+  letter-spacing: 0.5px;
+}
+
+.deck-id {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: #8B7355;
+  opacity: 0.6;
+  letter-spacing: 1px;
+}
+
+/* Geometric accent on left */
+.geo-triangle {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 35px solid transparent;
+  border-right: 35px solid transparent;
+  border-bottom: 60px solid #1B3B6B;
+  left: 60px;
+  bottom: 100px;
+  opacity: 0.08;
+  transform: rotate(25deg);
+  z-index: 2;
+}
+
+/* Small geometric dots pattern */
+.geo-dots {
+  position: absolute;
+  right: 120px;
+  bottom: 120px;
+  display: grid;
+  grid-template-columns: repeat(4, 6px);
+  gap: 12px;
+  z-index: 3;
+  opacity: 0.15;
+}
+
+.geo-dot {
+  width: 6px;
+  height: 6px;
+  background: #1B3B6B;
+  border-radius: 50%;
+}
+</style>
+</head>
+<body>
+
+<!-- Background geometric elements -->
+<div class="geo-circle-large"></div>
+<div class="geo-circle-inner"></div>
 <div class="geo-square-1"></div>
 <div class="geo-line-1"></div>
 <div class="geo-line-2"></div>
-<div class="geo-dot"></div>
-<div class="geo-dot2"></div>
-<div class="geo-bar"></div>
-<div class="geo-bar-2"></div>
+<div class="geo-circle-small"></div>
+<div class="geo-circle-small-2"></div>
+<div class="geo-triangle"></div>
 
-<div class="right-frame"></div>
+<div class="geo-dots">
+  <div class="geo-dot"></div><div class="geo-dot"></div><div class="geo-dot"></div><div class="geo-dot"></div>
+  <div class="geo-dot"></div><div class="geo-dot"></div><div class="geo-dot"></div><div class="geo-dot"></div>
+  <div class="geo-dot"></div><div class="geo-dot"></div><div class="geo-dot"></div><div class="geo-dot"></div>
+</div>
 
-<div class="right-label">FRAMEWORK</div>
-<div class="right-label-2">制度分析之四步</div>
-
-<div class="path-title">— 思 辨 路 径 —</div>
-
-<div class="path-conn" style="top:495px;height:32px"></div>
-<div class="path-conn" style="top:553px;height:32px"></div>
-<div class="path-conn" style="top:611px;height:32px"></div>
-<div class="path-conn" style="top:669px;height:32px"></div>
-
-<div class="path-item" style="top:472px"><span class="num">1</span><span class="txt">定义概念边界</span><span class="arrow">↘</span></div>
-<div class="path-item" style="top:530px"><span class="num">2</span><span class="txt">切入他者视角</span><span class="arrow">↘</span></div>
-<div class="path-item" style="top:588px"><span class="num">3</span><span class="txt">观察日常实践</span><span class="arrow">↘</span></div>
-<div class="path-item" style="top:646px"><span class="num">4</span><span class="txt">迈向边缘反思</span><span class="arrow">↘</span></div>
-<div class="path-item" style="top:704px"><span class="num">5</span><span class="txt">回到制度生成</span></div>
-
-<!-- Agenda items -->
-<div class="agenda">
-  <div class="agenda-row">
-    <div class="agenda-num">01</div>
-    <div class="agenda-content">
-      <div class="agenda-text">何谓文化？如何识别？</div>
-      <div class="agenda-desc">概念界定：文化的可辨识特征与操作化定义</div>
-    </div>
-  </div>
-  <div class="agenda-row">
-    <div class="agenda-num">02</div>
-    <div class="agenda-content">
-      <div class="agenda-text">我们都身处文化之中</div>
-      <div class="agenda-desc">不可逃逸的处境：文化作为默认操作系统</div>
-    </div>
-  </div>
-  <div class="agenda-row">
-    <div class="agenda-num">03</div>
-    <div class="agenda-content">
-      <div class="agenda-text">人类学的视角：从他者出发的观察</div>
-      <div class="agenda-desc">方法论自觉：以"陌生化"眼光重新审视习以为常</div>
-    </div>
-  </div>
-  <div class="agenda-row">
-    <div class="agenda-num">04</div>
-    <div class="agenda-content">
-      <div class="agenda-text">饮食、谈话、沟通、仪式、记录、经济……</div>
-      <div class="agenda-desc">也就是我们的日常——文化嵌入于每一个微观实践</div>
-    </div>
-  </div>
-  <div class="agenda-row">
-    <div class="agenda-num">05</div>
-    <div class="agenda-content">
-      <div class="agenda-text">尝试跳出当下：迈向边缘</div>
-      <div class="agenda-desc">边缘视角：在边界处观察中心，从而理解结构本身</div>
-    </div>
+<!-- Top bar -->
+<div class="top-bar">
+  <div class="top-bar-inner">
+    <span class="lecture-label">第 11 期 · 文化的重要作用</span>
+    <span class="slide-counter">02 / 28</span>
   </div>
 </div>
 
-<!-- Footer decorations -->
-<div class="geo-cluster">
-  <div class="c1"></div>
-  <div class="c2"></div>
-  <div class="c3"></div>
-  <div class="c4"></div>
+<!-- Left column -->
+<div class="left-col">
+  <div class="eyebrow">AGENDA</div>
+  <h1 class="main-title">议程</h1>
+  <div class="subtitle-en">Cultural Institutional Analysis — Framework Path</div>
+  <div class="accent-line"></div>
+  <p class="framework-label">以新制度经济学的视角，<br>拆解文化的构成要素<br>与日常生活的深层联结。</p>
 </div>
 
-<div class="big-circle"></div>
-<div class="big-circle-inner"></div>
+<!-- Right column -->
+<div class="right-col">
+  <ul class="agenda-list">
+    <li class="agenda-item">
+      <span class="item-num">01</span>
+      <div class="item-content">
+        <div class="item-text">何谓文化？如何识别？</div>
+        <div class="item-detail">概念界定与辨识方法的初步讨论</div>
+      </div>
+    </li>
+    <li class="agenda-item">
+      <span class="item-num">02</span>
+      <div class="item-content">
+        <div class="item-text">我们都身处文化之中</div>
+        <div class="item-detail">文化作为不可剥离的生存语境</div>
+      </div>
+    </li>
+    <li class="agenda-item">
+      <span class="item-num">03</span>
+      <div class="item-content">
+        <div class="item-text">人类学的视角：从他者出发的观察</div>
+        <div class="item-detail">以"局外人"眼光审视文化实践的自觉性</div>
+      </div>
+    </li>
+    <li class="agenda-item">
+      <span class="item-num">04</span>
+      <div class="item-content">
+        <div class="item-text">饮食、谈话、沟通、仪式、记录、经济……</div>
+        <div class="item-detail">日常实践中的文化制度形态</div>
+      </div>
+    </li>
+    <li class="agenda-item">
+      <span class="item-num">05</span>
+      <div class="item-content">
+        <div class="item-text">也就是我们的日常</div>
+        <div class="item-detail">抽象制度与具体生活的交汇</div>
+      </div>
+    </li>
+    <li class="agenda-item">
+      <span class="item-num">06</span>
+      <div class="item-content">
+        <div class="item-text">尝试跳出当下：迈向边缘</div>
+        <div class="item-detail">突破既有框架，探索制度变迁的边界</div>
+      </div>
+    </li>
+  </ul>
+</div>
 
-<div class="footer-rule"></div>
-<div class="footer-rule-thin"></div>
-<div class="footer-left">「开源之道」 · 新制度经济学视角下的开源讲座</div>
-<div class="footer-right">PART 1 &nbsp;·&nbsp; 文化的制度分析</div>
+<!-- Bottom note -->
+<div class="bottom-note">
+  <span class="note-text">"文化不是我们做的事，而是我们以为我们在做的事。"</span>
+  <span class="deck-id">11-culture-matters · Bauhaus</span>
+</div>
 
-</body></html>
+</body>
+</html>

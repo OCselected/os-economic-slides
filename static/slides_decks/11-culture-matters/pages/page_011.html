@@ -1,200 +1,667 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: fe121cca3b1c95b2 --><head><meta charset="UTF-8"><title>最后的Hacker：Richard Stallman</title><style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1600px;height:900px;overflow:hidden;margin:0;font-family:'Noto Sans SC','PingFang SC',sans-serif}
-body{background:#F5F0E8;position:relative;color:#1B3B6B}
+<!DOCTYPE html>
+<html><!-- source_hash: 2cd086a21404662e -->
+<head>
+<meta charset="UTF-8">
+<title>Hacker 文化起源、发展与陨落</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
 
-/* subtle parchment texture */
-body::before{content:'';position:absolute;top:0;left:0;width:1600px;height:900px;background:
-  radial-gradient(ellipse at 20% 30%, rgba(139,115,85,0.04) 0%, transparent 50%),
-  radial-gradient(ellipse at 80% 70%, rgba(27,59,107,0.03) 0%, transparent 50%),
-  repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(139,115,85,0.015) 3px, rgba(139,115,85,0.015) 4px);
-  pointer-events:none;z-index:0}
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* Bauhaus top bar */
-.top-bar{position:absolute;top:0;left:0;width:1600px;height:6px;background:#1B3B6B;z-index:2}
-.top-bar-2{position:absolute;top:6px;left:0;width:1600px;height:2px;background:#8B7355;z-index:2}
+  html, body {
+    width: 1600px;
+    height: 900px;
+    overflow: hidden;
+    margin: 0;
+  }
 
-/* bottom bar */
-.bot-bar{position:absolute;bottom:0;left:0;width:1600px;height:4px;background:#1B3B6B;z-index:2}
+  body {
+    background: #F5F0E8;
+    position: relative;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #1B3B6B;
+  }
 
-/* left vertical accent */
-.left-accent{position:absolute;top:0;left:0;width:4px;height:900px;background:#1B3B6B;z-index:2}
+  /* Subtle parchment texture */
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 1600px; height: 900px;
+    background:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(139, 115, 85, 0.015) 2px,
+        rgba(139, 115, 85, 0.015) 4px
+      );
+    pointer-events: none;
+    z-index: 0;
+  }
 
-/* Title area */
-.title-block{position:absolute;top:60px;left:90px;width:620px;z-index:3}
-.section-num{font-size:14px;letter-spacing:6px;color:#8B7355;font-weight:500}
-.main-title{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:46px;font-weight:700;color:#1B3B6B;line-height:1.2;margin-top:12px;letter-spacing:2px}
-.title-underline{width:120px;height:4px;background:#1B3B6B;margin-top:18px}
-.subtitle{font-family:'Noto Serif SC',serif;font-size:20px;color:#555;margin-top:20px;line-height:1.7;font-style:italic;font-weight:400}
-.subtitle-en{font-size:13px;color:#8B7355;letter-spacing:3px;margin-top:8px}
+  /* Bauhaus geometric decorations */
+  .geo-circle-1 {
+    position: absolute;
+    width: 420px; height: 420px;
+    border: 3px solid #1B3B6B;
+    border-radius: 50%;
+    top: -100px;
+    right: -80px;
+    opacity: 0.08;
+    z-index: 0;
+  }
 
-/* Central portrait - geometric abstract of Stallman */
-.portrait-area{position:absolute;top:50px;left:720px;width:420px;height:560px;z-index:3}
-.portrait-circle{position:absolute;top:20px;left:80px;width:260px;height:260px;border-radius:50%;background:#1B3B6B}
-.portrait-square{position:absolute;top:230px;left:30px;width:360px;height:290px;background:#1B3B6B}
-/* hair - flowing shapes */
-.hair-l{position:absolute;top:0px;left:50px;width:140px;height:380px;background:#1B3B6B;border-radius:0 0 0 60px}
-.hair-r{position:absolute;top:0px;left:260px;width:140px;height:380px;background:#1B3B6B;border-radius:0 0 60px 0}
-/* face area */
-.face{position:absolute;top:60px;left:130px;width:120px;height:140px;background:#F5F0E8;border:3px solid #8B7355;border-radius:50% 50% 45% 45%/55% 55% 45% 45%}
-/* beard */
-.beard{position:absolute;top:180px;left:100px;width:180px;height:160px;background:#F5F0E8;border:3px solid #8B7355;border-radius:0 0 90px 90px/0 0 80px 80px}
-.beard-inner{position:absolute;top:220px;left:120px;width:140px;height:120px;background:#8B7355;opacity:0.15;border-radius:0 0 70px 70px/0 0 60px 60px}
-/* eyes */
-.eye-l{position:absolute;top:115px;left:155px;width:14px;height:14px;background:#1B3B6B;border-radius:50%}
-.eye-r{position:absolute;top:115px;left:200px;width:14px;height:14px;background:#1B3B6B;border-radius:50%}
-/* geometric accent circles */
-.accent-c1{position:absolute;top:0px;left:0px;width:40px;height:40px;border-radius:50%;background:#8B7355}
-.accent-c2{position:absolute;top:0px;left:380px;width:30px;height:30px;border-radius:50%;background:#1B3B6B;border:3px solid #8B7355}
-.portrait-label{position:absolute;bottom:0px;left:0px;width:420px;text-align:center;font-family:'Noto Serif SC',serif;font-size:16px;color:#1B3B6B;letter-spacing:4px}
-.portrait-label-en{font-size:11px;color:#8B7355;letter-spacing:3px;margin-top:6px}
-.portrait-quote{position:absolute;top:490px;left:20px;width:380px;font-family:'Noto Serif SC',serif;font-size:13px;color:#555;font-style:italic;line-height:1.6;text-align:center}
+  .geo-circle-2 {
+    position: absolute;
+    width: 260px; height: 260px;
+    border: 2px solid #8B7355;
+    border-radius: 50%;
+    bottom: -60px;
+    left: -40px;
+    opacity: 0.12;
+    z-index: 0;
+  }
 
-/* Right content area */
-.content-area{position:absolute;top:70px;right:70px;width:440px;z-index:3}
-.tl-title{font-family:'Noto Serif SC',serif;font-size:18px;color:#1B3B6B;letter-spacing:2px;font-weight:600;border-left:4px solid #1B3B6B;padding-left:14px}
-.tl-sub{font-size:11px;color:#8B7355;letter-spacing:3px;margin-left:18px;margin-top:4px}
+  .geo-square-1 {
+    position: absolute;
+    width: 80px; height: 80px;
+    background: #1B3B6B;
+    opacity: 0.06;
+    top: 120px;
+    right: 320px;
+    transform: rotate(45deg);
+    z-index: 0;
+  }
 
-.timeline{margin-top:24px;position:relative;padding-left:30px}
-.timeline::before{content:'';position:absolute;left:8px;top:8px;width:2px;height:470px;background:#8B7355}
+  .geo-square-2 {
+    position: absolute;
+    width: 40px; height: 40px;
+    background: #8B7355;
+    opacity: 0.08;
+    bottom: 200px;
+    right: 180px;
+    transform: rotate(30deg);
+    z-index: 0;
+  }
 
-.tl-item{position:relative;margin-bottom:18px;padding:8px 0}
-.tl-item::before{content:'';position:absolute;left:-26px;top:14px;width:12px;height:12px;background:#1B3B6B;border-radius:50%}
-.tl-item.square::before{border-radius:0}
-.tl-year{font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;letter-spacing:2px;font-weight:600}
-.tl-text{font-size:13px;color:#1B3B6B;line-height:1.55;margin-top:4px;font-weight:400}
-.tl-text strong{color:#1B3B6B;font-weight:700}
-.tl-text .dim{color:#555;font-size:12px}
+  .geo-line-1 {
+    position: absolute;
+    width: 200px; height: 2px;
+    background: #1B3B6B;
+    opacity: 0.12;
+    top: 680px;
+    left: 100px;
+    z-index: 0;
+  }
 
-/* Bottom row: key points */
-.keypoints{position:absolute;bottom:30px;left:90px;width:620px;z-index:3}
-.kp-title{font-size:11px;color:#8B7355;letter-spacing:4px;margin-bottom:8px}
-.kp-grid{display:flex;gap:14px}
-.kp-item{flex:1;padding:8px 10px;background:rgba(27,59,107,0.05);border-left:3px solid #1B3B6B}
-.kp-item .num{font-family:'Noto Serif SC',serif;font-size:18px;color:#1B3B6B;font-weight:700;line-height:1}
-.kp-item .txt{font-size:10px;color:#555;line-height:1.4;margin-top:4px;letter-spacing:0.5px}
+  .geo-line-2 {
+    position: absolute;
+    width: 2px; height: 160px;
+    background: #8B7355;
+    opacity: 0.10;
+    top: 80px;
+    left: 780px;
+    z-index: 0;
+  }
 
-/* Bauhaus decorative geometry - bottom right */
-.geo-block{position:absolute;bottom:30px;right:70px;width:440px;height:60px;z-index:3}
-.geo-block .gb-c{position:absolute;width:36px;height:36px;border-radius:50%;background:#1B3B6B;top:12px;left:0}
-.geo-block .gb-s{position:absolute;width:36px;height:36px;background:#8B7355;top:12px;left:48px}
-.geo-block .gb-l{position:absolute;width:200px;height:2px;background:#1B3B6B;top:30px;left:96px}
-.geo-block .gb-c2{position:absolute;width:20px;height:20px;border-radius:50%;border:2px solid #1B3B6B;top:20px;left:296px;background:transparent}
-.geo-block .gb-t{position:absolute;font-family:'Noto Serif SC',serif;font-size:12px;color:#555;top:12px;left:326px;letter-spacing:2px}
-.geo-block .gb-t2{position:absolute;font-size:10px;color:#8B7355;top:40px;left:326px;letter-spacing:1px}
+  .geo-circle-3 {
+    position: absolute;
+    width: 12px; height: 12px;
+    background: #1B3B6B;
+    border-radius: 50%;
+    opacity: 0.3;
+    top: 180px;
+    left: 60px;
+    z-index: 0;
+  }
 
-/* Corner mark */
-.corner-mark{position:absolute;top:30px;right:30px;width:60px;height:60px;z-index:3}
-.corner-mark::before{content:'';position:absolute;top:0;right:0;width:60px;height:2px;background:#1B3B6B}
-.corner-mark::after{content:'';position:absolute;top:0;right:0;width:2px;height:60px;background:#1B3B6B}
-.corner-text{position:absolute;top:36px;right:70px;font-size:10px;color:#8B7355;letter-spacing:3px;z-index:3}
+  .geo-circle-4 {
+    position: absolute;
+    width: 8px; height: 8px;
+    background: #8B7355;
+    border-radius: 50%;
+    opacity: 0.4;
+    bottom: 140px;
+    right: 400px;
+    z-index: 0;
+  }
 
-/* page number */
-.page-num{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);font-size:10px;color:#8B7355;letter-spacing:4px;z-index:3}
-</style></head><body>
+  .geo-ring {
+    position: absolute;
+    width: 160px; height: 160px;
+    border: 4px solid #1B3B6B;
+    border-radius: 50%;
+    opacity: 0.05;
+    bottom: 60px;
+    right: 120px;
+    z-index: 0;
+  }
 
-<div class="top-bar"></div>
-<div class="top-bar-2"></div>
-<div class="bot-bar"></div>
-<div class="left-accent"></div>
+  /* Top bar */
+  .top-bar {
+    position: absolute;
+    top: 0; left: 0;
+    width: 1600px; height: 6px;
+    background: #1B3B6B;
+    z-index: 10;
+  }
 
-<div class="corner-mark"></div>
-<div class="corner-text">N.IE / 06</div>
+  /* Header area */
+  .header {
+    position: absolute;
+    top: 50px;
+    left: 80px;
+    z-index: 5;
+    width: 800px;
+  }
 
-<!-- TITLE -->
-<div class="title-block">
-  <div class="section-num">CHAPTER · VI</div>
-  <div class="main-title">最后的 Hacker</div>
-  <div class="title-underline"></div>
-  <div class="subtitle">「若为自由故，何惜此头颅」</div>
-  <div class="subtitle-en">IF IT BE ONLY FOR FREEDOM</div>
-  <div style="margin-top:28px;font-size:12px;color:#555;line-height:1.7;letter-spacing:0.5px;width:500px">
-    黑客文化的兴起、鼎盛与衰落——从 MIT 人工智能实验室的协作精神，到软件商业化的浪潮，直至 Richard Stallman 以长发与胡须，守护最后的自由之光。
+  .lecture-tag {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    color: #8B7355;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .lecture-tag::before {
+    content: '';
+    display: inline-block;
+    width: 32px;
+    height: 2px;
+    background: #8B7355;
+    vertical-align: middle;
+    margin-right: 12px;
+  }
+
+  .main-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 48px;
+    font-weight: 900;
+    color: #1B3B6B;
+    line-height: 1.25;
+    margin-bottom: 8px;
+  }
+
+  .sub-line {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #555;
+    letter-spacing: 1px;
+    margin-top: 12px;
+    line-height: 1.6;
+  }
+
+  /* Central portrait area */
+  .portrait-area {
+    position: absolute;
+    top: 170px;
+    right: 80px;
+    width: 380px;
+    height: 540px;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .portrait-frame {
+    width: 300px;
+    height: 360px;
+    border: 3px solid #1B3B6B;
+    position: relative;
+    background: rgba(27, 59, 107, 0.04);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .portrait-frame::before {
+    content: '';
+    position: absolute;
+    top: -8px; left: -8px;
+    width: 300px; height: 300px;
+    border: 2px solid #8B7355;
+    opacity: 0.3;
+  }
+
+  /* Abstract representation of Stallman */
+  .portrait-abstract {
+    position: relative;
+    width: 200px;
+    height: 260px;
+  }
+
+  /* Head shape */
+  .head-shape {
+    position: absolute;
+    top: 10px;
+    left: 50px;
+    width: 100px;
+    height: 120px;
+    border: 2.5px solid #1B3B6B;
+    border-radius: 50px 50px 40px 40px;
+    background: rgba(27, 59, 107, 0.06);
+  }
+
+  /* Hair - long and wild */
+  .hair-left {
+    position: absolute;
+    top: 0;
+    left: 30px;
+    width: 40px;
+    height: 140px;
+    border-left: 2.5px solid #1B3B6B;
+    border-top: 2.5px solid #1B3B6B;
+    border-radius: 40px 0 0 0;
+    background: rgba(27, 59, 107, 0.05);
+  }
+
+  .hair-right {
+    position: absolute;
+    top: 0;
+    right: 30px;
+    width: 40px;
+    height: 140px;
+    border-right: 2.5px solid #1B3B6B;
+    border-top: 2.5px solid #1B3B6B;
+    border-radius: 0 40px 0 0;
+    background: rgba(27, 59, 107, 0.05);
+  }
+
+  .hair-top {
+    position: absolute;
+    top: -10px;
+    left: 40px;
+    width: 120px;
+    height: 40px;
+    border-top: 2.5px solid #1B3B6B;
+    border-radius: 60px 60px 0 0;
+    background: rgba(27, 59, 107, 0.08);
+  }
+
+  /* Beard */
+  .beard {
+    position: absolute;
+    top: 100px;
+    left: 45px;
+    width: 110px;
+    height: 90px;
+    border-bottom: 2.5px solid #1B3B6B;
+    border-left: 1.5px solid #1B3B6B;
+    border-right: 1.5px solid #1B3B6B;
+    border-radius: 0 0 55px 55px;
+    background: rgba(27, 59, 107, 0.07);
+  }
+
+  /* Eyes */
+  .eye-left {
+    position: absolute;
+    top: 60px;
+    left: 72px;
+    width: 12px;
+    height: 12px;
+    border: 2px solid #1B3B6B;
+    border-radius: 50%;
+  }
+
+  .eye-right {
+    position: absolute;
+    top: 60px;
+    left: 116px;
+    width: 12px;
+    height: 12px;
+    border: 2px solid #1B3B6B;
+    border-radius: 50%;
+  }
+
+  /* Glasses */
+  .glass-left {
+    position: absolute;
+    top: 52px;
+    left: 62px;
+    width: 30px;
+    height: 28px;
+    border: 2px solid #8B7355;
+    border-radius: 6px;
+  }
+
+  .glass-right {
+    position: absolute;
+    top: 52px;
+    left: 108px;
+    width: 30px;
+    height: 28px;
+    border: 2px solid #8B7355;
+    border-radius: 6px;
+  }
+
+  .glass-bridge {
+    position: absolute;
+    top: 62px;
+    left: 90px;
+    width: 20px;
+    height: 2px;
+    background: #8B7355;
+  }
+
+  /* Neck / shoulders */
+  .neck-shoulder {
+    position: absolute;
+    top: 185px;
+    left: 30px;
+    width: 140px;
+    height: 80px;
+    border: 2.5px solid #1B3B6B;
+    border-top: none;
+    border-radius: 0 0 20px 20px;
+    background: rgba(27, 59, 107, 0.04);
+  }
+
+  .portrait-caption {
+    margin-top: 24px;
+    text-align: center;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 16px;
+    color: #1B3B6B;
+    font-weight: 700;
+  }
+
+  .portrait-caption-sub {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13px;
+    color: #8B7355;
+    font-weight: 400;
+    margin-top: 4px;
+    letter-spacing: 1px;
+  }
+
+  /* Timeline / Content area */
+  .content-area {
+    position: absolute;
+    top: 185px;
+    left: 80px;
+    width: 640px;
+    z-index: 5;
+  }
+
+  .section-label {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    color: #8B7355;
+    margin-bottom: 24px;
+    padding-bottom: 10px;
+    border-bottom: 1.5px solid rgba(139, 115, 85, 0.3);
+    text-transform: uppercase;
+  }
+
+  .timeline-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 22px;
+    position: relative;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: rgba(27, 59, 107, 0.15);
+  }
+
+  .timeline-marker {
+    width: 14px;
+    height: 14px;
+    min-width: 14px;
+    border: 2.5px solid #1B3B6B;
+    margin-right: 18px;
+    margin-top: 3px;
+    background: #F5F0E8;
+    z-index: 2;
+    position: relative;
+    left: -6px;
+  }
+
+  .timeline-item.active .timeline-marker {
+    background: #1B3B6B;
+  }
+
+  .timeline-item.square .timeline-marker {
+    border-radius: 0;
+  }
+
+  .timeline-item.circle .timeline-marker {
+    border-radius: 50%;
+  }
+
+  .timeline-item.diamond .timeline-marker {
+    transform: rotate(45deg);
+    left: -6px;
+  }
+
+  .timeline-content {
+    flex: 1;
+  }
+
+  .timeline-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1B3B6B;
+    line-height: 1.4;
+  }
+
+  .timeline-desc {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: #555;
+    line-height: 1.6;
+    margin-top: 4px;
+  }
+
+  /* Quote section */
+  .quote-section {
+    position: absolute;
+    bottom: 60px;
+    left: 80px;
+    width: 640px;
+    z-index: 5;
+    padding: 16px 24px;
+    border-left: 4px solid #1B3B6B;
+    background: rgba(27, 59, 107, 0.03);
+  }
+
+  .quote-text {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 15px;
+    font-style: italic;
+    color: #1B3B6B;
+    line-height: 1.6;
+  }
+
+  .quote-attr {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 12px;
+    color: #8B7355;
+    margin-top: 6px;
+  }
+
+  /* Bottom bar */
+  .bottom-bar {
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 1600px; height: 4px;
+    background: #8B7355;
+    z-index: 10;
+  }
+
+  /* Page indicator */
+  .page-indicator {
+    position: absolute;
+    bottom: 24px;
+    right: 80px;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 12px;
+    color: #8B7355;
+    letter-spacing: 2px;
+    z-index: 5;
+  }
+
+  /* Free spirit tagline */
+  .spirit-tag {
+    position: absolute;
+    top: 60px;
+    right: 80px;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+    color: #8B7355;
+    letter-spacing: 3px;
+    z-index: 5;
+    text-align: right;
+    line-height: 1.8;
+  }
+
+  .spirit-tag .accent {
+    color: #1B3B6B;
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  /* Arrow flow */
+  .flow-arrow {
+    position: absolute;
+    bottom: 170px;
+    right: 310px;
+    width: 60px;
+    height: 2px;
+    background: #8B7355;
+    opacity: 0.4;
+    z-index: 4;
+  }
+
+  .flow-arrow::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -4px;
+    width: 0; height: 0;
+    border-left: 8px solid #8B7355;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    opacity: 0.6;
+  }
+</style>
+</head>
+<body>
+
+  <div class="top-bar"></div>
+  <div class="bottom-bar"></div>
+
+  <!-- Bauhaus geometric decorations -->
+  <div class="geo-circle-1"></div>
+  <div class="geo-circle-2"></div>
+  <div class="geo-square-1"></div>
+  <div class="geo-square-2"></div>
+  <div class="geo-line-1"></div>
+  <div class="geo-line-2"></div>
+  <div class="geo-circle-3"></div>
+  <div class="geo-circle-4"></div>
+  <div class="geo-ring"></div>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="lecture-tag">Lecture 11 &nbsp;·&nbsp; Culture Matters</div>
+    <h1 class="main-title">Hacker 文化起源、<br>发展与陨落</h1>
+    <p class="sub-line">从 MIT 人工智慧实验室到自由软件运动——<br>一种技术理想主义者的精神谱系</p>
   </div>
-</div>
 
-<!-- PORTRAIT -->
-<div class="portrait-area">
-  <div class="accent-c1"></div>
-  <div class="accent-c2"></div>
-  <div class="hair-l"></div>
-  <div class="hair-r"></div>
-  <div class="portrait-circle"></div>
-  <div class="portrait-square"></div>
-  <div class="face"></div>
-  <div class="eye-l"></div>
-  <div class="eye-r"></div>
-  <div class="beard"></div>
-  <div class="beard-inner"></div>
-  <div class="portrait-quote">「软件应像空气与阳光——<br>共享，而不被占有」</div>
-  <div class="portrait-label">RICHARD M. STALLMAN</div>
-  <div class="portrait-label-en">THE LAST HACKER</div>
-</div>
+  <!-- Spirit tagline -->
+  <div class="spirit-tag">
+    <span class="accent">若为自由故</span><br>
+    自由软件运动的精神源流
+  </div>
 
-<!-- TIMELINE -->
-<div class="content-area">
-  <div class="tl-title">Hacker 文化编年</div>
-  <div class="tl-sub">A CHRONOLOGY</div>
+  <!-- Central Portrait -->
+  <div class="portrait-area">
+    <div class="portrait-frame">
+      <div class="portrait-abstract">
+        <div class="hair-top"></div>
+        <div class="hair-left"></div>
+        <div class="hair-right"></div>
+        <div class="head-shape"></div>
+        <div class="glass-left"></div>
+        <div class="glass-right"></div>
+        <div class="glass-bridge"></div>
+        <div class="eye-left"></div>
+        <div class="eye-right"></div>
+        <div class="beard"></div>
+        <div class="neck-shoulder"></div>
+      </div>
+    </div>
+    <div class="portrait-caption">Richard Stallman</div>
+    <div class="portrait-caption-sub">FSF 创始人 · GNU Project 发起者</div>
+  </div>
 
-  <div class="timeline">
-    <div class="tl-item">
-      <div class="tl-year">1960s · 起源</div>
-      <div class="tl-text"><strong>MIT 人工智能实验室</strong><br><span class="dim">DEC PDP-1 上的深夜编码，黑客精神的摇篮</span></div>
+  <!-- Timeline Content -->
+  <div class="content-area">
+    <div class="section-label">Hacker 文化谱系 · Genealogy</div>
+
+    <div class="timeline-item circle active">
+      <div class="timeline-marker"></div>
+      <div class="timeline-content">
+        <div class="timeline-title">MIT 人工智慧实验室</div>
+        <div class="timeline-desc">1959 年成立，成为早期 Hacker 文化的摇篮与圣地</div>
+      </div>
     </div>
-    <div class="tl-item square">
-      <div class="tl-year">1971 · 手册</div>
-      <div class="tl-text"><strong>Hacker's Manual 出版</strong><br><span class="dim">非正式的知识共享典范，社区自治的原型</span></div>
+
+    <div class="timeline-item square active">
+      <div class="timeline-marker"></div>
+      <div class="timeline-content">
+        <div class="timeline-title">Hacker 手册 · 太空游戏</div>
+        <div class="timeline-desc">社区共享知识、协作开发太空战争（Spacewar!）</div>
+      </div>
     </div>
-    <div class="tl-item">
-      <div class="tl-year">1970s · 鼎盛</div>
-      <div class="tl-text"><strong>太空游戏与 BBS 文化</strong><br><span class="dim">《太空大战》《星际旅行》——游戏的乌托邦</span></div>
+
+    <div class="timeline-item diamond">
+      <div class="timeline-marker"></div>
+      <div class="timeline-content">
+        <div class="timeline-title">软件合同与商业化的兴起</div>
+        <div class="timeline-desc">专有许可侵蚀共享文化，Hacker 精神面临分裂</div>
+      </div>
     </div>
-    <div class="tl-item square">
-      <div class="tl-year">1980s · 陨落</div>
-      <div class="tl-text"><strong>软件合同与公司的流行</strong><br><span class="dim">闭源许可将代码变为商品，协作精神被资本收编</span></div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-year">1983 · 反抗</div>
-      <div class="tl-text"><strong>GNU 计划发起</strong><br><span class="dim">Stallman 创立自由软件基金会，GPL 许可证捍卫共享传统</span></div>
+
+    <div class="timeline-item circle active">
+      <div class="timeline-marker"></div>
+      <div class="timeline-content">
+        <div class="timeline-title">最后的 Hacker：Richard Stallman</div>
+        <div class="timeline-desc">1983 年发起 GNU Project，以自由软件守护 Hacker 理想</div>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- KEY POINTS -->
-<div class="keypoints">
-  <div class="kp-title">CORE ARGUMENTS · 核心论点</div>
-  <div class="kp-grid">
-    <div class="kp-item">
-      <div class="num">01</div>
-      <div class="txt">协作是<br>黑客伦理的<br>底层逻辑</div>
-    </div>
-    <div class="kp-item">
-      <div class="num">02</div>
-      <div class="txt">自由软件是<br>对私有产权的<br>制度反叛</div>
-    </div>
-    <div class="kp-item">
-      <div class="num">03</div>
-      <div class="txt">从共享文化<br>到商业化的<br>范式断裂</div>
-    </div>
-    <div class="kp-item">
-      <div class="num">04</div>
-      <div class="txt">Stallman：<br>最后的<br>自由守夜人</div>
-    </div>
+  <!-- Quote -->
+  <div class="quote-section">
+    <div class="quote-text">"我的梦想是：没有一个人会因为使用电脑而被迫变得不自由。"</div>
+    <div class="quote-attr">—— Richard Stallman</div>
   </div>
-</div>
 
-<!-- BOTTOM RIGHT GEOMETRY -->
-<div class="geo-block">
-  <div class="gb-c"></div>
-  <div class="gb-s"></div>
-  <div class="gb-l"></div>
-  <div class="gb-c2"></div>
-  <div class="gb-t">BAUHAUS / ACADEMIC</div>
-  <div class="gb-t2">开源之道 · 新制度经济学</div>
-</div>
+  <!-- Flow arrow -->
+  <div class="flow-arrow"></div>
 
-<div class="page-num">— 06 / 24 —</div>
+  <!-- Page indicator -->
+  <div class="page-indicator">11 · 04 / 28</div>
 
-</body></html>
+</body>
+</html>

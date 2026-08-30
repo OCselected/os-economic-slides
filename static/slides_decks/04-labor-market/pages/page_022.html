@@ -1,151 +1,658 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: fcdf0c87ba932312 --><head><meta charset="UTF-8"><title>开放共同体与优绩主义</title><style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1600px;height:900px;overflow:hidden;margin:0}
-body{background:#F5F0E8;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;color:#1B3B6B;position:relative;overflow:hidden}
-.parchment-texture{position:absolute;top:0;left:0;width:1600px;height:900px;opacity:0.03;background-image:radial-gradient(circle at 20% 30%, #1B3B6B 1px, transparent 1px),radial-gradient(circle at 70% 60%, #1B3B6B 1px, transparent 1px);background-size:3px 3px;pointer-events:none}
-.header{position:absolute;top:50px;left:80px;width:1440px;height:60px;display:flex;justify-content:space-between;align-items:center}
-.section-num{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:6px}
-.section-tag{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:3px}
-.title-block{position:absolute;top:130px;left:80px;width:820px}
-.main-title{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:56px;font-weight:700;color:#1B3B6B;line-height:1.2;letter-spacing:2px}
-.sub-title{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:20px;color:#8B7355;margin-top:20px;letter-spacing:3px;font-style:italic}
-.divider{position:absolute;top:300px;left:80px;width:200px;height:3px;background:#1B3B6B}
-.visual-container{position:absolute;top:340px;left:80px;width:480px;height:440px}
-.chess-grid{position:absolute;top:0;left:0;width:440px;height:440px;display:grid;grid-template-columns:repeat(10,44px);grid-template-rows:repeat(10,44px);border:2px solid #1B3B6B;background:#F5F0E8}
-.cell{border:1px solid #E0D8C8}
-.cell.dark{background:#1B3B6B}
-.pawn{position:absolute;width:16px;height:16px;background:#F5F0E8;border:2px solid #1B3B6B;border-radius:50%}
-.pawn.filled{background:#8B7355;border-color:#8B7355}
-.pawn.tiny{width:8px;height:8px}
-.visual-caption{position:absolute;bottom:-30px;left:0;width:440px;text-align:center;font-family:'Noto Serif SC',serif;font-size:13px;color:#555;letter-spacing:2px;font-style:italic}
-.visual-frame{position:absolute;top:-15px;left:-15px;width:14px;height:14px;border-left:3px solid #1B3B6B;border-top:3px solid #1B3B6B}
-.visual-frame.br{top:auto;left:auto;bottom:-15px;right:-15px;border-left:none;border-top:none;border-right:3px solid #1B3B6B;border-bottom:3px solid #1B3B6B}
-.visual-frame.tr{top:-15px;left:auto;right:-15px;border-left:none;border-top:3px solid #1B3B6B;border-right:3px solid #1B3B6B;border-bottom:none}
-.visual-frame.bl{top:auto;left:-15px;bottom:-15px;border-left:3px solid #1B3B6B;border-top:none;border-right:none;border-bottom:3px solid #1B3B6B}
-.bullets{position:absolute;top:180px;left:640px;width:880px}
-.bullet-item{display:flex;align-items:flex-start;margin-bottom:30px;padding-left:0}
-.bullet-num{width:50px;height:50px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:#1B3B6B;color:#F5F0E8;font-family:'Noto Serif SC',serif;font-size:16px;font-weight:700;letter-spacing:1px;margin-right:24px}
-.bullet-num.circle{border-radius:50%;background:transparent;border:2px solid #1B3B6B;color:#1B3B6B}
-.bullet-num.square{background:transparent;border:2px solid #8B7355;color:#8B7355}
-.bullet-num.half{background:#8B7355;color:#F5F0E8}
-.bullet-num.tiny-sq{width:30px;height:30px;background:#1B3B6B;color:#F5F0E8;font-size:13px}
-.bullet-num.tiny-circle{width:30px;height:30px;border-radius:50%;background:transparent;border:2px solid #8B7355;color:#8B7355;font-size:13px}
-.bullet-text{display:flex;flex-direction:column;padding-top:6px}
-.bullet-title{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:20px;font-weight:700;color:#1B3B6B;letter-spacing:1px;margin-bottom:6px}
-.bullet-desc{font-size:13px;color:#555;line-height:1.6;letter-spacing:0.5px}
-.footer{position:absolute;bottom:40px;left:80px;width:1440px;display:flex;justify-content:space-between;align-items:center}
-.footer-line{flex:1;height:1px;background:#1B3B6B;opacity:0.3;margin:0 30px}
-.footer-text{font-family:'Noto Serif SC',serif;font-size:12px;color:#8B7355;letter-spacing:3px}
-.deco-circle{position:absolute;top:70px;right:80px;width:40px;height:40px;border-radius:50%;background:#1B3B6B}
-.deco-square{position:absolute;bottom:50px;right:80px;width:24px;height:24px;background:#8B7355}
-</style></head><body>
-<div class="parchment-texture"></div>
+<!DOCTYPE html>
+<html lang="zh-CN"><!-- source_hash: 097f493755f7c1e2 -->
+<head>
+<meta charset="UTF-8">
+<title>第 04 期 · 软件开发劳动力市场 — 开放共同体</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
 
-<div class="deco-circle"></div>
-<div class="deco-square"></div>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-<div class="header">
-  <div class="section-num">— 04 —</div>
-  <div class="section-tag">OPEN COMMUNITY / MERITOCRACY</div>
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
+}
+
+body {
+  background: #F5F0E8;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: #1B3B6B;
+  position: relative;
+}
+
+/* Subtle parchment texture overlay */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1600px;
+  height: 900px;
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(139,115,85,0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 30%, rgba(27,59,107,0.02) 0%, transparent 40%),
+    radial-gradient(ellipse at 60% 80%, rgba(139,115,85,0.025) 0%, transparent 45%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.slide-container {
+  width: 1600px;
+  height: 900px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Header */
+.header {
+  position: absolute;
+  top: 48px;
+  left: 80px;
+  right: 80px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.header-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: #8B7355;
+  letter-spacing: 2px;
+}
+
+.header-title span {
+  font-weight: 700;
+  color: #1B3B6B;
+}
+
+.header-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14px;
+  color: #555;
+  letter-spacing: 1px;
+}
+
+/* Main title */
+.main-title {
+  position: absolute;
+  top: 110px;
+  left: 80px;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 44px;
+  font-weight: 900;
+  color: #1B3B6B;
+  letter-spacing: 1px;
+  line-height: 1.3;
+}
+
+.main-title-sub {
+  position: absolute;
+  top: 175px;
+  left: 80px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 18px;
+  color: #8B7355;
+  letter-spacing: 3px;
+  font-weight: 400;
+}
+
+/* Chessboard grid area */
+.grid-area {
+  position: absolute;
+  top: 240px;
+  left: 80px;
+  width: 620px;
+  height: 580px;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  gap: 2px;
+  border: 2px solid #1B3B6B;
+  background: #1B3B6B;
+  padding: 2px;
+}
+
+.grid-cell {
+  background: #F5F0E8;
+  position: relative;
+}
+
+.grid-cell.dark {
+  background: rgba(27, 59, 107, 0.12);
+}
+
+/* Pieces on the board */
+.piece-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.piece-square {
+  width: 18px;
+  height: 18px;
+  background: #8B7355;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.piece-small-circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(27, 59, 107, 0.6);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.piece-small-square {
+  width: 10px;
+  height: 10px;
+  background: rgba(139, 115, 85, 0.7);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.piece-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(27, 59, 107, 0.35);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Grid label */
+.grid-label {
+  position: absolute;
+  top: 220px;
+  left: 80px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 2px;
+  font-weight: 500;
+}
+
+/* Content area - right side */
+.content-area {
+  position: absolute;
+  top: 250px;
+  left: 780px;
+  width: 720px;
+}
+
+.content-heading {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1B3B6B;
+  margin-bottom: 32px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(27, 59, 107, 0.2);
+}
+
+.content-item {
+  margin-bottom: 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.content-item-marker {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.marker-circle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #1B3B6B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.marker-circle-fill {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #1B3B6B;
+}
+
+.marker-square {
+  width: 22px;
+  height: 22px;
+  background: #1B3B6B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.marker-square-inner {
+  width: 6px;
+  height: 6px;
+  background: #F5F0E8;
+}
+
+.marker-diamond {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #8B7355;
+  transform: rotate(45deg);
+}
+
+.content-item-text {
+  flex: 1;
+}
+
+.content-item-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #1B3B6B;
+  margin-bottom: 4px;
+  letter-spacing: 0.5px;
+}
+
+.content-item-desc {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  color: #555;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* Decorative elements */
+.deco-line-horizontal {
+  position: absolute;
+  height: 1px;
+  background: #1B3B6B;
+  opacity: 0.15;
+}
+
+.deco-line-vertical {
+  position: absolute;
+  width: 1px;
+  background: #1B3B6B;
+  opacity: 0.15;
+}
+
+.deco-circle-large {
+  position: absolute;
+  border-radius: 50%;
+  border: 1.5px solid rgba(27, 59, 107, 0.08);
+}
+
+.deco-square-outline {
+  position: absolute;
+  border: 1.5px solid rgba(139, 115, 85, 0.15);
+}
+
+/* Bottom section */
+.bottom-bar {
+  position: absolute;
+  bottom: 48px;
+  left: 80px;
+  right: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16px;
+  border-top: 1px solid rgba(27, 59, 107, 0.15);
+}
+
+.bottom-left {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 2px;
+}
+
+.bottom-right {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 11px;
+  color: #555;
+  letter-spacing: 1px;
+}
+
+/* Accent line under main title */
+.title-accent {
+  position: absolute;
+  top: 200px;
+  left: 80px;
+  width: 80px;
+  height: 3px;
+  background: #8B7355;
+}
+
+/* Metaphor caption */
+.metaphor-caption {
+  position: absolute;
+  bottom: 90px;
+  left: 80px;
+  width: 620px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  color: #8B7355;
+  font-style: italic;
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+}
+
+/* Bauhaus geometric accents */
+.bauhaus-accent-1 {
+  position: absolute;
+  top: 105px;
+  right: 80px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #1B3B6B;
+}
+
+.bauhaus-accent-2 {
+  position: absolute;
+  top: 115px;
+  right: 95px;
+  width: 30px;
+  height: 30px;
+  background: #8B7355;
+}
+
+.bauhaus-accent-3 {
+  position: absolute;
+  top: 95px;
+  right: 110px;
+  width: 16px;
+  height: 16px;
+  background: #1B3B6B;
+  transform: rotate(45deg);
+}
+
+/* Right side decorative frame */
+.right-frame-top {
+  position: absolute;
+  top: 250px;
+  right: 80px;
+  width: 3px;
+  height: 60px;
+  background: #1B3B6B;
+}
+
+/* Section divider */
+.section-divider {
+  position: absolute;
+  top: 240px;
+  left: 730px;
+  width: 1px;
+  height: 500px;
+  background: rgba(27, 59, 107, 0.12);
+}
+
+/* Small decorative dots */
+.deco-dot {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  opacity: 0.3;
+}
+</style>
+</head>
+<body>
+<div class="slide-container">
+
+  <!-- Decorative background elements -->
+  <div class="deco-line-horizontal" style="top: 48px; left: 80px; width: 1440px;"></div>
+  <div class="deco-line-horizontal" style="bottom: 84px; left: 80px; width: 1440px;"></div>
+  <div class="deco-line-vertical" style="top: 60px; bottom: 84px; right: 60px;"></div>
+  <div class="deco-circle-large" style="bottom: -80px; right: -80px; width: 300px; height: 300px;"></div>
+  <div class="deco-square-outline" style="top: 680px; right: 30px; width: 60px; height: 60px; transform: rotate(45deg);"></div>
+
+  <!-- Bauhaus accents top right -->
+  <div class="bauhaus-accent-1"></div>
+  <div class="bauhaus-accent-2"></div>
+  <div class="bauhaus-accent-3"></div>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-title">第 04 期 · <span>软件开发劳动力市场</span></div>
+    <div class="header-num">SLIDE 06 / 26</div>
+  </div>
+
+  <!-- Main title -->
+  <div class="main-title">开放共同体</div>
+  <div class="title-accent"></div>
+  <div class="main-title-sub">实力赢得资本 · Meritocracy in the Open</div>
+
+  <!-- Grid label -->
+  <div class="grid-label">SOCIAL GRID / 社会规则之棋盘</div>
+
+  <!-- Chessboard grid -->
+  <div class="grid-area">
+    <!-- Row 1 -->
+    <div class="grid-cell"></div>
+    <div class="grid-cell dark"></div>
+    <div class="grid-cell"></div>
+    <div class="grid-cell dark"></div>
+    <div class="grid-cell"></div>
+    <div class="grid-cell dark"></div>
+    <div class="grid-cell"></div>
+    <div class="grid-cell dark"></div>
+    <div class="grid-cell"></div>
+    <div class="grid-cell dark"></div>
+    <!-- Row 2 -->
+    <div class="grid-cell dark"></div>
+    <div class="grid-cell"></div>
+    <div class="grid-cell dark"></div>
+    <div class="grid-cell"><div class="piece-dot"></div></div>
+    <div class="grid-cell dark"></div>
+    <div class="grid-cell"><div class="piece-small-square"></div></div>
+    <div class="grid-cell dark"></div>
+    <div class="grid-cell"><div class="piece-dot"></div></div>
+    <div class="grid-cell dark"></div>
+    <div class="grid-cell"><div class="piece-small-circle"></div></div>
+    <!-- Row 3 -->
+    <div class="grid-cell"><div class="piece-small-circle"></div></div>
+    <div class="grid-cell dark"></div>
+    <div class="grid-cell"><div class="piece-dot"></div></div>
+    <div class="grid-cell dark"></div>
+    <div class="grid-cell"><div class="piece-small-square"></div></div>
+    <div class="grid-cell dark"></div>
+    <div class="grid-cell"></div>
+    <div class="grid-cell dark"><div class="piece-dot"></div></div>
+    <div class="grid-cell"></div>
+    <div class="grid-cell dark"></div>
+    <!-- Row 4 -->
+    <div class="grid-cell dark"></div>
+    <div class="grid-cell"><div class="piece-small-square"></div></div>
+    <div class="grid-cell dark"></div>
+    <div class="grid-cell"><div class="piece-circle"></div></div>
+    <div class="grid-cell dark"></div>
+    <div class="grid-cell"></div>
+    <div class="grid-cell dark"><div class="piece-small-circle"></div></div>
+    <div class="grid-cell"><div class="piece-dot"></div></div>
+    <div class="grid-cell dark"></div>
+    <div class="grid-cell"><div class="piece-small-square"></div></div>
+    <!-- Row 5 -->
+    <div class="grid-cell"><div class="piece-dot"></div></div>
+    <div class="grid-cell dark"><div class="piece-small-circle"></div></div>
+    <div class="grid-cell"><div class="piece-square"></div></div>
+    <div class="grid-cell dark"></div>
+    <div class="grid-cell"><div class="piece-circle"></div></div>
+    <div class="grid-cell dark"><div class="piece-small-square"></div></div>
+    <div class="grid-cell"><div class="piece-dot"></div></div>
+    <div class="grid-cell dark"></div>
+    <div class="grid-cell"><div class="piece-small-circle"></div></div>
+    <div class="grid-cell dark"></div>
+    <!-- Row 6 -->
+    <div class="grid-cell dark"><div class="piece-small-square"></div></div>
+    <div class="grid-cell"></div>
+    <div class="grid-cell dark"><div class="piece-dot"></div></div>
+    <div class="grid-cell"><div class="piece-square"></div></div>
+    <div class="grid-cell dark"><div class="piece-small-circle"></div></div>
+    <div class="grid-cell"><div class="piece-dot"></div></div>
+    <div class="grid-cell dark"><div class="piece-circle"></div></div>
+    <div class="grid-cell"></div>
+    <div class="grid-cell dark"><div class="piece-small-square"></div></div>
+    <div class="grid-cell"><div class="piece-dot"></div></div>
+    <!-- Row 7 -->
+    <div class="grid-cell"><div class="piece-small-circle"></div></div>
+    <div class="grid-cell dark"></div>
+    <div class="grid-cell"><div class="piece-dot"></div></div>
+    <div class="grid-cell dark"><div class="piece-small-square"></div></div>
+    <div class="grid-cell"><div class="piece-small-circle"></div></div>
+    <div class="grid-cell dark"></div>
+    <div class="grid-cell"><div class="piece-square"></div></div>
+    <div class="grid-cell dark"><div class="piece-dot"></div></div>
+    <div class="grid-cell"><div class="piece-small-square"></div></div>
+    <div class="grid-cell dark"></div>
+    <!-- Row 8 -->
+    <div class="grid-cell dark"></div>
+    <div class="grid-cell"><div class="piece-small-square"></div></div>
+    <div class="grid-cell dark"><div class="piece-dot"></div></div>
+    <div class="grid-cell"></div>
+    <div class="grid-cell dark"><div class="piece-small-circle"></div></div>
+    <div class="grid-cell"><div class="piece-dot"></div></div>
+    <div class="grid-cell dark"><div class="piece-small-square"></div></div>
+    <div class="grid-cell"><div class="piece-dot"></div></div>
+    <div class="grid-cell dark"><div class="piece-small-circle"></div></div>
+    <div class="grid-cell"></div>
+    <!-- Row 9 -->
+    <div class="grid-cell"><div class="piece-dot"></div></div>
+    <div class="grid-cell dark"><div class="piece-small-circle"></div></div>
+    <div class="grid-cell"><div class="piece-small-square"></div></div>
+    <div class="grid-cell dark"><div class="piece-dot"></div></div>
+    <div class="grid-cell"></div>
+    <div class="grid-cell dark"><div class="piece-small-square"></div></div>
+    <div class="grid-cell"><div class="piece-dot"></div></div>
+    <div class="grid-cell dark"><div class="piece-small-circle"></div></div>
+    <div class="grid-cell"></div>
+    <div class="grid-cell dark"><div class="piece-dot"></div></div>
+    <!-- Row 10 -->
+    <div class="grid-cell dark"><div class="piece-small-square"></div></div>
+    <div class="grid-cell"></div>
+    <div class="grid-cell dark"><div class="piece-dot"></div></div>
+    <div class="grid-cell"><div class="piece-small-circle"></div></div>
+    <div class="grid-cell dark"><div class="piece-dot"></div></div>
+    <div class="grid-cell"><div class="piece-small-square"></div></div>
+    <div class="grid-cell dark"></div>
+    <div class="grid-cell"><div class="piece-dot"></div></div>
+    <div class="grid-cell dark"><div class="piece-small-circle"></div></div>
+    <div class="grid-cell"><div class="piece-dot"></div></div>
+  </div>
+
+  <!-- Section divider -->
+  <div class="section-divider"></div>
+
+  <!-- Metaphor caption -->
+  <div class="metaphor-caption">
+    「网格如棋盘，行人似棋子——<br>
+    隐喻社会规则下个体的渺小」
+  </div>
+
+  <!-- Content area -->
+  <div class="content-area">
+    <div class="content-heading">优绩主义下的开源劳动力市场</div>
+
+    <div class="content-item">
+      <div class="content-item-marker">
+        <div class="marker-circle"><div class="marker-circle-fill"></div></div>
+      </div>
+      <div class="content-item-text">
+        <div class="content-item-title">优绩主义（Meritocracy）</div>
+        <div class="content-item-desc">贡献即货币——代码提交、评审与文档质量构成衡量能力的硬通货，能力者自然获得社区资本。</div>
+      </div>
+    </div>
+
+    <div class="content-item">
+      <div class="content-item-marker">
+        <div class="marker-square"><div class="marker-square-inner"></div></div>
+      </div>
+      <div class="content-item-text">
+        <div class="content-item-title">能力与兴趣展示</div>
+        <div class="content-item-desc">公开可见的贡献历史即是履历；兴趣驱动的自由探索，使技能积累与个人志趣自然耦合。</div>
+      </div>
+    </div>
+
+    <div class="content-item">
+      <div class="content-item-marker">
+        <div class="marker-diamond"></div>
+      </div>
+      <div class="content-item-text">
+        <div class="content-item-title">社会资本积累</div>
+        <div class="content-item-desc">跨项目的协作网络与声誉系统形成不可替代的社会资本，连接远比代码更为珍贵。</div>
+      </div>
+    </div>
+
+    <div class="content-item">
+      <div class="content-item-marker">
+        <div class="marker-circle"><div class="marker-circle-fill"></div></div>
+      </div>
+      <div class="content-item-text">
+        <div class="content-item-title">软技能与文化适应</div>
+        <div class="content-item-desc">异步沟通、文化包容与规范内化——社区文化的习得本身即是进入门槛与筛选机制。</div>
+      </div>
+    </div>
+
+    <div class="content-item">
+      <div class="content-item-marker">
+        <div class="marker-square"><div class="marker-square-inner"></div></div>
+      </div>
+      <div class="content-item-text">
+        <div class="content-item-title">自由探索与兴趣驱动</div>
+        <div class="content-item-desc">无边界的兴趣导向探索，将内在动机转化为持续贡献的长效引擎，规避传统雇佣的异化困境。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right side decorative frame -->
+  <div class="right-frame-top"></div>
+
+  <!-- Bottom bar -->
+  <div class="bottom-bar">
+    <div class="bottom-left">开源之道 · 新制度经济学视角</div>
+    <div class="bottom-right">Labor Market Structure / 劳动力市场结构</div>
+  </div>
+
+  <!-- Scattered decorative dots -->
+  <div class="deco-dot" style="top: 700px; right: 140px;"></div>
+  <div class="deco-dot" style="top: 720px; right: 160px;"></div>
+  <div class="deco-dot" style="top: 740px; right: 180px;"></div>
+  <div class="deco-dot" style="top: 660px; right: 120px;"></div>
+  <div class="deco-dot" style="top: 680px; right: 100px;"></div>
+
 </div>
-
-<div class="title-block">
-  <div class="main-title">网格如棋盘，行人似棋子</div>
-  <div class="sub-title">隐喻社会规则下个体的渺小与能动</div>
-</div>
-<div class="divider"></div>
-
-<div class="visual-container">
-  <div class="visual-frame"></div>
-  <div class="visual-frame tr"></div>
-  <div class="visual-frame br"></div>
-  <div class="visual-frame bl"></div>
-  <div class="chess-grid">
-    <div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div><div class="cell"></div>
-    <div class="cell"></div><div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div>
-    <div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div><div class="cell"></div>
-    <div class="cell"></div><div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div>
-    <div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div><div class="cell"></div>
-    <div class="cell"></div><div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div>
-    <div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div><div class="cell"></div>
-    <div class="cell"></div><div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div>
-    <div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div><div class="cell"></div>
-    <div class="cell"></div><div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div><div class="cell"></div><div class="cell dark"></div>
-  </div>
-  <div class="pawn" style="top:32px;left:20px"></div>
-  <div class="pawn" style="top:32px;left:152px"></div>
-  <div class="pawn filled" style="top:32px;left:244px"></div>
-  <div class="pawn tiny" style="top:32px;left:380px"></div>
-  <div class="pawn" style="top:152px;left:76px"></div>
-  <div class="pawn tiny" style="top:152px;left:220px"></div>
-  <div class="pawn" style="top:152px;left:312px"></div>
-  <div class="pawn filled" style="top:220px;left:110px"></div>
-  <div class="pawn" style="top:220px;left:200px"></div>
-  <div class="pawn tiny" style="top:220px;left:340px"></div>
-  <div class="pawn" style="top:296px;left:32px"></div>
-  <div class="pawn tiny" style="top:296px;left:130px"></div>
-  <div class="pawn" style="top:296px;left:268px"></div>
-  <div class="pawn filled" style="top:296px;left:352px"></div>
-  <div class="pawn tiny" style="top:364px;left:56px"></div>
-  <div class="pawn" style="top:364px;left:180px"></div>
-  <div class="pawn tiny" style="top:364px;left:280px"></div>
-  <div class="pawn" style="top:364px;left:400px"></div>
-
-  <div class="visual-caption">— 棋盘上的社会人 —</div>
-</div>
-
-<div class="bullets">
-  <div class="bullet-item">
-    <div class="bullet-num">01</div>
-    <div class="bullet-text">
-      <div class="bullet-title">开放共同体：实力赢得资本</div>
-      <div class="bullet-desc">在开源社区中，代码贡献即话语权，能力构成身份与信用的根基。</div>
-    </div>
-  </div>
-  <div class="bullet-item">
-    <div class="bullet-num circle">02</div>
-    <div class="bullet-text">
-      <div class="bullet-title">优绩主义</div>
-      <div class="bullet-desc">以成果论英雄的评价体系，消解学历与资历的壁垒，重塑人才筛选机制。</div>
-    </div>
-  </div>
-  <div class="bullet-item">
-    <div class="bullet-num square">03</div>
-    <div class="bullet-text">
-      <div class="bullet-title">能力与兴趣展示</div>
-      <div class="bullet-desc">作品集取代简历，贡献历史成为可见的能力凭证与自我表达。</div>
-    </div>
-  </div>
-  <div class="bullet-item">
-    <div class="bullet-num half">04</div>
-    <div class="bullet-text">
-      <div class="bullet-title">社会资本的积累</div>
-      <div class="bullet-desc">协作网络中的声誉沉淀为可迁移的社会资本，连接信任与机会。</div>
-    </div>
-  </div>
-  <div class="bullet-item">
-    <div class="bullet-num tiny-sq">05</div>
-    <div class="bullet-text">
-      <div class="bullet-title">软技能学习与文化适应</div>
-      <div class="bullet-desc">跨团队协作中习得沟通、协商与文化调适，成为隐性的核心竞争力。</div>
-    </div>
-  </div>
-  <div class="bullet-item">
-    <div class="bullet-num tiny-circle">06</div>
-    <div class="bullet-text">
-      <div class="bullet-title">自由探索与兴趣驱动</div>
-      <div class="bullet-desc">好奇心引领的路径选择，在开放空间中孕育创新与自我实现的偶然。</div>
-    </div>
-  </div>
-</div>
-
-<div class="footer">
-  <div class="footer-text">新制度经济学视角下的开源</div>
-  <div class="footer-line"></div>
-  <div class="footer-text">网格 · 规则 · 个体</div>
-  <div class="footer-line"></div>
-  <div class="footer-text">SLIDE 04</div>
-</div>
-</body></html>
+</body>
+</html>

@@ -1,491 +1,236 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN"><!-- source_hash: 9f5cbb54d1ee92d9 -->
+<html><!-- source_hash: 9f5cbb54d1ee92d9 -->
 <head>
 <meta charset="UTF-8">
 <title>国家的制度角色：从"政策建议"到"制度类型"</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body {
-    width: 1600px; height: 900px; overflow: hidden;
-    background: #F5F0E8;
-    font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
-    color: #1B3B6B;
-  }
-  /* parchment subtle texture */
-  body::before {
-    content: "";
-    position: absolute; left: 0; top: 0;
-    width: 1600px; height: 900px;
-    background:
-      radial-gradient(circle at 20% 15%, rgba(139,115,85,0.05) 0%, transparent 40%),
-      radial-gradient(circle at 80% 85%, rgba(27,59,107,0.04) 0%, transparent 45%),
-      repeating-linear-gradient(45deg, rgba(139,115,85,0.012) 0 2px, transparent 2px 6px);
-    pointer-events: none;
-  }
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1600px;height:900px;overflow:hidden;margin:0;background:#F5F0E8;font-family:'Noto Sans SC',sans-serif;color:#1B3B6B;position:relative}
 
-  /* Bauhaus decorative geometry */
-  .deco-circle-lg {
-    position: absolute;
-    width: 340px; height: 340px;
-    border: 1.5px solid #1B3B6B;
-    border-radius: 50%;
-    top: -120px; right: -120px;
-    opacity: 0.15;
-  }
-  .deco-square-tl {
-    position: absolute;
-    width: 80px; height: 80px;
-    background: #8B7355;
-    top: 60px; left: 60px;
-    opacity: 0.85;
-  }
-  .deco-line-h {
-    position: absolute;
-    height: 1px; background: #1B3B6B;
-    top: 118px; left: 60px; width: 1480px;
-    opacity: 0.4;
-  }
-  .deco-line-v {
-    position: absolute;
-    width: 1px; background: #1B3B6B;
-    top: 155px; left: 1120px; height: 700px;
-    opacity: 0.35;
-  }
-  .deco-dot-row {
-    position: absolute;
-    top: 90px; left: 160px;
-    display: flex; gap: 14px;
-  }
-  .deco-dot {
-    width: 8px; height: 8px; background: #1B3B6B; border-radius: 50%;
-  }
-  .deco-dot.copper { background: #8B7355; }
+/* Background geometric elements */
+.bg-ring-1{position:absolute;top:-130px;right:-90px;width:340px;height:340px;border-radius:50%;border:1.5px solid rgba(139,115,85,.06);pointer-events:none}
+.bg-ring-2{position:absolute;top:-90px;right:-50px;width:240px;height:240px;border-radius:50%;border:1px solid rgba(139,115,85,.04);pointer-events:none}
+.bg-sq{position:absolute;bottom:130px;left:-30px;width:100px;height:100px;border:1.5px solid rgba(27,59,107,.04);transform:rotate(15deg);pointer-events:none}
+.bg-diag{position:absolute;top:100px;left:520px;width:1px;height:800px;background:rgba(139,115,85,.04);transform:rotate(72deg);transform-origin:top left;pointer-events:none}
+.bg-dot{position:absolute;top:170px;left:480px;width:36px;height:36px;border-radius:50%;background:rgba(139,115,85,.04);pointer-events:none}
 
-  /* Header */
-  .header {
-    position: absolute;
-    top: 155px; left: 60px; width: 1040px;
-  }
-  .lecture-num {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 13px;
-    letter-spacing: 4px;
-    color: #8B7355;
-    margin-bottom: 14px;
-  }
-  .lecture-num span.bar {
-    display: inline-block; width: 30px; height: 1px;
-    background: #8B7355; vertical-align: middle; margin: 0 10px 3px 0;
-  }
-  .title {
-    font-family: 'Noto Serif SC', 'Songti SC', serif;
-    font-size: 38px;
-    font-weight: 700;
-    color: #1B3B6B;
-    line-height: 1.3;
-    letter-spacing: 1px;
-  }
-  .title .em { color: #8B7355; font-style: italic; }
-  .subtitle {
-    margin-top: 14px;
-    font-size: 14px;
-    color: #555;
-    line-height: 1.7;
-    letter-spacing: 0.5px;
-  }
-  .subtitle .quote {
-    color: #1B3B6B;
-    border-left: 2px solid #8B7355;
-    padding-left: 12px;
-    margin-top: 6px;
-    display: block;
-  }
+/* Header */
+.hdr{position:absolute;top:36px;left:60px;right:60px;display:flex;justify-content:space-between;align-items:center}
+.hdr-left{display:flex;align-items:center;gap:16px}
+.hdr-badge{width:42px;height:42px;background:#1B3B6B;color:#F5F0E8;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:18px;font-weight:700}
+.hdr-text{display:flex;flex-direction:column;gap:2px}
+.hdr-title{font-size:13px;color:#555;letter-spacing:1.5px}
+.hdr-sub{font-size:11px;color:#8B7355;letter-spacing:1px}
+.hdr-count{font-size:12px;color:#8B7355;letter-spacing:2px}
 
-  /* Cross-section diagram */
-  .cross-section {
-    position: absolute;
-    top: 155px;
-    left: 1145px;
-    width: 395px;
-    height: 400px;
-  }
-  .cs-label {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 11px;
-    color: #8B7355;
-    letter-spacing: 3px;
-    margin-bottom: 10px;
-    text-align: center;
-  }
-  .cs-diagram {
-    position: relative;
-    width: 395px;
-    height: 340px;
-    border: 1px solid #1B3B6B;
-    background: #F5F0E8;
-  }
-  .cs-sky {
-    position: absolute; top: 0; left: 0; width: 100%; height: 78px;
-    background:
-      linear-gradient(180deg, rgba(27,59,107,0.03) 0%, transparent 100%);
-    border-bottom: 1.5px solid #1B3B6B;
-  }
-  .cs-sky-label {
-    position: absolute; top: 10px; left: 12px;
-    font-size: 10px; letter-spacing: 2px; color: #1B3B6B;
-  }
-  .cs-sky-right {
-    position: absolute; top: 10px; right: 12px;
-    font-size: 9px; letter-spacing: 1px; color: #8B7355;
-    font-style: italic;
-  }
-  /* surface structures */
-  .cs-building {
-    position: absolute;
-    background: #1B3B6B;
-  }
-  .cs-b1 { left: 40px; top: 30px; width: 24px; height: 48px; }
-  .cs-b2 { left: 78px; top: 42px; width: 18px; height: 36px; background: #555; }
-  .cs-b3 { left: 110px; top: 22px; width: 30px; height: 56px; }
-  .cs-b4 { left: 156px; top: 50px; width: 16px; height: 28px; background: #8B7355; }
-  .cs-b5 { left: 200px; top: 34px; width: 22px; height: 44px; background: #555; }
-  .cs-b6 { left: 240px; top: 44px; width: 20px; height: 34px; background: #1B3B6B; }
-  .cs-b7 { left: 276px; top: 26px; width: 28px; height: 52px; }
-  .cs-b8 { left: 320px; top: 46px; width: 18px; height: 32px; background: #8B7355; }
-  .cs-b9 { left: 352px; top: 36px; width: 22px; height: 42px; background: #555; }
+/* Title */
+.tblock{position:absolute;top:96px;left:60px;width:1100px}
+.tmain{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:32px;font-weight:700;color:#1B3B6B;line-height:1.35}
+.tsub{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:14px;color:#8B7355;margin-top:8px;letter-spacing:1px;font-style:italic}
+.taccent{position:absolute;top:168px;left:60px;width:56px;height:3px;background:#8B7355}
 
-  /* Ground line */
-  .cs-ground-line {
-    position: absolute;
-    left: 0; width: 100%; top: 78px;
-    height: 1px; background: #1B3B6B;
-  }
-  /* Strata */
-  .cs-stratum {
-    position: absolute;
-    left: 0; width: 100%;
-    border-bottom: 1px dashed rgba(27,59,107,0.35);
-  }
-  .cs-s1 { top: 78px; height: 70px; background: rgba(139,115,85,0.10); }
-  .cs-s2 { top: 148px; height: 70px; background: rgba(139,115,85,0.18); }
-  .cs-s3 { top: 218px; height: 70px; background: rgba(139,115,85,0.28); }
-  .cs-s4 { top: 288px; height: 52px; background: rgba(27,59,107,0.14); }
+/* Main layout */
+.main{position:absolute;top:200px;left:60px;right:60px;bottom:50px;display:flex;gap:44px}
 
-  /* Roots */
-  .cs-root {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 2px;
-    background: #1B3B6B;
-  }
-  .cs-root.r1 { top: 78px; height: 120px; }
-  .cs-root.r2 { top: 78px; height: 190px; }
-  .cs-root.r3 { top: 78px; height: 260px; }
-  .cs-branch {
-    position: absolute;
-    height: 1px;
-    background: #1B3B6B;
-    opacity: 0.7;
-  }
+/* Left: Diagram */
+.diagram{flex:0 0 470px;position:relative;display:flex;flex-direction:column}
 
-  .cs-stratum-label {
-    position: absolute;
-    left: 10px;
-    font-family: 'Noto Serif SC', serif;
-    font-size: 10px;
-    color: #1B3B6B;
-    letter-spacing: 1px;
-  }
-  .cs-stratum-num {
-    position: absolute;
-    right: 10px;
-    font-family: 'Noto Serif SC', serif;
-    font-size: 10px;
-    color: #8B7355;
-    letter-spacing: 1px;
-    font-style: italic;
-  }
+/* Surface zone */
+.surface{position:relative;height:90px;border-bottom:3px solid #1B3B6B;display:flex;align-items:center;padding:0 20px}
+.surface-label{background:rgba(27,59,107,.05);border:1px solid rgba(139,115,85,.25);padding:8px 18px;font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:14px;color:#1B3B6B;letter-spacing:.5px}
+.surface-label small{display:block;font-size:10px;color:#8B7355;font-style:italic;margin-top:2px;font-family:'Noto Sans SC',sans-serif}
+.surf-d1{position:absolute;top:14px;right:130px;width:20px;height:20px;border-radius:50%;border:1.5px solid rgba(139,115,85,.3)}
+.surf-d2{position:absolute;top:42px;right:90px;width:14px;height:14px;border:1.5px solid rgba(27,59,107,.2);transform:rotate(45deg)}
+.surf-d3{position:absolute;top:24px;right:66px;width:8px;height:8px;border-radius:50%;background:rgba(139,115,85,.2)}
+.surf-d4{position:absolute;top:58px;right:160px;width:14px;height:2px;background:rgba(139,115,85,.25)}
+.surf-d5{position:absolute;top:30px;right:200px;width:10px;height:10px;border:1px solid rgba(139,115,85,.2)}
 
-  .cs-caption {
-    margin-top: 10px;
-    font-size: 10px;
-    color: #555;
-    line-height: 1.6;
-    letter-spacing: 0.5px;
-    text-align: center;
-  }
+/* Ground label */
+.glabel{position:relative;height:32px;display:flex;align-items:center;padding:0 20px;gap:10px}
+.gdot{width:8px;height:8px;background:#1B3B6B;border-radius:50%}
+.gtext{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:12px;color:#1B3B6B;letter-spacing:1px}
+.ghint{font-size:10px;color:#8B7355;font-style:italic;margin-left:auto}
 
-  /* Table section */
-  .table-wrap {
-    position: absolute;
-    top: 605px;
-    left: 60px;
-    width: 1050px;
-  }
-  .table-title {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 12px;
-    letter-spacing: 4px;
-    color: #8B7355;
-    margin-bottom: 10px;
-  }
-  .table-title::before {
-    content: "";
-    display: inline-block;
-    width: 22px; height: 1px;
-    background: #8B7355;
-    vertical-align: middle;
-    margin-right: 10px;
-    margin-bottom: 3px;
-  }
-  table {
-    width: 1050px;
-    border-collapse: collapse;
-    font-size: 13px;
-    color: #1B3B6B;
-  }
-  th {
-    text-align: left;
-    padding: 10px 14px;
-    font-family: 'Noto Serif SC', serif;
-    font-size: 12px;
-    letter-spacing: 2px;
-    color: #8B7355;
-    font-weight: 500;
-    border-bottom: 1.5px solid #1B3B6B;
-    background: rgba(139,115,85,0.06);
-  }
-  td {
-    padding: 12px 14px;
-    border-bottom: 1px solid rgba(27,59,107,0.15);
-    vertical-align: middle;
-    line-height: 1.5;
-  }
-  td.type-cell {
-    font-family: 'Noto Serif SC', serif;
-    font-weight: 700;
-    font-size: 14px;
-    color: #1B3B6B;
-    width: 130px;
-  }
-  td.type-cell .badge {
-    display: inline-block;
-    width: 10px; height: 10px;
-    margin-right: 8px;
-    vertical-align: middle;
-  }
-  .badge.inclusive { background: #1B3B6B; }
-  .badge.middle { background: #8B7355; }
-  .badge.extractive { background: #555; border: 1px solid #1B3B6B; }
-  td.country {
-    width: 140px;
-    color: #555;
-    font-size: 13px;
-  }
-  td.posture {
-    color: #1B3B6B;
-  }
-  td.case {
-    color: #555;
-    font-family: 'Noto Serif SC', serif;
-    font-size: 13px;
-    letter-spacing: 0.5px;
-  }
-  tr.inclusive-row td { background: rgba(27,59,107,0.03); }
-  tr.extractive-row td { background: rgba(139,115,85,0.05); }
+/* Strata */
+.strata{display:flex;flex-direction:column;flex:1}
+.stratum{flex:1;display:flex;align-items:center;padding:0 20px;gap:16px;border-bottom:1px solid rgba(139,115,85,.12)}
+.s1{background:rgba(27,59,107,.04)}
+.s2{background:rgba(27,59,107,.08)}
+.s3{background:rgba(27,59,107,.14)}
+.smk{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:14px;font-weight:700;color:#F5F0E8;flex-shrink:0}
+.mk1{background:#1B3B6B}
+.mk2{background:#8B7355}
+.mk3{background:#555}
+.sbody{flex:1}
+.sname{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:15px;font-weight:700;color:#1B3B6B;margin-bottom:4px}
+.sdesc{font-size:11px;color:#555;line-height:1.4}
+.sexample{font-size:10px;color:#8B7355;font-style:italic;margin-top:3px}
 
-  /* Bottom right framework */
-  .framework {
-    position: absolute;
-    bottom: 55px;
-    left: 1145px;
-    width: 395px;
-    padding: 18px 20px;
-    border-left: 3px solid #1B3B6B;
-    background: rgba(139,115,85,0.06);
-  }
-  .fw-label {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 10px;
-    letter-spacing: 3px;
-    color: #8B7355;
-    margin-bottom: 8px;
-  }
-  .fw-body {
-    font-size: 13px;
-    color: #1B3B6B;
-    line-height: 1.7;
-  }
-  .fw-body .eq {
-    display: block;
-    margin-top: 8px;
-    font-family: 'Noto Serif SC', serif;
-    font-size: 14px;
-    color: #1B3B6B;
-    padding: 8px 0;
-    border-top: 1px solid rgba(27,59,107,0.25);
-    border-bottom: 1px solid rgba(27,59,107,0.25);
-    text-align: center;
-    letter-spacing: 1px;
-  }
-  .fw-body .eq .op { color: #8B7355; margin: 0 6px; }
+/* Foundation */
+.foundation{height:125px;background:#1B3B6B;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 24px;gap:6px;position:relative}
+.ftitle{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:14px;color:#F5F0E8;font-weight:700;letter-spacing:1px}
+.fquestion{font-size:12px;color:rgba(245,240,232,.7);text-align:center;line-height:1.5}
+.faccent{position:absolute;bottom:0;left:0;right:0;height:4px;background:#8B7355}
 
-  /* Footer */
-  .footer {
-    position: absolute;
-    bottom: 22px;
-    left: 60px;
-    right: 60px;
-    display: flex;
-    justify-content: space-between;
-    font-size: 11px;
-    color: #8B7355;
-    letter-spacing: 2px;
-    font-family: 'Noto Serif SC', serif;
-  }
-  .footer::before {
-    content: "";
-    position: absolute;
-    top: -10px; left: 0; right: 0;
-    height: 1px; background: rgba(139,115,85,0.35);
-  }
-  .footer .pgnum {
-    color: #1B3B6B;
-    font-weight: 600;
-  }
+/* Right: Content */
+.content{flex:1;display:flex;flex-direction:column;gap:24px}
+.sec-title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:16px;font-weight:700;color:#1B3B6B;padding-bottom:8px;border-bottom:2px solid #1B3B6B;letter-spacing:.5px}
 
+/* Table */
+.ttable{width:100%;border-collapse:collapse;font-size:12px}
+.ttable th{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:11px;font-weight:700;color:#8B7355;text-align:left;padding:8px 12px;border-bottom:2px solid #8B7355;letter-spacing:1px}
+.ttable td{padding:11px 12px;border-bottom:1px solid rgba(139,115,85,.15);vertical-align:top;color:#555;line-height:1.5}
+.ttable td:first-child{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-weight:700;color:#1B3B6B;white-space:nowrap}
+.ttable .tc{color:#1B3B6B;font-weight:500}
+.ttable .te{color:#8B7355;font-size:11px;font-style:italic}
+
+/* Framework */
+.fw{padding:18px 22px;background:rgba(27,59,107,.03);border-left:4px solid #1B3B6B}
+.fwq{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:13px;color:#555;font-style:italic;line-height:1.6;margin-bottom:6px}
+.fwc{font-size:10px;color:#8B7355;letter-spacing:1px;margin-bottom:10px}
+.fwform{text-align:center;padding:8px 0}
+.fwform-text{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:18px;font-weight:700;color:#1B3B6B;letter-spacing:2px}
+.fweq{color:#8B7355;margin:0 14px}
+
+/* Insight */
+.insight{background:#1B3B6B;color:#F5F0E8;padding:18px 24px 18px 30px;position:relative;font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:13px;line-height:1.7;letter-spacing:.5px}
+.insight-accent{position:absolute;top:0;left:0;width:5px;height:100%;background:#8B7355}
+
+/* Footer */
+.fline{position:absolute;bottom:42px;left:60px;right:60px;height:1px;background:rgba(139,115,85,.15)}
+.footer{position:absolute;bottom:16px;left:60px;right:60px;display:flex;justify-content:space-between;font-size:10px;color:#8B7355;letter-spacing:1.5px}
 </style>
 </head>
 <body>
 
-  <!-- Bauhaus decorative geometry -->
-  <div class="deco-circle-lg"></div>
-  <div class="deco-square-tl"></div>
-  <div class="deco-line-h"></div>
-  <div class="deco-dot-row">
-    <div class="deco-dot"></div>
-    <div class="deco-dot copper"></div>
-    <div class="deco-dot"></div>
-    <div class="deco-dot"></div>
-    <div class="deco-dot copper"></div>
-  </div>
+<div class="bg-ring-1"></div>
+<div class="bg-ring-2"></div>
+<div class="bg-sq"></div>
+<div class="bg-diag"></div>
+<div class="bg-dot"></div>
 
-  <!-- Header -->
-  <div class="header">
-    <div class="lecture-num"><span class="bar"></span>LECTURE 07 · 制度类型学 · Institutional Typology</div>
-    <div class="title">
-      国家的制度角色：<br>
-      从<span class="em">「政策建议」</span>到<span class="em">「制度类型」</span>
-    </div>
-    <div class="subtitle">
-      Policy 只是国家的表层行为；深层问题是——国家本身是包容性还是汲取性制度？
-      <span class="quote">"政策回答'做什么'，制度回答'能做什么'。"</span>
+<div class="hdr">
+  <div class="hdr-left">
+    <div class="hdr-badge">07</div>
+    <div class="hdr-text">
+      <div class="hdr-title">政治经济学 · The Political Economy of Open Source</div>
+      <div class="hdr-sub">商业价值与社会价值</div>
     </div>
   </div>
+  <div class="hdr-count">08 / 26</div>
+</div>
 
-  <!-- Cross-section diagram -->
-  <div class="cross-section">
-    <div class="cs-label">图 · 制度剖面图</div>
-    <div class="cs-diagram">
-      <div class="cs-sky">
-        <div class="cs-sky-label">表 层 · SURFACE</div>
-        <div class="cs-sky-right">policies</div>
-      </div>
-      <!-- buildings -->
-      <div class="cs-building cs-b1"></div>
-      <div class="cs-building cs-b2"></div>
-      <div class="cs-building cs-b3"></div>
-      <div class="cs-building cs-b4"></div>
-      <div class="cs-building cs-b5"></div>
-      <div class="cs-building cs-b6"></div>
-      <div class="cs-building cs-b7"></div>
-      <div class="cs-building cs-b8"></div>
-      <div class="cs-building cs-b9"></div>
-      <div class="cs-ground-line"></div>
-      <!-- strata -->
-      <div class="cs-stratum cs-s1">
-        <div class="cs-stratum-label" style="top: 6px;">政策层 · Policy</div>
-        <div class="cs-stratum-num" style="top: 6px;">Ⅰ</div>
-      </div>
-      <div class="cs-stratum cs-s2">
-        <div class="cs-stratum-label" style="top: 6px;">规则层 · Rules</div>
-        <div class="cs-stratum-num" style="top: 6px;">Ⅱ</div>
-      </div>
-      <div class="cs-stratum cs-s3">
-        <div class="cs-stratum-label" style="top: 6px;">激励层 · Incentives</div>
-        <div class="cs-stratum-num" style="top: 6px;">Ⅲ</div>
-      </div>
-      <div class="cs-stratum cs-s4">
-        <div class="cs-stratum-label" style="top: 8px;">深层制度 · Deep Structures</div>
-        <div class="cs-stratum-num" style="top: 8px;">Ⅳ</div>
-      </div>
-      <!-- roots -->
-      <div class="cs-root r1" style="left: 30%;"></div>
-      <div class="cs-root r2" style="left: 50%;"></div>
-      <div class="cs-root r3" style="left: 70%;"></div>
-      <!-- branches -->
-      <div class="cs-branch" style="left: 30%; top: 140px; width: 12%;"></div>
-      <div class="cs-branch" style="left: 62%; top: 200px; width: 10%;"></div>
-      <div class="cs-branch" style="left: 50%; top: 260px; width: 20%;"></div>
-      <div class="cs-branch" style="left: 22%; top: 300px; width: 30%;"></div>
+<div class="tblock">
+  <div class="tmain">国家的制度角色：从"政策建议"到"制度类型"</div>
+  <div class="tsub">Institutional Cross-section · 制度剖面制图</div>
+</div>
+<div class="taccent"></div>
+
+<div class="main">
+  <div class="diagram">
+    <div class="surface">
+      <div class="surface-label">政策建议 (Policy)<small>表层行为 · Superficial Action</small></div>
+      <div class="surf-d1"></div>
+      <div class="surf-d2"></div>
+      <div class="surf-d3"></div>
+      <div class="surf-d4"></div>
+      <div class="surf-d5"></div>
     </div>
-    <div class="cs-caption">地表政策装饰，地下基石隐喻结构根基</div>
-  </div>
-
-  <!-- Table -->
-  <div class="table-wrap">
-    <div class="table-title">国家制度类型 · 对开源的深层态度</div>
-    <table>
-      <thead>
-        <tr>
-          <th>制度类型</th>
-          <th>典型国家</th>
-          <th>对开源的态度</th>
-          <th>典型案例</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="inclusive-row">
-          <td class="type-cell"><span class="badge inclusive"></span>包容性</td>
-          <td class="country">美 / 欧</td>
-          <td class="posture">开源是公共基础设施</td>
-          <td class="case">Linux Foundation · Eclipse</td>
-        </tr>
-        <tr>
-          <td class="type-cell"><span class="badge middle"></span>中间型</td>
-          <td class="country">日本 / 韩国</td>
-          <td class="posture">开源是产业工具</td>
-          <td class="case">Apache · Red Hat</td>
-        </tr>
-        <tr class="extractive-row">
-          <td class="type-cell"><span class="badge extractive"></span>汲取性</td>
-          <td class="country">部分发展中国家</td>
-          <td class="posture">「开源」是行政工具</td>
-          <td class="case">特许工程代码 · 局域网共享</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- Framework note -->
-  <div class="framework">
-    <div class="fw-label">判断框架 · FRAMEWORK</div>
-    <div class="fw-body">
-      阿西莫格鲁：<em>「制度决定长期经济绩效」</em>。
-      <span class="eq">
-        开源的繁荣程度<span class="op">∝</span>制度环境的包容性
-      </span>
+    <div class="glabel">
+      <div class="gdot"></div>
+      <span class="gtext">地表分界线 · Surface Boundary</span>
+      <span class="ghint">政策建议只是冰山一角</span>
+    </div>
+    <div class="strata">
+      <div class="stratum s1">
+        <div class="smk mk1">A</div>
+        <div class="sbody">
+          <div class="sname">包容性制度</div>
+          <div class="sdesc">开放、包容、鼓励创新</div>
+          <div class="sexample">美/欧 — Linux Foundation · Eclipse</div>
+        </div>
+      </div>
+      <div class="stratum s2">
+        <div class="smk mk2">B</div>
+        <div class="sbody">
+          <div class="sname">中间型制度</div>
+          <div class="sdesc">务实、工具导向、产业优先</div>
+          <div class="sexample">日/韩 — Apache · Red Hat</div>
+        </div>
+      </div>
+      <div class="stratum s3">
+        <div class="smk mk3">C</div>
+        <div class="sbody">
+          <div class="sname">汲取性制度</div>
+          <div class="sdesc">封闭、行政化、控制导向</div>
+          <div class="sexample">部分发展中国家 — 特许工程代码</div>
+        </div>
+      </div>
+    </div>
+    <div class="foundation">
+      <div class="ftitle">制度基石 · INSTITUTIONAL FOUNDATION</div>
+      <div class="fquestion">国家本身是包容性制度还是汲取性制度？</div>
+      <div class="faccent"></div>
     </div>
   </div>
 
-  <!-- Footer -->
-  <div class="footer">
-    <span>开源之道 · 第 07 期 · 商业价值与社会价值</span>
-    <span class="pgnum">07 / 26</span>
+  <div class="content">
+    <div>
+      <div class="sec-title">制度类型对照表</div>
+      <table class="ttable">
+        <thead>
+          <tr>
+            <th>制度类型</th>
+            <th>典型国家</th>
+            <th>对开源的态度</th>
+            <th>典型案例</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>包容性</td>
+            <td class="tc">美 / 欧</td>
+            <td>开源是公共基础设施</td>
+            <td class="te">Linux Foundation<br>Eclipse</td>
+          </tr>
+          <tr>
+            <td>中间型</td>
+            <td class="tc">日本 / 韩国</td>
+            <td>开源是产业工具</td>
+            <td class="te">Apache<br>Red Hat</td>
+          </tr>
+          <tr>
+            <td>汲取性</td>
+            <td class="tc">部分发展中国家</td>
+            <td>"开源"是行政工具</td>
+            <td class="te">特许工程代码<br>局域网共享</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="fw">
+      <div class="fwq">"制度决定长期经济绩效"</div>
+      <div class="fwc">— Daron Acemoglu &amp; James A. Robinson</div>
+      <div class="fwform">
+        <div class="fwform-text">开源繁荣程度<span class="fweq">=</span>制度环境包容性</div>
+      </div>
+    </div>
+
+    <div class="insight">
+      <div class="insight-accent"></div>
+      政策建议只是冰山一角。真正决定开源生态繁荣与否的，是<span style="color:#F5F0E8;font-weight:700">国家制度本身的深层结构</span>——它是包容性的，还是汲取性的。
+    </div>
   </div>
+</div>
+
+<div class="fline"></div>
+<div class="footer">
+  <div>「开源之道」· 第 07 期 · 商业价值与社会价值：开源的政治经济学</div>
+  <div>Bauhaus Geometric Composition · Dark Academic</div>
+</div>
 
 </body>
 </html>

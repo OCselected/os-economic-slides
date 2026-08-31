@@ -1,251 +1,349 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: 6c388c01b3a5e50b --><head><meta charset="UTF-8"><title>第 08 期 · 经济学的思维方式</title><style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1600px;height:900px;overflow:hidden;margin:0;font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-serif}
-body{background:#F5F0E8;position:relative;color:#1B3B6B}
+<!DOCTYPE html>
+<html lang="zh-CN"><!-- source_hash: 9bf049be639bb5e2 -->
+<head>
+<meta charset="UTF-8">
+<title>前情提要 · 第08期</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  width: 1600px; height: 900px; overflow: hidden; margin: 0;
+  background: #F5F0E8;
+  font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
+  color: #1B3B6B;
+}
+body {
+  position: relative;
+  background: #F5F0E8;
+}
 
-/* parchment texture overlay */
-body::before{content:'';position:absolute;top:0;left:0;width:1600px;height:900px;background:
-  radial-gradient(ellipse at 20% 10%, rgba(139,115,85,0.06) 0%, transparent 40%),
-  radial-gradient(ellipse at 80% 90%, rgba(139,115,85,0.05) 0%, transparent 40%),
-  radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0.02) 0%, transparent 70%);
-pointer-events:none;z-index:0}
+/* subtle parchment texture */
+body::before {
+  content: '';
+  position: absolute; top: 0; left: 0; width: 1600px; height: 900px;
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(139,115,85,0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(27,59,107,0.02) 0%, transparent 50%);
+  pointer-events: none;
+}
 
-/* deep blue sky panel */
-.sky-panel{position:absolute;top:60px;left:60px;width:760px;height:640px;background:#1B3B6B;overflow:hidden}
+/* Bauhaus decorative elements */
+.deco-circle-1 {
+  position: absolute; width: 180px; height: 180px;
+  border: 3px solid #1B3B6B; border-radius: 50%;
+  top: -60px; right: -60px;
+  opacity: 0.12;
+}
+.deco-circle-2 {
+  position: absolute; width: 80px; height: 80px;
+  background: #8B7355; border-radius: 50%;
+  top: 60px; right: 140px;
+  opacity: 0.15;
+}
+.deco-square-1 {
+  position: absolute; width: 60px; height: 60px;
+  background: #1B3B6B;
+  bottom: 80px; left: 60px;
+  opacity: 0.08;
+  transform: rotate(45deg);
+}
+.deco-square-2 {
+  position: absolute; width: 30px; height: 30px;
+  background: #8B7355;
+  top: 380px; left: 40px;
+  opacity: 0.2;
+}
+.deco-line-h {
+  position: absolute; width: 200px; height: 2px;
+  background: #1B3B6B;
+  top: 160px; left: 100px;
+  opacity: 0.2;
+}
+.deco-line-v {
+  position: absolute; width: 2px; height: 200px;
+  background: #8B7355;
+  top: 600px; left: 1400px;
+  opacity: 0.15;
+}
+.deco-triangle {
+  position: absolute; bottom: 40px; right: 80px;
+  width: 0; height: 0;
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+  border-bottom: 60px solid #1B3B6B;
+  opacity: 0.06;
+}
+.deco-dots {
+  position: absolute; bottom: 120px; right: 200px;
+  display: flex; gap: 12px;
+}
+.deco-dots span {
+  display: block; width: 8px; height: 8px;
+  background: #1B3B6B; border-radius: 50%;
+  opacity: 0.15;
+}
 
-/* theodolite geometric composition */
-.theodolite-tripod-1{position:absolute;bottom:0;left:120px;width:2px;height:380px;background:#C9A96E}
-.theodolite-tripod-2{position:absolute;bottom:0;left:200px;width:2px;height:380px;background:#C9A96E}
-.theodolite-tripod-3{position:absolute;bottom:0;left:280px;width:2px;height:380px;background:#C9A96E}
-.theodolite-base{position:absolute;bottom:375px;left:100px;width:200px;height:6px;background:#C9A96E}
+/* Header */
+.header {
+  position: absolute; top: 50px; left: 120px; right: 120px;
+}
+.lecture-tag {
+  font-size: 14px; letter-spacing: 4px; color: #8B7355;
+  text-transform: uppercase; margin-bottom: 10px;
+}
+.main-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 42px; color: #1B3B6B; font-weight: 700;
+  line-height: 1.3;
+}
+.subline {
+  font-size: 16px; color: #555; margin-top: 8px;
+  letter-spacing: 1px;
+}
+.title-rule {
+  width: 80px; height: 3px; background: #1B3B6B;
+  margin-top: 16px;
+}
 
-.theodolite-body{position:absolute;bottom:390px;left:145px;width:110px;height:90px;background:#8B7355}
-.theodolite-circle-outer{position:absolute;bottom:470px;left:170px;width:60px;height:60px;border:3px solid #C9A96E;border-radius:50%;background:transparent}
-.theodolite-circle-inner{position:absolute;bottom:488px;left:188px;width:24px;height:24px;background:#C9A96E;border-radius:50%}
-.theodolite-reticle-h{position:absolute;bottom:507px;left:160px;width:80px;height:1px;background:#C9A96E}
-.theodolite-reticle-v{position:absolute;bottom:482px;left:200px;width:1px;height:40px;background:#C9A96E}
+/* Timeline / roadmap */
+.timeline {
+  position: absolute; top: 240px; left: 120px; width: 920px;
+}
+.timeline-row {
+  display: flex; align-items: flex-start;
+  padding: 11px 0;
+  border-bottom: 1px solid rgba(27,59,107,0.08);
+}
+.timeline-row:last-child { border-bottom: none; }
+.tl-num {
+  flex-shrink: 0; width: 72px;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 13px; color: #8B7355; font-weight: 600;
+  letter-spacing: 1px;
+  padding-top: 2px;
+}
+.tl-dot-col {
+  flex-shrink: 0; width: 28px;
+  display: flex; justify-content: center;
+  padding-top: 4px;
+}
+.tl-dot {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: #8B7355; opacity: 0.5;
+}
+.tl-dot.active {
+  background: #1B3B6B; opacity: 1;
+  box-shadow: 0 0 0 5px rgba(27,59,107,0.15);
+  width: 11px; height: 11px;
+}
+.tl-title {
+  font-size: 17px; color: #333; font-weight: 400;
+  line-height: 1.5;
+}
+.tl-title.dim { color: #888; }
+.tl-title.current {
+  color: #1B3B6B; font-weight: 600; font-size: 19px;
+}
+.current-badge {
+  display: inline-block;
+  font-size: 11px; color: #F5F0E8;
+  background: #1B3B6B; padding: 2px 8px;
+  margin-left: 10px; border-radius: 2px;
+  vertical-align: middle; letter-spacing: 1px;
+  font-weight: 600;
+}
 
-/* projection cone */
-.projection-line-1{position:absolute;top:80px;left:230px;width:520px;height:1px;background:rgba(201,169,110,0.5)}
-.projection-line-2{position:absolute;top:120px;left:230px;width:540px;height:1px;background:rgba(201,169,110,0.3)}
-.projection-line-3{position:absolute;top:200px;left:230px;width:500px;height:1px;background:rgba(201,169,110,0.2)}
-.projection-line-4{position:absolute;top:280px;left:230px;width:480px;height:1px;background:rgba(201,169,110,0.15)}
-.projection-line-5{position:absolute;top:360px;left:230px;width:460px;height:1px;background:rgba(201,169,110,0.1)}
+/* Right side panel */
+.side-panel {
+  position: absolute; top: 240px; right: 120px; width: 340px;
+}
+.scroll-label {
+  font-size: 12px; letter-spacing: 3px; color: #8B7355;
+  margin-bottom: 14px;
+}
+.scroll-art {
+  position: relative; width: 340px; height: 220px;
+  background: #1B3B6B;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 4px 4px 0 rgba(139,115,85,0.2);
+}
+.scroll-art .scroll-roll-top,
+.scroll-art .scroll-roll-bot {
+  position: absolute; left: 0; width: 100%; height: 28px;
+  background: #2A4E7E;
+}
+.scroll-art .scroll-roll-top { top: 0; border-bottom: 2px solid #1B3B6B; }
+.scroll-art .scroll-roll-bot { bottom: 0; border-top: 2px solid #1B3B6B; }
+.scroll-art .scroll-lines {
+  position: absolute; top: 36px; left: 30px; right: 30px; bottom: 36px;
+  display: flex; flex-direction: column; justify-content: space-around;
+}
+.scroll-art .scroll-line {
+  height: 1px; background: rgba(245,240,232,0.2);
+}
+.scroll-art .scroll-line.short { width: 60%; }
+.scroll-art .scroll-marker {
+  position: absolute; width: 10px; height: 10px;
+  background: #C4A882; border-radius: 50%;
+  box-shadow: 0 0 0 3px rgba(196,168,130,0.25);
+}
+.scroll-art .scroll-marker.m1 { top: 50px; left: 40px; }
+.scroll-art .scroll-marker.m2 { top: 50px; left: 90px; }
+.scroll-art .scroll-marker.m3 { top: 82px; left: 40px; }
+.scroll-art .scroll-marker.m4 { top: 82px; left: 90px; }
+.scroll-art .scroll-marker.m5 { top: 82px; left: 140px; }
+.scroll-art .scroll-marker.m6 { top: 114px; left: 40px; }
+.scroll-art .scroll-marker.m7 { top: 114px; left: 90px; }
+.scroll-art .scroll-marker.m8 { top: 146px; left: 40px; }
+.scroll-art .scroll-marker.m9 { top: 146px; left: 90px; }
+.scroll-art .scroll-marker.final {
+  background: #F5F0E8; width: 12px; height: 12px;
+  box-shadow: 0 0 0 4px rgba(245,240,232,0.3), 0 0 12px rgba(245,240,232,0.4);
+}
+.scroll-caption {
+  font-size: 13px; color: #8B7355; margin-top: 12px;
+  text-align: center; letter-spacing: 1px;
+  font-style: italic;
+}
+.panel-note {
+  margin-top: 28px;
+  font-size: 12px; color: #8B7355; line-height: 1.8;
+  letter-spacing: 0.5px;
+  border-left: 2px solid rgba(139,115,85,0.3);
+  padding-left: 12px;
+}
+.panel-note .note-em { color: #1B3B6B; font-weight: 600; }
 
-/* stratigraphic layers on the right side of sky panel */
-.strata-1{position:absolute;top:50px;left:450px;width:340px;height:42px;background:#8B7355;opacity:0.85}
-.strata-2{position:absolute;top:96px;left:450px;width:340px;height:38px;background:#C9A96E;opacity:0.7}
-.strata-3{position:absolute;top:139px;left:450px;width:340px;height:52px;background:#5C4A32;opacity:0.9}
-.strata-4{position:absolute;top:197px;left:450px;width:340px;height:44px;background:#8B7355;opacity:0.6}
-.strata-5{position:absolute;top:247px;left:450px;width:340px;height:60px;background:#3D2E1C;opacity:0.85}
-.strata-6{position:absolute;top:313px;left:450px;width:340px;height:50px;background:#8B7355;opacity:0.75}
+/* Footer */
+.footer {
+  position: absolute; bottom: 40px; left: 120px; right: 120px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-left {
+  font-size: 12px; color: #8B7355; letter-spacing: 2px;
+}
+.footer-right {
+  font-size: 12px; color: #8B7355; letter-spacing: 2px;
+}
+.footer-line {
+  width: 40px; height: 1px; background: #8B7355;
+  opacity: 0.3; margin: 0 16px;
+}
+</style>
+</head>
+<body>
 
-.strata-label-1{position:absolute;top:63px;left:800px;font-family:'Noto Serif SC',serif;font-size:13px;color:#C9A96E;letter-spacing:2px}
-.strata-label-2{position:absolute;top:113px;left:800px;font-family:'Noto Serif SC',serif;font-size:13px;color:#C9A96E;letter-spacing:2px}
-.strata-label-3{position:absolute;top:160px;left:800px;font-family:'Noto Serif SC',serif;font-size:13px;color:#C9A96E;letter-spacing:2px}
-.strata-label-4{position:absolute;top:218px;left:800px;font-family:'Noto Serif SC',serif;font-size:13px;color:#C9A96E;letter-spacing:2px}
-.strata-label-5{position:absolute;top:280px;left:800px;font-family:'Noto Serif SC',serif;font-size:13px;color:#C9A96E;letter-spacing:2px}
-.strata-label-6{position:absolute;top:340px;left:800px;font-family:'Noto Serif SC',serif;font-size:13px;color:#C9A96E;letter-spacing:2px}
-
-.strata-line-1{position:absolute;top:70px;left:790px;width:10px;height:1px;background:#C9A96E}
-.strata-line-2{position:absolute;top:118px;left:790px;width:10px;height:1px;background:#C9A96E}
-.strata-line-3{position:absolute;top:166px;left:790px;width:10px;height:1px;background:#C9A96E}
-.strata-line-4{position:absolute;top:224px;left:790px;width:10px;height:1px;background:#C9A96E}
-.strata-line-5{position:absolute;top:286px;left:790px;width:10px;height:1px;background:#C9A96E}
-.strata-line-6{position:absolute;top:346px;left:790px;width:10px;height:1px;background:#C9A96E}
-
-/* geometric accents in sky */
-.geo-circle-blue{position:absolute;top:420px;left:80px;width:160px;height:160px;border:2px solid rgba(201,169,110,0.4);border-radius:50%}
-.geo-square-blue{position:absolute;top:430px;left:470px;width:80px;height:80px;background:#C9A96E;opacity:0.6}
-.geo-triangle{position:absolute;top:460px;left:260px;width:0;height:0;border-left:50px solid transparent;border-right:50px solid transparent;border-bottom:80px solid #8B7355;opacity:0.7}
-.geo-line-vert{position:absolute;top:60px;left:430px;width:1px;height:460px;background:rgba(201,169,110,0.3)}
-
-/* Bauhaus composition in bottom-left of sky panel */
-.geo-bar-1{position:absolute;top:500px;left:80px;width:80px;height:30px;background:#C9A96E}
-.geo-bar-2{position:absolute;top:535px;left:80px;width:40px;height:20px;background:#8B7355}
-.geo-circle-2{position:absolute;top:485px;left:200px;width:50px;height:50px;background:#C9A96E;border-radius:50%}
-
-/* instrument label */
-.instrument-label{position:absolute;bottom:20px;left:100px;font-family:'Noto Serif SC',serif;font-size:11px;color:rgba(201,169,110,0.6);letter-spacing:3px}
-
-/* right panel - content */
-.content-area{position:absolute;top:60px;left:880px;width:660px;height:780px}
-
-.slide-meta{position:absolute;top:0;left:0;display:flex;align-items:center;gap:16px}
-.meta-num{font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:3px}
-.meta-line{width:60px;height:1px;background:#8B7355}
-.meta-tag{font-family:'Noto Sans SC',sans-serif;font-size:12px;color:#555;letter-spacing:2px}
-
-.main-title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:48px;font-weight:700;color:#1B3B6B;line-height:1.3;margin-top:50px;letter-spacing:2px}
-
-.title-accent{display:flex;align-items:center;gap:16px;margin-top:30px}
-.accent-bar{width:80px;height:6px;background:#1B3B6B}
-.accent-square{width:14px;height:14px;background:#8B7355}
-.accent-circle{width:14px;height:14px;border:2px solid #1B3B6B;border-radius:50%}
-
-.subtitle-text{font-family:'Noto Serif SC',serif;font-size:18px;color:#555;margin-top:20px;letter-spacing:1px;font-style:italic}
-
-.divider{margin-top:36px;display:flex;align-items:center;gap:0}
-.div-line{flex:1;height:1px;background:#1B3B6B;opacity:0.3}
-.div-square{width:8px;height:8px;background:#1B3B6B;margin:0 8px}
-
-.bullets{margin-top:32px;display:flex;flex-direction:column;gap:22px}
-.bullet{display:flex;align-items:flex-start;gap:18px}
-.bullet-marker{flex-shrink:0;width:28px;height:28px;position:relative;margin-top:4px}
-.bullet-marker-circle{position:absolute;top:0;left:0;width:28px;height:28px;border:2px solid #1B3B6B;border-radius:50%;display:flex;align-items:center;justify-content:center}
-.bullet-marker-circle span{font-family:'Noto Serif SC',serif;font-size:13px;color:#1B3B6B;font-weight:700}
-.bullet-marker-fill{position:absolute;top:0;left:0;width:28px;height:28px;background:#1B3B6B;border-radius:50%;display:flex;align-items:center;justify-content:center}
-.bullet-marker-fill span{font-family:'Noto Serif SC',serif;font-size:13px;color:#F5F0E8;font-weight:700}
-.bullet-marker-square{position:absolute;top:0;left:0;width:28px;height:28px;border:2px solid #1B3B6B;display:flex;align-items:center;justify-content:center}
-.bullet-marker-square span{font-family:'Noto Serif SC',serif;font-size:13px;color:#1B3B6B;font-weight:700}
-
-.bullet-text{flex:1}
-.bullet-text-main{font-family:'Noto Serif SC',serif;font-size:20px;color:#1B3B6B;font-weight:600;letter-spacing:1px;line-height:1.4}
-.bullet-text-sub{font-family:'Noto Sans SC',sans-serif;font-size:13px;color:#555;margin-top:6px;line-height:1.6;letter-spacing:0.5px}
-
-/* footer bar */
-.footer{position:absolute;bottom:0;left:0;width:1600px;height:60px;background:#1B3B6B;display:flex;align-items:center;padding:0 60px;gap:24px;z-index:2}
-.footer-line{flex:1;height:1px;background:rgba(201,169,110,0.3)}
-.footer-text{font-family:'Noto Serif SC',serif;font-size:12px;color:rgba(201,169,110,0.7);letter-spacing:3px}
-.footer-dot{width:6px;height:6px;background:#C9A96E;border-radius:50%}
-.footer-page{font-family:'Noto Serif SC',serif;font-size:12px;color:#C9A96E;letter-spacing:2px}
-
-/* decorative top border */
-.top-border{position:absolute;top:0;left:0;width:1600px;height:6px;background:#1B3B6B;z-index:2}
-</style></head><body>
-
-<div class="top-border"></div>
-
-<div class="sky-panel">
-  <!-- projection rays -->
-  <div class="projection-line-1"></div>
-  <div class="projection-line-2"></div>
-  <div class="projection-line-3"></div>
-  <div class="projection-line-4"></div>
-  <div class="projection-line-5"></div>
-
-  <div class="geo-line-vert"></div>
-
-  <!-- theodolite -->
-  <div class="theodolite-tripod-1"></div>
-  <div class="theodolite-tripod-2"></div>
-  <div class="theodolite-tripod-3"></div>
-  <div class="theodolite-base"></div>
-  <div class="theodolite-body"></div>
-  <div class="theodolite-circle-outer"></div>
-  <div class="theodolite-circle-inner"></div>
-  <div class="theodolite-reticle-h"></div>
-  <div class="theodolite-reticle-v"></div>
-
-  <!-- stratigraphic layers -->
-  <div class="strata-1"></div>
-  <div class="strata-2"></div>
-  <div class="strata-3"></div>
-  <div class="strata-4"></div>
-  <div class="strata-5"></div>
-  <div class="strata-6"></div>
-
-  <div class="strata-line-1"></div>
-  <div class="strata-label-1">制度 · INSTITUTIONS</div>
-  <div class="strata-line-2"></div>
-  <div class="strata-label-2">法律 · LAW</div>
-  <div class="strata-line-3"></div>
-  <div class="strata-label-3">风俗 · CUSTOMS</div>
-  <div class="strata-line-4"></div>
-  <div class="strata-label-4">规章 · RULES</div>
-  <div class="strata-line-5"></div>
-  <div class="strata-label-5">文化 · CULTURE</div>
-  <div class="strata-line-6"></div>
-  <div class="strata-label-6">观念 · CONCEPTS</div>
-
-  <!-- geometric accents -->
-  <div class="geo-circle-blue"></div>
-  <div class="geo-square-blue"></div>
-  <div class="geo-triangle"></div>
-
-  <div class="geo-bar-1"></div>
-  <div class="geo-bar-2"></div>
-  <div class="geo-circle-2"></div>
-
-  <div class="instrument-label">THEODOLITE · 经纬仪</div>
+<!-- Bauhaus decorations -->
+<div class="deco-circle-1"></div>
+<div class="deco-circle-2"></div>
+<div class="deco-square-1"></div>
+<div class="deco-square-2"></div>
+<div class="deco-line-h"></div>
+<div class="deco-line-v"></div>
+<div class="deco-triangle"></div>
+<div class="deco-dots">
+  <span></span><span></span><span></span>
 </div>
 
-<div class="content-area">
-  <div class="slide-meta">
-    <span class="meta-num">N°08</span>
-    <span class="meta-line"></span>
-    <span class="meta-tag">信息规则与网络经济</span>
+<!-- Header -->
+<div class="header">
+  <div class="lecture-tag">LECTURE 08 · 前情提要</div>
+  <div class="main-title">学术路线足迹</div>
+  <div class="subline">从开源基础理论到政治经济学——九个阶段的思辨之旅</div>
+  <div class="title-rule"></div>
+</div>
+
+<!-- Timeline -->
+<div class="timeline">
+  <div class="timeline-row">
+    <div class="tl-num">第 0 期</div>
+    <div class="tl-dot-col"><div class="tl-dot"></div></div>
+    <div class="tl-title dim">开源与经济学</div>
   </div>
-
-  <h1 class="main-title">经济学的<br>思维方式</h1>
-
-  <div class="title-accent">
-    <div class="accent-bar"></div>
-    <div class="accent-square"></div>
-    <div class="accent-circle"></div>
+  <div class="timeline-row">
+    <div class="tl-num">第 1 期</div>
+    <div class="tl-dot-col"><div class="tl-dot"></div></div>
+    <div class="tl-title dim">软件的生产、分销和消费</div>
   </div>
-
-  <p class="subtitle-text">解释现代世界——理解稀缺、行为与制度</p>
-
-  <div class="divider">
-    <div class="div-line"></div>
-    <div class="div-square"></div>
-    <div class="div-line"></div>
+  <div class="timeline-row">
+    <div class="tl-num">第 2 期</div>
+    <div class="tl-dot-col"><div class="tl-dot"></div></div>
+    <div class="tl-title dim">数字时代的知识财产法演变与开源许可</div>
   </div>
-
-  <div class="bullets">
-    <div class="bullet">
-      <div class="bullet-marker">
-        <div class="bullet-marker-fill"><span>01</span></div>
-      </div>
-      <div class="bullet-text">
-        <div class="bullet-text-main">人生活在一个稀缺无处不在的世界</div>
-        <div class="bullet-text-sub">资源有限而欲望无限，稀缺是经济分析的永恒起点</div>
-      </div>
-    </div>
-
-    <div class="bullet">
-      <div class="bullet-marker">
-        <div class="bullet-marker-square"><span>02</span></div>
-      </div>
-      <div class="bullet-text">
-        <div class="bullet-text-main">行为人：有限理性、进化心理</div>
-        <div class="bullet-text-sub">人是具有演化形成的认知偏好的有限理性决策者，而非完美计算机</div>
-      </div>
-    </div>
-
-    <div class="bullet">
-      <div class="bullet-marker">
-        <div class="bullet-marker-circle"><span>03</span></div>
-      </div>
-      <div class="bullet-text">
-        <div class="bullet-text-main">制度：法律、风俗、规章、行为指南</div>
-        <div class="bullet-text-sub">制度是博弈的重复规则集，降低交易成本，塑造激励结构</div>
-      </div>
-    </div>
-
-    <div class="bullet">
-      <div class="bullet-marker">
-        <div class="bullet-marker-square"><span>04</span></div>
-      </div>
-      <div class="bullet-text">
-        <div class="bullet-text-main">观念与文化，技术与网络的累积</div>
-        <div class="bullet-text-sub">知识积累与社会网络构成数字时代经济增长的深层制度基础</div>
-      </div>
-    </div>
+  <div class="timeline-row">
+    <div class="tl-num">第 3 期</div>
+    <div class="tl-dot-col"><div class="tl-dot"></div></div>
+    <div class="tl-title dim">商业模式：规则下的具体操作</div>
+  </div>
+  <div class="timeline-row">
+    <div class="tl-num">第 4 期</div>
+    <div class="tl-dot-col"><div class="tl-dot"></div></div>
+    <div class="tl-title dim">软件开发劳动力市场</div>
+  </div>
+  <div class="timeline-row">
+    <div class="tl-num">第 5 期</div>
+    <div class="tl-dot-col"><div class="tl-dot"></div></div>
+    <div class="tl-title dim">交易成本与路径依赖</div>
+  </div>
+  <div class="timeline-row">
+    <div class="tl-num">第 6 期</div>
+    <div class="tl-dot-col"><div class="tl-dot"></div></div>
+    <div class="tl-title dim">组织结构与治理</div>
+  </div>
+  <div class="timeline-row">
+    <div class="tl-num">第 7 期</div>
+    <div class="tl-dot-col"><div class="tl-dot"></div></div>
+    <div class="tl-title dim">文化的重要作用</div>
+  </div>
+  <div class="timeline-row">
+    <div class="tl-num">第 8 期</div>
+    <div class="tl-dot-col"><div class="tl-dot active"></div></div>
+    <div class="tl-title current">商业价值与社会价值：开源的政治经济学<span class="current-badge">本期</span></div>
   </div>
 </div>
 
+<!-- Right side: scroll artwork -->
+<div class="side-panel">
+  <div class="scroll-label">学术路线 · 足迹图谱</div>
+  <div class="scroll-art">
+    <div class="scroll-roll-top"></div>
+    <div class="scroll-roll-bot"></div>
+    <div class="scroll-lines">
+      <div class="scroll-line"></div>
+      <div class="scroll-line short"></div>
+      <div class="scroll-line"></div>
+      <div class="scroll-line short"></div>
+      <div class="scroll-line"></div>
+    </div>
+    <div class="scroll-marker m1"></div>
+    <div class="scroll-marker m2"></div>
+    <div class="scroll-marker m3"></div>
+    <div class="scroll-marker m4"></div>
+    <div class="scroll-marker m5"></div>
+    <div class="scroll-marker m6"></div>
+    <div class="scroll-marker m7"></div>
+    <div class="scroll-marker final m8"></div>
+    <div class="scroll-marker final m9"></div>
+  </div>
+  <div class="scroll-caption">从卷帙到政治经济学</div>
+  <div class="panel-note">
+    <span class="note-em">九个阶段</span>，自开源本质出发，<br>
+    经由制度、法律、经济、组织、<br>
+    文化与治理诸维，<br>
+    终至<span class="note-em">价值与权力</span>的核心命题。
+  </div>
+</div>
+
+<!-- Footer -->
 <div class="footer">
-  <span class="footer-text">OPEN SOURCE ECONOMICS</span>
-  <span class="footer-dot"></span>
-  <div class="footer-line"></div>
-  <span class="footer-text">新制度经济学 · NEW INSTITUTIONAL ECONOMICS</span>
-  <span class="footer-dot"></span>
-  <div class="footer-line"></div>
-  <span class="footer-page">08 / 30</span>
+  <div class="footer-left">开源之道 · 新制度经济学视角</div>
+  <div style="display:flex; align-items:center;">
+    <div class="footer-line"></div>
+    <div class="footer-right">SLIDE 08 / 30</div>
+  </div>
 </div>
 
-</body></html>
+</body>
+</html>

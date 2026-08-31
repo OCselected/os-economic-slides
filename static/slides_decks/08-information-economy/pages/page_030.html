@@ -1,121 +1,357 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: dc4fbb959e72ff8b --><head><meta charset="UTF-8"><title>第9期·信息规则与网络经济 · 推荐阅读</title><style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1600px;height:900px;overflow:hidden;margin:0}
-body{font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-serif;background:#1B3B6B;color:#F5F0E8;position:relative;overflow:hidden}
-.bg-texture{position:absolute;top:0;left:0;width:1600px;height:900px;opacity:0.08;pointer-events:none}
-.network-line{position:absolute;background:#F5F0E8;opacity:0.15}
-.network-node{position:absolute;border-radius:50%;background:transparent;border:1.5px solid #F5F0E8;opacity:0.35}
-.network-node-fill{position:absolute;border-radius:50%;background:#F5F0E8;opacity:0.5}
-.geo-circle{position:absolute;border-radius:50%;border:2px solid #F5F0E8;opacity:0.25}
-.geo-square{position:absolute;border:1.5px solid #F5F0E8;opacity:0.2}
-.geo-line-v{position:absolute;width:1px;background:#F5F0E8;opacity:0.1}
-.geo-line-h{position:absolute;height:1px;background:#F5F0E8;opacity:0.1}
+<!DOCTYPE html>
+<html><!-- source_hash: e577b03cd77d50de -->
+<head>
+<meta charset="UTF-8">
+<title>第9期·信息规则与网络经济 · 推荐阅读</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1600px;
+    height: 900px;
+    overflow: hidden;
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  }
+  body {
+    background: #1B3B6B;
+    color: #F5F0E8;
+    position: relative;
+  }
 
-.header-bar{position:absolute;top:60px;left:80px;width:60px;height:4px;background:#F5F0E8}
-.series-num{position:absolute;top:58px;left:160px;font-size:18px;letter-spacing:6px;opacity:0.7;font-weight:300}
-.main-title{position:absolute;top:100px;left:80px;font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:52px;font-weight:700;letter-spacing:2px;line-height:1.3}
-.subtitle{position:absolute;top:200px;left:80px;font-size:22px;letter-spacing:10px;opacity:0.8;font-weight:300}
+  /* Subtle parchment-like grain via layered gradients */
+  .grain {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 10%, rgba(245,240,232,0.06), transparent 55%),
+      radial-gradient(ellipse at 85% 90%, rgba(139,115,85,0.10), transparent 60%),
+      linear-gradient(180deg, rgba(0,0,0,0.15), transparent 30%, transparent 70%, rgba(0,0,0,0.25));
+    pointer-events: none;
+  }
 
-.divider{position:absolute;top:280px;left:80px;width:1440px;height:1px;background:#F5F0E8;opacity:0.3}
-.divider-thick{position:absolute;top:278px;left:80px;width:120px;height:5px;background:#F5F0E8}
+  /* Top header strip */
+  .header {
+    position: absolute;
+    top: 60px;
+    left: 80px;
+    right: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .lecture-tag {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 22px;
+    letter-spacing: 6px;
+    color: #C9B896;
+  }
+  .lecture-num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 22px;
+    color: #C9B896;
+    letter-spacing: 3px;
+  }
+  .lecture-num .num {
+    font-size: 44px;
+    color: #E8DFC8;
+    margin-right: 8px;
+    vertical-align: -6px;
+  }
 
-.book-section{position:absolute;top:320px;left:80px;width:700px}
-.book-tag{font-size:14px;letter-spacing:4px;opacity:0.6;margin-bottom:14px;font-weight:300}
-.book-title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:30px;font-weight:700;line-height:1.4;margin-bottom:12px}
-.book-meta{font-size:15px;line-height:1.9;opacity:0.75;letter-spacing:1px;font-weight:300}
-.book-meta .authors{opacity:1;font-weight:400;font-size:16px}
+  /* Title area */
+  .title-block {
+    position: absolute;
+    top: 150px;
+    left: 80px;
+    max-width: 900px;
+  }
+  .kicker {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px;
+    letter-spacing: 12px;
+    color: #8B7355;
+    margin-bottom: 22px;
+  }
+  .kicker .dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #8B7355;
+    margin: 0 14px 3px 0;
+    vertical-align: middle;
+  }
+  .main-title {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 84px;
+    font-weight: 600;
+    color: #F5F0E8;
+    line-height: 1.15;
+    letter-spacing: 4px;
+  }
+  .main-title .accent {
+    color: #E8DFC8;
+    border-bottom: 4px solid #C9B896;
+    padding-bottom: 6px;
+  }
+  .subtitle-en {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 22px;
+    color: #8B7355;
+    margin-top: 28px;
+    letter-spacing: 4px;
+    font-style: italic;
+  }
 
-.book-2{position:absolute;top:320px;left:820px;width:700px}
+  /* Geometric decoration right side - network & flow */
+  .geo {
+    position: absolute;
+    right: 80px;
+    top: 130px;
+    width: 460px;
+    height: 300px;
+  }
+  .geo .circle-lg {
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    border: 2px solid #8B7355;
+    right: 40px;
+    top: 20px;
+  }
+  .geo .circle-lg-fill {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: #C9B896;
+    right: 45px;
+    top: 105px;
+  }
+  .geo .square {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background: #E8DFC8;
+    right: 210px;
+    top: 40px;
+  }
+  .geo .square-outline {
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    border: 2px solid #E8DFC8;
+    right: 180px;
+    top: 195px;
+  }
+  .geo .triangle {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 35px solid transparent;
+    border-right: 35px solid transparent;
+    border-bottom: 60px solid #8B7355;
+    right: 295px;
+    top: 145px;
+  }
+  /* network lines */
+  .geo svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+  .geo .flow-dot {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #E8DFC8;
+  }
 
-.bottom-rule{position:absolute;bottom:70px;left:80px;width:1440px;height:1px;background:#F5F0E8;opacity:0.25}
-.footer-text{position:absolute;bottom:38px;left:80px;font-size:12px;letter-spacing:4px;opacity:0.5;font-weight:300}
-.footer-right{position:absolute;bottom:38px;right:80px;font-size:12px;letter-spacing:4px;opacity:0.5;font-weight:300}
+  /* Reading list */
+  .reading-section {
+    position: absolute;
+    bottom: 90px;
+    left: 80px;
+    right: 80px;
+    display: flex;
+    gap: 40px;
+  }
+  .book {
+    flex: 1;
+    background: rgba(245,240,232,0.05);
+    border-left: 4px solid #C9B896;
+    padding: 26px 30px;
+    position: relative;
+    min-height: 220px;
+  }
+  .book .badge {
+    position: absolute;
+    top: -18px;
+    left: 26px;
+    background: #1B3B6B;
+    padding: 4px 12px;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+    letter-spacing: 4px;
+    color: #C9B896;
+    border: 1px solid #8B7355;
+  }
+  .book .num-label {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 15px;
+    color: #8B7355;
+    letter-spacing: 3px;
+    margin-top: 4px;
+    margin-bottom: 10px;
+  }
+  .book .book-title {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: #F5F0E8;
+    line-height: 1.35;
+    margin-bottom: 14px;
+    letter-spacing: 1px;
+  }
+  .book .book-subtitle {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 15px;
+    color: #C9B896;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+    font-style: italic;
+    line-height: 1.5;
+  }
+  .book .meta {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 15px;
+    color: #E8DFC8;
+    line-height: 1.9;
+  }
+  .book .meta .row {
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+  }
+  .book .meta .label {
+    color: #8B7355;
+    font-size: 12px;
+    letter-spacing: 2px;
+    min-width: 44px;
+  }
+  .book .meta .value {
+    flex: 1;
+  }
 
-.book-index{position:absolute;font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:14px;letter-spacing:3px;opacity:0.6}
-.book-2 .book-index{left:0;top:-8px}
-.book-section .book-index{left:0;top:-8px}
-</style></head><body>
+  /* Footer bar */
+  .footer {
+    position: absolute;
+    bottom: 24px;
+    left: 80px;
+    right: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: #8B7355;
+    letter-spacing: 3px;
+  }
+  .footer .line {
+    flex: 1;
+    height: 1px;
+    background: #8B7355;
+    margin: 0 20px;
+    opacity: 0.5;
+  }
 
-<!-- Network / Platform texture lines -->
-<div class="network-line" style="top:120px;left:1050px;width:500px;height:1px"></div>
-<div class="network-line" style="top:180px;left:1200px;width:350px;height:1px"></div>
-<div class="network-line" style="top:240px;left:1300px;width:250px;height:1px"></div>
-<div class="network-line" style="top:700px;left:600px;width:400px;height:1px"></div>
-<div class="network-line" style="top:750px;left:900px;width:350px;height:1px"></div>
-<div class="network-line" style="top:800px;left:1100px;width:200px;height:1px"></div>
-<div class="network-line" style="top:500px;left:60px;width:1px;height:120px"></div>
-<div class="network-line" style="top:140px;left:60px;width:1px;height:100px"></div>
-<div class="network-line" style="top:150px;left:1540px;width:1px;height:160px"></div>
-<div class="network-line" style="top:650px;left:1540px;width:1px;height:120px"></div>
+  /* Small geometric accents */
+  .corner-mark {
+    position: absolute;
+    top: 80px;
+    right: 80px;
+    width: 30px;
+    height: 30px;
+    border-top: 2px solid #C9B896;
+    border-right: 2px solid #C9B896;
+    display: none; /* hidden to avoid clutter with lecture tag */
+  }
+</style>
+</head>
+<body>
+  <div class="grain"></div>
 
-<!-- Cross-platform connection lines (multilateral) -->
-<div class="network-line" style="top:620px;left:1050px;width:340px;height:1px;transform:rotate(0deg)"></div>
-<div class="network-line" style="top:660px;left:900px;width:260px;height:1px"></div>
-<div class="network-line" style="top:710px;left:750px;width:300px;height:1px"></div>
-
-<!-- Nodes -->
-<div class="network-node" style="top:116px;left:1046px;width:9px;height:9px"></div>
-<div class="network-node" style="top:176px;left:1196px;width:9px;height:9px"></div>
-<div class="network-node-fill" style="top:236px;left:1296px;width:6px;height:6px"></div>
-<div class="network-node" style="top:696px;left:596px;width:9px;height:9px"></div>
-<div class="network-node-fill" style="top:746px;left:896px;width:6px;height:6px"></div>
-<div class="network-node" style="top:796px;left:1096px;width:7px;height:7px"></div>
-<div class="network-node-fill" style="top:616px;left:1386px;width:6px;height:6px"></div>
-<div class="network-node" style="top:656px;left:1156px;width:7px;height:7px"></div>
-<div class="network-node" style="top:706px;left:1046px;width:8px;height:8px"></div>
-<div class="network-node-fill" style="top:56px;left:64px;width:6px;height:6px"></div>
-<div class="network-node" style="top:136px;left:56px;width:9px;height:9px"></div>
-<div class="network-node" style="top:240px;left:1536px;width:8px;height:8px"></div>
-<div class="network-node-fill" style="top:766px;left:1536px;width:6px;height:6px"></div>
-
-<!-- Bauhaus geometric decoration -->
-<div class="geo-circle" style="top:80px;right:80px;width:80px;height:80px"></div>
-<div class="geo-circle" style="top:90px;right:90px;width:60px;height:60px"></div>
-<div class="geo-square" style="bottom:120px;right:100px;width:50px;height:50px"></div>
-<div class="geo-square" style="bottom:130px;right:110px;width:30px;height:30px"></div>
-<div class="geo-circle" style="bottom:80px;left:100px;width:40px;height:40px;opacity:0.15"></div>
-<div class="geo-circle" style="bottom:88px;left:108px;width:24px;height:24px"></div>
-
-<div class="geo-line-v" style="top:310px;left:1540px;height:80px"></div>
-<div class="geo-line-h" style="top:760px;left:1350px;width:100px"></div>
-
-<div class="header-bar"></div>
-<div class="series-num">SERIES · 09</div>
-
-<div class="main-title">第9期 · 信息规则与网络经济</div>
-<div class="subtitle">推 荐 阅 读</div>
-
-<div class="divider-thick"></div>
-<div class="divider"></div>
-
-<div class="book-section">
-  <div class="book-index">— BOOK 01 —</div>
-  <div class="book-tag">网络经济学 · 平台策略</div>
-  <div class="book-title">《信息规则：<br>网络经济的策略指导》</div>
-  <div class="book-meta">
-    <div class="authors">Carl Shapiro &nbsp;/&nbsp; Hal R. Varian</div>
-    <div style="margin-top:6px">作者：卡伦·肖普  /  哈尔·瓦里安</div>
-    <div style="margin-top:4px">中国人民大学出版社 &nbsp;·&nbsp; 2017.10</div>
-    <div style="margin-top:4px">网络经济学奠基之作，阐述数字商品<br>的网络效应、互补品策略与多边定价逻辑</div>
+  <!-- Header -->
+  <div class="header">
+    <div class="lecture-tag">第 09 期 · 信息规则与网络经济</div>
+    <div class="lecture-num"><span class="num">09</span>READING LIST</div>
   </div>
-</div>
 
-<div class="book-2">
-  <div class="book-index">— BOOK 02 —</div>
-  <div class="book-tag">平台战略 · 生态系统治理</div>
-  <div class="book-title">《平台领导：<br>平台化组织的战略与治理》</div>
-  <div class="book-meta">
-    <div class="authors">Annabelle Gawer</div>
-    <div style="margin-top:6px">作者：安娜贝尔·加韦</div>
-    <div style="margin-top:4px">广东经济出版社 &nbsp;·&nbsp; 2007.04</div>
-    <div style="margin-top:4px">剖析平台化企业如何通过架构控制与<br>生态治理，在信息商品的多边市场中主导规则</div>
+  <!-- Title -->
+  <div class="title-block">
+    <div class="kicker"><span class="dot"></span>FURTHER READING · 推荐阅读</div>
+    <div class="main-title">延伸阅读</div>
+    <div class="subtitle-en">Information Rules &amp; Platform Economics</div>
   </div>
-</div>
 
-<div class="bottom-rule"></div>
-<div class="footer-text">OPEN SOURCE · NEW INSTITUTIONAL ECONOMICS</div>
-<div class="footer-right">第 09 / 期 &nbsp; — &nbsp; 推荐阅读</div>
+  <!-- Geometric decoration: network & monetary flow -->
+  <div class="geo">
+    <svg viewBox="0 0 460 300" preserveAspectRatio="none">
+      <line x1="0" y1="60" x2="150" y2="140" stroke="#8B7355" stroke-width="1" stroke-dasharray="4 6"/>
+      <line x1="150" y1="140" x2="330" y2="80" stroke="#C9B896" stroke-width="1"/>
+      <line x1="330" y1="80" x2="420" y2="180" stroke="#8B7355" stroke-width="1" stroke-dasharray="2 4"/>
+      <line x1="200" y1="220" x2="340" y2="200" stroke="#C9B896" stroke-width="1"/>
+      <line x1="80" y1="260" x2="200" y2="220" stroke="#8B7355" stroke-width="1" stroke-dasharray="4 6"/>
+      <line x1="150" y1="140" x2="200" y2="220" stroke="#8B7355" stroke-width="1"/>
+    </svg>
+    <div class="circle-lg"></div>
+    <div class="circle-lg-fill"></div>
+    <div class="square"></div>
+    <div class="square-outline"></div>
+    <div class="triangle"></div>
+    <div class="flow-dot" style="left:60px; top:55px;"></div>
+    <div class="flow-dot" style="left:145px; top:135px; background:#8B7355;"></div>
+    <div class="flow-dot" style="left:325px; top:75px; width:14px; height:14px;"></div>
+    <div class="flow-dot" style="left:415px; top:175px; background:#8B7355;"></div>
+    <div class="flow-dot" style="left:195px; top:215px;"></div>
+    <div class="flow-dot" style="left:75px; top:255px; background:#8B7355;"></div>
+  </div>
 
-</body></html>
+  <!-- Reading list -->
+  <div class="reading-section">
+    <div class="book">
+      <div class="badge">No. 01</div>
+      <div class="num-label">— 信息经济学经典 —</div>
+      <div class="book-title">信息规则</div>
+      <div class="book-subtitle">网络经济的策略指导<br>The Strategy of Information Economies</div>
+      <div class="meta">
+        <div class="row"><span class="label">作者</span><span class="value">Carl Shapiro / Hal Varian</span></div>
+        <div class="row"><span class="label">出版</span><span class="value">中国人民大学出版社</span></div>
+        <div class="row"><span class="label">时间</span><span class="value">2017.10</span></div>
+      </div>
+    </div>
+
+    <div class="book">
+      <div class="badge">No. 02</div>
+      <div class="num-label">— 平台经济学读本 —</div>
+      <div class="book-title">平台领导</div>
+      <div class="book-subtitle">主导行业未来的商业新思维<br>Leading Platforms</div>
+      <div class="meta">
+        <div class="row"><span class="label">作者</span><span class="value">Annabelle Gawer</span></div>
+        <div class="row"><span class="label">出版</span><span class="value">广东经济出版社</span></div>
+        <div class="row"><span class="label">时间</span><span class="value">2007.04</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>BAUHAUS · 开源经济学讲座</span>
+    <span class="line"></span>
+    <span>SLIDE 09 / 30</span>
+  </div>
+</body>
+</html>

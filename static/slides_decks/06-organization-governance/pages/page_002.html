@@ -1,400 +1,362 @@
 
 
 <!DOCTYPE html>
-<html><!-- source_hash: 04d8fba45a201b4a -->
+<html lang="zh-CN"><!-- source_hash: dd8039ee691d546f -->
 <head>
 <meta charset="UTF-8">
-<title>第 06 期 · 组织结构与治理</title>
+<title>第 06 期 · 前情提要 — 组织结构与治理</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body {
-    width: 1600px;
-    height: 900px;
-    overflow: hidden;
-    margin: 0;
-    background: #F5F0E8;
-    font-family: 'Noto Sans SC', sans-serif;
-    position: relative;
-  }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1600px; height: 900px; overflow: hidden; margin: 0; }
+body { background: #F5F0E8; position: relative; font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif; }
 
-  /* Parchment texture overlay */
-  body::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 1600px;
-    height: 900px;
-    background:
-      radial-gradient(ellipse at 20% 30%, rgba(139,115,85,0.03) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 70%, rgba(27,59,107,0.02) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: 0;
-  }
+/* Subtle parchment texture */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: 
+    repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(139,115,85,0.015) 3px, rgba(139,115,85,0.015) 4px),
+    repeating-linear-gradient(90deg, transparent, transparent 5px, rgba(139,115,85,0.01) 5px, rgba(139,115,85,0.01) 6px);
+  pointer-events: none;
+  z-index: 0;
+}
 
-  .slide {
-    width: 1600px;
-    height: 900px;
-    position: relative;
-    display: flex;
-    z-index: 1;
-  }
+/* Left geometric panel */
+.geo-panel {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 520px;
+  height: 900px;
+  background: #1B3B6B;
+  overflow: hidden;
+  z-index: 1;
+}
 
-  /* Left geometric panel */
-  .geo-panel {
-    width: 420px;
-    height: 900px;
-    background: #1B3B6B;
-    position: relative;
-    overflow: hidden;
-    flex-shrink: 0;
-  }
+/* Geometric elements inside left panel */
+.geo-circle-lg {
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  border: 2px solid rgba(245,240,232,0.12);
+  top: 120px;
+  left: -80px;
+}
+.geo-circle-md {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: rgba(245,240,232,0.04);
+  top: 480px;
+  left: 100px;
+}
+.geo-circle-sm {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #8B7355;
+  opacity: 0.6;
+  top: 680px;
+  left: 280px;
+}
+.geo-square-1 {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: rgba(245,240,232,0.06);
+  top: 60px;
+  right: 40px;
+}
+.geo-square-2 {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: #8B7355;
+  opacity: 0.5;
+  top: 220px;
+  right: 100px;
+}
+.geo-square-3 {
+  position: absolute;
+  width: 30px;
+  height: 180px;
+  background: rgba(245,240,232,0.1);
+  top: 420px;
+  left: 60px;
+}
+.geo-line-h {
+  position: absolute;
+  height: 1px;
+  background: rgba(245,240,232,0.15);
+  top: 360px;
+  left: 0;
+  width: 520px;
+}
+.geo-line-v {
+  position: absolute;
+  width: 1px;
+  background: rgba(245,240,232,0.1);
+  top: 0;
+  right: 80px;
+  height: 900px;
+}
+.geo-triangle {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+  border-bottom: 70px solid rgba(245,240,232,0.08);
+  top: 780px;
+  right: 200px;
+}
 
-  /* Geometric decorations on left panel */
-  .geo-circle-large {
-    position: absolute;
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
-    border: 2px solid rgba(245,240,232,0.12);
-    top: -120px;
-    left: -80px;
-  }
+/* Lecture number on panel */
+.lecture-num-panel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  text-align: center;
+}
+.lecture-num-panel .number {
+  font-size: 200px;
+  font-weight: 700;
+  color: rgba(245,240,232,0.9);
+  line-height: 1;
+  letter-spacing: -8px;
+}
+.lecture-num-panel .label {
+  font-size: 16px;
+  color: rgba(245,240,232,0.5);
+  letter-spacing: 8px;
+  margin-top: 12px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
 
-  .geo-circle-med {
-    position: absolute;
-    width: 280px;
-    height: 280px;
-    border-radius: 50%;
-    background: rgba(139,115,85,0.25);
-    bottom: 80px;
-    right: -60px;
-  }
+/* Right content area */
+.content-area {
+  position: absolute;
+  left: 580px;
+  top: 0;
+  width: 980px;
+  height: 900px;
+  padding: 80px 80px 60px 80px;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
 
-  .geo-square-large {
-    position: absolute;
-    width: 320px;
-    height: 320px;
-    border: 2px solid rgba(245,240,232,0.08);
-    top: 180px;
-    left: 50px;
-    transform: rotate(15deg);
-  }
+/* Header */
+.content-header {
+  margin-bottom: 50px;
+}
+.content-header .eyebrow {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  color: #8B7355;
+  letter-spacing: 6px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+.content-header h1 {
+  font-size: 42px;
+  color: #1B3B6B;
+  font-weight: 700;
+  letter-spacing: 2px;
+  line-height: 1.3;
+}
+.content-header .accent-line {
+  width: 60px;
+  height: 3px;
+  background: #8B7355;
+  margin-top: 24px;
+}
 
-  .geo-square-small {
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    background: rgba(139,115,85,0.6);
-    top: 140px;
-    right: 60px;
-  }
+/* Lecture list */
+.lecture-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.lecture-item {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(139,115,85,0.15);
+}
+.lecture-item:last-child {
+  border-bottom: none;
+}
+.lecture-item .idx {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1B3B6B;
+  color: rgba(245,240,232,0.9);
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Noto Sans SC', sans-serif;
+  flex-shrink: 0;
+}
+.lecture-item .title {
+  font-size: 18px;
+  color: #1B3B6B;
+  font-weight: 500;
+  line-height: 1.4;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+}
+.lecture-item .title .sub {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 14px;
+  color: #555;
+  font-weight: 400;
+  display: block;
+  margin-top: 2px;
+}
 
-  .geo-line-h1 {
-    position: absolute;
-    width: 200px;
-    height: 2px;
-    background: rgba(245,240,232,0.15);
-    top: 350px;
-    left: 80px;
-  }
+/* Bottom decoration */
+.bottom-deco {
+  position: absolute;
+  bottom: 40px;
+  right: 80px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.bottom-deco .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #8B7355;
+  opacity: 0.5;
+}
+.bottom-deco .line {
+  width: 80px;
+  height: 1px;
+  background: rgba(139,115,85,0.3);
+}
+.bottom-deco .text {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  color: #8B7355;
+  letter-spacing: 2px;
+}
 
-  .geo-line-h2 {
-    position: absolute;
-    width: 160px;
-    height: 2px;
-    background: rgba(139,115,85,0.4);
-    top: 420px;
-    left: 140px;
-  }
-
-  .geo-line-v {
-    position: absolute;
-    width: 2px;
-    height: 180px;
-    background: rgba(245,240,232,0.1);
-    top: 50px;
-    right: 100px;
-  }
-
-  .geo-dot {
-    position: absolute;
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: rgba(139,115,85,0.7);
-    top: 280px;
-    left: 200px;
-  }
-
-  .geo-dot2 {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: rgba(245,240,232,0.3);
-    top: 560px;
-    left: 120px;
-  }
-
-  .geo-dot3 {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: rgba(139,115,85,0.5);
-    top: 650px;
-    right: 180px;
-  }
-
-  .geo-quarter-circle {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    border: 2px solid rgba(139,115,85,0.3);
-    bottom: -150px;
-    left: -150px;
-    background: transparent;
-  }
-
-  .geo-triangle {
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-left: 40px solid transparent;
-    border-right: 40px solid transparent;
-    border-bottom: 69px solid rgba(245,240,232,0.06);
-    top: 60px;
-    right: 160px;
-    transform: rotate(-20deg);
-  }
-
-  /* Number badge on left panel */
-  .lecture-num-badge {
-    position: absolute;
-    bottom: 80px;
-    left: 60px;
-    color: #F5F0E8;
-  }
-
-  .lecture-num-badge .num-label {
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-    font-size: 14px;
-    letter-spacing: 6px;
-    opacity: 0.5;
-    margin-bottom: 6px;
-  }
-
-  .lecture-num-badge .num {
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-    font-size: 96px;
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: -4px;
-  }
-
-  .lecture-num-badge .num-sub {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 12px;
-    letter-spacing: 3px;
-    opacity: 0.4;
-    margin-top: 10px;
-  }
-
-  /* Right content area */
-  .content-area {
-    width: 1180px;
-    height: 900px;
-    padding: 90px 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-  }
-
-  /* Decorative elements on right side */
-  .deco-line-top {
-    position: absolute;
-    top: 70px;
-    left: 100px;
-    width: 120px;
-    height: 2px;
-    background: #1B3B6B;
-  }
-
-  .deco-line-top-dot {
-    position: absolute;
-    top: 66px;
-    left: 230px;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: #8B7355;
-  }
-
-  .deco-square-bottom {
-    position: absolute;
-    bottom: 60px;
-    right: 100px;
-    width: 40px;
-    height: 40px;
-    border: 2px solid rgba(27,59,107,0.15);
-  }
-
-  .deco-circle-right {
-    position: absolute;
-    top: 50%;
-    right: 30px;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    border: 1px solid rgba(139,115,85,0.3);
-  }
-
-  .deco-line-bottom {
-    position: absolute;
-    bottom: 75px;
-    left: 100px;
-    width: 80px;
-    height: 1px;
-    background: rgba(139,115,85,0.4);
-  }
-
-  /* Main text content */
-  .kicker {
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-    font-size: 16px;
-    letter-spacing: 8px;
-    color: #8B7355;
-    margin-bottom: 30px;
-  }
-
-  .main-title {
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-    font-size: 72px;
-    font-weight: 700;
-    color: #1B3B6B;
-    line-height: 1.25;
-    margin-bottom: 12px;
-    letter-spacing: 2px;
-  }
-
-  .main-title .accent {
-    color: #8B7355;
-    font-weight: 400;
-  }
-
-  .subtitle-line {
-    width: 60px;
-    height: 3px;
-    background: #1B3B6B;
-    margin: 36px 0 36px 0;
-  }
-
-  .series-info {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 18px;
-    color: #555;
-    line-height: 2;
-    letter-spacing: 2px;
-  }
-
-  .series-info .series-name {
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-    font-size: 20px;
-    color: #1B3B6B;
-    font-weight: 600;
-  }
-
-  .series-info .episode {
-    color: #8B7355;
-    font-weight: 600;
-  }
-
-  .footer-info {
-    position: absolute;
-    bottom: 90px;
-    left: 100px;
-    display: flex;
-    align-items: center;
-    gap: 24px;
-  }
-
-  .footer-info .divider {
-    width: 1px;
-    height: 16px;
-    background: rgba(139,115,85,0.4);
-  }
-
-  .footer-info .item {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 14px;
-    color: #8B7355;
-    letter-spacing: 3px;
-  }
-
-  .footer-info .author {
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-    font-size: 15px;
-    color: #1B3B6B;
-    letter-spacing: 2px;
-  }
+/* Current lecture indicator */
+.current-lecture {
+  position: absolute;
+  bottom: 40px;
+  left: 580px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-left: 80px;
+}
+.current-lecture .badge {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: #F5F0E8;
+  background: #1B3B6B;
+  padding: 4px 10px;
+  letter-spacing: 2px;
+}
+.current-lecture .topic {
+  font-size: 14px;
+  color: #1B3B6B;
+  font-weight: 600;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+}
 </style>
 </head>
 <body>
-<div class="slide">
 
-  <!-- Left geometric panel -->
-  <div class="geo-panel">
-    <div class="geo-circle-large"></div>
-    <div class="geo-circle-med"></div>
-    <div class="geo-square-large"></div>
-    <div class="geo-square-small"></div>
-    <div class="geo-line-h1"></div>
-    <div class="geo-line-h2"></div>
-    <div class="geo-line-v"></div>
-    <div class="geo-dot"></div>
-    <div class="geo-dot2"></div>
-    <div class="geo-dot3"></div>
-    <div class="geo-quarter-circle"></div>
-    <div class="geo-triangle"></div>
-
-    <div class="lecture-num-badge">
-      <div class="num-label">LECTURE</div>
-      <div class="num">06</div>
-      <div class="num-sub">of twelve</div>
-    </div>
+<!-- Left geometric panel -->
+<div class="geo-panel">
+  <div class="geo-circle-lg"></div>
+  <div class="geo-circle-md"></div>
+  <div class="geo-circle-sm"></div>
+  <div class="geo-square-1"></div>
+  <div class="geo-square-2"></div>
+  <div class="geo-square-3"></div>
+  <div class="geo-line-h"></div>
+  <div class="geo-line-v"></div>
+  <div class="geo-triangle"></div>
+  <div class="lecture-num-panel">
+    <div class="number">06</div>
+    <div class="label">LECTURE</div>
   </div>
-
-  <!-- Right content area -->
-  <div class="content-area">
-    <!-- Decorative elements -->
-    <div class="deco-line-top"></div>
-    <div class="deco-line-top-dot"></div>
-    <div class="deco-square-bottom"></div>
-    <div class="deco-circle-right"></div>
-    <div class="deco-line-bottom"></div>
-
-    <div class="kicker">「开源之道」· 开源的经济学</div>
-
-    <div class="main-title">
-      组织结构<span class="accent">与</span>治理
-    </div>
-
-    <div class="subtitle-line"></div>
-
-    <div class="series-info">
-      <span class="series-name">开源经济学 12 讲座</span><br>
-      第六期 &nbsp;·&nbsp; <span class="episode">Organization Structure &amp; Governance</span>
-    </div>
-
-    <div class="footer-info">
-      <span class="item">新制度经济学视角</span>
-      <div class="divider"></div>
-      <span class="author">「开源之道」· 适兕</span>
-    </div>
-  </div>
-
 </div>
+
+<!-- Right content -->
+<div class="content-area">
+  <div class="content-header">
+    <div class="eyebrow">PREVIOUSLY · 前情提要</div>
+    <h1>开源经济学讲座回顾</h1>
+    <div class="accent-line"></div>
+  </div>
+
+  <div class="lecture-list">
+    <div class="lecture-item">
+      <div class="idx">0</div>
+      <div class="title">增长的开源经济
+        <span class="sub">开源软件经济的崛起与增长逻辑</span>
+      </div>
+    </div>
+    <div class="lecture-item">
+      <div class="idx">1</div>
+      <div class="title">软件的生产、分销和消费
+        <span class="sub">开源生产的组织形式与市场机制</span>
+      </div>
+    </div>
+    <div class="lecture-item">
+      <div class="idx">2</div>
+      <div class="title">数字时代的知识财产法演变与开源许可
+        <span class="sub">知识产权框架与开源许可证的制度分析</span>
+      </div>
+    </div>
+    <div class="lecture-item">
+      <div class="idx">3</div>
+      <div class="title">开源软件的商业模式：产权制度与案例分析
+        <span class="sub">非排他性产权下的价值实现路径</span>
+      </div>
+    </div>
+    <div class="lecture-item">
+      <div class="idx">4</div>
+      <div class="title">开源的劳动力市场
+        <span class="sub">开发者激励、信号传递与人力资本积累</span>
+      </div>
+    </div>
+    <div class="lecture-item">
+      <div class="idx">5</div>
+      <div class="title">交易成本与路径依赖
+        <span class="sub">协作制度与演化锁定效应</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Current lecture indicator -->
+<div class="current-lecture">
+  <span class="badge">本期</span>
+  <span class="topic">组织结构与治理</span>
+</div>
+
+<!-- Bottom decoration -->
+<div class="bottom-deco">
+  <span class="dot"></span>
+  <span class="line"></span>
+  <span class="text">06 · ORGANIZATION & GOVERNANCE</span>
+</div>
+
 </body>
 </html>

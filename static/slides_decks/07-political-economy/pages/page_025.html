@@ -1,450 +1,127 @@
 
 
-<!DOCTYPE html>
-<html><!-- source_hash: 4e05d621a68349c3 -->
-<head>
-<meta charset="UTF-8">
-<title>第8期 · 开源的政治经济学 · 推荐阅读</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1600px;height:900px;overflow:hidden;margin:0}
-body{
-  font-family:'Noto Sans SC','Source Han Sans SC','Microsoft YaHei',sans-serif;
-  background:#F5F0E8;
-  color:#1B3B6B;
-  position:relative;
-}
+<!DOCTYPE html><html><!-- source_hash: 6cc3d0fbddb2d83b --><head><meta charset="UTF-8"><title>第 08 期 · 开源的政治经济学 · 推荐阅读</title><style>*{margin:0;padding:0;box-sizing:border-box}html,body{width:1600px;height:900px;overflow:hidden;margin:0}body{background:#F5F0E8;font-family:'Noto Sans SC','Source Han Sans SC','PingFang SC',sans-serif;color:#1B3B6B;position:relative}h1,h2,h3{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-weight:600}.header{position:absolute;top:0;left:0;width:1600px;height:88px;display:flex;align-items:center;justify-content:space-between;padding:0 64px;border-bottom:2px solid #1B3B6B}.header-left{display:flex;align-items:center;gap:20px}.ep-circle{width:52px;height:52px;border-radius:50%;background:#1B3B6B;display:flex;align-items:center;justify-content:center;color:#F5F0E8;font-family:'Noto Serif SC',serif;font-size:20px;font-weight:700}.ep-text{font-family:'Noto Serif SC',serif;font-size:15px;color:#555;letter-spacing:2px}.header-right{font-size:12px;color:#8B7355;letter-spacing:4px;font-family:'Noto Serif SC',serif}.main{position:absolute;top:88px;left:0;width:1600px;height:764px;display:flex}.visual-panel{position:absolute;top:100px;left:64px;width:540px;height:684px;background:#1B3B6B;overflow:hidden;position:relative}.visual-panel-inner{position:absolute;top:0;left:0;width:100%;height:100%}.vp-label{position:absolute;top:36px;left:36px;font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;letter-spacing:3px;z-index:10}.vp-title{position:absolute;top:60px;left:36px;width:468px;font-family:'Noto Serif SC',serif;font-size:26px;color:#F5F0E8;line-height:1.4;z-index:10;font-weight:600}.vp-subtitle{position:absolute;top:150px;left:36px;width:468px;font-size:13px;color:#B8A98A;line-height:1.7;z-index:10;letter-spacing:1px}.scales{position:absolute;top:210px;left:50%;margin-left:-140px;width:280px;height:260px}.scale-base{position:absolute;bottom:0;left:50%;margin-left:-4px;width:8px;height:60px;background:#F5F0E8}.scale-stand{position:absolute;bottom:60px;left:50%;margin-left:-6px;width:12px;height:140px;background:#F5F0E8}.scale-pivot{position:absolute;bottom:200px;left:50%;margin-left:-40px;width:80px;height:80px;border-radius:50%;background:transparent;border:4px solid #F5F0E8}.scale-beam{position:absolute;bottom:228px;left:50%;margin-left:-110px;width:220px;height:4px;background:#F5F0E8}.scale-left-arm{position:absolute;bottom:224px;left:50%;margin-left:-108px;width:2px;height:60px;background:#F5F0E8}.scale-right-arm{position:absolute;bottom:224px;left:50%;margin-left:106px;width:2px;height:60px;background:#F5F0E8}.scale-left-pan{position:absolute;bottom:156px;left:50%;margin-left:-130px;width:60px;height:12px;border-bottom:3px solid #F5F0E8;border-radius:0 0 30px 30px}.scale-right-pan{position:absolute;bottom:156px;left:50%;margin-left:70px;width:60px;height:12px;border-bottom:3px solid #F5F0E8;border-radius:0 0 30px 30px}.scale-left-inner{position:absolute;bottom:160px;left:50%;margin-left:-120px;width:40px;height:30px;background:#8B7355;border-radius:0 0 20px 20px;opacity:0.8}.scale-right-inner{position:absolute;bottom:160px;left:50%;margin-left:80px;width:40px;height:30px;background:#B8A98A;border-radius:0 0 20px 20px;opacity:0.8}.scroll-deco{position:absolute;bottom:50px;left:36px;width:468px;display:flex;align-items:flex-end;gap:6px}.scroll-pillar{width:8px;background:#F5F0E8;border-radius:4px;opacity:0.7}.scroll-line{flex:1;height:1px;background:#F5F0E8;opacity:0.4}.scroll-text-lines{position:absolute;bottom:60px;left:54px;right:54px;display:flex;flex-direction:column;gap:8px}.stl{height:1px;background:#F5F0E8;opacity:0.35}.stl.short{width:60%}.stl.medium{width:80%}.stl.full{width:100%}.geo-circle-tl{position:absolute;top:20px;right:20px;width:40px;height:40px;border-radius:50%;border:2px solid #8B7355;opacity:0.6}.geo-square-br{position:absolute;bottom:16px;right:20px;width:24px;height:24px;background:#8B7355;opacity:0.5}.content-area{position:absolute;top:100px;left:660px;width:876px;height:684px;padding:0 24px}.content-header{display:flex;align-items:baseline;gap:18px;margin-bottom:8px}.content-num{font-family:'Noto Serif SC',serif;font-size:48px;color:#1B3B6B;font-weight:700;line-height:1}.content-title{font-family:'Noto Serif SC',serif;font-size:32px;color:#1B3B6B;font-weight:600;letter-spacing:1px}.content-subtitle{font-size:14px;color:#8B7355;letter-spacing:3px;margin-bottom:18px;font-family:'Noto Serif SC',serif}.content-divider{width:120px;height:3px;background:#1B3B6B;margin-bottom:24px}.reading-list{display:flex;flex-direction:column;gap:14px}.reading-item{display:flex;align-items:flex-start;gap:18px;padding:12px 18px;background:rgba(27,59,107,0.03);border-left:3px solid #1B3B6B;position:relative}.reading-item.copper{border-left-color:#8B7355}.reading-item.gray{border-left-color:#555}.ri-marker{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:#1B3B6B;color:#F5F0E8;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif SC',serif;font-size:12px;font-weight:700;margin-top:2px}.ri-marker.copper{background:#8B7355}.ri-marker.gray{background:#555}.ri-content{flex:1}.ri-title{font-family:'Noto Serif SC',serif;font-size:16px;color:#1B3B6B;font-weight:600;line-height:1.4;margin-bottom:4px}.ri-title .en{color:#555;font-style:italic;font-weight:400}.ri-meta{font-size:12px;color:#8B7355;line-height:1.5;letter-spacing:0.5px}.ri-meta .publisher{color:#555}.content-footer{position:absolute;bottom:0;left:24px;right:24px;display:flex;align-items:center;gap:16px;padding-top:14px;border-top:1px solid #1B3B6B}.cf-square{width:16px;height:16px;background:#1B3B6B;flex-shrink:0}.cf-circle{width:16px;height:16px;border-radius:50%;background:#8B7355;flex-shrink:0}.cf-line{flex:1;height:1px;background:#1B3B6B;opacity:0.3}.cf-text{font-size:11px;color:#8B7355;letter-spacing:2px;font-family:'Noto Serif SC',serif;flex-shrink:0}.footer-bar{position:absolute;bottom:0;left:0;width:1600px;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 64px;border-top:1px solid #1B3B6B;opacity:0;}.geo-deco-1{position:absolute;top:96px;left:510px;width:0;height:0}.page-indicator{position:absolute;bottom:0;right:64px;width:120px;height:36px;display:flex;align-items:center;justify-content:space-between;font-family:'Noto Serif SC',serif;font-size:11px;color:#8B7355;letter-spacing:2px}</style></head><body>
 
-/* subtle parchment texture */
-body::before{
-  content:'';position:absolute;top:0;left:0;width:1600px;height:900px;
-  background:
-    radial-gradient(ellipse at 20% 15%, rgba(139,115,85,0.04) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 85%, rgba(139,115,85,0.05) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 50%, rgba(245,240,232,0) 0%, rgba(139,115,85,0.03) 100%);
-  pointer-events:none;z-index:0;
-}
-
-/* HEADER STRIP */
-.header{
-  position:absolute;top:0;left:0;width:1600px;height:68px;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 60px;z-index:10;
-  border-bottom:2px solid #1B3B6B;
-}
-.header-left{display:flex;align-items:center;gap:18px}
-.issue-badge{
-  background:#1B3B6B;color:#F5F0E8;
-  font-family:'Noto Serif SC',serif;font-weight:700;
-  font-size:15px;letter-spacing:2px;
-  padding:6px 14px;
-}
-.header-title{
-  font-family:'Noto Serif SC','Source Han Serif SC',serif;
-  font-size:18px;color:#1B3B6B;letter-spacing:3px;
-}
-.header-right{display:flex;align-items:center;gap:20px}
-.header-right .r-line{width:120px;height:2px;background:#8B7355}
-.header-right .r-tag{
-  font-family:'Noto Serif SC',serif;font-size:14px;
-  color:#8B7355;letter-spacing:4px;
-}
-
-/* LEFT PANEL - Prussian Blue */
-.left-panel{
-  position:absolute;top:68px;left:0;width:520px;height:832px;
-  background:#1B3B6B;color:#F5F0E8;
-  display:flex;flex-direction:column;
-  z-index:5;
-}
-.lp-inner{padding:48px 44px;display:flex;flex-direction:column;height:100%}
-.lp-eyebrow{
-  font-size:11px;letter-spacing:6px;color:#8B7355;
-  margin-bottom:10px;
-}
-.lp-title{
-  font-family:'Noto Serif SC','Source Han Serif SC',serif;
-  font-size:48px;font-weight:700;color:#F5F0E8;
-  letter-spacing:6px;line-height:1.1;
-}
-.lp-subtitle{
-  font-family:'Noto Serif SC',serif;font-size:15px;
-  color:#F5F0E8;letter-spacing:8px;
-  margin-top:8px;opacity:0.85;
-}
-.lp-rule{
-  width:60px;height:3px;background:#8B7355;
-  margin:28px 0 24px 0;
-}
-
-/* SVG container for balance scale */
-.scale-container{
-  flex:1;display:flex;align-items:center;justify-content:center;
-  position:relative;
-}
-.scale-svg{width:440px;height:400px;display:block}
-
-/* Decorative geometric shapes on left panel */
-.deco-sq{
-  position:absolute;
-  width:22px;height:22px;background:#8B7355;
-}
-.deco-circ{
-  position:absolute;
-  width:14px;height:14px;border-radius:50%;
-  background:transparent;border:2px solid #8B7355;
-}
-.deco-dot{
-  position:absolute;
-  width:6px;height:6px;border-radius:50%;background:#F5F0E8;
-}
-.deco-sq-1{top:60px;right:36px}
-.deco-circ-1{top:90px;right:66px}
-.deco-sq-2{bottom:140px;right:36px}
-.deco-circ-2{bottom:180px;right:66px}
-.deco-dot-1{top:130px;right:46px}
-.deco-dot-2{bottom:110px;right:56px}
-
-/* Quote area at bottom of left panel */
-.lp-quote{
-  border-top:1px solid rgba(139,115,85,0.5);
-  padding-top:18px;
-}
-.lp-quote-text{
-  font-family:'Noto Serif SC',serif;
-  font-size:13px;line-height:1.8;color:#F5F0E8;
-  opacity:0.8;font-style:italic;letter-spacing:1px;
-}
-.lp-quote-attr{
-  margin-top:8px;
-  font-size:11px;letter-spacing:3px;color:#8B7355;
-}
-
-/* RIGHT PANEL - Reading List */
-.right-panel{
-  position:absolute;top:68px;left:520px;width:1080px;height:832px;
-  padding:48px 60px 40px 60px;
-  z-index:5;
-}
-.rp-header{
-  display:flex;align-items:baseline;gap:20px;
-  margin-bottom:8px;
-}
-.rp-header-num{
-  font-family:'Noto Serif SC',serif;
-  font-size:14px;letter-spacing:4px;color:#8B7355;
-}
-.rp-header-rule{
-  flex:1;height:1px;background:#1B3B6B;opacity:0.3;
-}
-.rp-header-meta{
-  font-size:11px;letter-spacing:3px;color:#8B7355;
-}
-
-.rp-items{margin-top:20px;display:flex;flex-direction:column;gap:14px}
-
-.rp-item{
-  display:grid;
-  grid-template-columns:52px 1fr 200px;
-  align-items:center;
-  padding:14px 8px 14px 0;
-  border-bottom:1px solid rgba(27,59,107,0.12);
-  column-gap:22px;
-}
-.rp-item:last-child{border-bottom:none}
-
-.rp-num{
-  font-family:'Noto Serif SC',serif;
-  font-size:28px;font-weight:700;color:#1B3B6B;
-  letter-spacing:0;line-height:1;
-  display:flex;align-items:center;justify-content:flex-start;
-}
-.rp-num .num-sq{
-  display:inline-block;width:36px;height:36px;
-  background:#1B3B6B;color:#F5F0E8;
-  text-align:center;line-height:36px;font-size:18px;
-  margin-right:10px;
-}
-.rp-num .num-circle{
-  display:inline-block;width:36px;height:36px;
-  background:transparent;border:2px solid #1B3B6B;
-  color:#1B3B6B;
-  text-align:center;line-height:32px;font-size:18px;
-  margin-right:10px;
-}
-
-.rp-content{display:flex;flex-direction:column;gap:4px}
-.rp-title{
-  font-family:'Noto Serif SC','Source Han Serif SC',serif;
-  font-size:16px;font-weight:700;color:#1B3B6B;
-  line-height:1.4;letter-spacing:1px;
-}
-.rp-authors{
-  font-size:12.5px;color:#555;letter-spacing:1px;line-height:1.5;
-}
-
-.rp-meta{
-  text-align:right;display:flex;flex-direction:column;gap:4px;
-  align-items:flex-end;
-}
-.rp-pub{
-  font-size:12px;color:#8B7355;letter-spacing:1px;line-height:1.4;
-}
-.rp-date{
-  font-family:'Noto Serif SC',serif;
-  font-size:11px;color:#555;letter-spacing:2px;
-}
-
-/* Footer */
-.footer{
-  position:absolute;bottom:0;left:0;width:1600px;height:42px;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 60px;
-  border-top:1px solid rgba(27,59,107,0.2);
-  z-index:10;
-}
-.footer-left{
-  font-size:11px;letter-spacing:3px;color:#555;
-}
-.footer-right{
-  display:flex;align-items:center;gap:14px;
-  font-size:11px;letter-spacing:3px;color:#8B7355;
-}
-.footer-dot{
-  width:5px;height:5px;border-radius:50%;background:#1B3B6B;
-  display:inline-block;
-}
-
-/* Bauhaus decorative frame elements */
-.frame-deco-tl{
-  position:absolute;top:80px;left:528px;
-  width:8px;height:8px;background:#8B7355;z-index:8;
-}
-.frame-deco-tr{
-  position:absolute;top:80px;right:30px;
-  width:14px;height:14px;border:2px solid #1B3B6B;z-index:8;
-  border-radius:50%;
-}
-</style>
-</head>
-<body>
-
-<!-- HEADER -->
 <div class="header">
-  <div class="header-left">
-    <div class="issue-badge">第 8 期</div>
-    <div class="header-title">开源的政治经济学</div>
-  </div>
-  <div class="header-right">
-    <span class="r-tag">POLITICAL ECONOMY OF OPEN SOURCE</span>
-    <span class="r-line"></span>
-  </div>
+    <div class="header-left">
+        <div class="ep-circle">07</div>
+        <div class="ep-text">OPEN SOURCE · POLITICAL ECONOMY</div>
+    </div>
+    <div class="header-right">第 08 期 · READING LIST</div>
 </div>
 
-<!-- LEFT PANEL -->
-<div class="left-panel">
-  <div class="lp-inner">
-    <div class="lp-eyebrow">READING LIST</div>
-    <div class="lp-title">推荐阅读</div>
-    <div class="lp-subtitle">FURTHER READING</div>
-    <div class="lp-rule"></div>
+<div class="main">
 
-    <div class="scale-container">
-      <svg class="scale-svg" viewBox="0 0 440 380" xmlns="http://www.w3.org/2000/svg">
-        <!-- Decorative outer frame elements -->
-        <rect x="10" y="10" width="420" height="360" fill="none" stroke="#8B7355" stroke-width="1" opacity="0.4"/>
-        <circle cx="220" cy="190" r="185" fill="none" stroke="#8B7355" stroke-width="0.5" opacity="0.25"/>
+    <div class="visual-panel">
+        <div class="vp-label">POLITICAL ECONOMY</div>
+        <div class="vp-title">制度权衡<br>与价值之衡</div>
+        <div class="vp-subtitle">深普鲁士蓝背景之上，天平与政策卷轴交织——<br>政治经济学中永恒的制度权衡与价值衡量。</div>
 
-        <!-- Left policy scroll (horizontal, unrolled) -->
-        <rect x="30" y="290" width="120" height="32" fill="none" stroke="#F5F0E8" stroke-width="2"/>
-        <circle cx="30" cy="306" r="10" fill="#8B7355"/>
-        <circle cx="30" cy="306" r="4" fill="#F5F0E8"/>
-        <circle cx="150" cy="306" r="10" fill="#8B7355"/>
-        <circle cx="150" cy="306" r="4" fill="#F5F0E8"/>
-        <line x1="50" y1="300" x2="130" y2="300" stroke="#F5F0E8" stroke-width="0.8" opacity="0.6"/>
-        <line x1="50" y1="306" x2="130" y2="306" stroke="#F5F0E8" stroke-width="0.8" opacity="0.6"/>
-        <line x1="50" y1="312" x2="110" y2="312" stroke="#F5F0E8" stroke-width="0.8" opacity="0.6"/>
+        <div class="scales">
+            <div class="scale-base"></div>
+            <div class="scale-stand"></div>
+            <div class="scale-pivot"></div>
+            <div class="scale-beam"></div>
+            <div class="scale-left-arm"></div>
+            <div class="scale-right-arm"></div>
+            <div class="scale-left-pan"></div>
+            <div class="scale-right-pan"></div>
+            <div class="scale-left-inner"></div>
+            <div class="scale-right-inner"></div>
+        </div>
 
-        <!-- Right policy scroll (vertical) -->
-        <rect x="340" y="240" width="28" height="90" fill="none" stroke="#F5F0E8" stroke-width="2"/>
-        <circle cx="354" cy="240" r="10" fill="#8B7355"/>
-        <circle cx="354" cy="240" r="4" fill="#F5F0E8"/>
-        <circle cx="354" cy="330" r="10" fill="#8B7355"/>
-        <circle cx="354" cy="330" r="4" fill="#F5F0E8"/>
-        <line x1="346" y1="255" x2="362" y2="255" stroke="#F5F0E8" stroke-width="0.8" opacity="0.6"/>
-        <line x1="346" y1="265" x2="362" y2="265" stroke="#F5F0E8" stroke-width="0.8" opacity="0.6"/>
-        <line x1="346" y1="275" x2="360" y2="275" stroke="#F5F0E8" stroke-width="0.8" opacity="0.6"/>
-        <line x1="346" y1="285" x2="362" y2="285" stroke="#F5F0E8" stroke-width="0.8" opacity="0.6"/>
-        <line x1="346" y1="295" x2="358" y2="295" stroke="#F5F0E8" stroke-width="0.8" opacity="0.6"/>
-        <line x1="346" y1="305" x2="362" y2="305" stroke="#F5F0E8" stroke-width="0.8" opacity="0.6"/>
-        <line x1="346" y1="315" x2="360" y2="315" stroke="#F5F0E8" stroke-width="0.8" opacity="0.6"/>
+        <div class="scroll-text-lines">
+            <div class="stl full"></div>
+            <div class="stl medium"></div>
+            <div class="stl short"></div>
+            <div class="stl medium"></div>
+        </div>
 
-        <!-- Balance scale: main structure -->
-        <!-- Base platform -->
-        <rect x="160" y="310" width="120" height="8" fill="#F5F0E8"/>
-        <rect x="175" y="318" width="90" height="6" fill="#8B7355"/>
+        <div class="scroll-deco">
+            <div class="scroll-pillar" style="height:36px"></div>
+            <div class="scroll-line"></div>
+            <div class="scroll-pillar" style="height:36px"></div>
+        </div>
 
-        <!-- Vertical pole -->
-        <line x1="220" y1="310" x2="220" y2="80" stroke="#F5F0E8" stroke-width="3"/>
-        <!-- Pole cap -->
-        <rect x="215" y="76" width="10" height="8" fill="#F5F0E8"/>
-
-        <!-- Beam (slightly tilted to suggest weighing) -->
-        <line x1="90" y1="86" x2="350" y2="76" stroke="#F5F0E8" stroke-width="3"/>
-
-        <!-- Fulcrum ornament -->
-        <circle cx="220" cy="80" r="9" fill="#8B7355"/>
-        <circle cx="220" cy="80" r="3" fill="#F5F0E8"/>
-
-        <!-- Left pan assembly -->
-        <line x1="90" y1="86" x2="78" y2="170" stroke="#F5F0E8" stroke-width="1.5"/>
-        <line x1="90" y1="86" x2="102" y2="170" stroke="#F5F0E8" stroke-width="1.5"/>
-        <ellipse cx="90" cy="176" rx="48" ry="10" fill="none" stroke="#F5F0E8" stroke-width="2"/>
-        <line x1="70" y1="182" x2="62" y2="205" stroke="#F5F0E8" stroke-width="1.2"/>
-        <line x1="90" y1="184" x2="88" y2="208" stroke="#F5F0E8" stroke-width="1.2"/>
-        <line x1="110" y1="182" x2="118" y2="205" stroke="#F5F0E8" stroke-width="1.2"/>
-        <ellipse cx="90" cy="212" rx="36" ry="6" fill="#8B7355"/>
-        <!-- Items in left pan: small squares (representing policy rules) -->
-        <rect x="78" y="195" width="8" height="8" fill="#F5F0E8"/>
-        <rect x="90" y="192" width="6" height="6" fill="#F5F0E8"/>
-        <rect x="98" y="196" width="7" height="7" fill="#F5F0E8"/>
-
-        <!-- Right pan assembly -->
-        <line x1="350" y1="76" x2="338" y2="150" stroke="#F5F0E8" stroke-width="1.5"/>
-        <line x1="350" y1="76" x2="362" y2="150" stroke="#F5F0E8" stroke-width="1.5"/>
-        <ellipse cx="350" cy="156" rx="48" ry="10" fill="none" stroke="#F5F0E8" stroke-width="2"/>
-        <line x1="330" y1="162" x2="322" y2="185" stroke="#F5F0E8" stroke-width="1.2"/>
-        <line x1="350" y1="164" x2="348" y2="188" stroke="#F5F0E8" stroke-width="1.2"/>
-        <line x1="370" y1="162" x2="378" y2="185" stroke="#F5F0E8" stroke-width="1.2"/>
-        <ellipse cx="350" cy="192" rx="36" ry="6" fill="#F5F0E8"/>
-        <!-- Items in right pan: circles (representing communities) -->
-        <circle cx="335" cy="183" r="4" fill="#8B7355"/>
-        <circle cx="347" cy="180" r="5" fill="#8B7355"/>
-        <circle cx="360" cy="184" r="3.5" fill="#8B7355"/>
-
-        <!-- Top decorative circle -->
-        <circle cx="220" cy="42" r="18" fill="none" stroke="#8B7355" stroke-width="1.5"/>
-        <circle cx="220" cy="42" r="4" fill="#8B7355"/>
-
-        <!-- Small decorative dots -->
-        <circle cx="40" cy="40" r="3" fill="#F5F0E8"/>
-        <circle cx="400" cy="40" r="3" fill="#F5F0E8"/>
-        <circle cx="40" cy="350" r="3" fill="#F5F0E8"/>
-        <circle cx="400" cy="350" r="3" fill="#F5F0E8"/>
-      </svg>
-
-      <div class="deco-sq deco-sq-1"></div>
-      <div class="deco-circ deco-circ-1"></div>
-      <div class="deco-sq deco-sq-2"></div>
-      <div class="deco-circ deco-circ-2"></div>
-      <div class="deco-dot deco-dot-1"></div>
-      <div class="deco-dot deco-dot-2"></div>
+        <div class="geo-circle-tl"></div>
+        <div class="geo-square-br"></div>
     </div>
 
-    <div class="lp-quote">
-      <div class="lp-quote-text">
-        &ldquo;制度是博弈的规则；开源社区，<br>本身就是一种被精心设计的博弈。&rdquo;
-      </div>
-      <div class="lp-quote-attr">— INSTITUTIONS AS RULES OF THE GAME</div>
+    <div class="content-area">
+        <div class="content-header">
+            <div class="content-num">08</div>
+            <div class="content-title">推荐阅读</div>
+        </div>
+        <div class="content-subtitle">SELECTED READINGS · POLITICAL ECONOMY OF OPEN SOURCE</div>
+        <div class="content-divider"></div>
+
+        <div class="reading-list">
+
+            <div class="reading-item">
+                <div class="ri-marker">01</div>
+                <div class="ri-content">
+                    <div class="ri-title"><span class="en">"Android and the political economy of the mobile Internet"</span></div>
+                    <div class="ri-meta">Spreeuwenberg / Poell · <span class="publisher">First Monday 17(7) · 2012</span></div>
+                </div>
+            </div>
+
+            <div class="reading-item copper">
+                <div class="ri-marker copper">02</div>
+                <div class="ri-content">
+                    <div class="ri-title">《公共事物的治理之道》</div>
+                    <div class="ri-meta">Elinor Ostrom · <span class="publisher">上海译文出版社 · 2000.06</span></div>
+                </div>
+            </div>
+
+            <div class="reading-item">
+                <div class="ri-marker">03</div>
+                <div class="ri-content">
+                    <div class="ri-title"><span class="en">"The Value of Open Source Software"</span></div>
+                    <div class="ri-meta">Hoffmann / Nagle / Zhou · <span class="publisher">HBS Working Paper · 2024.01</span></div>
+                </div>
+            </div>
+
+            <div class="reading-item gray">
+                <div class="ri-marker gray">04</div>
+                <div class="ri-content">
+                    <div class="ri-title"><span class="en">"The Wealth of Networks"</span> · 网络的富饶</div>
+                    <div class="ri-meta">Yochai Benkler · <span class="publisher">Yale Press · 2006</span></div>
+                </div>
+            </div>
+
+            <div class="reading-item copper">
+                <div class="ri-marker copper">05</div>
+                <div class="ri-content">
+                    <div class="ri-title">《数字架构与法律》</div>
+                    <div class="ri-meta">胡凌 · <span class="publisher">北京大学出版社 · 2024.03</span></div>
+                </div>
+            </div>
+
+            <div class="reading-item">
+                <div class="ri-marker">06</div>
+                <div class="ri-content">
+                    <div class="ri-title">《精心布局的开源》</div>
+                    <div class="ri-meta">本博客 /posts/opensource/open_by_design/ · O'Reilly 编译 · 访问 2024.09.23</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="content-footer">
+            <div class="cf-square"></div>
+            <div class="cf-line"></div>
+            <div class="cf-text">SOURCE: 开源之道 · 新制度经济学</div>
+            <div class="cf-line"></div>
+            <div class="cf-circle"></div>
+        </div>
     </div>
-  </div>
+
 </div>
 
-<!-- RIGHT PANEL -->
-<div class="right-panel">
-  <div class="rp-header">
-    <span class="rp-header-num">06 ITEMS</span>
-    <span class="rp-header-rule"></span>
-    <span class="rp-header-meta">SELECTED BIBLIOGRAPHY</span>
-  </div>
-
-  <div class="rp-items">
-
-    <div class="rp-item">
-      <div class="rp-num"><span class="num-sq">01</span></div>
-      <div class="rp-content">
-        <div class="rp-title">Android and the Political Economy of the Mobile Internet</div>
-        <div class="rp-authors">Spreeuwenberg, T. / Poell, T. &nbsp;·&nbsp; First Monday, Vol.17, No.7</div>
-      </div>
-      <div class="rp-meta">
-        <div class="rp-pub">期刊论文</div>
-        <div class="rp-date">2012</div>
-      </div>
-    </div>
-
-    <div class="rp-item">
-      <div class="rp-num"><span class="num-sq">02</span></div>
-      <div class="rp-content">
-        <div class="rp-title">《公共事物的治理之道》<span style="font-size:12px;color:#8B7355;letter-spacing:2px;margin-left:6px">Governing the Commons</span></div>
-        <div class="rp-authors">Elinor Ostrom &nbsp;·&nbsp; 上海译文出版社</div>
-      </div>
-      <div class="rp-meta">
-        <div class="rp-pub">学术专著</div>
-        <div class="rp-date">2000.06</div>
-      </div>
-    </div>
-
-    <div class="rp-item">
-      <div class="rp-num"><span class="num-sq">03</span></div>
-      <div class="rp-content">
-        <div class="rp-title">《The Value of Open Source Software》</div>
-        <div class="rp-authors">Hoffmann, D. / Nagle, T. / Zhou, P. &nbsp;·&nbsp; Harvard Business School</div>
-      </div>
-      <div class="rp-meta">
-        <div class="rp-pub">HBS 案例</div>
-        <div class="rp-date">2024.01</div>
-      </div>
-    </div>
-
-    <div class="rp-item">
-      <div class="rp-num"><span class="num-sq">04</span></div>
-      <div class="rp-content">
-        <div class="rp-title">《The Wealth of Networks》</div>
-        <div class="rp-authors">Yochai Benkler &nbsp;·&nbsp; Yale University Press</div>
-      </div>
-      <div class="rp-meta">
-        <div class="rp-pub">学术专著</div>
-        <div class="rp-date">2006</div>
-      </div>
-    </div>
-
-    <div class="rp-item">
-      <div class="rp-num"><span class="num-sq">05</span></div>
-      <div class="rp-content">
-        <div class="rp-title">《数字架构与法律》<span style="font-size:12px;color:#8B7355;letter-spacing:2px;margin-left:6px">Digital Architecture &amp; Law</span></div>
-        <div class="rp-authors">胡凌 &nbsp;·&nbsp; 北京大学出版社</div>
-      </div>
-      <div class="rp-meta">
-        <div class="rp-pub">学术专著</div>
-        <div class="rp-date">2024.03</div>
-      </div>
-    </div>
-
-    <div class="rp-item">
-      <div class="rp-num"><span class="num-circle">06</span></div>
-      <div class="rp-content">
-        <div class="rp-title">《精心布局的开源》<span style="font-size:12px;color:#8B7355;letter-spacing:2px;margin-left:6px">Open by Design</span></div>
-        <div class="rp-authors">O'Reilly 编译 &nbsp;·&nbsp; 本博客 /posts/opensource/open_by_design/</div>
-      </div>
-      <div class="rp-meta">
-        <div class="rp-pub">博 客 文 章</div>
-        <div class="rp-date">2024.09.23</div>
-      </div>
-    </div>
-
-  </div>
+<div class="page-indicator">
+    <span>—</span>
+    <span>08 / 26</span>
+    <span>—</span>
 </div>
 
-<!-- FOOTER -->
-<div class="footer">
-  <span class="footer-left">开 源 之 道 &nbsp;·&nbsp; NEW INSTITUTIONAL ECONOMICS</span>
-  <span class="footer-right">
-    <span class="footer-dot"></span>
-    <span>EPISODE 08</span>
-    <span class="footer-dot"></span>
-    <span>READING</span>
-  </span>
-</div>
-
-</body>
-</html>
+</body></html>

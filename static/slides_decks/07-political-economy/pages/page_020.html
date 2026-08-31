@@ -1,622 +1,105 @@
 
 
-<!DOCTYPE html>
-<html><!-- source_hash: b9c0e4a57ab5fa29 -->
-<head>
-<meta charset="UTF-8">
-<title>国家的制度角色：从"政策建议"到"制度类型"</title>
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body {
-    width: 1600px;
-    height: 900px;
-    overflow: hidden;
-    background: #F5F0E8;
-    font-family: 'Noto Sans SC', sans-serif;
-    color: #1B3B6B;
-    position: relative;
-  }
-  .parchment {
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse at 18% 25%, rgba(139,115,85,0.05) 0%, transparent 55%),
-      radial-gradient(ellipse at 82% 78%, rgba(139,115,85,0.06) 0%, transparent 55%),
-      radial-gradient(ellipse at 50% 50%, rgba(139,115,85,0.02) 0%, transparent 80%);
-    pointer-events: none;
-  }
-  .frame {
-    position: absolute;
-    top: 36px; left: 56px; right: 56px; bottom: 36px;
-    border: 1px solid #1B3B6B;
-  }
-  .frame-corner {
-    position: absolute;
-    width: 14px;
-    height: 14px;
-    border: 2px solid #8B7355;
-    background: #F5F0E8;
-  }
-  .fc-tl { top: 29px; left: 49px; border-right: none; border-bottom: none; }
-  .fc-tr { top: 29px; right: 49px; border-left: none; border-bottom: none; }
-  .fc-bl { bottom: 29px; left: 49px; border-right: none; border-top: none; }
-  .fc-br { bottom: 29px; right: 49px; border-left: none; border-top: none; }
+<!DOCTYPE html><html><!-- source_hash: b9c0e4a57ab5fa29 --><head><meta charset="UTF-8"><title>第 07 期 · 国家的制度角色：从政策建议到制度类型</title><style>html,body{width:1600px;height:900px;overflow:hidden;margin:0;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;color:#1B3B6B}body{background:#F5F0E8;position:relative}.header{position:absolute;top:42px;left:70px;right:70px;display:flex;justify-content:space-between;align-items:flex-end}.header-left{font-family:'Noto Serif SC',serif;font-size:14px;letter-spacing:3px;color:#8B7355}.header-right{font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;letter-spacing:2px}.header-rule{position:absolute;top:78px;left:70px;right:70px;height:1px;background:#1B3B6B}.main-title{position:absolute;top:102px;left:70px;font-family:'Noto Serif SC','Songti SC',serif;font-size:34px;font-weight:700;color:#1B3B6B;line-height:1.35;letter-spacing:1px}.main-subtitle{position:absolute;top:158px;left:70px;font-family:'Noto Serif SC',serif;font-size:16px;color:#8B7355;letter-spacing:2px}.accent-bar{position:absolute;top:170px;left:70px;width:5px;height:34px;background:#8B7355}.left-panel{position:absolute;top:230px;left:70px;width:680px;height:560px}.cross-section{position:absolute;top:0;left:0;width:620px;height:440px;border:1px solid #1B3B6B;background:#F5F0E8}.cs-surface{position:absolute;top:0;left:0;right:0;height:170px;background:#F5F0E8;border-bottom:2px dashed #8B7355}.cs-underground{position:absolute;top:170px;left:0;right:0;bottom:0;background:#1B3B6B}.cs-label-surface{position:absolute;top:18px;left:18px;font-family:'Noto Serif SC',serif;font-size:13px;color:#8B7355;letter-spacing:2px}.cs-label-underground{position:absolute;top:188px;left:18px;font-family:'Noto Serif SC',serif;font-size:13px;color:#F5F0E8;letter-spacing:2px}.cs-title{position:absolute;top:18px;right:18px;font-family:'Noto Serif SC',serif;font-size:14px;color:#1B3B6B;letter-spacing:1px}.cs-title-under{position:absolute;top:188px;right:18px;font-family:'Noto Serif SC',serif;font-size:14px;color:#F5F0E8;letter-spacing:1px}.surface-deco-circle{position:absolute;width:32px;height:32px;border-radius:50%;border:1.5px solid #8B7355;top:62px;left:60px}.surface-deco-circle2{position:absolute;width:20px;height:20px;border-radius:50%;background:#8B7355;top:98px;left:120px}.surface-deco-square{position:absolute;width:26px;height:26px;background:#8B7355;top:78px;left:170px;opacity:0.85}.surface-deco-line{position:absolute;top:88px;left:220px;width:80px;height:1px;background:#8B7355}.surface-deco-tri{position:absolute;top:68px;left:320px;width:0;height:0;border-left:18px solid transparent;border-right:18px solid transparent;border-bottom:30px solid #8B7355}.surface-deco-circle3{position:absolute;width:14px;height:14px;border-radius:50%;border:1.5px solid #8B7355;top:100px;left:380px}.surface-deco-square2{position:absolute;width:22px;height:22px;border:1.5px solid #8B7355;top:82px;left:420px}.surface-deco-line2{position:absolute;top:92px;left:465px;width:60px;height:1px;background:#8B7355}.foundation-block{position:absolute;background:#F5F0E8;top:200px;left:40px;width:80px;height:80px;opacity:0.15}.foundation-block2{position:absolute;background:#F5F0E8;top:210px;left:140px;width:100px;height:70px;opacity:0.12}.foundation-block3{position:absolute;background:#F5F0E8;top:220px;left:260px;width:90px;height:90px;opacity:0.18}.foundation-block4{position:absolute;background:#F5F0E8;top:200px;left:370px;width:70px;height:80px;opacity:0.10}.foundation-block5{position:absolute;background:#F5F0E8;top:230px;left:460px;width:100px;height:60px;opacity:0.14}.foundation-label{position:absolute;bottom:14px;left:18px;font-family:'Noto Serif SC',serif;font-size:11px;color:#F5F0E8;letter-spacing:1px;opacity:0.6}.cross-caption{position:absolute;top:452px;left:0;width:620px;font-family:'Noto Serif SC',serif;font-size:14px;color:#1B3B6B;line-height:1.6;font-style:italic}.cross-caption .copper{color:#8B7355;font-style:normal;font-weight:600}.right-panel{position:absolute;top:230px;left:800px;width:730px;height:560px}.section-label{font-family:'Noto Serif SC',serif;font-size:12px;color:#8B7355;letter-spacing:3px;margin-bottom:8px}.table-wrap{margin-top:6px;width:730px}.regime-table{width:100%;border-collapse:collapse;font-size:13px}.regime-table thead th{font-family:'Noto Serif SC',serif;font-size:12px;color:#F5F0E8;background:#1B3B6B;padding:8px 10px;text-align:left;letter-spacing:1px;font-weight:600;border:1px solid #1B3B6B}.regime-table tbody td{padding:9px 10px;border:1px solid #1B3B6B;font-size:12.5px;color:#1B3B6B;line-height:1.45;vertical-align:middle}.regime-table tbody tr td:first-child{font-family:'Noto Serif SC',serif;font-weight:700;color:#1B3B6B;width:80px;background:#F5F0E8}.regime-table tbody tr td:nth-child(2){color:#555;width:100px}.regime-table tbody tr td:nth-child(3){width:220px}.regime-table tbody tr td:nth-child(4){color:#8B7355;width:200px}.regime-row-ex{background:rgba(27,59,107,0.04)}.dot-inclusive{display:inline-block;width:8px;height:8px;border-radius:50%;background:#1B3B6B;margin-right:6px;vertical-align:middle}.dot-intermediate{display:inline-block;width:8px;height:8px;background:#8B7355;margin-right:6px;vertical-align:middle}.dot-extractive{display:inline-block;width:8px;height:8px;background:#555;margin-right:6px;vertical-align:middle}.framework-box{position:absolute;top:430px;left:0;width:730px;padding:18px 20px;border-left:4px solid #1B3B6B;background:#F5F0E8}.framework-quote{font-family:'Noto Serif SC','Songti SC',serif;font-size:15px;color:#1B3B6B;line-height:1.7}.framework-quote .author{font-size:12px;color:#8B7355;letter-spacing:2px;margin-top:6px;display:block}.framework-eq{margin-top:12px;padding-top:10px;border-top:1px solid #8B7355;font-family:'Noto Serif SC',serif;font-size:14px;color:#1B3B6B;line-height:1.6}.framework-eq .eq-line{font-family:'Noto Serif SC',serif;font-size:15px;font-weight:700;color:#1B3B6B;letter-spacing:1px}.footer{position:absolute;bottom:24px;left:70px;right:70px;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#8B7355;letter-spacing:2px}.geo-circle{position:absolute;top:36px;right:180px;width:42px;height:42px;border-radius:50%;border:2px solid #1B3B6B}.geo-circle-fill{position:absolute;top:42px;right:186px;width:30px;height:30px;border-radius:50%;background:#1B3B6B}.geo-square-deco{position:absolute;top:40px;right:240px;width:30px;height:30px;background:#8B7355}.geo-line-deco{position:absolute;top:40px;right:300px;width:40px;height:2px;background:#1B3B6B}.lecture-badge{position:absolute;top:36px;left:70px;width:36px;height:36px;border-radius:50%;background:#1B3B6B;color:#F5F0E8;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif SC',serif;font-size:16px;font-weight:700}</style></head><body>
 
-  .header {
-    position: absolute;
-    top: 78px; left: 92px; right: 92px;
-  }
-  .lecture-num {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 12px;
-    color: #8B7355;
-    letter-spacing: 5px;
-  }
-  .lecture-num .dot {
-    display: inline-block;
-    width: 5px; height: 5px;
-    background: #8B7355;
-    margin: 0 10px 2px;
-    vertical-align: middle;
-  }
-  .title-cn {
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
-    font-size: 34px;
-    color: #1B3B6B;
-    font-weight: 700;
-    margin-top: 10px;
-    letter-spacing: 2px;
-    line-height: 1.25;
-  }
-  .title-cn .accent {
-    color: #8B7355;
-    font-style: italic;
-  }
-  .subtitle {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 13px;
-    color: #555;
-    margin-top: 10px;
-    letter-spacing: 2px;
-  }
-
-  .divider-row {
-    position: absolute;
-    top: 232px; left: 92px; right: 92px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .divider-bar {
-    width: 60px;
-    height: 2px;
-    background: #8B7355;
-  }
-  .divider-square {
-    width: 8px; height: 8px;
-    background: #1B3B6B;
-  }
-  .divider-circle {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: #8B7355;
-  }
-  .divider-line {
-    flex: 1;
-    height: 1px;
-    background: rgba(27,59,107,0.25);
-  }
-  .divider-tag {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 11px;
-    color: #8B7355;
-    letter-spacing: 3px;
-  }
-
-  /* Cross-section diagram */
-  .cross-section {
-    position: absolute;
-    top: 268px;
-    left: 92px;
-    width: 580px;
-    height: 520px;
-  }
-  .cs-title {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 11px;
-    color: #8B7355;
-    letter-spacing: 4px;
-    margin-bottom: 8px;
-  }
-  .cs-canvas {
-    position: relative;
-    width: 580px;
-    height: 460px;
-    border: 1px solid rgba(27,59,107,0.15);
-    background: rgba(139,115,85,0.03);
-  }
-  .surface-zone {
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 170px;
-    border-bottom: 2px solid #1B3B6B;
-  }
-  .surface-tag {
-    position: absolute;
-    top: 8px; left: 10px;
-    font-family: 'Noto Serif SC', serif;
-    font-size: 10px;
-    color: #8B7355;
-    letter-spacing: 3px;
-  }
-  .surface-tag-cn {
-    position: absolute;
-    top: 8px; right: 10px;
-    font-family: 'Noto Serif SC', serif;
-    font-size: 11px;
-    color: #1B3B6B;
-    font-weight: 700;
-    letter-spacing: 2px;
-  }
-  .underground-tag {
-    position: absolute;
-    top: 180px; left: 10px;
-    font-family: 'Noto Serif SC', serif;
-    font-size: 10px;
-    color: #8B7355;
-    letter-spacing: 3px;
-  }
-  .underground-tag-cn {
-    position: absolute;
-    top: 180px; right: 10px;
-    font-family: 'Noto Serif SC', serif;
-    font-size: 11px;
-    color: #1B3B6B;
-    font-weight: 700;
-    letter-spacing: 2px;
-  }
-
-  /* surface buildings */
-  .building {
-    position: absolute;
-    bottom: 0;
-  }
-
-  /* underground layers */
-  .layer {
-    position: absolute;
-    left: 0; right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .layer-shape {
-    display: inline-block;
-    margin: 0 6px;
-  }
-
-  /* Depth axis */
-  .depth-axis {
-    position: absolute;
-    right: -30px;
-    top: 172px;
-    width: 20px;
-    height: 260px;
-  }
-  .depth-axis .line {
-    position: absolute;
-    left: 8px;
-    top: 0; bottom: 0;
-    width: 1px;
-    background: #8B7355;
-  }
-  .depth-axis .tick {
-    position: absolute;
-    left: 5px;
-    width: 7px;
-    height: 1px;
-    background: #8B7355;
-  }
-  .depth-axis .label {
-    position: absolute;
-    left: 15px;
-    font-family: 'Noto Serif SC', serif;
-    font-size: 8px;
-    color: #8B7355;
-    letter-spacing: 1px;
-    white-space: nowrap;
-  }
-
-  /* Right panel content */
-  .right-panel {
-    position: absolute;
-    top: 268px;
-    left: 730px;
-    right: 92px;
-  }
-  .lead {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 14px;
-    line-height: 1.85;
-    color: #1B3B6B;
-    padding: 4px 0 18px 0;
-    border-left: 2px solid #8B7355;
-    padding-left: 16px;
-  }
-  .lead .em {
-    color: #8B7355;
-    font-weight: 700;
-    letter-spacing: 1px;
-  }
-  .lead .strong {
-    font-weight: 700;
-  }
-
-  .table-head {
-    display: grid;
-    grid-template-columns: 130px 130px 1fr 1fr;
-    padding: 10px 4px;
-    border-bottom: 2px solid #1B3B6B;
-    border-top: 1px solid rgba(27,59,107,0.3);
-    margin-top: 6px;
-  }
-  .table-head > div {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 10px;
-    color: #8B7355;
-    letter-spacing: 3px;
-  }
-  .row {
-    display: grid;
-    grid-template-columns: 130px 130px 1fr 1fr;
-    padding: 16px 4px;
-    border-bottom: 1px solid rgba(27,59,107,0.15);
-    align-items: center;
-  }
-  .row .type-name {
-    font-family: 'Noto Serif SC', serif;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 1.1;
-  }
-  .row .type-en {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 9px;
-    color: #8B7355;
-    letter-spacing: 2px;
-    margin-top: 4px;
-  }
-  .row .country {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 13px;
-    color: #1B3B6B;
-    letter-spacing: 1px;
-  }
-  .row .attitude {
-    font-size: 12px;
-    color: #555;
-    line-height: 1.6;
-  }
-  .row .attitude .k {
-    color: #1B3B6B;
-    font-weight: 700;
-  }
-  .row .case {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 11px;
-    color: #8B7355;
-    font-style: italic;
-    line-height: 1.7;
-  }
-  .row .case .en {
-    font-style: normal;
-    color: #1B3B6B;
-  }
-  .type-marker {
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    margin-right: 8px;
-    vertical-align: middle;
-  }
-  .marker-ink { background: #1B3B6B; }
-  .marker-mid {
-    background: transparent;
-    border: 2px solid #8B7355;
-    width: 12px;
-    height: 12px;
-  }
-  .marker-extract {
-    background: transparent;
-    border: 1px solid #555;
-    width: 12px;
-    height: 12px;
-    position: relative;
-  }
-  .marker-extract::before {
-    content: '';
-    position: absolute;
-    inset: 3px;
-    border: 1px solid #555;
-  }
-
-  /* Framework bottom bar */
-  .framework {
-    position: absolute;
-    bottom: 60px;
-    left: 92px;
-    right: 92px;
-    height: 62px;
-    background: #1B3B6B;
-    display: flex;
-    align-items: center;
-    padding: 0 26px;
-    justify-content: space-between;
-    color: #F5F0E8;
-  }
-  .framework-left {
-    display: flex;
-    align-items: center;
-    gap: 22px;
-  }
-  .framework-icon {
-    width: 34px;
-    height: 34px;
-    position: relative;
-  }
-  .framework-icon .circle {
-    position: absolute;
-    top: 0; left: 0;
-    width: 34px;
-    height: 34px;
-    border: 1px solid #8B7355;
-    border-radius: 50%;
-  }
-  .framework-icon .square {
-    position: absolute;
-    bottom: 4px; right: 4px;
-    width: 14px;
-    height: 14px;
-    background: #8B7355;
-  }
-  .framework-text {
-    display: flex;
-    flex-direction: column;
-  }
-  .framework-tag {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 10px;
-    letter-spacing: 4px;
-    color: #8B7355;
-    margin-bottom: 2px;
-  }
-  .framework-body {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 16px;
-    font-weight: 500;
-    letter-spacing: 1px;
-  }
-  .framework-body .eq {
-    color: #8B7355;
-    margin: 0 10px;
-    font-weight: 700;
-  }
-  .framework-cite {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 10px;
-    color: rgba(245,240,232,0.65);
-    letter-spacing: 2px;
-    font-style: italic;
-  }
-
-  .page-num {
-    position: absolute;
-    bottom: 12px;
-    left: 0; right: 0;
-    text-align: center;
-    font-family: 'Noto Serif SC', serif;
-    font-size: 10px;
-    color: #8B7355;
-    letter-spacing: 5px;
-  }
-</style>
-</head>
-<body>
-<div class="parchment"></div>
-
-<div class="frame"></div>
-<div class="frame-corner fc-tl"></div>
-<div class="frame-corner fc-tr"></div>
-<div class="frame-corner fc-bl"></div>
-<div class="frame-corner fc-br"></div>
+<div class="lecture-badge">7</div>
+<div class="geo-line-deco"></div>
+<div class="geo-square-deco"></div>
+<div class="geo-circle"></div>
+<div class="geo-circle-fill"></div>
 
 <div class="header">
-  <div class="lecture-num">
-    SLIDE 12 / 26
-    <span class="dot"></span>
-    INSTITUTIONAL ROLE
-    <span class="dot"></span>
-    LECTURE 07
-  </div>
-  <div class="title-cn">
-    国家的制度角色：从<span class="accent">"政策建议"</span>到<span class="accent">"制度类型"</span>
-  </div>
-  <div class="subtitle">States as Institutional Form &nbsp;·&nbsp; Beyond Policy Prescription</div>
+  <div class="header-left">第 07 期 · 商业价值与社会价值</div>
+  <div class="header-right">OPEN SOURCE · POLITICAL ECONOMY &nbsp;/&nbsp; 07 / 26</div>
 </div>
+<div class="header-rule"></div>
 
-<div class="divider-row">
-  <div class="divider-bar"></div>
-  <div class="divider-square"></div>
-  <div class="divider-circle"></div>
-  <div class="divider-line"></div>
-  <div class="divider-tag">§ 制度剖面制图 · INSTITUTIONAL CROSS-SECTION</div>
-</div>
+<div class="accent-bar"></div>
+<div class="main-title">国家的制度角色：从"政策建议"到"制度类型"</div>
+<div class="main-subtitle">Institutional Cross-Section — Surface Policy vs. Foundational Regime</div>
 
-<!-- Cross-section diagram -->
-<div class="cross-section">
-  <div class="cs-canvas">
-    <!-- Surface zone -->
-    <div class="surface-zone">
-      <div class="surface-tag">SURFACE LAYER</div>
-      <div class="surface-tag-cn">表层 · 政策建议</div>
-
-      <!-- Buildings/policies on surface -->
-      <div class="building" style="left:30px; width:22px; height:70px; background:#8B7355;"></div>
-      <div class="building" style="left:60px; width:16px; height:48px; background:#1B3B6B; opacity:0.55;"></div>
-      <div class="building" style="left:84px; width:34px; height:90px; background:#8B7355; opacity:0.75;"></div>
-      <div class="building" style="left:126px; width:20px; height:60px; background:#1B3B6B; opacity:0.7;"></div>
-      <div class="building" style="left:154px; width:42px; height:110px; background:#8B7355;"></div>
-      <div class="building" style="left:204px; width:18px; height:52px; background:#1B3B6B; opacity:0.5;"></div>
-      <div class="building" style="left:230px; width:28px; height:80px; background:#8B7355; opacity:0.85;"></div>
-      <div class="building" style="left:266px; width:14px; height:40px; background:#1B3B6B; opacity:0.6;"></div>
-      <div class="building" style="left:288px; width:38px; height:100px; background:#8B7355; opacity:0.7;"></div>
-      <div class="building" style="left:334px; width:20px; height:58px; background:#1B3B6B; opacity:0.65;"></div>
-      <div class="building" style="left:362px; width:30px; height:76px; background:#8B7355; opacity:0.8;"></div>
-      <div class="building" style="left:400px; width:16px; height:44px; background:#1B3B6B; opacity:0.55;"></div>
-      <div class="building" style="left:424px; width:44px; height:96px; background:#8B7355;"></div>
-      <div class="building" style="left:476px; width:22px; height:64px; background:#1B3B6B; opacity:0.7;"></div>
-      <div class="building" style="left:506px; width:28px; height:82px; background:#8B7355; opacity:0.85;"></div>
-      <div class="building" style="left:542px; width:18px; height:50px; background:#1B3B6B; opacity:0.5;"></div>
-
-      <!-- decorative circle sun -->
-      <div style="position:absolute; top:22px; left:240px; width:32px; height:32px; border-radius:50%; border:1px solid #8B7355; background:rgba(139,115,85,0.15);"></div>
+<div class="left-panel">
+  <div class="section-label">VISUAL METAPHOR · 制度剖面制图</div>
+  <div class="cross-section">
+    <div class="cs-surface">
+      <span class="cs-label-surface">SURFACE · 表层</span>
+      <span class="cs-title">政策建议 Policy</span>
+      <div class="surface-deco-circle"></div>
+      <div class="surface-deco-circle2"></div>
+      <div class="surface-deco-square"></div>
+      <div class="surface-deco-line"></div>
+      <div class="surface-deco-tri"></div>
+      <div class="surface-deco-circle3"></div>
+      <div class="surface-deco-square2"></div>
+      <div class="surface-deco-line2"></div>
     </div>
-
-    <!-- Ground line already part of surface-zone border-bottom -->
-
-    <!-- Underground labels -->
-    <div class="underground-tag">UNDERGROUND LAYER</div>
-    <div class="underground-tag-cn">深层 · 制度根基</div>
-
-    <!-- Underground layer 1: mixed blocks -->
-    <div class="layer" style="top:210px; height:56px; background:rgba(27,59,107,0.06);">
-      <div class="layer-shape" style="width:70px; height:38px; background:#1B3B6B; opacity:0.75;"></div>
-      <div class="layer-shape" style="width:38px; height:38px; background:#8B7355;"></div>
-      <div class="layer-shape" style="width:90px; height:38px; background:#1B3B6B; opacity:0.55;"></div>
-      <div class="layer-shape" style="width:30px; height:38px; background:#8B7355; opacity:0.8;"></div>
-      <div class="layer-shape" style="width:60px; height:38px; background:#1B3B6B; opacity:0.65;"></div>
-      <div class="layer-shape" style="width:44px; height:38px; background:#8B7355;"></div>
-      <div class="layer-shape" style="width:70px; height:38px; background:#1B3B6B; opacity:0.7;"></div>
+    <div class="cs-underground">
+      <span class="cs-label-underground">UNDERGROUND · 深层</span>
+      <span class="cs-title-under">制度根基 Regime</span>
+      <div class="foundation-block"></div>
+      <div class="foundation-block2"></div>
+      <div class="foundation-block3"></div>
+      <div class="foundation-block4"></div>
+      <div class="foundation-block5"></div>
+      <span class="foundation-label">包容性 / 中间型 / 汲取性</span>
     </div>
-
-    <!-- Layer divider -->
-    <div style="position:absolute; top:266px; left:0; right:0; height:1px; background:rgba(27,59,107,0.35);"></div>
-
-    <!-- Underground layer 2: larger foundations -->
-    <div class="layer" style="top:272px; height:60px; background:rgba(139,115,85,0.05);">
-      <div class="layer-shape" style="width:150px; height:44px; background:#1B3B6B; opacity:0.6;"></div>
-      <div class="layer-shape" style="width:110px; height:44px; background:#8B7355; opacity:0.85;"></div>
-      <div class="layer-shape" style="width:160px; height:44px; background:#1B3B6B; opacity:0.5;"></div>
-    </div>
-
-    <div style="position:absolute; top:332px; left:0; right:0; height:1px; background:rgba(27,59,107,0.45);"></div>
-
-    <!-- Deep foundations -->
-    <div class="layer" style="top:338px; height:80px; background:rgba(27,59,107,0.08);">
-      <div class="layer-shape" style="width:250px; height:62px; background:#1B3B6B;"></div>
-      <div class="layer-shape" style="width:250px; height:62px; background:#8B7355;"></div>
-    </div>
-
-    <!-- Depth axis -->
-    <div class="depth-axis">
-      <div class="line"></div>
-      <div class="tick" style="top:0;"></div>
-      <div class="tick" style="top:90px;"></div>
-      <div class="tick" style="top:180px;"></div>
-      <div class="tick" style="top:260px;"></div>
-      <div class="label" style="top:-4px;">0</div>
-      <div class="label" style="top:86px;">SHALLOW</div>
-      <div class="label" style="top:176px;">MID</div>
-      <div class="label" style="top:256px;">DEEP</div>
-    </div>
-
-    <!-- Depth indicator label -->
-    <div style="position:absolute; bottom:12px; left:14px; font-family:'Noto Serif SC',serif; font-size:9px; color:#8B7355; letter-spacing:2px;">
-      DEPTH OF INSTITUTIONAL ROOT
-    </div>
-    <div style="position:absolute; bottom:12px; right:14px; font-family:'Noto Serif SC',serif; font-size:9px; color:#8B7355; letter-spacing:2px;">
-      制度根基之深
-    </div>
+  </div>
+  <div class="cross-caption">
+    政策只是地表之上的<span class="copper">装饰层</span>；<br>
+    真正决定开源命运的，是地表之下的<span class="copper">制度基石</span>。
   </div>
 </div>
 
-<!-- Right panel -->
 <div class="right-panel">
-  <div class="lead">
-    <span class="em">政策建议（Policy）</span>只是国家的表层行为；<br>
-    深层问题在于——<span class="strong">国家本身</span>，是<span class="em">包容性</span>还是<span class="em">汲取性</span>制度？
+  <div class="section-label">TYPOLOGY · 制度类型对照表</div>
+  <div class="table-wrap">
+    <table class="regime-table">
+      <thead>
+        <tr>
+          <th>制度类型</th>
+          <th>典型国家</th>
+          <th>对开源的态度</th>
+          <th>典型案例</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="regime-row-ex">
+          <td><span class="dot-inclusive"></span>包容性</td>
+          <td>美 / 欧</td>
+          <td>开源是公共基础设施</td>
+          <td>Linux Foundation · Eclipse</td>
+        </tr>
+        <tr>
+          <td><span class="dot-intermediate"></span>中间型</td>
+          <td>日本 / 韩国</td>
+          <td>开源是产业工具</td>
+          <td>Apache · Red Hat</td>
+        </tr>
+        <tr class="regime-row-ex">
+          <td><span class="dot-extractive"></span>汲取性</td>
+          <td>部分发展中国家</td>
+          <td>"开源"是行政工具</td>
+          <td>特许工程代码 · 局域网共享</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
-  <div class="table-head">
-    <div>制度类型 / TYPE</div>
-    <div>典型国家 / STATES</div>
-    <div>对开源的态度 / STANCE</div>
-    <div>典型案例 / CASE</div>
-  </div>
-
-  <div class="row">
-    <div>
-      <span class="type-marker marker-ink"></span>
-      <span class="type-name">包容性</span>
-      <div class="type-en">INCLUSIVE</div>
+  <div class="framework-box">
+    <div class="section-label" style="margin-bottom:6px;">JUDGMENT FRAMEWORK · 判断框架</div>
+    <div class="framework-quote">
+      "制度决定长期经济绩效——包容性制度赋予个体以权利与机会，汲取性制度则将其剥夺。"
+      <span class="author">— D. Acemoglu &amp; J. Robinson</span>
     </div>
-    <div class="country">美国 / 欧洲</div>
-    <div class="attitude">开源是<span class="k">公共基础设施</span><br><span style="color:#8B7355;font-size:10px;">公共品 · 协作底座</span></div>
-    <div class="case">
-      <span class="en">Linux Foundation</span><br>
-      <span class="en">Eclipse Foundation</span>
-    </div>
-  </div>
-
-  <div class="row">
-    <div>
-      <span class="type-marker marker-mid"></span>
-      <span class="type-name">中间型</span>
-      <div class="type-en">INTERMEDIATE</div>
-    </div>
-    <div class="country">日本 / 韩国</div>
-    <div class="attitude">开源是<span class="k">产业工具</span><br><span style="color:#8B7355;font-size:10px;">制造业配套 · 战略投入</span></div>
-    <div class="case">
-      <span class="en">Apache Software</span><br>
-      <span class="en">Red Hat 商业模式</span>
-    </div>
-  </div>
-
-  <div class="row">
-    <div>
-      <span class="type-marker marker-extract"></span>
-      <span class="type-name">汲取性</span>
-      <div class="type-en">EXTRACTIVE</div>
-    </div>
-    <div class="country">部分发展中国家</div>
-    <div class="attitude">"开源"是<span class="k">行政工具</span><br><span style="color:#8B7355;font-size:10px;">替代商业许可 · 财政节约</span></div>
-    <div class="case">
-      特许工程代码<br>
-      局域网共享工程
+    <div class="framework-eq">
+      <span class="eq-line">开源的繁荣程度&nbsp;=&nbsp;制度环境的包容性程度</span>
     </div>
   </div>
 </div>
 
-<!-- Framework -->
-<div class="framework">
-  <div class="framework-left">
-    <div class="framework-icon">
-      <div class="circle"></div>
-      <div class="square"></div>
-    </div>
-    <div class="framework-text">
-      <div class="framework-tag">JUDGMENT FRAMEWORK / 判断框架</div>
-      <div class="framework-body">
-        制度环境的包容性程度<span class="eq">≈</span>开源的繁荣程度
-      </div>
-    </div>
-  </div>
-  <div class="framework-cite">
-    Acemoglu &amp; Robinson, "Why Nations Fail", 2012
-  </div>
+<div class="footer">
+  <span>第 07 期 · 开源的政治经济学</span>
+  <span>BAUHAUS ACADEMIC · 07 / 26</span>
 </div>
 
-<div class="page-num">— 07 · 商业价值与社会价值：开源的政治经济学 —</div>
-
-</body>
-</html>
+</body></html>

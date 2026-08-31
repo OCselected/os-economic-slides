@@ -1,211 +1,777 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: 47b403a87eb0b86c --><head><meta charset="UTF-8"><title>第 09 期 · 排他权与容他权、比例原则与 copyleft</title><style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1600px;height:900px;overflow:hidden;margin:0;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;color:#1B3B6B}
-body{background:#F5F0E8;position:relative}
+<!DOCTYPE html>
+<html lang="zh-CN"><!-- source_hash: ab601ebe1a66201b -->
+<head>
+<meta charset="UTF-8">
+<title>前情提要 · 第09期</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
 
-/* parchment texture */
-body::before{content:"";position:absolute;top:0;left:0;width:1600px;height:900px;background:radial-gradient(ellipse at 20% 30%,rgba(139,115,85,0.05) 0%,transparent 50%),radial-gradient(ellipse at 80% 70%,rgba(27,59,107,0.04) 0%,transparent 40%);pointer-events:none}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-/* header bar */
-.header{position:absolute;top:50px;left:80px;width:1440px;height:80px;display:flex;align-items:flex-end;justify-content:space-between}
-.header-left{display:flex;align-items:flex-end;gap:24px}
-.lecture-num{font-family:'Noto Serif SC','Songti SC',serif;font-size:72px;font-weight:700;color:#1B3B6B;line-height:0.9;letter-spacing:-2px}
-.header-divider{width:2px;height:56px;background:#8B7355;margin-bottom:4px}
-.title-block{display:flex;flex-direction:column;gap:6px}
-.main-title{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;font-size:28px;font-weight:600;color:#1B3B6B;letter-spacing:1px;line-height:1.2}
-.sub-title{font-family:'Noto Sans SC',sans-serif;font-size:14px;color:#8B7355;letter-spacing:2px}
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
+  font-family: 'Noto Sans SC', sans-serif;
+}
 
-.header-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px;font-size:12px;color:#555;letter-spacing:2px}
-.header-right .id{font-family:'Noto Serif SC',serif;font-size:16px;color:#1B3B6B;letter-spacing:3px}
+.canvas {
+  width: 1600px;
+  height: 900px;
+  position: relative;
+  background: #1B3B6B;
+  overflow: hidden;
+}
 
-/* decorative top-right circle */
-.deco-circle-tr{position:absolute;top:70px;right:60px;width:36px;height:36px;border-radius:50%;background:#1B3B6B}
-.deco-square-tr{position:absolute;top:110px;right:100px;width:14px;height:14px;background:#8B7355}
-.deco-line-tr{position:absolute;top:140px;right:80px;width:60px;height:2px;background:#1B3B6B}
+/* Parchment texture overlay */
+.canvas::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(139,115,85,0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 30%, rgba(245,240,232,0.02) 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 80%, rgba(139,115,85,0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
 
-/* top horizontal rule */
-.top-rule{position:absolute;top:140px;left:80px;width:1440px;height:1px;background:#1B3B6B;opacity:0.3}
+/* Grid lines - subtle map grid */
+.grid-lines {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  opacity: 0.06;
+}
 
-/* section label */
-.section-label{position:absolute;top:160px;left:80px;display:flex;align-items:center;gap:16px}
-.section-label .sq{width:10px;height:10px;background:#1B3B6B}
-.section-label .txt{font-size:13px;color:#8B7355;letter-spacing:4px;font-weight:600}
+.grid-lines::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 79px,
+    rgba(245,240,232,0.3) 79px,
+    rgba(245,240,232,0.3) 80px
+  ),
+  repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 79px,
+    rgba(245,240,232,0.3) 79px,
+    rgba(245,240,232,0.3) 80px
+  );
+}
 
-/* spectrum container */
-.spectrum-wrap{position:absolute;top:200px;left:80px;width:1440px;height:340px}
-.spectrum-title{font-family:'Noto Serif SC','Songti SC',serif;font-size:18px;color:#1B3B6B;font-weight:600;letter-spacing:2px;margin-bottom:14px}
-.spectrum-subtitle{font-size:12px;color:#8B7355;letter-spacing:2px;margin-bottom:20px}
+/* Bauhaus geometric decorations */
+.deco-circle-1 {
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 180px;
+  height: 180px;
+  border: 2px solid rgba(245,240,232,0.08);
+  border-radius: 50%;
+}
 
-.spectrum-bar-area{position:relative;height:280px;margin-left:30px;margin-right:30px}
+.deco-circle-2 {
+  position: absolute;
+  bottom: 40px;
+  left: -40px;
+  width: 120px;
+  height: 120px;
+  border: 1px solid rgba(139,115,85,0.12);
+  border-radius: 50%;
+}
 
-/* gradient bar */
-.spectrum-bar{position:absolute;top:130px;left:0;right:0;height:30px;background:#1B3B6B;border-radius:2px}
-.spectrum-bar::before{content:"";position:absolute;top:0;left:0;right:0;height:30px;background:linear-gradient(90deg,#1B3B6B 0%,#2A4F7A 25%,#5A6B7A 50%,#7A8A6A 75%,#8B7355 100%);border-radius:2px;opacity:0.85}
+.deco-square-1 {
+  position: absolute;
+  top: 80px;
+  left: 60px;
+  width: 10px;
+  height: 10px;
+  background: #8B7355;
+  opacity: 0.3;
+}
 
-/* bar ends labels */
-.bar-ends{position:absolute;top:105px;left:0;right:0;display:flex;justify-content:space-between}
-.bar-end{display:flex;flex-direction:column;align-items:center;gap:4px}
-.bar-end .label{font-family:'Noto Serif SC',serif;font-size:16px;font-weight:700;color:#1B3B6B}
-.bar-end .sub{font-size:11px;color:#8B7355;letter-spacing:2px}
+.deco-square-2 {
+  position: absolute;
+  bottom: 120px;
+  right: 80px;
+  width: 8px;
+  height: 8px;
+  background: rgba(245,240,232,0.15);
+  transform: rotate(45deg);
+}
 
-/* marker positions on bar */
-.marker{position:absolute;top:120px;display:flex;flex-direction:column;align-items:center;transform:translateX(-50%)}
-.marker .dot{width:16px;height:16px;background:#F5F0E8;border:3px solid #1B3B6B;border-radius:50%}
-.marker .stem{width:2px;height:24px;background:#1B3B6B;margin-top:1px}
-.marker.copper .dot{border-color:#8B7355}
-.marker.copper .stem{background:#8B7355}
+.deco-line-1 {
+  position: absolute;
+  top: 160px;
+  right: 200px;
+  width: 60px;
+  height: 1px;
+  background: rgba(245,240,232,0.1);
+}
 
-.marker .lbl{font-family:'Noto Serif SC',serif;font-size:12px;font-weight:600;color:#1B3B6B;margin-top:4px;white-space:nowrap}
-.marker .lbl-sub{font-size:9px;color:#555;letter-spacing:1px;white-space:nowrap}
+.deco-line-2 {
+  position: absolute;
+  bottom: 200px;
+  left: 300px;
+  width: 40px;
+  height: 1px;
+  background: rgba(139,115,85,0.15);
+}
 
-/* spectrum scale ticks */
-.scale-ticks{position:absolute;top:168px;left:0;right:0;height:10px;display:flex;justify-content:space-between;padding:0 20px}
-.scale-ticks span{font-size:10px;color:#555;font-family:'Noto Serif SC',serif}
+/* Header */
+.header {
+  position: absolute;
+  top: 48px;
+  left: 80px;
+  right: 80px;
+}
 
-/* bottom annotation row */
-.spectrum-annotation{position:absolute;top:230px;left:0;right:0;display:flex;justify-content:space-between;padding:0 20px}
-.annot-block{display:flex;flex-direction:column;align-items:center;gap:2px;width:180px;text-align:center}
-.annot-block .arrow{font-size:11px;color:#8B7355;letter-spacing:2px;font-weight:600}
-.annot-block .desc{font-size:10px;color:#555;line-height:1.5}
+.header-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 10px;
+}
 
-/* bottom rule */
-.bottom-rule{position:absolute;top:570px;left:80px;width:1440px;height:1px;background:#1B3B6B;opacity:0.3}
+.series-label {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(245,240,232,0.35);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
 
-/* core questions */
-.questions-wrap{position:absolute;top:590px;left:80px;width:1440px;height:260px;display:flex;gap:24px}
+.lecture-indicator {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(139,115,85,0.5);
+  letter-spacing: 3px;
+}
 
-.q-col{flex:1;display:flex;flex-direction:column;gap:12px;padding:16px 18px;border-left:3px solid #1B3B6B;background:rgba(27,59,107,0.02)}
-.q-col:nth-child(2){border-left-color:#8B7355}
-.q-col:nth-child(3){border-left-color:#1B3B6B}
-.q-col:nth-child(4){border-left-color:#8B7355}
+.title-main {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: #F5F0E8;
+  letter-spacing: 6px;
+  line-height: 1.2;
+}
 
-.q-num{font-family:'Noto Serif SC','Songti SC',serif;font-size:13px;color:#8B7355;letter-spacing:3px;font-weight:600;display:flex;align-items:center;gap:10px}
-.q-num .num-sq{width:8px;height:8px;background:#1B3B6B;display:inline-block}
-.q-col:nth-child(even) .q-num .num-sq{background:#8B7355}
+.title-sub {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: rgba(139,115,85,0.6);
+  letter-spacing: 2px;
+  margin-top: 8px;
+}
 
-.q-title{font-family:'Noto Serif SC','Source Han Serif SC',serif;font-size:16px;font-weight:700;color:#1B3B6B;line-height:1.4;margin-top:2px}
-.q-body{font-size:11px;color:#555;line-height:1.7;letter-spacing:0.5px}
+/* Map area */
+.map-area {
+  position: absolute;
+  top: 190px;
+  left: 80px;
+  width: 1000px;
+  height: 650px;
+}
 
-/* decorative geometry - bottom */
-.deco-circle-bl{position:absolute;bottom:30px;left:80px;width:28px;height:28px;border-radius:50%;border:2px solid #1B3B6B}
-.deco-line-bl{position:absolute;bottom:42px;left:120px;width:120px;height:2px;background:#8B7355}
+/* Map path - SVG-like using absolute divs */
+.map-path {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 
-.deco-square-br{position:absolute;bottom:35px;right:80px;width:22px;height:22px;background:#1B3B6B}
-.deco-circle-br2{position:absolute;bottom:35px;right:120px;width:18px;height:18px;border-radius:50%;background:#8B7355}
-.deco-line-br{position:absolute;bottom:42px;right:160px;width:80px;height:1px;background:#1B3B6B;opacity:0.4}
+/* Dotted path line connecting points */
+.path-line {
+  position: absolute;
+  background: rgba(245,240,232,0.12);
+  height: 1px;
+}
 
-.foot-note{position:absolute;bottom:38px;right:210px;font-size:10px;color:#8B7355;letter-spacing:3px;font-family:'Noto Serif SC',serif}
-</style></head><body>
+/* Map nodes */
+.node {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
 
-<div class="header">
-<div class="header-left">
-<div class="lecture-num">09</div>
-<div class="header-divider"></div>
-<div class="title-block">
-<div class="main-title">排他权与容他权 · 比例原则与 Copyleft</div>
-<div class="sub-title">EXCLUSIVITY · INCLUSIVITY · COPyleft</div>
+.node-dot {
+  width: 10px;
+  height: 10px;
+  border: 2px solid rgba(245,240,232,0.4);
+  border-radius: 50%;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.node-dot::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 4px;
+  height: 4px;
+  background: rgba(245,240,232,0.3);
+  border-radius: 50%;
+}
+
+.node-label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.node-lecture {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  color: rgba(139,115,85,0.5);
+  letter-spacing: 2px;
+}
+
+.node-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(245,240,232,0.55);
+  letter-spacing: 1px;
+  line-height: 1.4;
+}
+
+/* Current lecture node - highlighted */
+.node-current .node-dot {
+  width: 14px;
+  height: 14px;
+  border: 2px solid #8B7355;
+  background: rgba(139,115,85,0.2);
+}
+
+.node-current .node-dot::after {
+  width: 6px;
+  height: 6px;
+  background: #8B7355;
+}
+
+.node-current .node-title {
+  color: #F5F0E8;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.node-current .node-lecture {
+  color: #8B7355;
+  font-weight: 700;
+}
+
+/* Coordinate labels */
+.coord-label {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 8px;
+  font-weight: 300;
+  color: rgba(245,240,232,0.15);
+  letter-spacing: 1px;
+  position: absolute;
+}
+
+/* Right panel */
+.right-panel {
+  position: absolute;
+  top: 190px;
+  right: 80px;
+  width: 380px;
+  height: 650px;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-heading {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(139,115,85,0.5);
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(139,115,85,0.15);
+}
+
+.chapter-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.chapter-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(245,240,232,0.05);
+}
+
+.chapter-item:last-child {
+  border-bottom: none;
+}
+
+.chapter-num {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(139,115,85,0.4);
+  letter-spacing: 1px;
+  min-width: 36px;
+  padding-top: 2px;
+}
+
+.chapter-text {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(245,240,232,0.4);
+  letter-spacing: 1px;
+  line-height: 1.5;
+}
+
+.chapter-item.active {
+  background: rgba(139,115,85,0.05);
+  padding-left: 12px;
+  margin-left: -12px;
+}
+
+.chapter-item.active .chapter-num {
+  color: #8B7355;
+  font-weight: 600;
+}
+
+.chapter-item.active .chapter-text {
+  color: #F5F0E8;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.chapter-marker {
+  width: 4px;
+  height: 4px;
+  background: #8B7355;
+  flex-shrink: 0;
+  margin-top: 8px;
+}
+
+/* Footer */
+.footer {
+  position: absolute;
+  bottom: 36px;
+  left: 80px;
+  right: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-left {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  color: rgba(245,240,232,0.2);
+  letter-spacing: 2px;
+}
+
+.footer-right {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  color: rgba(139,115,85,0.3);
+  letter-spacing: 2px;
+}
+
+/* Divider line */
+.header-divider {
+  width: 60px;
+  height: 1px;
+  background: rgba(139,115,85,0.4);
+  margin-top: 16px;
+}
+
+/* Compass rose - small */
+.compass {
+  position: absolute;
+  bottom: 90px;
+  right: 500px;
+  width: 40px;
+  height: 40px;
+  opacity: 0.1;
+}
+
+.compass-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(245,240,232,0.5);
+  border-radius: 50%;
+}
+
+.compass-line-v {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 100%;
+  background: rgba(245,240,232,0.5);
+}
+
+.compass-line-h {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 1px;
+  background: rgba(245,240,232,0.5);
+}
+
+/* Current position marker */
+.current-marker {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.current-marker-ring {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border: 1px solid rgba(139,115,85,0.2);
+  border-radius: 50%;
+}
+
+.current-marker-ring-2 {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border: 1px solid rgba(139,115,85,0.3);
+  border-radius: 50%;
+}
+
+.current-marker-num {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #8B7355;
+}
+
+/* Map frame corners */
+.map-corner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: rgba(245,240,232,0.08);
+  border-style: solid;
+}
+
+.map-corner-tl {
+  top: 0;
+  left: 0;
+  border-width: 1px 0 0 1px;
+}
+
+.map-corner-tr {
+  top: 0;
+  right: 0;
+  border-width: 1px 1px 0 0;
+}
+
+.map-corner-bl {
+  bottom: 0;
+  left: 0;
+  border-width: 0 0 1px 1px;
+}
+
+.map-corner-br {
+  bottom: 0;
+  right: 0;
+  border-width: 0 1px 1px 0;
+}
+
+/* Decorative Bauhaus elements scattered */
+.bauhaus-block {
+  position: absolute;
+}
+
+.block-triangle {
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 10px solid rgba(245,240,232,0.06);
+}
+
+/* Journey label */
+.journey-label {
+  position: absolute;
+  top: 12px;
+  left: 10px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 9px;
+  font-weight: 300;
+  color: rgba(245,240,232,0.15);
+  letter-spacing: 2px;
+}
+
+/* Current slide indicator in map */
+.current-in-map {
+  position: absolute;
+  bottom: 18px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.current-in-map-line {
+  width: 30px;
+  height: 1px;
+  background: rgba(139,115,85,0.4);
+}
+
+.current-in-map-text {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #8B7355;
+  letter-spacing: 2px;
+}
+</style>
+</head>
+<body>
+<div class="canvas">
+  <!-- Background texture -->
+  <div class="grid-lines"></div>
+  
+  <!-- Bauhaus geometric decorations -->
+  <div class="deco-circle-1"></div>
+  <div class="deco-circle-2"></div>
+  <div class="deco-square-1"></div>
+  <div class="deco-square-2"></div>
+  <div class="deco-line-1"></div>
+  <div class="deco-line-2"></div>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-top-row">
+      <span class="series-label">OPEN SOURCE ECONOMICS · LECTURE 09</span>
+      <span class="lecture-indicator">第 09 / 28 页</span>
+    </div>
+    <div class="title-main">前情提要</div>
+    <div class="title-sub">Cartography of Prior Discourses · 讲演坐标追溯</div>
+    <div class="header-divider"></div>
+  </div>
+
+  <!-- Map Area -->
+  <div class="map-area">
+    <!-- Frame corners -->
+    <div class="map-corner map-corner-tl"></div>
+    <div class="map-corner map-corner-tr"></div>
+    <div class="map-corner map-corner-bl"></div>
+    <div class="map-corner map-corner-br"></div>
+
+    <!-- Journey label -->
+    <span class="journey-label">TRAJECTORY · 0–8</span>
+
+    <!-- Coordinate grid labels -->
+    <span class="coord-label" style="top:8px;left:10px;">51.5°N</span>
+    <span class="coord-label" style="top:8px;right:10px;">12°E</span>
+    <span class="coord-label" style="bottom:8px;left:10px;">51.3°N</span>
+    <span class="coord-label" style="bottom:8px;right:10px;">11.8°E</span>
+
+    <!-- Map nodes - arranged in a winding path -->
+    <!-- Node 0 -->
+    <div class="node" style="top: 60px; left: 40px;">
+      <div class="node-dot"></div>
+      <div class="node-label">
+        <span class="node-lecture">LECTURE 00</span>
+        <span class="node-title">开源与经济学</span>
+      </div>
+    </div>
+
+    <!-- Node 1 -->
+    <div class="node" style="top: 140px; left: 220px;">
+      <div class="node-dot"></div>
+      <div class="node-label">
+        <span class="node-lecture">LECTURE 01</span>
+        <span class="node-title">软件的生产、分销和消费</span>
+      </div>
+    </div>
+
+    <!-- Node 2 -->
+    <div class="node" style="top: 220px; left: 80px;">
+      <div class="node-dot"></div>
+      <div class="node-label">
+        <span class="node-lecture">LECTURE 02</span>
+        <span class="node-title">数字时代的知识财产法<br>演变与开源许可</span>
+      </div>
+    </div>
+
+    <!-- Node 3 -->
+    <div class="node" style="top: 320px; left: 300px;">
+      <div class="node-dot"></div>
+      <div class="node-label">
+        <span class="node-lecture">LECTURE 03</span>
+        <span class="node-title">商业模式：规则下的具体操作</span>
+      </div>
+    </div>
+
+    <!-- Node 4 -->
+    <div class="node" style="top: 400px; left: 100px;">
+      <div class="node-dot"></div>
+      <div class="node-label">
+        <span class="node-lecture">LECTURE 04</span>
+        <span class="node-title">软件开发劳动力市场</span>
+      </div>
+    </div>
+
+    <!-- Node 5 -->
+    <div class="node" style="top: 480px; left: 320px;">
+      <div class="node-dot"></div>
+      <div class="node-label">
+        <span class="node-lecture">LECTURE 05</span>
+        <span class="node-title">交易成本与路径依赖</span>
+      </div>
+    </div>
+
+    <!-- Node 6 -->
+    <div class="node" style="top: 540px; left: 80px;">
+      <div class="node-dot"></div>
+      <div class="node-label">
+        <span class="node-lecture">LECTURE 06</span>
+        <span class="node-title">组织结构与治理</span>
+      </div>
+    </div>
+
+    <!-- Node 7 -->
+    <div class="node" style="top: 600px; left: 260px;">
+      <div class="node-dot"></div>
+      <div class="node-label">
+        <span class="node-lecture">LECTURE 07</span>
+        <span class="node-title">文化的重要作用</span>
+      </div>
+    </div>
+
+    <!-- Node 8 -->
+    <div class="node" style="top: 660px; left: 80px;">
+      <div class="node-dot"></div>
+      <div class="node-label">
+        <span class="node-lecture">LECTURE 08</span>
+        <span class="node-title">商业价值与社会价值</span>
+      </div>
+    </div>
+
+    <!-- Node 9 - Current, highlighted -->
+    <div class="node node-current" style="top: 660px; left: 360px;">
+      <div class="node-dot"></div>
+      <div class="node-label">
+        <span class="node-lecture">LECTURE 09 — NOW</span>
+        <span class="node-title">排他权与容他权 · 比例原则与 Copyleft</span>
+      </div>
+    </div>
+
+    <!-- Compass -->
+    <div class="compass">
+      <div class="compass-center"></div>
+      <div class="compass-line-v"></div>
+      <div class="compass-line-h"></div>
+    </div>
+  </div>
+
+  <!-- Right Panel -->
+  <div class="right-panel">
+    <div class="panel-heading">COURSE INDEX · 全课程索引</div>
+    <div class="chapter-list">
+      <div class="chapter-item">
+        <span class="chapter-num">No.00</span>
+        <span class="chapter-text">开源与经济学</span>
+      </div>
+      <div class="chapter-item">
+        <span class="chapter-num">No.01</span>
+        <span class="chapter-text">软件的生产、分销和消费</span>
+      </div>
+      <div class="chapter-item">
+        <span class="chapter-num">No.02</span>
+        <span class="chapter-text">知识财产法演变与开源许可</span>
+      </div>
+      <div class="chapter-item">
+        <span class="chapter-num">No.03</span>
+        <span class="chapter-text">商业模式：规则下的具体操作</span>
+      </div>
+      <div class="chapter-item">
+        <span class="chapter-num">No.04</span>
+        <span class="chapter-text">软件开发劳动力市场</span>
+      </div>
+      <div class="chapter-item">
+        <span class="chapter-num">No.05</span>
+        <span class="chapter-text">交易成本与路径依赖</span>
+      </div>
+      <div class="chapter-item">
+        <span class="chapter-num">No.06</span>
+        <span class="chapter-text">组织结构与治理</span>
+      </div>
+      <div class="chapter-item">
+        <span class="chapter-num">No.07</span>
+        <span class="chapter-text">文化的重要作用</span>
+      </div>
+      <div class="chapter-item">
+        <span class="chapter-num">No.08</span>
+        <span class="chapter-text">商业价值与社会价值</span>
+      </div>
+      <div class="chapter-item active">
+        <div class="chapter-marker"></div>
+        <span class="chapter-num">No.09</span>
+        <span class="chapter-text">信息规则与网络经济</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Current position badge -->
+  <div class="current-marker">
+    <div class="current-marker-ring"></div>
+    <div class="current-marker-ring-2"></div>
+    <span class="current-marker-num">09</span>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span class="footer-left">OPEN SOURCE ECONOMICS · 开源经济学讲座系列</span>
+    <span class="footer-right">第 09 期 — 排他权与容他权、比例原则与 Copyleft</span>
+  </div>
 </div>
-</div>
-<div class="header-right">
-<div class="id">LECTURE № 09 / 28</div>
-<div>OPEN-SOURCE ECONOMICS</div>
-<div>NEW INSTITUTIONAL LENS</div>
-</div>
-</div>
-
-<div class="deco-circle-tr"></div>
-<div class="deco-square-tr"></div>
-<div class="deco-line-tr"></div>
-<div class="top-rule"></div>
-
-<div class="section-label">
-<div class="sq"></div>
-<div class="txt">本期核心问题 / CORE INQUIRIES</div>
-</div>
-
-<div class="spectrum-wrap">
-<div class="spectrum-title">产权光谱仪 — Property Rights Spectrometer</div>
-<div class="spectrum-subtitle">学术制图 · Academic Cartography of Ownership Continuum</div>
-
-<div class="spectrum-bar-area">
-<div class="bar-ends">
-<div class="bar-end">
-<div class="label">完全排他</div>
-<div class="sub">EXCLUSIVE</div>
-</div>
-<div class="bar-end">
-<div class="label">完全容他</div>
-<div class="sub">INCLUSIVE</div>
-</div>
-</div>
-
-<div class="spectrum-bar"></div>
-
-<!-- markers -->
-<div class="marker" style="left:5%"><div class="dot"></div><div class="stem"></div><div class="lbl">闭源专有</div><div class="lbl-sub">Proprietary</div></div>
-<div class="marker" style="left:20%"><div class="dot"></div><div class="stem"></div><div class="lbl">Apache 2.0</div><div class="lbl-sub">Permissive</div></div>
-<div class="marker" style="left:35%"><div class="dot"></div><div class="stem"></div><div class="lbl">MIT</div><div class="lbl-sub">Permissive</div></div>
-<div class="marker copper" style="left:55%"><div class="dot"></div><div class="stem"></div><div class="lbl">GPL v3</div><div class="lbl-sub">Strong Copyleft</div></div>
-<div class="marker" style="left:68%"><div class="dot"></div><div class="stem"></div><div class="lbl">LGPL</div><div class="lbl-sub">Weak Copyleft</div></div>
-<div class="marker copper" style="left:82%"><div class="dot"></div><div class="stem"></div><div class="lbl">CC-BY-SA</div><div class="lbl-sub">ShareAlike</div></div>
-<div class="marker" style="left:95%"><div class="dot"></div><div class="stem"></div><div class="lbl">Public Domain</div><div class="lbl-sub">None</div></div>
-
-<div class="scale-ticks">
-<span>0</span><span>10</span><span>20</span><span>30</span><span>40</span><span>50</span><span>60</span><span>70</span><span>80</span><span>90</span><span>100</span>
-</div>
-
-<div class="spectrum-annotation">
-<div class="annot-block">
-<div class="arrow">↓ 排他权强化</div>
-<div class="desc">控制力、商业化壁垒、私产逻辑</div>
-</div>
-<div class="annot-block" style="margin-top:30px">
-<div class="arrow">↑ Copyleft 悖论</div>
-<div class="desc">以排他权强制容他权</div>
-</div>
-<div class="annot-block">
-<div class="arrow">↑ 容他权扩张</div>
-<div class="desc">协作开放、知识公地、共享逻辑</div>
-</div>
-</div>
-</div>
-</div>
-
-<div class="bottom-rule"></div>
-
-<div class="questions-wrap">
-<div class="q-col">
-<div class="q-num"><span class="num-sq"></span>01 · SPECTRUM POSITION</div>
-<div class="q-title">排他权与容他权</div>
-<div class="q-body">开源许可证在产权光谱中的精确位置——它既非纯粹的排他，亦非完全的让渡，而是以法律编码重新配置使用权、修改权与再分发权的关系结构。</div>
-</div>
-
-<div class="q-col">
-<div class="q-num"><span class="num-sq"></span>02 · COPIEFT PARADOX</div>
-<div class="q-title">Copyleft 的哲学</div>
-<div class="q-body">用排他权来强制执行容他权——GPL 以著作权法中的复制权限制，反向构建了一个必须保持开放的法律装置，实现"以锁制锁"的元策略。</div>
-</div>
-
-<div class="q-col">
-<div class="q-num"><span class="num-sq"></span>03 · PROPORTIONALITY</div>
-<div class="q-title">比例原则</div>
-<div class="q-body">排他权过强则锁定创新、阻断流动；过弱则激励不足、公地悲剧重演。许可证设计须在激励与开放之间寻找制度均衡点，此即比例原则的规范内核。</div>
-</div>
-
-<div class="q-col">
-<div class="q-num"><span class="num-sq"></span>04 · WILLIAMSON L2</div>
-<div class="q-title">制度环境层的深化</div>
-<div class="q-body">Williamson L2 分析层次下，许可证并非技术性文本，而是制度环境层的核心治理装置——它定义了交易成本结构、界定了合作边界、塑造了整个生态的规则基础。</div>
-</div>
-</div>
-
-<div class="deco-circle-bl"></div>
-<div class="deco-line-bl"></div>
-<div class="deco-square-br"></div>
-<div class="deco-circle-br2"></div>
-<div class="deco-line-br"></div>
-<div class="foot-note">— FINIS QUAESTIONUM —</div>
-
-</body></html>
+</body>
+</html>

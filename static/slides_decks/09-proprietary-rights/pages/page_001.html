@@ -1,471 +1,223 @@
 
 
 <!DOCTYPE html>
-<html><!-- source_hash: 9eec54df55063d78 -->
+<html><!-- source_hash: 115069ba51847630 -->
 <head>
 <meta charset="UTF-8">
-<title>经济学的思维方式 · 第 09 期</title>
+<title>第09期 · 排他权与容他权、比例原则与 Copyleft</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body { width: 1600px; height: 900px; overflow: hidden; }
-  body {
-    background: #F5F0E8;
-    font-family: 'Noto Sans SC', sans-serif;
-    color: #1B3B6B;
-    position: relative;
-  }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1600px; height: 900px; overflow: hidden; margin: 0; }
+body {
+  background: #1B3B6B;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  /* Parchment texture overlay */
-  .texture {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 3px,
-      rgba(139,115,85,0.015) 3px,
-      rgba(139,115,85,0.015) 4px
-    );
-    pointer-events: none;
-    z-index: 1;
-  }
+/* Bauhaus geometric decorations */
+.circle-1 {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  border: 2px solid rgba(200, 170, 100, 0.15);
+  top: 60px;
+  right: 120px;
+}
+.circle-2 {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: rgba(200, 170, 100, 0.06);
+  bottom: 100px;
+  left: 80px;
+}
+.circle-3 {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(200, 170, 100, 0.12);
+  top: 180px;
+  left: 200px;
+}
+.square-1 {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border: 1.5px solid rgba(200, 170, 100, 0.12);
+  bottom: 140px;
+  right: 200px;
+  transform: rotate(45deg);
+}
+.square-2 {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: rgba(200, 170, 100, 0.07);
+  top: 100px;
+  left: 500px;
+}
+.line-h {
+  position: absolute;
+  height: 1px;
+  background: rgba(200, 170, 100, 0.2);
+}
+.line-h-1 { width: 300px; top: 320px; left: 180px; }
+.line-h-2 { width: 200px; bottom: 280px; right: 180px; }
+.line-v {
+  position: absolute;
+  width: 1px;
+  background: rgba(200, 170, 100, 0.15);
+}
+.line-v-1 { height: 160px; top: 100px; left: 1400px; }
+.line-v-2 { height: 120px; bottom: 80px; left: 120px; }
+.line-diag {
+  position: absolute;
+  width: 200px;
+  height: 1px;
+  background: rgba(200, 170, 100, 0.1);
+  transform-origin: left center;
+  transform: rotate(-35deg);
+  bottom: 200px;
+  left: 850px;
+}
 
-  /* Top border line */
-  .top-line {
-    position: absolute;
-    top: 40px; left: 80px; right: 80px;
-    height: 1px;
-    background: #1B3B6B;
-    opacity: 0.3;
-    z-index: 2;
-  }
+/* Main content area */
+.content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 60px 100px;
+  max-width: 1100px;
+}
 
-  /* Lecture header */
-  .lecture-header {
-    position: absolute;
-    top: 48px; left: 80px;
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 13px;
-    letter-spacing: 3px;
-    color: #8B7355;
-    z-index: 3;
-  }
+.series-label {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 14px;
+  letter-spacing: 6px;
+  color: rgba(200, 170, 100, 0.5);
+  margin-bottom: 40px;
+  text-transform: uppercase;
+}
 
-  .lecture-period {
-    position: absolute;
-    top: 48px; right: 80px;
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 13px;
-    letter-spacing: 2px;
-    color: #8B7355;
-    z-index: 3;
-  }
+.divider-top {
+  width: 80px;
+  height: 1px;
+  background: rgba(200, 170, 100, 0.4);
+  margin: 0 auto 50px;
+}
 
-  /* Main title area */
-  .title-block {
-    position: absolute;
-    top: 120px; left: 80px;
-    z-index: 3;
-    width: 620px;
-  }
+.lecture-number {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 20px;
+  letter-spacing: 4px;
+  color: rgba(200, 170, 100, 0.6);
+  margin-bottom: 30px;
+}
 
-  .main-title {
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-    font-size: 52px;
-    font-weight: 900;
-    color: #1B3B6B;
-    line-height: 1.25;
-    letter-spacing: -1px;
-    margin-bottom: 24px;
-  }
+.main-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 52px;
+  font-weight: 700;
+  color: #C8AA64;
+  line-height: 1.4;
+  margin-bottom: 36px;
+  letter-spacing: 2px;
+}
 
-  .subtitle-line {
-    width: 60px;
-    height: 3px;
-    background: #1B3B6B;
-    margin-bottom: 28px;
-  }
+.divider-mid {
+  width: 120px;
+  height: 2px;
+  background: rgba(200, 170, 100, 0.5);
+  margin: 0 auto 36px;
+}
 
-  .content-list {
-    list-style: none;
-    padding: 0;
-  }
+.subtitle {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.8;
+  margin-bottom: 50px;
+  letter-spacing: 1px;
+}
 
-  .content-list li {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 22px;
-    line-height: 2.0;
-    color: #1B3B6B;
-    position: relative;
-    padding-left: 24px;
-  }
+.divider-bottom {
+  width: 80px;
+  height: 1px;
+  background: rgba(200, 170, 100, 0.3);
+  margin: 0 auto 40px;
+}
 
-  .content-list li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 14px;
-    width: 8px;
-    height: 8px;
-    background: #1B3B6B;
-  }
+.footer-info {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 16px;
+  color: rgba(200, 170, 100, 0.45);
+  letter-spacing: 3px;
+  line-height: 2;
+}
 
-  .content-list li:nth-child(3)::before {
-    background: #8B7355;
-  }
+.footer-info .author {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 18px;
+  color: rgba(200, 170, 100, 0.6);
+  letter-spacing: 4px;
+}
 
-  .content-list li:nth-child(4)::before {
-    background: #8B7355;
-  }
-
-  /* Visual metaphor area */
-  .visual-area {
-    position: absolute;
-    top: 100px;
-    right: 80px;
-    width: 580px;
-    height: 620px;
-    z-index: 3;
-  }
-
-  /* Dome / arch shape */
-  .dome-outer {
-    position: absolute;
-    top: 0;
-    left: 50px;
-    width: 480px;
-    height: 240px;
-    border-radius: 240px 240px 0 0;
-    background: #1B3B6B;
-    z-index: 4;
-  }
-
-  .dome-inner {
-    position: absolute;
-    top: 30px;
-    left: 100px;
-    width: 380px;
-    height: 200px;
-    border-radius: 200px 200px 0 0;
-    background: #F5F0E8;
-    z-index: 5;
-  }
-
-  .dome-arc {
-    position: absolute;
-    top: 15px;
-    left: 75px;
-    width: 430px;
-    height: 220px;
-    border-radius: 220px 220px 0 0;
-    border: 2px solid #1B3B6B;
-    border-bottom: none;
-    z-index: 4;
-  }
-
-  /* Dome inscription */
-  .dome-text {
-    position: absolute;
-    top: 70px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: #1B3B6B;
-    letter-spacing: 4px;
-    z-index: 6;
-    text-align: center;
-    line-height: 1.6;
-  }
-
-  .dome-text-en {
-    display: block;
-    font-size: 11px;
-    letter-spacing: 3px;
-    color: #555;
-    margin-top: 6px;
-    font-family: 'Noto Sans SC', sans-serif;
-    font-weight: 400;
-  }
-
-  /* Pillars */
-  .pillar {
-    position: absolute;
-    width: 32px;
-    background: #1B3B6B;
-    z-index: 4;
-  }
-
-  .pillar-cap {
-    position: absolute;
-    width: 48px;
-    height: 10px;
-    background: #1B3B6B;
-    z-index: 5;
-  }
-
-  .pillar-base {
-    position: absolute;
-    width: 56px;
-    height: 8px;
-    background: #1B3B6B;
-    z-index: 5;
-  }
-
-  .pillar-1 { left: 100px; top: 240px; height: 300px; }
-  .pillar-2 { left: 274px; top: 240px; height: 300px; }
-  .pillar-3 { left: 448px; top: 240px; height: 300px; }
-
-  .cap-1 { left: 76px; top: 232px; }
-  .cap-2 { left: 250px; top: 232px; }
-  .cap-3 { left: 424px; top: 232px; }
-
-  .base-1 { left: 72px; top: 536px; }
-  .base-2 { left: 246px; top: 536px; }
-  .base-3 { left: 420px; top: 536px; }
-
-  /* Floor / ground line */
-  .ground-line {
-    position: absolute;
-    top: 548px;
-    left: 20px;
-    width: 540px;
-    height: 2px;
-    background: #1B3B6B;
-    opacity: 0.6;
-    z-index: 3;
-  }
-
-  /* Pillar labels */
-  .pillar-label {
-    position: absolute;
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 12px;
-    color: #8B7355;
-    letter-spacing: 1px;
-    text-align: center;
-    z-index: 5;
-    width: 80px;
-    margin-left: -24px;
-    top: 570px;
-  }
-
-  .label-1 { left: 100px; }
-  .label-2 { left: 274px; }
-  .label-3 { left: 448px; }
-
-  /* Decorative geometric elements */
-  .deco-circle-1 {
-    position: absolute;
-    top: 680px;
-    left: 200px;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: #1B3B6B;
-    opacity: 0.15;
-    z-index: 2;
-  }
-
-  .deco-square-1 {
-    position: absolute;
-    top: 740px;
-    left: 420px;
-    width: 18px;
-    height: 18px;
-    background: #8B7355;
-    opacity: 0.25;
-    z-index: 2;
-  }
-
-  .deco-circle-2 {
-    position: absolute;
-    bottom: 60px;
-    right: 120px;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    border: 2px solid #1B3B6B;
-    opacity: 0.08;
-    z-index: 2;
-  }
-
-  .deco-line-1 {
-    position: absolute;
-    top: 680px;
-    left: 80px;
-    width: 1px;
-    height: 140px;
-    background: #1B3B6B;
-    opacity: 0.2;
-    z-index: 2;
-  }
-
-  .deco-line-2 {
-    position: absolute;
-    top: 680px;
-    right: 80px;
-    width: 1px;
-    height: 140px;
-    background: #8B7355;
-    opacity: 0.25;
-    z-index: 2;
-  }
-
-  /* Bottom section */
-  .bottom-bar {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 1600px;
-    height: 60px;
-    background: #1B3B6B;
-    z-index: 5;
-  }
-
-  .bottom-text {
-    position: absolute;
-    bottom: 20px;
-    left: 80px;
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 12px;
-    color: rgba(245,240,232,0.7);
-    letter-spacing: 2px;
-    z-index: 6;
-  }
-
-  .slide-count {
-    position: absolute;
-    bottom: 20px;
-    right: 80px;
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 12px;
-    color: rgba(245,240,232,0.5);
-    letter-spacing: 1px;
-    z-index: 6;
-  }
-
-  /* Bottom geometric accents */
-  .bottom-accent-square {
-    position: absolute;
-    bottom: 26px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 10px;
-    height: 10px;
-    background: rgba(245,240,232,0.3);
-    z-index: 6;
-  }
-
-  /* Large deco circle behind visual */
-  .deco-big-circle {
-    position: absolute;
-    top: 300px;
-    right: 40px;
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    border: 1.5px solid #8B7355;
-    opacity: 0.12;
-    z-index: 2;
-  }
-
-  .deco-half-circle {
-    position: absolute;
-    top: 660px;
-    left: 620px;
-    width: 60px;
-    height: 30px;
-    border-radius: 0 0 30px 30px;
-    background: #8B7355;
-    opacity: 0.1;
-    z-index: 2;
-  }
-
-  /* Section number watermark */
-  .section-num {
-    position: absolute;
-    top: 140px;
-    right: 700px;
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-    font-size: 180px;
-    font-weight: 900;
-    color: #1B3B6B;
-    opacity: 0.04;
-    z-index: 2;
-    line-height: 1;
-    letter-spacing: -8px;
-  }
+/* Corner elements */
+.corner-tl {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  width: 40px;
+  height: 40px;
+  border-top: 1.5px solid rgba(200, 170, 100, 0.25);
+  border-left: 1.5px solid rgba(200, 170, 100, 0.25);
+}
+.corner-br {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  width: 40px;
+  height: 40px;
+  border-bottom: 1.5px solid rgba(200, 170, 100, 0.25);
+  border-right: 1.5px solid rgba(200, 170, 100, 0.25);
+}
 </style>
 </head>
 <body>
-  <div class="texture"></div>
-  <div class="top-line"></div>
 
-  <div class="lecture-header">Lecture 09 · Proprietary Rights</div>
-  <div class="lecture-period">开源之道 / 新制度经济学视角</div>
+<!-- Geometric decorations -->
+<div class="circle-1"></div>
+<div class="circle-2"></div>
+<div class="circle-3"></div>
+<div class="square-1"></div>
+<div class="square-2"></div>
+<div class="line-h line-h-1"></div>
+<div class="line-h line-h-2"></div>
+<div class="line-v line-v-1"></div>
+<div class="line-v line-v-2"></div>
+<div class="line-diag"></div>
+<div class="corner-tl"></div>
+<div class="corner-br"></div>
 
-  <div class="section-num">09</div>
-
-  <div class="title-block">
-    <div class="main-title">经济学的<br>思维方式</div>
-    <div class="subtitle-line"></div>
-    <ul class="content-list">
-      <li>解释现代世界</li>
-      <li>制度、观念与技术共同塑造数字时代</li>
-      <li>排他权与容他权是制度设计的核心张力</li>
-    </ul>
+<!-- Main content -->
+<div class="content">
+  <div class="series-label">开源之道 · 开源的经济学</div>
+  <div class="divider-top"></div>
+  <div class="lecture-number">第 零九 期</div>
+  <h1 class="main-title">排他权与容他权<br>比例原则与 Copyleft</h1>
+  <div class="divider-mid"></div>
+  <div class="subtitle">开源经济学 12 讲座</div>
+  <div class="divider-bottom"></div>
+  <div class="footer-info">
+    <div class="author">「开源之道」· 适兕</div>
   </div>
+</div>
 
-  <!-- Visual Metaphor: Three Pillars Supporting the Dome of the Digital Age -->
-  <div class="visual-area">
-    <!-- Dome -->
-    <div class="dome-arc"></div>
-    <div class="dome-outer"></div>
-    <div class="dome-inner"></div>
-
-    <!-- Dome text -->
-    <div class="dome-text">
-      数字时代之穹顶
-      <span class="dome-text-en">Dome of the Digital Age</span>
-    </div>
-
-    <!-- Pillars -->
-    <div class="pillar pillar-1"></div>
-    <div class="pillar pillar-2"></div>
-    <div class="pillar pillar-3"></div>
-
-    <div class="pillar-cap cap-1"></div>
-    <div class="pillar-cap cap-2"></div>
-    <div class="pillar-cap cap-3"></div>
-
-    <div class="pillar-base base-1"></div>
-    <div class="pillar-base base-2"></div>
-    <div class="pillar-base base-3"></div>
-
-    <!-- Ground -->
-    <div class="ground-line"></div>
-
-    <!-- Labels -->
-    <div class="pillar-label label-1">制度</div>
-    <div class="pillar-label label-2">观念</div>
-    <div class="pillar-label label-3">技术</div>
-  </div>
-
-  <!-- Decorative geometric elements -->
-  <div class="deco-circle-1"></div>
-  <div class="deco-square-1"></div>
-  <div class="deco-circle-2"></div>
-  <div class="deco-line-1"></div>
-  <div class="deco-line-2"></div>
-  <div class="deco-big-circle"></div>
-  <div class="deco-half-circle"></div>
-
-  <!-- Bottom bar -->
-  <div class="bottom-bar"></div>
-  <div class="bottom-text">第 09 期 · 排他权与容他权 · 比例原则与 Copyleft</div>
-  <div class="bottom-accent-square"></div>
-  <div class="slide-count">1 / 28</div>
 </body>
 </html>

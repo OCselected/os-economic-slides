@@ -1,270 +1,665 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN"><!-- source_hash: 115069ba51847630 -->
+<html lang="zh-CN"><!-- source_hash: 779d4dfc7b0930b2 -->
 <head>
 <meta charset="UTF-8">
-<title>第十期 · 排他权与容他权、比例原则与 Copyleft</title>
+<title>排他权的制度起源——从印刷特权到数字版权</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body {
-    width: 1600px;
-    height: 900px;
-    overflow: hidden;
-    background: #1B3B6B;
-    font-family: 'Noto Sans SC', sans-serif;
-  }
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
 
-  .canvas {
-    position: relative;
-    width: 1600px;
-    height: 900px;
-    background: #1B3B6B;
-  }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-  /* Subtle parchment texture overlay */
-  .texture {
-    position: absolute;
-    top: 0; left: 0;
-    width: 1600px;
-    height: 900px;
-    background: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(255,255,255,0.008) 2px,
-      rgba(255,255,255,0.008) 4px
-    );
-    pointer-events: none;
-  }
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
+}
 
-  /* Bauhaus geometric elements */
-  .circle-large {
-    position: absolute;
-    width: 520px;
-    height: 520px;
-    border-radius: 50%;
-    border: 1.5px solid rgba(201, 178, 130, 0.15);
-    top: -120px;
-    right: -80px;
-  }
+body {
+  background: #F5F0E8;
+  position: relative;
+  font-family: 'Noto Sans SC', sans-serif;
+}
 
-  .circle-medium {
-    position: absolute;
-    width: 320px;
-    height: 320px;
-    border-radius: 50%;
-    background: rgba(201, 178, 130, 0.04);
-    border: 1px solid rgba(201, 178, 130, 0.1);
-    bottom: -60px;
-    left: -60px;
-  }
+/* Subtle parchment texture overlay */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 1600px; height: 900px;
+  background-image: 
+    radial-gradient(ellipse at 20% 50%, rgba(139,115,85,0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(27,59,107,0.02) 0%, transparent 40%),
+    radial-gradient(ellipse at 60% 80%, rgba(139,115,85,0.02) 0%, transparent 45%);
+  pointer-events: none;
+  z-index: 0;
+}
 
-  .circle-small {
-    position: absolute;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: rgba(201, 178, 130, 0.08);
-    top: 180px;
-    left: 200px;
-  }
+/* Top accent line */
+.top-line {
+  position: absolute;
+  top: 0; left: 0;
+  width: 1600px; height: 4px;
+  background: #1B3B6B;
+  z-index: 10;
+}
 
-  .square-deco {
-    position: absolute;
-    width: 180px;
-    height: 180px;
-    border: 1px solid rgba(201, 178, 130, 0.12);
-    bottom: 200px;
-    right: 180px;
-    transform: rotate(0deg);
-  }
+/* Bottom accent line */
+.bottom-line {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 1600px; height: 3px;
+  background: #8B7355;
+  z-index: 10;
+}
 
-  .square-fill {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    background: rgba(201, 178, 130, 0.12);
-    top: 300px;
-    left: 120px;
-  }
+/* Lecture number - top right */
+.lecture-badge {
+  position: absolute;
+  top: 32px; right: 48px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  color: #8B7355;
+  letter-spacing: 2px;
+  z-index: 10;
+}
 
-  .line-h {
-    position: absolute;
-    height: 1px;
-    background: rgba(201, 178, 130, 0.2);
-    width: 400px;
-    top: 420px;
-    left: 480px;
-  }
+.lecture-badge span {
+  display: inline-block;
+  border: 1.5px solid #8B7355;
+  padding: 4px 14px;
+  margin-left: 8px;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
 
-  .line-h-short {
-    position: absolute;
-    height: 1px;
-    background: rgba(201, 178, 130, 0.15);
-    width: 200px;
-    top: 560px;
-    left: 480px;
-  }
+/* Title area */
+.title-block {
+  position: absolute;
+  top: 60px; left: 80px;
+  z-index: 10;
+}
 
-  .line-v {
-    position: absolute;
-    width: 1px;
-    background: rgba(201, 178, 130, 0.12);
-    height: 300px;
-    top: 100px;
-    left: 440px;
-  }
+.title-main {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 38px;
+  font-weight: 700;
+  color: #1B3B6B;
+  line-height: 1.3;
+  letter-spacing: 1px;
+}
 
-  .line-v-right {
-    position: absolute;
-    width: 1px;
-    background: rgba(201, 178, 130, 0.1);
-    height: 500px;
-    top: 200px;
-    right: 120px;
-  }
+.title-sub {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 15px;
+  color: #555;
+  margin-top: 10px;
+  letter-spacing: 0.5px;
+  font-weight: 400;
+}
 
-  /* Content */
-  .content {
-    position: absolute;
-    top: 240px;
-    left: 480px;
-    width: 900px;
-  }
+/* Main content area */
+.content-area {
+  position: absolute;
+  top: 200px;
+  left: 80px;
+  width: 1440px;
+  height: 620px;
+  display: flex;
+  gap: 60px;
+  z-index: 10;
+}
 
-  .series-label {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 14px;
-    letter-spacing: 6px;
-    color: rgba(201, 178, 130, 0.6);
-    text-transform: uppercase;
-    margin-bottom: 28px;
-  }
+/* Left panel - Visual metaphor */
+.visual-panel {
+  width: 520px;
+  height: 620px;
+  position: relative;
+  flex-shrink: 0;
+}
 
-  .lecture-number {
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-    font-size: 180px;
-    font-weight: 700;
-    color: rgba(201, 178, 130, 0.95);
-    line-height: 0.85;
-    letter-spacing: -4px;
-    margin-bottom: 36px;
-  }
+/* Visual metaphor composition */
+.printing-press-frame {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 480px;
+  height: 440px;
+}
 
-  .lecture-number sup {
-    font-size: 48px;
-    vertical-align: super;
-    font-weight: 400;
-    opacity: 0.7;
-  }
+/* Geometric printing press abstraction */
+.press-body {
+  position: absolute;
+  bottom: 0; left: 80px;
+  width: 200px;
+  height: 200px;
+  background: #1B3B6B;
+}
 
-  .main-title {
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-    font-size: 42px;
-    font-weight: 600;
-    color: #F5F0E8;
-    line-height: 1.5;
-    margin-bottom: 20px;
-    letter-spacing: 2px;
-  }
+.press-top {
+  position: absolute;
+  bottom: 200px; left: 60px;
+  width: 240px;
+  height: 20px;
+  background: #1B3B6B;
+}
 
-  .deck-info {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 16px;
-    color: rgba(245, 240, 232, 0.55);
-    letter-spacing: 3px;
-    line-height: 1.8;
-  }
+.press-pivot {
+  position: absolute;
+  bottom: 240px; left: 100px;
+  width: 160px;
+  height: 16px;
+  background: #8B7355;
+}
 
-  .footer {
-    position: absolute;
-    bottom: 60px;
-    left: 480px;
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 14px;
-    color: rgba(201, 178, 130, 0.45);
-    letter-spacing: 4px;
-  }
+.press-handle {
+  position: absolute;
+  bottom: 220px; left: 230px;
+  width: 8px;
+  height: 60px;
+  background: #8B7355;
+}
 
-  /* Large decorative X for the 10 */
-  .deco-x {
-    position: absolute;
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-    font-size: 400px;
-    color: rgba(201, 178, 130, 0.04);
-    line-height: 1;
-    top: 80px;
-    right: 80px;
-    font-weight: 700;
-    user-select: none;
-  }
+.press-handle-knob {
+  position: absolute;
+  bottom: 266px; left: 220px;
+  width: 28px;
+  height: 28px;
+  background: #8B7355;
+  border-radius: 50%;
+}
 
-  /* Corner marks */
-  .corner-tl {
-    position: absolute;
-    top: 40px;
-    left: 40px;
-    width: 24px;
-    height: 24px;
-    border-top: 1px solid rgba(201, 178, 130, 0.3);
-    border-left: 1px solid rgba(201, 178, 130, 0.3);
-  }
+/* Press platen - the pressing surface */
+.press-platen {
+  position: absolute;
+  bottom: 170px; left: 100px;
+  width: 160px;
+  height: 12px;
+  background: #555;
+}
 
-  .corner-br {
-    position: absolute;
-    bottom: 40px;
-    right: 40px;
-    width: 24px;
-    height: 24px;
-    border-bottom: 1px solid rgba(201, 178, 130, 0.3);
-    border-right: 1px solid rgba(201, 178, 130, 0.3);
-  }
+/* Stacked documents on press */
+.doc-stack-1 {
+  position: absolute;
+  bottom: 60px; left: 120px;
+  width: 130px;
+  height: 8px;
+  background: #F5F0E8;
+  border: 1px solid #8B7355;
+}
 
-  /* Triangle accent */
-  .triangle {
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-left: 30px solid transparent;
-    border-right: 30px solid transparent;
-    border-bottom: 52px solid rgba(201, 178, 130, 0.06);
-    bottom: 320px;
-    right: 280px;
-  }
+.doc-stack-2 {
+  position: absolute;
+  bottom: 50px; left: 118px;
+  width: 134px;
+  height: 8px;
+  background: #F5F0E8;
+  border: 1px solid #8B7355;
+}
+
+.doc-stack-3 {
+  position: absolute;
+  bottom: 40px; left: 122px;
+  width: 128px;
+  height: 8px;
+  background: #F5F0E8;
+  border: 1px solid #8B7355;
+}
+
+/* Floating documents beside press */
+.floating-doc-1 {
+  position: absolute;
+  bottom: 80px;
+  right: 20px;
+  width: 100px;
+  height: 140px;
+  background: #F5F0E8;
+  border: 1.5px solid #8B7355;
+  transform: rotate(3deg);
+  box-shadow: 2px 2px 0 rgba(139,115,85,0.15);
+}
+
+.floating-doc-1::before {
+  content: '特许状';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-3deg);
+  font-family: 'Noto Serif SC', serif;
+  font-size: 11px;
+  color: #8B7355;
+  white-space: nowrap;
+}
+
+.floating-doc-1::after {
+  content: '1662';
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-3deg);
+  font-family: 'Noto Serif SC', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1B3B6B;
+  white-space: nowrap;
+}
+
+.floating-doc-2 {
+  position: absolute;
+  bottom: 100px;
+  right: 60px;
+  width: 95px;
+  height: 130px;
+  background: #F5F0E8;
+  border: 1.5px solid #1B3B6B;
+  transform: rotate(-2deg);
+  box-shadow: 2px 2px 0 rgba(27,59,107,0.1);
+}
+
+.floating-doc-2::before {
+  content: '安妮法';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(2deg);
+  font-family: 'Noto Serif SC', serif;
+  font-size: 11px;
+  color: #1B3B6B;
+  white-space: nowrap;
+}
+
+.floating-doc-2::after {
+  content: '1710';
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(2deg);
+  font-family: 'Noto Serif SC', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1B3B6B;
+  white-space: nowrap;
+}
+
+/* Bauhaus geometric decorations */
+.deco-circle-1 {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  width: 80px;
+  height: 80px;
+  border: 2.5px solid #1B3B6B;
+  border-radius: 50%;
+}
+
+.deco-circle-2 {
+  position: absolute;
+  top: 100px;
+  right: 80px;
+  width: 40px;
+  height: 40px;
+  background: #8B7355;
+  border-radius: 50%;
+}
+
+.deco-square-1 {
+  position: absolute;
+  bottom: 240px;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  background: #1B3B6B;
+  opacity: 0.12;
+}
+
+.deco-line-1 {
+  position: absolute;
+  bottom: 210px;
+  left: 40px;
+  width: 400px;
+  height: 1px;
+  background: #8B7355;
+  opacity: 0.4;
+}
+
+/* Vertical text annotation */
+.visual-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 480px;
+  height: 60px;
+}
+
+.visual-caption-text {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  color: #555;
+  line-height: 1.6;
+  font-style: italic;
+  border-left: 2px solid #8B7355;
+  padding-left: 14px;
+}
+
+/* Right panel - Bullet content */
+.content-panel {
+  width: 860px;
+  height: 620px;
+  position: relative;
+}
+
+.bullet-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bullet-item {
+  position: relative;
+  padding: 16px 0 16px 36px;
+  border-bottom: 1px solid rgba(139,115,85,0.2);
+}
+
+.bullet-item:last-child {
+  border-bottom: none;
+}
+
+.bullet-marker {
+  position: absolute;
+  left: 0;
+  top: 22px;
+  width: 16px;
+  height: 16px;
+}
+
+.bullet-item:nth-child(1) .bullet-marker {
+  background: #1B3B6B;
+}
+
+.bullet-item:nth-child(2) .bullet-marker {
+  background: #1B3B6B;
+  border-radius: 50%;
+}
+
+.bullet-item:nth-child(3) .bullet-marker {
+  background: #8B7355;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.bullet-item:nth-child(4) .bullet-marker {
+  background: #8B7355;
+  width: 14px;
+  height: 14px;
+  top: 23px;
+}
+
+.bullet-item:nth-child(5) .bullet-marker {
+  background: #1B3B6B;
+  border-radius: 50%;
+  border: 3px solid #1B3B6B;
+  background: transparent;
+  width: 14px;
+  height: 14px;
+  top: 23px;
+}
+
+.bullet-item:nth-child(6) .bullet-marker {
+  background: transparent;
+  border: 2px solid #8B7355;
+  width: 14px;
+  height: 14px;
+  top: 23px;
+  transform: rotate(45deg);
+}
+
+.bullet-text {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 15px;
+  color: #333;
+  line-height: 1.75;
+  font-weight: 400;
+}
+
+.bullet-year {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 700;
+  color: #1B3B6B;
+  font-size: 15px;
+}
+
+.bullet-emphasis {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 600;
+  color: #1B3B6B;
+  font-size: 15px;
+}
+
+.bullet-quote {
+  font-style: italic;
+  color: #555;
+}
+
+.bullet-tag {
+  display: inline-block;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: #8B7355;
+  border: 1px solid #8B7355;
+  padding: 1px 8px;
+  margin-left: 6px;
+  letter-spacing: 0.5px;
+  vertical-align: middle;
+}
+
+/* Timeline visual element between items */
+.timeline-line {
+  position: absolute;
+  left: 7px;
+  top: 40px;
+  bottom: 40px;
+  width: 2px;
+  background: rgba(27,59,107,0.15);
+}
+
+/* Bottom section - footer */
+.slide-footer {
+  position: absolute;
+  bottom: 20px;
+  left: 80px;
+  right: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
+.footer-left {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 1px;
+}
+
+.footer-right {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 1px;
+}
+
+/* Decorative corner elements */
+.corner-top-left {
+  position: absolute;
+  top: 16px; left: 16px;
+  width: 40px;
+  height: 40px;
+  border-top: 2px solid #1B3B6B;
+  border-left: 2px solid #1B3B6B;
+  z-index: 5;
+}
+
+.corner-bottom-right {
+  position: absolute;
+  bottom: 16px; right: 16px;
+  width: 40px;
+  height: 40px;
+  border-bottom: 2px solid #8B7355;
+  border-right: 2px solid #8B7355;
+  z-index: 5;
+}
+
+/* Additional Bauhaus geometric elements */
+.geo-band {
+  position: absolute;
+  top: 50%;
+  left: 580px;
+  width: 40px;
+  height: 620px;
+  transform: translateY(-50%);
+  z-index: 5;
+  opacity: 0.06;
+}
+
+.geo-band-inner {
+  width: 100%;
+  height: 100%;
+  background: #1B3B6B;
+}
+
+/* Small Bauhaus dot pattern */
+.bauhaus-dots {
+  position: absolute;
+  top: 480px;
+  left: 380px;
+  display: grid;
+  grid-template-columns: repeat(4, 8px);
+  gap: 10px;
+  z-index: 5;
+}
+
+.bauhaus-dot {
+  width: 8px;
+  height: 8px;
+  background: #1B3B6B;
+  border-radius: 50%;
+  opacity: 0.15;
+}
 </style>
 </head>
 <body>
-<div class="canvas">
-  <div class="texture"></div>
 
-  <!-- Bauhaus geometric decorations -->
-  <div class="circle-large"></div>
-  <div class="circle-medium"></div>
-  <div class="circle-small"></div>
-  <div class="square-deco"></div>
-  <div class="square-fill"></div>
-  <div class="line-h"></div>
-  <div class="line-h-short"></div>
-  <div class="line-v"></div>
-  <div class="line-v-right"></div>
-  <div class="triangle"></div>
-  <div class="corner-tl"></div>
-  <div class="corner-br"></div>
+<div class="top-line"></div>
+<div class="bottom-line"></div>
+<div class="corner-top-left"></div>
+<div class="corner-bottom-right"></div>
 
-  <!-- Ghost number -->
-  <div class="deco-x">10</div>
+<div class="lecture-badge">
+  LECTURE <span>№ 09</span>
+</div>
 
-  <!-- Main content -->
-  <div class="content">
-    <div class="series-label">OPEN SOURCE ECONOMICS · 开源经济学</div>
-    <div class="lecture-number">10<sup>th</sup></div>
-    <div class="main-title">排他权与容他权<br>比例原则与 Copyleft</div>
-    <div class="deck-info">「开源之道」· 开源的经济学 &nbsp;·&nbsp; 12 讲座 · 第十期</div>
+<div class="title-block">
+  <div class="title-main">排他权的制度起源——从印刷特权到数字版权</div>
+  <div class="title-sub">The Institutional Origins of Excludable Rights · From Print Privileges to Digital Copyright</div>
+</div>
+
+<div class="content-area">
+  <!-- Left: Visual Metaphor -->
+  <div class="visual-panel">
+    <div class="printing-press-frame">
+      <!-- Geometric decorations -->
+      <div class="deco-circle-1"></div>
+      <div class="deco-circle-2"></div>
+      <div class="deco-square-1"></div>
+      <div class="deco-line-1"></div>
+
+      <!-- Printing press geometric abstraction -->
+      <div class="press-body"></div>
+      <div class="press-top"></div>
+      <div class="press-pivot"></div>
+      <div class="press-handle"></div>
+      <div class="press-handle-knob"></div>
+      <div class="press-platen"></div>
+
+      <!-- Document stacks -->
+      <div class="doc-stack-1"></div>
+      <div class="doc-stack-2"></div>
+      <div class="doc-stack-3"></div>
+
+      <!-- Floating historical documents -->
+      <div class="floating-doc-1"></div>
+      <div class="floating-doc-2"></div>
+    </div>
+
+    <!-- Bauhaus dot pattern -->
+    <div class="bauhaus-dots">
+      <div class="bauhaus-dot"></div>
+      <div class="bauhaus-dot"></div>
+      <div class="bauhaus-dot"></div>
+      <div class="bauhaus-dot"></div>
+      <div class="bauhaus-dot"></div>
+      <div class="bauhaus-dot"></div>
+      <div class="bauhaus-dot"></div>
+      <div class="bauhaus-dot"></div>
+    </div>
+
+    <!-- Caption -->
+    <div class="visual-caption">
+      <div class="visual-caption-text">
+        古旧印刷机旁，堆叠 1662 年特许状与安妮法典——<br>
+        排他权的历史地层
+      </div>
+    </div>
   </div>
 
-  <!-- Footer -->
-  <div class="footer">「开源之道」· 适兕</div>
+  <!-- Right: Bullet Points -->
+  <div class="content-panel">
+    <ul class="bullet-list">
+      <li class="bullet-item">
+        <div class="bullet-marker"></div>
+        <div class="bullet-text">
+          <span class="bullet-year">1662 年：</span>英国《出版许可法》——<span class="bullet-emphasis">"印刷特权"</span>是排他权的雏形<span class="bullet-quote">；国家垄断出版准入</span>
+        </div>
+      </li>
+      <li class="bullet-item">
+        <div class="bullet-marker"></div>
+        <div class="bullet-text">
+          <span class="bullet-year">1710 年：</span>《安妮法》——世界上第一部版权法，保护<span class="bullet-emphasis">作者</span>而非出版商<span class="bullet-tag">Author-centric</span>
+        </div>
+      </li>
+      <li class="bullet-item">
+        <div class="bullet-marker"></div>
+        <div class="bullet-text">
+          <span class="bullet-year">19 世纪：</span>工业革命推动版权从"保护作者"向<span class="bullet-emphasis">"保护投资者"</span>转变<span class="bullet-quote">；版权开始资本化</span>
+        </div>
+      </li>
+      <li class="bullet-item">
+        <div class="bullet-marker"></div>
+        <div class="bullet-text">
+          <span class="bullet-year">数字时代：</span>版权保护从"保护创意"演变为<span class="bullet-emphasis">"保护商业模式"</span><span class="bullet-quote">；TRIPS、DMCA、DRM 体系化扩张</span>
+        </div>
+      </li>
+      <li class="bullet-item">
+        <div class="bullet-marker"></div>
+        <div class="bullet-text">
+          <span class="bullet-emphasis">排他权不是中性的</span>——它塑造了<span class="bullet-quote">谁能生产、谁能使用、谁能受益</span>
+        </div>
+      </li>
+      <li class="bullet-item">
+        <div class="bullet-marker"></div>
+        <div class="bullet-text">
+          <span class="bullet-tag">Williamson L2</span> 排他权是数字时代<span class="bullet-emphasis">最根本的制度环境</span>之一
+        </div>
+      </li>
+    </ul>
+  </div>
 </div>
+
+<div class="slide-footer">
+  <div class="footer-left">第 09 期 · 开源经济学 · 排他权与容他权</div>
+  <div class="footer-right">09 — Institutional Origins of Excludability</div>
+</div>
+
 </body>
 </html>

@@ -1,409 +1,506 @@
 
 
 <!DOCTYPE html>
-<html><!-- source_hash: 0d37d69d4c3e4e18 -->
+<html><!-- source_hash: cd557e0f9a8e0d07 -->
 <head>
 <meta charset="UTF-8">
-<title>文化的重要作用 · 行动路径</title>
+<title>文化的重要作用 · 我们该如何做？</title>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html, body { width: 1600px; height: 900px; overflow: hidden; }
-body {
+
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
   background: #F5F0E8;
-  font-family: 'Noto Sans SC', sans-serif;
-  color: #1B3B6B;
-  position: relative;
 }
 
-/* Background texture */
+body {
+  position: relative;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: #1B3B6B;
+}
+
+/* Subtle parchment texture */
 .bg-texture {
   position: absolute;
   top: 0; left: 0;
   width: 1600px; height: 900px;
-  background:
-    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(27,59,107,0.012) 2px, rgba(27,59,107,0.012) 4px),
-    repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(27,59,107,0.01) 2px, rgba(27,59,107,0.01) 4px);
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(139, 115, 85, 0.015) 3px,
+      rgba(139, 115, 85, 0.015) 4px
+    );
   pointer-events: none;
+  z-index: 0;
 }
 
-/* Decorative geometry - large circle */
-.deco-circle-1 {
+/* Header */
+.lecture-header {
   position: absolute;
-  top: -80px;
-  right: -120px;
-  width: 400px;
-  height: 400px;
-  border-radius: 50%;
-  border: 2px solid rgba(27,59,107,0.12);
+  top: 44px;
+  left: 80px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  z-index: 10;
 }
 
-.deco-circle-2 {
-  position: absolute;
-  bottom: -60px;
-  left: -60px;
-  width: 280px;
-  height: 280px;
-  border-radius: 50%;
-  border: 2px solid rgba(139,115,85,0.15);
+.lecture-num {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #8B7355;
+  letter-spacing: 3px;
 }
 
-/* Central geometric composition */
-.center-comp {
-  position: absolute;
-  top: 310px;
-  left: 720px;
-  width: 160px;
-  height: 160px;
+.lecture-line {
+  width: 50px;
+  height: 1px;
+  background: #8B7355;
+  opacity: 0.6;
 }
 
-.center-circle {
+.lecture-title {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  color: #555;
+  letter-spacing: 1px;
+  opacity: 0.8;
+}
+
+/* ===== RIGHT SIDE: INTERWEAVING GEOMETRIC COMPOSITION ===== */
+.geo-composition {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  width: 140px;
-  height: 140px;
+  top: 0;
+  right: 0;
+  width: 680px;
+  height: 900px;
+  z-index: 2;
+}
+
+/* Large background filled circle - blue */
+.bg-circle-blue {
+  position: absolute;
+  width: 520px;
+  height: 520px;
   border-radius: 50%;
   background: #1B3B6B;
+  opacity: 0.04;
+  top: 140px;
+  right: 60px;
 }
 
-.center-square {
+/* Interwoven ring - blue large */
+.ring-blue-outer {
   position: absolute;
-  top: 30px;
-  left: 40px;
-  width: 80px;
-  height: 80px;
-  background: rgba(139,115,85,0.7);
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  border: 2.5px solid #1B3B6B;
+  opacity: 0.18;
+  top: 200px;
+  right: 100px;
+}
+
+/* Interwoven ring - gold large */
+.ring-gold-outer {
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  border: 2.5px solid #8B7355;
+  opacity: 0.28;
+  top: 300px;
+  right: 40px;
+}
+
+/* Inner blue ring */
+.ring-blue-inner {
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  border: 3px solid #1B3B6B;
+  opacity: 0.15;
+  top: 260px;
+  right: 200px;
+}
+
+/* Inner gold ring */
+.ring-gold-inner {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 3px solid #8B7355;
+  opacity: 0.22;
+  top: 320px;
+  right: 140px;
+}
+
+/* Solid blue circle */
+.dot-blue-1 {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  opacity: 0.07;
+  top: 480px;
+  right: 320px;
+}
+
+.dot-blue-2 {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  opacity: 0.15;
+  top: 180px;
+  right: 400px;
+}
+
+/* Solid gold circle */
+.dot-gold-1 {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #8B7355;
+  opacity: 0.12;
+  top: 600px;
+  right: 240px;
+}
+
+.dot-gold-2 {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #8B7355;
+  opacity: 0.2;
+  top: 160px;
+  right: 120px;
+}
+
+/* Geometric shapes */
+.square-blue-rotated {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  border: 2px solid #1B3B6B;
+  opacity: 0.1;
+  top: 520px;
+  right: 80px;
   transform: rotate(45deg);
 }
 
-.center-line-h {
+.square-gold-solid {
   position: absolute;
-  top: 88px;
-  left: -40px;
-  width: 240px;
-  height: 2px;
+  width: 56px;
+  height: 56px;
   background: #8B7355;
-}
-
-.center-line-v {
-  position: absolute;
-  top: -40px;
-  left: 88px;
-  width: 2px;
-  height: 240px;
-  background: rgba(27,59,107,0.4);
-}
-
-/* Small decorative elements */
-.deco-square-1 {
-  position: absolute;
-  top: 80px;
-  left: 140px;
-  width: 18px;
-  height: 18px;
-  background: #1B3B6B;
-}
-
-.deco-square-2 {
-  position: absolute;
-  bottom: 80px;
-  right: 160px;
-  width: 14px;
-  height: 14px;
-  background: #8B7355;
-}
-
-.deco-dot-1 {
-  position: absolute;
-  top: 200px;
+  opacity: 0.07;
+  top: 120px;
   right: 280px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #1B3B6B;
 }
 
-.deco-dot-2 {
+/* Diagonal lines for interweaving effect */
+.line-d1 {
   position: absolute;
-  bottom: 160px;
-  left: 320px;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
+  width: 1px;
+  height: 300px;
   background: #8B7355;
+  opacity: 0.15;
+  top: 160px;
+  right: 380px;
+  transform: rotate(30deg);
+  transform-origin: top center;
 }
 
-.deco-line-1 {
+.line-d2 {
   position: absolute;
-  top: 450px;
-  left: 0;
-  width: 120px;
-  height: 1px;
-  background: rgba(27,59,107,0.2);
+  width: 1px;
+  height: 260px;
+  background: #1B3B6B;
+  opacity: 0.12;
+  top: 300px;
+  right: 60px;
+  transform: rotate(-25deg);
+  transform-origin: top center;
 }
 
-.deco-line-2 {
+.line-d3 {
   position: absolute;
-  bottom: 450px;
-  right: 0;
-  width: 120px;
-  height: 1px;
-  background: rgba(139,115,85,0.25);
+  width: 1px;
+  height: 180px;
+  background: #8B7355;
+  opacity: 0.1;
+  top: 500px;
+  right: 400px;
+  transform: rotate(60deg);
+  transform-origin: top center;
 }
 
-/* Title */
-.title-area {
+/* Thick accent bar */
+.accent-bar {
   position: absolute;
-  top: 50px;
+  width: 6px;
+  height: 140px;
+  background: #1B3B6B;
+  opacity: 0.08;
+  top: 280px;
+  right: 2px;
+}
+
+.accent-bar-gold {
+  position: absolute;
+  width: 4px;
+  height: 100px;
+  background: #8B7355;
+  opacity: 0.15;
+  top: 620px;
+  right: 14px;
+}
+
+/* ===== LEFT CONTENT ===== */
+.content-area {
+  position: absolute;
+  top: 110px;
   left: 80px;
-  right: 80px;
+  width: 760px;
+  z-index: 5;
 }
 
-.slide-number {
-  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-  font-size: 14px;
-  color: #8B7355;
-  letter-spacing: 2px;
-  margin-bottom: 12px;
-}
-
-.main-title {
-  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-  font-size: 42px;
-  font-weight: 700;
+.question {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 54px;
+  font-weight: 900;
   color: #1B3B6B;
   line-height: 1.2;
-  letter-spacing: 1px;
-}
-
-.title-rule {
-  width: 80px;
-  height: 3px;
-  background: #8B7355;
-  margin-top: 18px;
-}
-
-/* Content areas */
-.content-wrapper {
-  position: absolute;
-  top: 180px;
-  left: 80px;
-  right: 80px;
-  bottom: 60px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 40px;
-}
-
-.panel {
-  flex: 1;
-  padding: 36px 40px;
+  margin-bottom: 52px;
   position: relative;
-}
-
-.panel-left {
-  border-left: 3px solid #1B3B6B;
-}
-
-.panel-right {
-  border-left: 3px solid #8B7355;
-}
-
-.panel-label {
-  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-  font-size: 13px;
-  color: #8B7355;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  margin-bottom: 14px;
-}
-
-.panel-title {
-  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-  font-size: 26px;
-  font-weight: 700;
-  color: #1B3B6B;
-  margin-bottom: 28px;
-  line-height: 1.3;
-}
-
-.panel-title-right {
-  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-  font-size: 26px;
-  font-weight: 700;
-  color: #1B3B6B;
-  margin-bottom: 28px;
-  line-height: 1.3;
-}
-
-.bullet-list {
-  list-style: none;
-}
-
-.bullet-list li {
-  font-size: 18px;
-  line-height: 1.8;
-  color: #333;
   padding-left: 24px;
-  position: relative;
-  margin-bottom: 16px;
 }
 
-.bullet-list li::before {
+.question::before {
   content: '';
   position: absolute;
   left: 0;
-  top: 13px;
-  width: 8px;
-  height: 8px;
-  background: #1B3B6B;
-}
-
-.panel-right .bullet-list li::before {
+  top: 6px;
+  width: 5px;
+  height: calc(100% - 12px);
   background: #8B7355;
+}
+
+/* Bullet list */
+.bullet-list {
+  list-style: none;
+  padding: 0;
+}
+
+.bullet-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  margin-bottom: 30px;
+}
+
+.marker-square {
+  flex-shrink: 0;
+  width: 10px;
+  height: 10px;
+  background: #1B3B6B;
+  margin-top: 9px;
+}
+
+.marker-circle {
+  flex-shrink: 0;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  width: 6px;
-  height: 6px;
-  top: 14px;
+  background: #8B7355;
+  margin-top: 9px;
 }
 
-.key-phrase {
-  font-weight: 600;
+.marker-ring {
+  flex-shrink: 0;
+  width: 10px;
+  height: 10px;
+  border: 2px solid #1B3B6B;
+  border-radius: 50%;
+  margin-top: 9px;
+}
+
+.bullet-text {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 20px;
+  line-height: 1.6;
   color: #1B3B6B;
+  font-weight: 500;
 }
 
-.closing-statement {
-  margin-top: 32px;
-  padding-top: 20px;
-  border-top: 1px solid rgba(139,115,85,0.3);
-  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-  font-size: 17px;
-  color: #8B7355;
-  font-style: italic;
+.bullet-subtext {
+  display: block;
+  font-size: 15px;
+  color: #555;
+  font-weight: 300;
+  margin-top: 4px;
   line-height: 1.6;
 }
 
-/* Bottom decoration */
-.bottom-rule {
+/* Bottom quote */
+.bottom-quote {
   position: absolute;
-  bottom: 40px;
+  bottom: 68px;
   left: 80px;
-  right: 80px;
+  width: 640px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  z-index: 5;
+}
+
+.quote-line {
+  flex-shrink: 0;
+  width: 48px;
   height: 1px;
-  background: rgba(27,59,107,0.1);
+  background: #8B7355;
+  opacity: 0.6;
 }
 
-.footer-text {
-  position: absolute;
-  bottom: 20px;
-  left: 80px;
-  font-size: 11px;
-  color: rgba(27,59,107,0.4);
-  letter-spacing: 1px;
+.quote-text {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 19px;
+  color: #8B7355;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
 }
 
-.footer-right {
+/* Slide info */
+.slide-number {
   position: absolute;
-  bottom: 20px;
+  bottom: 44px;
   right: 80px;
+  font-family: 'Noto Sans SC', sans-serif;
   font-size: 11px;
-  color: rgba(27,59,107,0.4);
+  color: #555;
   letter-spacing: 1px;
+  opacity: 0.5;
+  z-index: 10;
 }
 
-/* Additional geometry */
-.geo-arc {
+/* Corner accents */
+.corner-tl {
   position: absolute;
-  top: 620px;
-  left: 660px;
-  width: 80px;
-  height: 80px;
-  border: 2px solid rgba(139,115,85,0.2);
-  border-radius: 50%;
-  border-bottom-color: transparent;
-  border-right-color: transparent;
-  transform: rotate(-45deg);
+  top: 0; left: 0;
+  width: 50px; height: 50px;
+  border-top: 1.5px solid #8B7355;
+  border-left: 1.5px solid #8B7355;
+  opacity: 0.25;
+  z-index: 3;
 }
 
-.geo-tri-line {
+.corner-br {
   position: absolute;
-  top: 740px;
-  right: 200px;
-  width: 0;
-  height: 0;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-bottom: 16px solid rgba(27,59,107,0.08);
+  bottom: 0; right: 0;
+  width: 50px; height: 50px;
+  border-bottom: 1.5px solid #8B7355;
+  border-right: 1.5px solid #8B7355;
+  opacity: 0.25;
+  z-index: 3;
+}
+
+/* Divider between content and geometry */
+.divider {
+  position: absolute;
+  top: 120px;
+  left: 830px;
+  width: 1px;
+  height: 520px;
+  background: linear-gradient(to bottom, rgba(27,59,107,0.12) 0%, rgba(27,59,107,0) 100%);
+  z-index: 3;
 }
 </style>
 </head>
 <body>
+  <div class="bg-texture"></div>
+  <div class="corner-tl"></div>
+  <div class="corner-br"></div>
 
-<div class="bg-texture"></div>
-
-<!-- Decorative elements -->
-<div class="deco-circle-1"></div>
-<div class="deco-circle-2"></div>
-<div class="deco-square-1"></div>
-<div class="deco-square-2"></div>
-<div class="deco-dot-1"></div>
-<div class="deco-dot-2"></div>
-<div class="deco-line-1"></div>
-<div class="deco-line-2"></div>
-<div class="geo-arc"></div>
-<div class="geo-tri-line"></div>
-
-<!-- Central composition -->
-<div class="center-comp">
-  <div class="center-line-v"></div>
-  <div class="center-line-h"></div>
-  <div class="center-circle"></div>
-  <div class="center-square"></div>
-</div>
-
-<!-- Title -->
-<div class="title-area">
-  <div class="slide-number">第 11 期 · 文化的重要作用</div>
-  <div class="main-title">行动路径 · 文化与制度的双向建构</div>
-  <div class="title-rule"></div>
-</div>
-
-<!-- Content -->
-<div class="content-wrapper">
-  <div class="panel panel-left">
-    <div class="panel-label">Ⅰ</div>
-    <div class="panel-title">我们该如何做？</div>
-    <ul class="bullet-list">
-      <li><span class="key-phrase">文化建构</span>——建立共识性的价值框架</li>
-      <li>需要文化的<span class="key-phrase">塑造者</span>与<span class="key-phrase">传播者</span></li>
-      <li>需要环境的改造：<span class="key-phrase">法律</span>、<span class="key-phrase">经济</span>、<span class="key-phrase">社会</span></li>
-    </ul>
-    <div class="closing-statement">
-      文化制度之成本与收益，<br>
-      非一日之功，亦非一人之智。
-    </div>
+  <!-- Header -->
+  <div class="lecture-header">
+    <span class="lecture-num">LECTURE XI</span>
+    <div class="lecture-line"></div>
+    <span class="lecture-title">文化的重要作用</span>
   </div>
 
-  <div class="panel panel-right">
-    <div class="panel-label">Ⅱ</div>
-    <div class="panel-title-right">个人该如何处置？</div>
-    <ul class="bullet-list">
-      <li><span class="key-phrase">认知</span>——理解制度对行为的塑造</li>
-      <li><span class="key-phrase">理性</span>——在约束中选择最优策略</li>
-      <li><span class="key-phrase">制度</span>——从规则中寻找行动的合法性</li>
-    </ul>
-    <div class="closing-statement">
-      如果是文明的一种形式，<br>
-      那么一切都值得。
-    </div>
+  <!-- Right side: interweaving geometric composition -->
+  <div class="geo-composition">
+    <div class="bg-circle-blue"></div>
+    <div class="ring-blue-outer"></div>
+    <div class="ring-gold-outer"></div>
+    <div class="ring-blue-inner"></div>
+    <div class="ring-gold-inner"></div>
+    <div class="dot-blue-1"></div>
+    <div class="dot-blue-2"></div>
+    <div class="dot-gold-1"></div>
+    <div class="dot-gold-2"></div>
+    <div class="square-blue-rotated"></div>
+    <div class="square-gold-solid"></div>
+    <div class="line-d1"></div>
+    <div class="line-d2"></div>
+    <div class="line-d3"></div>
+    <div class="accent-bar"></div>
+    <div class="accent-bar-gold"></div>
   </div>
-</div>
 
-<!-- Footer -->
-<div class="bottom-rule"></div>
-<div class="footer-text">开源之道 · 新制度经济学视角</div>
-<div class="footer-right">11 / 28</div>
+  <div class="divider"></div>
 
+  <!-- Left content -->
+  <div class="content-area">
+    <div class="question">我们该如何做？</div>
+
+    <ul class="bullet-list">
+      <li class="bullet-item">
+        <div class="marker-square"></div>
+        <div class="bullet-text">
+          文化建构
+          <span class="bullet-subtext">需要文化的塑造者和传播者</span>
+        </div>
+      </li>
+      <li class="bullet-item">
+        <div class="marker-circle"></div>
+        <div class="bullet-text">
+          环境的改造
+          <span class="bullet-subtext">法律、经济、社会——制度层面的成本与收益</span>
+        </div>
+      </li>
+      <li class="bullet-item">
+        <div class="marker-ring"></div>
+        <div class="bullet-text">
+          个人该如何处置？
+          <span class="bullet-subtext">认知、理性、制度——三者的交互作用</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Bottom statement -->
+  <div class="bottom-quote">
+    <div class="quote-line"></div>
+    <div class="quote-text">如果是文明的一种形式，那么一切都值得。</div>
+  </div>
+
+  <!-- Slide number -->
+  <div class="slide-number">11 / 28</div>
 </body>
 </html>

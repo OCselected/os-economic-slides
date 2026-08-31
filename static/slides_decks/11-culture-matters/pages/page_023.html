@@ -1,606 +1,810 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN"><!-- source_hash: cb7a35c4a0248f02 -->
+<html lang="zh-CN"><!-- source_hash: 409d73d8e52ba667 -->
 <head>
 <meta charset="UTF-8">
-<title>第 11 期 · 文化的重要作用 — 本土接入与制度路径</title>
+<title>第 11 期 · 文化的重要作用 — 本土的突破</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600&display=swap');
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html, body {
-  width: 1600px;
-  height: 900px;
-  overflow: hidden;
-  margin: 0;
-}
+  html, body {
+    width: 1600px;
+    height: 900px;
+    overflow: hidden;
+    margin: 0;
+    font-family: 'Noto Sans SC', sans-serif;
+  }
 
-body {
-  background: #F5F0E8;
-  position: relative;
-  font-family: 'Noto Sans SC', sans-serif;
-}
+  body {
+    background: #F5F0E8;
+    position: relative;
+  }
 
-/* Subtle parchment texture */
-.texture {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background:
-    repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(139,115,85,0.018) 3px, rgba(139,115,85,0.018) 6px),
-    repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(139,115,85,0.012) 3px, rgba(139,115,85,0.012) 6px);
-  pointer-events: none;
-  z-index: 0;
-}
+  /* Subtle parchment texture via layered gradients */
+  .texture {
+    position: absolute;
+    top: 0; left: 0;
+    width: 1600px; height: 900px;
+    background:
+      repeating-linear-gradient(
+        0deg,
+        rgba(0,0,0,0.008) 0px,
+        rgba(0,0,0,0.008) 1px,
+        transparent 1px,
+        transparent 3px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        rgba(0,0,0,0.005) 0px,
+        rgba(0,0,0,0.005) 1px,
+        transparent 1px,
+        transparent 4px
+      );
+    pointer-events: none;
+    z-index: 1;
+  }
 
-/* Top edge bar */
-.top-edge {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 4px;
-  background: #1B3B6B;
-  z-index: 10;
-}
+  /* ========== GEOMETRIC BACKGROUND COMPOSITION ========== */
 
-/* Header */
-.header {
-  position: absolute;
-  top: 48px;
-  left: 80px;
-  z-index: 10;
-  width: 780px;
-}
+  .geo-container {
+    position: absolute;
+    top: 0; left: 0;
+    width: 1600px; height: 900px;
+    z-index: 0;
+  }
 
-.lecture-tag {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 13px;
-  color: #8B7355;
-  letter-spacing: 4px;
-  margin-bottom: 14px;
-  font-weight: 400;
-}
+  /* Abstract path-dependency structure: broken angular lines suggesting interrupted connection */
+  .path-line {
+    position: absolute;
+    background: rgba(27, 59, 107, 0.07);
+    z-index: 0;
+  }
 
-.main-title {
-  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-  font-size: 44px;
-  color: #1B3B6B;
-  font-weight: 700;
-  letter-spacing: 3px;
-  line-height: 1.2;
-}
+  .path-line-1 {
+    top: 80px; left: 120px;
+    width: 600px; height: 2px;
+    transform: rotate(0deg);
+  }
 
-.subtitle-en {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 15px;
-  color: #8B7355;
-  margin-top: 8px;
-  font-weight: 400;
-  letter-spacing: 1px;
-  font-style: italic;
-}
+  .path-line-2 {
+    top: 180px; left: 300px;
+    width: 400px; height: 2px;
+    transform: rotate(12deg);
+  }
 
-/* Title accent rule */
-.title-rule {
-  position: absolute;
-  top: 218px;
-  left: 80px;
-  width: 580px;
-  height: 1px;
-  background: rgba(139,115,85,0.25);
-  z-index: 10;
-}
+  .path-line-3 {
+    top: 130px; left: 550px;
+    width: 300px; height: 2px;
+    transform: rotate(-8deg);
+    background: rgba(27, 59, 107, 0.05);
+  }
 
-.title-rule-accent {
-  position: absolute;
-  top: 216px;
-  left: 80px;
-  width: 50px;
-  height: 3px;
-  background: #1B3B6B;
-  z-index: 11;
-}
+  .path-line-4 {
+    top: 700px; left: 900px;
+    width: 500px; height: 2px;
+    transform: rotate(-5deg);
+    background: rgba(139, 115, 85, 0.1);
+  }
 
-/* Content */
-.content-left {
-  position: absolute;
-  top: 252px;
-  left: 80px;
-  width: 440px;
-  z-index: 10;
-}
+  .path-line-5 {
+    top: 780px; left: 800px;
+    width: 350px; height: 2px;
+    transform: rotate(8deg);
+    background: rgba(27, 59, 107, 0.06);
+  }
 
-.content-mid {
-  position: absolute;
-  top: 252px;
-  left: 580px;
-  width: 320px;
-  z-index: 10;
-}
+  /* Diagonal structural lines — representing barriers/dependency */
+  .diag-line {
+    position: absolute;
+    width: 2px;
+    background: rgba(27, 59, 107, 0.04);
+    z-index: 0;
+  }
 
-.section-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 18px;
-}
+  .diag-line-1 {
+    top: 0; left: 480px;
+    height: 900px;
+    transform: rotate(15deg);
+    transform-origin: top center;
+  }
 
-.section-shape {
-  flex-shrink: 0;
-}
+  .diag-line-2 {
+    top: 0; left: 780px;
+    height: 900px;
+    transform: rotate(-10deg);
+    transform-origin: top center;
+    background: rgba(139, 115, 85, 0.05);
+  }
 
-.section-shape.circle {
-  width: 9px;
-  height: 9px;
-  background: #1B3B6B;
-  border-radius: 50%;
-}
+  .diag-line-3 {
+    top: 0; left: 1080px;
+    height: 900px;
+    transform: rotate(7deg);
+    transform-origin: top center;
+    background: rgba(27, 59, 107, 0.03);
+  }
 
-.section-shape.square {
-  width: 9px;
-  height: 9px;
-  border: 1.5px solid #8B7355;
-  background: transparent;
-}
+  /* Geometric shapes */
+  .circle {
+    position: absolute;
+    border-radius: 50%;
+    z-index: 0;
+  }
 
-.section-shape.diamond {
-  width: 9px;
-  height: 9px;
-  border: 1.5px solid #1B3B6B;
-  background: transparent;
-  transform: rotate(45deg);
-}
+  .circle-1 {
+    width: 220px; height: 220px;
+    top: -50px; left: -50px;
+    border: 2px solid rgba(27, 59, 107, 0.08);
+  }
 
-.section-label {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 12px;
-  color: #1B3B6B;
-  letter-spacing: 3px;
-  font-weight: 600;
-}
+  .circle-2 {
+    width: 140px; height: 140px;
+    top: 40px; left: 40px;
+    border: 1.5px solid rgba(139, 115, 85, 0.12);
+  }
 
-.item {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 12px;
-}
+  .circle-3 {
+    width: 80px; height: 80px;
+    top: 680px; left: 200px;
+    background: rgba(27, 59, 107, 0.04);
+  }
 
-.item-marker {
-  width: 3px;
-  height: 3px;
-  background: #8B7355;
-  margin-top: 10px;
-  margin-right: 14px;
-  flex-shrink: 0;
-}
+  .circle-4 {
+    width: 300px; height: 300px;
+    top: 500px; right: -80px;
+    border: 1.5px solid rgba(139, 115, 85, 0.06);
+  }
 
-.item-text {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 15px;
-  color: #333;
-  line-height: 1.7;
-}
+  .circle-5 {
+    width: 180px; height: 180px;
+    bottom: -40px; right: 200px;
+    background: rgba(27, 59, 107, 0.025);
+  }
 
-.item-text .hl {
-  color: #1B3B6B;
-  font-weight: 500;
-}
+  .circle-6 {
+    width: 40px; height: 40px;
+    top: 260px; left: 450px;
+    background: rgba(27, 59, 107, 0.1);
+  }
 
-/* Pullout block */
-.pullout {
-  position: absolute;
-  top: 565px;
-  left: 80px;
-  width: 440px;
-  z-index: 10;
-  border-left: 3px solid #1B3B6B;
-  padding: 14px 0 14px 20px;
-}
+  .circle-7 {
+    width: 20px; height: 20px;
+    top: 200px; left: 520px;
+    background: rgba(139, 115, 85, 0.15);
+  }
 
-.pullout-text {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 19px;
-  color: #1B3B6B;
-  font-weight: 600;
-  letter-spacing: 1px;
-  line-height: 1.5;
-}
+  .circle-8 {
+    width: 120px; height: 120px;
+    top: 620px; left: 380px;
+    border: 1px solid rgba(27, 59, 107, 0.06);
+  }
 
-.pullout-sub {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 13px;
-  color: #8B7355;
-  margin-top: 6px;
-  line-height: 1.5;
-  letter-spacing: 0.5px;
-}
+  /* Squares */
+  .square {
+    position: absolute;
+    z-index: 0;
+  }
 
-/* Geometric composition */
-.geo {
-  position: absolute;
-  right: 50px;
-  top: 160px;
-  width: 660px;
-  height: 620px;
-  z-index: 5;
-}
+  .square-1 {
+    width: 160px; height: 160px;
+    top: 320px; left: 180px;
+    border: 1.5px solid rgba(27, 59, 107, 0.07);
+    transform: rotate(15deg);
+  }
 
-/* Large outer ring - global network (dashed) */
-.geo-ring-global {
-  position: absolute;
-  width: 480px;
-  height: 480px;
-  border: 1.5px dashed rgba(27,59,107,0.2);
-  border-radius: 50%;
-  right: 40px;
-  top: 40px;
-}
+  .square-2 {
+    width: 90px; height: 90px;
+    top: 450px; left: 90px;
+    background: rgba(139, 115, 85, 0.04);
+    transform: rotate(-8deg);
+  }
 
-/* Solid arc - partial connection */
-.geo-arc {
-  position: absolute;
-  width: 340px;
-  height: 340px;
-  border: 2px solid #1B3B6B;
-  border-radius: 50%;
-  border-right-color: transparent;
-  border-bottom-color: transparent;
-  right: 110px;
-  top: 110px;
-  transform: rotate(20deg);
-}
+  .square-3 {
+    width: 55px; height: 55px;
+    top: 750px; left: 500px;
+    border: 1px solid rgba(27, 59, 107, 0.09);
+    transform: rotate(25deg);
+  }
 
-/* Institutional square */
-.geo-square {
-  position: absolute;
-  width: 140px;
-  height: 140px;
-  border: 2px solid #1B3B6B;
-  right: 230px;
-  top: 180px;
-}
+  .square-4 {
+    width: 200px; height: 200px;
+    top: -30px; right: -30px;
+    border: 1px solid rgba(139, 115, 85, 0.06);
+    transform: rotate(12deg);
+  }
 
-/* Filled small square inside */
-.geo-square-fill {
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  background: #1B3B6B;
-  right: 295px;
-  top: 240px;
-}
+  .square-5 {
+    width: 35px; height: 35px;
+    top: 150px; left: 680px;
+    background: rgba(27, 59, 107, 0.06);
+    transform: rotate(45deg);
+  }
 
-/* Local circle */
-.geo-circle-local {
-  position: absolute;
-  width: 90px;
-  height: 90px;
-  border: 1.5px solid #8B7355;
-  border-radius: 50%;
-  right: 420px;
-  top: 250px;
-}
+  .square-6 {
+    width: 120px; height: 120px;
+    bottom: 100px; left: 650px;
+    border: 1px solid rgba(139, 115, 85, 0.05);
+    transform: rotate(-15deg);
+  }
 
-/* Local filled dot */
-.geo-dot-local {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background: #8B7355;
-  border-radius: 50%;
-  right: 464px;
-  top: 292px;
-}
+  /* Triangle accents using border tricks */
+  .triangle {
+    position: absolute;
+    width: 0; height: 0;
+    z-index: 0;
+  }
 
-/* Connection line 1 (from local to square) */
-.geo-line-1 {
-  position: absolute;
-  width: 100px;
-  height: 1.5px;
-  background: linear-gradient(to right, #8B7355, #1B3B6B);
-  right: 325px;
-  top: 293px;
-}
+  .triangle-1 {
+    top: 500px; left: 350px;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 52px solid rgba(27, 59, 107, 0.05);
+    transform: rotate(180deg);
+  }
 
-/* Connection line 2 (from square to arc - broken path) */
-.geo-line-2 {
-  position: absolute;
-  width: 130px;
-  height: 1.5px;
-  background: #1B3B6B;
-  right: 190px;
-  top: 248px;
-  transform: rotate(-20deg);
-  transform-origin: right center;
-}
+  .triangle-2 {
+    top: 100px; left: 900px;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 35px solid rgba(139, 115, 85, 0.08);
+  }
 
-/* Long diagonal accent */
-.geo-line-3 {
-  position: absolute;
-  width: 320px;
-  height: 1px;
-  background: linear-gradient(to right, rgba(27,59,107,0.15), rgba(27,59,107,0.5), rgba(27,59,107,0.15));
-  right: 60px;
-  top: 370px;
-  transform: rotate(12deg);
-  transform-origin: left center;
-}
+  /* Horizontal rule line — Bauhaus accent */
+  .h-rule {
+    position: absolute;
+    height: 1px;
+    z-index: 0;
+  }
 
-/* Vertical line */
-.geo-line-4 {
-  position: absolute;
-  width: 1px;
-  height: 220px;
-  background: rgba(139,115,85,0.3);
-  right: 40px;
-  top: 40px;
-}
+  .h-rule-1 {
+    top: 175px; left: 120px;
+    width: 100px;
+    background: rgba(27, 59, 107, 0.15);
+  }
 
-/* Small decorative dot */
-.geo-dot1 {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  background: #1B3B6B;
-  border-radius: 50%;
-  right: 130px;
-  top: 170px;
-}
+  /* ========== CONTENT ========== */
 
-/* Small decorative square */
-.geo-small-sq {
-  position: absolute;
-  width: 7px;
-  height: 7px;
-  background: #8B7355;
-  right: 350px;
-  top: 380px;
-}
+  .content {
+    position: relative;
+    width: 1600px;
+    height: 900px;
+    z-index: 10;
+  }
 
-/* Second small circle */
-.geo-small-circle {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border: 1.5px solid #1B3B6B;
-  border-radius: 50%;
-  right: 55px;
-  top: 440px;
-}
+  /* Header area */
+  .header {
+    position: absolute;
+    top: 50px;
+    left: 120px;
+    right: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 
-/* Diagonal thin line */
-.geo-line-5 {
-  position: absolute;
-  width: 140px;
-  height: 1px;
-  background: rgba(27,59,107,0.25);
-  right: 150px;
-  top: 160px;
-  transform: rotate(-30deg);
-  transform-origin: right center;
-}
+  .lecture-badge {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
 
-/* Labels */
-.geo-label {
-  position: absolute;
-  font-family: 'Noto Serif SC', serif;
-  letter-spacing: 2px;
-}
+  .lecture-badge .badge-num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1B3B6B;
+    letter-spacing: 2px;
+    border: 1.5px solid #1B3B6B;
+    padding: 4px 14px;
+  }
 
-.geo-label-global {
-  right: 60px;
-  top: 95px;
-  font-size: 11px;
-  color: rgba(27,59,107,0.4);
-}
+  .lecture-badge .badge-text {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13px;
+    color: #555;
+    letter-spacing: 1.5px;
+    font-weight: 300;
+  }
 
-.geo-label-inst {
-  right: 250px;
-  top: 218px;
-  font-size: 11px;
-  color: rgba(27,59,107,0.6);
-  font-weight: 600;
-}
+  .slide-indicator {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 12px;
+    color: rgba(85, 85, 85, 0.5);
+    letter-spacing: 1px;
+    font-weight: 300;
+  }
 
-.geo-label-local {
-  right: 425px;
-  top: 280px;
-  font-size: 11px;
-  color: rgba(139,115,85,0.7);
-  font-weight: 600;
-}
+  /* Title section */
+  .title-section {
+    position: absolute;
+    top: 100px;
+    left: 120px;
+    width: 700px;
+  }
 
-/* Path annotation */
-.geo-label-path {
-  right: 150px;
-  top: 278px;
-  font-size: 10px;
-  color: rgba(27,59,107,0.45);
-  letter-spacing: 1.5px;
-  font-style: italic;
-}
+  .section-label {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 12px;
+    color: #8B7355;
+    letter-spacing: 4px;
+    font-weight: 400;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
 
-/* Crosshair */
-.geo-cross-h {
-  position: absolute;
-  width: 40px;
-  height: 1px;
-  background: rgba(85,85,85,0.25);
-  right: 500px;
-  top: 350px;
-}
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 30px;
+    height: 1px;
+    background: #8B7355;
+    vertical-align: middle;
+    margin-right: 12px;
+  }
 
-.geo-cross-v {
-  position: absolute;
-  width: 1px;
-  height: 40px;
-  background: rgba(85,85,85,0.25);
-  right: 520px;
-  top: 330px;
-}
+  .main-title {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 56px;
+    font-weight: 900;
+    color: #1B3B6B;
+    line-height: 1.15;
+    margin-bottom: 6px;
+    letter-spacing: 2px;
+  }
 
-/* Bottom accent bar */
-.bottom-accent {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 5px;
-  display: flex;
-  z-index: 10;
-}
+  .subtitle-line {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 20px;
+    color: #555;
+    font-weight: 400;
+    letter-spacing: 3px;
+    margin-top: 8px;
+  }
 
-.bottom-blue { width: 42%; background: #1B3B6B; }
-.bottom-copper { width: 34%; background: #8B7355; }
-.bottom-gray { width: 24%; background: #555; }
+  .subtitle-line .dash {
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: #8B7355;
+    vertical-align: middle;
+    margin-right: 12px;
+  }
 
-/* Footer */
-.footer-l {
-  position: absolute;
-  bottom: 22px;
-  left: 80px;
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 11px;
-  color: #8B7355;
-  letter-spacing: 2px;
-  z-index: 10;
-}
+  /* Right side: vertical text accent */
+  .vertical-accent {
+    position: absolute;
+    top: 100px;
+    right: 140px;
+    writing-mode: vertical-rl;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+    color: rgba(27, 59, 107, 0.15);
+    letter-spacing: 8px;
+    font-weight: 400;
+  }
 
-.footer-r {
-  position: absolute;
-  bottom: 22px;
-  right: 80px;
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 11px;
-  color: #8B7355;
-  letter-spacing: 2px;
-  z-index: 10;
-}
+  /* Divider */
+  .divider {
+    position: absolute;
+    top: 280px;
+    left: 120px;
+    right: 120px;
+    height: 1px;
+    background: linear-gradient(to right, rgba(27,59,107,0.2), rgba(27,59,107,0.03) 80%, transparent);
+  }
 
-/* Large decorative half-circle bottom-left */
-.deco-half {
-  position: absolute;
-  width: 80px;
-  height: 40px;
-  border: 1.5px solid rgba(27,59,107,0.1);
-  border-bottom: none;
-  border-radius: 80px 80px 0 0;
-  bottom: 45px;
-  left: 25px;
-  z-index: 1;
-}
+  /* Content grid */
+  .content-grid {
+    position: absolute;
+    top: 320px;
+    left: 120px;
+    right: 120px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 60px;
+  }
 
-/* Large decorative circle bottom-right */
-.deco-circle2 {
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  border: 1px solid rgba(139,115,85,0.15);
-  border-radius: 50%;
-  bottom: 50px;
-  right: 100px;
-  z-index: 1;
-}
+  .item {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .item-marker {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border: 1.5px solid #1B3B6B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+
+  .item-marker .dot {
+    width: 8px;
+    height: 8px;
+    background: #1B3B6B;
+  }
+
+  .item-marker.square-marker .dot {
+    background: transparent;
+    border: 1.5px solid #8B7355;
+    width: 10px;
+    height: 10px;
+  }
+
+  .item-marker.circle-marker .dot {
+    background: transparent;
+    border: 1.5px solid #1B3B6B;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+  }
+
+  .item-marker.triangle-marker .dot {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 9px solid #1B3B6B;
+    background: transparent;
+  }
+
+  .item-marker.cross-marker .dot {
+    background: transparent;
+    position: relative;
+  }
+
+  .item-marker.cross-marker .dot::before {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 1.5px;
+    background: #1B3B6B;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .item-marker.cross-marker .dot::after {
+    content: '';
+    position: absolute;
+    width: 1.5px;
+    height: 12px;
+    background: #1B3B6B;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .item-content {
+    flex: 1;
+  }
+
+  .item-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #1B3B6B;
+    margin-bottom: 5px;
+    line-height: 1.4;
+  }
+
+  .item-desc {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 14px;
+    color: #555;
+    font-weight: 300;
+    line-height: 1.7;
+    letter-spacing: 0.3px;
+  }
+
+  /* Bottom accent bar */
+  .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 1600px;
+    height: 4px;
+    display: flex;
+  }
+
+  .bottom-bar .bar-segment {
+    height: 100%;
+  }
+
+  .bar-segment-1 { width: 380px; background: #1B3B6B; }
+  .bar-segment-2 { width: 160px; background: #8B7355; }
+  .bar-segment-3 { width: 80px; background: rgba(27,59,107,0.3); }
+  .bar-segment-4 { flex: 1; background: rgba(139,115,85,0.15); }
+
+  /* Footer text */
+  .footer-text {
+    position: absolute;
+    bottom: 22px;
+    left: 120px;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    color: rgba(85,85,85,0.4);
+    letter-spacing: 2px;
+    font-weight: 300;
+  }
+
+  .footer-right {
+    position: absolute;
+    bottom: 22px;
+    right: 120px;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    color: rgba(85,85,85,0.4);
+    letter-spacing: 1px;
+    font-weight: 300;
+  }
+
+  /* Large geometric composition — right background */
+  .comp-circle-group {
+    position: absolute;
+    top: 300px;
+    right: 60px;
+    width: 380px;
+    height: 380px;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .comp-c-1 {
+    position: absolute;
+    width: 340px; height: 340px;
+    border-radius: 50%;
+    border: 1px solid rgba(27, 59, 107, 0.05);
+    top: 20px; left: 20px;
+  }
+
+  .comp-c-2 {
+    position: absolute;
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    border: 1px solid rgba(139, 115, 85, 0.08);
+    top: 50px; left: 60px;
+  }
+
+  .comp-c-3 {
+    position: absolute;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: rgba(27, 59, 107, 0.02);
+    top: 80px; left: 100px;
+  }
+
+  .comp-c-4 {
+    position: absolute;
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(27, 59, 107, 0.1);
+    top: 120px; left: 130px;
+  }
+
+  /* Angular path — suggesting path dependency */
+  .path-dep {
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .path-dep-1 {
+    top: 340px;
+    right: 100px;
+    width: 180px;
+    height: 2px;
+    background: rgba(27, 59, 107, 0.08);
+    transform: rotate(-30deg);
+    transform-origin: right center;
+  }
+
+  .path-dep-2 {
+    top: 420px;
+    right: 80px;
+    width: 140px;
+    height: 2px;
+    background: rgba(139, 115, 85, 0.1);
+    transform: rotate(15deg);
+    transform-origin: right center;
+  }
+
+  .path-dep-3 {
+    top: 500px;
+    right: 120px;
+    width: 200px;
+    height: 2px;
+    background: rgba(27, 59, 107, 0.06);
+    transform: rotate(-8deg);
+    transform-origin: right center;
+  }
+
+  /* Broken connection visual */
+  .broken-line {
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .broken-line-seg {
+    height: 2px;
+    background: rgba(27, 59, 107, 0.12);
+  }
 </style>
 </head>
 <body>
-<div class="texture"></div>
-<div class="top-edge"></div>
 
-<!-- Header -->
-<div class="header">
-  <div class="lecture-tag">第 11 期 · 文化的重要作用</div>
-  <div class="main-title">本土接入与制度路径</div>
-  <div class="subtitle-en">Institutional Path Dependence in Connecting to Open Source Culture</div>
-</div>
+  <!-- Texture overlay -->
+  <div class="texture"></div>
 
-<div class="title-rule"></div>
-<div class="title-rule-accent"></div>
+  <!-- Background geometric composition -->
+  <div class="geo-container">
+    <!-- Diagonal structural lines -->
+    <div class="diag-line diag-line-1"></div>
+    <div class="diag-line diag-line-2"></div>
+    <div class="diag-line diag-line-3"></div>
 
-<!-- Left content -->
-<div class="content-left">
-  <div class="section-header">
-    <div class="section-shape circle"></div>
-    <div class="section-label">历史路径的断裂</div>
-  </div>
-  <div class="item">
-    <div class="item-marker"></div>
-    <div class="item-text">接入互联网<span class="hl">较晚</span></div>
-  </div>
-  <div class="item">
-    <div class="item-marker"></div>
-    <div class="item-text">没有经历<span class="hl">低连接密度</span>的网络时代</div>
-  </div>
-  <div class="item">
-    <div class="item-marker"></div>
-    <div class="item-text">没有经历 e-mail 的<span class="hl">「网红」时代</span></div>
-  </div>
+    <!-- Horizontal lines -->
+    <div class="path-line path-line-1"></div>
+    <div class="path-line path-line-2"></div>
+    <div class="path-line path-line-3"></div>
+    <div class="path-line path-line-4"></div>
+    <div class="path-line path-line-5"></div>
 
-  <div style="margin-top: 26px;">
-    <div class="section-header">
-      <div class="section-shape square"></div>
-      <div class="section-label">制度环境与协作挑战</div>
+    <!-- Circles -->
+    <div class="circle circle-1"></div>
+    <div class="circle circle-2"></div>
+    <div class="circle circle-3"></div>
+    <div class="circle circle-4"></div>
+    <div class="circle circle-5"></div>
+    <div class="circle circle-6"></div>
+    <div class="circle circle-7"></div>
+    <div class="circle circle-8"></div>
+
+    <!-- Squares -->
+    <div class="square square-1"></div>
+    <div class="square square-2"></div>
+    <div class="square square-3"></div>
+    <div class="square square-4"></div>
+    <div class="square square-5"></div>
+    <div class="square square-6"></div>
+
+    <!-- Triangles -->
+    <div class="triangle triangle-1"></div>
+    <div class="triangle triangle-2"></div>
+
+    <!-- Right side concentric composition -->
+    <div class="comp-circle-group">
+      <div class="comp-c-1"></div>
+      <div class="comp-c-2"></div>
+      <div class="comp-c-3"></div>
+      <div class="comp-c-4"></div>
     </div>
-    <div class="item">
-      <div class="item-marker"></div>
-      <div class="item-text">严格的<span class="hl">管理与审查机制</span></div>
-    </div>
-    <div class="item">
-      <div class="item-marker"></div>
-      <div class="item-text">大国信任的另一面：<span class="hl">陌生的协作</span></div>
-    </div>
-    <div class="item">
-      <div class="item-marker"></div>
-      <div class="item-text">语言沟壑——<span class="hl">沟通的隐性成本</span></div>
-    </div>
+
+    <!-- Path dependency angular lines -->
+    <div class="path-dep path-dep-1"></div>
+    <div class="path-dep path-dep-2"></div>
+    <div class="path-dep path-dep-3"></div>
+
+    <!-- Accent rule -->
+    <div class="h-rule h-rule-1"></div>
   </div>
-</div>
 
-<!-- Pullout -->
-<div class="pullout">
-  <div class="pullout-text">「陌生的协作」</div>
-  <div class="pullout-sub">大国信任的另一面，是协作机制的陌生与代价</div>
-</div>
+  <!-- Main content -->
+  <div class="content">
 
-<!-- Geometric composition -->
-<div class="geo">
-  <div class="geo-ring-global"></div>
-  <div class="geo-arc"></div>
-  <div class="geo-square"></div>
-  <div class="geo-square-fill"></div>
-  <div class="geo-circle-local"></div>
-  <div class="geo-dot-local"></div>
-  <div class="geo-line-1"></div>
-  <div class="geo-line-2"></div>
-  <div class="geo-line-3"></div>
-  <div class="geo-line-4"></div>
-  <div class="geo-line-5"></div>
-  <div class="geo-dot1"></div>
-  <div class="geo-small-sq"></div>
-  <div class="geo-small-circle"></div>
-  <div class="geo-cross-h"></div>
-  <div class="geo-cross-v"></div>
+    <!-- Header -->
+    <div class="header">
+      <div class="lecture-badge">
+        <div class="badge-num">11</div>
+        <div class="badge-text">文化的重要作用</div>
+      </div>
+      <div class="slide-indicator">SLIDE 06 / 28</div>
+    </div>
 
-  <div class="geo-label geo-label-global">GLOBAL NETWORK</div>
-  <div class="geo-label geo-label-inst">INSTITUTION</div>
-  <div class="geo-label geo-label-local">LOCAL</div>
-  <div class="geo-label geo-label-path">path dependence</div>
-</div>
+    <!-- Title section -->
+    <div class="title-section">
+      <div class="section-label">CHAPTER 04</div>
+      <div class="main-title">本土的突破</div>
+      <div class="subtitle-line">
+        <span class="dash"></span>制度路径依赖与协作挑战
+      </div>
+    </div>
 
-<!-- Decorative elements -->
-<div class="deco-half"></div>
-<div class="deco-circle2"></div>
+    <!-- Vertical accent text -->
+    <div class="vertical-accent">INSTITUTIONAL PATH DEPENDENCE</div>
 
-<!-- Bottom bar -->
-<div class="bottom-accent">
-  <div class="bottom-blue"></div>
-  <div class="bottom-copper"></div>
-  <div class="bottom-gray"></div>
-</div>
+    <!-- Divider -->
+    <div class="divider"></div>
 
-<!-- Footer -->
-<div class="footer-l">开源之道 · 新制度经济学视角</div>
-<div class="footer-r">11 / 28</div>
+    <!-- Content grid -->
+    <div class="content-grid">
+
+      <div class="item">
+        <div class="item-marker">
+          <div class="dot"></div>
+        </div>
+        <div class="item-content">
+          <div class="item-title">接入互联网较晚</div>
+          <div class="item-desc">起步晚意味着没有经历从弱连接到强连接的漫长演进，错过了网络原生文化形成的关键窗口期。</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="item-marker square-marker">
+          <div class="dot"></div>
+        </div>
+        <div class="item-content">
+          <div class="item-title">未经历松散连接网络</div>
+          <div class="item-desc">开源文化诞生于高度互联、信息自由流动的网络环境，这种底层基础设施经验在本地缺席。</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="item-marker circle-marker">
+          <div class="dot"></div>
+        </div>
+        <div class="item-content">
+          <div class="item-title">跳过 E-mail "网红"时代</div>
+          <div class="item-desc">邮件列表作为早期开源协作的核心形态，其匿名、开放、去中心化的参与范式未曾成为主流经验。</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="item-marker triangle-marker">
+          <div class="dot"></div>
+        </div>
+        <div class="item-content">
+          <div class="item-title">严格管理与审查</div>
+          <div class="item-desc">内容管控与信息过滤塑造了不同的协作心理——从"自由表达"转向"审慎参与"，协作的社交激励结构被改写。</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="item-marker cross-marker">
+          <div class="dot"></div>
+        </div>
+        <div class="item-content">
+          <div class="item-title">大国信任的另一面</div>
+          <div class="item-desc">对机构的深度信任在协作场景中转化为另一种陌生感——匿名、去权威的协作模式缺乏认知基础与实践训练。</div>
+        </div>
+      </div>
+
+      <div class="item">
+        <div class="item-marker square-marker">
+          <div class="dot"></div>
+        </div>
+        <div class="item-content">
+          <div class="item-title">语言沟壑</div>
+          <div class="item-desc">英语作为开源生态的主导语言，形成了实质性的参与门槛——不仅是语言障碍，更是知识再生产的不平等。</div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="bottom-bar">
+    <div class="bar-segment bar-segment-1"></div>
+    <div class="bar-segment bar-segment-2"></div>
+    <div class="bar-segment bar-segment-3"></div>
+    <div class="bar-segment bar-segment-4"></div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer-text">
+    第 11 期 · 文化的重要作用
+  </div>
+  <div class="footer-right">
+    BAUHAUS GEOMETRIC COMPOSITION · DARK ACADEMIC
+  </div>
 
 </body>
 </html>

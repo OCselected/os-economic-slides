@@ -1,334 +1,473 @@
 
 
 <!DOCTYPE html>
-<html><!-- source_hash: f2e32e5e658cb02d -->
+<html lang="zh-CN"><!-- source_hash: a797ba826ff92b48 -->
 <head>
 <meta charset="UTF-8">
-<title>反主流文化与黑客精神 | 第11期·文化的重要作用</title>
+<title>反主流文化概览 — 文化的重要作用</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  * { box-sizing: border-box; }
   html, body {
     width: 1600px;
     height: 900px;
     overflow: hidden;
-    background: #F5F0E8;
-    font-family: 'Noto Sans SC', 'Source Han Sans SC', sans-serif;
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans SC', 'PingFang SC', sans-serif;
     color: #1B3B6B;
+    background: #F5F0E8;
+  }
+  .slide {
     position: relative;
-  }
-  .bg-texture {
-    position: absolute; top: 0; left: 0; width: 1600px; height: 900px;
+    width: 1600px;
+    height: 900px;
     background:
-      radial-gradient(ellipse at 25% 40%, rgba(27,59,107,0.012) 0%, transparent 60%),
-      radial-gradient(ellipse at 75% 70%, rgba(139,115,85,0.015) 0%, transparent 60%);
-    z-index: 0; pointer-events: none;
+      radial-gradient(circle at 20% 30%, rgba(27,59,107,0.03), transparent 60%),
+      radial-gradient(circle at 80% 70%, rgba(139,115,85,0.04), transparent 55%),
+      #F5F0E8;
   }
-  .name-code {
-    position: absolute; top: 0; left: 0; width: 1600px; height: 900px;
-    overflow: hidden; z-index: 1;
-    font-family: 'Courier New', 'Consolas', monospace;
-    font-size: 13px; line-height: 22px;
-    color: rgba(139, 115, 85, 0.065);
-    word-spacing: 10px; letter-spacing: 0.5px;
-    padding: 40px 80px;
+  /* subtle parchment noise via layered gradients */
+  .slide::before {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      repeating-linear-gradient(45deg, rgba(139,115,85,0.012) 0 2px, transparent 2px 6px),
+      repeating-linear-gradient(-45deg, rgba(27,59,107,0.010) 0 2px, transparent 2px 7px);
+    pointer-events: none;
   }
+
+  /* Header strip */
   .header {
-    position: absolute; top: 48px; left: 80px; right: 80px; z-index: 10;
+    position: absolute;
+    top: 44px; left: 80px; right: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid #1B3B6B;
+    padding-bottom: 12px;
   }
-  .header-line { width: 50px; height: 2px; background: #1B3B6B; margin-bottom: 14px; }
-  .main-title {
+  .header .lec {
     font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-    font-size: 40px; font-weight: 700; color: #1B3B6B;
-    letter-spacing: 5px; line-height: 1.3;
+    font-size: 15px;
+    letter-spacing: 4px;
+    color: #8B7355;
   }
-  .sub-title {
-    font-family: 'Courier New', monospace;
-    font-size: 13px; color: #8B7355; letter-spacing: 3px; margin-top: 6px;
+  .header .lec b {
+    color: #1B3B6B;
+    font-weight: 700;
+    margin-right: 6px;
   }
-  /* Geometric decorations */
-  .geo-circle-lg {
-    position: absolute; width: 220px; height: 220px; border-radius: 50%;
-    border: 1.5px solid rgba(27,59,107,0.10); top: -60px; right: -40px; z-index: 2;
+  .header .deck {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 15px;
+    letter-spacing: 3px;
+    color: #1B3B6B;
   }
-  .geo-circle-sm1 {
-    position: absolute; width: 10px; height: 10px; border-radius: 50%;
-    background: #1B3B6B; top: 58px; right: 128px; z-index: 10;
+  .header .no {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 15px;
+    letter-spacing: 2px;
+    color: #555;
   }
-  .geo-circle-sm2 {
-    position: absolute; width: 6px; height: 6px; border-radius: 50%;
-    background: #8B7355; top: 42px; right: 168px; z-index: 10;
+
+  /* Big title */
+  .title-block {
+    position: absolute;
+    top: 108px; left: 80px;
+    width: 1440px;
   }
-  .geo-circle-sm3 {
-    position: absolute; width: 5px; height: 5px; border-radius: 50%;
-    border: 1px solid #8B7355; top: 76px; right: 98px; z-index: 10;
+  .kicker {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+    letter-spacing: 8px;
+    color: #8B7355;
+    margin-bottom: 10px;
   }
-  .geo-circle-br {
-    position: absolute; width: 80px; height: 80px; border-radius: 50%;
-    border: 1px solid rgba(139,115,85,0.12); bottom: 76px; right: -18px; z-index: 2;
+  .title {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+    font-size: 58px;
+    font-weight: 700;
+    color: #1B3B6B;
+    line-height: 1.1;
+    letter-spacing: 4px;
   }
-  .geo-square-tl {
-    position: absolute; width: 7px; height: 7px; background: #8B7355;
-    top: 46px; left: 46px; z-index: 10; transform: rotate(45deg);
+  .subtitle {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 17px;
+    letter-spacing: 3px;
+    color: #555;
+    margin-top: 14px;
   }
-  .geo-accent-line {
-    position: absolute; left: 525px; top: 210px;
-    width: 2px; height: 90px;
-    background: rgba(139,115,85,0.14); z-index: 5;
-  }
-  /* Main content area */
-  .main-area {
-    position: absolute; top: 188px; left: 80px; right: 80px; bottom: 92px;
-    z-index: 10; display: flex; gap: 52px;
-  }
-  /* Book */
-  .book-wrap { flex-shrink: 0; width: 420px; position: relative; }
+
+  /* Left visual metaphor: Hacker book cover */
   .book {
-    width: 420px; height: 530px; background: #1B3B6B;
-    position: relative; display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    padding: 45px; overflow: hidden;
+    position: absolute;
+    top: 275px;
+    left: 80px;
+    width: 460px;
+    height: 555px;
+    background: #1B3B6B;
+    color: #F5F0E8;
+    padding: 34px 30px 28px 30px;
+    box-shadow: 14px 14px 0 #8B7355;
+    overflow: hidden;
   }
-  .book-names {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    overflow: hidden; font-family: 'Courier New', monospace;
-    font-size: 11px; line-height: 19px;
-    color: rgba(245,240,232,0.07); word-spacing: 5px;
-    padding: 15px; letter-spacing: 0.5px;
+  .book::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 8px; height: 100%;
+    background: #F5F0E8;
+    opacity: 0.15;
   }
-  .book-corner {
-    position: absolute; top: 18px; right: 18px;
-    width: 28px; height: 28px; border-radius: 50%;
-    border: 1.5px solid rgba(139,115,85,0.35); z-index: 3;
-  }
-  .book-corner-dot {
-    position: absolute; top: 24px; right: 24px;
-    width: 5px; height: 5px; border-radius: 50%;
-    background: #8B7355; z-index: 4; opacity: 0.5;
-  }
-  .book-inner {
-    position: relative; z-index: 2; text-align: center;
-  }
-  .book-cn {
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-    font-size: 108px; color: #F5F0E8; letter-spacing: 18px;
-    line-height: 1.1; font-weight: 700;
-  }
-  .book-sep { width: 50px; height: 1px; background: rgba(139,115,85,0.5); margin: 22px 0; }
-  .book-en {
-    font-family: 'Courier New', monospace;
-    font-size: 20px; color: #8B7355; letter-spacing: 7px;
-  }
-  .book-sub {
-    font-family: 'Courier New', monospace;
-    font-size: 10px; color: rgba(245,240,232,0.35);
-    letter-spacing: 3px; margin-top: 10px; line-height: 1.8;
-  }
-  .book-bottom-left {
-    position: absolute; bottom: 20px; left: 22px;
-    font-family: 'Courier New', monospace;
-    font-size: 9px; color: rgba(245,240,232,0.22);
-    letter-spacing: 2px; z-index: 2;
-  }
-  .book-bottom-right {
-    position: absolute; bottom: 20px; right: 22px;
-    font-family: 'Courier New', monospace;
-    font-size: 9px; color: rgba(139,115,85,0.4);
-    letter-spacing: 2px; z-index: 2;
-  }
-  /* Content */
-  .content {
-    flex: 1; display: flex; flex-direction: column;
-    justify-content: center; padding-top: 2px;
-  }
-  .sec-label {
-    font-family: 'Courier New', monospace;
-    font-size: 10px; color: #8B7355; letter-spacing: 3.5px;
-    text-transform: uppercase; margin-bottom: 16px;
-    display: flex; align-items: center; gap: 12px;
-  }
-  .sec-label-line { width: 35px; height: 1px; background: #8B7355; }
-  .sec-label-cn {
+  .book .stamp {
     font-family: 'Noto Serif SC', serif;
-    font-size: 13px; color: #8B7355; letter-spacing: 3px; font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 5px;
+    color: #C9B48A;
+    border-bottom: 1px solid rgba(245,240,232,0.35);
+    padding-bottom: 8px;
+    margin-bottom: 14px;
+    display: flex;
+    justify-content: space-between;
   }
-  .sec-label-en {
-    font-size: 10px; color: rgba(139,115,85,0.5); letter-spacing: 2px;
-  }
-  .figures { margin-bottom: 28px; }
-  .fig-item {
-    display: flex; align-items: baseline; gap: 14px; margin-bottom: 11px;
-  }
-  .fig-mark {
-    width: 7px; height: 7px; background: #1B3B6B;
-    flex-shrink: 0; position: relative; top: 2px;
-  }
-  .fig-mark-hollow {
-    width: 7px; height: 7px; border: 1.5px solid #8B7355;
-    background: transparent; flex-shrink: 0; position: relative; top: 2px;
-  }
-  .fig-name {
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-    font-size: 21px; color: #1B3B6B; letter-spacing: 1.5px; font-weight: 600;
-  }
-  .fig-note {
-    font-family: 'Courier New', monospace;
-    font-size: 12px; color: #8B7355; letter-spacing: 0.5px;
-  }
-  .divider {
-    width: 70px; height: 1px; background: rgba(139,115,85,0.35); margin: 24px 0;
-  }
-  .thesis { margin-top: 4px; }
-  .thesis-line {
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-    font-size: 17px; color: #1B3B6B; line-height: 2.1; letter-spacing: 2px;
-  }
-  .thesis-em { color: #8B7355; font-weight: 700; }
-  .quote-note {
-    margin-top: 28px; padding-top: 18px;
-    border-top: 1px solid rgba(139,115,85,0.18);
-    text-align: center; width: 100%;
-  }
-  .quote-text {
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-    font-size: 15px; color: #8B7355; font-style: italic;
-    letter-spacing: 1.5px; display: block; margin-bottom: 5px;
-  }
-  .quote-attr {
-    font-family: 'Courier New', monospace;
-    font-size: 10px; color: rgba(139,115,85,0.55); letter-spacing: 1.5px;
-  }
-  /* Footer */
-  .footer-divider {
-    position: absolute; bottom: 66px; left: 80px; right: 80px;
-    height: 1px; background: rgba(27,59,107,0.12); z-index: 9;
-  }
-  .footer {
-    position: absolute; bottom: 26px; left: 80px; right: 80px;
-    z-index: 10; display: flex; align-items: center; justify-content: space-between;
-  }
-  .footer-left { display: flex; align-items: center; gap: 16px; }
-  .footer-title {
+  .book .mainword {
     font-family: 'Noto Serif SC', serif;
-    font-size: 12px; color: #1B3B6B; letter-spacing: 2px;
+    font-size: 62px;
+    font-weight: 900;
+    letter-spacing: 8px;
+    color: #F5F0E8;
+    line-height: 1;
+    margin-bottom: 4px;
   }
-  .footer-dot { width: 3px; height: 3px; border-radius: 50%; background: #8B7355; }
-  .footer-en {
-    font-family: 'Courier New', monospace;
-    font-size: 10px; color: #8B7355; letter-spacing: 2px;
-  }
-  .footer-right { display: flex; align-items: center; gap: 20px; }
-  .footer-right-text {
+  .book .en {
     font-family: 'Noto Serif SC', serif;
-    font-size: 11px; color: #555; letter-spacing: 1.5px;
+    font-size: 22px;
+    letter-spacing: 10px;
+    color: #C9B48A;
+    margin-bottom: 20px;
   }
-  .footer-num {
-    font-family: 'Courier New', monospace;
-    font-size: 10px; color: #8B7355; letter-spacing: 2px;
+  .book .names {
+    font-family: 'Courier New', 'Noto Sans Mono', monospace;
+    font-size: 14px;
+    line-height: 1.55;
+    color: rgba(245,240,232,0.88);
+    letter-spacing: 1px;
+  }
+  .book .names .name {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  .book .names .hl {
+    color: #F5C542;
+  }
+  .book .divider {
+    height: 1px;
+    background: rgba(245,240,232,0.3);
+    margin: 16px 0 12px 0;
+  }
+  .book .footer {
+    position: absolute;
+    bottom: 26px; left: 30px; right: 30px;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: rgba(245,240,232,0.65);
+  }
+  .book .author {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 14px;
+    letter-spacing: 4px;
+    color: #C9B48A;
+    margin-top: 12px;
+    text-align: right;
+  }
+
+  /* Circle decor on book */
+  .book .circle {
+    position: absolute;
+    right: -60px; top: 200px;
+    width: 180px; height: 180px;
+    border: 2px solid rgba(245,240,232,0.25);
+    border-radius: 50%;
+  }
+  .book .sq {
+    position: absolute;
+    right: 40px; top: 440px;
+    width: 60px; height: 60px;
+    background: #F5C542;
+    opacity: 0.85;
+  }
+
+  /* Right column bullets */
+  .right {
+    position: absolute;
+    top: 275px;
+    left: 640px;
+    width: 880px;
+    height: 555px;
+  }
+  .lead {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 19px;
+    line-height: 1.7;
+    color: #1B3B6B;
+    letter-spacing: 1.5px;
+    margin-bottom: 22px;
+    border-left: 3px solid #8B7355;
+    padding-left: 18px;
+  }
+  .lead em {
+    color: #8B7355;
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 26px;
+    margin-top: 12px;
+  }
+  .item {
+    position: relative;
+    padding: 14px 16px 14px 46px;
+    border: 1px solid rgba(27,59,107,0.25);
+    background: rgba(245,240,232,0.5);
+    min-height: 84px;
+  }
+  .item .num {
+    position: absolute;
+    left: 12px; top: 14px;
+    width: 22px; height: 22px;
+    background: #1B3B6B;
+    color: #F5F0E8;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0;
+  }
+  .item .yr {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #8B7355;
+    margin-bottom: 3px;
+  }
+  .item .name {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #1B3B6B;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .item .desc {
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: #555;
+    letter-spacing: 0.5px;
+  }
+
+  .full {
+    grid-column: 1 / 3;
+    border: 1px solid #1B3B6B;
+    background: #1B3B6B;
+    color: #F5F0E8;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .full .mark {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 30px;
+    font-weight: 900;
+    color: #F5C542;
+    letter-spacing: 2px;
+  }
+  .full .txt {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 15px;
+    line-height: 1.6;
+    letter-spacing: 1.5px;
+  }
+  .full .txt b { color: #F5C542; }
+
+  /* Bauhaus geometric decorations */
+  .deco-circle {
+    position: absolute;
+    right: 60px; top: 260px;
+    width: 88px; height: 88px;
+    border-radius: 50%;
+    background: #8B7355;
+    opacity: 0.85;
+  }
+  .deco-square {
+    position: absolute;
+    right: 130px; top: 205px;
+    width: 44px; height: 44px;
+    background: #F5C542;
+    border: 2px solid #1B3B6B;
+  }
+  .deco-line {
+    position: absolute;
+    left: 620px; top: 340px;
+    width: 40px; height: 2px;
+    background: #1B3B6B;
+  }
+
+  /* Bottom citation bar */
+  .foot {
+    position: absolute;
+    left: 80px; right: 80px; bottom: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(27,59,107,0.35);
+    padding-top: 12px;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #555;
+  }
+  .foot .l b {
+    color: #1B3B6B;
+    letter-spacing: 4px;
+  }
+  .foot .r {
+    display: flex;
+    gap: 24px;
+  }
+  .foot .dot {
+    display: inline-block;
+    width: 6px; height: 6px;
+    background: #8B7355;
+    margin-right: 8px;
+    vertical-align: middle;
   }
 </style>
 </head>
 <body>
-  <div class="bg-texture"></div>
+<div class="slide">
 
-  <div class="name-code">Stewart Brand &nbsp; Paul Saffo &nbsp; Whole Earth Catalog &nbsp; 1968 &nbsp; WELL &nbsp; Kenrick Ellis &nbsp; Wired &nbsp; 1993 &nbsp; John Perry Barlow &nbsp; Eric Raymond &nbsp; Mitch Kapor &nbsp; GNU &nbsp; Richard Stallman &nbsp; open source &nbsp; hacker ethic &nbsp; digital frontier &nbsp; Bruce Sterling &nbsp; Wired Magazine &nbsp; Whole Earth Review &nbsp; counterculture &nbsp; liberation &nbsp; community &nbsp; virtual world &nbsp; 1970 &nbsp; 1980 &nbsp; 1990 &nbsp; Stewart Brand &nbsp; The Hacker Ethic &nbsp; digital liberation &nbsp; information wants to be free &nbsp; open source &nbsp; free software &nbsp; counterculture &nbsp; Whole Earth &nbsp; WELL &nbsp; Stewart Brand &nbsp; Paul Saffo &nbsp; Whole Earth Catalog &nbsp; 1968 &nbsp; WELL &nbsp; Kenrick Ellis &nbsp; Stewart Brand &nbsp; Wired &nbsp; 1993 &nbsp; John Perry Barlow &nbsp; Eric Raymond &nbsp; Mitch Kapor &nbsp; GNU &nbsp; Richard Stallman &nbsp; open source &nbsp; hacker ethic &nbsp; digital frontier &nbsp; Bruce Sterling &nbsp; Wired Magazine &nbsp; Whole Earth Review &nbsp; counterculture &nbsp; liberation &nbsp; community &nbsp; virtual world &nbsp; 1970 &nbsp; 1980 &nbsp; 1990 &nbsp; Stewart Brand &nbsp; The Hacker Ethic &nbsp; digital liberation &nbsp; information wants to be free &nbsp; open source &nbsp; free software &nbsp; counterculture &nbsp; Whole Earth &nbsp; WELL &nbsp; Stewart Brand &nbsp; Paul Saffo &nbsp; Whole Earth Catalog &nbsp; 1968 &nbsp; WELL &nbsp; Kenrick Ellis &nbsp; Stewart Brand &nbsp; Wired &nbsp; 1993 &nbsp; John Perry Barlow &nbsp; Eric Raymond &nbsp; Mitch Kapor &nbsp; GNU &nbsp; Richard Stallman &nbsp; open source &nbsp; hacker ethic &nbsp; digital frontier &nbsp; Bruce Sterling &nbsp; Wired Magazine &nbsp; Whole Earth Review &nbsp; counterculture &nbsp; liberation &nbsp; community &nbsp; virtual world &nbsp; 1970 &nbsp; 1980 &nbsp; 1990 &nbsp; Stewart Brand &nbsp; The Hacker Ethic &nbsp; digital liberation &nbsp; information wants to be free &nbsp; open source &nbsp; free software &nbsp; counterculture &nbsp; Whole Earth &nbsp; WELL</div>
-
-  <div class="geo-circle-lg"></div>
-  <div class="geo-circle-sm1"></div>
-  <div class="geo-circle-sm2"></div>
-  <div class="geo-circle-sm3"></div>
-  <div class="geo-circle-br"></div>
-  <div class="geo-square-tl"></div>
-  <div class="geo-accent-line"></div>
-
+  <!-- header -->
   <div class="header">
-    <div class="header-line"></div>
-    <div class="main-title">反主流文化与黑客精神</div>
-    <div class="sub-title">COUNTER-CULTURE &amp; THE HACKER ETHIC</div>
+    <div class="lec"><b>LECT. 11</b>文化的重要作用</div>
+    <div class="deck">开源之道 · 新制度经济学视角</div>
+    <div class="no">14 / 28</div>
   </div>
 
-  <div class="main-area">
-    <div class="book-wrap">
-      <div class="book">
-        <div class="book-names">Stewart Brand &nbsp; Paul Saffo &nbsp; Whole Earth Catalog &nbsp; 1968 &nbsp; WELL &nbsp; Kenrick Ellis &nbsp; Wired &nbsp; 1993 &nbsp; John Perry Barlow &nbsp; Eric Raymond &nbsp; Mitch Kapor &nbsp; GNU &nbsp; Richard Stallman &nbsp; open source &nbsp; hacker ethic &nbsp; digital frontier &nbsp; Bruce Sterling &nbsp; Wired Magazine &nbsp; Whole Earth Review &nbsp; counterculture &nbsp; liberation &nbsp; community &nbsp; virtual world &nbsp; 1970 &nbsp; 1980 &nbsp; 1990 &nbsp; Stewart Brand &nbsp; The Hacker Ethic &nbsp; digital liberation &nbsp; information wants to be free &nbsp; open source &nbsp; free software &nbsp; counterculture &nbsp; Whole Earth &nbsp; WELL &nbsp; Stewart Brand &nbsp; Paul Saffo &nbsp; Whole Earth Catalog &nbsp; 1968 &nbsp; WELL &nbsp; Kenrick Ellis &nbsp; Stewart Brand &nbsp; Wired &nbsp; 1993 &nbsp; John Perry Barlow &nbsp; Eric Raymond &nbsp; Mitch Kapor &nbsp; GNU &nbsp; Richard Stallman &nbsp; open source &nbsp; hacker ethic &nbsp; digital frontier &nbsp; Bruce Sterling &nbsp; Wired Magazine &nbsp; Whole Earth Review &nbsp; counterculture &nbsp; liberation &nbsp; community &nbsp; virtual world &nbsp; 1970 &nbsp; 1980 &nbsp; 1990 &nbsp; Stewart Brand &nbsp; The Hacker Ethic &nbsp; digital liberation &nbsp; information wants to be free &nbsp; open source &nbsp; free software &nbsp; counterculture &nbsp; Whole Earth &nbsp; WELL &nbsp; Stewart Brand &nbsp; Paul Saffo &nbsp; Whole Earth Catalog &nbsp; 1968 &nbsp; WELL &nbsp; Kenrick Ellis &nbsp; Stewart Brand &nbsp; Wired &nbsp; 1993 &nbsp; John Perry Barlow &nbsp; Eric Raymond &nbsp; Mitch Kapor &nbsp; GNU &nbsp; Richard Stallman &nbsp; open source &nbsp; hacker ethic &nbsp; digital frontier</div>
-        <div class="book-corner"></div>
-        <div class="book-corner-dot"></div>
-        <div class="book-inner">
-          <div class="book-cn">黑&nbsp;客</div>
-          <div class="book-sep"></div>
-          <div class="book-en">HACKERS</div>
-          <div class="book-sub">
-            THE PIONEERS<br>
-            OF COMPUTER<br>
-            CULTURE
-          </div>
-        </div>
-        <div class="book-bottom-left">EST. 1968 &mdash; OPEN</div>
-        <div class="book-bottom-right">VOL. I</div>
-      </div>
+  <!-- title -->
+  <div class="title-block">
+    <div class="kicker">COUNTER-CULTURE &nbsp;·&nbsp; 反主流文化</div>
+    <div class="title">黑客先驱与电子边疆</div>
+    <div class="subtitle">When the computer becomes an instrument of self-liberation.</div>
+  </div>
+
+  <!-- Bauhaus deco -->
+  <div class="deco-square"></div>
+  <div class="deco-circle"></div>
+  <div class="deco-line"></div>
+
+  <!-- Left: Hacker book cover -->
+  <div class="book">
+    <div class="stamp">
+      <span>STEVEN LEVY</span>
+      <span>1994</span>
+    </div>
+    <div class="mainword">黑客</div>
+    <div class="en">HACKERS</div>
+
+    <div class="names">
+      <span class="name hl">Ken Thompson</span><br>
+      <span class="name">Dennis Ritchie</span><br>
+      <span class="name">Steve Wozniak</span><br>
+      <span class="name hl">Stewart Brand</span><br>
+      <span class="name">Larry Levy</span><br>
+      <span class="name">Ralph Lee Smith</span><br>
+      <span class="name hl">Paul Baran</span><br>
+      <span class="name">J.C.R. Licklider</span><br>
+      <span class="name">Ted Nelson</span><br>
+      <span class="name">Alan Kay</span><br>
+      <span class="name">Marvin Minsky</span><br>
+      <span class="name hl">Richard Stallman</span><br>
+      <span class="name">Ken Silverman</span><br>
+      <span class="name">Steve Jobs</span><br>
+      <span class="name">Bill Gates</span><br>
+      <span class="name">— many more —</span>
     </div>
 
-    <div class="content">
-      <div class="sec-label">
-        <div class="sec-label-line"></div>
-        <span class="sec-label-cn">反主流文化概览</span>
-        <span class="sec-label-en">COUNTER-CULTURE OVERVIEW</span>
-      </div>
+    <div class="circle"></div>
+    <div class="sq"></div>
 
-      <div class="figures">
-        <div class="fig-item">
-          <div class="fig-mark"></div>
-          <span class="fig-name">斯图尔特·布兰德</span>
-          <span class="fig-note">Stewart Brand</span>
-        </div>
-        <div class="fig-item">
-          <div class="fig-mark-hollow"></div>
-          <span class="fig-name">《全球概览》</span>
-          <span class="fig-note">Whole Earth Catalog, 1968</span>
-        </div>
-        <div class="fig-item">
-          <div class="fig-mark"></div>
-          <span class="fig-name">全球电子链接</span>
-          <span class="fig-note">WELL</span>
-        </div>
-        <div class="fig-item">
-          <div class="fig-mark-hollow"></div>
-          <span class="fig-name">《连线》Wired 杂志</span>
-          <span class="fig-note">est. 1993</span>
-        </div>
-      </div>
+    <div class="author">黑客们的名字如代码<br>由先驱者构建</div>
 
-      <div class="divider"></div>
-
-      <div class="sec-label">
-        <div class="sec-label-line"></div>
-        <span class="sec-label-cn">核心命题</span>
-        <span class="sec-label-en">CORE THESIS</span>
-      </div>
-
-      <div class="thesis">
-        <div class="thesis-line">计算机是<span class="thesis-em">解放自我的武器</span></div>
-        <div class="thesis-line">构建<span class="thesis-em">虚拟共同体</span></div>
-        <div class="thesis-line">拓展<span class="thesis-em">社会边疆</span></div>
-      </div>
-
-      <div class="quote-note">
-        <span class="quote-text">"Information wants to be free."</span>
-        <span class="quote-attr">&mdash; Stewart Brand, 1980</span>
-      </div>
+    <div class="footer">
+      <span>NEW YORK</span>
+      <span>VINTAGE BOOKS</span>
     </div>
   </div>
 
-  <div class="footer-divider"></div>
-  <div class="footer">
-    <div class="footer-left">
-      <div class="footer-title">第 11 期 · 文化的重要作用</div>
-      <div class="footer-dot"></div>
-      <div class="footer-en">CULTURE MATTERS</div>
+  <!-- Right: bullets -->
+  <div class="right">
+    <div class="lead">
+      计算机是<em>解放自我的武器</em>，黑客精神由少数先驱者亲手构建——从纸质概览到电子链接，他们以协作与自由，拓展了社会的边疆。
     </div>
-    <div class="footer-right">
-      <div class="footer-right-text">开源经济学 · 新制度经济学视角</div>
-      <div class="footer-num">11 / 28</div>
+
+    <div class="grid">
+      <div class="item">
+        <div class="num">1</div>
+        <div class="yr">1968</div>
+        <div class="name">斯图尔特·布兰德</div>
+        <div class="desc">Stewart Brand — 从嬉皮士到数字时代启蒙者，用工具与人连接。</div>
+      </div>
+
+      <div class="item">
+        <div class="num">2</div>
+        <div class="yr">1968 – 1972</div>
+        <div class="name">《全球概览》</div>
+        <div class="desc">Whole Earth Catalog — "Access to Tools"，反主流的纸质手册。</div>
+      </div>
+
+      <div class="item">
+        <div class="num">3</div>
+        <div class="yr">1985</div>
+        <div class="name">全球电子链接 WELL</div>
+        <div class="desc">Whole Earth 'Lectronic Link — 互联网前夜的第一处数字广场。</div>
+      </div>
+
+      <div class="item">
+        <div class="num">4</div>
+        <div class="yr">1993</div>
+        <div class="name">《连线》杂志</div>
+        <div class="desc">Wired — "The Internet Report"，把电子边疆推向大众读者。</div>
+      </div>
+
+      <div class="full">
+        <div class="mark">III</div>
+        <div class="txt">
+          计算机构建了令人耳目一新的<b>虚拟共同体</b>——超越国界、身份与制度，<br>
+          让陌生人得以协作、分享与治理，<b>拓展社会边疆</b>。
+        </div>
+      </div>
     </div>
   </div>
+
+  <!-- footer -->
+  <div class="foot">
+    <div class="l"><b>第 11 期</b> · 文化的重要作用</div>
+    <div class="r">
+      <span><span class="dot"></span>反主流文化</span>
+      <span><span class="dot"></span>黑客先驱</span>
+      <span><span class="dot"></span>电子边疆</span>
+    </div>
+  </div>
+
+</div>
 </body>
 </html>

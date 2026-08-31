@@ -1,304 +1,750 @@
 
 
 <!DOCTYPE html>
-<html><!-- source_hash: c46c45d28b041706 -->
+<html lang="zh-CN"><!-- source_hash: 476e4a0fe41e6a16 -->
 <head>
 <meta charset="UTF-8">
 <title>文化的重要作用</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body {
-    width: 1600px; height: 900px;
-    overflow: hidden; margin: 0;
-  }
-  body {
-    background: #F5F0E8;
-    color: #1B3B6B;
-    position: relative;
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-  }
-  .texture {
-    position: absolute; top: 0; left: 0;
-    width: 1600px; height: 900px;
-    background: repeating-linear-gradient(0deg, transparent, transparent 4px, rgba(139,115,85,0.012) 4px, rgba(139,115,85,0.012) 5px);
-    pointer-events: none; z-index: 100;
-  }
-  .visual {
-    position: absolute; top: 0; left: 0;
-    width: 900px; height: 900px; overflow: hidden;
-  }
-  .sea {
-    position: absolute;
-    width: 800px; height: 800px;
-    border-radius: 50%;
-    background: #1B3B6B;
-    top: 50px; left: -260px;
-  }
-  .sea-inner {
-    position: absolute;
-    width: 560px; height: 560px;
-    border-radius: 50%;
-    background: rgba(27,59,107,0.45);
-    top: 170px; left: -110px;
-  }
-  .crack {
-    position: absolute; height: 1px;
-    background: rgba(245,240,232,0.22);
-  }
-  .c1  { top: 130px; left: -160px; width: 340px; }
-  .c2  { top: 200px; left: -80px;  width: 280px; height: 2px; background: rgba(245,240,232,0.28); }
-  .c3  { top: 270px; left: -140px; width: 390px; }
-  .c4  { top: 340px; left: -60px;  width: 310px; height: 1.5px; background: rgba(245,240,232,0.25); }
-  .c5  { top: 410px; left: -120px; width: 370px; }
-  .c6  { top: 490px; left: -40px;  width: 250px; height: 2px; background: rgba(245,240,232,0.3); }
-  .c7  { top: 560px; left: -100px; width: 330px; }
-  .c8  { top: 640px; left: -150px; width: 290px; height: 1.5px; background: rgba(245,240,232,0.2); }
-  .c9  { top: 720px; left: -70px;  width: 210px; }
-  .c10 { top: 790px; left: -130px; width: 260px; }
-  .dcrack {
-    position: absolute; height: 1px;
-    background: rgba(245,240,232,0.1);
-  }
-  .dc1 { top: 200px; left: 40px;  width: 190px; transform: rotate(25deg); transform-origin: left center; }
-  .dc2 { top: 350px; left: -30px; width: 170px; transform: rotate(-15deg); transform-origin: left center; }
-  .dc3 { top: 550px; left: 20px;  width: 140px; transform: rotate(20deg); transform-origin: left center; }
-  .dc4 { top: 680px; left: 60px;  width: 110px; transform: rotate(-10deg); transform-origin: left center; }
-  .explorer {
-    position: absolute;
-    width: 50px; height: 50px;
-    border-radius: 50%;
-    background: #E8722A;
-    top: 410px; left: 365px;
-    box-shadow: 0 0 0 6px rgba(232,114,42,0.18), 0 0 0 18px rgba(232,114,42,0.06);
-    z-index: 5;
-  }
-  .path {
-    position: absolute;
-    top: 434px; left: 413px;
-    width: 280px; height: 2px;
-    background: linear-gradient(90deg, #E8722A 0%, rgba(232,114,42,0.06) 100%);
-    z-index: 4;
-  }
-  .arrow-tip {
-    position: absolute;
-    top: 428px; left: 689px;
-    width: 0; height: 0;
-    border-top: 7px solid transparent;
-    border-bottom: 7px solid transparent;
-    border-left: 14px solid #E8722A;
-    opacity: 0.7; z-index: 5;
-  }
-  .horizon-line {
-    position: absolute;
-    top: 450px; left: 570px;
-    width: 330px; height: 1px;
-    background: rgba(139,115,85,0.15);
-  }
-  .deco-oc {
-    position: absolute;
-    width: 100px; height: 100px;
-    border: 2px solid #1B3B6B; border-radius: 50%;
-    top: 100px; left: 580px; opacity: 0.12;
-  }
-  .deco-bs {
-    position: absolute;
-    width: 18px; height: 18px;
-    background: #1B3B6B;
-    top: 780px; left: 120px; opacity: 0.25;
-  }
-  .deco-wc {
-    position: absolute;
-    width: 12px; height: 12px;
-    border-radius: 50%;
-    background: rgba(245,240,232,0.5);
-    top: 180px; left: 640px;
-  }
-  .deco-od {
-    position: absolute;
-    width: 10px; height: 10px;
-    background: #E8722A;
-    top: 750px; left: 720px;
-    transform: rotate(45deg); opacity: 0.55;
-  }
-  .deco-tr {
-    position: absolute;
-    width: 0; height: 0;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-bottom: 10px solid #1B3B6B;
-    top: 680px; left: 600px; opacity: 0.25;
-  }
-  .deco-ws {
-    position: absolute;
-    width: 8px; height: 8px;
-    background: rgba(245,240,232,0.35);
-    top: 290px; left: 680px;
-  }
-  .deco-cs {
-    position: absolute;
-    width: 6px; height: 6px;
-    background: #8B7355;
-    top: 160px; left: 620px; opacity: 0.5;
-  }
-  .content {
-    position: absolute;
-    top: 0; left: 920px;
-    width: 680px; height: 900px;
-    padding: 75px 50px 50px 50px;
-    display: flex; flex-direction: column;
-    z-index: 10;
-  }
-  .big-num {
-    position: absolute;
-    top: 50px; right: 30px;
-    font-family: 'Noto Serif SC', serif;
-    font-size: 180px;
-    color: rgba(27,59,107,0.035);
-    font-weight: 700; line-height: 1;
-  }
-  .lecture-tag {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 12px; color: #8B7355;
-    letter-spacing: 6px; margin-bottom: 16px;
-  }
-  .lecture-num {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 14px; color: #8B7355;
-    letter-spacing: 3px; margin-bottom: 14px;
-  }
-  .main-title {
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-    font-size: 50px; color: #1B3B6B;
-    line-height: 1.25; font-weight: 700; margin-bottom: 6px;
-  }
-  .en-title {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 14px; color: #8B7355;
-    letter-spacing: 1.5px; margin-bottom: 28px; font-weight: 300;
-  }
-  .divider {
-    width: 48px; height: 3px;
-    background: #E8722A; margin-bottom: 28px;
-  }
-  .points { list-style: none; padding: 0; margin: 0; }
-  .point {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 16px; color: #1B3B6B;
-    line-height: 1.7; margin-bottom: 14px;
-    padding-left: 28px; position: relative;
-  }
-  .point:nth-child(1)::before {
-    content: ''; position: absolute;
-    left: 0; top: 10px;
-    width: 8px; height: 8px; background: #1B3B6B;
-  }
-  .point:nth-child(2)::before {
-    content: ''; position: absolute;
-    left: 0; top: 10px;
-    width: 8px; height: 8px;
-    border: 2px solid #1B3B6B; border-radius: 50%; background: transparent;
-  }
-  .point:nth-child(3)::before {
-    content: ''; position: absolute;
-    left: 0; top: 11px;
-    width: 0; height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-bottom: 8px solid #E8722A;
-  }
-  .point:nth-child(4)::before {
-    content: ''; position: absolute;
-    left: 1px; top: 10px;
-    width: 8px; height: 8px;
-    background: #E8722A; transform: rotate(45deg);
-  }
-  .point:nth-child(5)::before {
-    content: ''; position: absolute;
-    left: 0; top: 10px;
-    width: 8px; height: 8px;
-    background: #1B3B6B; border-radius: 50%;
-  }
-  .hl { color: #E8722A; font-weight: 600; }
-  .hlb { color: #1B3B6B; font-weight: 700; }
-  .bottom-bar {
-    margin-top: auto;
-    display: flex; align-items: center; gap: 10px;
-    padding-bottom: 8px;
-  }
-  .bbs { width: 10px; height: 10px; background: #1B3B6B; }
-  .bbc { width: 10px; height: 10px; border-radius: 50%; background: #E8722A; }
-  .bbt { width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-bottom: 9px solid #8B7355; opacity: 0.4; }
-  .bbl { flex: 1; height: 1px; background: #8B7355; opacity: 0.3; }
-  .page-num {
-    margin-top: 6px;
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 11px; color: #8B7355;
-    opacity: 0.5; letter-spacing: 2px; text-align: right;
-  }
-  .vert-label {
-    position: absolute;
-    left: 24px; top: 50%;
-    transform: translateY(-50%);
-    writing-mode: vertical-rl;
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 10px; color: #8B7355;
-    letter-spacing: 10px; opacity: 0.4;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #F5F0E8;
+  font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle parchment texture */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1600px;
+  height: 900px;
+  background: 
+    radial-gradient(ellipse at 20% 30%, rgba(139, 115, 85, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(27, 59, 107, 0.02) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Top decorative line */
+.top-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1600px;
+  height: 4px;
+  background: #1B3B6B;
+  z-index: 5;
+}
+
+.top-line-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 180px;
+  height: 4px;
+  background: #C75B12;
+  z-index: 6;
+}
+
+/* Slide number */
+.slide-number {
+  position: absolute;
+  top: 30px;
+  right: 60px;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 14px;
+  color: #8B7355;
+  letter-spacing: 2px;
+  z-index: 10;
+}
+
+.slide-number span {
+  color: #1B3B6B;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* Lecture info */
+.lecture-info {
+  position: absolute;
+  top: 30px;
+  left: 60px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  color: #8B7355;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  z-index: 10;
+}
+
+/* Left decorative geometric elements */
+.geo-circle-large {
+  position: absolute;
+  top: 100px;
+  left: -60px;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 2px solid rgba(27, 59, 107, 0.12);
+  z-index: 1;
+}
+
+.geo-square-large {
+  position: absolute;
+  top: 680px;
+  left: -30px;
+  width: 100px;
+  height: 100px;
+  background: rgba(27, 59, 107, 0.06);
+  z-index: 1;
+}
+
+/* Main visual metaphor area */
+.visual-scene {
+  position: absolute;
+  top: 110px;
+  left: 60px;
+  width: 680px;
+  height: 680px;
+  z-index: 2;
+  overflow: hidden;
+}
+
+/* Ice sea - horizontal lines suggesting water/ice */
+.ice-layer {
+  position: absolute;
+  bottom: 80px;
+  left: 0;
+  width: 680px;
+  height: 4px;
+  background: rgba(27, 59, 107, 0.2);
+}
+
+.ice-layer-1 {
+  bottom: 80px;
+  opacity: 0.3;
+  width: 680px;
+}
+
+.ice-layer-2 {
+  bottom: 130px;
+  width: 580px;
+  opacity: 0.2;
+}
+
+.ice-layer-3 {
+  bottom: 190px;
+  width: 460px;
+  opacity: 0.15;
+}
+
+.ice-layer-4 {
+  bottom: 250px;
+  width: 350px;
+  opacity: 0.1;
+}
+
+.ice-layer-5 {
+  bottom: 310px;
+  width: 260px;
+  opacity: 0.08;
+}
+
+/* Vast horizon - a subtle gradient suggesting vastness */
+.horizon {
+  position: absolute;
+  bottom: 60px;
+  left: 0;
+  width: 680px;
+  height: 180px;
+  background: linear-gradient(to bottom, 
+    rgba(27, 59, 107, 0.04) 0%, 
+    rgba(27, 59, 107, 0.08) 40%,
+    rgba(27, 59, 107, 0.12) 100%);
+  z-index: 1;
+}
+
+/* Horizon line */
+.horizon-line {
+  position: absolute;
+  bottom: 240px;
+  left: 0;
+  width: 680px;
+  height: 1px;
+  background: rgba(27, 59, 107, 0.25);
+  z-index: 2;
+}
+
+/* Small geometric shapes suggesting distant ice floes */
+.floe-1 {
+  position: absolute;
+  bottom: 160px;
+  left: 120px;
+  width: 18px;
+  height: 6px;
+  background: rgba(27, 59, 107, 0.12);
+  border-radius: 2px;
+  z-index: 2;
+}
+
+.floe-2 {
+  position: absolute;
+  bottom: 120px;
+  left: 280px;
+  width: 24px;
+  height: 7px;
+  background: rgba(27, 59, 107, 0.1);
+  border-radius: 2px;
+  z-index: 2;
+}
+
+.floe-3 {
+  position: absolute;
+  bottom: 170px;
+  left: 420px;
+  width: 16px;
+  height: 5px;
+  background: rgba(27, 59, 107, 0.08);
+  border-radius: 2px;
+  z-index: 2;
+}
+
+.floe-4 {
+  position: absolute;
+  bottom: 100px;
+  left: 500px;
+  width: 30px;
+  height: 8px;
+  background: rgba(27, 59, 107, 0.09);
+  border-radius: 2px;
+  z-index: 2;
+}
+
+.floe-5 {
+  position: absolute;
+  bottom: 140px;
+  left: 50px;
+  width: 14px;
+  height: 4px;
+  background: rgba(27, 59, 107, 0.1);
+  border-radius: 1px;
+  z-index: 2;
+}
+
+.floe-6 {
+  position: absolute;
+  bottom: 115px;
+  left: 180px;
+  width: 20px;
+  height: 6px;
+  background: rgba(27, 59, 107, 0.07);
+  border-radius: 2px;
+  z-index: 2;
+}
+
+.floe-7 {
+  position: absolute;
+  bottom: 90px;
+  left: 380px;
+  width: 12px;
+  height: 4px;
+  background: rgba(27, 59, 107, 0.06);
+  border-radius: 1px;
+  z-index: 2;
+}
+
+/* The orange figure - the explorer */
+.figure {
+  position: absolute;
+  bottom: 195px;
+  left: 320px;
+  z-index: 5;
+}
+
+.figure-body {
+  position: relative;
+  width: 24px;
+  height: 60px;
+}
+
+/* Head */
+.figure-head {
+  position: absolute;
+  top: 0;
+  left: 5px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #C75B12;
+}
+
+/* Body */
+.figure-torso {
+  position: absolute;
+  top: 14px;
+  left: 3px;
+  width: 18px;
+  height: 28px;
+  background: #C75B12;
+  border-radius: 2px 2px 1px 1px;
+}
+
+/* Legs */
+.figure-leg-left {
+  position: absolute;
+  top: 42px;
+  left: 5px;
+  width: 6px;
+  height: 18px;
+  background: #C75B12;
+  border-radius: 0 0 2px 2px;
+  transform: rotate(-8deg);
+  transform-origin: top center;
+}
+
+.figure-leg-right {
+  position: absolute;
+  top: 42px;
+  left: 13px;
+  width: 6px;
+  height: 18px;
+  background: #C75B12;
+  border-radius: 0 0 2px 2px;
+  transform: rotate(5deg);
+  transform-origin: top center;
+}
+
+/* Shadow beneath figure */
+.figure-shadow {
+  position: absolute;
+  bottom: 185px;
+  left: 310px;
+  width: 44px;
+  height: 6px;
+  background: rgba(27, 59, 107, 0.1);
+  border-radius: 50%;
+  z-index: 4;
+}
+
+/* Footprints trailing behind */
+.footprint-1 {
+  position: absolute;
+  bottom: 182px;
+  left: 290px;
+  width: 8px;
+  height: 5px;
+  background: rgba(199, 91, 18, 0.12);
+  border-radius: 50%;
+  z-index: 3;
+}
+
+.footprint-2 {
+  position: absolute;
+  bottom: 178px;
+  left: 265px;
+  width: 7px;
+  height: 4px;
+  background: rgba(199, 91, 18, 0.09);
+  border-radius: 50%;
+  z-index: 3;
+}
+
+.footprint-3 {
+  position: absolute;
+  bottom: 172px;
+  left: 238px;
+  width: 6px;
+  height: 4px;
+  background: rgba(199, 91, 18, 0.06);
+  border-radius: 50%;
+  z-index: 3;
+}
+
+.footprint-4 {
+  position: absolute;
+  bottom: 168px;
+  left: 210px;
+  width: 5px;
+  height: 3px;
+  background: rgba(199, 91, 18, 0.04);
+  border-radius: 50%;
+  z-index: 3;
+}
+
+/* Sun - large circle in the sky */
+.sun {
+  position: absolute;
+  top: 80px;
+  left: 420px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(199, 91, 18, 0.06);
+  border: 1px solid rgba(199, 91, 18, 0.1);
+  z-index: 1;
+}
+
+.sun-inner {
+  position: absolute;
+  top: 105px;
+  left: 445px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(199, 91, 18, 0.04);
+  z-index: 1;
+}
+
+/* Vertical line suggesting direction/forward */
+.direction-line {
+  position: absolute;
+  bottom: 185px;
+  left: 350px;
+  width: 200px;
+  height: 1px;
+  background: linear-gradient(to right, rgba(199, 91, 18, 0.15), transparent);
+  z-index: 3;
+}
+
+/* Content area - right side */
+.content-area {
+  position: absolute;
+  top: 130px;
+  left: 800px;
+  width: 720px;
+  height: 660px;
+  z-index: 5;
+}
+
+/* Section label */
+.section-label {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  color: #8B7355;
+  letter-spacing: 4px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+/* Main title */
+.main-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 48px;
+  color: #1B3B6B;
+  line-height: 1.3;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+/* Accent line under title */
+.title-accent {
+  width: 60px;
+  height: 3px;
+  background: #C75B12;
+  margin-bottom: 40px;
+}
+
+/* Bullet points */
+.bullet-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bullet-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 28px;
+  line-height: 1.7;
+}
+
+.bullet-marker {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  background: #1B3B6B;
+  margin-top: 10px;
+  margin-right: 18px;
+  border-radius: 50%;
+}
+
+.bullet-marker.accent {
+  background: #C75B12;
+}
+
+.bullet-text {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 18px;
+  color: #333;
+  line-height: 1.7;
+}
+
+.bullet-text .highlight {
+  color: #1B3B6B;
+  font-weight: 600;
+}
+
+.bullet-text .subtle {
+  color: #8B7355;
+  font-size: 15px;
+  font-style: italic;
+}
+
+/* Question mark decorative elements */
+.deco-q1 {
+  position: absolute;
+  top: 130px;
+  right: 60px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 120px;
+  color: rgba(27, 59, 107, 0.04);
+  font-weight: 700;
+  z-index: 1;
+  line-height: 1;
+}
+
+/* Bottom decorative elements */
+.bottom-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 1600px;
+  height: 3px;
+  background: rgba(27, 59, 107, 0.15);
+  z-index: 5;
+}
+
+.bottom-accent {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 120px;
+  height: 3px;
+  background: #C75B12;
+  z-index: 6;
+}
+
+/* Footer text */
+.footer-text {
+  position: absolute;
+  bottom: 25px;
+  left: 60px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 2px;
+  z-index: 10;
+}
+
+.footer-right {
+  position: absolute;
+  bottom: 25px;
+  right: 60px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 2px;
+  z-index: 10;
+}
+
+/* Large decorative circle behind content */
+.deco-circle-large {
+  position: absolute;
+  top: 200px;
+  right: -80px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 1px solid rgba(27, 59, 107, 0.06);
+  z-index: 0;
+}
+
+/* Small square decorations */
+.deco-sq1 {
+  position: absolute;
+  bottom: 120px;
+  right: 80px;
+  width: 12px;
+  height: 12px;
+  background: rgba(27, 59, 107, 0.08);
+  z-index: 1;
+}
+
+.deco-sq2 {
+  position: absolute;
+  bottom: 100px;
+  right: 110px;
+  width: 8px;
+  height: 8px;
+  background: rgba(199, 91, 18, 0.1);
+  z-index: 1;
+}
+
+.deco-sq3 {
+  position: absolute;
+  bottom: 140px;
+  right: 130px;
+  width: 6px;
+  height: 6px;
+  background: rgba(27, 59, 107, 0.06);
+  z-index: 1;
+}
+
+/* Diagonal line for visual interest */
+.deco-diag {
+  position: absolute;
+  top: 600px;
+  left: 700px;
+  width: 1px;
+  height: 180px;
+  background: rgba(27, 59, 107, 0.08);
+  z-index: 1;
+}
+
+/* Metaphor caption */
+.metaphor-caption {
+  position: absolute;
+  bottom: 40px;
+  left: 60px;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 13px;
+  color: rgba(139, 115, 85, 0.7);
+  font-style: italic;
+  z-index: 10;
+  letter-spacing: 1px;
+}
 </style>
 </head>
 <body>
-  <div class="texture"></div>
-  <div class="visual">
-    <div class="sea"></div>
-    <div class="sea-inner"></div>
-    <div class="crack c1"></div>
-    <div class="crack c2"></div>
-    <div class="crack c3"></div>
-    <div class="crack c4"></div>
-    <div class="crack c5"></div>
-    <div class="crack c6"></div>
-    <div class="crack c7"></div>
-    <div class="crack c8"></div>
-    <div class="crack c9"></div>
-    <div class="crack c10"></div>
-    <div class="dcrack dc1"></div>
-    <div class="dcrack dc2"></div>
-    <div class="dcrack dc3"></div>
-    <div class="dcrack dc4"></div>
-    <div class="horizon-line"></div>
-    <div class="path"></div>
-    <div class="arrow-tip"></div>
-    <div class="explorer"></div>
-    <div class="deco-oc"></div>
-    <div class="deco-bs"></div>
-    <div class="deco-wc"></div>
-    <div class="deco-od"></div>
-    <div class="deco-tr"></div>
-    <div class="deco-ws"></div>
-    <div class="deco-cs"></div>
-  </div>
-  <div class="vert-label">CULTURE MATTERS · 文化论</div>
-  <div class="content">
-    <div class="big-num">11</div>
-    <div class="lecture-tag">LECTURE · 开源经济学</div>
-    <div class="lecture-num">第 11 期</div>
-    <div class="main-title">文化的重要作用</div>
-    <div class="en-title">The Important Role of Culture</div>
-    <div class="divider"></div>
-    <ul class="points">
-      <li class="point">为什么有的地方<span class="hl">富有</span>？</li>
-      <li class="point">为什么有些地方更具<span class="hlb">创新</span>？</li>
-      <li class="point">文化可以降低<span class="hlb">沟通和交易成本</span>，也可以增加</li>
-      <li class="point">互联网为何诞生和发展在<span class="hl">美国</span>？</li>
-      <li class="point">为什么Linux、Python等欧洲的创始人都去了<span class="hl">美国</span>？</li>
-    </ul>
-    <div class="bottom-bar">
-      <div class="bbs"></div>
-      <div class="bbc"></div>
-      <div class="bbt"></div>
-      <div class="bbl"></div>
+
+<!-- Top decorative line -->
+<div class="top-line"></div>
+<div class="top-line-accent"></div>
+
+<!-- Lecture info -->
+<div class="lecture-info">第 11 期 · 文化的重要作用</div>
+
+<!-- Slide number -->
+<div class="slide-number">SLIDE <span>05</span> / 28</div>
+
+<!-- Decorative geometric elements -->
+<div class="geo-circle-large"></div>
+<div class="geo-square-large"></div>
+<div class="deco-circle-large"></div>
+<div class="deco-q1">?</div>
+<div class="deco-sq1"></div>
+<div class="deco-sq2"></div>
+<div class="deco-sq3"></div>
+<div class="deco-diag"></div>
+
+<!-- Visual metaphor scene -->
+<div class="visual-scene">
+  <!-- Sky elements -->
+  <div class="sun"></div>
+  <div class="sun-inner"></div>
+  
+  <!-- Horizon -->
+  <div class="horizon"></div>
+  <div class="horizon-line"></div>
+  
+  <!-- Ice layers -->
+  <div class="ice-layer ice-layer-1"></div>
+  <div class="ice-layer ice-layer-2"></div>
+  <div class="ice-layer ice-layer-3"></div>
+  <div class="ice-layer ice-layer-4"></div>
+  <div class="ice-layer ice-layer-5"></div>
+  
+  <!-- Ice floes -->
+  <div class="floe-1"></div>
+  <div class="floe-2"></div>
+  <div class="floe-3"></div>
+  <div class="floe-4"></div>
+  <div class="floe-5"></div>
+  <div class="floe-6"></div>
+  <div class="floe-7"></div>
+  
+  <!-- Direction line -->
+  <div class="direction-line"></div>
+  
+  <!-- Footprints -->
+  <div class="footprint-1"></div>
+  <div class="footprint-2"></div>
+  <div class="footprint-3"></div>
+  <div class="footprint-4"></div>
+  
+  <!-- Figure shadow -->
+  <div class="figure-shadow"></div>
+  
+  <!-- The explorer figure -->
+  <div class="figure">
+    <div class="figure-body">
+      <div class="figure-head"></div>
+      <div class="figure-torso"></div>
+      <div class="figure-leg-left"></div>
+      <div class="figure-leg-right"></div>
     </div>
-    <div class="page-num">11 / 28</div>
   </div>
+</div>
+
+<!-- Metaphor caption -->
+<div class="metaphor-caption">橙色身影在苍茫冰海上前行——制度探索者的勇气与视野</div>
+
+<!-- Content area -->
+<div class="content-area">
+  <div class="section-label">CULTURAL DIMENSION</div>
+  
+  <h1 class="main-title">文化的重要作用</h1>
+  
+  <div class="title-accent"></div>
+  
+  <ul class="bullet-list">
+    <li class="bullet-item">
+      <div class="bullet-marker"></div>
+      <span class="bullet-text">为什么有的地方<span class="highlight">富有</span>？</span>
+    </li>
+    <li class="bullet-item">
+      <div class="bullet-marker"></div>
+      <span class="bullet-text">为什么有些地方更具<span class="highlight">创新</span>？</span>
+    </li>
+    <li class="bullet-item">
+      <div class="bullet-marker accent"></div>
+      <span class="bullet-text">文化可以降低<span class="highlight">沟通和交易成本</span>，也可以增加</span>
+    </li>
+    <li class="bullet-item">
+      <div class="bullet-marker"></div>
+      <span class="bullet-text">互联网为何诞生和发展在<span class="highlight">美国</span>？</span>
+    </li>
+    <li class="bullet-item">
+      <div class="bullet-marker"></div>
+      <span class="bullet-text">为什么 Linux、Python 等欧洲的创始人都去了<span class="highlight">美国</span>？</span>
+    </li>
+  </ul>
+</div>
+
+<!-- Bottom decorative line -->
+<div class="bottom-line"></div>
+<div class="bottom-accent"></div>
+
+<!-- Footer -->
+<div class="footer-text">开源之道 · 新制度经济学视角</div>
+<div class="footer-right">11-culture-matters</div>
+
 </body>
 </html>

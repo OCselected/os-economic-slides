@@ -1,754 +1,382 @@
 
 
 <!DOCTYPE html>
-<html><!-- source_hash: 70a79124d95b4173 -->
+<html><!-- source_hash: 30f3317b1a86a076 -->
 <head>
 <meta charset="UTF-8">
-<title>第 11 期 · 文化的重要作用</title>
+<title>文化的重要作用 — 议程</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body, html {
-    width: 1600px;
-    height: 900px;
-    overflow: hidden;
-    margin: 0;
-    background: #F5F0E8;
-    font-family: 'Noto Sans SC', sans-serif;
-    color: #1B3B6B;
-  }
-
-  .slide {
-    position: relative;
-    width: 1600px;
-    height: 900px;
-    background: #F5F0E8;
-    overflow: hidden;
-  }
-
-  /* Parchment texture overlay */
-  .texture {
-    position: absolute;
-    top: 0; left: 0;
-    width: 1600px;
-    height: 900px;
-    background-image:
-      radial-gradient(ellipse at 20% 50%, rgba(27,59,107,0.015) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 20%, rgba(139,115,85,0.02) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  /* Top accent bar */
-  .top-bar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 1600px;
-    height: 6px;
-    background: #1B3B6B;
-    z-index: 10;
-  }
-
-  /* Lecture number badge */
-  .lecture-badge {
-    position: absolute;
-    top: 38px;
-    left: 64px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    z-index: 10;
-  }
-
-  .lecture-num-box {
-    width: 52px;
-    height: 52px;
-    background: #1B3B6B;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Noto Serif SC', serif;
-    font-weight: 900;
-    font-size: 26px;
-    color: #F5F0E8;
-    letter-spacing: -1px;
-  }
-
-  .lecture-label {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 13px;
-    font-weight: 400;
-    color: #8B7355;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    line-height: 1.3;
-  }
-
-  .lecture-label .sub {
-    font-size: 11px;
-    color: #999;
-    letter-spacing: 1px;
-    display: block;
-    margin-top: 2px;
-  }
-
-  /* Page indicator */
-  .page-indicator {
-    position: absolute;
-    top: 44px;
-    right: 64px;
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 12px;
-    color: #8B7355;
-    letter-spacing: 2px;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .page-line {
-    width: 40px;
-    height: 1px;
-    background: #8B7355;
-    opacity: 0.4;
-  }
-
-  /* Main title area */
-  .title-area {
-    position: absolute;
-    top: 118px;
-    left: 64px;
-    z-index: 10;
-  }
-
-  .title-eyebrow {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 12px;
-    font-weight: 400;
-    color: #8B7355;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-  }
-
-  .title-main {
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-    font-size: 54px;
-    font-weight: 900;
-    color: #1B3B6B;
-    letter-spacing: 2px;
-    line-height: 1.15;
-    margin-bottom: 6px;
-  }
-
-  .title-en {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 14px;
-    font-weight: 300;
-    color: #8B7355;
-    letter-spacing: 4px;
-    margin-top: 8px;
-  }
-
-  /* Geometric visual - Raised hands composition */
-  .visual-area {
-    position: absolute;
-    top: 230px;
-    left: 64px;
-    width: 500px;
-    height: 540px;
-    z-index: 5;
-  }
-
-  /* Classroom desk line */
-  .desk-line {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 500px;
-    height: 3px;
-    background: #1B3B6B;
-  }
-
-  .desk-line-thin {
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 500px;
-    height: 1px;
-    background: #8B7355;
-    opacity: 0.3;
-  }
-
-  /* Raised arms and hands - geometric Bauhaus */
-  .hand-1 {
-    position: absolute;
-    bottom: 3px;
-    left: 40px;
-  }
-
-  .arm-1 {
-    width: 10px;
-    height: 160px;
-    background: #1B3B6B;
-    margin: 0 auto;
-  }
-
-  .hand-1 .hand-circle {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: #1B3B6B;
-    margin: 0 auto -8px auto;
-  }
-
-  .hand-2 {
-    position: absolute;
-    bottom: 3px;
-    left: 130px;
-  }
-
-  .arm-2 {
-    width: 12px;
-    height: 200px;
-    background: #1B3B6B;
-    margin: 0 auto;
-  }
-
-  .hand-2 .hand-circle {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    background: #1B3B6B;
-    margin: 0 auto -8px auto;
-  }
-
-  .hand-3 {
-    position: absolute;
-    bottom: 3px;
-    left: 220px;
-  }
-
-  .arm-3 {
-    width: 9px;
-    height: 130px;
-    background: #1B3B6B;
-    margin: 0 auto;
-  }
-
-  .hand-3 .hand-circle {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: #8B7355;
-    margin: 0 auto -8px auto;
-  }
-
-  .hand-4 {
-    position: absolute;
-    bottom: 3px;
-    left: 310px;
-  }
-
-  .arm-4 {
-    width: 11px;
-    height: 240px;
-    background: #1B3B6B;
-    margin: 0 auto;
-  }
-
-  .hand-4 .hand-circle {
-    width: 46px;
-    height: 46px;
-    border-radius: 50%;
-    background: #1B3B6B;
-    margin: 0 auto -8px auto;
-  }
-
-  .hand-5 {
-    position: absolute;
-    bottom: 3px;
-    left: 400px;
-  }
-
-  .arm-5 {
-    width: 8px;
-    height: 175px;
-    background: #8B7355;
-    margin: 0 auto;
-  }
-
-  .hand-5 .hand-circle {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: #8B7355;
-    margin: 0 auto -8px auto;
-  }
-
-  /* Geometric accents around visual */
-  .accent-square-1 {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    width: 48px;
-    height: 48px;
-    border: 3px solid #1B3B6B;
-    opacity: 0.15;
-  }
-
-  .accent-circle-1 {
-    position: absolute;
-    top: -20px;
-    left: 180px;
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    border: 2px solid #8B7355;
-    opacity: 0.2;
-  }
-
-  .accent-square-2 {
-    position: absolute;
-    bottom: 60px;
-    right: 0;
-    width: 32px;
-    height: 32px;
-    background: #8B7355;
-    opacity: 0.08;
-  }
-
-  .accent-line-1 {
-    position: absolute;
-    top: 60px;
-    left: 300px;
-    width: 1px;
-    height: 80px;
-    background: #1B3B6B;
-    opacity: 0.1;
-  }
-
-  .accent-line-2 {
-    position: absolute;
-    top: 140px;
-    right: 50px;
-    width: 60px;
-    height: 1px;
-    background: #8B7355;
-    opacity: 0.15;
-  }
-
-  .accent-dot-1 {
-    position: absolute;
-    top: 40px;
-    right: 80px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #1B3B6B;
-    opacity: 0.3;
-  }
-
-  .accent-dot-2 {
-    position: absolute;
-    bottom: 30px;
-    left: 350px;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #8B7355;
-    opacity: 0.4;
-  }
-
-  /* Caption under visual */
-  .visual-caption {
-    position: absolute;
-    bottom: -30px;
-    left: 0;
-    width: 500px;
-    text-align: center;
-  }
-
-  .visual-caption-text {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 12px;
-    font-weight: 300;
-    color: #8B7355;
-    letter-spacing: 3px;
-    opacity: 0.8;
-  }
-
-  /* Divider */
-  .divider {
-    position: absolute;
-    top: 240px;
-    left: 610px;
-    width: 1px;
-    height: 480px;
-    background: #1B3B6B;
-    opacity: 0.1;
-    z-index: 5;
-  }
-
-  /* Agenda section */
-  .agenda-area {
-    position: absolute;
-    top: 230px;
-    left: 660px;
-    width: 876px;
-    height: 540px;
-    z-index: 10;
-  }
-
-  .agenda-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 28px;
-  }
-
-  .agenda-header-line {
-    width: 36px;
-    height: 2px;
-    background: #1B3B6B;
-  }
-
-  .agenda-header-text {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: #1B3B6B;
-    letter-spacing: 4px;
-  }
-
-  .agenda-header-en {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 10px;
-    color: #8B7355;
-    letter-spacing: 3px;
-    margin-left: 8px;
-    font-weight: 300;
-  }
-
-  .agenda-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .agenda-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 18px;
-    padding: 14px 0;
-    border-bottom: 1px solid rgba(27,59,107,0.08);
-    position: relative;
-  }
-
-  .agenda-item:last-child {
-    border-bottom: none;
-  }
-
-  .agenda-item:last-child .agenda-item-marker {
-    background: #8B7355;
-  }
-
-  .agenda-item:last-child .agenda-item-text {
-    color: #8B7355;
-  }
-
-  .agenda-item-marker {
-    flex-shrink: 0;
-    width: 34px;
-    height: 34px;
-    background: #1B3B6B;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Noto Serif SC', serif;
-    font-size: 15px;
-    font-weight: 900;
-    color: #F5F0E8;
-    margin-top: 2px;
-  }
-
-  .agenda-item-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-
-  .agenda-item-text {
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-    font-size: 19px;
-    font-weight: 700;
-    color: #1B3B6B;
-    letter-spacing: 1px;
-    line-height: 1.4;
-  }
-
-  .agenda-item-sub {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 12px;
-    font-weight: 300;
-    color: #8B7355;
-    letter-spacing: 1.5px;
-    line-height: 1.3;
-  }
-
-  .agenda-item-last {
-    border-top: 2px solid #1B3B6B;
-    padding-top: 16px;
-    margin-top: 2px;
-  }
-
-  .agenda-item-last .agenda-item-marker {
-    background: #8B7355;
-  }
-
-  .agenda-item-last .agenda-item-text {
-    color: #1B3B6B;
-    font-style: italic;
-  }
-
-  .agenda-item-last .agenda-item-sub {
-    color: #8B7355;
-  }
-
-  /* Bottom decorative line */
-  .bottom-line {
-    position: absolute;
-    bottom: 40px;
-    left: 64px;
-    width: 1472px;
-    height: 1px;
-    background: #8B7355;
-    opacity: 0.15;
-    z-index: 5;
-  }
-
-  .bottom-label-left {
-    position: absolute;
-    bottom: 18px;
-    left: 64px;
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 10px;
-    color: #8B7355;
-    letter-spacing: 3px;
-    opacity: 0.5;
-    z-index: 5;
-  }
-
-  .bottom-label-right {
-    position: absolute;
-    bottom: 18px;
-    right: 64px;
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 10px;
-    color: #8B7355;
-    letter-spacing: 3px;
-    opacity: 0.5;
-    z-index: 5;
-  }
-
-  /* Extra geometric accents */
-  .corner-square {
-    position: absolute;
-    top: 38px;
-    right: 64px;
-    width: 52px;
-    height: 52px;
-    border: 2px solid #1B3B6B;
-    opacity: 0.06;
-    z-index: 2;
-  }
-
-  .side-bar-accent {
-    position: absolute;
-    left: 0;
-    top: 230px;
-    width: 4px;
-    height: 480px;
-    background: #1B3B6B;
-    opacity: 0.04;
-    z-index: 2;
-  }
-
-  .side-bar-accent-2 {
-    position: absolute;
-    right: 0;
-    top: 230px;
-    width: 4px;
-    height: 480px;
-    background: #8B7355;
-    opacity: 0.04;
-    z-index: 2;
-  }
-
-  /* Question mark geometric */
-  .geo-question {
-    position: absolute;
-    top: 42px;
-    right: 140px;
-    width: 20px;
-    height: 20px;
-    border: 2px solid #8B7355;
-    border-radius: 50%;
-    opacity: 0.2;
-    z-index: 2;
-  }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1600px; height: 900px; overflow: hidden; }
+body {
+  background: #F5F0E8;
+  font-family: 'Noto Sans SC', 'Source Han Sans SC', sans-serif;
+  color: #1B3B6B;
+  position: relative;
+}
+
+/* Parchment texture overlay */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 1600px; height: 900px;
+  background: 
+    repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(139,115,85,0.015) 3px, rgba(139,115,85,0.015) 4px),
+    repeating-linear-gradient(90deg, transparent, transparent 5px, rgba(139,115,85,0.01) 5px, rgba(139,115,85,0.01) 6px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Bauhaus decorative elements */
+.deco-circle-top {
+  position: absolute;
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  border: 3px solid #1B3B6B;
+  top: -40px; right: -40px;
+  opacity: 0.12;
+}
+.deco-square-bl {
+  position: absolute;
+  width: 80px; height: 80px;
+  background: #8B7355;
+  bottom: 30px; left: 30px;
+  opacity: 0.15;
+}
+.deco-line-vert {
+  position: absolute;
+  width: 2px; height: 900px;
+  background: #1B3B6B;
+  opacity: 0.06;
+  left: 720px;
+}
+.deco-circle-small {
+  position: absolute;
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: #8B7355;
+  opacity: 0.4;
+}
+.deco-hline {
+  position: absolute;
+  height: 2px;
+  background: #1B3B6B;
+  opacity: 0.1;
+}
+
+/* Header */
+.header {
+  position: absolute;
+  top: 50px; left: 80px; right: 80px;
+  z-index: 10;
+}
+.lecture-tag {
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: #8B7355;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  font-weight: 400;
+}
+.slide-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: #1B3B6B;
+  letter-spacing: 2px;
+  line-height: 1.3;
+}
+.slide-subtitle {
+  font-size: 16px;
+  color: #555;
+  margin-top: 10px;
+  letter-spacing: 1px;
+  font-weight: 300;
+}
+
+/* Left panel - visual metaphor */
+.visual-panel {
+  position: absolute;
+  top: 210px;
+  left: 80px;
+  width: 560px;
+  height: 620px;
+  z-index: 10;
+}
+
+/* Geometric raised hands composition */
+.hands-scene {
+  position: relative;
+  width: 560px;
+  height: 520px;
+}
+
+/* Desk line */
+.desk-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 560px;
+  height: 3px;
+  background: #1B3B6B;
+  opacity: 0.3;
+}
+
+/* Figure silhouettes as abstract geometric shapes */
+.figure {
+  position: absolute;
+  bottom: 3px;
+}
+.figure .head {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  opacity: 0.7;
+}
+.figure .body {
+  width: 40px; height: 60px;
+  background: #1B3B6B;
+  opacity: 0.5;
+  margin: -4px auto 0;
+}
+.figure .arm-left {
+  position: absolute;
+  width: 8px;
+  background: #1B3B6B;
+  opacity: 0.6;
+  bottom: 55px;
+  left: -8px;
+}
+.figure .arm-right {
+  position: absolute;
+  width: 8px;
+  background: #1B3B6B;
+  opacity: 0.6;
+  bottom: 55px;
+  right: -8px;
+}
+.figure .hand {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: #8B7355;
+}
+
+/* Individual figures */
+.fig-1 { left: 60px; }
+.fig-1 .arm-left { height: 220px; transform: rotate(-10deg); transform-origin: bottom; }
+.fig-1 .arm-right { height: 160px; transform: rotate(8deg); transform-origin: bottom; }
+.fig-1 .hand { position: absolute; top: -14px; left: -4px; }
+
+.fig-2 { left: 180px; }
+.fig-2 .arm-left { height: 180px; transform: rotate(5deg); transform-origin: bottom; }
+.fig-2 .arm-right { height: 240px; transform: rotate(-5deg); transform-origin: bottom; }
+.fig-2 .head { opacity: 0.8; }
+
+.fig-3 { left: 300px; }
+.fig-3 .arm-left { height: 260px; transform: rotate(-12deg); transform-origin: bottom; }
+.fig-3 .arm-right { height: 130px; transform: rotate(15deg); transform-origin: bottom; }
+.fig-3 .head { opacity: 0.65; }
+
+.fig-4 { left: 420px; }
+.fig-4 .arm-left { height: 150px; transform: rotate(6deg); transform-origin: bottom; }
+.fig-4 .arm-right { height: 280px; transform: rotate(-8deg); transform-origin: bottom; }
+.fig-4 .head { opacity: 0.75; }
+
+/* Large abstract circle as a sun/idea */
+.idea-circle {
+  position: absolute;
+  width: 140px; height: 140px;
+  border-radius: 50%;
+  border: 4px solid #8B7355;
+  opacity: 0.25;
+  top: 20px;
+  right: 40px;
+}
+.idea-circle-inner {
+  position: absolute;
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  opacity: 0.2;
+  top: 65px;
+  right: 95px;
+}
+
+/* Caption for visual */
+.visual-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-size: 13px;
+  color: #8B7355;
+  letter-spacing: 1px;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+/* Right panel - agenda */
+.agenda-panel {
+  position: absolute;
+  top: 220px;
+  left: 760px;
+  right: 80px;
+  z-index: 10;
+}
+.agenda-label {
+  font-size: 14px;
+  letter-spacing: 4px;
+  color: #8B7355;
+  margin-bottom: 30px;
+  font-weight: 500;
+}
+.agenda-divider {
+  width: 50px;
+  height: 3px;
+  background: #1B3B6B;
+  margin-bottom: 30px;
+}
+
+.agenda-list {
+  list-style: none;
+}
+.agenda-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 22px;
+}
+.agenda-num {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 18px;
+  color: #8B7355;
+  width: 40px;
+  flex-shrink: 0;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.agenda-text {
+  font-size: 17px;
+  color: #1B3B6B;
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+}
+
+/* Bottom bar */
+.bottom-bar {
+  position: absolute;
+  bottom: 30px;
+  left: 80px;
+  right: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+.page-info {
+  font-size: 12px;
+  color: #8B7355;
+  letter-spacing: 2px;
+  opacity: 0.7;
+}
+.theme-info {
+  font-size: 12px;
+  color: #555;
+  letter-spacing: 1px;
+  opacity: 0.6;
+}
 </style>
 </head>
 <body>
-<div class="slide">
-  <div class="texture"></div>
-  <div class="top-bar"></div>
-  <div class="side-bar-accent"></div>
-  <div class="side-bar-accent-2"></div>
-  <div class="corner-square"></div>
-  <div class="geo-question"></div>
 
-  <!-- Lecture badge -->
-  <div class="lecture-badge">
-    <div class="lecture-num-box">11</div>
-    <div class="lecture-label">
-      OPEN SOURCE ECONOMICS
-      <span class="sub">新制度经济学视角 · 第 11 期</span>
-    </div>
-  </div>
+<!-- Decorative elements -->
+<div class="deco-circle-top"></div>
+<div class="deco-square-bl"></div>
+<div class="deco-line-vert"></div>
+<div class="deco-circle-small" style="top: 160px; left: 620px;"></div>
+<div class="deco-circle-small" style="bottom: 120px; right: 60px; width: 16px; height: 16px;"></div>
+<div class="deco-hline" style="top: 190px; left: 80px; width: 200px;"></div>
 
-  <!-- Page indicator -->
-  <div class="page-indicator">
-    <span>OPEN SOURCE ECONOMICS</span>
-    <span class="page-line"></span>
-    <span>LECTURE 11</span>
-  </div>
-
-  <!-- Title area -->
-  <div class="title-area">
-    <div class="title-eyebrow">THE ROLE OF CULTURE</div>
-    <div class="title-main">文化的重要作用</div>
-    <div class="title-en">From Counterculture to Pragmatic Culture — The Institutional DNA of Open Source</div>
-  </div>
-
-  <!-- Geometric visual: Raised hands -->
-  <div class="visual-area">
-    <!-- Accent shapes -->
-    <div class="accent-square-1"></div>
-    <div class="accent-circle-1"></div>
-    <div class="accent-square-2"></div>
-    <div class="accent-line-1"></div>
-    <div class="accent-line-2"></div>
-    <div class="accent-dot-1"></div>
-    <div class="accent-dot-2"></div>
-
-    <!-- Raised hands (geometric abstraction) -->
-    <div class="hand-1">
-      <div class="hand-circle"></div>
-      <div class="arm-1"></div>
-    </div>
-
-    <div class="hand-2">
-      <div class="hand-circle"></div>
-      <div class="arm-2"></div>
-    </div>
-
-    <div class="hand-3">
-      <div class="hand-circle"></div>
-      <div class="arm-3"></div>
-    </div>
-
-    <div class="hand-4">
-      <div class="hand-circle"></div>
-      <div class="arm-4"></div>
-    </div>
-
-    <div class="hand-5">
-      <div class="hand-circle"></div>
-      <div class="arm-5"></div>
-    </div>
-
-    <!-- Desk line -->
-    <div class="desk-line"></div>
-    <div class="desk-line-thin"></div>
-
-    <!-- Caption -->
-    <div class="visual-caption">
-      <div class="visual-caption-text">教室里高举的手 — 求知欲与主动参与的文化基因</div>
-    </div>
-  </div>
-
-  <!-- Divider -->
-  <div class="divider"></div>
-
-  <!-- Agenda section -->
-  <div class="agenda-area">
-    <div class="agenda-header">
-      <div class="agenda-header-line"></div>
-      <div class="agenda-header-text">议程</div>
-      <div class="agenda-header-en">AGENDA</div>
-    </div>
-
-    <div class="agenda-list">
-      <div class="agenda-item">
-        <div class="agenda-item-marker">01</div>
-        <div class="agenda-item-content">
-          <div class="agenda-item-text">文化的重要作用</div>
-          <div class="agenda-item-sub">The Fundamental Role of Culture</div>
-        </div>
-      </div>
-
-      <div class="agenda-item">
-        <div class="agenda-item-marker">02</div>
-        <div class="agenda-item-content">
-          <div class="agenda-item-text">反主流文化</div>
-          <div class="agenda-item-sub">Counterculture — Origin of Dissent and Free Thought</div>
-        </div>
-      </div>
-
-      <div class="agenda-item">
-        <div class="agenda-item-marker">03</div>
-        <div class="agenda-item-content">
-          <div class="agenda-item-text">黑客文化与伦理</div>
-          <div class="agenda-item-sub">Hacker Culture &amp; Hacker Ethic</div>
-        </div>
-      </div>
-
-      <div class="agenda-item">
-        <div class="agenda-item-marker">04</div>
-        <div class="agenda-item-content">
-          <div class="agenda-item-text">GNU 宣言与自由软件运动</div>
-          <div class="agenda-item-sub">GNU Manifesto &amp; the Free Software Movement</div>
-        </div>
-      </div>
-
-      <div class="agenda-item">
-        <div class="agenda-item-marker">05</div>
-        <div class="agenda-item-content">
-          <div class="agenda-item-text">OSI 与 OSD，Pragmatic 文化兴起</div>
-          <div class="agenda-item-sub">OSI &amp; OSD — The Rise of Pragmatic Culture</div>
-        </div>
-      </div>
-
-      <div class="agenda-item agenda-item-last">
-        <div class="agenda-item-marker">??</div>
-        <div class="agenda-item-content">
-          <div class="agenda-item-text">现实的问题是：开源文化离我们有多远？</div>
-          <div class="agenda-item-sub">The Real Question: How Far Are We from Open Source Culture?</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Bottom decorations -->
-  <div class="bottom-line"></div>
-  <div class="bottom-label-left">Bauhaus Geometric Composition</div>
-  <div class="bottom-label-right">Dark Academic · Intellectual Visual System</div>
+<!-- Header -->
+<div class="header">
+  <div class="lecture-tag">第 11 期 · OPEN SOURCE ECONOMICS</div>
+  <div class="slide-title">文化的重要作用</div>
+  <div class="slide-subtitle">求知欲与主动参与——开放文化的人类学根基</div>
 </div>
+
+<!-- Left: Visual Metaphor -->
+<div class="visual-panel">
+  <div class="hands-scene">
+    <div class="desk-line"></div>
+    
+    <!-- Idea/sun circle -->
+    <div class="idea-circle"></div>
+    <div class="idea-circle-inner"></div>
+    
+    <!-- Figures with raised hands -->
+    <div class="figure fig-1">
+      <div class="head"></div>
+      <div class="body"></div>
+      <div class="arm-left"></div>
+      <div class="arm-right"></div>
+    </div>
+    <div class="figure fig-2">
+      <div class="head"></div>
+      <div class="body"></div>
+      <div class="arm-left"></div>
+      <div class="arm-right"></div>
+    </div>
+    <div class="figure fig-3">
+      <div class="head"></div>
+      <div class="body"></div>
+      <div class="arm-left"></div>
+      <div class="arm-right"></div>
+    </div>
+    <div class="figure fig-4">
+      <div class="head"></div>
+      <div class="body"></div>
+      <div class="arm-left"></div>
+      <div class="arm-right"></div>
+    </div>
+  </div>
+  <div class="visual-caption">教室里高举的手——求知欲与主动参与的文化基因</div>
+</div>
+
+<!-- Right: Agenda -->
+<div class="agenda-panel">
+  <div class="agenda-label">议 程 · AGENDA</div>
+  <div class="agenda-divider"></div>
+  <ul class="agenda-list">
+    <li class="agenda-item">
+      <span class="agenda-num">01</span>
+      <span class="agenda-text">文化的重要作用</span>
+    </li>
+    <li class="agenda-item">
+      <span class="agenda-num">02</span>
+      <span class="agenda-text">反主流文化</span>
+    </li>
+    <li class="agenda-item">
+      <span class="agenda-num">03</span>
+      <span class="agenda-text">黑客文化与伦理</span>
+    </li>
+    <li class="agenda-item">
+      <span class="agenda-num">04</span>
+      <span class="agenda-text">GNU 宣言与自由软件运动</span>
+    </li>
+    <li class="agenda-item">
+      <span class="agenda-num">05</span>
+      <span class="agenda-text">OSI 与 OSD，Pragmatic 文化兴起</span>
+    </li>
+    <li class="agenda-item">
+      <span class="agenda-num">06</span>
+      <span class="agenda-text">现实的问题是：开源文化离我们有多远？</span>
+    </li>
+  </ul>
+</div>
+
+<!-- Bottom bar -->
+<div class="bottom-bar">
+  <div class="page-info">11 / 28</div>
+  <div class="theme-info">开源之道 · 新制度经济学视角</div>
+</div>
+
 </body>
 </html>

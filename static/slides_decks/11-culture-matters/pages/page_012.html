@@ -1,210 +1,529 @@
 
 
 <!DOCTYPE html>
-<html><!-- source_hash: 99479929e588ceed -->
+<html><!-- source_hash: 82fabb7e42c479df -->
 <head>
 <meta charset="UTF-8">
-<title>自由软件运动及其影响</title>
+<title>第 11 期 · 文化的重要作用 - 自由软件运动</title>
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { width: 1600px; height: 900px; overflow: hidden; margin: 0; background: #F5F0E8; position: relative; font-family: 'Noto Sans SC', sans-serif; color: #1B3B6B; }
-.slide { width: 1600px; height: 900px; position: relative; }
-.lecture-badge { position: absolute; top: 48px; left: 60px; font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif; font-size: 14px; color: #8B7355; letter-spacing: 2px; }
-.lecture-badge span { display: inline-block; border: 1.5px solid #8B7355; padding: 3px 10px; margin-right: 8px; }
-.main-title { position: absolute; top: 88px; left: 60px; font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif; font-size: 42px; color: #1B3B6B; font-weight: 700; letter-spacing: 1px; }
-.subtitle-en { position: absolute; top: 142px; left: 60px; font-size: 15px; color: #8B7355; letter-spacing: 3px; font-style: italic; }
-.divider-line { position: absolute; top: 180px; left: 60px; width: 220px; height: 2px; background: #1B3B6B; }
-.divider-line-small { position: absolute; top: 180px; left: 290px; width: 60px; height: 2px; background: #8B7355; }
-/* Left side - Cathedral (closed) */
-.cathedral-section { position: absolute; top: 220px; left: 60px; width: 500px; height: 620px; }
-.cathedral-label { font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif; font-size: 18px; color: #1B3B6B; margin-bottom: 6px; }
-.cathedral-sublabel { font-size: 12px; color: #555; letter-spacing: 1px; margin-bottom: 20px; }
-.arch { position: absolute; top: 60px; left: 60px; width: 180px; height: 300px; }
-.arch .arch-body { position: absolute; bottom: 0; left: 0; width: 180px; height: 220px; border: 3px solid #1B3B6B; border-bottom: none; }
-.arch .arch-peak { position: absolute; top: 0; left: 0; width: 0; height: 0; border-left: 90px solid transparent; border-right: 90px solid transparent; border-bottom: 80px solid #1B3B6B; }
-.arch .inner-arch { position: absolute; top: 50px; left: 30px; width: 120px; height: 250px; border: 2px solid #8B7355; border-bottom: none; }
-.arch .inner-peak { position: absolute; top: 0; left: 30px; width: 0; height: 0; border-left: 60px solid transparent; border-right: 60px solid transparent; border-bottom: 50px solid #8B7355; }
-.arch .window-left { position: absolute; top: 140px; left: 55px; width: 22px; height: 35px; border: 2px solid #555; }
-.arch .window-right { position: absolute; top: 140px; left: 105px; width: 22px; height: 35px; border: 2px solid #555; }
-.arch .door { position: absolute; bottom: 0; left: 70px; width: 40px; height: 60px; border: 2px solid #1B3B6B; border-bottom: none; }
-.arch .door-peak { position: absolute; top: -15px; left: -2px; width: 0; height: 0; border-left: 22px solid transparent; border-right: 22px solid transparent; border-bottom: 15px solid #1B3B6B; }
-.cathedral-points { position: absolute; top: 220px; left: 290px; width: 210px; }
-.cathedral-points li { font-size: 13px; color: #555; margin-bottom: 10px; list-style: none; padding-left: 16px; position: relative; line-height: 1.6; }
-.cathedral-points li::before { content: ''; position: absolute; left: 0; top: 7px; width: 8px; height: 2px; background: #1B3B6B; }
-.cathedral-caption { position: absolute; top: 440px; left: 60px; width: 400px; font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif; font-size: 14px; color: #8B7355; font-style: italic; line-height: 1.8; }
-/* Right side - Bazaar (open) */
-.bazaar-section { position: absolute; top: 220px; right: 60px; width: 500px; height: 620px; }
-.bazaar-label { font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif; font-size: 18px; color: #1B3B6B; margin-bottom: 6px; }
-.bazaar-sublabel { font-size: 12px; color: #555; letter-spacing: 1px; margin-bottom: 20px; }
-.scatter { position: absolute; top: 60px; left: 0; width: 240px; height: 300px; }
-.scatter .dot { position: absolute; width: 30px; height: 30px; background: #1B3B6B; border-radius: 50%; }
-.scatter .dot-1 { top: 20px; left: 10px; }
-.scatter .dot-2 { top: 60px; left: 100px; width: 20px; height: 20px; background: #8B7355; }
-.scatter .dot-3 { top: 30px; left: 180px; width: 16px; height: 16px; }
-.scatter .dot-4 { top: 100px; left: 40px; width: 24px; height: 24px; background: #8B7355; }
-.scatter .dot-5 { top: 120px; left: 160px; }
-.scatter .dot-6 { top: 160px; left: 80px; width: 14px; height: 14px; }
-.scatter .dot-7 { top: 200px; left: 30px; width: 20px; height: 20px; background: #8B7355; }
-.scatter .dot-8 { top: 190px; left: 140px; width: 18px; height: 18px; }
-.scatter .dot-9 { top: 230px; left: 90px; width: 12px; height: 12px; background: #555; }
-.scatter .dot-10 { top: 240px; left: 180px; width: 16px; height: 16px; background: #8B7355; }
-.scatter .line { position: absolute; height: 1.5px; background: #8B7355; transform-origin: left center; }
-.scatter .line-1 { top: 35px; left: 40px; width: 70px; transform: rotate(20deg); }
-.scatter .line-2 { top: 75px; left: 115px; width: 80px; transform: rotate(-10deg); }
-.scatter .line-3 { top: 110px; left: 65px; width: 100px; transform: rotate(15deg); }
-.scatter .line-4 { top: 170px; left: 95px; width: 60px; transform: rotate(-25deg); }
-.scatter .line-5 { top: 140px; left: 180px; width: 70px; transform: rotate(40deg); }
-.bazaar-points { position: absolute; top: 220px; right: 0; width: 210px; }
-.bazaar-points li { font-size: 13px; color: #555; margin-bottom: 10px; list-style: none; padding-left: 16px; position: relative; line-height: 1.6; }
-.bazaar-points li::before { content: ''; position: absolute; left: 0; top: 7px; width: 8px; height: 2px; background: #8B7355; }
-.bazaar-caption { position: absolute; top: 440px; right: 0; width: 400px; font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif; font-size: 14px; color: #8B7355; font-style: italic; line-height: 1.8; }
-/* Center divider */
-.center-divider { position: absolute; top: 240px; left: 800px; width: 2px; height: 520px; background: linear-gradient(to bottom, transparent, #1B3B6B 10%, #1B3B6B 90%, transparent); }
-.center-symbol { position: absolute; top: 470px; left: 772px; width: 56px; height: 56px; }
-.center-symbol .square { position: absolute; top: 0; left: 0; width: 56px; height: 56px; border: 2.5px solid #1B3B6B; }
-.center-symbol .circle-in { position: absolute; top: 10px; left: 10px; width: 36px; height: 36px; border: 2px solid #8B7355; border-radius: 50%; }
-.center-symbol .cross-h { position: absolute; top: 27px; left: 6px; width: 44px; height: 2px; background: #1B3B6B; }
-.center-symbol .cross-v { position: absolute; top: 6px; left: 27px; width: 2px; height: 44px; background: #1B3B6B; }
-.center-label { position: absolute; top: 540px; left: 772px; width: 56px; text-align: center; font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif; font-size: 11px; color: #1B3B6B; font-weight: 700; }
-/* Key content area */
-.key-content { position: absolute; top: 590px; left: 60px; width: 1480px; height: 270px; }
-.content-grid { display: flex; gap: 30px; }
-.content-card { flex: 1; border-top: 2px solid #1B3B6B; padding-top: 16px; }
-.content-card:nth-child(2) { border-top-color: #8B7355; }
-.content-card:nth-child(3) { border-top-color: #555; }
-.content-card-title { font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif; font-size: 16px; color: #1B3B6B; font-weight: 700; margin-bottom: 10px; }
-.content-card-subtitle { font-size: 11px; color: #8B7355; letter-spacing: 1px; margin-bottom: 12px; }
-.content-card-body { font-size: 13px; color: #555; line-height: 1.8; }
-.content-card-body strong { color: #1B3B6B; font-weight: 600; }
-/* Decorative elements */
-.deco-circle-large { position: absolute; top: -120px; right: -120px; width: 300px; height: 300px; border: 2px solid #1B3B6B; border-radius: 50%; opacity: 0.08; }
-.deco-square { position: absolute; bottom: -40px; right: 200px; width: 80px; height: 80px; background: #8B7355; opacity: 0.06; }
-.deco-line-h { position: absolute; top: 48px; right: 60px; width: 200px; height: 1.5px; background: #8B7355; }
-.deco-dot-1 { position: absolute; top: 50px; right: 180px; width: 8px; height: 8px; background: #1B3B6B; border-radius: 50%; }
-.deco-dot-2 { position: absolute; top: 50px; right: 60px; width: 8px; height: 8px; border: 1.5px solid #8B7355; border-radius: 50%; }
-/* Bottom label */
-.bottom-label { position: absolute; bottom: 30px; left: 60px; font-size: 11px; color: #8B7355; letter-spacing: 2px; }
-.page-num { position: absolute; bottom: 30px; right: 60px; font-size: 11px; color: #555; letter-spacing: 1px; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 1600px;
+    height: 900px;
+    overflow: hidden;
+    margin: 0;
+    background: #F5F0E8;
+    font-family: 'Noto Sans SC', sans-serif;
+    color: #1B3B6B;
+  }
+  .canvas {
+    position: relative;
+    width: 1600px;
+    height: 900px;
+  }
+  /* Background texture - subtle parchment */
+  .canvas::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 1600px;
+    height: 900px;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(139, 115, 85, 0.02) 2px,
+      rgba(139, 115, 85, 0.02) 4px
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Header */
+  .header {
+    position: absolute;
+    top: 50px;
+    left: 80px;
+    right: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    z-index: 10;
+  }
+  .header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .lecture-tag {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13px;
+    color: #8B7355;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .slide-title {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 38px;
+    font-weight: 700;
+    color: #1B3B6B;
+    line-height: 1.3;
+  }
+  .header-right {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 14px;
+    color: #8B7355;
+    text-align: right;
+    line-height: 1.6;
+  }
+  .header-right .page-num {
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+
+  /* Divider line */
+  .header-divider {
+    position: absolute;
+    top: 130px;
+    left: 80px;
+    width: 60px;
+    height: 3px;
+    background: #1B3B6B;
+    z-index: 10;
+  }
+
+  /* Main content area */
+  .main-content {
+    position: absolute;
+    top: 170px;
+    left: 80px;
+    right: 80px;
+    bottom: 60px;
+    display: flex;
+    gap: 60px;
+    z-index: 10;
+  }
+
+  /* Left panel - Visual metaphor */
+  .visual-panel {
+    width: 580px;
+    flex-shrink: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .visual-container {
+    position: relative;
+    width: 500px;
+    height: 460px;
+  }
+
+  /* The Cathedral - square */
+  .cathedral {
+    position: absolute;
+    top: 60px;
+    left: 30px;
+    width: 200px;
+    height: 200px;
+    border: 4px solid #1B3B6B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .cathedral-label {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 16px;
+    color: #1B3B6B;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.4;
+  }
+  .cathedral-sub {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    color: #8B7355;
+    margin-top: 6px;
+  }
+  .cathedral-inner {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    border: 1.5px solid #8B7355;
+  }
+
+  /* The Bazaar - circle */
+  .bazaar {
+    position: absolute;
+    bottom: 50px;
+    right: 30px;
+    width: 200px;
+    height: 200px;
+    border: 4px solid #1B3B6B;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .bazaar-label {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 16px;
+    color: #1B3B6B;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.4;
+  }
+  .bazaar-sub {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    color: #8B7355;
+    margin-top: 6px;
+  }
+  .bazaar-inner {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    border: 1.5px solid #8B7355;
+    border-radius: 50%;
+  }
+
+  /* Connecting line between cathedral and bazaar */
+  .connector {
+    position: absolute;
+    top: 260px;
+    left: 230px;
+    width: 70px;
+    height: 1.5px;
+    background: #8B7355;
+    transform: rotate(-35deg);
+    transform-origin: left center;
+  }
+
+  /* Arrow decoration */
+  .arrow-dot {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #1B3B6B;
+    border-radius: 50%;
+  }
+  .arrow-dot-1 { top: 258px; left: 228px; }
+  .arrow-dot-2 { top: 213px; left: 291px; }
+
+  /* Decorative small shapes */
+  .deco-circle {
+    position: absolute;
+    top: 20px;
+    right: 60px;
+    width: 24px;
+    height: 24px;
+    border: 2px solid #8B7355;
+    border-radius: 50%;
+  }
+  .deco-square {
+    position: absolute;
+    bottom: 30px;
+    left: 50px;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #8B7355;
+    transform: rotate(45deg);
+  }
+  .deco-line {
+    position: absolute;
+    top: 160px;
+    left: 260px;
+    width: 40px;
+    height: 2px;
+    background: #1B3B6B;
+    opacity: 0.4;
+  }
+
+  /* Visual caption */
+  .visual-caption {
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 12px;
+    color: #8B7355;
+    letter-spacing: 1px;
+  }
+
+  /* Right panel - Content */
+  .content-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .section-label {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 15px;
+    color: #8B7355;
+    letter-spacing: 1.5px;
+    border-bottom: 1px solid rgba(139, 115, 85, 0.3);
+    padding-bottom: 8px;
+    margin-bottom: 4px;
+  }
+
+  .content-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .content-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .item-marker {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+
+  .item-marker-square {
+    width: 12px;
+    height: 12px;
+    border: 2.5px solid #1B3B6B;
+  }
+
+  .item-marker-circle {
+    width: 14px;
+    height: 14px;
+    border: 2.5px solid #1B3B6B;
+    border-radius: 50%;
+  }
+
+  .item-marker-filled {
+    width: 10px;
+    height: 10px;
+    background: #1B3B6B;
+  }
+
+  .item-marker-diamond {
+    width: 12px;
+    height: 12px;
+    border: 2.5px solid #8B7355;
+    transform: rotate(45deg);
+  }
+
+  .item-marker-line {
+    width: 20px;
+    height: 2.5px;
+    background: #8B7355;
+  }
+
+  .item-text {
+    flex: 1;
+  }
+
+  .item-title {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 19px;
+    font-weight: 700;
+    color: #1B3B6B;
+    line-height: 1.4;
+    margin-bottom: 3px;
+  }
+
+  .item-desc {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+  }
+
+  /* Bottom decorative bar */
+  .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 1600px;
+    height: 6px;
+    background: #1B3B6B;
+    z-index: 5;
+  }
+
+  .bottom-accent {
+    position: absolute;
+    bottom: 6px;
+    left: 0;
+    width: 400px;
+    height: 3px;
+    background: #8B7355;
+    z-index: 5;
+  }
+
+  /* Footer */
+  .footer {
+    position: absolute;
+    bottom: 20px;
+    left: 80px;
+    right: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+  }
+  .footer-text {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 11px;
+    color: #8B7355;
+    letter-spacing: 1px;
+  }
 </style>
 </head>
 <body>
-<div class="slide">
-  <!-- Decorative elements -->
-  <div class="deco-circle-large"></div>
-  <div class="deco-square"></div>
-  <div class="deco-line-h"></div>
-  <div class="deco-dot-1"></div>
-  <div class="deco-dot-2"></div>
-  
-  <!-- Lecture badge -->
-  <div class="lecture-badge"><span>第 11 期</span>文化的重要作用</div>
-  
-  <!-- Title -->
-  <div class="main-title">自由软件运动及其影响</div>
-  <div class="subtitle-en">THE FREE SOFTWARE MOVEMENT AND ITS LEGACY</div>
-  <div class="divider-line"></div>
-  <div class="divider-line-small"></div>
-  
-  <!-- Left: Cathedral (closed model) -->
-  <div class="cathedral-section">
-    <div class="cathedral-label">大教堂</div>
-    <div class="cathedral-sublabel">THE CATHEDRAL · CLOSED MODEL</div>
-    <div class="arch">
-      <div class="arch-body"></div>
-      <div class="arch-peak"></div>
-      <div class="inner-arch"></div>
-      <div class="inner-peak"></div>
-      <div class="window-left"></div>
-      <div class="window-right"></div>
-      <div class="door">
-        <div class="door-peak"></div>
-      </div>
+<div class="canvas">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <div class="lecture-tag">OPEN SOURCE ECONOMICS · LECTURE 11</div>
+      <div class="slide-title">自由软件运动及其影响</div>
     </div>
-    <ul class="cathedral-points">
-      <li>层级化管理，集中式发布</li>
-      <li>源码不公开，单向分发</li>
-      <li>精英主导，质量可控</li>
-      <li>商业闭源模式</li>
-    </ul>
-    <div class="cathedral-caption">"大教堂模式强调精雕细琢的<br>层级协作，代码如教堂般庄严封闭。"</div>
-  </div>
-  
-  <!-- Center divider -->
-  <div class="center-divider"></div>
-  <div class="center-symbol">
-    <div class="square"></div>
-    <div class="circle-in"></div>
-    <div class="cross-h"></div>
-    <div class="cross-v"></div>
-  </div>
-  <div class="center-label">vs.</div>
-  
-  <!-- Right: Bazaar (open model) -->
-  <div class="bazaar-section">
-    <div class="bazaar-label">集市</div>
-    <div class="bazaar-sublabel">THE BAZAAR · OPEN MODEL</div>
-    <div class="scatter">
-      <div class="dot dot-1"></div>
-      <div class="dot dot-2"></div>
-      <div class="dot dot-3"></div>
-      <div class="dot dot-4"></div>
-      <div class="dot dot-5"></div>
-      <div class="dot dot-6"></div>
-      <div class="dot dot-7"></div>
-      <div class="dot dot-8"></div>
-      <div class="dot dot-9"></div>
-      <div class="dot dot-10"></div>
-      <div class="line line-1"></div>
-      <div class="line line-2"></div>
-      <div class="line line-3"></div>
-      <div class="line line-4"></div>
-      <div class="line line-5"></div>
-    </div>
-    <ul class="bazaar-points">
-      <li>分布式协作，开源开发</li>
-      <li>人人可参与，透明迭代</li>
-      <li>涌现式创新，众包智慧</li>
-      <li>许可证保障共同所有权</li>
-    </ul>
-    <div class="bazaar-caption">"集市模式释放个体创造力，<br>开源协作如水般自由流动。"</div>
-  </div>
-  
-  <!-- Key content cards -->
-  <div class="key-content">
-    <div class="content-grid">
-      <div class="content-card">
-        <div class="content-card-title">GNU 宣言与项目</div>
-        <div class="content-card-subtitle">GNU MANIFESTO · 1985</div>
-        <div class="content-card-body">
-          <strong>GNU</strong> 项目启动，目标构建完整的自由操作系统。<br>
-          核心工具：<strong>GCC</strong> 编译器、<strong>Emacs</strong> 编辑器、<strong>GDB</strong> 调试器。<br>
-          Stallman 发布 GNU 宣言，定义自由软件的四大自由。
-        </div>
-      </div>
-      <div class="content-card">
-        <div class="content-card-title">GPL 通用公共许可</div>
-        <div class="content-card-subtitle">GNU GENERAL PUBLIC LICENSE</div>
-        <div class="content-card-body">
-          <strong>copyleft</strong> 机制确保衍生作品继承开放义务。<br>
-          源码必须开放，修改必须公布。<br>
-          从根本上保障了自由软件的<strong>不可逆转性</strong>。
-        </div>
-      </div>
-      <div class="content-card">
-        <div class="content-card-title">自由软件基金会</div>
-        <div class="content-card-subtitle">FREE SOFTWARE FOUNDATION · 1985</div>
-        <div class="content-card-body">
-          非营利组织，推动软件自由理念的制度化。<br>
-          发布并维护 <strong>GPL</strong> 许可证体系。<br>
-          将伦理诉求转化为可执行的<strong>法律工具</strong>。
-        </div>
-      </div>
+    <div class="header-right">
+      <div>文化的重要作用</div>
+      <div class="page-num">11 · 28</div>
     </div>
   </div>
-  
-  <!-- Bottom -->
-  <div class="bottom-label">开源之道 · 新制度经济学视角下的开源讲座</div>
-  <div class="page-num">11 / 28</div>
+
+  <div class="header-divider"></div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+
+    <!-- Left: Visual Metaphor -->
+    <div class="visual-panel">
+      <div class="visual-container">
+
+        <!-- The Cathedral -->
+        <div class="cathedral">
+          <div class="cathedral-inner"></div>
+          <div>
+            <div class="cathedral-label">大教堂</div>
+            <div class="cathedral-sub">封闭的集中式开发</div>
+          </div>
+        </div>
+
+        <!-- The Bazaar -->
+        <div class="bazaar">
+          <div class="bazaar-inner"></div>
+          <div>
+            <div class="bazaar-label">集市</div>
+            <div class="bazaar-sub">开放的协作式开发</div>
+          </div>
+        </div>
+
+        <!-- Connector -->
+        <div class="connector"></div>
+        <div class="arrow-dot arrow-dot-1"></div>
+        <div class="arrow-dot arrow-dot-2"></div>
+
+        <!-- Decorative elements -->
+        <div class="deco-circle"></div>
+        <div class="deco-square"></div>
+        <div class="deco-line"></div>
+
+        <!-- Caption -->
+        <div class="visual-caption">— 封闭与开放两种开发模式的并置 —</div>
+
+      </div>
+    </div>
+
+    <!-- Right: Content -->
+    <div class="content-panel">
+
+      <div class="section-label">自由软件运动及其影响</div>
+
+      <ul class="content-list">
+        <li class="content-item">
+          <div class="item-marker">
+            <div class="item-marker-filled"></div>
+          </div>
+          <div class="item-text">
+            <div class="item-title">GNU 宣言</div>
+            <div class="item-desc">Richard Stallman 1985 年发布，宣告自由软件运动的思想起点</div>
+          </div>
+        </li>
+
+        <li class="content-item">
+          <div class="item-marker">
+            <div class="item-marker-square"></div>
+          </div>
+          <div class="item-text">
+            <div class="item-title">自由软件基金会 (FSF)</div>
+            <div class="item-desc">1985 年成立，致力于推动自由软件的理念与实践</div>
+          </div>
+        </li>
+
+        <li class="content-item">
+          <div class="item-marker">
+            <div class="item-marker-circle"></div>
+          </div>
+          <div class="item-text">
+            <div class="item-title">GPL 通用公共许可</div>
+            <div class="item-desc">Copyleft 机制——确保衍生作品同样保持自由，"传染性"设计</div>
+          </div>
+        </li>
+
+        <li class="content-item">
+          <div class="item-marker">
+            <div class="item-marker-diamond"></div>
+          </div>
+          <div class="item-text">
+            <div class="item-title">GNU 项目核心组件</div>
+            <div class="item-desc">GCC 编译器 · Emacs 编辑器 · GDB 调试器 · Bash Shell · Coreutils</div>
+          </div>
+        </li>
+
+        <li class="content-item">
+          <div class="item-marker">
+            <div class="item-marker-line"></div>
+          </div>
+          <div class="item-text">
+            <div class="item-title">文化意义</div>
+            <div class="item-desc">将"自由"作为技术伦理的核心命题，深刻重塑了软件产业的协作范式</div>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+
+  <!-- Bottom decorations -->
+  <div class="bottom-accent"></div>
+  <div class="bottom-bar"></div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-text">开源经济学 · 新制度经济学视角</div>
+    <div class="footer-text">第 11 期 · 文化的重要作用</div>
+  </div>
+
 </div>
 </body>
 </html>

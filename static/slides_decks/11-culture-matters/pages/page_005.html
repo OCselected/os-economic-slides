@@ -1,434 +1,463 @@
 
 
 <!DOCTYPE html>
-<html><!-- source_hash: 9c90d43a9ce84949 -->
+<html lang="zh-CN"><!-- source_hash: f8d9a16578203076 -->
 <head>
 <meta charset="UTF-8">
-<title>第 11 期 · 文化的重要作用 — 讲座规则</title>
+<title>关于讲座的规则说明</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body { width: 1600px; height: 900px; overflow: hidden; margin: 0; }
-  body {
-    background: #F5F0E8;
-    font-family: 'Noto Sans SC', sans-serif;
-    color: #1B3B6B;
-    position: relative;
-  }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-  /* Parchment texture overlay */
-  body::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(139,115,85,0.02) 2px,
-      rgba(139,115,85,0.02) 4px
-    );
-    pointer-events: none;
-    z-index: 0;
-  }
+body, html {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
+  background: #F5F0E8;
+}
 
-  /* Top bar */
-  .top-bar {
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 6px;
-    background: #1B3B6B;
-    z-index: 2;
-  }
+body {
+  font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  color: #1B3B6B;
+  position: relative;
+}
 
-  /* Lecture number */
-  .lecture-tag {
-    position: absolute;
-    top: 30px;
-    right: 50px;
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
-    font-size: 14px;
-    color: #8B7355;
-    letter-spacing: 2px;
-    z-index: 3;
-  }
+/* Subtle parchment texture via layered gradients */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 1600px; height: 900px;
+  background: 
+    radial-gradient(ellipse at 20% 80%, rgba(139,115,85,0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(27,59,107,0.02) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
 
-  /* Moai geometric composition */
-  .moai-container {
-    position: absolute;
-    left: 100px;
-    top: 120px;
-    width: 420px;
-    height: 680px;
-    z-index: 2;
-  }
+/* Header area */
+.header {
+  position: absolute;
+  top: 60px;
+  left: 80px;
+  width: 1440px;
+  z-index: 10;
+}
 
-  /* Pukao (red hat - cylinder) */
-  .pukao {
-    position: absolute;
-    top: 20px;
-    left: 85px;
-    width: 250px;
-    height: 70px;
-    background: #8B2020;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-  }
+.header-line {
+  width: 80px;
+  height: 3px;
+  background: #1B3B6B;
+  margin-bottom: 20px;
+}
 
-  /* Moai head */
-  .moai-head {
-    position: absolute;
-    top: 90px;
-    left: 60px;
-    width: 300px;
-    height: 220px;
-    background: #3a3a3a;
-    border-radius: 10px 10px 40px 40px;
-  }
+.lecture-tag {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 14px;
+  letter-spacing: 4px;
+  color: #8B7355;
+  margin-bottom: 16px;
+}
 
-  /* Eyes - geometric */
-  .moai-eye-left {
-    position: absolute;
-    top: 160px;
-    left: 110px;
-    width: 55px;
-    height: 30px;
-    background: #F5F0E8;
-    border-radius: 4px;
-  }
+h1 {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: #1B3B6B;
+  line-height: 1.3;
+  letter-spacing: 2px;
+}
 
-  .moai-eye-right {
-    position: absolute;
-    top: 160px;
-    left: 240px;
-    width: 55px;
-    height: 30px;
-    background: #F5F0E8;
-    border-radius: 4px;
-  }
+/* Visual metaphor - Moai geometric abstraction */
+.visual-panel {
+  position: absolute;
+  top: 240px;
+  left: 80px;
+  width: 480px;
+  height: 560px;
+  z-index: 5;
+}
 
-  /* Pupils */
-  .pupil-left {
-    position: absolute;
-    top: 168px;
-    left: 128px;
-    width: 20px;
-    height: 20px;
-    background: #1B3B6B;
-    border-radius: 50%;
-  }
+/* Moai body - main rectangle */
+.moai-body {
+  position: absolute;
+  bottom: 60px;
+  left: 120px;
+  width: 200px;
+  height: 320px;
+  background: #1B3B6B;
+  border-radius: 0;
+}
 
-  .pupil-right {
-    position: absolute;
-    top: 168px;
-    left: 258px;
-    width: 20px;
-    height: 20px;
-    background: #1B3B6B;
-    border-radius: 50%;
-  }
+/* Moai head - rounded rectangle on top of body */
+.moai-head {
+  position: absolute;
+  bottom: 370px;
+  left: 140px;
+  width: 160px;
+  height: 120px;
+  background: #1B3B6B;
+  border-radius: 30px 30px 10px 10px;
+}
 
-  /* Nose ridge */
-  .moai-nose {
-    position: absolute;
-    top: 175px;
-    left: 185px;
-    width: 12px;
-    height: 55px;
-    background: #2a2a2a;
-    border-radius: 2px;
-  }
+/* Moai eyes - simple rectangles */
+.moai-eye-left {
+  position: absolute;
+  bottom: 430px;
+  left: 175px;
+  width: 22px;
+  height: 10px;
+  background: #F5F0E8;
+  border-radius: 2px;
+}
 
-  /* Mouth line */
-  .moai-mouth {
-    position: absolute;
-    top: 250px;
-    left: 130px;
-    width: 140px;
-    height: 4px;
-    background: #1a1a1a;
-    border-radius: 2px;
-  }
+.moai-eye-right {
+  position: absolute;
+  bottom: 430px;
+  left: 225px;
+  width: 22px;
+  height: 10px;
+  background: #F5F0E8;
+  border-radius: 2px;
+}
 
-  /* Body */
-  .moai-body {
-    position: absolute;
-    top: 310px;
-    left: 100px;
-    width: 220px;
-    height: 300px;
-    background: #3a3a3a;
-    border-radius: 8px 8px 6px 6px;
-  }
+/* Moai nose - thin rectangle */
+.moai-nose {
+  position: absolute;
+  bottom: 395px;
+  left: 205px;
+  width: 10px;
+  height: 35px;
+  background: #2a4f7f;
+}
 
-  /* Chest decoration - circular emblem */
-  .moai-emblem {
-    position: absolute;
-    top: 380px;
-    left: 155px;
-    width: 110px;
-    height: 110px;
-    border: 5px solid #8B7355;
-    border-radius: 50%;
-  }
+/* Moai mouth - horizontal line */
+.moai-mouth {
+  position: absolute;
+  bottom: 385px;
+  left: 185px;
+  width: 50px;
+  height: 4px;
+  background: #F5F0E8;
+  border-radius: 2px;
+}
 
-  /* Emblem inner dot */
-  .moai-emblem-dot {
-    position: absolute;
-    top: 415px;
-    left: 190px;
-    width: 40px;
-    height: 40px;
-    background: #1B3B6B;
-    border-radius: 50%;
-  }
+/* Pukao - the red hat cylinder */
+.pukao {
+  position: absolute;
+  bottom: 480px;
+  left: 150px;
+  width: 140px;
+  height: 35px;
+  background: #8B3A2F;
+  border-radius: 3px 3px 0 0;
+}
 
-  /* Geometric accent - square to the left */
-  .accent-square {
-    position: absolute;
-    top: 200px;
-    left: 10px;
-    width: 50px;
-    height: 50px;
-    background: #8B7355;
-  }
+.pukao-shadow {
+  position: absolute;
+  bottom: 478px;
+  left: 155px;
+  width: 130px;
+  height: 6px;
+  background: #6B2A22;
+  border-radius: 2px;
+}
 
-  /* Geometric accent - small circle */
-  .accent-circle {
-    position: absolute;
-    top: 450px;
-    left: 20px;
-    width: 40px;
-    height: 40px;
-    background: #1B3B6B;
-    border-radius: 50%;
-  }
+/* Geometric decorative elements */
+.geo-circle-large {
+  position: absolute;
+  top: 280px;
+  right: 60px;
+  width: 200px;
+  height: 200px;
+  border: 3px solid #8B7355;
+  border-radius: 50%;
+  opacity: 0.15;
+  z-index: 1;
+}
 
-  /* Decorative line */
-  .decor-line-v {
-    position: absolute;
-    top: 100px;
-    left: 50px;
-    width: 3px;
-    height: 700px;
-    background: #8B7355;
-    opacity: 0.3;
-  }
+.geo-square-deco {
+  position: absolute;
+  top: 380px;
+  left: 30px;
+  width: 60px;
+  height: 60px;
+  background: #8B7355;
+  opacity: 0.12;
+  transform: rotate(45deg);
+  z-index: 1;
+}
 
-  /* Content area */
-  .content-area {
-    position: absolute;
-    top: 100px;
-    left: 620px;
-    width: 920px;
-    height: 720px;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-  }
+.geo-line-vert {
+  position: absolute;
+  top: 240px;
+  left: 590px;
+  width: 2px;
+  height: 560px;
+  background: #1B3B6B;
+  opacity: 0.15;
+  z-index: 2;
+}
 
-  /* Section label */
-  .section-label {
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-    font-size: 13px;
-    color: #8B7355;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-  }
+.geo-circle-small {
+  position: absolute;
+  top: 720px;
+  left: 40px;
+  width: 80px;
+  height: 80px;
+  border: 2px solid #1B3B6B;
+  border-radius: 50%;
+  opacity: 0.1;
+  z-index: 1;
+}
 
-  /* Main title */
-  .main-title {
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-    font-size: 38px;
-    font-weight: 700;
-    color: #1B3B6B;
-    line-height: 1.3;
-    margin-bottom: 8px;
-  }
+/* Base/pedestal for Moai */
+.moai-base {
+  position: absolute;
+  bottom: 30px;
+  left: 80px;
+  width: 280px;
+  height: 30px;
+  background: #555;
+  opacity: 0.3;
+}
 
-  /* Subtitle */
-  .subtitle {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 16px;
-    color: #8B7355;
-    line-height: 1.6;
-    margin-bottom: 40px;
-    padding-bottom: 20px;
-    border-bottom: 2px solid #1B3B6B;
-    opacity: 0.8;
-  }
+/* Content rules area */
+.rules-panel {
+  position: absolute;
+  top: 270px;
+  left: 650px;
+  width: 850px;
+  z-index: 10;
+}
 
-  /* Rules list */
-  .rules-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 30px 0;
-    flex: 1;
-  }
+.rule-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 28px;
+  padding-left: 0;
+}
 
-  .rule-item {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 22px;
-  }
+.rule-number {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #8B7355;
+  width: 44px;
+  flex-shrink: 0;
+  line-height: 1.6;
+}
 
-  .rule-number {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 14px;
-    color: #8B7355;
-    width: 32px;
-    flex-shrink: 0;
-    line-height: 1.8;
-    font-weight: 600;
-  }
+.rule-content {
+  flex: 1;
+}
 
-  .rule-text {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 19px;
-    color: #1B3B6B;
-    line-height: 1.8;
-    font-weight: 400;
-  }
+.rule-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #1B3B6B;
+  line-height: 1.5;
+  margin-bottom: 4px;
+}
 
-  .rule-text strong {
-    font-weight: 600;
-    color: #1B3B6B;
-  }
+.rule-desc {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.7;
+  letter-spacing: 0.5px;
+}
 
-  /* Footer - Way of Open Source */
-  .footer-tag {
-    position: absolute;
-    bottom: 40px;
-    left: 620px;
-    width: 920px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    z-index: 3;
-  }
+/* Footer */
+.footer {
+  position: absolute;
+  bottom: 40px;
+  left: 80px;
+  width: 1440px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
 
-  .footer-line {
-    flex: 1;
-    height: 2px;
-    background: #1B3B6B;
-    opacity: 0.4;
-  }
+.footer-left {
+  font-size: 12px;
+  color: #8B7355;
+  letter-spacing: 2px;
+}
 
-  .footer-text {
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
-    font-size: 15px;
-    color: #1B3B6B;
-    letter-spacing: 3px;
-    font-weight: 600;
-  }
+.footer-right {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 12px;
+  color: #8B7355;
+  letter-spacing: 1px;
+}
 
-  /* Bottom bar */
-  .bottom-bar {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 4px;
-    background: #8B7355;
-    z-index: 2;
-  }
+/* Small decorative dot pattern */
+.dot-row {
+  position: absolute;
+  bottom: 42px;
+  left: 640px;
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
 
-  /* Small decorative square bottom-right */
-  .decor-square-br {
-    position: absolute;
-    bottom: 20px;
-    right: 50px;
-    width: 12px;
-    height: 12px;
-    background: #1B3B6B;
-    z-index: 3;
-  }
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #8B7355;
+  opacity: 0.4;
+}
 
-  /* Moai caption */
-  .moai-caption {
-    position: absolute;
-    bottom: 15px;
-    left: 100px;
-    width: 420px;
-    text-align: center;
-    font-family: 'Noto Serif SC', serif;
-    font-size: 13px;
-    color: #8B7355;
-    letter-spacing: 2px;
-    z-index: 3;
-  }
+/* Horizontal accent line */
+.accent-line {
+  position: absolute;
+  top: 230px;
+  left: 650px;
+  width: 850px;
+  height: 1px;
+  background: #1B3B6B;
+  opacity: 0.2;
+}
+
+/* Subtitle in visual panel */
+.visual-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 480px;
+  text-align: center;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 14px;
+  color: #8B7355;
+  letter-spacing: 2px;
+  line-height: 1.6;
+}
+
+/* Circle accent near title */
+.circle-accent {
+  position: absolute;
+  top: 70px;
+  right: 80px;
+  width: 30px;
+  height: 30px;
+  border: 2px solid #8B7355;
+  border-radius: 50%;
+  opacity: 0.5;
+  z-index: 10;
+}
+
+/* Small square accent */
+.square-accent {
+  position: absolute;
+  top: 78px;
+  right: 130px;
+  width: 14px;
+  height: 14px;
+  background: #1B3B6B;
+  opacity: 0.3;
+  z-index: 10;
+}
 </style>
 </head>
 <body>
 
-<div class="top-bar"></div>
-<div class="bottom-bar"></div>
+<!-- Decorative geometric elements -->
+<div class="geo-circle-large"></div>
+<div class="geo-square-deco"></div>
+<div class="geo-circle-small"></div>
 
-<div class="lecture-tag">No. 11 — 11 / 28</div>
+<!-- Header -->
+<div class="header">
+  <div class="header-line"></div>
+  <div class="lecture-tag">第 11 期 · 文化的重要作用</div>
+  <h1>关于讲座的规则说明</h1>
+</div>
 
-<!-- Moai Geometric Composition -->
-<div class="moai-container">
-  <div class="decor-line-v"></div>
-  <div class="accent-square"></div>
-  <div class="accent-circle"></div>
+<div class="circle-accent"></div>
+<div class="square-accent"></div>
 
+<!-- Visual Metaphor: Moai with Pukao -->
+<div class="visual-panel">
   <div class="pukao"></div>
+  <div class="pukao-shadow"></div>
   <div class="moai-head"></div>
   <div class="moai-eye-left"></div>
   <div class="moai-eye-right"></div>
-  <div class="pupil-left"></div>
-  <div class="pupil-right"></div>
   <div class="moai-nose"></div>
   <div class="moai-mouth"></div>
-
   <div class="moai-body"></div>
-  <div class="moai-emblem"></div>
-  <div class="moai-emblem-dot"></div>
+  <div class="moai-base"></div>
+  <div class="visual-caption">文化制度中地位与权力的可视化</div>
 </div>
 
-<div class="moai-caption">文化制度中地位与权力的可视化 — Pukao（红帽）</div>
+<!-- Vertical separator -->
+<div class="geo-line-vert"></div>
 
-<!-- Content Area -->
-<div class="content-area">
-  <div class="section-label">讲座规则</div>
-  <h1 class="main-title">关于本场讲座</h1>
-  <p class="subtitle">复活节岛摩艾石像头戴红帽（pukao）——文化制度中地位与权力的可视化</p>
+<!-- Horizontal accent -->
+<div class="accent-line"></div>
 
-  <ul class="rules-list">
-    <li class="rule-item">
-      <span class="rule-number">01</span>
-      <span class="rule-text">随时交流或提问，无需举手等待。</span>
-    </li>
-    <li class="rule-item">
-      <span class="rule-number">02</span>
-      <span class="rule-text">指出错误有奖励 —— 发现谬误即贡献知识。</span>
-    </li>
-    <li class="rule-item">
-      <span class="rule-number">03</span>
-      <span class="rule-text">所有的错误，<strong>我个人负责</strong>。</span>
-    </li>
-    <li class="rule-item">
-      <span class="rule-item">
-      <span class="rule-number">04</span>
-      <span class="rule-text">个人的视角是有限的，<strong>协作更佳</strong>。</span>
-    </li>
-    <li class="rule-item">
-      <span class="rule-number">05</span>
-      <span class="rule-text">项目开始，就没有结束。</span>
-    </li>
-    <li class="rule-item">
-      <span class="rule-number">06</span>
-      <span class="rule-text">遵循「开源之道」—— 透明、协作、持续迭代。</span>
-    </li>
-  </ul>
+<!-- Rules Content -->
+<div class="rules-panel">
+  <div class="rule-item">
+    <div class="rule-number">01</div>
+    <div class="rule-content">
+      <div class="rule-title">随时交流或提问</div>
+      <div class="rule-desc">不必等到最后，灵感闪现即刻言说</div>
+    </div>
+  </div>
+  <div class="rule-item">
+    <div class="rule-number">02</div>
+    <div class="rule-content">
+      <div class="rule-title">指出错误有奖励</div>
+      <div class="rule-desc">每一处纠谬都是共建知识的贡献</div>
+    </div>
+  </div>
+  <div class="rule-item">
+    <div class="rule-number">03</div>
+    <div class="rule-content">
+      <div class="rule-title">所有的错误，我个人负责</div>
+      <div class="rule-desc">不承担道德压力，鼓励坦率交流</div>
+    </div>
+  </div>
+  <div class="rule-item">
+    <div class="rule-number">04</div>
+    <div class="rule-content">
+      <div class="rule-title">个人的视角是有限的，协作更佳</div>
+      <div class="rule-desc">开放地接纳多元认知框架</div>
+    </div>
+  </div>
+  <div class="rule-item">
+    <div class="rule-number">05</div>
+    <div class="rule-content">
+      <div class="rule-title">项目开始，就没有结束</div>
+      <div class="rule-desc">持续迭代，在开放中生长</div>
+    </div>
+  </div>
+  <div class="rule-item">
+    <div class="rule-number">06</div>
+    <div class="rule-content">
+      <div class="rule-title">遵循「开源之道」</div>
+      <div class="rule-desc">透明、协作、贡献、共享</div>
+    </div>
+  </div>
 </div>
 
 <!-- Footer -->
-<div class="footer-tag">
-  <div class="footer-line"></div>
-  <span class="footer-text">遵循「开源之道」</span>
-  <div class="footer-line"></div>
+<div class="footer">
+  <div class="footer-left">OPEN SOURCE ECONOMIC LECTURES</div>
+  <div class="dot-row">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+  <div class="footer-right">新制度经济学视角 · 开源现象研究</div>
 </div>
-
-<div class="decor-square-br"></div>
 
 </body>
 </html>

@@ -1,204 +1,500 @@
 
 
 <!DOCTYPE html>
-<html><!-- source_hash: d93f83dba3be919b -->
+<html lang="zh-CN"><!-- source_hash: 34ed43ab5679ed62 -->
 <head>
 <meta charset="UTF-8">
-<title>第 11 期 · 文化的重要作用</title>
+<title>文化是否可以改变？</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1600px;height:900px;overflow:hidden;margin:0}
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 1600px;
+    height: 900px;
+    overflow: hidden;
+    margin: 0;
+    background: #F5F0E8;
+    font-family: 'Noto Sans SC', 'Source Han Sans SC', 'PingFang SC', sans-serif;
+    color: #1B3B6B;
+  }
+  body {
+    position: relative;
+  }
+  /* subtle parchment texture */
+  body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(rgba(27,59,107,0.025) 1px, transparent 1px),
+      radial-gradient(rgba(139,115,85,0.03) 1px, transparent 1px);
+    background-size: 24px 24px, 36px 36px;
+    background-position: 0 0, 12px 12px;
+    pointer-events: none;
+  }
 
-.slide{
-  width:1600px;height:900px;
-  position:relative;
-  background:#F5F0E8;
-  overflow:hidden;
-}
+  /* ── decorative geometry ── */
+  .deco-circle-1 {
+    position: absolute;
+    width: 340px;
+    height: 340px;
+    border: 2px solid #1B3B6B;
+    border-radius: 50%;
+    top: -110px;
+    right: -80px;
+    opacity: 0.12;
+  }
+  .deco-circle-2 {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background: #1B3B6B;
+    border-radius: 50%;
+    bottom: 90px;
+    right: 120px;
+    opacity: 0.85;
+  }
+  .deco-circle-3 {
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    border: 2px solid #8B7355;
+    border-radius: 50%;
+    bottom: 130px;
+    right: 80px;
+    background: #F5F0E8;
+    z-index: 2;
+  }
+  .deco-square-1 {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: #8B7355;
+    top: 250px;
+    left: -40px;
+    transform: rotate(15deg);
+    opacity: 0.55;
+  }
+  .deco-square-2 {
+    position: absolute;
+    width: 160px;
+    height: 6px;
+    background: #1B3B6B;
+    bottom: 60px;
+    left: 100px;
+    opacity: 0.7;
+  }
+  .deco-line-1 {
+    position: absolute;
+    width: 2px;
+    height: 200px;
+    background: #8B7355;
+    top: 300px;
+    right: 40px;
+    opacity: 0.4;
+  }
+  .deco-triangle {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-bottom: 70px solid #1B3B6B;
+    top: 720px;
+    left: 60px;
+    opacity: 0.15;
+  }
+  .deco-square-3 {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    background: #1B3B6B;
+    top: 640px;
+    right: 320px;
+    opacity: 0.7;
+  }
+  .deco-square-4 {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: #8B7355;
+    top: 680px;
+    right: 300px;
+    opacity: 0.85;
+  }
 
-.parchment{
-  position:absolute;top:0;left:0;width:1600px;height:900px;
-  background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(139,115,85,.012) 3px,rgba(139,115,85,.012) 5px);
-  pointer-events:none;z-index:1;
-}
+  /* ── header band ── */
+  .header-band {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1600px;
+    height: 8px;
+    background: #1B3B6B;
+  }
+  .header-band-2 {
+    position: absolute;
+    top: 8px;
+    left: 0;
+    width: 420px;
+    height: 3px;
+    background: #8B7355;
+  }
 
-/* === Top Bar === */
-.top-bar{
-  position:absolute;top:0;left:0;width:1600px;height:48px;
-  display:flex;align-items:center;padding:0 56px;
-  border-bottom:1px solid rgba(139,115,85,.15);z-index:10;
-}
-.top-left{font-family:'Noto Sans SC',sans-serif;font-size:12px;color:#8B7355;letter-spacing:2px}
-.top-line{flex:1;height:1px;background:rgba(139,115,85,.12);margin:0 28px}
-.top-right{font-family:'Noto Sans SC',sans-serif;font-size:12px;color:#555;opacity:.6;letter-spacing:1px}
+  /* ── top-left meta ── */
+  .meta {
+    position: absolute;
+    top: 52px;
+    left: 100px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    color: #555;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .meta .dot {
+    width: 6px;
+    height: 6px;
+    background: #8B7355;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .meta .num {
+    color: #1B3B6B;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+  }
 
-/* === Geometric Group === */
-.geo{position:absolute;top:80px;left:60px;width:560px;height:740px;z-index:2}
+  /* ── eyebrow ── */
+  .eyebrow {
+    position: absolute;
+    top: 120px;
+    left: 100px;
+    font-size: 14px;
+    color: #8B7355;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .eyebrow-line {
+    display: inline-block;
+    width: 42px;
+    height: 1px;
+    background: #8B7355;
+    vertical-align: middle;
+    margin-right: 14px;
+  }
 
-.g-circle{
-  position:absolute;top:0;left:0;width:460px;height:460px;
-  border-radius:50%;background:#1B3B6B;
-}
-.g-ring{
-  position:absolute;top:50px;left:50px;width:360px;height:360px;
-  border-radius:50%;border:2px solid rgba(245,240,232,.2);
-}
-.g-inner{
-  position:absolute;top:100px;left:100px;width:260px;height:260px;
-  border-radius:50%;background:rgba(245,240,232,.06);
-}
-.g-square{
-  position:absolute;top:180px;left:260px;width:240px;height:240px;
-  background:#8B7355;opacity:.88;
-}
-.g-sq-ring{
-  position:absolute;top:218px;left:298px;width:164px;height:164px;
-  border:2px solid rgba(245,240,232,.25);
-}
-.g-vline{
-  position:absolute;top:40px;left:420px;width:1.5px;height:680px;
-  background:rgba(27,59,107,.15);
-}
-.g-hline{
-  position:absolute;top:540px;left:0;width:500px;height:1.5px;
-  background:rgba(139,115,85,.22);
-}
-.g-hline2{
-  position:absolute;top:640px;left:220px;width:120px;height:1.5px;
-  background:rgba(27,59,107,.18);
-}
-.g-triangle{
-  position:absolute;top:598px;left:120px;
-  width:0;height:0;
-  border-left:44px solid transparent;
-  border-right:44px solid transparent;
-  border-bottom:72px solid rgba(139,115,85,.32);
-}
-.g-arc{
-  position:absolute;top:340px;left:440px;width:180px;height:180px;
-  border:1.5px solid rgba(139,115,85,.18);
-  border-radius:50%;
-  border-right-color:transparent;
-  border-bottom-color:transparent;
-  transform:rotate(-30deg);
-}
-.g-dot1{position:absolute;top:95px;left:500px;width:10px;height:10px;border-radius:50%;background:#1B3B6B;opacity:.55}
-.g-dot2{position:absolute;top:658px;left:340px;width:14px;height:14px;background:rgba(139,115,85,.45)}
-.g-rect{position:absolute;top:740px;left:0;width:180px;height:5px;background:#1B3B6B;opacity:.65}
+  /* ── title ── */
+  .title-block {
+    position: absolute;
+    top: 175px;
+    left: 100px;
+    width: 1000px;
+  }
+  .title {
+    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+    font-size: 78px;
+    font-weight: 700;
+    line-height: 1.18;
+    color: #1B3B6B;
+    letter-spacing: 0.02em;
+  }
+  .title em {
+    font-style: italic;
+    color: #8B7355;
+    font-weight: 600;
+  }
+  .subtitle-en {
+    margin-top: 24px;
+    font-family: 'Georgia', 'Noto Serif SC', serif;
+    font-size: 22px;
+    color: #555;
+    font-style: italic;
+    letter-spacing: 0.02em;
+    line-height: 1.4;
+  }
 
-.g-num{
-  position:absolute;top:155px;left:175px;
-  font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;
-  font-size:140px;font-weight:700;
-  color:rgba(245,240,232,.08);
-  line-height:1;pointer-events:none;
-}
+  /* ── right visual: OSPO / culture ring composition ── */
+  .visual {
+    position: absolute;
+    top: 130px;
+    right: 100px;
+    width: 360px;
+    height: 360px;
+  }
+  .ring-outer {
+    position: absolute;
+    top: 0; left: 0;
+    width: 360px;
+    height: 360px;
+    border: 2px solid #1B3B6B;
+    border-radius: 50%;
+  }
+  .ring-mid {
+    position: absolute;
+    top: 40px; left: 40px;
+    width: 280px;
+    height: 280px;
+    border: 1px dashed #8B7355;
+    border-radius: 50%;
+  }
+  .ring-inner {
+    position: absolute;
+    top: 100px; left: 100px;
+    width: 160px;
+    height: 160px;
+    background: #1B3B6B;
+    border-radius: 50%;
+  }
+  .ring-inner-text {
+    position: absolute;
+    top: 130px;
+    left: 100px;
+    width: 160px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #F5F0E8;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 20px;
+    line-height: 1.3;
+    text-align: center;
+  }
+  .ring-inner-text .cn {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+  .ring-inner-text .en {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    font-size: 11px;
+    opacity: 0.75;
+    margin-top: 4px;
+    letter-spacing: 0.15em;
+  }
+  .ring-square {
+    position: absolute;
+    top: 152px;
+    left: 152px;
+    width: 56px;
+    height: 56px;
+    border: 2px solid #F5F0E8;
+    transform: rotate(45deg);
+  }
+  .ring-tag {
+    position: absolute;
+    top: -30px;
+    right: -10px;
+    font-family: 'Georgia', serif;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: #555;
+    text-transform: uppercase;
+  }
+  .ring-tag-bottom {
+    position: absolute;
+    bottom: -34px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: 'Georgia', serif;
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    color: #8B7355;
+    text-transform: uppercase;
+  }
 
-.vtext{
-  position:absolute;top:90px;left:20px;
-  font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;
-  font-size:10px;color:#8B7355;opacity:.4;
-  letter-spacing:4px;writing-mode:vertical-rl;z-index:3;
-}
+  /* ── bottom content: bullets ── */
+  .content {
+    position: absolute;
+    top: 470px;
+    left: 100px;
+    width: 1000px;
+  }
+  .content-eyebrow {
+    font-size: 12px;
+    color: #8B7355;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+  .bullets {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 40px;
+  }
+  .bullet {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .bullet-num {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #8B7355;
+    letter-spacing: 0.05em;
+    min-width: 34px;
+    padding-top: 2px;
+    border-top: 2px solid #1B3B6B;
+    line-height: 1;
+  }
+  .bullet-text {
+    flex: 1;
+  }
+  .bullet-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 20px;
+    color: #1B3B6B;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 4px;
+  }
+  .bullet-desc {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+  }
 
-/* === Content Area === */
-.content{
-  position:absolute;top:110px;left:760px;width:760px;z-index:5;
-}
-.slide-num{
-  font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;
-  font-size:14px;color:#8B7355;letter-spacing:3px;margin-bottom:18px;opacity:.65;
-}
-.main-title{
-  font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;
-  font-size:54px;font-weight:700;color:#1B3B6B;
-  line-height:1.25;margin-bottom:22px;
-}
-.underline{width:72px;height:3px;background:#8B7355;margin-bottom:28px}
-.sub-q{
-  font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',serif;
-  font-size:21px;font-style:italic;color:#8B7355;
-  margin-bottom:38px;letter-spacing:.5px;
-}
-.divider{width:50px;height:1.5px;background:rgba(139,115,85,.28);margin-bottom:28px}
-.points{list-style:none;padding:0}
-.points li{
-  font-family:'Noto Sans SC',sans-serif;
-  font-size:16.5px;color:#555;line-height:1.7;
-  margin-bottom:16px;padding-left:28px;position:relative;
-}
-.points li::before{
-  content:'';position:absolute;left:0;top:9px;
-  width:7px;height:7px;background:#1B3B6B;
-}
-.points li:nth-child(even)::before{background:#8B7355}
+  /* ── footer ── */
+  .footer {
+    position: absolute;
+    bottom: 30px;
+    left: 100px;
+    right: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: #555;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    border-top: 1px solid rgba(27,59,107,0.18);
+    padding-top: 14px;
+  }
+  .footer .left {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+  .footer .right {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    letter-spacing: 0.15em;
+    text-transform: none;
+  }
 
-/* === Bottom Bar === */
-.bot-bar{
-  position:absolute;bottom:0;left:0;width:1600px;height:44px;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 56px;border-top:1px solid rgba(139,115,85,.12);z-index:10;
-}
-.bot-left{font-family:'Noto Sans SC',sans-serif;font-size:11px;color:#8B7355;opacity:.5;letter-spacing:1px}
-.bot-center{display:flex;align-items:center}
-.bot-c-line{width:36px;height:1px;background:rgba(139,115,85,.18);margin:0 12px}
-.bot-c-text{font-family:'Noto Sans SC',sans-serif;font-size:11px;color:#8B7355;opacity:.5;letter-spacing:1px}
-.bot-right{font-family:'Noto Sans SC',sans-serif;font-size:11px;color:#8B7355;opacity:.5;letter-spacing:1px}
 </style>
 </head>
 <body>
-<div class="slide">
-  <div class="parchment"></div>
 
-  <div class="top-bar">
-    <div class="top-left">开源之道 · OPEN SOURCE LECTURES</div>
-    <div class="top-line"></div>
-    <div class="top-right">新制度经济学视角 / NEIO</div>
+  <!-- decorative geometry -->
+  <div class="deco-circle-1"></div>
+  <div class="deco-square-1"></div>
+  <div class="deco-line-1"></div>
+  <div class="deco-triangle"></div>
+  <div class="deco-square-2"></div>
+  <div class="deco-square-3"></div>
+  <div class="deco-square-4"></div>
+
+  <!-- header band -->
+  <div class="header-band"></div>
+  <div class="header-band-2"></div>
+
+  <!-- top-left meta -->
+  <div class="meta">
+    <span class="num">№ 11</span>
+    <span class="dot"></span>
+    <span>文化的重要作用 · Culture Matters</span>
+    <span class="dot"></span>
+    <span>Slide 18 / 28</span>
   </div>
 
-  <div class="geo">
-    <div class="g-circle"></div>
-    <div class="g-ring"></div>
-    <div class="g-inner"></div>
-    <div class="g-square"></div>
-    <div class="g-sq-ring"></div>
-    <div class="g-vline"></div>
-    <div class="g-hline"></div>
-    <div class="g-hline2"></div>
-    <div class="g-triangle"></div>
-    <div class="g-arc"></div>
-    <div class="g-dot1"></div>
-    <div class="g-dot2"></div>
-    <div class="g-rect"></div>
-    <div class="g-num">11</div>
+  <!-- eyebrow -->
+  <div class="eyebrow">
+    <span class="eyebrow-line"></span>第 IV 章 · 文化与制度变迁
   </div>
 
-  <div class="vtext">文化 · 价值 · 释放</div>
-
-  <div class="content">
-    <div class="slide-num">SLIDE 07 / 28</div>
-    <div class="main-title">文化的重要作用</div>
-    <div class="underline"></div>
-    <div class="sub-q">文化是否是可以改变的？</div>
-    <div class="divider"></div>
-    <ul class="points">
-      <li>作为 Software 的认知与理解</li>
-      <li>东亚的崛起，儒家也是可以适应变化的</li>
-      <li>承认开源是先进和高级的</li>
-      <li>需要学习的，也是需要实践的</li>
-      <li>动态的文化演化，适应时代的发展</li>
-    </ul>
+  <!-- title -->
+  <div class="title-block">
+    <div class="title">文化是否<em>可以改变？</em></div>
+    <div class="subtitle-en">Can Culture Be Changed? — On the Plasticity of Open-Source Praxis</div>
   </div>
 
-  <div class="bot-bar">
-    <div class="bot-left">第 11 期 · 文化的重要作用</div>
-    <div class="bot-center">
-      <div class="bot-c-line"></div>
-      <div class="bot-c-text">11-culture-matters</div>
-      <div class="bot-c-line"></div>
+  <!-- right visual: culture ring -->
+  <div class="visual">
+    <div class="ring-tag">OSPO Summit · 文化释放机制</div>
+    <div class="ring-outer"></div>
+    <div class="ring-mid"></div>
+    <div class="ring-inner"></div>
+    <div class="ring-square"></div>
+    <div class="ring-inner-text">
+      <div class="cn">文化</div>
+      <div class="en">Culture</div>
     </div>
-    <div class="bot-right">SENSENOVA · NEIO LECTURES</div>
+    <div class="ring-tag-bottom">Value Release Mechanism</div>
   </div>
-</div>
+
+  <!-- content bullets -->
+  <div class="content">
+    <div class="content-eyebrow">▸ 论题与要点 · Argument & Key Points</div>
+    <div class="bullets">
+      <div class="bullet">
+        <div class="bullet-num">01</div>
+        <div class="bullet-text">
+          <div class="bullet-title">作为 Software 的认知</div>
+          <div class="bullet-desc">如何理解软件——作为文化载体，而非单纯工具。</div>
+        </div>
+      </div>
+      <div class="bullet">
+        <div class="bullet-num">02</div>
+        <div class="bullet-text">
+          <div class="bullet-title">东亚的崛起与儒学演化</div>
+          <div class="bullet-desc">儒家文化并非凝固，亦可随时代调适与变迁。</div>
+        </div>
+      </div>
+      <div class="bullet">
+        <div class="bullet-num">03</div>
+        <div class="bullet-text">
+          <div class="bullet-title">承认开源之先进</div>
+          <div class="bullet-desc">将开源视为高等级的协作文明，而非技术副产物。</div>
+        </div>
+      </div>
+      <div class="bullet">
+        <div class="bullet-num">04</div>
+        <div class="bullet-text">
+          <div class="bullet-title">学习与实践并重</div>
+          <div class="bullet-desc">文化在参与中生长，需在代码与人之间反复练习。</div>
+        </div>
+      </div>
+      <div class="bullet">
+        <div class="bullet-num">05</div>
+        <div class="bullet-text">
+          <div class="bullet-title">动态的文化演化</div>
+          <div class="bullet-desc">文化随时代演进，制度与价值不断被重新书写。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <div class="footer">
+    <div class="left">
+      <span>开源之道 · The Way of Open Source</span>
+      <span>·</span>
+      <span>新制度经济学视角</span>
+    </div>
+    <div class="right">"Culture is not fate, but a set of choices in motion."</div>
+  </div>
+
 </body>
 </html>

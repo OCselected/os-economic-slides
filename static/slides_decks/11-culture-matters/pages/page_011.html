@@ -1,667 +1,485 @@
 
 
 <!DOCTYPE html>
-<html><!-- source_hash: 2cd086a21404662e -->
+<html><!-- source_hash: b2f337fb46ecedad -->
 <head>
 <meta charset="UTF-8">
-<title>Hacker 文化起源、发展与陨落</title>
+<title>第11期 · Hacker文化起源、发展与陨落</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
+  background: #F5F0E8;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: #1B3B6B;
+}
 
-  html, body {
-    width: 1600px;
-    height: 900px;
-    overflow: hidden;
-    margin: 0;
-  }
+.slide {
+  position: relative;
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+}
 
-  body {
-    background: #F5F0E8;
-    position: relative;
-    font-family: 'Noto Sans SC', sans-serif;
-    color: #1B3B6B;
-  }
+/* Geometric decorations */
+.deco-circle-large {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  border: 2px solid #1B3B6B;
+  top: -100px;
+  left: -100px;
+  opacity: 0.06;
+}
 
-  /* Subtle parchment texture */
-  body::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 1600px; height: 900px;
-    background:
-      repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 2px,
-        rgba(139, 115, 85, 0.015) 2px,
-        rgba(139, 115, 85, 0.015) 4px
-      );
-    pointer-events: none;
-    z-index: 0;
-  }
+.deco-circle-mid {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  opacity: 0.08;
+  bottom: 60px;
+  right: -40px;
+}
 
-  /* Bauhaus geometric decorations */
-  .geo-circle-1 {
-    position: absolute;
-    width: 420px; height: 420px;
-    border: 3px solid #1B3B6B;
-    border-radius: 50%;
-    top: -100px;
-    right: -80px;
-    opacity: 0.08;
-    z-index: 0;
-  }
+.deco-square {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: #8B7355;
+  opacity: 0.12;
+  top: 60px;
+  right: 200px;
+  transform: rotate(45deg);
+}
 
-  .geo-circle-2 {
-    position: absolute;
-    width: 260px; height: 260px;
-    border: 2px solid #8B7355;
-    border-radius: 50%;
-    bottom: -60px;
-    left: -40px;
-    opacity: 0.12;
-    z-index: 0;
-  }
+.deco-line-h {
+  position: absolute;
+  height: 1px;
+  background: #1B3B6B;
+  opacity: 0.1;
+}
 
-  .geo-square-1 {
-    position: absolute;
-    width: 80px; height: 80px;
-    background: #1B3B6B;
-    opacity: 0.06;
-    top: 120px;
-    right: 320px;
-    transform: rotate(45deg);
-    z-index: 0;
-  }
+.deco-line-v {
+  position: absolute;
+  width: 1px;
+  background: #1B3B6B;
+  opacity: 0.1;
+}
 
-  .geo-square-2 {
-    position: absolute;
-    width: 40px; height: 40px;
-    background: #8B7355;
-    opacity: 0.08;
-    bottom: 200px;
-    right: 180px;
-    transform: rotate(30deg);
-    z-index: 0;
-  }
+/* Header */
+.header {
+  position: absolute;
+  top: 40px;
+  left: 60px;
+  right: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
 
-  .geo-line-1 {
-    position: absolute;
-    width: 200px; height: 2px;
-    background: #1B3B6B;
-    opacity: 0.12;
-    top: 680px;
-    left: 100px;
-    z-index: 0;
-  }
+.lecture-tag {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 13px;
+  color: #8B7355;
+  letter-spacing: 2px;
+}
 
-  .geo-line-2 {
-    position: absolute;
-    width: 2px; height: 160px;
-    background: #8B7355;
-    opacity: 0.10;
-    top: 80px;
-    left: 780px;
-    z-index: 0;
-  }
+.slide-num {
+  font-size: 13px;
+  color: #555;
+  letter-spacing: 1px;
+}
 
-  .geo-circle-3 {
-    position: absolute;
-    width: 12px; height: 12px;
-    background: #1B3B6B;
-    border-radius: 50%;
-    opacity: 0.3;
-    top: 180px;
-    left: 60px;
-    z-index: 0;
-  }
+/* Main visual - left panel */
+.visual-panel {
+  position: absolute;
+  left: 60px;
+  top: 110px;
+  width: 520px;
+  height: 700px;
+}
 
-  .geo-circle-4 {
-    position: absolute;
-    width: 8px; height: 8px;
-    background: #8B7355;
-    border-radius: 50%;
-    opacity: 0.4;
-    bottom: 140px;
-    right: 400px;
-    z-index: 0;
-  }
+.visual-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-left: 2px solid #1B3B6B;
+  padding-left: 50px;
+}
 
-  .geo-ring {
-    position: absolute;
-    width: 160px; height: 160px;
-    border: 4px solid #1B3B6B;
-    border-radius: 50%;
-    opacity: 0.05;
-    bottom: 60px;
-    right: 120px;
-    z-index: 0;
-  }
+.visual-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 18px;
+  color: #8B7355;
+  letter-spacing: 3px;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+}
 
-  /* Top bar */
-  .top-bar {
-    position: absolute;
-    top: 0; left: 0;
-    width: 1600px; height: 6px;
-    background: #1B3B6B;
-    z-index: 10;
-  }
+.visual-main-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: #1B3B6B;
+  line-height: 1.3;
+  margin-bottom: 16px;
+}
 
-  /* Header area */
-  .header {
-    position: absolute;
-    top: 50px;
-    left: 80px;
-    z-index: 5;
-    width: 800px;
-  }
+.visual-subtitle {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 20px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 50px;
+}
 
-  .lecture-tag {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 4px;
-    color: #8B7355;
-    text-transform: uppercase;
-    margin-bottom: 16px;
-  }
+/* Abstract geometric figure representing Stallman */
+.figure {
+  position: relative;
+  width: 200px;
+  height: 260px;
+  margin-top: 20px;
+}
 
-  .lecture-tag::before {
-    content: '';
-    display: inline-block;
-    width: 32px;
-    height: 2px;
-    background: #8B7355;
-    vertical-align: middle;
-    margin-right: 12px;
-  }
+.figure-head {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 2.5px solid #1B3B6B;
+  top: 0;
+  left: 55px;
+}
 
-  .main-title {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 48px;
-    font-weight: 900;
-    color: #1B3B6B;
-    line-height: 1.25;
-    margin-bottom: 8px;
-  }
+.figure-hair {
+  position: absolute;
+  width: 130px;
+  height: 110px;
+  border-radius: 50%;
+  background: #1B3B6B;
+  opacity: 0.15;
+  top: -10px;
+  left: 35px;
+}
 
-  .sub-line {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 18px;
-    font-weight: 400;
-    color: #555;
-    letter-spacing: 1px;
-    margin-top: 12px;
-    line-height: 1.6;
-  }
+.figure-body {
+  position: absolute;
+  width: 70px;
+  height: 140px;
+  background: #1B3B6B;
+  opacity: 0.08;
+  top: 85px;
+  left: 65px;
+}
 
-  /* Central portrait area */
-  .portrait-area {
-    position: absolute;
-    top: 170px;
-    right: 80px;
-    width: 380px;
-    height: 540px;
-    z-index: 5;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-  }
+.figure-line-1 {
+  position: absolute;
+  width: 2px;
+  height: 160px;
+  background: #8B7355;
+  opacity: 0.3;
+  top: 80px;
+  left: 20px;
+}
 
-  .portrait-frame {
-    width: 300px;
-    height: 360px;
-    border: 3px solid #1B3B6B;
-    position: relative;
-    background: rgba(27, 59, 107, 0.04);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.figure-line-2 {
+  position: absolute;
+  width: 2px;
+  height: 140px;
+  background: #8B7355;
+  opacity: 0.2;
+  top: 90px;
+  left: 180px;
+}
 
-  .portrait-frame::before {
-    content: '';
-    position: absolute;
-    top: -8px; left: -8px;
-    width: 300px; height: 300px;
-    border: 2px solid #8B7355;
-    opacity: 0.3;
-  }
+.figure-square {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: #1B3B6B;
+  opacity: 0.12;
+  bottom: 20px;
+  left: 10px;
+}
 
-  /* Abstract representation of Stallman */
-  .portrait-abstract {
-    position: relative;
-    width: 200px;
-    height: 260px;
-  }
+.figure-small-circle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #8B7355;
+  opacity: 0.3;
+  bottom: 0;
+  right: 0;
+}
 
-  /* Head shape */
-  .head-shape {
-    position: absolute;
-    top: 10px;
-    left: 50px;
-    width: 100px;
-    height: 120px;
-    border: 2.5px solid #1B3B6B;
-    border-radius: 50px 50px 40px 40px;
-    background: rgba(27, 59, 107, 0.06);
-  }
+.quote {
+  position: absolute;
+  bottom: 20px;
+  left: 50px;
+  right: 0;
+}
 
-  /* Hair - long and wild */
-  .hair-left {
-    position: absolute;
-    top: 0;
-    left: 30px;
-    width: 40px;
-    height: 140px;
-    border-left: 2.5px solid #1B3B6B;
-    border-top: 2.5px solid #1B3B6B;
-    border-radius: 40px 0 0 0;
-    background: rgba(27, 59, 107, 0.05);
-  }
+.quote-text {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 15px;
+  color: #555;
+  line-height: 1.7;
+  font-style: italic;
+  border-left: 2px solid #8B7355;
+  padding-left: 16px;
+}
 
-  .hair-right {
-    position: absolute;
-    top: 0;
-    right: 30px;
-    width: 40px;
-    height: 140px;
-    border-right: 2.5px solid #1B3B6B;
-    border-top: 2.5px solid #1B3B6B;
-    border-radius: 0 40px 0 0;
-    background: rgba(27, 59, 107, 0.05);
-  }
+.quote-author {
+  font-size: 12px;
+  color: #8B7355;
+  margin-top: 8px;
+  padding-left: 16px;
+  letter-spacing: 1px;
+}
 
-  .hair-top {
-    position: absolute;
-    top: -10px;
-    left: 40px;
-    width: 120px;
-    height: 40px;
-    border-top: 2.5px solid #1B3B6B;
-    border-radius: 60px 60px 0 0;
-    background: rgba(27, 59, 107, 0.08);
-  }
+/* Right panel - timeline */
+.content-panel {
+  position: absolute;
+  left: 660px;
+  top: 110px;
+  width: 880px;
+  height: 700px;
+}
 
-  /* Beard */
-  .beard {
-    position: absolute;
-    top: 100px;
-    left: 45px;
-    width: 110px;
-    height: 90px;
-    border-bottom: 2.5px solid #1B3B6B;
-    border-left: 1.5px solid #1B3B6B;
-    border-right: 1.5px solid #1B3B6B;
-    border-radius: 0 0 55px 55px;
-    background: rgba(27, 59, 107, 0.07);
-  }
+.section-label {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 14px;
+  color: #8B7355;
+  letter-spacing: 4px;
+  margin-bottom: 30px;
+}
 
-  /* Eyes */
-  .eye-left {
-    position: absolute;
-    top: 60px;
-    left: 72px;
-    width: 12px;
-    height: 12px;
-    border: 2px solid #1B3B6B;
-    border-radius: 50%;
-  }
+.timeline {
+  position: relative;
+  padding-left: 36px;
+}
 
-  .eye-right {
-    position: absolute;
-    top: 60px;
-    left: 116px;
-    width: 12px;
-    height: 12px;
-    border: 2px solid #1B3B6B;
-    border-radius: 50%;
-  }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  bottom: 8px;
+  width: 1.5px;
+  background: #1B3B6B;
+  opacity: 0.2;
+}
 
-  /* Glasses */
-  .glass-left {
-    position: absolute;
-    top: 52px;
-    left: 62px;
-    width: 30px;
-    height: 28px;
-    border: 2px solid #8B7355;
-    border-radius: 6px;
-  }
+.timeline-item {
+  position: relative;
+  margin-bottom: 32px;
+  padding-left: 10px;
+}
 
-  .glass-right {
-    position: absolute;
-    top: 52px;
-    left: 108px;
-    width: 30px;
-    height: 28px;
-    border: 2px solid #8B7355;
-    border-radius: 6px;
-  }
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -32px;
+  top: 7px;
+  width: 10px;
+  height: 10px;
+  background: #F5F0E8;
+  border: 2px solid #1B3B6B;
+}
 
-  .glass-bridge {
-    position: absolute;
-    top: 62px;
-    left: 90px;
-    width: 20px;
-    height: 2px;
-    background: #8B7355;
-  }
+.timeline-item.highlight::before {
+  background: #1B3B6B;
+}
 
-  /* Neck / shoulders */
-  .neck-shoulder {
-    position: absolute;
-    top: 185px;
-    left: 30px;
-    width: 140px;
-    height: 80px;
-    border: 2.5px solid #1B3B6B;
-    border-top: none;
-    border-radius: 0 0 20px 20px;
-    background: rgba(27, 59, 107, 0.04);
-  }
+.timeline-item.square-marker::before {
+  border-radius: 0;
+}
 
-  .portrait-caption {
-    margin-top: 24px;
-    text-align: center;
-    font-family: 'Noto Serif SC', serif;
-    font-size: 16px;
-    color: #1B3B6B;
-    font-weight: 700;
-  }
+.timeline-item.circle-marker::before {
+  border-radius: 50%;
+}
 
-  .portrait-caption-sub {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 13px;
-    color: #8B7355;
-    font-weight: 400;
-    margin-top: 4px;
-    letter-spacing: 1px;
-  }
+.timeline-phase {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+}
 
-  /* Timeline / Content area */
-  .content-area {
-    position: absolute;
-    top: 185px;
-    left: 80px;
-    width: 640px;
-    z-index: 5;
-  }
+.timeline-title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #1B3B6B;
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
 
-  .section-label {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 3px;
-    color: #8B7355;
-    margin-bottom: 24px;
-    padding-bottom: 10px;
-    border-bottom: 1.5px solid rgba(139, 115, 85, 0.3);
-    text-transform: uppercase;
-  }
+.timeline-desc {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+}
 
-  .timeline-item {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 22px;
-    position: relative;
-  }
+/* Bottom accent bar */
+.bottom-bar {
+  position: absolute;
+  bottom: 30px;
+  left: 60px;
+  right: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  .timeline-item::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 2px;
-    height: 100%;
-    background: rgba(27, 59, 107, 0.15);
-  }
+.bottom-line {
+  height: 1px;
+  flex: 1;
+  background: #1B3B6B;
+  opacity: 0.1;
+  margin: 0 20px;
+}
 
-  .timeline-marker {
-    width: 14px;
-    height: 14px;
-    min-width: 14px;
-    border: 2.5px solid #1B3B6B;
-    margin-right: 18px;
-    margin-top: 3px;
-    background: #F5F0E8;
-    z-index: 2;
-    position: relative;
-    left: -6px;
-  }
+.bottom-text {
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 2px;
+}
 
-  .timeline-item.active .timeline-marker {
-    background: #1B3B6B;
-  }
+/* Additional Bauhaus elements */
+.bauhaus-triangle {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 26px solid #1B3B6B;
+  opacity: 0.06;
+  top: 80px;
+  left: 580px;
+}
 
-  .timeline-item.square .timeline-marker {
-    border-radius: 0;
-  }
+.bauhaus-dot-row {
+  position: absolute;
+  top: 780px;
+  left: 660px;
+  display: flex;
+  gap: 12px;
+}
 
-  .timeline-item.circle .timeline-marker {
-    border-radius: 50%;
-  }
-
-  .timeline-item.diamond .timeline-marker {
-    transform: rotate(45deg);
-    left: -6px;
-  }
-
-  .timeline-content {
-    flex: 1;
-  }
-
-  .timeline-title {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 18px;
-    font-weight: 700;
-    color: #1B3B6B;
-    line-height: 1.4;
-  }
-
-  .timeline-desc {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 13px;
-    font-weight: 400;
-    color: #555;
-    line-height: 1.6;
-    margin-top: 4px;
-  }
-
-  /* Quote section */
-  .quote-section {
-    position: absolute;
-    bottom: 60px;
-    left: 80px;
-    width: 640px;
-    z-index: 5;
-    padding: 16px 24px;
-    border-left: 4px solid #1B3B6B;
-    background: rgba(27, 59, 107, 0.03);
-  }
-
-  .quote-text {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 15px;
-    font-style: italic;
-    color: #1B3B6B;
-    line-height: 1.6;
-  }
-
-  .quote-attr {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 12px;
-    color: #8B7355;
-    margin-top: 6px;
-  }
-
-  /* Bottom bar */
-  .bottom-bar {
-    position: absolute;
-    bottom: 0; left: 0;
-    width: 1600px; height: 4px;
-    background: #8B7355;
-    z-index: 10;
-  }
-
-  /* Page indicator */
-  .page-indicator {
-    position: absolute;
-    bottom: 24px;
-    right: 80px;
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 12px;
-    color: #8B7355;
-    letter-spacing: 2px;
-    z-index: 5;
-  }
-
-  /* Free spirit tagline */
-  .spirit-tag {
-    position: absolute;
-    top: 60px;
-    right: 80px;
-    font-family: 'Noto Serif SC', serif;
-    font-size: 14px;
-    color: #8B7355;
-    letter-spacing: 3px;
-    z-index: 5;
-    text-align: right;
-    line-height: 1.8;
-  }
-
-  .spirit-tag .accent {
-    color: #1B3B6B;
-    font-weight: 700;
-    font-size: 16px;
-  }
-
-  /* Arrow flow */
-  .flow-arrow {
-    position: absolute;
-    bottom: 170px;
-    right: 310px;
-    width: 60px;
-    height: 2px;
-    background: #8B7355;
-    opacity: 0.4;
-    z-index: 4;
-  }
-
-  .flow-arrow::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: -4px;
-    width: 0; height: 0;
-    border-left: 8px solid #8B7355;
-    border-top: 5px solid transparent;
-    border-bottom: 5px solid transparent;
-    opacity: 0.6;
-  }
+.bauhaus-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #8B7355;
+  opacity: 0.4;
+}
 </style>
 </head>
 <body>
-
-  <div class="top-bar"></div>
-  <div class="bottom-bar"></div>
-
-  <!-- Bauhaus geometric decorations -->
-  <div class="geo-circle-1"></div>
-  <div class="geo-circle-2"></div>
-  <div class="geo-square-1"></div>
-  <div class="geo-square-2"></div>
-  <div class="geo-line-1"></div>
-  <div class="geo-line-2"></div>
-  <div class="geo-circle-3"></div>
-  <div class="geo-circle-4"></div>
-  <div class="geo-ring"></div>
+<div class="slide">
+  <!-- Background geometric decorations -->
+  <div class="deco-circle-large"></div>
+  <div class="deco-circle-mid"></div>
+  <div class="deco-square"></div>
+  <div class="bauhaus-triangle"></div>
 
   <!-- Header -->
   <div class="header">
-    <div class="lecture-tag">Lecture 11 &nbsp;·&nbsp; Culture Matters</div>
-    <h1 class="main-title">Hacker 文化起源、<br>发展与陨落</h1>
-    <p class="sub-line">从 MIT 人工智慧实验室到自由软件运动——<br>一种技术理想主义者的精神谱系</p>
+    <div class="lecture-tag">第 11 期 · 文化的重要作用</div>
+    <div class="slide-num">— 开源之道 —</div>
   </div>
 
-  <!-- Spirit tagline -->
-  <div class="spirit-tag">
-    <span class="accent">若为自由故</span><br>
-    自由软件运动的精神源流
+  <!-- Left visual panel -->
+  <div class="visual-panel">
+    <div class="visual-frame">
+      <div class="visual-title">Visual Metaphor</div>
+      <div class="visual-main-title">若为自由故</div>
+      <div class="visual-subtitle">自由不羁的精神象征<br>—— 斯托曼长发胡须的隐喻</div>
+
+      <!-- Abstract geometric figure -->
+      <div class="figure">
+        <div class="figure-hair"></div>
+        <div class="figure-head"></div>
+        <div class="figure-body"></div>
+        <div class="figure-line-1"></div>
+        <div class="figure-line-2"></div>
+        <div class="figure-square"></div>
+        <div class="figure-small-circle"></div>
+      </div>
+
+      <!-- Quote -->
+      <div class="quote">
+        <div class="quote-text">「The only use of a computer is to print out numbers. The most interesting computer is used for writing programs.」</div>
+        <div class="quote-author">— Richard M. Stallman</div>
+      </div>
+    </div>
   </div>
 
-  <!-- Central Portrait -->
-  <div class="portrait-area">
-    <div class="portrait-frame">
-      <div class="portrait-abstract">
-        <div class="hair-top"></div>
-        <div class="hair-left"></div>
-        <div class="hair-right"></div>
-        <div class="head-shape"></div>
-        <div class="glass-left"></div>
-        <div class="glass-right"></div>
-        <div class="glass-bridge"></div>
-        <div class="eye-left"></div>
-        <div class="eye-right"></div>
-        <div class="beard"></div>
-        <div class="neck-shoulder"></div>
+  <!-- Right content panel -->
+  <div class="content-panel">
+    <div class="section-label">HACKER 文化：起源 · 发展 · 陨落</div>
+
+    <div class="timeline">
+      <div class="timeline-item circle-marker">
+        <div class="timeline-phase">ORIGIN · 1960s–1970s</div>
+        <div class="timeline-title">MIT 人工智能实验室</div>
+        <div class="timeline-desc">Hacker 文化的摇篮，MIT AI Lab 汇聚天才少年，<br>以破解复杂问题为乐的纯粹精神。2002 年关闭。</div>
       </div>
-    </div>
-    <div class="portrait-caption">Richard Stallman</div>
-    <div class="portrait-caption-sub">FSF 创始人 · GNU Project 发起者</div>
-  </div>
 
-  <!-- Timeline Content -->
-  <div class="content-area">
-    <div class="section-label">Hacker 文化谱系 · Genealogy</div>
-
-    <div class="timeline-item circle active">
-      <div class="timeline-marker"></div>
-      <div class="timeline-content">
-        <div class="timeline-title">MIT 人工智慧实验室</div>
-        <div class="timeline-desc">1959 年成立，成为早期 Hacker 文化的摇篮与圣地</div>
+      <div class="timeline-item circle-marker">
+        <div class="timeline-phase">ETHOS · 文化内核</div>
+        <div class="timeline-title">Hacker 手册</div>
+        <div class="timeline-desc">规则、信条与禁忌——开放共享、反对权威、<br>以代码为信仰，技术民主主义的原始契约。</div>
       </div>
-    </div>
 
-    <div class="timeline-item square active">
-      <div class="timeline-marker"></div>
-      <div class="timeline-content">
-        <div class="timeline-title">Hacker 手册 · 太空游戏</div>
-        <div class="timeline-desc">社区共享知识、协作开发太空战争（Spacewar!）</div>
+      <div class="timeline-item square-marker">
+        <div class="timeline-phase">EVOLUTION · 1980s</div>
+        <div class="timeline-title">太空游戏与协作实验</div>
+        <div class="timeline-desc">Spacewar! 等协作式游戏塑造集体创作范式，<br>开源协作的第一次社会实验。</div>
       </div>
-    </div>
 
-    <div class="timeline-item diamond">
-      <div class="timeline-marker"></div>
-      <div class="timeline-content">
-        <div class="timeline-title">软件合同与商业化的兴起</div>
-        <div class="timeline-desc">专有许可侵蚀共享文化，Hacker 精神面临分裂</div>
+      <div class="timeline-item square-marker">
+        <div class="timeline-phase">DECLINE · 1980s–1990s</div>
+        <div class="timeline-title">软件合同与公司的流行</div>
+        <div class="timeline-desc">专有软件与商业许可席卷市场，<br>源代码封闭化终结了黑客社区的开放传统。</div>
       </div>
-    </div>
 
-    <div class="timeline-item circle active">
-      <div class="timeline-marker"></div>
-      <div class="timeline-content">
+      <div class="timeline-item circle-marker highlight">
+        <div class="timeline-phase">FINAL HACKER · 1983</div>
         <div class="timeline-title">最后的 Hacker：Richard Stallman</div>
-        <div class="timeline-desc">1983 年发起 GNU Project，以自由软件守护 Hacker 理想</div>
+        <div class="timeline-desc">GNU 计划的起点——将黑客精神转化为自由软件运动，<br>以许可证守护代码自由，开启 GPL 时代。</div>
       </div>
     </div>
   </div>
 
-  <!-- Quote -->
-  <div class="quote-section">
-    <div class="quote-text">"我的梦想是：没有一个人会因为使用电脑而被迫变得不自由。"</div>
-    <div class="quote-attr">—— Richard Stallman</div>
+  <!-- Bottom accent -->
+  <div class="bottom-bar">
+    <div class="bottom-text">OPEN SOURCE ECONOMICS · CULTURE</div>
+    <div class="bottom-line"></div>
+    <div class="bottom-text">SLIDE — 11 / 28</div>
   </div>
 
-  <!-- Flow arrow -->
-  <div class="flow-arrow"></div>
-
-  <!-- Page indicator -->
-  <div class="page-indicator">11 · 04 / 28</div>
-
+  <div class="bauhaus-dot-row">
+    <div class="bauhaus-dot"></div>
+    <div class="bauhaus-dot"></div>
+    <div class="bauhaus-dot"></div>
+    <div class="bauhaus-dot"></div>
+    <div class="bauhaus-dot"></div>
+  </div>
+</div>
 </body>
 </html>

@@ -1,16 +1,19 @@
 
 
 <!DOCTYPE html>
-<html><!-- source_hash: e85320e027a578dc -->
+<html lang="zh-CN"><!-- source_hash: 587e9a9bf4919269 -->
 <head>
 <meta charset="UTF-8">
-<title>第 11 期 · 文化的重要作用</title>
+<title>第11期 · 文化的重要作用</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
   html, body {
     width: 1600px;
     height: 900px;
     overflow: hidden;
-    margin: 0;
     background: #F5F0E8;
     font-family: 'Noto Sans SC', sans-serif;
     color: #1B3B6B;
@@ -20,522 +23,670 @@
     position: relative;
     width: 1600px;
     height: 900px;
-    overflow: hidden;
+    background: #F5F0E8;
   }
 
-  /* Background geometric decorations */
-  .bg-circle-1 {
+  /* Subtle parchment texture */
+  .slide::before {
+    content: '';
     position: absolute;
-    width: 420px;
-    height: 420px;
-    border-radius: 50%;
-    border: 2px solid rgba(27, 59, 107, 0.08);
-    top: -160px;
-    right: -100px;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: 
+      radial-gradient(ellipse at 20% 50%, rgba(255,255,255,0.3) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(230,220,200,0.2) 0%, transparent 40%);
+    pointer-events: none;
+    z-index: 0;
   }
 
-  .bg-circle-2 {
-    position: absolute;
-    width: 280px;
-    height: 280px;
-    border-radius: 50%;
-    background: rgba(27, 59, 107, 0.03);
-    bottom: -80px;
-    left: 520px;
-  }
-
-  .bg-square {
-    position: absolute;
-    width: 180px;
-    height: 180px;
-    border: 1.5px solid rgba(139, 115, 85, 0.12);
-    top: 120px;
-    right: 200px;
-    transform: rotate(15deg);
-  }
-
-  .bg-line-1 {
-    position: absolute;
-    width: 1px;
-    height: 500px;
-    background: rgba(27, 59, 107, 0.06);
-    left: 580px;
-    top: 100px;
-  }
-
-  /* Header */
+  /* Header bar */
   .header {
     position: absolute;
-    top: 50px;
-    left: 80px;
-    right: 80px;
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: #1B3B6B;
+    z-index: 10;
   }
 
-  .lecture-badge {
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  .header-accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 6px;
+    background: #8B7355;
+    z-index: 11;
+  }
+
+  /* Section number */
+  .section-num {
+    position: absolute;
+    top: 40px;
+    right: 60px;
+    font-family: 'Noto Serif SC', serif;
     font-size: 14px;
+    font-weight: 400;
+    color: #8B7355;
+    letter-spacing: 3px;
+    z-index: 5;
+  }
+
+  .section-num span {
+    font-weight: 700;
+    font-size: 18px;
+    color: #1B3B6B;
+  }
+
+  /* Decorative geometric elements */
+  .deco-circle-1 {
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 2px solid rgba(27, 59, 107, 0.08);
+    z-index: 1;
+  }
+
+  .deco-circle-2 {
+    position: absolute;
+    bottom: -40px;
+    left: -40px;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 2px solid rgba(139, 115, 85, 0.1);
+    z-index: 1;
+  }
+
+  .deco-square-1 {
+    position: absolute;
+    top: 580px;
+    right: 50px;
+    width: 30px;
+    height: 30px;
+    background: rgba(27, 59, 107, 0.06);
+    z-index: 1;
+  }
+
+  /* Title area */
+  .title-area {
+    position: absolute;
+    top: 60px;
+    left: 70px;
+    z-index: 5;
+  }
+
+  .title-lecture {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
     letter-spacing: 4px;
     color: #8B7355;
-    text-transform: uppercase;
+    margin-bottom: 12px;
   }
 
-  .lecture-badge span {
-    display: inline-block;
-    background: #1B3B6B;
-    color: #F5F0E8;
-    padding: 2px 10px;
-    margin-right: 8px;
-    font-weight: 600;
-  }
-
-  .deck-meta {
-    font-size: 12px;
-    color: #8B7355;
-    letter-spacing: 2px;
-  }
-
-  /* Title section */
-  .title-block {
-    position: absolute;
-    top: 100px;
-    left: 80px;
-    width: 720px;
-  }
-
-  .title-block h1 {
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-    font-size: 54px;
+  .title-main {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 46px;
     font-weight: 700;
     color: #1B3B6B;
     line-height: 1.2;
-    margin: 0 0 8px 0;
-    letter-spacing: 1px;
+    margin-bottom: 8px;
   }
 
-  .title-block .subtitle {
-    font-size: 16px;
-    color: #8B7355;
-    letter-spacing: 3px;
-    margin: 0;
-  }
-
-  .title-divider {
-    width: 80px;
+  .title-underline {
+    width: 60px;
     height: 3px;
-    background: #1B3B6B;
-    margin: 18px 0 0 0;
+    background: #8B7355;
+    margin-top: 16px;
+    margin-bottom: 8px;
   }
 
-  /* Visual metaphor area - left side */
-  .visual-area {
+  .title-meta {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13px;
+    color: #8B7355;
+    letter-spacing: 1px;
+    margin-top: 4px;
+  }
+
+  /* Visual metaphor: Cup with straws */
+  .visual-container {
     position: absolute;
     top: 240px;
-    left: 80px;
-    width: 480px;
-    height: 560px;
+    left: 70px;
+    width: 380px;
+    height: 580px;
+    z-index: 5;
   }
 
-  .cup-scene {
-    position: relative;
-    width: 480px;
-    height: 500px;
-    margin-top: 20px;
-  }
-
-  /* The cup - a wide, short trapezoid made with CSS */
+  /* The cup (trapezoid approximated with a shape) */
   .cup {
     position: absolute;
-    bottom: 0;
+    bottom: 60px;
     left: 50%;
     transform: translateX(-50%);
-    width: 260px;
-    height: 160px;
+    width: 200px;
+    height: 260px;
+  }
+
+  .cup-body {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200px;
+    height: 240px;
     background: #1B3B6B;
-    clip-path: polygon(5% 0%, 95% 0%, 85% 100%, 15% 100%);
-    border-radius: 0 0 20px 20px;
+    clip-path: polygon(12% 0%, 88% 0%, 100% 100%, 0% 100%);
+    border-radius: 0 0 18px 18px;
   }
 
   .cup-rim {
     position: absolute;
-    bottom: 150px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 270px;
-    height: 16px;
-    background: #1B3B6B;
-    border-radius: 8px;
+    top: -2px;
+    left: -4px;
+    width: 208px;
+    height: 22px;
+    background: #264b7a;
+    border-radius: 6px;
   }
 
-  .cup-shadow {
+  .cup-rim-inner {
     position: absolute;
-    bottom: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 280px;
+    top: 2px;
+    left: 8px;
+    width: 192px;
     height: 12px;
-    background: rgba(27, 59, 107, 0.12);
-    border-radius: 50%;
-    filter: blur(6px);
+    background: #0f2848;
+    border-radius: 4px;
   }
 
-  /* Straws - colorful lines sticking out of the cup */
+  /* Straws - geometric lines emanating from cup */
   .straw {
     position: absolute;
-    bottom: 155px;
-    width: 10px;
-    border-radius: 5px 5px 0 0;
+    bottom: 280px;
+    width: 8px;
+    border-radius: 4px;
     transform-origin: bottom center;
   }
 
-  .straw-1 {
-    left: 175px;
-    height: 220px;
-    background: #C75C5C;
-    transform: rotate(-18deg);
-  }
+  .straw-1 { left: 80px; height: 220px; background: #C0392B; transform: rotate(-18deg); }
+  .straw-2 { left: 100px; height: 260px; background: #E67E22; transform: rotate(-10deg); }
+  .straw-3 { left: 120px; height: 240px; background: #27AE60; transform: rotate(-3deg); }
+  .straw-4 { left: 140px; height: 280px; background: #2980B9; transform: rotate(4deg); }
+  .straw-5 { left: 160px; height: 230px; background: #8E44AD; transform: rotate(12deg); }
+  .straw-6 { left: 180px; height: 250px; background: #D35400; transform: rotate(18deg); }
 
-  .straw-2 {
-    left: 195px;
-    height: 260px;
-    background: #D4A843;
-    transform: rotate(-8deg);
-  }
-
-  .straw-3 {
-    left: 215px;
-    height: 280px;
-    background: #5B8C5A;
-    transform: rotate(0deg);
-  }
-
-  .straw-4 {
-    left: 235px;
-    height: 250px;
-    background: #8B7355;
-    transform: rotate(8deg);
-  }
-
-  .straw-5 {
-    left: 255px;
-    height: 230px;
-    background: #6B5B95;
-    transform: rotate(16deg);
-  }
-
-  .straw-6 {
-    left: 275px;
-    height: 210px;
-    background: #B85C4B;
-    transform: rotate(24deg);
-  }
-
-  /* Circle accent - represents diversity/dots on straws */
-  .straw-dot {
+  .straw-cap {
     position: absolute;
-    width: 16px;
-    height: 16px;
+    top: -6px;
+    left: -3px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
-    border: 2px solid rgba(27, 59, 107, 0.2);
-    background: #F5F0E8;
   }
 
-  .dot-1 {
-    top: 60px;
-    left: 150px;
-  }
+  .straw-1 .straw-cap { background: #922B21; }
+  .straw-2 .straw-cap { background: #CA6F1E; }
+  .straw-3 .straw-cap { background: #1E8449; }
+  .straw-4 .straw-cap { background: #1F618D; }
+  .straw-5 .straw-cap { background: #6C3483; }
+  .straw-6 .straw-cap { background: #A04000; }
 
-  .dot-2 {
-    top: 100px;
-    left: 300px;
-    width: 12px;
-    height: 12px;
-  }
-
-  /* Geometric decoration elements around cup */
-  .geo-circle-accent {
+  /* Visual caption */
+  .visual-caption {
     position: absolute;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 2px solid rgba(27, 59, 107, 0.15);
-    top: 40px;
-    left: 30px;
-  }
-
-  .geo-square-accent {
-    position: absolute;
-    width: 35px;
-    height: 35px;
-    background: rgba(139, 115, 85, 0.12);
-    top: 180px;
-    right: 20px;
-    transform: rotate(20deg);
-  }
-
-  .geo-line-accent {
-    position: absolute;
-    width: 60px;
-    height: 2px;
-    background: rgba(27, 59, 107, 0.2);
-    top: 80px;
-    right: 60px;
-    transform: rotate(-30deg);
-  }
-
-  /* Right side content */
-  .content-area {
-    position: absolute;
-    top: 240px;
-    left: 620px;
-    width: 900px;
-  }
-
-  .content-intro {
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-    font-size: 18px;
-    color: #555;
-    margin-bottom: 28px;
-    line-height: 1.7;
-    font-style: italic;
-  }
-
-  .core-questions {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .core-questions li {
-    position: relative;
-    padding: 14px 0 14px 36px;
-    font-size: 17px;
-    line-height: 1.65;
-    color: #1B3B6B;
-    border-bottom: 1px solid rgba(27, 59, 107, 0.08);
-  }
-
-  .core-questions li:last-child {
-    border-bottom: none;
-  }
-
-  .core-questions li .num {
-    position: absolute;
-    left: 0;
-    top: 14px;
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-    font-size: 14px;
-    color: #8B7355;
-    font-weight: 600;
-    letter-spacing: 1px;
-  }
-
-  .core-questions li strong {
-    color: #1B3B6B;
-    font-weight: 600;
-  }
-
-  .core-questions li .highlight {
-    color: #8B7355;
-    font-style: italic;
-  }
-
-  /* Bottom bar */
-  .bottom-bar {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 80px;
-    border-top: 1px solid rgba(27, 59, 107, 0.1);
-  }
-
-  .bottom-left {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-
-  .bottom-tag {
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Noto Sans SC', sans-serif;
     font-size: 11px;
     color: #8B7355;
     letter-spacing: 2px;
+    white-space: nowrap;
   }
 
-  .bottom-progress {
-    display: flex;
-    gap: 4px;
+  /* Decorative dots near visual */
+  .deco-dot-1 {
+    position: absolute;
+    top: 270px;
+    left: 460px;
+    width: 10px;
+    height: 10px;
+    background: #8B7355;
+    border-radius: 50%;
+    opacity: 0.3;
   }
 
-  .progress-dot {
+  .deco-dot-2 {
+    position: absolute;
+    top: 290px;
+    left: 480px;
     width: 6px;
     height: 6px;
+    background: #1B3B6B;
     border-radius: 50%;
-    background: rgba(27, 59, 107, 0.15);
+    opacity: 0.2;
   }
 
-  .progress-dot.active {
+  .deco-line-1 {
+    position: absolute;
+    top: 300px;
+    left: 490px;
+    width: 40px;
+    height: 2px;
+    background: rgba(27, 59, 107, 0.1);
+  }
+
+  /* Content area */
+  .content-area {
+    position: absolute;
+    top: 240px;
+    left: 540px;
+    width: 1000px;
+    height: 620px;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0;
+  }
+
+  /* Central question */
+  .core-question {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #1B3B6B;
+    line-height: 1.5;
+    margin-bottom: 32px;
+    padding-left: 20px;
+    border-left: 3px solid #8B7355;
+  }
+
+  .core-question em {
+    font-style: normal;
+    color: #8B7355;
+    font-weight: 400;
+  }
+
+  /* Bullet points */
+  .bullet-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .bullet-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .bullet-marker {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+
+  .marker-circle {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
     background: #1B3B6B;
   }
 
-  .progress-dot.current {
+  .marker-square {
+    width: 12px;
+    height: 12px;
     background: #8B7355;
-    width: 10px;
-    height: 6px;
-    border-radius: 3px;
   }
 
-  .bottom-right {
+  .marker-diamond {
+    width: 12px;
+    height: 12px;
+    background: #1B3B6B;
+    transform: rotate(45deg);
+  }
+
+  .marker-cross {
+    width: 14px;
+    height: 14px;
+    position: relative;
+  }
+
+  .marker-cross::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 0;
+    width: 14px;
+    height: 2px;
+    background: #8B7355;
+  }
+
+  .marker-cross::after {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 0;
+    width: 2px;
+    height: 14px;
+    background: #8B7355;
+  }
+
+  .bullet-text {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #333;
+    flex: 1;
+  }
+
+  .bullet-text .highlight {
+    color: #1B3B6B;
+    font-weight: 700;
+  }
+
+  .bullet-text .accent {
+    color: #8B7355;
+    font-weight: 500;
+  }
+
+  .bullet-text .sub {
+    display: block;
+    font-size: 13px;
+    color: #888;
+    margin-top: 4px;
+    line-height: 1.6;
+  }
+
+  /* Bottom decorative line */
+  .bottom-line {
+    position: absolute;
+    bottom: 40px;
+    left: 70px;
+    right: 70px;
+    height: 1px;
+    background: rgba(139, 115, 85, 0.2);
+    z-index: 3;
+  }
+
+  /* Footer */
+  .footer {
+    position: absolute;
+    bottom: 16px;
+    left: 70px;
+    right: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 5;
+    font-family: 'Noto Sans SC', sans-serif;
     font-size: 11px;
     color: #8B7355;
-    letter-spacing: 3px;
+    letter-spacing: 1px;
   }
 
-  /* Top accent line */
-  .top-line {
+  .footer-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .footer-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #8B7355;
+  }
+
+  .footer-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* Small decorative elements in corners */
+  .corner-deco-tl {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
+    top: 30px;
+    left: 30px;
+    width: 15px;
+    height: 15px;
+    border-top: 2px solid rgba(27, 59, 107, 0.15);
+    border-left: 2px solid rgba(27, 59, 107, 0.15);
+    z-index: 1;
+  }
+
+  .corner-deco-br {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    width: 15px;
+    height: 15px;
+    border-bottom: 2px solid rgba(139, 115, 85, 0.15);
+    border-right: 2px solid rgba(139, 115, 85, 0.15);
+    z-index: 1;
+  }
+
+  /* Horizontal accent line */
+  .accent-line {
+    position: absolute;
+    left: 540px;
+    width: 40px;
+    height: 2px;
     background: #1B3B6B;
+    z-index: 5;
   }
 
-  /* Subtle texture overlay */
-  .texture {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(ellipse at 30% 20%, rgba(139, 115, 85, 0.02), transparent 60%),
-                radial-gradient(ellipse at 80% 80%, rgba(27, 59, 107, 0.015), transparent 50%);
-    pointer-events: none;
-    z-index: 0;
+  /* Williamson reference box */
+  .ref-box {
+    margin-top: 28px;
+    padding: 18px 22px;
+    background: rgba(27, 59, 107, 0.04);
+    border-left: 3px solid #1B3B6B;
+    border-radius: 0 4px 4px 0;
   }
+
+  .ref-box .ref-title {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #1B3B6B;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+
+  .ref-box .ref-content {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 14px;
+    color: #444;
+    line-height: 1.7;
+  }
+
+  .ref-box .ref-content .key {
+    color: #1B3B6B;
+    font-weight: 600;
+  }
+
+  /* Large faded number watermark */
+  .watermark {
+    position: absolute;
+    bottom: 60px;
+    right: 40px;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 200px;
+    font-weight: 900;
+    color: rgba(27, 59, 107, 0.03);
+    line-height: 1;
+    z-index: 0;
+    user-select: none;
+  }
+
+  /* Bauhaus geometric decoration behind content */
+  .bauhaus-deco {
+    position: absolute;
+    top: 150px;
+    right: 60px;
+    width: 100px;
+    height: 100px;
+    z-index: 1;
+  }
+
+  .bauhaus-circle {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid rgba(27, 59, 107, 0.07);
+    top: 0;
+    right: 0;
+  }
+
+  .bauhaus-square {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: rgba(139, 115, 85, 0.06);
+    bottom: 0;
+    left: 0;
+  }
+
+  .bauhaus-line {
+    position: absolute;
+    width: 80px;
+    height: 1px;
+    background: rgba(27, 59, 107, 0.08);
+    bottom: 20px;
+    right: 10px;
+  }
+
 </style>
 </head>
 <body>
 <div class="slide">
-  <div class="top-line"></div>
-  <div class="texture"></div>
-
-  <!-- Background decorations -->
-  <div class="bg-circle-1"></div>
-  <div class="bg-circle-2"></div>
-  <div class="bg-square"></div>
-  <div class="bg-line-1"></div>
-
   <!-- Header -->
-  <div class="header">
-    <div class="lecture-badge"><span>11</span>文化的重要作用</div>
-    <div class="deck-meta">CULTURE MATTERS · 开源之道</div>
+  <div class="header"></div>
+  <div class="header-accent"></div>
+
+  <!-- Corner decorations -->
+  <div class="corner-deco-tl"></div>
+  <div class="corner-deco-br"></div>
+
+  <!-- Decorative elements -->
+  <div class="deco-circle-1"></div>
+  <div class="deco-circle-2"></div>
+  <div class="deco-square-1"></div>
+  <div class="watermark">11</div>
+
+  <!-- Section number -->
+  <div class="section-num">第 <span>11</span> 期 · 共 28 讲</div>
+
+  <!-- Bauhaus decoration -->
+  <div class="bauhaus-deco">
+    <div class="bauhaus-circle"></div>
+    <div class="bauhaus-square"></div>
+    <div class="bauhaus-line"></div>
   </div>
 
-  <!-- Title block -->
-  <div class="title-block">
-    <h1>文化为什么<br>不可或缺？</h1>
-    <p class="subtitle">制度金字塔的根基 · 信任 · 伦理基因</p>
-    <div class="title-divider"></div>
+  <!-- Title -->
+  <div class="title-area">
+    <div class="title-lecture">开源经济学 · OPEN SOURCE ECONOMICS</div>
+    <div class="title-main">文化的重要作用</div>
+    <div class="title-underline"></div>
+    <div class="title-meta">新制度经济学视角 · 制度金字塔根基</div>
   </div>
 
-  <!-- Visual metaphor -->
-  <div class="visual-area">
-    <div class="cup-scene">
-      <!-- Geometric accents -->
-      <div class="geo-circle-accent"></div>
-      <div class="geo-square-accent"></div>
-      <div class="geo-line-accent"></div>
-
-      <!-- Straws -->
-      <div class="straw straw-1"></div>
-      <div class="straw straw-2"></div>
-      <div class="straw straw-3"></div>
-      <div class="straw straw-4"></div>
-      <div class="straw straw-5"></div>
-      <div class="straw straw-6"></div>
-
-      <!-- Dots (diversity markers) -->
-      <div class="straw-dot dot-1"></div>
-      <div class="straw-dot dot-2"></div>
-
-      <!-- Cup shadow -->
-      <div class="cup-shadow"></div>
-
-      <!-- Cup -->
-      <div class="cup-rim"></div>
-      <div class="cup"></div>
+  <!-- Visual Metaphor: Cup with colorful straws -->
+  <div class="visual-container">
+    <!-- Straws -->
+    <div class="straw straw-1"><div class="straw-cap"></div></div>
+    <div class="straw straw-2"><div class="straw-cap"></div></div>
+    <div class="straw straw-3"><div class="straw-cap"></div></div>
+    <div class="straw straw-4"><div class="straw-cap"></div></div>
+    <div class="straw straw-5"><div class="straw-cap"></div></div>
+    <div class="straw straw-6"><div class="straw-cap"></div></div>
+    <!-- Cup -->
+    <div class="cup">
+      <div class="cup-rim">
+        <div class="cup-rim-inner"></div>
+      </div>
+      <div class="cup-body"></div>
     </div>
+    <!-- Caption -->
+    <div class="visual-caption">文化多样性 · 日常化的呈现</div>
   </div>
 
-  <!-- Content area -->
+  <!-- Decorative dots near visual -->
+  <div class="deco-dot-1"></div>
+  <div class="deco-dot-2"></div>
+  <div class="deco-line-1"></div>
+
+  <!-- Content Area -->
   <div class="content-area">
-    <p class="content-intro">"所有制度最终依赖文化来支撑。" 蓝色杯中插满多彩吸管——文化多样性的日常化呈现。</p>
-    <ul class="core-questions">
-      <li>
-        <span class="num">01</span>
-        <strong>文化为什么重要？</strong>——因为所有制度最终依赖文化来支撑
-      </li>
-      <li>
-        <span class="num">02</span>
-        <strong>黑客伦理、科学伦理、强互惠：</strong>开源文化的基因是什么？
-      </li>
-      <li>
-        <span class="num">03</span>
-        <strong>信任</strong>作为社会系统的运作基础 <span class="highlight">（Luhmann）</span>
-      </li>
-      <li>
-        <span class="num">04</span>
-        回到第0期核心问题：开源是什么？——<span class="highlight">12讲回顾与适兕的回答</span>
-      </li>
-      <li>
-        <span class="num">05</span>
-        <strong>Williamson L1：</strong>社会嵌入层是整个制度金字塔的根基
-      </li>
-    </ul>
-  </div>
+    <!-- Core question -->
+    <div class="core-question">
+      文化为什么重要？<br>
+      <em>因为所有制度最终依赖文化来支撑</em>
+    </div>
 
-  <!-- Bottom bar -->
-  <div class="bottom-bar">
-    <div class="bottom-left">
-      <span class="bottom-tag">第 11 期 / 共 28 讲</span>
-      <div class="bottom-progress">
-        <div class="progress-dot active"></div>
-        <div class="progress-dot active"></div>
-        <div class="progress-dot active"></div>
-        <div class="progress-dot active"></div>
-        <div class="progress-dot active"></div>
-        <div class="progress-dot active"></div>
-        <div class="progress-dot active"></div>
-        <div class="progress-dot active"></div>
-        <div class="progress-dot active"></div>
-        <div class="progress-dot active"></div>
-        <div class="progress-dot active"></div>
-        <div class="progress-dot active"></div>
-        <div class="progress-dot current"></div>
-        <div class="progress-dot"></div>
-        <div class="progress-dot"></div>
-        <div class="progress-dot"></div>
-        <div class="progress-dot"></div>
-        <div class="progress-dot"></div>
-        <div class="progress-dot"></div>
-        <div class="progress-dot"></div>
-        <div class="progress-dot"></div>
-        <div class="progress-dot"></div>
-        <div class="progress-dot"></div>
-        <div class="progress-dot"></div>
-        <div class="progress-dot"></div>
-        <div class="progress-dot"></div>
-        <div class="progress-dot"></div>
+    <!-- Bullet points -->
+    <div class="bullet-list">
+      <div class="bullet-item">
+        <div class="bullet-marker"><div class="marker-circle"></div></div>
+        <div class="bullet-text">
+          <span class="highlight">开源文化的基因</span>——黑客伦理、科学伦理、强互惠三种范式的交织与张力
+          <span class="sub">Hacker Ethic × Science Ethic × Strong Reciprocity</span>
+        </div>
+      </div>
+
+      <div class="bullet-item">
+        <div class="bullet-marker"><div class="marker-square"></div></div>
+        <div class="bullet-text">
+          <span class="highlight">信任作为社会系统的运作基础</span>——Luhmann 的社会信任理论
+          <span class="sub">Trust as the operating basis of social systems (Luhmann, 1979)</span>
+        </div>
+      </div>
+
+      <div class="bullet-item">
+        <div class="bullet-marker"><div class="marker-diamond"></div></div>
+        <div class="bullet-text">
+          回到第 0 期核心问题：<span class="accent">开源是什么？</span>——12 讲回顾与适配的回答
+        </div>
       </div>
     </div>
-    <div class="bottom-right">BAUHAUS · DARK ACADEMIC</div>
+
+    <!-- Reference box -->
+    <div class="ref-box">
+      <div class="ref-title">WILLIAMSON L1 · 制度金字塔根基</div>
+      <div class="ref-content">
+        <span class="key">社会嵌入层（Social Embedding）</span>是整个制度金字塔的根基——文化、信任、互惠规范，
+        为上层的市场机制与组织契约提供深层支撑。
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom decorative line -->
+  <div class="bottom-line"></div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-left">
+      <span>「开源之道」日常交流</span>
+      <div class="footer-dot"></div>
+      <span>新制度经济学视角</span>
+    </div>
+    <div class="footer-right">
+      <span>11 / 28</span>
+    </div>
   </div>
 </div>
 </body>

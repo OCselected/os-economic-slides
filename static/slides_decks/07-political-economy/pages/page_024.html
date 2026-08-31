@@ -1,190 +1,791 @@
 
 
-<!DOCTYPE html><html><!-- source_hash: b876044d3ed1cf3f --><head><meta charset="UTF-8"><title>阿西莫格鲁的制度判断：包容性 vs 汲取性</title><style>
-*{margin:0;padding:0;box-sizing:border-box;}
-html,body{width:1600px;height:900px;overflow:hidden;font-family:'Noto Sans SC','Source Han Sans SC',sans-serif;color:#1B3B6B;}
-.slide{width:1600px;height:900px;position:relative;background:#F5F0E8;overflow:hidden;}
-.parchment{position:absolute;top:0;left:0;width:1600px;height:900px;background:radial-gradient(ellipse at 30% 20%,rgba(210,195,170,0.18),transparent 60%),radial-gradient(ellipse at 80% 80%,rgba(180,165,140,0.12),transparent 55%);}
+<!DOCTYPE html>
+<html lang="zh-CN"><!-- source_hash: 6513918b3e9d2a9f -->
+<head>
+<meta charset="UTF-8">
+<title>包容性制度与汲取性制度 — 开源的制度环境</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* header */
-.header{position:absolute;top:40px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:flex-start;}
-.lecture-tag{font-family:'Noto Serif SC',serif;font-size:14px;letter-spacing:3px;color:#8B7355;}
-.lecture-num{font-family:'Noto Serif SC',serif;font-size:48px;font-weight:700;color:#1B3B6B;line-height:1;}
-.header-right{text-align:right;font-size:12px;color:#555;letter-spacing:2px;line-height:1.8;}
-.header-rule{position:absolute;top:150px;left:80px;right:80px;height:2px;background:#1B3B6B;}
+body, html {
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+  margin: 0;
+  background: #F5F0E8;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: #1B3B6B;
+}
 
-/* title */
-.title-block{position:absolute;top:170px;left:80px;right:80px;}
-.main-title{font-family:'Noto Serif SC',serif;font-size:38px;font-weight:700;color:#1B3B6B;letter-spacing:1px;}
-.sub-title{font-family:'Noto Serif SC',serif;font-size:16px;color:#8B7355;margin-top:10px;letter-spacing:2px;}
-.title-bar{width:80px;height:4px;background:#8B7355;margin-top:16px;}
+.slide {
+  position: relative;
+  width: 1600px;
+  height: 900px;
+  overflow: hidden;
+}
 
-/* columns */
-.columns{position:absolute;top:290px;left:80px;right:80px;bottom:180px;display:flex;gap:30px;}
-.col{flex:1;position:relative;background:transparent;border:1px solid #1B3B6B;padding:24px 28px;display:flex;flex-direction:column;}
+/* 顶部纹理线 */
+.top-rule {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1600px;
+  height: 4px;
+  background: #1B3B6B;
+}
 
-.col-label{font-family:'Noto Serif SC',serif;font-size:13px;letter-spacing:3px;color:#8B7355;margin-bottom:6px;}
-.col-title{font-family:'Noto Serif SC',serif;font-size:22px;font-weight:700;color:#1B3B6B;margin-bottom:14px;}
-.col-title-en{font-size:12px;color:#555;letter-spacing:1px;margin-top:-10px;margin-bottom:14px;}
+.top-rule-inner {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  width: 1600px;
+  height: 2px;
+  background: #8B7355;
+}
 
-/* garden visual - left column */
-.garden{width:100%;height:150px;position:relative;margin-bottom:14px;background:rgba(27,59,107,0.03);border:1px dashed #8B7355;}
-.garden .g-tree{position:absolute;width:30px;height:30px;border-radius:50%;background:#1B3B6B;opacity:0.85;}
-.garden .g-tree1{top:30px;left:20px;}
-.garden .g-tree2{top:20px;left:60px;width:22px;height:22px;background:#8B7355;}
-.garden .g-tree3{top:50px;left:95px;width:36px;height:36px;}
-.garden .g-tree4{top:35px;left:150px;width:20px;height:20px;background:#8B7355;}
-.garden .g-tree5{top:60px;left:190px;width:28px;height:28px;}
-.garden .g-tree6{top:25px;left:240px;width:24px;height:24px;background:#8B7355;}
-.garden .g-tree7{top:55px;left:285px;width:32px;height:32px;}
-.garden .g-tree8{top:38px;left:340px;width:20px;height:20px;background:#8B7355;}
-.garden .g-path{position:absolute;bottom:0;left:0;width:100%;height:20px;background:#1B3B6B;opacity:0.15;}
-.garden .g-ray{position:absolute;bottom:20px;left:0;width:2px;height:30px;background:#1B3B6B;}
-.garden .g-ray2{position:absolute;bottom:20px;left:30%;width:2px;height:35px;background:#1B3B6B;}
-.garden .g-ray3{position:absolute;bottom:20px;left:60%;width:2px;height:28px;background:#1B3B6B;}
-.garden .g-ray4{position:absolute;bottom:20px;left:80%;width:2px;height:32px;background:#1B3B6B;}
-.garden .g-label{position:absolute;bottom:-18px;right:0;font-size:10px;color:#555;letter-spacing:2px;}
+/* 左上角装饰圆 */
+.deco-circle-1 {
+  position: absolute;
+  top: 28px;
+  left: 40px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #1B3B6B;
+}
 
-/* walls visual - right column */
-.walls{width:100%;height:150px;position:relative;margin-bottom:14px;background:rgba(27,59,107,0.03);border:1px dashed #8B7355;}
-.walls .w-block{position:absolute;background:#1B3B6B;}
-.walls .w-1{bottom:0;left:0;width:50px;height:120px;}
-.walls .w-2{bottom:0;left:55px;width:45px;height:100px;}
-.walls .w-3{bottom:0;left:105px;width:55px;height:130px;}
-.walls .w-4{bottom:0;left:165px;width:40px;height:95px;}
-.walls .w-5{bottom:0;left:210px;width:60px;height:115px;}
-.walls .w-6{bottom:0;left:275px;width:45px;height:105px;}
-.walls .w-7{bottom:0;left:325px;width:55px;height:125px;}
-.walls .w-8{bottom:0;right:0;width:45px;height:100px;}
-.walls .w-top{position:absolute;top:0;left:0;width:100%;height:8px;background:#8B7355;}
-.walls .w-swatch{position:absolute;top:14px;left:230px;width:30px;height:30px;background:#F5F0E8;border:1px solid #8B7355;}
-.walls .w-label{position:absolute;bottom:-18px;right:0;font-size:10px;color:#555;letter-spacing:2px;}
+.deco-circle-2 {
+  position: absolute;
+  top: 38px;
+  left: 72px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #8B7355;
+}
 
-/* bullets */
-.bullets{list-style:none;padding:0;margin:0;}
-.bullets li{font-size:13px;line-height:1.65;color:#1B3B6B;padding-left:18px;position:relative;margin-bottom:8px;}
-.bullets li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:8px;background:#8B7355;}
-.bullets li .em{color:#1B3B6B;font-weight:700;}
-.bullets li .arrow{color:#8B7355;font-weight:700;margin-right:4px;}
+/* 右上角装饰 */
+.deco-square-1 {
+  position: absolute;
+  top: 30px;
+  right: 180px;
+  width: 32px;
+  height: 32px;
+  background: #1B3B6B;
+}
 
-.col-divider{position:absolute;top:290px;bottom:180px;left:50%;width:1px;background:#1B3B6B;opacity:0.3;}
-.col-vs{position:absolute;top:340px;left:50%;width:36px;height:36px;background:#F5F0E8;border:2px solid #1B3B6B;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Noto Serif SC',serif;font-size:12px;font-weight:700;color:#1B3B6B;margin-left:-18px;}
+.deco-square-2 {
+  position: absolute;
+  top: 22px;
+  right: 120px;
+  width: 48px;
+  height: 48px;
+  background: none;
+  border: 3px solid #8B7355;
+}
 
-/* core judgment */
-.judgment{position:absolute;bottom:60px;left:80px;right:80px;border-top:2px solid #1B3B6B;padding-top:18px;}
-.judgment-title{font-family:'Noto Serif SC',serif;font-size:14px;color:#8B7355;letter-spacing:3px;margin-bottom:8px;}
-.judgment-text{font-family:'Noto Serif SC',serif;font-size:15px;line-height:1.7;color:#1B3B6B;}
-.judgment-text .quote{color:#1B3B6B;font-weight:700;}
-.judgment-text .accent{color:#8B7355;font-weight:700;}
+.deco-line-tr {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  width: 50px;
+  height: 2px;
+  background: #1B3B6B;
+}
 
-/* footer */
-.footer{position:absolute;bottom:18px;left:80px;right:80px;display:flex;justify-content:space-between;font-size:10px;color:#555;letter-spacing:2px;}
+.deco-line-tr2 {
+  position: absolute;
+  top: 58px;
+  right: 50px;
+  width: 2px;
+  height: 50px;
+  background: #8B7355;
+}
 
-/* geometric decor */
-.deco-circle{position:absolute;width:60px;height:60px;border-radius:50%;border:2px solid #1B3B6B;top:30px;right:260px;}
-.deco-square{position:absolute;width:24px;height:24px;background:#8B7355;top:50px;right:340px;}
-.deco-line{position:absolute;width:2px;height:80px;background:#1B3B6B;top:25px;left:20px;}
-</style></head><body>
+/* 标题区 */
+.header {
+  position: absolute;
+  top: 60px;
+  left: 50px;
+  width: 1500px;
+}
+
+.title {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #1B3B6B;
+  letter-spacing: 2px;
+  line-height: 1.3;
+}
+
+.title-en {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #8B7355;
+  letter-spacing: 3px;
+  margin-top: 6px;
+}
+
+.title-rule {
+  width: 80px;
+  height: 3px;
+  background: #1B3B6B;
+  margin-top: 14px;
+}
+
+/* 中央分隔线 */
+.center-divider {
+  position: absolute;
+  top: 150px;
+  left: 798px;
+  width: 2px;
+  height: 560px;
+  background: #8B7355;
+}
+
+.center-divider-dot {
+  position: absolute;
+  left: 788px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #F5F0E8;
+  border: 3px solid #1B3B6B;
+}
+
+.center-divider-dot.top { top: 140px; }
+.center-divider-dot.bottom { top: 700px; }
+
+.center-divider-label {
+  position: absolute;
+  top: 400px;
+  left: 775px;
+  width: 60px;
+  text-align: center;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 11px;
+  color: #555;
+  letter-spacing: 1px;
+  writing-mode: vertical-rl;
+  line-height: 1.6;
+}
+
+/* 左侧：包容性制度 */
+.left-panel {
+  position: absolute;
+  top: 140px;
+  left: 50px;
+  width: 710px;
+  height: 600px;
+}
+
+.panel-label {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1B3B6B;
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+}
+
+.panel-sublabel {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 13px;
+  color: #8B7355;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+}
+
+.panel-badge {
+  display: inline-block;
+  padding: 4px 14px;
+  background: #1B3B6B;
+  color: #F5F0E8;
+  font-size: 11px;
+  font-family: 'Noto Serif SC', serif;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+/* 开放花园几何装饰 */
+.garden {
+  position: relative;
+  width: 710px;
+  height: 200px;
+  margin-bottom: 24px;
+}
+
+.garden-dot {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.gd1 { top: 30px; left: 40px; width: 36px; height: 36px; background: #1B3B6B; opacity: 0.85; }
+.gd2 { top: 80px; left: 100px; width: 20px; height: 20px; background: #8B7355; }
+.gd3 { top: 50px; left: 170px; width: 28px; height: 28px; background: #1B3B6B; opacity: 0.6; }
+.gd4 { top: 120px; left: 60px; width: 16px; height: 16px; background: #8B7355; opacity: 0.7; }
+.gd5 { top: 90px; left: 220px; width: 22px; height: 22px; background: #1B3B6B; }
+.gd6 { top: 40px; left: 290px; width: 18px; height: 18px; background: #8B7355; opacity: 0.8; }
+.gd7 { top: 110px; left: 260px; width: 30px; height: 30px; background: #1B3B6B; opacity: 0.5; }
+.gd8 { top: 60px; left: 350px; width: 24px; height: 24px; background: #8B7355; }
+.gd9 { top: 130px; left: 330px; width: 14px; height: 14px; background: #1B3B6B; }
+.gd10 { top: 25px; left: 400px; width: 20px; height: 20px; background: #1B3B6B; opacity: 0.7; }
+.gd11 { top: 100px; left: 420px; width: 28px; height: 28px; background: #8B7355; opacity: 0.6; }
+.gd12 { top: 50px; left: 470px; width: 16px; height: 16px; background: #1B3B6B; }
+.gd13 { top: 140px; left: 490px; width: 22px; height: 22px; background: #8B7355; opacity: 0.8; }
+.gd14 { top: 70px; left: 530px; width: 18px; height: 18px; background: #1B3B6B; opacity: 0.6; }
+.gd15 { top: 30px; left: 580px; width: 26px; height: 26px; background: #8B7355; }
+.gd16 { top: 120px; left: 600px; width: 14px; height: 14px; background: #1B3B6B; opacity: 0.9; }
+.gd17 { top: 55px; left: 650px; width: 20px; height: 20px; background: #8B7355; opacity: 0.7; }
+.gd18 { top: 150px; left: 540px; width: 16px; height: 16px; background: #1B3B6B; }
+.gd19 { top: 20px; left: 460px; width: 12px; height: 12px; background: #8B7355; opacity: 0.6; }
+.gd20 { top: 100px; left: 380px; width: 14px; height: 14px; background: #1B3B6B; opacity: 0.75; }
+
+/* 花园连线 */
+.garden-line {
+  position: absolute;
+  background: #8B7355;
+  opacity: 0.3;
+}
+
+.gal1 { top: 48px; left: 76px; width: 60px; height: 1px; }
+.gal2 { top: 68px; left: 198px; width: 40px; height: 1px; }
+.gal3 { top: 78px; left: 242px; width: 60px; height: 1px; }
+.gal4 { top: 98px; left: 302px; width: 50px; height: 1px; }
+.gal5 { top: 115px; left: 384px; width: 35px; height: 1px; }
+
+/* 特征列表 */
+.features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.features li {
+  font-size: 14px;
+  line-height: 2;
+  color: #1B3B6B;
+  padding-left: 24px;
+  position: relative;
+}
+
+.features li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 8px;
+  height: 8px;
+  background: #1B3B6B;
+}
+
+.features li .em {
+  font-weight: 700;
+  color: #1B3B6B;
+}
+
+.feature-note {
+  font-size: 13px;
+  color: #8B7355;
+  margin-top: 4px;
+  padding-left: 24px;
+  font-family: 'Noto Serif SC', serif;
+}
+
+.context-label {
+  margin-top: 24px;
+  padding: 10px 16px;
+  background: rgba(27, 59, 107, 0.06);
+  border-left: 3px solid #1B3B6B;
+  font-size: 13px;
+  color: #1B3B6B;
+  font-family: 'Noto Serif SC', serif;
+  line-height: 1.6;
+}
+
+.context-label .label-tag {
+  font-size: 11px;
+  color: #8B7355;
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+}
+
+/* 右侧：汲取性制度 */
+.right-panel {
+  position: absolute;
+  top: 140px;
+  left: 840px;
+  width: 710px;
+  height: 600px;
+}
+
+/* 高墙几何装饰 */
+.wall {
+  position: relative;
+  width: 710px;
+  height: 200px;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.wall-rect {
+  position: absolute;
+  background: #1B3B6B;
+}
+
+/* 外围围墙 */
+.wall-border-top {
+  position: absolute;
+  top: 10px;
+  left: 30px;
+  width: 650px;
+  height: 4px;
+  background: #1B3B6B;
+}
+
+.wall-border-bottom {
+  position: absolute;
+  bottom: 10px;
+  left: 30px;
+  width: 650px;
+  height: 4px;
+  background: #1B3B6B;
+}
+
+.wall-border-left {
+  position: absolute;
+  top: 10px;
+  left: 30px;
+  width: 4px;
+  height: 180px;
+  background: #1B3B6B;
+}
+
+.wall-border-right {
+  position: absolute;
+  top: 10px;
+  right: 30px;
+  width: 4px;
+  height: 180px;
+  background: #1B3B6B;
+}
+
+/* 内部分隔墙 */
+.wall-inner-v1 {
+  position: absolute;
+  top: 14px;
+  left: 200px;
+  width: 3px;
+  height: 172px;
+  background: #1B3B6B;
+  opacity: 0.6;
+}
+
+.wall-inner-v2 {
+  position: absolute;
+  top: 14px;
+  left: 400px;
+  width: 3px;
+  height: 172px;
+  background: #1B3B6B;
+  opacity: 0.6;
+}
+
+.wall-inner-h1 {
+  position: absolute;
+  top: 100px;
+  left: 34px;
+  width: 642px;
+  height: 3px;
+  background: #1B3B6B;
+  opacity: 0.6;
+}
+
+/* 少数人的方块 */
+.fortified {
+  position: absolute;
+  background: #1B3B6B;
+}
+
+.fr1 { top: 30px; left: 50px; width: 40px; height: 40px; }
+.fr2 { top: 30px; left: 100px; width: 28px; height: 28px; }
+
+.fr3 { top: 120px; left: 50px; width: 24px; height: 24px; }
+
+.fr4 { top: 30px; left: 220px; width: 50px; height: 50px; }
+.fr5 { top: 30px; left: 280px; width: 22px; height: 22px; }
+
+.fr6 { top: 120px; left: 220px; width: 36px; height: 36px; }
+
+.fr7 { top: 30px; left: 420px; width: 32px; height: 32px; }
+.fr8 { top: 30px; left: 460px; width: 44px; height: 44px; }
+
+.fr9 { top: 120px; left: 420px; width: 26px; height: 26px; }
+
+.fr10 { top: 30px; left: 540px; width: 38px; height: 38px; }
+.fr11 { top: 30px; left: 590px; width: 20px; height: 20px; }
+
+.fr12 { top: 120px; left: 540px; width: 30px; height: 30px; }
+
+/* 墙上的缺口 */
+.gap {
+  position: absolute;
+  background: #F5F0E8;
+}
+
+.gap1 { top: 98px; left: 310px; width: 40px; height: 7px; }
+.gap2 { top: 48px; left: 500px; width: 30px; height: 7px; }
+
+/* 墙顶上的圆（哨兵） */
+.wall-sentry {
+  position: absolute;
+  border-radius: 50%;
+  background: #1B3B6B;
+}
+
+.ws1 { top: 0px; left: 200px; width: 14px; height: 14px; }
+.ws2 { top: 0px; left: 400px; width: 14px; height: 14px; }
+.ws3 { top: 0px; left: 340px; width: 14px; height: 14px; }
+
+/* 底部小方块（被排斥的元素） */
+.rejected {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: #8B7355;
+  opacity: 0.4;
+}
+
+.rj1 { top: 170px; left: 120px; }
+.rj2 { top: 174px; left: 140px; }
+.rj3 { top: 170px; left: 160px; }
+.rj4 { top: 170px; left: 320px; }
+.rj5 { top: 174px; left: 340px; }
+.rj6 { top: 170px; left: 360px; }
+.rj7 { top: 170px; left: 510px; }
+.rj8 { top: 174px; left: 530px; }
+.rj9 { top: 170px; left: 550px; }
+
+/* 右侧特征列表 */
+.features-right {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.features-right li {
+  font-size: 14px;
+  line-height: 2;
+  color: #555;
+  padding-left: 24px;
+  position: relative;
+}
+
+.features-right li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 8px;
+  height: 8px;
+  background: #8B7355;
+}
+
+.features-right li .em {
+  font-weight: 700;
+  color: #555;
+}
+
+.context-label-right {
+  margin-top: 24px;
+  padding: 10px 16px;
+  background: rgba(139, 115, 85, 0.08);
+  border-left: 3px solid #8B7355;
+  font-size: 13px;
+  color: #555;
+  font-family: 'Noto Serif SC', serif;
+  line-height: 1.6;
+}
+
+.context-label-right .label-tag {
+  font-size: 11px;
+  color: #1B3B6B;
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+}
+
+/* 底部引用区 */
+.quote-box {
+  position: absolute;
+  bottom: 80px;
+  left: 50px;
+  width: 1500px;
+  padding: 20px 30px;
+  border-top: 1px solid #8B7355;
+  border-bottom: 1px solid #8B7355;
+}
+
+.quote-text {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 15px;
+  color: #1B3B6B;
+  font-style: italic;
+  line-height: 1.8;
+  text-align: center;
+}
+
+.quote-text .highlight {
+  font-weight: 700;
+  color: #1B3B6B;
+  font-style: normal;
+}
+
+/* 底部标注 */
+.footer {
+  position: absolute;
+  bottom: 24px;
+  left: 50px;
+  width: 1500px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-source {
+  font-size: 11px;
+  color: #8B7355;
+  font-family: 'Noto Serif SC', serif;
+  letter-spacing: 1px;
+}
+
+.footer-lecture {
+  font-size: 11px;
+  color: #555;
+  letter-spacing: 2px;
+  font-family: 'Noto Serif SC', serif;
+}
+
+/* 底部装饰 */
+.deco-circle-bl {
+  position: absolute;
+  bottom: 50px;
+  left: 1530px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #8B7355;
+}
+
+.deco-square-br {
+  position: absolute;
+  bottom: 56px;
+  left: 1500px;
+  width: 18px;
+  height: 18px;
+  background: #1B3B6B;
+  opacity: 0.4;
+}
+
+/* 核心判断标签 */
+.core-judgment {
+  position: absolute;
+  bottom: 76px;
+  left: 50px;
+  width: 1500px;
+  text-align: center;
+}
+
+.core-judgment-label {
+  display: inline-block;
+  padding: 6px 24px;
+  background: #1B3B6B;
+  color: #F5F0E8;
+  font-size: 14px;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+/* 底部小装饰线 */
+.bottom-deco-line {
+  position: absolute;
+  bottom: 46px;
+  left: 50px;
+  width: 60px;
+  height: 2px;
+  background: #1B3B6B;
+}
+
+.bottom-deco-line2 {
+  position: absolute;
+  bottom: 46px;
+  right: 50px;
+  width: 60px;
+  height: 2px;
+  background: #8B7355;
+}
+
+</style>
+</head>
+<body>
 <div class="slide">
-<div class="parchment"></div>
+  <!-- 顶部装饰 -->
+  <div class="top-rule"></div>
+  <div class="top-rule-inner"></div>
+  <div class="deco-circle-1"></div>
+  <div class="deco-circle-2"></div>
+  <div class="deco-square-1"></div>
+  <div class="deco-square-2"></div>
+  <div class="deco-line-tr"></div>
+  <div class="deco-line-tr2"></div>
 
-<div class="deco-line"></div>
-<div class="deco-square"></div>
-<div class="deco-circle"></div>
-
-<div class="header">
-  <div>
-    <div class="lecture-tag">LECTURE · 07</div>
-    <div class="lecture-num">07</div>
+  <!-- 标题 -->
+  <div class="header">
+    <div class="title">阿西莫格鲁的制度判断：包容性 vs 汲取性</div>
+    <div class="title-en">INCLUSIVE vs EXTRACTIVE INSTITUTIONS — ACEMOGLU'S INSTITUTIONAL FRAMEWORK</div>
+    <div class="title-rule"></div>
   </div>
-  <div class="header-right">
-    第 07 期 · 商业价值与社会价值<br>
-    开源的政治经济学<br>
-    <span style="color:#8B7355;">Political Economy of Open Source</span>
-  </div>
-</div>
-<div class="header-rule"></div>
 
-<div class="title-block">
-  <div class="main-title">阿西莫格鲁的制度判断：包容性 vs 汲取性</div>
-  <div class="sub-title">Inclusive Institutions &nbsp;/&nbsp; Extractive Institutions</div>
-  <div class="title-bar"></div>
-</div>
+  <!-- 中央分隔线 -->
+  <div class="center-divider"></div>
+  <div class="center-divider-dot top"></div>
+  <div class="center-divider-dot bottom"></div>
 
-<div class="columns">
-  <div class="col">
-    <div class="col-label">TYPE &nbsp; 01</div>
-    <div class="col-title">包容性制度</div>
-    <div class="col-title-en">INCLUSIVE INSTITUTIONS &mdash; the open garden</div>
+  <!-- 左侧：包容性制度 -->
+  <div class="left-panel">
+    <div class="panel-badge">包容性制度</div>
+    <div class="panel-label">包容性制度</div>
+    <div class="panel-sublabel">Inclusive Institutions</div>
 
+    <!-- 开放花园 -->
     <div class="garden">
-      <div class="g-tree g-tree1"></div>
-      <div class="g-tree g-tree2"></div>
-      <div class="g-tree g-tree3"></div>
-      <div class="g-tree g-tree4"></div>
-      <div class="g-tree g-tree5"></div>
-      <div class="g-tree g-tree6"></div>
-      <div class="g-tree g-tree7"></div>
-      <div class="g-tree g-tree8"></div>
-      <div class="g-ray"></div>
-      <div class="g-ray g-ray2"></div>
-      <div class="g-ray g-ray3"></div>
-      <div class="g-ray g-ray4"></div>
-      <div class="g-path"></div>
-      <div class="g-label">OPEN GARDEN &middot; 开放花园</div>
+      <div class="garden-dot gd1"></div>
+      <div class="garden-dot gd2"></div>
+      <div class="garden-dot gd3"></div>
+      <div class="garden-dot gd4"></div>
+      <div class="garden-dot gd5"></div>
+      <div class="garden-dot gd6"></div>
+      <div class="garden-dot gd7"></div>
+      <div class="garden-dot gd8"></div>
+      <div class="garden-dot gd9"></div>
+      <div class="garden-dot gd10"></div>
+      <div class="garden-dot gd11"></div>
+      <div class="garden-dot gd12"></div>
+      <div class="garden-dot gd13"></div>
+      <div class="garden-dot gd14"></div>
+      <div class="garden-dot gd15"></div>
+      <div class="garden-dot gd16"></div>
+      <div class="garden-dot gd17"></div>
+      <div class="garden-dot gd18"></div>
+      <div class="garden-dot gd19"></div>
+      <div class="garden-dot gd20"></div>
+      <div class="garden-line gal1"></div>
+      <div class="garden-line gal2"></div>
+      <div class="garden-line gal3"></div>
+      <div class="garden-line gal4"></div>
+      <div class="garden-line gal5"></div>
     </div>
 
-    <ul class="bullets">
-      <li><span class="em">保护产权</span> &middot; <span class="em">保障广泛参与</span> &middot; <span class="em">允许创新</span></li>
-      <li><span class="arrow">&rarr;</span>开源的诞生地：制度允许自下而上的协作涌现</li>
-      <li><span class="arrow">&rarr;</span>典型环境：美国、英国、欧盟的制度架构</li>
+    <!-- 特征列表 -->
+    <ul class="features">
+      <li><span class="em">保护产权</span>　— 创新者拥有其创造的价值</li>
+      <li><span class="em">保障广泛参与</span>　— 任何人都可进入与竞争</li>
+      <li><span class="em">允许创新</span>　— 制度激励持续创造与试错</li>
     </ul>
+
+    <div class="context-label">
+      <div class="label-tag">制度环境 · 开源的诞生地</div>
+      美国、英国、欧盟 — 产权清晰、准入开放、创新受保护
+    </div>
   </div>
 
-  <div class="col">
-    <div class="col-label">TYPE &nbsp; 02</div>
-    <div class="col-title">汲取性制度</div>
-    <div class="col-title-en">EXTRACTIVE INSTITUTIONS &mdash; the high wall</div>
+  <!-- 右侧：汲取性制度 -->
+  <div class="right-panel">
+    <div class="panel-badge" style="background:#8B7355;">汲取性制度</div>
+    <div class="panel-label" style="color:#555;">汲取性制度</div>
+    <div class="panel-sublabel">Extractive Institutions</div>
 
-    <div class="walls">
-      <div class="w-top"></div>
-      <div class="w-block w-1"></div>
-      <div class="w-block w-2"></div>
-      <div class="w-block w-3"></div>
-      <div class="w-block w-4"></div>
-      <div class="w-block w-5"></div>
-      <div class="w-block w-6"></div>
-      <div class="w-block w-7"></div>
-      <div class="w-block w-8"></div>
-      <div class="w-swatch"></div>
-      <div class="w-label">HIGH WALL &middot; 高墙围合</div>
+    <!-- 高墙 -->
+    <div class="wall">
+      <div class="wall-border-top"></div>
+      <div class="wall-border-bottom"></div>
+      <div class="wall-border-left"></div>
+      <div class="wall-border-right"></div>
+
+      <div class="wall-inner-v1"></div>
+      <div class="wall-inner-v2"></div>
+      <div class="wall-inner-h1"></div>
+
+      <div class="wall-sentry ws1"></div>
+      <div class="wall-sentry ws2"></div>
+      <div class="wall-sentry ws3"></div>
+
+      <div class="fortified fr1"></div>
+      <div class="fortified fr2"></div>
+      <div class="fortified fr3"></div>
+      <div class="fortified fr4"></div>
+      <div class="fortified fr5"></div>
+      <div class="fortified fr6"></div>
+      <div class="fortified fr7"></div>
+      <div class="fortified fr8"></div>
+      <div class="fortified fr9"></div>
+      <div class="fortified fr10"></div>
+      <div class="fortified fr11"></div>
+      <div class="fortified fr12"></div>
+
+      <div class="gap gap1"></div>
+      <div class="gap gap2"></div>
+
+      <div class="rejected rj1"></div>
+      <div class="rejected rj2"></div>
+      <div class="rejected rj3"></div>
+      <div class="rejected rj4"></div>
+      <div class="rejected rj5"></div>
+      <div class="rejected rj6"></div>
+      <div class="rejected rj7"></div>
+      <div class="rejected rj8"></div>
+      <div class="rejected rj9"></div>
     </div>
 
-    <ul class="bullets">
-      <li><span class="em">少数人控制资源</span> &middot; <span class="em">排斥广泛参与</span> &middot; <span class="em">阻碍创新</span></li>
-      <li><span class="arrow">&rarr;</span>行政式开源：以国家意志驱动的"开源"工程</li>
-      <li><span class="arrow">&rarr;</span>制度环境：自上而下的资源分配与准入控制</li>
+    <!-- 特征列表 -->
+    <ul class="features-right">
+      <li><span class="em">少数人控制资源</span>　— 准入被精英垄断</li>
+      <li><span class="em">排斥广泛参与</span>　— 外部者被制度性排除</li>
+      <li><span class="em">阻碍创新</span>　— 创造的动力被汲取而非激励</li>
     </ul>
+
+    <div class="context-label-right">
+      <div class="label-tag">制度环境 · 行政式"开源"</div>
+      国家主导的"开源"工程 — 资源集中分配、选择性准入、创新服从行政目标
+    </div>
   </div>
-</div>
 
-<div class="col-divider"></div>
-<div class="col-vs">VS</div>
-
-<div class="judgment">
-  <div class="judgment-title">CORE JUDGMENT &middot; 核 心 判 断</div>
-  <div class="judgment-text">
-    开源不是在任何制度环境下都能繁荣。
-    <span class="quote">"Lerner &amp; Tirole 回答了开源为什么在西方工作；</span>
-    <span class="accent">阿西莫格鲁追问为什么在别处不能。"</span>
-    &nbsp;&nbsp;&mdash;&nbsp; 出处：阿西莫格鲁 &amp; 罗宾逊《国家的兴衰》（2012）&middot; 2024 年诺贝尔经济学奖
+  <!-- 核心判断 -->
+  <div class="core-judgment">
+    <span class="core-judgment-label">核心判断　开源不是在任何制度环境下都能繁荣</span>
   </div>
-</div>
 
-<div class="footer">
-  <span>OPEN SOURCE &middot; POLITICAL ECONOMY</span>
-  <span>ACEMOGLU &amp; ROBINSON &middot; WHY NATIONS FAIL &middot; 2012</span>
-  <span>SLIDE 07 &middot; 26</span>
+  <!-- 底部引用 -->
+  <div class="quote-box">
+    <div class="quote-text">
+      <span class="highlight">Lerner &amp; Tirole</span> 回答了开源为什么在西方工作；&nbsp;&nbsp;<span class="highlight">阿西莫格鲁</span>追问为什么在别处不能。
+    </div>
+  </div>
+
+  <!-- 底部标注 -->
+  <div class="footer">
+    <div class="footer-source">理论出处：阿西莫格鲁 &amp; 罗宾逊《国家的兴衰》（2012）｜2024 年诺贝尔经济学奖</div>
+    <div class="footer-lecture">第 07 期 · 开源的政治经济学</div>
+  </div>
+
+  <!-- 底部装饰 -->
+  <div class="bottom-deco-line"></div>
+  <div class="bottom-deco-line2"></div>
+  <div class="deco-circle-bl"></div>
+  <div class="deco-square-br"></div>
 </div>
-</div>
-</body></html>
+</body>
+</html>

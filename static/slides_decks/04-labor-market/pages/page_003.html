@@ -1,423 +1,307 @@
 
 
 <!DOCTYPE html>
-<html><!-- source_hash: 8198ca91ccf1b10f -->
+<html><!-- source_hash: 7378cc72c5aa89c8 -->
 <head>
 <meta charset="UTF-8">
-<title>本期核心问题 · 第04期</title>
+<title>第04期 · 软件开发劳动力市场</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
-body, html {
-  width: 1600px;
-  height: 900px;
-  overflow: hidden;
-  margin: 0;
+html, body { width: 1600px; height: 900px; overflow: hidden; margin: 0; }
+body {
   background: #F5F0E8;
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Sans SC', 'Source Han Sans SC', sans-serif;
   color: #1B3B6B;
-}
-
-.slide {
   position: relative;
-  width: 1600px;
-  height: 900px;
-  overflow: hidden;
 }
-
-/* Parchment texture overlay */
-.texture {
+/* subtle parchment texture */
+body::before {
+  content: '';
   position: absolute;
-  top: 0; left: 0;
-  width: 1600px;
-  height: 900px;
+  top: 0; left: 0; right: 0; bottom: 0;
   background: 
-    radial-gradient(ellipse at 20% 50%, rgba(139, 115, 85, 0.03) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 20%, rgba(27, 59, 107, 0.02) 0%, transparent 40%),
-    radial-gradient(ellipse at 60% 80%, rgba(139, 115, 85, 0.02) 0%, transparent 45%);
+    radial-gradient(ellipse at 20% 50%, rgba(200,185,160,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(180,165,140,0.06) 0%, transparent 40%),
+    radial-gradient(ellipse at 60% 80%, rgba(200,185,160,0.05) 0%, transparent 45%);
   pointer-events: none;
+  z-index: 0;
 }
-
-/* Bauhaus decorative geometry */
-.deco-circle-1 {
-  position: absolute;
-  width: 320px;
-  height: 320px;
-  border-radius: 50%;
-  border: 2px solid rgba(27, 59, 107, 0.08);
-  top: -80px;
-  right: -60px;
-}
-
-.deco-circle-2 {
-  position: absolute;
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  background: rgba(27, 59, 107, 0.04);
-  bottom: 60px;
-  right: 120px;
-}
-
-.deco-square-1 {
-  position: absolute;
-  width: 60px;
-  height: 60px;
-  background: rgba(139, 115, 85, 0.08);
-  top: 120px;
-  left: 60px;
-}
-
-.deco-line-1 {
-  position: absolute;
-  width: 200px;
-  height: 1px;
-  background: rgba(27, 59, 107, 0.12);
-  bottom: 80px;
-  left: 100px;
-}
-
-.deco-line-2 {
-  position: absolute;
-  width: 1px;
-  height: 140px;
-  background: rgba(139, 115, 85, 0.12);
-  top: 100px;
-  right: 350px;
-}
-
-/* Header area */
 .header {
   position: absolute;
-  top: 60px;
-  left: 100px;
-  display: flex;
-  align-items: baseline;
-  gap: 24px;
+  top: 52px;
+  left: 90px;
+  z-index: 10;
 }
-
-.slide-number {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 18px;
-  color: #8B7355;
-  letter-spacing: 2px;
-  font-weight: 300;
-}
-
-.lecture-label {
+.issue-num {
   font-family: 'Noto Sans SC', sans-serif;
-  font-size: 14px;
-  color: #8B7355;
+  font-size: 13px;
   letter-spacing: 3px;
+  color: #8B7355;
   text-transform: uppercase;
+  margin-bottom: 10px;
 }
-
-.header-line {
-  position: absolute;
-  top: 95px;
-  left: 100px;
-  width: 80px;
-  height: 2px;
-  background: #1B3B6B;
-}
-
-/* Main title */
 .main-title {
-  position: absolute;
-  top: 120px;
-  left: 100px;
   font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-  font-size: 52px;
+  font-size: 46px;
   font-weight: 700;
   color: #1B3B6B;
   letter-spacing: 2px;
-  line-height: 1.3;
+  line-height: 1.2;
 }
-
-.subtitle-en {
-  position: absolute;
-  top: 200px;
-  left: 102px;
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 16px;
+.subtitle-line {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 17px;
   color: #8B7355;
-  letter-spacing: 4px;
-  font-weight: 300;
+  margin-top: 12px;
+  font-style: italic;
+  letter-spacing: 1px;
 }
 
-/* Straws visual area */
+/* Geometric decoration: colorful straws */
 .straws-container {
   position: absolute;
-  top: 280px;
+  top: 130px;
   right: 80px;
   width: 520px;
-  height: 500px;
+  height: 680px;
+  z-index: 2;
 }
-
 .straw {
   position: absolute;
-  width: 12px;
-  border-radius: 6px;
-  height: 460px;
-}
-
-.straw-1 {
-  background: #1B3B6B;
-  left: 80px;
-  top: 30px;
-  transform: rotate(-8deg);
-  transform-origin: top center;
-  height: 440px;
+  width: 28px;
+  height: 620px;
+  border-radius: 14px;
   opacity: 0.85;
 }
-
+.straw-1 {
+  background: #1B3B6B;
+  right: 180px;
+  top: 0;
+  transform: rotate(8deg);
+}
 .straw-2 {
   background: #8B7355;
-  left: 130px;
-  top: 10px;
-  transform: rotate(3deg);
-  transform-origin: top center;
-  height: 460px;
-  opacity: 0.75;
-}
-
-.straw-3 {
-  background: #C75C2E;
-  left: 180px;
-  top: 25px;
+  right: 120px;
+  top: 20px;
   transform: rotate(-4deg);
-  transform-origin: top center;
-  height: 450px;
+}
+.straw-3 {
+  background: #C0392B;
+  right: 60px;
+  top: 10px;
+  transform: rotate(12deg);
   opacity: 0.7;
 }
-
 .straw-4 {
-  background: #3D6B4F;
-  left: 230px;
-  top: 15px;
-  transform: rotate(6deg);
-  transform-origin: top center;
-  height: 445px;
-  opacity: 0.65;
+  background: #2C6E49;
+  right: 240px;
+  top: 30px;
+  transform: rotate(-9deg);
+  opacity: 0.75;
 }
-
 .straw-5 {
-  background: #7B4B6E;
-  left: 280px;
-  top: 35px;
-  transform: rotate(-2deg);
-  transform-origin: top center;
-  height: 440px;
+  background: #6B4C7A;
+  right: 300px;
+  top: -10px;
+  transform: rotate(5deg);
   opacity: 0.6;
 }
-
 .straw-6 {
-  background: #B8860B;
-  left: 330px;
-  top: 5px;
-  transform: rotate(8deg);
-  transform-origin: top center;
-  height: 455px;
-  opacity: 0.55;
-}
-
-.straw-7 {
-  background: #2E5090;
-  left: 380px;
+  background: #1B3B6B;
+  right: 340px;
   top: 40px;
-  transform: rotate(-5deg);
-  transform-origin: top center;
-  height: 440px;
-  opacity: 0.5;
+  transform: rotate(-14deg);
+  opacity: 0.4;
 }
 
-.straw-8 {
-  background: #8B4513;
-  left: 430px;
-  top: 20px;
-  transform: rotate(4deg);
-  transform-origin: top center;
-  height: 450px;
-  opacity: 0.45;
-}
-
-.straws-label {
+/* Geometric accents */
+.geo-circle-large {
   position: absolute;
-  bottom: -40px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 2.5px solid #1B3B6B;
+  opacity: 0.15;
+  bottom: 80px;
+  right: 220px;
+  z-index: 1;
+}
+.geo-circle-small {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #8B7355;
+  opacity: 0.12;
+  bottom: 160px;
+  right: 360px;
+  z-index: 1;
+}
+.geo-square {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border: 2px solid #1B3B6B;
+  opacity: 0.1;
+  bottom: 100px;
+  right: 450px;
+  transform: rotate(15deg);
+  z-index: 1;
+}
+.geo-line-h {
+  position: absolute;
+  width: 200px;
+  height: 1.5px;
+  background: #1B3B6B;
+  opacity: 0.2;
+  bottom: 140px;
+  right: 300px;
+  z-index: 1;
+}
+.geo-circle-solid {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #C0392B;
+  opacity: 0.5;
+  bottom: 200px;
+  right: 150px;
+  z-index: 3;
+}
+
+/* Content area */
+.content-area {
+  position: absolute;
+  left: 90px;
+  top: 300px;
+  width: 780px;
+  z-index: 10;
+}
+.section-label {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: #8B7355;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(139,115,85,0.3);
+}
+.metaphor-note {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 16px;
+  color: #555;
+  font-style: italic;
+  margin-bottom: 40px;
+  letter-spacing: 0.5px;
+}
+.questions-list {
+  list-style: none;
+  padding: 0;
+}
+.questions-list li {
+  position: relative;
+  padding-left: 36px;
+  margin-bottom: 28px;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
+  font-size: 21px;
+  line-height: 1.6;
+  color: #1B3B6B;
+  letter-spacing: 0.5px;
+}
+.questions-list li::before {
+  content: '';
+  position: absolute;
   left: 0;
+  top: 12px;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #1B3B6B;
+  background: transparent;
+}
+.questions-list li:nth-child(2)::before {
+  border-radius: 50%;
+  background: #8B7355;
+  border-color: #8B7355;
+  width: 12px;
+  height: 12px;
+}
+.questions-list li:nth-child(3)::before {
+  background: #C0392B;
+  border-color: #C0392B;
+  width: 12px;
+  height: 12px;
+  transform: rotate(45deg);
+}
+/* Bottom accent bar */
+.bottom-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: #1B3B6B;
+  z-index: 10;
+}
+.slide-num {
+  position: absolute;
+  bottom: 22px;
+  right: 90px;
   font-family: 'Noto Sans SC', sans-serif;
   font-size: 11px;
   color: #8B7355;
-  letter-spacing: 3px;
-  opacity: 0.7;
+  letter-spacing: 2px;
+  z-index: 10;
 }
-
-/* Content bullets */
-.content-area {
+.slide-num-left {
   position: absolute;
-  top: 280px;
-  left: 100px;
-  width: 620px;
-}
-
-.question-item {
-  margin-bottom: 36px;
-  position: relative;
-  padding-left: 32px;
-}
-
-.question-num {
-  position: absolute;
-  left: 0;
-  top: 2px;
-  font-family: 'Noto Serif SC', serif;
-  font-size: 14px;
-  color: #8B7355;
-  font-weight: 700;
-}
-
-.question-text {
-  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-  font-size: 22px;
-  line-height: 1.7;
-  color: #1B3B6B;
-  font-weight: 400;
-}
-
-.question-highlight {
-  color: #C75C2E;
-  font-weight: 600;
-}
-
-.question-sub {
+  bottom: 22px;
+  left: 90px;
   font-family: 'Noto Sans SC', sans-serif;
-  font-size: 15px;
-  color: #555;
-  line-height: 1.6;
-  margin-top: 6px;
-  font-weight: 300;
-}
-
-/* Bottom footer */
-.footer {
-  position: absolute;
-  bottom: 40px;
-  left: 100px;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.footer-text {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 12px;
+  font-size: 11px;
   color: #8B7355;
   letter-spacing: 2px;
-}
-
-.footer-dot {
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: #8B7355;
-}
-
-/* Small decorative elements */
-.deco-circle-fill {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: #C75C2E;
-  top: 130px;
-  left: 580px;
-  opacity: 0.6;
-}
-
-.deco-triangle {
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-left: 12px solid transparent;
-  border-right: 12px solid transparent;
-  border-bottom: 20px solid rgba(27, 59, 107, 0.06);
-  top: 750px;
-  left: 480px;
-}
-
-.deco-square-outline {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  border: 1.5px solid rgba(139, 115, 85, 0.2);
-  bottom: 120px;
-  left: 580px;
-  transform: rotate(15deg);
+  z-index: 10;
 }
 </style>
 </head>
 <body>
-<div class="slide">
-  <!-- Texture -->
-  <div class="texture"></div>
 
-  <!-- Bauhaus decorative geometry -->
-  <div class="deco-circle-1"></div>
-  <div class="deco-circle-2"></div>
-  <div class="deco-square-1"></div>
-  <div class="deco-line-1"></div>
-  <div class="deco-line-2"></div>
-  <div class="deco-circle-fill"></div>
-  <div class="deco-triangle"></div>
-  <div class="deco-square-outline"></div>
-
-  <!-- Header -->
-  <div class="header">
-    <span class="slide-number">04 / 26</span>
-    <span class="lecture-label">软件开发劳动力市场</span>
-  </div>
-  <div class="header-line"></div>
-
-  <!-- Main Title -->
-  <h1 class="main-title">本期核心问题</h1>
-  <p class="subtitle-en">CORE QUESTIONS</p>
-
-  <!-- Straws Visual -->
-  <div class="straws-container">
-    <div class="straw straw-1"></div>
-    <div class="straw straw-2"></div>
-    <div class="straw straw-3"></div>
-    <div class="straw straw-4"></div>
-    <div class="straw straw-5"></div>
-    <div class="straw straw-6"></div>
-    <div class="straw straw-7"></div>
-    <div class="straw straw-8"></div>
-    <div class="straws-label">多元选择 · 个性表达</div>
-  </div>
-
-  <!-- Content -->
-  <div class="content-area">
-    <div class="question-item">
-      <span class="question-num">01</span>
-      <p class="question-text">开源贡献者的<span class="question-highlight">劳动力市场</span>是如何形成的？</p>
-    </div>
-    <div class="question-item">
-      <span class="question-num">02</span>
-      <p class="question-text">人们为什么愿意为开源贡献自己的时间？</p>
-      <p class="question-sub">信号、体验、归属</p>
-    </div>
-    <div class="question-item">
-      <span class="question-num">03</span>
-      <p class="question-text"><span class="question-highlight">匠人精神</span>与工程学：开源如何改变了软件开发者对工作的理解？</p>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <div class="footer">
-    <span class="footer-text">第 04 期 · 开源经济学讲座</span>
-    <div class="footer-dot"></div>
-    <span class="footer-text">新制度经济学视角</span>
-  </div>
+<div class="header">
+  <div class="issue-num">第 04 期 · 软件开发劳动力市场</div>
+  <h1 class="main-title">多元选择与个性表达</h1>
+  <div class="subtitle-line">包豪斯几何构成 — 本期核心问题</div>
 </div>
+
+<div class="straws-container">
+  <div class="straw straw-1"></div>
+  <div class="straw straw-2"></div>
+  <div class="straw straw-3"></div>
+  <div class="straw straw-4"></div>
+  <div class="straw straw-5"></div>
+  <div class="straw straw-6"></div>
+</div>
+
+<div class="geo-circle-large"></div>
+<div class="geo-circle-small"></div>
+<div class="geo-square"></div>
+<div class="geo-line-h"></div>
+<div class="geo-circle-solid"></div>
+
+<div class="content-area">
+  <div class="section-label">本期核心问题</div>
+  <div class="metaphor-note">多彩吸管象征多元选择与个性表达</div>
+  <ul class="questions-list">
+    <li>开源贡献者的劳动力市场是如何形成的？</li>
+    <li>人们为什么愿意为开源贡献自己的时间？<br><span style="font-size:16px; color:#555;">——信号、体验、归属</span></li>
+    <li>匠人精神与工程学：开源如何改变了软件开发者对工作的理解？</li>
+  </ul>
+</div>
+
+<div class="bottom-bar"></div>
+<div class="slide-num">04 · 26</div>
+<div class="slide-num-left">OPEN SOURCE ECONOMICS</div>
+
 </body>
 </html>

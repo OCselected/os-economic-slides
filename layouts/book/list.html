@@ -1,157 +1,125 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <title>开源的经济学 · 全书</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,600;8..60,700&family=Noto+Serif+SC:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,600;8..60,700&family=Noto+Serif+SC:wght@300;400;600;700&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --prussian:#1B3B6B;
-  --cream:#F5F0E8;
-  --ink:#1A1A1A;
-  --copper:#8B7355;
-  --muted:#555555;
-  --amber:#D4A853;
-  --paper:#EDE7DA;
-  --panel:#1a2640;
+  --bg:#FFFFFF; --ink:#1A1A1A; --cream:#F5F0E8; --prussian:#1B3B6B; --copper:#8B7355;
+  --muted:#555555; --accent:#B4A078; --amber:#D4A853; --paper:#EDE7DA; --panel:#1a2640;
+  --c-bg:#FFFFFF; --c-ink:#1A1A1A; --c-copper:#B4A078; --c-accent:#B4A078;
+  --c-prussian:#1B3B6B; --c-muted:#555555; --c-bg-card:#F5F0E8; --c-bg-hover:#EAE3D3;
+  --c-bg-quote:#EDE7DA; --c-bg-chapter:#FFFFFF; --c-bg-footer:#1B3B6B;
+  --c-bg-toc:#F5F0E8;
 }
-html{scroll-beavior:smooth}
-body{
-  font-family:'Source Serif 4','Noto Serif SC',Georgia,serif;
-  background:var(--cream);
-  color:var(--ink);
-  line-height:1.7;
+[data-theme="dark"]{
+  --bg:#0f1f3d; --ink:#e8edf3; --cream:#1a2d4a; --prussian:#1e3a5f; --copper:#e07856;
+  --muted:#b0a99a; --accent:#e07856; --paper:#1a2d4a; --panel:#0f1f3d;
+  --c-bg:#0f1f3d; --c-ink:#e8edf3; --c-copper:#e07856; --c-accent:#e07856;
+  --c-prussian:#1e3a5f; --c-muted:#b0a99a; --c-bg-card:#1a2d4a; --c-bg-hover:#243b5d;
+  --c-bg-quote:#1e3a5f; --c-bg-chapter:#1a2d4a; --c-bg-footer:#0f1f3d; --c-bg-toc:#1a2d4a;
 }
+html{scroll-behavior:smooth}
+body{font-family:'Source Serif 4','Noto Serif SC',Georgia,serif;background:var(--bg);color:var(--ink);line-height:1.7;transition:background 0.35s ease,color 0.35s ease}
 
-/* ── Top bar ── */
-.topbar{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  background:var(--prussian);
-  padding:0.6rem clamp(2rem,5vw,6rem);
-  display:flex;align-items:center;justify-content:space-between;
-  font-size:0.7rem;color:var(--cream);
-  letter-spacing:0.22em;text-transform:uppercase;
-  border-bottom:1px solid var(--copper);
-}
-.topbar-left{display:flex;align-items:center;gap:1rem}
+/* Topbar */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--prussian);padding:0.6rem clamp(1.5rem,5vw,5rem);display:flex;align-items:center;justify-content:space-between;font-size:0.72rem;color:var(--cream);letter-spacing:0.15em;font-family:'Inter','Noto Sans SC',sans-serif}
+.topbar-left{display:flex;align-items:center;gap:0.8rem}
 .topbar-brand{font-weight:600;color:var(--amber)}
-.topbar a{color:var(--cream);text-decoration:none;padding:0.25rem 0}
+.topbar-section{color:var(--cream);opacity:0.85}
+.topbar a{color:var(--cream);text-decoration:none;padding:0.2rem 0.5rem;transition:color 0.2s}
 .topbar a:hover{color:var(--amber)}
-.topbar-right{display:flex;gap:1.2rem}
+.topbar-right{display:flex;align-items:center;gap:1rem}
 
-/* ── Hero ── */
-.hero{
-  margin-top:48px;
-  padding:4rem clamp(2rem,5vw,6rem) 3rem;
-  background:var(--prussian);
-  color:var(--cream);
-  border-bottom:5px solid var(--amber);
-  text-align:center;
-}
-.hero .eyebrow{
-  font-size:0.75rem;font-weight:600;
-  letter-spacing:0.3em;text-transform:uppercase;
-  color:var(--amber);margin-bottom:1.2rem;
-}
-.hero h1{
-  font-size:clamp(2rem,5vw,3.6rem);
-  font-weight:700;color:var(--cream);
-  margin-bottom:0.8rem;
-}
-.hero .subtitle{
-  font-size:1.1rem;color:var(--amber);
-  font-weight:400;font-style:italic;
-  margin-bottom:1.5rem;
-}
-.hero .meta{
-  font-size:0.85rem;color:rgba(245,240,232,0.7);
-  max-width:600px;margin:0 auto;line-height:1.6;
-}
+.theme-toggle{position:relative;z-index:200;background:var(--c-bg-card);border:1px solid rgba(139,115,85,0.35);border-radius:999px;padding:0.28rem 0.6rem 0.28rem 0.45rem;font-size:0.72rem;cursor:pointer;font-family:'Inter',sans-serif;color:var(--ink);display:inline-flex;align-items:center;gap:0.35rem;transition:background 0.25s,border-color 0.25s,box-shadow 0.25s}
+.theme-toggle:hover{background:var(--c-bg-hover);border-color:var(--accent)}
+.theme-toggle .icon{font-size:0.9rem;line-height:1}
 
-/* ── Download bar ── */
-.download-bar{
-  background:var(--paper);
-  border-bottom:1px solid var(--copper);
-  padding:1.2rem clamp(2rem,5vw,6rem);
-  display:flex;justify-content:center;align-items:center;gap:1.5rem;
-  flex-wrap:wrap;
-}
-.dl-btn{
-  display:inline-flex;align-items:center;gap:0.5rem;
-  padding:0.55rem 1.2rem;
-  font-size:0.85rem;font-weight:600;
-  text-decoration:none;
-  border:1px solid var(--prussian);
-  color:var(--prussian);
-  background:var(--cream);
-}
-.dl-btn.primary{
-  background:var(--prussian);color:var(--cream);
-}
-.dl-btn .icon{font-size:1rem}
+/* Hero */
+.book-hero-section{margin-top:48px;padding:4rem clamp(1.5rem,4vw,5rem);background:var(--prussian);color:var(--cream);border-bottom:5px solid var(--amber);position:relative;overflow:hidden;min-height:520px}
+.book-hero-grid-bg{position:absolute;top:0;left:0;right:0;bottom:0;background-image:linear-gradient(rgba(212,168,83,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(212,168,83,0.06) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
+.book-hero-inner{position:relative;max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 1.6fr;gap:3rem;align-items:center}
+.book-hero-text{position:relative;z-index:2}
+.book-hero-kicker{display:flex;align-items:center;gap:0.7rem;font-size:0.78rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--amber);font-weight:600;margin-bottom:1.2rem;font-family:'Inter',sans-serif}
+.book-hero-line{display:inline-block;width:3rem;height:1px;background:var(--amber)}
+.book-hero-title{font-size:clamp(2rem,4.5vw,3rem);font-weight:700;color:var(--cream);margin-bottom:1rem;font-family:'Cormorant Garamond','Noto Serif SC',serif;line-height:1.15}
+.book-hero-meta{font-size:0.9rem;color:rgba(245,240,232,0.75);margin-bottom:1.2rem;font-family:'Noto Serif SC',serif}
+.book-hero-desc{font-size:1rem;color:rgba(245,240,232,0.85);line-height:1.7;margin-bottom:1.2rem}
+.book-hero-intro{font-size:0.92rem;color:rgba(245,240,232,0.7);line-height:1.7;margin-bottom:1.5rem}
+.book-hero-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.5rem}
+.book-chip{font-size:0.72rem;padding:0.25rem 0.7rem;background:rgba(212,168,83,0.12);color:var(--amber);border:1px solid rgba(212,168,83,0.3);letter-spacing:0.05em;font-family:'Inter','Noto Sans SC',sans-serif}
 
-/* ── Chapters grid ── */
-.chapters-wrap{
-  max-width:1200px;margin:0 auto;
-  padding:3rem clamp(2rem,5vw,6rem);
-}
-.section-title{
-  font-size:1.6rem;font-weight:700;color:var(--prussian);
-  text-align:center;margin-bottom:0.5rem;
-}
-.section-sub{
-  font-size:0.85rem;color:var(--muted);
-  text-align:center;margin-bottom:2rem;letter-spacing:0.15em;
-  text-transform:uppercase;
-}
-.chapters-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:1rem;
-}
-@media(max-width:900px){.chapters-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.chapters-grid{grid-template-columns:1fr}}
+.book-hero-actions{display:flex;gap:0.8rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.hero-btn{display:inline-flex;align-items:center;gap:0.45rem;padding:0.65rem 1.3rem;font-size:0.85rem;font-weight:600;text-decoration:none;transition:background 0.2s,border-color 0.2s,transform 0.2s;font-family:'Noto Serif SC',serif}
+.hero-btn-primary{background:var(--amber);color:var(--prussian);border:1px solid var(--amber)}
+.hero-btn-primary:hover{background:var(--cream);color:var(--prussian);transform:translateY(-2px)}
+.hero-btn-solid{background:transparent;color:var(--cream);border:1px solid rgba(245,240,232,0.5)}
+.hero-btn-solid:hover{border-color:var(--amber);color:var(--amber)}
+.hero-btn-ghost{background:transparent;color:rgba(245,240,232,0.7);border:1px solid rgba(245,240,232,0.3)}
+.hero-btn-ghost:hover{border-color:var(--amber);color:var(--amber)}
 
-.ch-card{
-  background:var(--paper);
-  border:1px solid rgba(27,59,107,0.15);
-  border-left:3px solid var(--prussian);
-  padding:1rem 1.1rem;
-  text-decoration:none;
-  color:var(--ink);
-  transition:all 0.2s;
-  display:block;
-}
-.ch-card:hover{
-  background:var(--prussian);
-  color:var(--cream);
-  border-left-color:var(--amber);
-}
-.ch-num{
-  font-size:0.7rem;font-weight:700;
-  color:var(--copper);letter-spacing:0.15em;
-  margin-bottom:0.4rem;
-}
-.ch-card:hover .ch-num{color:var(--amber)}
-.ch-title{
-  font-size:1rem;font-weight:600;line-height:1.4;
-}
-.ch-en{
-  font-size:0.75rem;color:var(--muted);
-  margin-top:0.3rem;font-style:italic;
-}
-.ch-card:hover .ch-en{color:rgba(245,240,232,0.7)}
+.book-hero-scroll{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);color:var(--amber);opacity:0.6;animation:book-bounce 2s infinite}
+@keyframes book-bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
 
-/* ── Footer ── */
-.footer{
-  background:var(--prussian);color:rgba(245,240,232,0.6);
-  padding:2rem clamp(2rem,5vw,6rem);
-  font-size:0.75rem;
-  border-top:1px solid var(--copper);
-  text-align:center;line-height:1.6;
+.book-hero-cover-wrap{position:relative;display:flex;justify-content:center;align-items:center}
+.book-hero-cover{position:relative;width:180px;height:260px;background:linear-gradient(135deg,#1a2640,#0f1f3d);border:1px solid rgba(212,168,83,0.4);box-shadow:0 12px 40px rgba(0,0,0,0.4),inset 0 0 30px rgba(212,168,83,0.08);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:1.5rem;text-align:center;transform:perspective(1200px) rotateY(-5deg) rotateX(2deg);transition:transform 0.5s ease}
+.book-hero-cover:hover{transform:perspective(1200px) rotateY(-2deg) rotateX(0deg) translateY(-4px)}
+.book-hero-cover .book-title-visual{font-family:'Cormorant Garamond','Noto Serif SC',serif;font-size:1.1rem;color:var(--amber);font-weight:700;line-height:1.3;margin-bottom:0.5rem}
+.book-hero-cover .book-sub-visual{font-size:0.65rem;color:rgba(245,240,232,0.5);letter-spacing:0.2em;margin-bottom:1rem}
+.book-hero-cover .book-rule{width:2rem;height:1px;background:var(--amber);margin:0.5rem auto}
+.book-hero-cover .book-author-visual{font-size:0.7rem;color:rgba(245,240,232,0.6)}
+.book-hero-glow{position:absolute;width:250px;height:250px;background:radial-gradient(circle,rgba(212,168,83,0.2),transparent 70%);pointer-events:none}
+
+/* Insights */
+.book-insights{padding:3rem clamp(1.5rem,4vw,5rem);background:var(--cream);max-width:1200px;margin:0 auto}
+.book-insights-inner{max-width:960px;margin:0 auto}
+.book-section-label{display:flex;align-items:center;gap:0.6rem;font-size:0.75rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--copper);font-weight:600;margin-bottom:1.5rem;font-family:'Inter',sans-serif}
+.book-section-label::after{content:'';flex:1;height:1px;background:var(--copper);opacity:0.3}
+.book-insights-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+.book-insight-card{padding:1.2rem 1.3rem;background:var(--bg);border-left:3px solid var(--accent);font-size:0.92rem;line-height:1.7}
+.book-insight-quote{color:var(--prussian);font-style:italic}
+.book-insight-note{margin-top:0.6rem;font-size:0.8rem;color:var(--muted);font-style:normal}
+
+/* TOC */
+.book-toc{padding:3rem clamp(1.5rem,4vw,5rem);max-width:960px;margin:0 auto}
+.toc-inner{max-width:840px;margin:0 auto}
+.toc-list{display:grid;gap:0.5rem}
+.toc-chapter{margin:0.6rem 0 0.2rem}
+.toc-chapter-title{display:block;font-family:'Noto Serif SC',serif;font-size:1rem;font-weight:600;color:var(--prussian);text-decoration:none;transition:color 0.2s,padding-left 0.2s}
+.toc-chapter-title:hover{color:var(--accent);padding-left:0.4rem}
+.toc-part{display:block;font-family:'Noto Serif SC',serif;font-size:0.85rem;font-weight:700;color:var(--copper);margin:1.5rem 0 0.5rem;letter-spacing:0.05em}
+.toc-douban{margin-top:2rem;padding:1rem 1.2rem;background:var(--paper);text-align:center}
+.toc-douban a{color:var(--prussian);text-decoration:none;font-weight:600;font-size:0.9rem}
+
+/* Footer */
+.footer{background:var(--prussian);color:rgba(245,240,232,0.6);padding:2rem clamp(1.5rem,4vw,5rem);font-size:0.75rem;border-top:1px solid var(--copper);text-align:center;line-height:1.7}
+
+/* Dark overrides */
+[data-theme="dark"] .book-hero-section{background:var(--prussian);color:var(--c-ink)}
+[data-theme="dark"] .book-hero-title{color:var(--c-ink)}
+[data-theme="dark"] .book-hero-meta{color:rgba(232,237,243,0.75)}
+[data-theme="dark"] .book-hero-desc{color:var(--c-ink)}
+[data-theme="dark"] .book-insights{background:var(--c-bg-card)}
+[data-theme="dark"] .book-insight-card{background:var(--c-bg-chapter);border-left-color:var(--c-accent)}
+[data-theme="dark"] .book-insight-quote{color:var(--c-ink)}
+[data-theme="dark"] .toc-chapter-title{color:var(--c-ink)}
+[data-theme="dark"] .toc-part{color:var(--copper)}
+[data-theme="dark"] .footer{background:var(--prussian);color:rgba(232,237,243,0.6)}
+[data-theme="dark"] .book-hero-cover{background:linear-gradient(135deg,#0a1628,#050d1a);border-color:rgba(224,120,86,0.4)}
+[data-theme="dark"] .book-hero-glow{background:radial-gradient(circle,rgba(224,120,86,0.2),transparent 70%)}
+[data-theme="dark"] .theme-toggle{background:var(--c-bg-card);color:var(--c-ink);border-color:rgba(224,120,86,0.4)}
+
+@media(max-width:700px){
+  .book-hero-inner{grid-template-columns:1fr;gap:2rem}
+  .book-hero-cover{width:140px;height:200px}
+  .book-hero-title{font-size:1.8rem}
+  .book-insights-grid{grid-template-columns:1fr}
+  .topbar{padding:0.5rem 1rem}
+  .topbar-left span:not(.topbar-brand):not(:first-child){display:none}
 }
 </style>
 </head>
@@ -161,111 +129,214 @@ body{
   <div class="topbar-left">
     <span class="topbar-brand">开源的经济学</span>
     <span>·</span>
-    <span>2026</span>
+    <span class="topbar-section">全书</span>
   </div>
   <div class="topbar-right">
     <a href="/">首页</a>
     <a href="/lectures/">讲座</a>
     <a href="/slides_decks/">酷炫模式</a>
     <a href="/sponsor/">赞助</a>
+    <button class="theme-toggle" id="themeToggle"><span class="icon">☾</span><span class="label">黑夜</span></button>
   </div>
 </div>
 
-<div class="hero">
-  <div class="eyebrow">THE ECONOMICS OF OPEN SOURCE</div>
-  <h1>开源的经济学 · 全书</h1>
-  <div class="subtitle">The Economics of Open Source — A Book</div>
-  <div class="meta">
-    从制度经济学视角审视开源软件：知识财产、商业模式、劳动力市场、治理与文化。<br>
-    由「开源之道」·适兕 主讲，2026 年 8 月 · 上海
+<div class="book-hero-section">
+  <div class="book-hero-grid-bg"></div>
+  <div class="book-hero-inner">
+
+    <div class="book-hero-cover-wrap">
+      <div class="book-hero-cover">
+        <div class="book-title-visual">开源的<br>经济学</div>
+        <div class="book-sub-visual">ECONOMICS</div>
+        <div class="book-rule"></div>
+        <div class="book-author-visual">适兕 主讲<br>2026 上海</div>
+      </div>
+      <div class="book-hero-glow"></div>
+    </div>
+
+    <div class="book-hero-text">
+      <div class="book-hero-kicker">
+        <span class="book-hero-line"></span>
+        THE ECONOMICS OF OPEN SOURCE
+      </div>
+      <h1 class="book-hero-title">开源的经济学 · 全书</h1>
+      <div class="book-hero-meta">适兕 主讲 · 2026 年 8 月 · 上海</div>
+      <p class="book-hero-desc">从制度经济学视角审视开源软件：知识财产、商业模式、劳动力市场、治理与文化。</p>
+      <div class="book-hero-tags">
+        <span class="book-chip">制度经济学</span>
+        <span class="book-chip">交易成本</span>
+        <span class="book-chip">产权</span>
+        <span class="book-chip">Copyleft</span>
+        <span class="book-chip">12 讲</span>
+      </div>
+
+      <div class="book-hero-actions">
+        <a href="/book/open-source-economics.html#00-introduction" class="hero-btn hero-btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          在线阅读
+        </a>
+        <a href="/book/open-source-economics.pdf" class="hero-btn hero-btn-solid">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          PDF
+        </a>
+        <a href="/book/open-source-economics.epub" class="hero-btn hero-btn-ghost">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          EPUB
+        </a>
+      </div>
+    </div>
+  </div>
+  <a href="#book-toc-anchor" class="book-hero-scroll" aria-label="向下阅读">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+  </a>
+</div>
+
+<div class="book-insights" id="book-toc-anchor">
+  <div class="book-insights-inner">
+    <div class="book-section-label">这本书的独特观点</div>
+    <div class="book-insights-grid">
+      <div class="book-insight-card">
+        <div class="book-insight-quote">"开源不是技术问题，是制度问题——许可协议才是开源世界的宪法。"</div>
+        <div class="book-insight-note">制度经济学视角</div>
+      </div>
+      <div class="book-insight-card">
+        <div class="book-insight-quote">"Copyleft 不是病毒，是互惠的外化——它把'你必须分享'写进了法律。"</div>
+        <div class="book-insight-note">产权与互惠</div>
+      </div>
+      <div class="book-insight-card">
+        <div class="book-insight-quote">"开源的历史是一部被忽略的暗流史，真正的力量藏在主流叙事之下。"</div>
+        <div class="book-insight-note">思想维度</div>
+      </div>
+      <div class="book-insight-card">
+        <div class="book-insight-quote">"商业不是开源的敌人，而是它的演化动力——从自由到订阅的艰难探讨。"</div>
+        <div class="book-insight-note">文化维度</div>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="download-bar">
-  <a class="dl-btn primary" href="/book/open-source-economics.html" target="_blank">
-    <span class="icon">▦</span> 在线阅读
-  </a>
-  <a class="dl-btn" href="/book/open-source-economics.pdf">
-    <span class="icon">§</span> PDF
-  </a>
-  <a class="dl-btn" href="/book/open-source-economics.epub">
-    <span class="icon">▤</span> EPUB
-  </a>
-</div>
+<div class="book-toc">
+  <div class="toc-inner">
+    <div class="book-section-label">12 章目录</div>
+    <nav class="toc-list">
 
-<div class="chapters-wrap">
-  <div class="section-title">12 章目录</div>
-  <div class="section-sub">CONTENTS · 从引子到结语</div>
+      <h2 class="toc-part">引子</h2>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#00-introduction">开源与经济学</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#开源在数字社会中的概况">开源在数字社会中的概况</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#开源的历史发展">开源的历史发展</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#开源的经济效果">开源的经济效果</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#产业视角下的开源">产业视角下的开源</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#讲的思考路径与目标">12 讲的思考路径与目标</a></div>
 
-  <div class="chapters-grid">
-    <a class="ch-card" href="/book/open-source-economics.html#00-introduction">
-      <div class="ch-num">CHAPTER 00</div>
-      <div class="ch-title">开源与经济学</div>
-      <div class="ch-en">Open Source and Economics</div>
-    </a>
-    <a class="ch-card" href="/book/open-source-economics.html#01-software-production">
-      <div class="ch-num">CHAPTER 01</div>
-      <div class="ch-title">软件的生产、分销和消费</div>
-      <div class="ch-en">Software Production, Distribution, and Consumption</div>
-    </a>
-    <a class="ch-card" href="/book/open-source-economics.html#02-intellectual-property">
-      <div class="ch-num">CHAPTER 02</div>
-      <div class="ch-title">知识财产法与开源许可</div>
-      <div class="ch-en">Intellectual Property Law and Open Source Licensing</div>
-    </a>
-    <a class="ch-card" href="/book/open-source-economics.html#03-business-model">
-      <div class="ch-num">CHAPTER 03</div>
-      <div class="ch-title">商业模式</div>
-      <div class="ch-en">Business Models</div>
-    </a>
-    <a class="ch-card" href="/book/open-source-economics.html#04-labor-market">
-      <div class="ch-num">CHAPTER 04</div>
-      <div class="ch-title">劳动力市场</div>
-      <div class="ch-en">Labor Market</div>
-    </a>
-    <a class="ch-card" href="/book/open-source-economics.html#05-transaction-cost">
-      <div class="ch-num">CHAPTER 05</div>
-      <div class="ch-title">交易成本与路径依赖</div>
-      <div class="ch-en">Transaction Costs and Path Dependence</div>
-    </a>
-    <a class="ch-card" href="/book/open-source-economics.html#06-organization-governance">
-      <div class="ch-num">CHAPTER 06</div>
-      <div class="ch-title">组织结构与治理</div>
-      <div class="ch-en">Organization Structure and Governance</div>
-    </a>
-    <a class="ch-card" href="/book/open-source-economics.html#07-culture-matters">
-      <div class="ch-num">CHAPTER 07</div>
-      <div class="ch-title">文化的重要作用</div>
-      <div class="ch-en">The Importance of Culture</div>
-    </a>
-    <a class="ch-card" href="/book/open-source-economics.html#08-political-economy">
-      <div class="ch-num">CHAPTER 08</div>
-      <div class="ch-title">政治经济学</div>
-      <div class="ch-en">Political Economy</div>
-    </a>
-    <a class="ch-card" href="/book/open-source-economics.html#09-information-economy">
-      <div class="ch-num">CHAPTER 09</div>
-      <div class="ch-title">信息规则与网络经济</div>
-      <div class="ch-en">Information Rules and Network Economics</div>
-    </a>
-    <a class="ch-card" href="/book/open-source-economics.html#10-proprietary-rights">
-      <div class="ch-num">CHAPTER 10</div>
-      <div class="ch-title">排他权与容他权、比例原则与 Copyleft</div>
-      <div class="ch-en">Exclusive Rights, Inclusive Rights, Copyleft</div>
-    </a>
-    <a class="ch-card" href="/book/open-source-economics.html#11-labor-compensation">
-      <div class="ch-num">CHAPTER 11</div>
-      <div class="ch-title">劳动报酬与财产分配</div>
-      <div class="ch-en">Labor Compensation and Property Distribution</div>
-    </a>
+      <h2 class="toc-part">第 01 期 · 软件的生产、分销和消费</h2>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#软件市场的形式与演变">软件市场的形式与演变</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#闭源与开源两种模式的分野">闭源与开源：两种模式的分野</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#大教堂与集市方法分野">大教堂与集市：方法分野</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#交付方式的变化">交付方式的变化</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#从阅读日报与周刊获得灵感">从阅读日报与周刊获得灵感</a></div>
+
+      <h2 class="toc-part">第 02 期 · 数字时代的知识财产法与开源许可</h2>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#许可的出现与软件市场的崛起">许可的出现与软件市场的崛起</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#数字时代的知识财产权扩张">数字时代的知识财产权扩张</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#许可不是销售">许可，不是销售</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#开源在解决什么本质问题">开源在解决什么本质问题？</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#许可的演变">许可的演变</a></div>
+
+      <h2 class="toc-part">第 03 期 · 商业模式</h2>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#软件的商品化">软件的商品化</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#闭源软件的销售模式">闭源软件的销售模式</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#开源软件的商品化">开源软件的商品化</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#red-hat-成功的秘密">Red Hat 成功的秘密</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#kubernetes-成就了谁">Kubernetes 成就了谁？</a></div>
+
+      <h2 class="toc-part">第 04 期 · 软件开发劳动力市场</h2>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#代码不是商品">代码不是商品</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#供需关系的是人才">供需关系的是人才</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#兴趣与实践培养">兴趣与实践培养</a></div>
+
+      <h2 class="toc-part">第 05 期 · 交易成本与路径依赖</h2>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#毋需法律的秩序">毋需法律的秩序</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#交易成本与法律经济学">交易成本与法律经济学</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#科斯的贡献">科斯的贡献</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#信息的特殊性">信息的特殊性</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#何谓路径依赖">何谓路径依赖</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#开源是如何吞噬软件的">开源是如何吞噬软件的</a></div>
+
+      <h2 class="toc-part">第 06 期 · 组织结构与治理</h2>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#基于互联网的虚拟共同体">基于互联网的虚拟共同体</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#宪章章程社会契约">宪章、章程、社会契约</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#许可与秩序">许可与秩序</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#纳税无政府与集市旁边的教堂">纳税、无政府与集市旁边的教堂</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#从-cvs-到-github">从 CVS 到 GitHub</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#组织不断演化的协作分工">组织：不断演化的协作分工</a></div>
+
+      <h2 class="toc-part">第 07 期 · 商业价值与社会价值：开源的政治经济学</h2>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#代码分享的文化起源">代码分享的文化起源</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#反主流文化与黑客精神">反主流文化与黑客精神</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#互联网拓展的-cyber-space">互联网拓展的 Cyber Space</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#全新的协作文化">全新的协作文化</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#行为准则与社会主流">行为准则与社会主流</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#世界公民与本土出发">世界公民与本土出发</a></div>
+
+      <h2 class="toc-part">第 08 期 · 信息规则与网络经济</h2>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#信息的特殊经济属性">信息的特殊经济属性</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#网络效应与正反馈回路">网络效应与正反馈回路</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#开源作为多边平台">开源作为多边平台</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#开源软件的定价悖论">开源软件的定价悖论</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#订阅经济与开源的交汇">订阅经济与开源的交汇</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#开源与云计算的制度冲突">开源与云计算的制度冲突</a></div>
+
+      <h2 class="toc-part">第 09 期 · 排他权与容他权、比例原则与 Copyleft</h2>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#排他权的制度起源">排他权的制度起源</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#容他权inclusive-rights的制度逻辑">容他权的制度逻辑</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#copyleft-的制度设计">Copyleft 的制度设计</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#比例原则在知识财产中的运用">比例原则在知识财产中的运用</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#排他权与容他权的动态均衡">排他权与容他权的动态均衡</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#云时代的-copyleft-新挑战">云时代的 Copyleft 新挑战</a></div>
+
+      <h2 class="toc-part">第 10 期 · 劳动报酬与财产分配</h2>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#信号模型lerner-tirole">信号模型：Lerner & Tirole</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#从无偿劳动到无偿贡献">从"无偿劳动"到"无偿贡献"</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#贡献者经济的制度结构">贡献者经济的制度结构</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#发布权与财产分配">发布权与财产分配</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#开源劳动者与云厂商的分配冲突">开源劳动者与云厂商的分配冲突</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#代码即资本">代码即资本</a></div>
+      <div class="toc-chapter"><a class="toc-chapter-title" href="/book/open-source-economics.html#开源的政治经济学展望">开源的政治经济学展望</a></div>
+
+    </nav>
   </div>
 </div>
 
 <div class="footer">
-  开源的经济学 © 2026 · 由「开源之道」·适兕 著<br>
+  开源的经济学 © 2026 · 由「开源之道」·适兕 主讲<br>
   基于 CC BY-NC-SA 4.0 许可协议<br>
   书籍源仓库：github.com/OCselected/open-source-economics-book
 </div>
+
+<script>
+(function(){
+  var html = document.documentElement;
+  var toggle = document.getElementById('themeToggle');
+  var icon = toggle.querySelector('.icon');
+  var label = toggle.querySelector('.label');
+  var saved = localStorage.getItem('theme');
+  var initial = saved;
+  if (!initial){
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) initial = 'dark';
+    else initial = 'light';
+  }
+  html.setAttribute('data-theme', initial);
+  if (initial === 'dark'){ icon.textContent = '☀'; label.textContent = '白天'; }
+  toggle.addEventListener('click', function(){
+    var cur = html.getAttribute('data-theme');
+    var next = cur === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    icon.textContent = next === 'dark' ? '☀' : '☾';
+    label.textContent = next === 'dark' ? '白天' : '黑夜';
+  });
+})();
+</script>
 
 </body>
 </html>

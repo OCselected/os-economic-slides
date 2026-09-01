@@ -115,7 +115,8 @@ body{font-family:'Source Serif 4','Noto Serif SC',Georgia,serif;background:var(-
 
 @media(max-width:700px){
   .book-hero-inner{grid-template-columns:1fr;gap:2rem}
-  .book-hero-cover{width:140px;height:200px}
+  .book-hero-cover-img{width:150px;height:auto}
+  .book-hero-cover-wrap img{max-width:100%;height:auto}
   .book-hero-title{font-size:1.8rem}
   .book-insights-grid{grid-template-columns:1fr}
   .topbar{padding:0.5rem 1rem}
@@ -145,12 +146,7 @@ body{font-family:'Source Serif 4','Noto Serif SC',Georgia,serif;background:var(-
   <div class="book-hero-inner">
 
     <div class="book-hero-cover-wrap">
-      <div class="book-hero-cover">
-        <div class="book-title-visual">开源的<br>经济学</div>
-        <div class="book-sub-visual">ECONOMICS</div>
-        <div class="book-rule"></div>
-        <div class="book-author-visual">适兕 著<br>MMXXVI</div>
-      </div>
+      <img class="book-hero-cover-img" src="/economics-cover.png" alt="开源的经济学 · 适兕 著" />
       <div class="book-hero-glow"></div>
     </div>
 

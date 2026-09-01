@@ -5,3 +5,7 @@
 slides_designed/
 slides_designed/
 .hugo_build.lock
+layouts/*.bak.*
+
+__pycache__/
+*.pyc

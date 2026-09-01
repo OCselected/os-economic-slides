@@ -1,35 +1,238 @@
 <!DOCTYPE html>
-<html lang="zh-CN"><head><meta charset="UTF-8">
-<title>开源的经济学</title>
-<link rel="stylesheet" href="book.css">
-</head><body>
-<section class="cover">
-  <div class="cover-deco cover-deco-1"></div>
-  <div class="cover-deco cover-deco-2"></div>
-  <h1>开源的经济学</h1>
-  <div class="subtitle">The Economics of Open Source</div>
-  <div class="author">「开源之道」·适兕</div>
-  <div class="year">MMXXVI</div>
-</section>
-<div class="container" id="toc">
-<h1>目录</h1>
-<ul class="toc-list">
-<li><span class="toc-num">00</span><a href="#00-introduction">00 introduction</a></li>
-<li><span class="toc-num">01</span><a href="#01-software-production">01 software production</a></li>
-<li><span class="toc-num">02</span><a href="#02-intellectual-property">02 intellectual property</a></li>
-<li><span class="toc-num">03</span><a href="#03-business-model">03 business model</a></li>
-<li><span class="toc-num">04</span><a href="#04-labor-market">04 labor market</a></li>
-<li><span class="toc-num">05</span><a href="#05-transaction-cost">05 transaction cost</a></li>
-<li><span class="toc-num">06</span><a href="#06-organization-governance">06 organization governance</a></li>
-<li><span class="toc-num">07</span><a href="#07-culture-matters">07 culture matters</a></li>
-<li><span class="toc-num">08</span><a href="#08-political-economy">08 political economy</a></li>
-<li><span class="toc-num">09</span><a href="#09-information-economy">09 information economy</a></li>
-<li><span class="toc-num">10</span><a href="#10-proprietary-rights">10 proprietary rights</a></li>
-<li><span class="toc-num">11</span><a href="#11-labor-compensation">11 labor compensation</a></li>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>开源的经济学 · 在线阅读</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,600;8..60,700&family=Noto+Serif+SC:wght@300;400;600;700&family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/book/book.css">
+<style>
+/* ── Reader Layout ── */
+.reader-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  min-height: 100vh;
+}
 
-</ul>
+.reader-toc {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100vh;
+  background: var(--cream);
+  border-right: 1px solid rgba(139,115,85,0.2);
+  overflow-y: auto;
+  padding: 2rem 1.5rem;
+  font-family: 'Noto Serif SC', serif;
+}
+
+.reader-toc-header {
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--prussian);
+}
+
+.reader-toc-home {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--prussian);
+}
+.reader-toc-home:hover { color: var(--copper); }
+
+.reader-toc-list { list-style: none; padding: 0; margin: 0; }
+
+.toc-chapter {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid rgba(139,115,85,0.1);
+}
+.toc-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--copper);
+  min-width: 1.5rem;
+  padding-top: 0.15rem;
+}
+.toc-title {
+  flex: 1;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: var(--ink);
+  text-decoration: none;
+  text-indent: 0;
+}
+.toc-title:hover { color: var(--prussian); }
+.toc-title.active { color: var(--prussian); font-weight: 600; border-left: 2px solid var(--amber); padding-left: 0.4rem; }
+
+.reader-main {
+  margin-left: 300px;
+  padding: 0 clamp(2rem, 5vw, 5rem);
+  max-width: 900px;
+}
+
+.reader-main .cover { padding: 5rem 2rem; }
+.reader-main .container { max-width: none; padding: 0; }
+
+/* chapter 标题样式（在 reader 中） */
+.reader-main .container > h1 {
+  font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--prussian);
+  line-height: 1.3;
+  margin: 3rem 0 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--accent);
+}
+.reader-main .container > h1:first-child { margin-top: 2rem; }
+
+.reader-main h2 {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--prussian);
+  margin: 2.5rem 0 0.8rem;
+  padding-left: 0.8rem;
+  border-left: 3px solid var(--accent);
+}
+.reader-main h3 {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1.1rem;
+  color: var(--copper);
+  margin: 1.8rem 0 0.8rem;
+}
+
+/* 前后导航 */
+.chapter-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 4rem 0 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(139,115,85,0.2);
+  font-family: 'Inter', 'Noto Sans SC', sans-serif;
+}
+.chapter-nav a {
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: var(--prussian);
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--copper);
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.chapter-nav a:hover { background: var(--cream); }
+
+/* Mobile */
+@media (max-width: 900px) {
+  .reader-layout { grid-template-columns: 1fr; }
+  .reader-toc { display: none; }
+  .reader-main { margin-left: 0; max-width: none; padding: 0 1.5rem; }
+}
+
+/* Dark mode overrides */
+[data-theme="dark"] .reader-toc { background: #0f1f3d; border-right-color: rgba(224,120,86,0.3); }
+[data-theme="dark"] .reader-toc-header { border-bottom-color: var(--amber); }
+[data-theme="dark"] .reader-toc-home { color: var(--amber); }
+[data-theme="dark"] .toc-title { color: var(--ink); }
+[data-theme="dark"] .reader-main .container > h1 { color: var(--amber); border-bottom-color: var(--amber); }
+[data-theme="dark"] .reader-main h2 { color: var(--copper); border-left-color: var(--amber); }
+[data-theme="dark"] .reader-main h3 { color: var(--amber); }
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const tocLinks = document.querySelectorAll('.toc-title');
+  const sections = [];
+  tocLinks.forEach(a => {
+    const href = a.getAttribute('href');
+    const el = document.querySelector(href);
+    if (el) sections.push({link: a, el: el, id: href});
+  });
+
+  function updateActive() {
+    let current = '';
+    for (const s of sections) {
+      const rect = s.el.getBoundingClientRect();
+      if (rect.top <= 120) current = s.id;
+    }
+    tocLinks.forEach(a => a.classList.remove('active'));
+    if (current) {
+      const active = document.querySelector('.toc-title[href="' + current + '"]');
+      if (active) active.classList.add('active');
+    }
+  }
+
+  window.addEventListener('scroll', updateActive);
+  updateActive();
+
+  // Theme toggle
+  const saved = localStorage.getItem('book-theme');
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+  const btn = document.getElementById('themeToggle');
+  if (btn) {
+    function updateIcon() {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      btn.querySelector('.icon').textContent = isDark ? '☀' : '☾';
+    }
+    updateIcon();
+    btn.addEventListener('click', () => {
+      const cur = document.documentElement.getAttribute('data-theme');
+      const next = cur === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('book-theme', next);
+      updateIcon();
+    });
+  }
+});
+</script>
+</head>
+<body data-theme="light">
+
+<div class="topbar">
+  <div class="topbar-left">
+    <span class="topbar-brand">「开源之道」</span>
+    <span class="topbar-section">· 开源的经济学</span>
+  </div>
+  <div class="topbar-right">
+    <button id="themeToggle" class="theme-toggle"><span class="icon">☾</span> 切换模式</button>
+    <a href="/book/">返回列表</a>
+  </div>
 </div>
-<div class="container" id="00-introduction"><h1>开源与经济学</h1><blockquote>
+
+<div class="reader-layout">
+  <aside class="reader-toc">
+    <div class="reader-toc-header">
+      <a href="/book/" class="reader-toc-home">← 开源的经济学</a>
+    </div>
+    <nav class="reader-toc-list">
+<li class="toc-chapter"><span class="toc-num">00</span><a href="#00-introduction" class="toc-title">开源与经济学</a></li>
+<li class="toc-chapter"><span class="toc-num">01</span><a href="#01-software-production" class="toc-title">软件的生产、分销和消费</a></li>
+<li class="toc-chapter"><span class="toc-num">02</span><a href="#02-intellectual-property" class="toc-title">数字时代的知识财产法演变与开源许可</a></li>
+<li class="toc-chapter"><span class="toc-num">03</span><a href="#03-business-model" class="toc-title">商业模式：规则下的具体操作</a></li>
+<li class="toc-chapter"><span class="toc-num">04</span><a href="#04-labor-market" class="toc-title">软件开发劳动力市场</a></li>
+<li class="toc-chapter"><span class="toc-num">05</span><a href="#05-transaction-cost" class="toc-title">交易成本与路径依赖</a></li>
+<li class="toc-chapter"><span class="toc-num">06</span><a href="#06-organization-governance" class="toc-title">组织结构与治理</a></li>
+<li class="toc-chapter"><span class="toc-num">07</span><a href="#07-culture-matters" class="toc-title">文化的重要作用</a></li>
+<li class="toc-chapter"><span class="toc-num">08</span><a href="#08-political-economy" class="toc-title">商业价值与社会价值：开源的政治经济学</a></li>
+<li class="toc-chapter"><span class="toc-num">09</span><a href="#09-information-economy" class="toc-title">信息规则与网络经济</a></li>
+<li class="toc-chapter"><span class="toc-num">10</span><a href="#10-proprietary-rights" class="toc-title">排他权与容他权、比例原则与 Copyleft</a></li>
+<li class="toc-chapter"><span class="toc-num">11</span><a href="#11-labor-compensation" class="toc-title">劳动报酬与财产分配</a></li>
+    </nav>
+  </aside>
+
+  <main class="reader-main">
+<h1>开源与经济学</h1><blockquote>
 <p>社会的进程只能因观念的改变而改变。 —— 弗里德里希·哈耶克，经济学家</p>
 </blockquote>
 <h2 id="引子">引子</h2>
@@ -126,7 +329,7 @@
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <h2 id="延伸阅读">延伸阅读</h2>
 <ul>
 <li>《创新与激励》，苏珊娜·斯科奇姆，格致出版社，2010</li>
@@ -139,15 +342,15 @@
 <li>Hoffmann, Nagle, Zhou, “The Value of Open Source Software,” Harvard Business School (2024)<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></li>
 </ul>
 <section class="footnotes" role="doc-endnotes">
-<hr />
+<hr>
 <ol>
 <li id="fn1" role="doc-endnote"><p>Manuel Hoffmann, Frank Nagle, Yanuo Zhou, “The Value of Open Source Software,” Harvard Business School, January 2024.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2" role="doc-endnote"><p>Steven Weber, <em>The Success of Open Source</em>, Harvard University Press, 2004.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3" role="doc-endnote"><p>Manuel Hoffmann, Frank Nagle, Yanuo Zhou, “The Value of Open Source Software,” Harvard Business School, January 2024.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
-</div>
-<div class="container" id="01-software-production"><h1>软件的生产、分销和消费</h1><h2 id="引子">引子</h2>
+
+<h1>软件的生产、分销和消费</h1><h2 id="引子">引子</h2>
 <p>开源软件是如何生产的？生产的软件制品又是如何流转的，以及如何被消费？这可能是我们从福特时代就密切关注的。从经济学的角度来看，如何生产，以及如何高效的生产，保持增长的生产始终是现代经济追求的重要目标。</p>
 <p>开源软件的投入成本由哪些构成？它的分销渠道是什么？最终又是如何部署到数据中心、智能终端上的？乃至全球开源软件供应链的形成——只有理解了软件的生产过程，以及当中所产生的成本，我们才能将之置入经济的视角去看待。</p>
 <h2 id="软件市场的形式与演变">软件市场的形式与演变</h2>
@@ -162,7 +365,7 @@
 <p>从物理介质到在线下载，从一次性购买到订阅制，从本地部署到云服务——交付方式的每次变化都重塑了软件的价值链条。订阅制（Subscription）尤其值得注意：它不是简单的商业模式变化，而是”使用”与”拥有”关系的重新定义。</p>
 <h2 id="从阅读日报与周刊获得灵感">从阅读日报与周刊获得灵感</h2>
 <p>订阅经济的核心洞察是：读者购买的不是单期内容，而是持续获得信息的渠道。这一逻辑被迁移到软件领域——用户购买的不是软件的所有权，而是持续更新、维护和支持的服务关系。</p>
-<hr />
+<hr>
 <h2 id="延伸阅读">延伸阅读</h2>
 <ul>
 <li>《大教堂与集市》，Eric S. Raymond，机械工业出版社，2014<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
@@ -173,14 +376,14 @@
 <li>Johnson, “Creating the Software Industry,” <em>IEEE Annals of the History of Computing</em> (2002)</li>
 </ul>
 <section class="footnotes" role="doc-endnotes">
-<hr />
+<hr>
 <ol>
 <li id="fn1" role="doc-endnote"><p>Eric S. Raymond, <em>The Cathedral and the Bazaar</em>, O’Reilly Media, 1999.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2" role="doc-endnote"><p>Eric S. Raymond, <em>The Cathedral and the Bazaar</em>, O’Reilly Media, 1999.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
-</div>
-<div class="container" id="02-intellectual-property"><h1>数字时代的知识财产法演变与开源许可</h1><h2 id="引子">引子</h2>
+
+<h1>数字时代的知识财产法演变与开源许可</h1><h2 id="引子">引子</h2>
 <p>聊完开源的生产之后，我们需要切入开源的另外一个视角：许可。理解许可需要从知识财产权讲起，进而阐述数字时代的知识财产权的角力对抗。我们看到严格的限制所形成的软件市场是巨大的，那么开源许可却从另外一个方向占领了世界，成为了我们现代生活中的一部分。</p>
 <p>本次讲座希望通过开源许可所解决的问题，以及倡导的观念来阐述开源软件市场形成的重要条件：知识财产权仍然在起着重要的作用，而不是人们臆想中的消亡。</p>
 <h2 id="许可的出现与软件市场的崛起">许可的出现与软件市场的崛起</h2>
@@ -196,7 +399,7 @@
 <p>这一制度设计的经济学本质是：降低分布式协作的交易成本，同时保留足够的激励结构让贡献者获得信号价值（signal value）。</p>
 <h2 id="许可的演变">许可的演变</h2>
 <p>从早期的 MIT、BSD 到 GPL 系列，再到 AGPL、SSPL——许可证的演变本身就是一部制度创新史。每一次新许可证的出现，都是在回应一个具体的制度问题：如何在新的使用场景下维持协作规则的有效性。</p>
-<hr />
+<hr>
 <h2 id="延伸阅读">延伸阅读</h2>
 <ul>
 <li><a href="/posts/history-of-open-source/summary/">开源之史</a></li>
@@ -207,13 +410,13 @@
 <li>Lessig, “An Interview with Lawrence Lessig on Copyrights,” <em>Econlib</em> (2003)</li>
 </ul>
 <section class="footnotes" role="doc-endnotes">
-<hr />
+<hr>
 <ol>
 <li id="fn1" role="doc-endnote"><p>Aaron S. Pzena &amp; Jason Schultz, 《所有权的终结：数字时代的财产保护》，北京大学出版社，2022.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
-</div>
-<div class="container" id="03-business-model"><h1>商业模式：规则下的具体操作</h1><h2 id="引子">引子</h2>
+
+<h1>商业模式：规则下的具体操作</h1><h2 id="引子">引子</h2>
 <p>从具体的交易——即商业——其实受限于很多的因素。当地的历史人文、风俗习惯、制度政策等都会影响到合同的谈判和签署。开源软件本质上仍然是知识财产的产品化及其交易的过程，其商业模式无法违背其本来的性质：复制成本为零，撰写成本高昂，传输成本极低。</p>
 <p>如何在盈利和运营之间取得平衡？是一件极为考验商业头脑的事情。</p>
 <h2 id="软件的商品化">软件的商品化</h2>
@@ -232,7 +435,7 @@
 <p>Red Hat 的成功证明了”免费软件 + 付费服务”模式的可行性。其核心洞察是：企业客户需要的不只是代码，而是代码背后的确定性——安全更新、兼容性保证、技术支持、法律合规。这些服务的价值往往超过代码本身的价值。</p>
 <h2 id="kubernetes-成就了谁">Kubernetes 成就了谁？</h2>
 <p>Kubernetes 作为容器编排的事实标准，展示了开源项目如何成为商业竞争的核心基础设施。Google 通过 Kubernetes 将 Linux Foundation 的治理模式与企业级商业利益有效结合，实现了开源项目与企业战略的双赢。</p>
-<hr />
+<hr>
 <h2 id="延伸阅读">延伸阅读</h2>
 <ul>
 <li>《Linux Under The Radar》，Robert Young / Ron Milo，中国青年出版社，2000</li>
@@ -240,8 +443,8 @@
 <li>《Open Source Law, Policy and Practice》，Amanda Brock 主编，Oxford University Press，2023</li>
 <li>《From Project to Profit: How to Build a Business Around Your》，Heather Meeker，2023</li>
 </ul>
-</div>
-<div class="container" id="04-labor-market"><h1>软件开发劳动力市场</h1><h2 id="引子">引子</h2>
+
+<h1>软件开发劳动力市场</h1><h2 id="引子">引子</h2>
 <p>劳动力市场始终是知识经济的重要保障。软件开发、维护和安全的重要的生产要素就是来自于工程师，而开源的工程师是其中至为重要的一环。是什么激励着开源开发者？始终是经济学的谜题。</p>
 <p>开源的软件开发者的动机，在一部分人眼中，似乎是不追求利益的高尚的利他主义者——当然这是一个严重的错误。</p>
 <h2 id="代码不是商品">代码不是商品</h2>
@@ -254,7 +457,7 @@
 <p>开源是一个最能产生优质工程师的重要场所——然而，却并不是资本的激励，起码不是直接的激励。外部因素（职业发展、技能信号）居多还是个体因素（兴趣、热情、认同），是理解这一劳动力市场的关键。</p>
 <h2 id="兴趣与实践">兴趣与实践</h2>
 <p>杜威在《确定性的寻求》中提出的”知行合一”在开源语境中有直接体现：开源开发者的实践（coding）与认知（understanding）是同一过程的两面。这种”在做中学”的模式使得开源社区具有强大的自我培养和人才孵化能力。</p>
-<hr />
+<hr>
 <h2 id="延伸阅读">延伸阅读</h2>
 <ul>
 <li>《匠人》，Richard Sennett，上海译文出版社，2015</li>
@@ -267,14 +470,14 @@
 <li>《全球”猎身”》，项飙，北京大学出版社，2012</li>
 </ul>
 <section class="footnotes" role="doc-endnotes">
-<hr />
+<hr>
 <ol>
 <li id="fn1" role="doc-endnote"><p>Lerner, Jean &amp; Tirole, Jean, “Some Simple Economics of Open Source,” <em>Journal of Industrial Economics</em>, 50(2), 159-189, 2002.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2" role="doc-endnote"><p>Lancashire, D., “Code, Culture and Cash: The Fading Altruism of Open Source Development,” <em>First Monday</em> 6(12), 2001.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
-</div>
-<div class="container" id="05-transaction-cost"><h1>交易成本与路径依赖</h1><h2 id="引子">引子</h2>
+
+<h1>交易成本与路径依赖</h1><h2 id="引子">引子</h2>
 <p>罗纳德·科斯开创性的作品《企业的性质》<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> 引出了交易成本，给出企业存在的缘由，更重要的是将交易成本引入了经济学分析。法学教授 Yochai Benkler，则回答了开源项目共同体就是实现这个的重要途径，前提就是实现相应的目标。</p>
 <p>本期讲座以交易成本和制度经济学等经济理论，来解释开源现象，尤其是各类非交易性的软件开发。</p>
 <h2 id="毋需法律的秩序">毋需法律的秩序</h2>
@@ -299,7 +502,7 @@
 <p>开源软件具有强烈的路径依赖特征：一旦一个社区采用了某个开源平台，迁移成本（learning cost、compatibility cost、ecosystem cost）使得切换极其困难。这就是 Linux、Kubernetes、Python 等开源项目持续发展的核心本质之一。</p>
 <h2 id="开源是如何吞噬软件的">开源是如何吞噬软件的</h2>
 <p>从操作系统（Linux）到数据库（MySQL、PostgreSQL），从编程语言（Python、Rust）到云计算基础设施（Kubernetes）——开源正在系统性地取代专有软件。这一过程不是市场的自然演化，而是制度选择的结果：开源在降低交易成本方面具有结构性优势。</p>
-<hr />
+<hr>
 <h2 id="延伸阅读">延伸阅读</h2>
 <ul>
 <li>Coase, “The Nature of the Firm,” <em>Economica</em>, 1937<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></li>
@@ -312,7 +515,7 @@
 <li>Foray, D., <em>The Economics of Knowledge</em>, MIT Press, 2006</li>
 </ul>
 <section class="footnotes" role="doc-endnotes">
-<hr />
+<hr>
 <ol>
 <li id="fn1" role="doc-endnote"><p>Ronald H. Coase, “The Nature of the Firm,” <em>Economica</em> 4(16), 386-405, 1937.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2" role="doc-endnote"><p>Ronald H. Coase, “The Nature of the Firm,” <em>Economica</em> 4(16), 386-405, 1937.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
@@ -323,8 +526,8 @@
 <li id="fn7" role="doc-endnote"><p>Paul A. David, “Path Dependence, Its Critics and the Quest for Historical Economics,” January 2000.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
-</div>
-<div class="container" id="06-organization-governance"><h1>组织结构与治理</h1><h2 id="引子">引子</h2>
+
+<h1>组织结构与治理</h1><h2 id="引子">引子</h2>
 <p>集体行动从来都是一件很难的事，尽管人类善于虚构来推动发展。开源这个想象的共同体<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>，是一个自下而上发展起来的群体——所有的决策、规则都是项目成员们协商而成。形形色色的开源项目，也就是形形色色的开源共同体。</p>
 <p>自发秩序其实有很多前提条件：对理想的认同、勤奋的行动、充满激情、热心协同、冲突解决等等。开源项目共同体最初都不是刻意设计来的，利用看得见的手和资本的力量造就出来，它往往走的是看不见的手、社会资本和共同行为准则所塑造的道路。</p>
 <h2 id="基于互联网的虚拟共同体">基于互联网的虚拟共同体</h2>
@@ -340,7 +543,7 @@
 <p>代码管理工具的演变（CVS → SVN → Git → GitHub）不仅仅是技术工具的变化，更是协作模式的变化。GitHub 将开源协作从”原子”（个人开发者之间的直接协作）升级为”市集”（平台化的开发者市场），大大降低了发现和参与开源项目的门槛。</p>
 <h2 id="组织不断演化的协作分工">组织：不断演化的协作分工</h2>
 <p>开源组织的演化遵循威廉姆森的治理层级框架<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>：从市场（个人贡献）到混合（社区协调）再到层级（基金会管理）。这一演化不是线性的，而是在不同尺度上同时存在多种治理模式。</p>
-<hr />
+<hr>
 <h2 id="延伸阅读">延伸阅读</h2>
 <ul>
 <li>《组织的逻辑》，Ray Fisman / Tim Sullivan，九州出版社，2023</li>
@@ -351,7 +554,7 @@
 <li>《抵达：一部政治演化史》，包刚升，上海三联书店，2023</li>
 </ul>
 <section class="footnotes" role="doc-endnotes">
-<hr />
+<hr>
 <ol>
 <li id="fn1" role="doc-endnote"><p>Benedict Anderson, <em>Imagined Communities</em>, Shanghai People’s Publishing House, 2016 (Chinese ed.).<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2" role="doc-endnote"><p>Oliver E. Williamson, <em>The Economic Institutions of Capitalism</em>, Free Press, 1985.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
@@ -360,8 +563,8 @@
 <li id="fn5" role="doc-endnote"><p>Yochai Benkler, <em>The Wealth of Networks</em>, Yale University Press, 2006.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
-</div>
-<div class="container" id="07-culture-matters"><h1>文化的重要作用</h1><h2 id="引子">引子</h2>
+
+<h1>文化的重要作用</h1><h2 id="引子">引子</h2>
 <p>开源是普适文明，这是很多人以为的。但是很不幸，不是所有的文化都能孕育出开源来。如果没有分享协作的精神，开源的生产模式是不可能发生的。同样，没有尊重知识财产的文化，也就没有以发布权为重要容他权的生存之道。</p>
 <p>文化是抽象的，它只能体现在人们的日常行为、谈话、决策等当中。身于其中的人是极难意识到自己的文化的——正如那个脍炙人口的两只小鱼的故事所表达的。我们置身于不同的文化中时，会变成一个婴儿，必须从头学起。</p>
 <h2 id="代码分享的文化起源">代码分享的文化起源</h2>
@@ -377,7 +580,7 @@
 <p>开源行为准则（Code of Conduct）的出现，标志着开源文化从边缘走向主流。当一个全球性的协作运动开始用正式文档来规范成员行为时，说明它已经从”亚文化”变成了”社会运动”。</p>
 <h2 id="世界公民与本土出发">世界公民与本土出发</h2>
 <p>开源文化具有双重性：它既是普世的（技术无国界），又是本土的（每个社区都有自己的文化语境）。理解开源的全球—本土张力，是理解开源在不同文化中不同发展路径的关键。</p>
-<hr />
+<hr>
 <h2 id="延伸阅读">延伸阅读</h2>
 <ul>
 <li>《文化的重要作用：价值观如何影响人类进步》，Lawrence Harrison / Samuel Huntington，新华出版社，2010</li>
@@ -388,7 +591,7 @@
 <li>Weber, Steven, <em>The Success of Open Source</em>, Harvard University Press, 2004<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></li>
 </ul>
 <section class="footnotes" role="doc-endnotes">
-<hr />
+<hr>
 <ol>
 <li id="fn1" role="doc-endnote"><p>Pekka Himanen, <em>The Hacker Ethic and the Spirit of the Information Age</em>, 中信出版社, 2002 (Chinese ed.).<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2" role="doc-endnote"><p>Fred Turner, <em>From Counterculture to Cyberculture</em>, 电子工业出版社, 2013 (Chinese ed.).<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
@@ -397,8 +600,8 @@
 <li id="fn5" role="doc-endnote"><p>Steven Weber, <em>The Success of Open Source</em>, Harvard University Press, 2004.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
-</div>
-<div class="container" id="08-political-economy"><h1>商业价值与社会价值：开源的政治经济学</h1><h2 id="引子">引子</h2>
+
+<h1>商业价值与社会价值：开源的政治经济学</h1><h2 id="引子">引子</h2>
 <p>政治学者 Steven Weber 在《The Success of Open Source》<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> 一书中批判了一种流行观点：人们认为开源是一种”自我组织”，也就是说开源是无人经营的混乱之地。显然，从目前的情况来看，开源透露出来的是无数人的智慧和努力的结果。</p>
 <p>开源项目作为数字产品，天然具有非排他、非竞争、无限使用和复制的特性，但是却依然靠劳动力来持续的开发和发展。这就带来了明显的悖论：商业公司受益于开源，却找不到投入开源的理由——因为营利是贪婪的；但对于社会和教育，开源的技术和传承方面，又有无比重要的价值。这个矛盾该如何处理？中央要不要干涉？</p>
 <h2 id="精心布局的开源及其案例">“精心布局的开源”及其案例</h2>
@@ -414,7 +617,7 @@
 <p>开源项目的价值分配具有显著的非对称性：少数贡献者创造了大部分价值，而大部分使用者免费获得这些价值。这种非对称性不是缺陷，而是开源激励结构的核心——它依赖信号价值（signal value）而非直接货币回报来激励贡献。</p>
 <h2 id="政策介入与鼓励倡导">政策介入与鼓励倡导</h2>
 <p>当开源的基础设施地位越来越重要时，公共政策介入就变得不可避免。欧盟的”软件互操作性指令”、美国联邦政府的 FOSS 政策、中国信通院的开源标准——这些政策介入的本质是：承认开源已经从技术选择变成了公共基础设施。</p>
-<hr />
+<hr>
 <h2 id="延伸阅读">延伸阅读</h2>
 <ul>
 <li>Spreeuwenberg &amp; Poell, “Android and the Political Economy of the Mobile Internet,” <em>First Monday</em> 17(7), 2012</li>
@@ -423,7 +626,7 @@
 <li><a href="/posts/opensource/open_by_design/">精心布局的开源</a>，『开源之道』编译自 O’Reilly</li>
 </ul>
 <section class="footnotes" role="doc-endnotes">
-<hr />
+<hr>
 <ol>
 <li id="fn1" role="doc-endnote"><p>Steven Weber, <em>The Success of Open Source</em>, Harvard University Press, 2004.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2" role="doc-endnote"><p>Elinor Ostrom, <em>Governing the Commons</em>, Cambridge University Press, 1990.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
@@ -432,8 +635,8 @@
 <li id="fn5" role="doc-endnote"><p>Elinor Ostrom, <em>Governing the Commons</em>, Cambridge University Press, 1990.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
-</div>
-<div class="container" id="09-information-economy"><h1>信息规则与网络经济</h1><h2 id="引子">引子</h2>
+
+<h1>信息规则与网络经济</h1><h2 id="引子">引子</h2>
 <p>开源是互联网发明后所崛起的新的生产方式，网络效应是个无法避开的话题，多边平台理论亦对开源有效。</p>
 <p>信息该如何定价？开源软件又该如何定价？订阅模式为何受到现代人的青睐？本期讲座通过回顾历史上的软件定价方式来阐述开源的本质。开源在放弃了许可费用之后该如何定价？市场能给出什么样的信号？</p>
 <h2 id="信息的特殊经济属性">信息的特殊经济属性</h2>
@@ -450,21 +653,21 @@
 <p>从产品到服务的制度转型：当用户不再购买软件而购买持续服务时，开源许可证的角色从”授权使用”转变为”信任基础”。用户信任代码的开放性和可持续性，因此愿意为持续的维护和支持付费。</p>
 <h2 id="开源与云计算的制度冲突">开源与云计算的制度冲突</h2>
 <p>云厂商利用开源代码提供托管服务，开源项目如何保护自身的商业模式？这不仅是技术问题，更是科斯意义上的产权重新界定问题——当代码被部署在云端，传统 Copyleft 的”分发触发义务”机制失效了。AGPL 的出现正是对这一制度冲突的回应。</p>
-<hr />
+<hr>
 <h2 id="延伸阅读">延伸阅读</h2>
 <ul>
 <li>《信息规则：网络经济的策略指导》，Carl Shapiro / Hal R. Varian，中国人民大学出版社，2017<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
 <li>《平台领导：英特尔、微软和思科如何推动行业创新》，Annabelle Gawer，广东经济出版社，2007</li>
 </ul>
 <section class="footnotes" role="doc-endnotes">
-<hr />
+<hr>
 <ol>
 <li id="fn1" role="doc-endnote"><p>Carl Shapiro &amp; Hal R. Varian, <em>Information Rules: A Strategic Guide to the Network Economy</em>, 中国人民大学出版社, 2017 (Chinese ed.).<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2" role="doc-endnote"><p>Carl Shapiro &amp; Hal R. Varian, <em>Information Rules: A Strategic Guide to the Network Economy</em>, 中国人民大学出版社, 2017 (Chinese ed.).<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
-</div>
-<div class="container" id="10-proprietary-rights"><h1>排他权与容他权、比例原则与 Copyleft</h1><h2 id="引子">引子</h2>
+
+<h1>排他权与容他权、比例原则与 Copyleft</h1><h2 id="引子">引子</h2>
 <p>任何的贪得无厌，都会引来不公的对抗。开源软件如果被肆意的践踏，那么它就像很多的学术项目一样，被贪婪所吞噬。智慧者总是在寻求某种平衡，于是现代数字财产的比例原则、适度的容他权、以 Copyleft 为代表的思想——是否可以赢得世界的信任？</p>
 <p>本期讲座尝试以知识财产法中的比例原则为索引，进而探索合理的平衡的知识财产法。</p>
 <h2 id="排他权的制度起源">排他权的制度起源</h2>
@@ -481,7 +684,7 @@
 <p>从 BSD/MIT（几乎无 Copyleft）到 GPL（强 Copyleft）到 MPL/APL（中间路线），许可证的光谱本身就是制度多样性（Ostrom 的 Design Principles 在 IP 领域的具体化）。</p>
 <h2 id="云时代的-copyleft-新挑战">云时代的 Copyleft 新挑战</h2>
 <p>AGPL、SSPL、BSL 等新许可证的出现：当代码运行在服务器端而非分发时，传统 Copyleft 失效了。制度需要再次演化——这正是 North 所说的”规则易改反应难变”：新的许可规则很容易写出来，但社区的适应需要时间。</p>
-<hr />
+<hr>
 <h2 id="延伸阅读">延伸阅读</h2>
 <ul>
 <li>《开源的成功之路》，Steven Weber，外语教学与研究出版社，2007</li>
@@ -490,13 +693,13 @@
 <li>《Open Source Licensing: Software Freedom and Intellectual Property Law》，Lawrence Rosen，Prentice Hall，2004</li>
 </ul>
 <section class="footnotes" role="doc-endnotes">
-<hr />
+<hr>
 <ol>
 <li id="fn1" role="doc-endnote"><p>Aaron S. Pzena &amp; Jason Schultz, 《所有权的终结：数字时代的财产保护》，北京大学出版社，2022.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
-</div>
-<div class="container" id="11-labor-compensation"><h1>劳动报酬与财产分配</h1><h2 id="引子">引子</h2>
+
+<h1>劳动报酬与财产分配</h1><h2 id="引子">引子</h2>
 <p>开源经常被利他主义贴上标签。从可持续发展的角度而言，没有回报的工作，是任何一个现代文明社会所无法接受的。开源项目为现代社会所起到的作用，作为从业者——职业创造者们的劳动报酬该如何在有尊严的情况下获取？</p>
 <h2 id="信号模型lerner-tirole">信号模型：Lerner &amp; Tirole</h2>
 <p>Lerner &amp; Tirole<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>的信号模型解释了企业为何贡献开源代码：不是为了销售代码，而是向市场和人才池发出质量信号。贡献代码 = 展示技术能力 = 吸引人才 = 商业回报。这是开源劳动力市场的核心激励机制。</p>
@@ -512,7 +715,7 @@
 <p>当开源代码成为数字基础设施，维护者从”劳动者”变为”基础设施管理者”时，财产分配的逻辑需要重新设计。Heartbleed 漏洞揭示的”开源基础设施危机”本质上是制度设计失败：没有为关键基础设施维护者设计可持续的回报机制。</p>
 <h2 id="开源的政治经济学展望">开源的政治经济学展望</h2>
 <p>从 Commons-based Peer Production（Benkler）到 Platform Cooperativism（Scholz），开源的生产模式能否通向更公平的财产分配制度？还是说，它会像资本主义历史上的每一次技术创新一样，最终被现有制度收编？</p>
-<hr />
+<hr>
 <h2 id="延伸阅读">延伸阅读</h2>
 <ul>
 <li>《集体行动的逻辑》，Mancur Olson，格致出版社，2017</li>
@@ -526,14 +729,19 @@
 <li>《Doughnut Economics》，Kate Raworth，2017</li>
 </ul>
 <section class="footnotes" role="doc-endnotes">
-<hr />
+<hr>
 <ol>
 <li id="fn1" role="doc-endnote"><p>Lerner, Jean &amp; Tirole, Jean, “Some Simple Economics of Open Source,” <em>Journal of Industrial Economics</em>, 50(2), 159-189, 2002.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
+
+
+    <nav class="chapter-nav">
+      <a href="/book/open-source-economics.html#00-introduction"><span>回到开头</span>← 引言</a>
+      <a href="/book/open-source-economics.html#11-labor-compensation"><span>终章</span>终章 →</a>
+    </nav>
+  </main>
 </div>
-<div class="page" id="references">
-<h2>参考文献</h2>
-<p>参考文献库见 <code>references/bibliography.bib</code></p>
-</div>
-</body></html>
+
+</body>
+</html>

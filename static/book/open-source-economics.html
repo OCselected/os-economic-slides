@@ -9,11 +9,63 @@
 <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,600;8..60,700&family=Noto+Serif+SC:wght@300;400;600;700&family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/book/book.css">
 <style>
+/* ── Topbar ── */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 1.5rem;
+  background: var(--cream);
+  border-bottom: 1px solid rgba(139,115,85,0.2);
+  font-family: 'Inter', 'Noto Sans SC', sans-serif;
+  height: 48px;
+  box-sizing: border-box;
+}
+.topbar-left {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--prussian);
+  letter-spacing: 0.02em;
+}
+.topbar-right {
+  display: flex;
+  gap: 0.5rem;
+}
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--copper);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--prussian);
+  font-size: 0.78rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.theme-toggle:hover {
+  background: var(--warm-white);
+}
+.theme-toggle .icon { font-size: 1rem; line-height: 1; }
+.theme-toggle .label { font-size: 0.72rem; letter-spacing: 0.05em; }
+
 /* ── Reader Layout ── */
-
-
+.reader-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  height: calc(100vh - 48px);
+  position: fixed;
+  top: 48px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
 .reader-toc {
-  position: static;
+  position: sticky;
+  top: 0;
   grid-column: 1 / 2;
   grid-row: 1 / 2;
   width: 300px;
@@ -73,17 +125,7 @@
 .toc-title:hover { color: var(--prussian); }
 .toc-title.active { color: var(--prussian); font-weight: 600; border-left: 2px solid var(--amber); padding-left: 0.4rem; }
 
-.reader-layout {
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
-}
+
 
 .reader-layout .reader-toc {
   float: none;

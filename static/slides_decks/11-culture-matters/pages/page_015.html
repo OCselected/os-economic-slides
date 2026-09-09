@@ -1,484 +1,540 @@
 
 
 <!DOCTYPE html>
-<html><!-- source_hash: b8dc6b464abcefb3 -->
+<html lang="zh-CN"><!-- source_hash: c12e0b640b23c337 -->
 <head>
 <meta charset="UTF-8">
-<title>开源定义 · 第 11 期</title>
+<title>文化基调：开源定义</title>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
+
 html, body {
   width: 1600px;
   height: 900px;
   overflow: hidden;
-  margin: 0;
   background: #F5F0E8;
-  font-family: 'Noto Sans SC', sans-serif;
-  color: #1B3B6B;
 }
 
-/* Subtle parchment texture */
-body::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 3px,
-    rgba(139,115,85,0.02) 3px,
-    rgba(139,115,85,0.02) 4px
-  );
-  pointer-events: none;
-  z-index: 0;
-}
-
-.slide-container {
+.slide {
   position: relative;
   width: 1600px;
   height: 900px;
-  display: flex;
+  background: #F5F0E8;
+  overflow: hidden;
 }
 
-/* Left panel - visual metaphor */
-.left-panel {
-  width: 560px;
-  height: 900px;
-  position: relative;
-  border-right: 2px solid #1B3B6B;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 60px 40px;
-}
-
-/* Bauhaus geometric decorations on left */
-.deco-circle-large {
+/* Subtle parchment texture via layered gradients */
+.slide::before {
+  content: '';
   position: absolute;
-  width: 320px;
-  height: 320px;
-  border: 3px solid #1B3B6B;
-  border-radius: 50%;
-  top: 160px;
-  left: 120px;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(139,115,85,0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 30%, rgba(27,59,107,0.02) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: 1;
 }
 
-.deco-circle-inner {
+/* Top bar */
+.top-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1600px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  padding: 0 60px;
+  border-bottom: 2px solid #1B3B6B;
+  z-index: 10;
+}
+
+.top-bar .lecture-tag {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #F5F0E8;
+  background: #1B3B6B;
+  padding: 4px 14px;
+  letter-spacing: 1px;
+  margin-right: 20px;
+}
+
+.top-bar .top-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 15px;
+  color: #1B3B6B;
+  letter-spacing: 2px;
+}
+
+.top-bar .slide-num {
+  margin-left: auto;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  color: #555;
+  letter-spacing: 1px;
+}
+
+/* Left geometric panel */
+.left-panel {
+  position: absolute;
+  top: 52px;
+  left: 0;
+  width: 520px;
+  height: 848px;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.left-panel-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 520px;
+  height: 848px;
+  background: #1B3B6B;
+}
+
+/* Bauhaus geometric decorations in left panel */
+.geo-circle-large {
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  border: 2.5px solid rgba(245,240,232,0.15);
+  top: 180px;
+  left: -60px;
+}
+
+.geo-circle-bell {
   position: absolute;
   width: 200px;
   height: 200px;
-  border: 2px solid #8B7355;
   border-radius: 50%;
-  top: 220px;
-  left: 180px;
+  border: 3px solid rgba(245,240,232,0.9);
+  top: 240px;
+  left: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.deco-square {
-  position: absolute;
-  width: 90px;
+/* Bell shape made with geometric primitives */
+.bell-shape {
+  position: relative;
+  width: 80px;
   height: 90px;
-  background: #1B3B6B;
+  margin-top: 10px;
+}
+
+.bell-body {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 64px;
+  height: 58px;
+  background: rgba(245,240,232,0.95);
+  border-radius: 4px 4px 32px 32px;
+}
+
+.bell-lip {
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 74px;
+  height: 8px;
+  background: rgba(245,240,232,0.95);
+  border-radius: 2px;
+}
+
+.bell-top {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 14px;
+  background: rgba(245,240,232,0.95);
+  border-radius: 14px 14px 0 0;
+}
+
+.bell-hanger {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 8px;
+  background: rgba(245,240,232,0.95);
+  border-radius: 2px;
+}
+
+.bell-clapper {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(245,240,232,0.95);
+}
+
+/* Sound waves */
+.wave-1 {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(245,240,232,0.08);
+  top: 210px;
+  left: 70px;
+}
+
+.wave-2 {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  border: 1px solid rgba(245,240,232,0.05);
   top: 180px;
-  left: 380px;
-  opacity: 0.15;
+  left: 40px;
+}
+
+/* Decorative lines */
+.deco-line-v1 {
+  position: absolute;
+  width: 2px;
+  height: 120px;
+  background: rgba(245,240,232,0.2);
+  top: 100px;
+  left: 80px;
+}
+
+.deco-line-v2 {
+  position: absolute;
+  width: 2px;
+  height: 80px;
+  background: rgba(245,240,232,0.15);
+  top: 600px;
+  left: 420px;
 }
 
 .deco-line-h1 {
   position: absolute;
-  width: 280px;
-  height: 2px;
-  background: #8B7355;
-  top: 520px;
-  left: 140px;
-}
-
-.deco-line-h2 {
-  position: absolute;
-  width: 180px;
-  height: 2px;
-  background: #1B3B6B;
-  top: 550px;
-  left: 140px;
-  opacity: 0.5;
-}
-
-.deco-triangle {
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-left: 35px solid transparent;
-  border-right: 35px solid transparent;
-  border-bottom: 60px solid #8B7355;
-  bottom: 120px;
-  left: 230px;
-  opacity: 0.3;
-}
-
-.deco-small-square {
-  position: absolute;
-  width: 24px;
-  height: 24px;
-  background: #8B7355;
-  top: 80px;
-  left: 400px;
-}
-
-/* Bell icon (constructed geometrically) */
-.bell-container {
-  position: relative;
-  width: 120px;
-  height: 120px;
-  margin-bottom: 30px;
-}
-
-.bell-arch {
-  position: absolute;
   width: 100px;
-  height: 70px;
-  border: 4px solid #1B3B6B;
-  border-bottom: none;
-  border-radius: 50px 50px 0 0;
-  top: 15px;
-  left: 10px;
+  height: 2px;
+  background: rgba(245,240,232,0.15);
+  top: 100px;
+  left: 380px;
 }
 
-.bell-base {
+/* Small square decoration */
+.deco-square1 {
   position: absolute;
-  width: 120px;
-  height: 6px;
-  background: #1B3B6B;
-  bottom: 20px;
-  left: 0;
+  width: 30px;
+  height: 30px;
+  border: 2px solid rgba(245,240,232,0.25);
+  top: 720px;
+  left: 60px;
+  transform: rotate(45deg);
 }
 
-.bell-tongue {
+.deco-square2 {
   position: absolute;
-  width: 16px;
-  height: 16px;
-  background: #8B7355;
+  width: 18px;
+  height: 18px;
+  background: rgba(245,240,232,0.12);
+  top: 760px;
+  left: 130px;
+}
+
+.deco-dot1 {
+  position: absolute;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  bottom: 0;
-  left: 52px;
+  background: rgba(245,240,232,0.3);
+  top: 680px;
+  left: 180px;
 }
 
-.bell-line-left {
+/* Bottom text in left panel */
+.left-label {
   position: absolute;
-  width: 20px;
-  height: 2px;
-  background: #1B3B6B;
-  bottom: 30px;
-  left: -10px;
-  transform: rotate(30deg);
-  transform-origin: right center;
+  bottom: 60px;
+  left: 60px;
+  right: 60px;
 }
 
-.bell-line-right {
-  position: absolute;
-  width: 20px;
-  height: 2px;
-  background: #1B3B6B;
-  bottom: 30px;
-  right: -10px;
-  transform: rotate(-30deg);
-  transform-origin: left center;
-}
-
-/* Right panel - content */
-.right-panel {
-  width: 1040px;
-  height: 900px;
-  padding: 55px 70px 50px 70px;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-.slide-header {
-  display: flex;
-  align-items: baseline;
-  gap: 20px;
+.left-label .label-cn {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 18px;
+  color: rgba(245,240,232,0.7);
+  letter-spacing: 3px;
   margin-bottom: 8px;
 }
 
-.slide-num {
-  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
-  font-size: 14px;
-  color: #8B7355;
+.left-label .label-en {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  color: rgba(245,240,232,0.4);
   letter-spacing: 2px;
-  border: 1px solid #8B7355;
-  padding: 4px 12px;
-}
-
-.slide-label {
-  font-size: 13px;
-  color: #8B7355;
-  letter-spacing: 3px;
   text-transform: uppercase;
 }
 
-.slide-title {
-  font-family: 'Noto Serif SC', 'Source Han Serif SC', serif;
-  font-size: 44px;
-  font-weight: 700;
+/* Main content area */
+.content-area {
+  position: absolute;
+  top: 52px;
+  left: 520px;
+  right: 0;
+  bottom: 0;
+  padding: 50px 60px 50px 60px;
+  z-index: 2;
+}
+
+.content-header {
+  margin-bottom: 36px;
+}
+
+.content-header .section-tag {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: #8B7355;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.content-header .main-heading {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 42px;
+  font-weight: 900;
   color: #1B3B6B;
-  margin-top: 10px;
-  margin-bottom: 6px;
   line-height: 1.3;
+  letter-spacing: 2px;
 }
 
-.slide-subtitle {
-  font-size: 15px;
+.content-header .subtitle-line {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 16px;
   color: #555;
-  margin-bottom: 30px;
-  letter-spacing: 1px;
+  margin-top: 12px;
   line-height: 1.6;
+  max-width: 900px;
 }
 
-.criteria-container {
-  flex: 1;
+.content-header .divider {
+  width: 80px;
+  height: 3px;
+  background: #1B3B6B;
+  margin-top: 20px;
+}
+
+/* Grid of principles */
+.principles-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px 40px;
-  padding-top: 10px;
+  gap: 14px 30px;
+  margin-top: 10px;
 }
 
-.criteria-item {
+.principle-item {
   display: flex;
   align-items: flex-start;
-  gap: 14px;
+  gap: 12px;
 }
 
-.criteria-num {
+.principle-num {
   flex-shrink: 0;
   width: 28px;
   height: 28px;
-  background: #1B3B6B;
-  color: #F5F0E8;
-  font-family: 'Noto Serif SC', serif;
-  font-size: 13px;
-  font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 1px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #F5F0E8;
+  background: #1B3B6B;
 }
 
-.criteria-num.circle {
-  border-radius: 50%;
+.principle-num.alt {
   background: transparent;
   border: 2px solid #1B3B6B;
   color: #1B3B6B;
 }
 
-.criteria-text {
-  font-size: 15px;
-  line-height: 1.5;
+.principle-text {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
   color: #1B3B6B;
-}
-
-.criteria-text .en {
-  display: block;
-  font-size: 11px;
-  color: #8B7355;
-  margin-top: 2px;
-  letter-spacing: 0.5px;
+  line-height: 1.6;
+  padding-top: 2px;
 }
 
 /* Footer */
-.slide-footer {
+.footer {
   position: absolute;
-  bottom: 35px;
-  left: 70px;
-  right: 70px;
+  bottom: 0;
+  left: 520px;
+  right: 0;
+  height: 44px;
+  border-top: 1px solid rgba(27,59,107,0.12);
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding-top: 16px;
-  border-top: 1px solid #8B7355;
+  padding: 0 60px;
+  z-index: 5;
 }
 
-.footer-left {
+.footer-text {
+  font-family: 'Noto Sans SC', sans-serif;
   font-size: 11px;
   color: #8B7355;
   letter-spacing: 1px;
 }
 
-.footer-right {
-  font-size: 11px;
-  color: #8B7355;
-}
-
-/* Decorative elements on right panel */
-.deco-corner {
+/* Small decorative elements in content area */
+.content-deco-circle {
   position: absolute;
-  top: 30px;
-  right: 30px;
-  width: 50px;
-  height: 50px;
-  border-top: 2px solid #1B3B6B;
-  border-right: 2px solid #1B3B6B;
-}
-
-.deco-dot {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  background: #8B7355;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
+  border: 2px solid #8B7355;
+  opacity: 0.4;
 }
 
-.dot-1 { top: 280px; right: 35px; }
-.dot-2 { top: 296px; right: 35px; }
-.dot-3 { top: 312px; right: 35px; }
-
-/* Source note */
-.source-note {
+/* Right edge accent */
+.right-accent {
   position: absolute;
-  bottom: 35px;
-  left: 40px;
-  font-size: 10px;
-  color: #8B7355;
-  opacity: 0.7;
-  letter-spacing: 0.5px;
+  top: 52px;
+  right: 0;
+  width: 4px;
+  height: 848px;
+  background: linear-gradient(to bottom, #1B3B6B 0%, #1B3B6B 30%, transparent 30%, transparent 50%, #8B7355 50%, #8B7355 60%, transparent 60%);
+  z-index: 10;
 }
 
-.left-title {
-  font-family: 'Noto Serif SC', serif;
-  font-size: 18px;
-  color: #1B3B6B;
-  letter-spacing: 3px;
-  text-align: center;
-  margin-top: 20px;
-  line-height: 1.8;
-}
-
-.left-en-title {
-  font-size: 11px;
-  color: #8B7355;
-  letter-spacing: 2px;
-  text-align: center;
-  margin-top: 6px;
-}
 </style>
 </head>
 <body>
-<div class="slide-container">
-  <!-- Left panel: Visual metaphor -->
+<div class="slide">
+
+  <!-- Top bar -->
+  <div class="top-bar">
+    <span class="lecture-tag">第 11 期</span>
+    <span class="top-title">文化的重要作用 · 包豪斯几何构成</span>
+    <span class="slide-num">—</span>
+  </div>
+
+  <!-- Right edge accent -->
+  <div class="right-accent"></div>
+
+  <!-- Left geometric panel -->
   <div class="left-panel">
-    <div class="deco-circle-large"></div>
-    <div class="deco-circle-inner"></div>
-    <div class="deco-square"></div>
+    <div class="left-panel-bg"></div>
+    <!-- Geometric decorations -->
+    <div class="wave-2"></div>
+    <div class="wave-1"></div>
+    <div class="geo-circle-large"></div>
+    
+    <!-- Bell circle -->
+    <div class="geo-circle-bell">
+      <div class="bell-shape">
+        <div class="bell-hanger"></div>
+        <div class="bell-top"></div>
+        <div class="bell-body"></div>
+        <div class="bell-clapper"></div>
+        <div class="bell-lip"></div>
+      </div>
+    </div>
+
+    <!-- Small decorations -->
+    <div class="deco-line-v1"></div>
     <div class="deco-line-h1"></div>
-    <div class="deco-line-h2"></div>
-    <div class="deco-triangle"></div>
-    <div class="deco-small-square"></div>
+    <div class="deco-line-v2"></div>
+    <div class="deco-square1"></div>
+    <div class="deco-square2"></div>
+    <div class="deco-dot1"></div>
 
-    <div class="bell-container">
-      <div class="bell-arch"></div>
-      <div class="bell-base"></div>
-      <div class="bell-tongue"></div>
-      <div class="bell-line-left"></div>
-      <div class="bell-line-right"></div>
-    </div>
-
-    <div class="left-title">开源革命<br>之召唤</div>
-    <div class="left-en-title">THE CALL OF OPEN SOURCE REVOLUTION</div>
-  </div>
-
-  <!-- Right panel: Content -->
-  <div class="right-panel">
-    <div class="deco-corner"></div>
-    <div class="deco-dot dot-1"></div>
-    <div class="deco-dot dot-2"></div>
-    <div class="deco-dot dot-3"></div>
-
-    <div class="slide-header">
-      <span class="slide-num">11</span>
-      <span class="slide-label">Culture Matters</span>
-    </div>
-
-    <div class="slide-title">开源定义</div>
-    <div class="slide-subtitle">Open Source Definition — 十条准则<br>钟已敲响，开源的召唤自1998年延续至今</div>
-
-    <div class="criteria-container">
-      <div class="criteria-item">
-        <div class="criteria-num">1</div>
-        <div class="criteria-text">
-          自由再分发
-          <span class="en">Free redistribution</span>
-        </div>
-      </div>
-      <div class="criteria-item">
-        <div class="criteria-num circle">2</div>
-        <div class="criteria-text">
-          源代码提供
-          <span class="en">Source code provided</span>
-        </div>
-      </div>
-      <div class="criteria-item">
-        <div class="criteria-num">3</div>
-        <div class="criteria-text">
-          允许衍生作品
-          <span class="en">Derivative works permitted</span>
-        </div>
-      </div>
-      <div class="criteria-item">
-        <div class="criteria-num circle">4</div>
-        <div class="criteria-text">
-          作者源代码完整性
-          <span class="en">Author's source code integrity</span>
-        </div>
-      </div>
-      <div class="criteria-item">
-        <div class="criteria-num">5</div>
-        <div class="criteria-text">
-          不歧视个人或群体
-          <span class="en">No discrimination against persons or groups</span>
-        </div>
-      </div>
-      <div class="criteria-item">
-        <div class="criteria-num circle">6</div>
-        <div class="criteria-text">
-          不歧视任何领域
-          <span class="en">No discrimination against fields of endeavor</span>
-        </div>
-      </div>
-      <div class="criteria-item">
-        <div class="criteria-num">7</div>
-        <div class="criteria-text">
-          分发时附带许可
-          <span class="en">License included with distribution</span>
-        </div>
-      </div>
-      <div class="criteria-item">
-        <div class="criteria-num circle">8</div>
-        <div class="criteria-text">
-          许可不得针对特定产品
-          <span class="en">License not specific to a product</span>
-        </div>
-      </div>
-      <div class="criteria-item">
-        <div class="criteria-num">9</div>
-        <div class="criteria-text">
-          许可不得限制其他软件
-          <span class="en">License may not restrict other software</span>
-        </div>
-      </div>
-      <div class="criteria-item">
-        <div class="criteria-num circle">10</div>
-        <div class="criteria-text">
-          许可必须技术中立
-          <span class="en">License must be technology-neutral</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="slide-footer">
-      <span class="footer-left">第 11 期 · 文化的重要作用</span>
-      <span class="footer-right">开源之道 · 新制度经济学视角</span>
+    <!-- Label -->
+    <div class="left-label">
+      <div class="label-cn">开源革命的号召</div>
+      <div class="label-en">The Call of the Open Source Revolution</div>
     </div>
   </div>
+
+  <!-- Main content -->
+  <div class="content-area">
+    <div class="content-header">
+      <div class="section-tag">SECTION · 文化基调</div>
+      <div class="main-heading">开源定义</div>
+      <div class="subtitle-line">
+        Open Source Definition — 十项原则构成开源精神的制度基石<br>
+        源自 Open Source Initiative 的原始定义框架
+      </div>
+      <div class="divider"></div>
+    </div>
+
+    <div class="principles-grid">
+      <div class="principle-item">
+        <div class="principle-num">01</div>
+        <div class="principle-text">自由再分发</div>
+      </div>
+      <div class="principle-item">
+        <div class="principle-num alt">02</div>
+        <div class="principle-text">源代码提供</div>
+      </div>
+      <div class="principle-item">
+        <div class="principle-num alt">03</div>
+        <div class="principle-text">允许衍生作品</div>
+      </div>
+      <div class="principle-item">
+        <div class="principle-num">04</div>
+        <div class="principle-text">作者源代码的完整性</div>
+      </div>
+      <div class="principle-item">
+        <div class="principle-num">05</div>
+        <div class="principle-text">不歧视个人或群体</div>
+      </div>
+      <div class="principle-item">
+        <div class="principle-num alt">06</div>
+        <div class="principle-text">不歧视任何领域</div>
+      </div>
+      <div class="principle-item">
+        <div class="principle-num alt">07</div>
+        <div class="principle-text">分发时须附带许可</div>
+      </div>
+      <div class="principle-item">
+        <div class="principle-num">08</div>
+        <div class="principle-text">许可不得针对特定产品</div>
+      </div>
+      <div class="principle-item">
+        <div class="principle-num">09</div>
+        <div class="principle-text">许可不得限制其他软件</div>
+      </div>
+      <div class="principle-item">
+        <div class="principle-num alt">10</div>
+        <div class="principle-text">许可必须技术中立</div>
+      </div>
+    </div>
+
+    <!-- Small decorative dot -->
+    <div class="content-deco-circle" style="top: 420px; right: 30px;"></div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span class="footer-text">开源之道 · 新制度经济学视角下的开源讲座 · 第 11 期</span>
+  </div>
+
 </div>
 </body>
 </html>

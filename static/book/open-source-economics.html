@@ -10,23 +10,21 @@
 <link rel="stylesheet" href="/book/book.css">
 <style>
 /* ── Reader Layout ── */
-.reader-layout {
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  min-height: 100vh;
-}
+
 
 .reader-toc {
-  position: fixed;
-  top: 0;
-  left: 0;
+  position: static;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
   width: 300px;
   height: 100vh;
+  max-height: 100vh;
   background: var(--cream);
   border-right: 1px solid rgba(139,115,85,0.2);
   overflow-y: auto;
   padding: 2rem 1.5rem;
   font-family: 'Noto Serif SC', serif;
+  box-sizing: border-box;
 }
 
 .reader-toc-header {
@@ -75,13 +73,28 @@
 .toc-title:hover { color: var(--prussian); }
 .toc-title.active { color: var(--prussian); font-weight: 600; border-left: 2px solid var(--amber); padding-left: 0.4rem; }
 
+.reader-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
 .reader-layout .reader-toc {
   float: none;
-  position: static;
+  position: sticky;
+  top: 0;
   grid-column: 1 / 2;
   grid-row: 1 / 2;
-  height: auto;
+  height: 100vh;
+  max-height: 100vh;
   overflow-y: auto;
+  box-sizing: border-box;
 }
 
 .reader-main {
@@ -91,6 +104,8 @@
   padding: clamp(2rem, 4vw, 4rem);
   max-width: 100%;
   overflow-y: auto;
+  min-height: 0;
+  min-width: 0;
 }
 
 .reader-main .cover { padding: 5rem 2rem; }
@@ -154,13 +169,47 @@
 }
 
 /* Dark mode overrides */
+[data-theme="dark"] {
+  --cream: #1a1a2e;
+  --prussian: #e07856;
+  --copper: #c9a87c;
+  --warm-white: #16213e;
+  --ink: #e8e0d4;
+  --amber: #e07856;
+  --accent: #e07856;
+}
+[data-theme="dark"] body { background: #1a1a2e; color: #e8e0d4; }
 [data-theme="dark"] .reader-toc { background: #0f1f3d; border-right-color: rgba(224,120,86,0.3); }
 [data-theme="dark"] .reader-toc-header { border-bottom-color: var(--amber); }
 [data-theme="dark"] .reader-toc-home { color: var(--amber); }
-[data-theme="dark"] .toc-title { color: var(--ink); }
+[data-theme="dark"] .toc-title { color: #e8e0d4; }
+[data-theme="dark"] .toc-title.active { color: var(--amber); border-left-color: var(--amber); }
+[data-theme="dark"] .toc-title:hover { color: var(--amber); }
+[data-theme="dark"] .toc-num { color: #c9a87c; }
 [data-theme="dark"] .reader-main .container > h1 { color: var(--amber); border-bottom-color: var(--amber); }
-[data-theme="dark"] .reader-main h2 { color: var(--copper); border-left-color: var(--amber); }
+[data-theme="dark"] .reader-main h2 { color: #e8e0d4; border-left-color: var(--amber); }
 [data-theme="dark"] .reader-main h3 { color: var(--amber); }
+[data-theme="dark"] .reader-main p,
+[data-theme="dark"] .reader-main li,
+[data-theme="dark"] .reader-main td,
+[data-theme="dark"] .reader-main th { color: #e8e0d4; }
+[data-theme="dark"] .reader-main blockquote { background: #16213e; border-left-color: var(--amber); color: var(--amber); }
+[data-theme="dark"] .reader-main table { border-color: rgba(201,168,124,0.3); }
+[data-theme="dark"] .reader-main th { background: rgba(224,120,86,0.1); color: var(--amber); border-bottom-color: rgba(224,120,86,0.4); }
+[data-theme="dark"] .reader-main td { border-bottom-color: rgba(201,168,124,0.15); }
+[data-theme="dark"] .reader-main tr.odd { background: rgba(22,33,62,0.5); }
+[data-theme="dark"] .reader-main tr.even { background: rgba(26,26,46,0.5); }
+[data-theme="dark"] .reader-main hr { border-color: rgba(201,168,124,0.3); }
+[data-theme="dark"] .chapter-nav { border-top-color: rgba(201,168,124,0.2); }
+[data-theme="dark"] .chapter-nav a { color: var(--amber); border-color: var(--amber); background: transparent; }
+[data-theme="dark"] .chapter-nav a:hover { background: rgba(224,120,86,0.1); }
+[data-theme="dark"] .topbar { background: #0f1f3d; border-bottom-color: rgba(224,120,86,0.3); }
+[data-theme="dark"] .topbar-brand { color: var(--amber); }
+[data-theme="dark"] .theme-toggle { color: #e8e0d4; border-color: rgba(201,168,124,0.3); background: #16213e; }
+[data-theme="dark"] .theme-toggle:hover { background: rgba(224,120,86,0.1); }
+[data-theme="dark"] sup a { color: var(--amber); }
+[data-theme="dark"] .references { color: #c9a87c; }
+[data-theme="dark"] .references h2 { color: var(--amber); }
 </style>
 <script>
 document.addEventListener('DOMContentLoaded', function() {

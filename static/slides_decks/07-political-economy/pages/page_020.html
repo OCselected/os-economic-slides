@@ -1,432 +1,323 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN"><!-- source_hash: f637103ddc24cd5b -->
+<html><!-- source_hash: f637103ddc24cd5b -->
 <head>
 <meta charset="UTF-8">
-<title>各国政府政策建议 · 开源的政治经济学</title>
+<title>公共政策与开源治理 · 第07期</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body {
-    width: 1600px;
-    height: 900px;
-    overflow: hidden;
-    margin: 0;
-    background: #F5F0E8;
-    font-family: 'Noto Sans SC', sans-serif;
-    color: #1B3B6B;
-  }
-  .slide {
-    position: relative;
-    width: 1600px;
-    height: 900px;
-    overflow: hidden;
-    background: #F5F0E8;
-  }
-
-  .bg-circle-1 {
-    position: absolute;
-    top: -100px;
-    right: -100px;
-    width: 280px;
-    height: 280px;
-    border-radius: 50%;
-    border: 1.5px solid #1B3B6B;
-    opacity: 0.06;
-  }
-  .bg-circle-2 {
-    position: absolute;
-    bottom: -80px;
-    left: 280px;
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    border: 1px solid #8B7355;
-    opacity: 0.07;
-  }
-  .bg-square-deco {
-    position: absolute;
-    top: 720px;
-    right: 180px;
-    width: 30px;
-    height: 30px;
-    background: #1B3B6B;
-    opacity: 0.1;
-    transform: rotate(45deg);
-  }
-
-  .top-bar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 1600px;
-    height: 5px;
-    background: #1B3B6B;
-  }
-
-  .header {
-    position: absolute;
-    top: 52px;
-    left: 90px;
-    right: 90px;
-  }
-  .lecture-tag {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 12px;
-    color: #8B7355;
-    letter-spacing: 4px;
-    margin-bottom: 16px;
-    font-weight: 500;
-  }
-  .slide-title {
-    font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
-    font-size: 46px;
-    color: #1B3B6B;
-    font-weight: 700;
-    line-height: 1.2;
-  }
-  .subtitle {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 17px;
-    color: #8B7355;
-    margin-top: 14px;
-    line-height: 1.5;
-  }
-  .subtitle em {
-    font-style: italic;
-  }
-
-  .slide-number {
-    position: absolute;
-    top: 52px;
-    right: 90px;
-    font-family: 'Noto Serif SC', serif;
-    font-size: 14px;
-    color: #8B7355;
-    letter-spacing: 2px;
-    font-weight: 600;
-  }
-
-  .accent-line {
-    position: absolute;
-    top: 205px;
-    left: 90px;
-    width: 60px;
-    height: 3px;
-    background: #1B3B6B;
-  }
-
-  .v-divider {
-    position: absolute;
-    top: 240px;
-    left: 640px;
-    width: 1px;
-    height: 440px;
-    background: #8B7355;
-    opacity: 0.18;
-  }
-
-  .visual-section {
-    position: absolute;
-    top: 240px;
-    left: 90px;
-    width: 500px;
-    height: 520px;
-  }
-
-  .bench-seat {
-    position: absolute;
-    top: 300px;
-    left: 80px;
-    width: 340px;
-    height: 14px;
-    background: #1B3B6B;
-  }
-  .bench-leg-1 {
-    position: absolute;
-    top: 314px;
-    left: 125px;
-    width: 10px;
-    height: 85px;
-    background: #8B7355;
-  }
-  .bench-leg-2 {
-    position: absolute;
-    top: 314px;
-    left: 375px;
-    width: 10px;
-    height: 85px;
-    background: #8B7355;
-  }
-  .bench-cross {
-    position: absolute;
-    top: 365px;
-    left: 125px;
-    width: 260px;
-    height: 6px;
-    background: #8B7355;
-    opacity: 0.3;
-  }
-
-  .person-head {
-    position: absolute;
-    top: 175px;
-    left: 230px;
-    width: 58px;
-    height: 58px;
-    border-radius: 50%;
-    background: #1B3B6B;
-  }
-  .person-body {
-    position: absolute;
-    top: 233px;
-    left: 243px;
-    width: 32px;
-    height: 67px;
-    background: #8B7355;
-  }
-
-  .companion-head {
-    position: absolute;
-    top: 210px;
-    left: 332px;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: #8B7355;
-    opacity: 0.65;
-  }
-  .companion-body {
-    position: absolute;
-    top: 250px;
-    left: 341px;
-    width: 22px;
-    height: 50px;
-    background: #8B7355;
-    opacity: 0.4;
-  }
-
-  .visual-caption {
-    position: absolute;
-    top: 435px;
-    left: 0;
-    width: 500px;
-    text-align: center;
-  }
-  .visual-caption-main {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 18px;
-    color: #1B3B6B;
-    font-weight: 600;
-    letter-spacing: 2px;
-    margin-bottom: 8px;
-  }
-  .visual-caption-sub {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 12px;
-    color: #8B7355;
-    line-height: 1.5;
-    letter-spacing: 1px;
-  }
-
-  .content-section {
-    position: absolute;
-    top: 240px;
-    left: 690px;
-    width: 820px;
-  }
-
-  .bullet-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .bullet-item {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 18px;
-    padding-bottom: 18px;
-    border-bottom: 1px solid rgba(139, 115, 85, 0.12);
-  }
-
-  .bullet-item:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
-  }
-
-  .bullet-num {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 28px;
-    font-weight: 700;
-    color: #8B7355;
-    margin-right: 28px;
-    min-width: 44px;
-    line-height: 1.1;
-  }
-
-  .bullet-body {
-    flex: 1;
-    padding-top: 2px;
-  }
-
-  .bullet-title {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: #1B3B6B;
-    margin-bottom: 4px;
-    line-height: 1.3;
-  }
-
-  .bullet-desc {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 14px;
-    color: #555;
-    line-height: 1.6;
-  }
-
-  .footer {
-    position: absolute;
-    bottom: 38px;
-    left: 90px;
-    right: 90px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .footer-left {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 11px;
-    color: #8B7355;
-    letter-spacing: 2.5px;
-  }
-  .footer-right {
-    font-family: 'Noto Sans SC', sans-serif;
-    font-size: 11px;
-    color: #8B7355;
-    letter-spacing: 2.5px;
-  }
-
-  .dot {
-    position: absolute;
-    border-radius: 50%;
-    background: #1B3B6B;
-  }
-  .dot-1 {
-    top: 730px;
-    left: 555px;
-    width: 6px;
-    height: 6px;
-    opacity: 0.25;
-  }
-  .dot-2 {
-    top: 745px;
-    left: 568px;
-    width: 5px;
-    height: 5px;
-    opacity: 0.18;
-  }
-  .dot-3 {
-    top: 758px;
-    left: 556px;
-    width: 4px;
-    height: 4px;
-    opacity: 0.12;
-  }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  width: 1600px; height: 900px; overflow: hidden; margin: 0;
+  background: #F5F0E8;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: #1B3B6B;
+  position: relative;
+}
+.parchment-texture {
+  position: absolute; top: 0; left: 0; width: 1600px; height: 900px;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(139,115,85,0.015) 2px, rgba(139,115,85,0.015) 4px),
+    repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(139,115,85,0.012) 2px, rgba(139,115,85,0.012) 4px);
+  pointer-events: none;
+}
+.slide-header {
+  position: absolute; top: 50px; left: 80px; right: 80px;
+  display: flex; justify-content: space-between; align-items: baseline;
+  border-bottom: 2px solid #1B3B6B;
+  padding-bottom: 14px;
+}
+.slide-header .lecture-tag {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 14px; letter-spacing: 3px; color: #8B7355;
+}
+.slide-header .slide-counter {
+  font-size: 13px; letter-spacing: 2px; color: #555;
+}
+.title-block {
+  position: absolute; top: 110px; left: 80px;
+}
+.title-block h1 {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 42px; font-weight: 700; color: #1B3B6B;
+  line-height: 1.3; margin-bottom: 8px;
+}
+.title-block .subtitle {
+  font-size: 16px; color: #8B7355; letter-spacing: 1px;
+}
+/* Left panel - geometric bench composition */
+.visual-panel {
+  position: absolute; top: 230px; left: 80px;
+  width: 620px; height: 580px;
+}
+.bench-frame {
+  position: absolute; top: 60px; left: 40px;
+  width: 540px; height: 420px;
+  border: 3px solid #1B3B6B;
+}
+.bench-seat {
+  position: absolute; top: 300px; left: 80px;
+  width: 460px; height: 18px;
+  background: #1B3B6B;
+}
+.bench-leg-left {
+  position: absolute; top: 318px; left: 120px;
+  width: 14px; height: 120px;
+  background: #1B3B6B;
+}
+.bench-leg-right {
+  position: absolute; top: 318px; left: 496px;
+  width: 14px; height: 120px;
+  background: #1B3B6B;
+}
+.bench-leg-left-inner {
+  position: absolute; top: 318px; left: 240px;
+  width: 10px; height: 100px;
+  background: #1B3B6B;
+}
+.bench-leg-right-inner {
+  position: absolute; top: 318px; left: 386px;
+  width: 10px; height: 100px;
+  background: #1B3B6B;
+}
+/* Abstract figures waiting */
+.figure-1-head {
+  position: absolute; top: 130px; left: 160px;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: #1B3B6B;
+}
+.figure-1-body {
+  position: absolute; top: 174px; left: 155px;
+  width: 54px; height: 110px;
+  background: #1B3B6B;
+}
+.figure-2-head {
+  position: absolute; top: 120px; left: 340px;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: 4px solid #8B7355;
+  background: transparent;
+}
+.figure-2-body {
+  position: absolute; top: 160px; left: 335px;
+  width: 50px; height: 120px;
+  border: 4px solid #8B7355;
+  background: transparent;
+}
+/* Decorative circles */
+.circle-large {
+  position: absolute; top: 80px; left: 440px;
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  border: 4px solid #8B7355;
+  opacity: 0.5;
+}
+.circle-small {
+  position: absolute; top: 200px; left: 480px;
+  width: 50px; height: 50px;
+  border-radius: 50%;
+  background: #8B7355;
+  opacity: 0.4;
+}
+/* Horizontal ground line */
+.ground-line {
+  position: absolute; top: 438px; left: 80px;
+  width: 460px; height: 3px;
+  background: #555;
+}
+/* Accent square */
+.accent-square {
+  position: absolute; top: 100px; left: 380px;
+  width: 60px; height: 60px;
+  background: #8B7355;
+  opacity: 0.2;
+}
+/* Metaphor caption */
+.metaphor-caption {
+  position: absolute; top: 510px; left: 80px;
+  width: 540px;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 15px; color: #555; line-height: 1.8;
+  font-style: italic;
+  border-left: 3px solid #8B7355;
+  padding-left: 16px;
+}
+/* Right panel - content */
+.content-panel {
+  position: absolute; top: 230px; right: 80px;
+  width: 680px; height: 580px;
+}
+.section-label {
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
+  font-size: 18px; color: #8B7355; letter-spacing: 3px;
+  margin-bottom: 30px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(139,115,85,0.3);
+}
+.bullet-list {
+  list-style: none;
+}
+.bullet-list li {
+  font-size: 20px; color: #1B3B6B; line-height: 1.5;
+  margin-bottom: 24px;
+  padding-left: 30px;
+  position: relative;
+}
+.bullet-list li::before {
+  content: '';
+  position: absolute; left: 0; top: 10px;
+  width: 14px; height: 14px;
+  background: #1B3B6B;
+}
+.bullet-list li:nth-child(2)::before {
+  border-radius: 50%;
+  background: transparent;
+  border: 3px solid #1B3B6B;
+}
+.bullet-list li:nth-child(3)::before {
+  background: #8B7355;
+  width: 14px; height: 2px;
+  top: 15px;
+}
+.bullet-list li:nth-child(4)::before {
+  border-radius: 50%;
+  background: #8B7355;
+}
+.bullet-list li:nth-child(5)::before {
+  background: transparent;
+  border: 3px solid #8B7355;
+  width: 14px; height: 14px;
+}
+.bullet-list li:nth-child(6)::before {
+  background: #1B3B6B;
+  width: 14px; height: 2px;
+  top: 15px;
+}
+.bullet-desc {
+  display: block;
+  font-size: 14px; color: #555;
+  margin-top: 6px;
+  font-weight: 400;
+}
+/* Footer */
+.slide-footer {
+  position: absolute; bottom: 30px; left: 80px; right: 80px;
+  display: flex; justify-content: space-between; align-items: center;
+  border-top: 1px solid rgba(139,115,85,0.3);
+  padding-top: 12px;
+}
+.slide-footer .footer-left {
+  font-size: 12px; color: #8B7355; letter-spacing: 1px;
+}
+.slide-footer .footer-right {
+  font-size: 12px; color: #555;
+}
+/* Geometric decoration bottom-left */
+.deco-triangle {
+  position: absolute; bottom: 80px; left: 100px;
+  width: 0; height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 34px solid #1B3B6B;
+  opacity: 0.15;
+}
+.deco-circle-bottom {
+  position: absolute; bottom: 90px; left: 170px;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  border: 2px solid #8B7355;
+  opacity: 0.4;
+}
+.deco-line-diagonal {
+  position: absolute; top: 580px; left: 580px;
+  width: 80px; height: 2px;
+  background: #8B7355;
+  opacity: 0.3;
+  transform-origin: left center;
+  transform: rotate(25deg);
+}
 </style>
 </head>
 <body>
-<div class="slide">
-  <div class="bg-circle-1"></div>
-  <div class="bg-circle-2"></div>
-  <div class="bg-square-deco"></div>
+<div class="parchment-texture"></div>
 
-  <div class="top-bar"></div>
+<!-- Header -->
+<div class="slide-header">
+  <div class="lecture-tag">第 07 期 · 商业价值与社会价值</div>
+  <div class="slide-counter">12 / 26</div>
+</div>
 
-  <div class="slide-number">07 / 26</div>
+<!-- Title -->
+<div class="title-block">
+  <h1>公共政策与开源治理</h1>
+  <div class="subtitle">长椅上的守候——信任、忠诚与公共物品的期待</div>
+</div>
 
-  <div class="header">
-    <div class="lecture-tag">LECTURE 07 · 开源的政治经济学</div>
-    <div class="slide-title">各国政府政策建议</div>
-    <div class="subtitle"><em>长椅上的守候与陪伴</em> — 公共物品治理中对信任与忠诚的期待</div>
-  </div>
-
-  <div class="accent-line"></div>
-  <div class="v-divider"></div>
-
-  <div class="visual-section">
-    <div class="person-head"></div>
-    <div class="person-body"></div>
-    <div class="companion-head"></div>
-    <div class="companion-body"></div>
-    <div class="bench-seat"></div>
-    <div class="bench-leg-1"></div>
-    <div class="bench-leg-2"></div>
-    <div class="bench-cross"></div>
-
-    <div class="visual-caption">
-      <div class="visual-caption-main">守候即治理 · 陪伴即信任</div>
-      <div class="visual-caption-sub">Bauhaus geometric composition · 长椅隐喻</div>
-    </div>
-  </div>
-
-  <div class="content-section">
-    <ul class="bullet-list">
-      <li class="bullet-item">
-        <div class="bullet-num">01</div>
-        <div class="bullet-body">
-          <div class="bullet-title">政策建议回顾</div>
-          <div class="bullet-desc">梳理各国政府对开源软件的政策建议与制度设计方向</div>
-        </div>
-      </li>
-      <li class="bullet-item">
-        <div class="bullet-num">02</div>
-        <div class="bullet-body">
-          <div class="bullet-title">事件驱动</div>
-          <div class="bullet-desc">政策出台往往由安全事件或重大风险事件所触发与催化</div>
-        </div>
-      </li>
-      <li class="bullet-item">
-        <div class="bullet-num">03</div>
-        <div class="bullet-body">
-          <div class="bullet-title">公共政策视角</div>
-          <div class="bullet-desc">将开源视为公共物品，纳入公共政策框架进行系统性治理</div>
-        </div>
-      </li>
-      <li class="bullet-item">
-        <div class="bullet-num">04</div>
-        <div class="bullet-body">
-          <div class="bullet-title">安全需要</div>
-          <div class="bullet-desc">供应链安全与漏洞修复成为各国政策关注的核心议题</div>
-        </div>
-      </li>
-      <li class="bullet-item">
-        <div class="bullet-num">05</div>
-        <div class="bullet-body">
-          <div class="bullet-title">成本与创新</div>
-          <div class="bullet-desc">权衡开源带来的创新收益与公共治理成本之间的平衡</div>
-        </div>
-      </li>
-      <li class="bullet-item">
-        <div class="bullet-num">06</div>
-        <div class="bullet-body">
-          <div class="bullet-title">透明办公</div>
-          <div class="bullet-desc">推动政府机构采纳开源优先战略与透明化行政实践</div>
-        </div>
-      </li>
-    </ul>
-  </div>
-
-  <div class="dot dot-1"></div>
-  <div class="dot dot-2"></div>
-  <div class="dot dot-3"></div>
-
-  <div class="footer">
-    <div class="footer-left">OPEN SOURCE POLITICS · 07</div>
-    <div class="footer-right">商业价值与社会价值</div>
+<!-- Left: Geometric bench composition -->
+<div class="visual-panel">
+  <div class="bench-frame"></div>
+  <div class="bench-seat"></div>
+  <div class="bench-leg-left"></div>
+  <div class="bench-leg-right"></div>
+  <div class="bench-leg-left-inner"></div>
+  <div class="bench-leg-right-inner"></div>
+  <div class="figure-1-head"></div>
+  <div class="figure-1-body"></div>
+  <div class="figure-2-head"></div>
+  <div class="figure-2-body"></div>
+  <div class="circle-large"></div>
+  <div class="circle-small"></div>
+  <div class="accent-square"></div>
+  <div class="ground-line"></div>
+  <div class="metaphor-caption">
+    "长椅上的守候与陪伴，象征公共物品治理中对信任与忠诚的期待。<br>
+    当国家介入开源生态，制度设计便如一张供人驻足思考的椅子——<br>
+    等待政策的对话者，等待创新的回应者。"
   </div>
 </div>
+
+<!-- Decorative elements -->
+<div class="deco-triangle"></div>
+<div class="deco-circle-bottom"></div>
+<div class="deco-line-diagonal"></div>
+
+<!-- Right: Content -->
+<div class="content-panel">
+  <div class="section-label">事件驱动的公共政策议程</div>
+  <ul class="bullet-list">
+    <li>
+      回顾各国政府的政策建议
+      <span class="bullet-desc">从欧盟到东亚，制度回应逐步成形</span>
+    </li>
+    <li>
+      事件驱动：Log4j、SolarWinds 余波
+      <span class="bullet-desc">供应链安全事件成为政策议程的催化剂</span>
+    </li>
+    <li>
+      公共政策视角的介入
+      <span class="bullet-desc">国家作为公共物品的担保人与监督者</span>
+    </li>
+    <li>
+      安全需要与信任机制
+      <span class="bullet-desc">漏洞披露、SBOM 与政府背书制度</span>
+    </li>
+    <li>
+      成本与创新的双重命题
+      <span class="bullet-desc">合规成本 vs. 开源驱动的创新红利</span>
+    </li>
+    <li>
+      透明办公与公共责任
+      <span class="bullet-desc">政府自身也成为开源实践的示范主体</span>
+    </li>
+  </ul>
+</div>
+
+<!-- Footer -->
+<div class="slide-footer">
+  <div class="footer-left">开源之道 · 新制度经济学视角</div>
+  <div class="footer-right">07-political-economy</div>
+</div>
+
 </body>
 </html>
